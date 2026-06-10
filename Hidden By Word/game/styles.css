@@ -1,0 +1,259 @@
+:root{
+  --frame-w: 432px;
+  --blue-0:#2b59c3;
+  --blue-1:#1f3f93;
+  --blue-2:#16306f;
+  --cell:#16306f;
+  --cell-edge:#0f2350;
+  --gold:#ffce4d;
+  --miss:#3aa0ff;
+}
+
+*{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html,body{ margin:0; height:100%; }
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:#0c1430;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  user-select:none;
+}
+
+.frame{
+  position:relative;
+  width:min(var(--frame-w), 100vw);
+  height:min(936px, 100vh);
+  background:linear-gradient(180deg,#3568d8 0%, #2a55bb 22%, #1d3f95 55%, #16315f 100%);
+  display:flex;
+  flex-direction:column;
+  padding:14px 14px 14px;
+  gap:12px;
+  overflow:hidden;
+}
+
+/* ===== HUD ===== */
+.hud{ display:flex; align-items:center; justify-content:space-between; height:40px; flex:0 0 auto; }
+.round-pill{
+  font-size:14px; font-weight:800; color:#fff;
+  background:rgba(8,16,40,.55); border:1px solid rgba(255,255,255,.18);
+  padding:7px 14px; border-radius:20px; letter-spacing:.3px;
+}
+.hud-btns{ display:flex; gap:6px; }
+.hud-btn{
+  width:38px; height:38px; border:none; border-radius:12px;
+  background:rgba(255,255,255,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25), 0 3px 0 rgba(0,0,0,.18);
+  color:#fff; font-size:20px; cursor:pointer; transition:transform .08s, background .15s;
+}
+.hud-btn:active{ transform:translateY(2px); background:rgba(255,255,255,.24); }
+.mode-btn{ width:auto; min-width:38px; padding:0 10px; font-size:14px; font-weight:800; letter-spacing:.5px; }
+.mode-btn.on{
+  background:linear-gradient(180deg,#ffd95e,#f4a93b); color:#5a3b00;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5), 0 3px 0 #b9781f;
+}
+
+/* ===== BOARD ===== */
+.board-wrap{
+  position:relative;
+  width:100%;
+  flex:1 1 auto;       /* fill all space between HUD and tray */
+  min-height:0;
+  border-radius:22px;
+  overflow:hidden;
+  background:#0e1f49;
+  box-shadow:inset 0 0 0 3px rgba(255,255,255,.10), 0 10px 26px rgba(0,0,0,.35);
+  cursor:grab;
+  touch-action:none;   /* we handle drag ourselves */
+}
+.board-wrap.grabbing{ cursor:grabbing; }
+/* square scene; sized in px by JS (side = wrap height) so it overflows
+   horizontally and the player drags left/right to explore. */
+.board{ position:absolute; top:0; left:0; transform-origin:0 0; will-change:transform; }
+.bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+
+/* little "drag" hint that fades out after first interaction */
+.drag-hint{
+  position:absolute; top:10px; left:50%; transform:translateX(-50%);
+  background:rgba(8,16,40,.72); color:#dfe7ff; font-size:12px; font-weight:700;
+  padding:5px 12px; border-radius:20px; pointer-events:none; z-index:40;
+  border:1px solid rgba(255,255,255,.15);
+  transition:opacity .4s; opacity:1;
+}
+.drag-hint.hide{ opacity:0; }
+
+.item{ position:absolute; pointer-events:none; will-change:opacity,transform; }
+.item img{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+.item .ob{ transition:opacity .3s ease; }
+/* found item: fade straight out (no fly-to-bar animation) */
+.item.collected .ob{ opacity:0; }
+.item.collected{ pointer-events:none; }
+
+/* hint pulse — only used on an active target item */
+.item.hint .ob{ animation:hintPulse 1s ease-in-out 2; transform-origin:center; }
+@keyframes hintPulse{
+  0%,100%{ transform:scale(1); filter:drop-shadow(0 0 0 rgba(255,231,107,0)); }
+  50%{ transform:scale(1.16); filter:drop-shadow(0 0 10px rgba(255,231,107,.95)); }
+}
+
+/* reveal — glow the active target items briefly */
+.item.glow .ob{ animation:glowPulse 1.1s ease-in-out infinite; transform-origin:center; }
+@keyframes glowPulse{
+  0%,100%{ filter:drop-shadow(0 0 1px rgba(255,247,180,.6)); }
+  50%{     filter:drop-shadow(0 0 4px rgba(255,243,150,.95)) drop-shadow(0 0 8px rgba(255,205,70,.6)); }
+}
+
+/* progress badge — sits in the HUD header, between the level pill and buttons */
+.progress{
+  background:linear-gradient(180deg,#2b59c3,#1c3f93);
+  border:2px solid rgba(255,255,255,.22);
+  border-radius:14px;
+  padding:5px 16px;
+  font-weight:800; font-size:16px; color:#fff;
+  display:flex; align-items:baseline; gap:1px;
+  box-shadow:0 4px 10px rgba(0,0,0,.35);
+  transform-origin:center;
+}
+.prog-num{ color:var(--gold); font-size:20px; }
+.prog-den{ color:#cdd6f5; font-size:14px; }
+.progress.bump{ animation:bump .45s ease; }
+@keyframes bump{ 0%{transform:scale(1);}35%{transform:scale(1.5);}100%{transform:scale(1);} }
+
+/* ===== HOLDER BAR (3 named targets) — floats over the bottom of the board ===== */
+.tray-row{
+  position:absolute; left:14px; right:14px; bottom:16px; z-index:60;
+  display:flex; align-items:center;
+}
+.tray{
+  flex:1 1 auto;
+  display:flex; gap:8px;
+  background:rgba(12,24,62,.62);
+  backdrop-filter:blur(11px); -webkit-backdrop-filter:blur(11px);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:18px;
+  padding:10px;
+  box-shadow:0 12px 30px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.14);
+}
+.holder{
+  flex:1 1 0;
+  min-height:48px;
+  border-radius:12px;
+  background:rgba(255,255,255,.10);
+  box-shadow:inset 0 2px 5px rgba(0,0,0,.4);
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+  padding:6px 8px;
+  text-align:center;
+}
+.holder .name{
+  color:#eaf1ff; font-size:13px; font-weight:800; line-height:1.15;
+  text-shadow:0 1px 2px rgba(0,0,0,.45);
+  animation:dropIn .25s ease;
+}
+@keyframes dropIn{ 0%{ transform:scale(.6); opacity:0; } 100%{ transform:scale(1); opacity:1; } }
+.holder{ transition:opacity .25s ease, filter .25s ease; }
+.holder.empty{ background:rgba(0,0,0,.22); box-shadow:inset 0 2px 5px rgba(0,0,0,.5); }
+/* target panned/zoomed off-screen -> dim the holder to a passive state */
+.holder.passive{ opacity:.4; filter:saturate(.6); }
+.holder.passive .name{ color:#9fb0d6; }
+.holder.found{ animation:foundPop .4s ease; }
+@keyframes foundPop{
+  0%{ box-shadow:inset 0 0 0 2px #46d27a, 0 0 16px rgba(70,210,122,.7); }
+  100%{ box-shadow:inset 0 2px 5px rgba(0,0,0,.4); }
+}
+
+/* ===== FX ===== */
+.fx-layer{ position:absolute; inset:0; pointer-events:none; overflow:visible; z-index:50; }
+
+/* blue miss pointer — shown where the player clicks a wrong spot */
+.miss{
+  position:absolute; z-index:60; pointer-events:none;
+  width:26px; height:26px; margin:-13px 0 0 -13px;
+  transform-origin:center; animation:missPop .55s ease-out forwards;
+}
+.miss::before{
+  content:""; position:absolute; inset:0; border-radius:50%;
+  border:3px solid var(--miss);
+  box-shadow:0 0 10px rgba(58,160,255,.8), inset 0 0 6px rgba(58,160,255,.5);
+}
+.miss::after{
+  content:""; position:absolute; left:50%; top:50%;
+  width:6px; height:6px; margin:-3px 0 0 -3px; border-radius:50%;
+  background:var(--miss); box-shadow:0 0 8px rgba(58,160,255,.9);
+}
+@keyframes missPop{
+  0%{ transform:scale(.3); opacity:0; }
+  35%{ transform:scale(1.1); opacity:1; }
+  100%{ transform:scale(1.6); opacity:0; }
+}
+
+/* ===== OVERLAY ===== */
+.overlay{
+  position:absolute; inset:0; z-index:100;
+  background:rgba(6,12,34,.74); backdrop-filter:blur(3px);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .3s;
+}
+.overlay.show{ opacity:1; pointer-events:auto; }
+.overlay-card{
+  width:78%; max-width:300px; text-align:center;
+  background:linear-gradient(180deg,#264fb0,#1a356f);
+  border:2px solid rgba(255,255,255,.18);
+  border-radius:22px; padding:26px 22px;
+  box-shadow:0 16px 40px rgba(0,0,0,.5);
+  transform:scale(.85); transition:transform .3s;
+}
+.overlay.show .overlay-card{ transform:scale(1); }
+.overlay-emoji{ font-size:54px; }
+.overlay-title{ font-size:27px; font-weight:900; color:#fff; margin-top:6px; }
+.overlay-sub{ font-size:14px; color:#c5d0f0; margin-top:6px; }
+.overlay-btn{
+  margin-top:18px; border:none; cursor:pointer;
+  padding:13px 30px; border-radius:15px; font-size:17px; font-weight:800; color:#5a3b00;
+  background:linear-gradient(180deg,#ffd95e,#f4a93b);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.5), 0 5px 0 #b9781f;
+  transition:transform .08s;
+}
+.overlay-btn:active{ transform:translateY(3px); box-shadow:inset 0 2px 0 rgba(255,255,255,.5), 0 2px 0 #b9781f; }
+
+/* ===== ADMIN PANEL ===== */
+.adm-overlay{
+  position:absolute; inset:0; z-index:130;
+  background:rgba(6,12,34,.55); backdrop-filter:blur(2px);
+  display:flex; align-items:flex-start; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .2s;
+}
+.adm-overlay.show{ opacity:1; pointer-events:auto; }
+.adm-card{
+  margin-top:64px; width:84%; max-width:320px;
+  background:linear-gradient(180deg,#1c2c57,#13224a);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:18px; padding:16px;
+  box-shadow:0 18px 44px rgba(0,0,0,.6);
+  transform:translateY(-8px); transition:transform .2s;
+}
+.adm-overlay.show .adm-card{ transform:translateY(0); }
+.adm-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+.adm-title{ font-size:16px; font-weight:900; color:#fff; }
+.adm-x{
+  border:none; background:rgba(255,255,255,.12); color:#fff;
+  width:30px; height:30px; border-radius:9px; font-size:14px; cursor:pointer;
+}
+.adm-x:active{ background:rgba(255,255,255,.24); }
+.adm-info{
+  font-size:12px; font-weight:700; color:#aebbe4; text-align:center;
+  background:rgba(0,0,0,.25); border-radius:10px; padding:7px; margin-bottom:12px;
+}
+.adm-row{ display:flex; gap:8px; margin-bottom:8px; }
+.adm-btn{
+  flex:1 1 0; border:none; cursor:pointer;
+  padding:11px 10px; border-radius:12px; font-size:14px; font-weight:800; color:#fff;
+  background:rgba(255,255,255,.12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18), 0 3px 0 rgba(0,0,0,.25);
+  transition:transform .08s, background .15s;
+}
+.adm-btn:active{ transform:translateY(2px); }
+.adm-btn.wide{ width:100%; }
+.adm-btn.primary{
+  color:#5a3b00; background:linear-gradient(180deg,#ffd95e,#f4a93b);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5), 0 3px 0 #b9781f;
+}

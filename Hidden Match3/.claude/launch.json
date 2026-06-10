@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "game",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "oyun/match_factory_weighted_art_v83_candy_direct_level copy"],
+      "port": 8765
+    },
+    {
+      "name": "packitup",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8766", "--directory", "/Users/emircicek/Desktop/Pack It Up"],
+      "port": 8766
+    },
+    {
+      "name": "pixelpour",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8731", "--directory", "/Users/emircicek/Desktop/demopixelcolor"],
+      "port": 8731
+    }
+  ]
+}

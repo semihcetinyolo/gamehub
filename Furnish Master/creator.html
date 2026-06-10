@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Furnish Master — Level Creator</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--sage:#6f8f6a;--sage-d:#4f7350;--ink:#33402f;--card:#fffdf8;--accent:#5b86c9;--accent-d:#3f67a0;
+    --shadow:0 8px 22px rgba(50,60,40,.16);--bg:#d6c8ad;}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;height:100%;font-family:'Nunito',system-ui,sans-serif;color:var(--ink);overflow:hidden;}
+  body{display:flex;flex-direction:column;background:var(--bg);}
+  header{flex:0 0 auto;display:flex;align-items:center;gap:7px;padding:8px 12px;background:var(--card);box-shadow:var(--shadow);z-index:30;flex-wrap:wrap;}
+  .title{font-family:'Baloo 2';font-weight:800;font-size:17px;color:var(--sage-d);margin-right:4px;}
+  .title span{font-size:11px;color:#9a937f;}
+  .btn{border:none;cursor:pointer;font-weight:800;font-size:13px;padding:8px 12px;border-radius:11px;box-shadow:var(--shadow);background:#eee6d6;color:#5b6b51;}
+  .btn:active{transform:scale(.96);}
+  .btn.up{background:linear-gradient(180deg,#f3d9a8,#e6bd76);color:#6b4f22;}
+  .btn.p{background:linear-gradient(180deg,var(--sage),var(--sage-d));color:#fff;}
+  .btn.a{background:linear-gradient(180deg,var(--accent),var(--accent-d));color:#fff;}
+  .spacer{flex:1;}
+  main{flex:1 1 auto;position:relative;overflow:hidden;}
+  #viewport{position:absolute;inset:0;overflow:hidden;touch-action:none;cursor:grab;background:radial-gradient(120% 120% at 50% 30%,#e3d7bd,#cdbd9e);}
+  #world{position:absolute;left:0;top:0;width:1402px;height:1122px;transform-origin:0 0;}
+  #scene{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+  .it{position:absolute;-webkit-user-drag:none;user-select:none;cursor:move;filter:drop-shadow(0 5px 4px rgba(40,50,30,.28));}
+  .it.sel{outline:3px dashed var(--accent);outline-offset:2px;border-radius:4px;}
+  #boxMarker{display:none;}  /* box is a game UI element now, not part of the level scene */
+  .hint{position:absolute;left:50%;top:10px;transform:translateX(-50%);background:rgba(40,50,30,.82);color:#fff;font-weight:700;font-size:12.5px;padding:7px 14px;border-radius:999px;z-index:20;pointer-events:none;}
+  .palette{flex:0 0 auto;display:flex;gap:8px;padding:10px 12px;background:var(--card);box-shadow:0 -6px 18px rgba(50,60,40,.12);overflow-x:auto;z-index:25;min-height:96px;align-items:center;}
+  .palette .lbl{flex:0 0 auto;font-weight:800;color:#9a937f;font-size:11px;writing-mode:vertical-rl;transform:rotate(180deg);}
+  .pi{flex:0 0 auto;width:78px;height:78px;border-radius:13px;cursor:pointer;padding:6px;display:flex;align-items:center;justify-content:center;
+    /* die-cut sticker card */ background:#fff;box-shadow:0 2px 0 #e7ddc9,0 6px 12px rgba(60,60,40,.16);border:3px solid #fff;position:relative;}
+  .pi:hover{transform:translateY(-3px);} .pi img{max-width:62px;max-height:60px;object-fit:contain;
+    filter:drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 1.5px #fff);}
+  .pi.empty{color:#b3a98f;font-size:11px;font-weight:800;width:auto;padding:0 14px;background:transparent;box-shadow:none;border:none;}
+  #panel{position:absolute;right:12px;top:12px;width:212px;background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:12px;z-index:28;display:none;}
+  #panel.show{display:block;}
+  #panel h3{margin:0 0 6px;font-family:'Baloo 2';font-size:15px;color:var(--sage-d);}
+  #panel .row{display:flex;align-items:center;gap:6px;margin:7px 0;font-size:12px;font-weight:700;color:#6b7a60;}
+  #panel input[type=range]{flex:1;accent-color:var(--accent);}
+  #panel .grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px;}
+  #panel .mini{font-size:12px;padding:8px;border-radius:10px;border:none;cursor:pointer;font-weight:800;background:#eee6d6;color:#5b6b51;box-shadow:var(--shadow);}
+  #panel .mini.del{background:#f3d7d2;color:#b14a3a;}
+  #panel .xy{font-size:11px;color:#9a937f;font-weight:700;}
+  .toast{position:fixed;left:50%;bottom:118px;transform:translateX(-50%);background:var(--sage-d);color:#fff;font-weight:800;font-size:13px;padding:10px 18px;border-radius:999px;box-shadow:var(--shadow);z-index:50;opacity:0;transition:.25s;}
+  .toast.show{opacity:1;bottom:128px;}
+  .busy{position:fixed;inset:0;background:rgba(30,40,25,.5);display:none;align-items:center;justify-content:center;z-index:60;color:#fff;font-weight:800;font-size:16px;}
+  .busy.show{display:flex;}
+  /* keep file inputs in the layout (NOT display:none) so programmatic .click() opens the dialog in every browser */
+  input[type=file]{position:fixed;left:-9999px;top:0;width:1px;height:1px;opacity:0;}
+</style>
+</head>
+<body>
+  <header>
+    <div class="title">🛠️ Level Creator <span>· import scene + item images</span></div>
+    <button class="btn up" id="upScene">🖼️ Import Scene</button>
+    <button class="btn up" id="upSheet">🧩 Import Items</button>
+    <button class="btn" id="clearBtn">Clear placed</button>
+    <div class="spacer"></div>
+    <button class="btn" id="zoomOut">–</button><button class="btn" id="zoomFit">Fit</button><button class="btn" id="zoomIn">+</button>
+    <button class="btn" id="importBtn">📄 Import Level</button>
+    <button class="btn" id="exportBtn">📄 Export Level</button>
+    <button class="btn p" id="saveBtn">💾 Save</button>
+    <button class="btn a" id="playBtn">▶ Play</button>
+    <input type="file" id="sceneInput" accept="image/png,image/jpeg"/>
+    <input type="file" id="sheetInput" accept="image/png,image/jpeg,image/webp" multiple/>
+    <input type="file" id="jsonInput" accept="application/json"/>
+  </header>
+
+  <main>
+    <div id="viewport"><div id="world"><img id="scene" alt="scene"/><div id="boxMarker"></div></div></div>
+    <div class="hint" id="hint">Top-left: 🖼️ Import Scene &amp; 🧩 Import Items (pick multiple PNGs at once) · then drag each onto the scene</div>
+    <div id="panel">
+      <h3 id="pTitle">Item</h3>
+      <div class="xy" id="pXY"></div>
+      <div class="row"><span>Size</span><input type="range" id="scale" min="0.05" max="3" step="0.005"></div>
+      <div class="grid">
+        <button class="mini" id="toFront">⬆ Front</button><button class="mini" id="toBack">⬇ Back</button>
+        <button class="mini" id="dupBtn">⧉ Duplicate</button><button class="mini del" id="delBtn">🗑 Delete</button>
+      </div>
+    </div>
+  </main>
+
+  <div class="palette" id="palette"><div class="lbl">STICKERS</div></div>
+  <div class="toast" id="toast"></div>
+  <div class="busy" id="busy">✂️ Detecting items from the sheet…</div>
+
+<script src="engine.js?v=7"></script>
+<script>
+const $=s=>document.querySelector(s);
+const viewport=$('#viewport'), worldEl=$('#world'), sceneImg=$('#scene'), boxMarker=$('#boxMarker');
+let level=null, sel=null, counter=0;
+let world=makeWorld(viewport, worldEl, {minZoom:0.5, maxZoom:3.6});
+
+const toast=t=>{const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),1600);};
+const busy=on=>$('#busy').classList.toggle('show',on);
+
+const LEVEL_DIR='levels/green_room';
+async function boot(){
+  const saved = await Store.get('level');
+  if(saved){ level=saved; }
+  else { busy(true); level = await buildDefaultLevel(LEVEL_DIR); busy(false); }
+  applyScene(); buildPalette(); renderAll(); world.setSize(level.sceneW, level.sceneH);
+}
+function applyScene(){ sceneImg.src=level.scene; world.setSize(level.sceneW||1402, level.sceneH||1122); }
+
+function buildPalette(){
+  const pal=$('#palette'); [...pal.querySelectorAll('.pi')].forEach(e=>e.remove());
+  const ids=Object.keys(level.sprites);
+  if(!ids.length){ const e=document.createElement('div'); e.className='pi empty'; e.textContent='Upload an item sheet →'; pal.appendChild(e); return; }
+  ids.forEach(id=>{ const pi=document.createElement('div'); pi.className='pi';
+    pi.innerHTML=`<img src="${level.sprites[id].src}">`; pi.onclick=()=>addItem(id); pal.appendChild(pi); });
+}
+function renderAll(){ [...worldEl.querySelectorAll('.it')].forEach(e=>e.remove()); level.items.forEach(makeEl); renderBox(); }
+function makeEl(it){ const el=document.createElement('img'); el.className='it draggable'; el.src=level.sprites[it.id].src;
+  el.dataset.iid=it.iid; el.draggable=false; worldEl.appendChild(el); placeEl(el,it); attachDrag(el,it); return el; }
+function placeEl(el,it){ const s=level.sprites[it.id]; const dw=s.w*it.scale, dh=s.h*it.scale;
+  el.style.width=dw+'px'; el.style.height=dh+'px'; el.style.left=(it.x-dw/2)+'px'; el.style.top=(it.y-dh/2)+'px'; el.style.zIndex=it.z; }
+function renderBox(){ boxMarker.innerHTML=boxSVG(true); const w=level.box.w, h=w*210/200;
+  boxMarker.style.width=w+'px'; boxMarker.style.height=h+'px'; boxMarker.style.left=(level.box.x-w/2)+'px'; boxMarker.style.top=(level.box.y-h*0.66)+'px'; boxMarker.style.zIndex=99999; }
+
+function addItem(id){ const s=level.sprites[id]; const r=viewport.getBoundingClientRect();
+  const c=world.screenToWorld(r.left+r.width/2, r.top+r.height/2);
+  const maxz=level.items.reduce((m,i)=>Math.max(m,i.z),0);
+  const scale=Math.min(1, 260/Math.max(s.w,s.h));
+  const it={iid:id+'_'+(counter++), id, x:Math.round(c.x), y:Math.round(c.y), scale:+scale.toFixed(3), z:maxz+1};
+  level.items.push(it); makeEl(it); select(it); }
+
+/* selection + props */
+function clearSel(){ document.querySelectorAll('.it.sel,#boxMarker.sel').forEach(e=>e.classList.remove('sel')); }
+function select(it){ sel={type:'item',ref:it}; clearSel(); worldEl.querySelector(`.it[data-iid="${it.iid}"]`).classList.add('sel');
+  $('#panel').classList.add('show'); $('#pTitle').textContent=it.id; $('#scale').value=it.scale;
+  $('#pXY').textContent=`x:${Math.round(it.x)}  y:${Math.round(it.y)}  z:${it.z}`; }
+function selectBox(){ sel={type:'box',ref:level.box}; clearSel(); boxMarker.classList.add('sel');
+  $('#panel').classList.add('show'); $('#pTitle').textContent='📦 Box (start)'; $('#scale').value=level.box.w/300;
+  $('#pXY').textContent=`x:${Math.round(level.box.x)} y:${Math.round(level.box.y)}`; }
+function deselect(){ sel=null; $('#panel').classList.remove('show'); clearSel(); }
+$('#scale').oninput=e=>{ const v=+e.target.value; if(!sel)return;
+  if(sel.type==='item'){ sel.ref.scale=v; placeEl(worldEl.querySelector(`.it[data-iid="${sel.ref.iid}"]`),sel.ref);
+    $('#pXY').textContent=`x:${Math.round(sel.ref.x)}  y:${Math.round(sel.ref.y)}  z:${sel.ref.z}`; }
+  else { level.box.w=v*300; renderBox(); } };
+const reEl=it=>placeEl(worldEl.querySelector(`.it[data-iid="${it.iid}"]`),it);
+$('#toFront').onclick=()=>{ if(sel?.type!=='item')return; sel.ref.z=level.items.reduce((m,i)=>Math.max(m,i.z),0)+1; reEl(sel.ref); select(sel.ref); };
+$('#toBack').onclick =()=>{ if(sel?.type!=='item')return; sel.ref.z=level.items.reduce((m,i)=>Math.min(m,i.z),99)-1; reEl(sel.ref); select(sel.ref); };
+$('#dupBtn').onclick=()=>{ if(sel?.type!=='item')return; const o=sel.ref; const it={...o,iid:o.id+'_'+(counter++),x:o.x+40,y:o.y+40}; level.items.push(it); makeEl(it); select(it); };
+$('#delBtn').onclick=()=>{ if(sel?.type!=='item')return; const iid=sel.ref.iid; level.items=level.items.filter(i=>i.iid!==iid); worldEl.querySelector(`.it[data-iid="${iid}"]`).remove(); deselect(); };
+
+/* drag */
+function attachDrag(el,it){ el.addEventListener('pointerdown',e=>{ e.stopPropagation(); select(it);
+  const st=world.screenToWorld(e.clientX,e.clientY); const ox=st.x-it.x, oy=st.y-it.y; try{el.setPointerCapture(e.pointerId);}catch(_){}
+  const mv=ev=>{ if(world.suppressed)return; const w=world.screenToWorld(ev.clientX,ev.clientY);
+    it.x=Math.round(w.x-ox); it.y=Math.round(w.y-oy); placeEl(el,it); $('#pXY').textContent=`x:${it.x}  y:${it.y}  z:${it.z}`; };
+  const up=()=>{ el.removeEventListener('pointermove',mv); el.removeEventListener('pointerup',up); };
+  el.addEventListener('pointermove',mv); el.addEventListener('pointerup',up); }); }
+boxMarker.addEventListener('pointerdown',e=>{ e.stopPropagation(); selectBox();
+  const st=world.screenToWorld(e.clientX,e.clientY); const ox=st.x-level.box.x, oy=st.y-level.box.y; try{boxMarker.setPointerCapture(e.pointerId);}catch(_){}
+  const mv=ev=>{ if(world.suppressed)return; const w=world.screenToWorld(ev.clientX,ev.clientY);
+    level.box.x=Math.round(w.x-ox); level.box.y=Math.round(w.y-oy); renderBox(); $('#pXY').textContent=`x:${level.box.x} y:${level.box.y}`; };
+  const up=()=>{ boxMarker.removeEventListener('pointermove',mv); boxMarker.removeEventListener('pointerup',up); };
+  boxMarker.addEventListener('pointermove',mv); boxMarker.addEventListener('pointerup',up); });
+viewport.addEventListener('pointerdown',e=>{ if(e.target===viewport||e.target===worldEl||e.target.id==='scene') deselect(); });
+
+/* uploads */
+$('#upScene').onclick=()=>{ const i=$('#sceneInput'); i.value=''; i.click(); };
+$('#sceneInput').onchange=async e=>{ const f=e.target.files[0]; if(!f)return; busy(true); const url=await fileToDataURL(f);
+  const cut=await prepScene(url); level.scene=cut.dataURL; level.sceneW=cut.w; level.sceneH=cut.h; applyScene(); renderAll(); busy(false); toast('Scene loaded'); };
+$('#upSheet').onclick=()=>{ const i=$('#sheetInput'); i.value=''; i.click(); };
+$('#sheetInput').onchange=async e=>{ const files=[...e.target.files]; if(!files.length)return; busy(true);
+  let added=0;
+  for(const f of files){ try{
+    const url=await fileToDataURL(f); const im=await loadImage(url);
+    const id=f.name.replace(/\.[^.]+$/,'')||('item_'+(counter++));
+    level.sprites[id]={src:url, w:im.naturalWidth, h:im.naturalHeight}; added++;
+  }catch(_){}}
+  buildPalette(); busy(false); toast(`🧩 Added ${added} item image${added===1?'':'s'} to the palette`); };
+
+/* toolbar */
+$('#zoomIn').onclick=()=>world.zoomBy(1.25); $('#zoomOut').onclick=()=>world.zoomBy(1/1.25); $('#zoomFit').onclick=()=>world.reset();
+$('#clearBtn').onclick=()=>{ if(level.items.length&&!confirm('Remove all placed items?'))return; level.items=[]; renderAll(); deselect(); };
+async function save(){ try{ await Store.set('level', level); return true; }catch(err){ toast('Save failed: '+err.message); return false; } }
+$('#saveBtn').onclick=async()=>{ if(await save()) toast('Saved ✓ — hit ▶ Play'); };
+$('#playBtn').onclick=async()=>{ await save(); window.open('index.html','_blank'); };
+$('#exportBtn').onclick=()=>{ const blob=new Blob([JSON.stringify(level)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='level.json'; a.click(); toast('Exported level.json'); };
+$('#importBtn').onclick=()=>{ const i=$('#jsonInput'); i.value=''; i.click(); };
+$('#jsonInput').onchange=async e=>{ const f=e.target.files[0]; if(!f)return; level=JSON.parse(await f.text());
+  counter=level.items.length; applyScene(); buildPalette(); renderAll(); toast('Imported'); };
+
+boot();
+</script>
+</body>
+</html>

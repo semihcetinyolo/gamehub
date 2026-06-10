@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Jigsolitaire</title>
+  <link rel="stylesheet" href="style.css?v=4" />
+</head>
+<body>
+  <div id="app">
+    <div class="phone">
+      <div class="phone-inner">
+        <header class="topbar">
+          <div class="brand"><span class="logo">🧩</span><span class="bname">Jigsolitaire</span></div>
+          <div class="hud">
+            <span class="chip" id="moves">0 moves</span>
+            <span class="chip" id="timer">00:00</span>
+          </div>
+        </header>
+
+        <div class="toolbar">
+          <div class="seg" id="difficulty" role="group" aria-label="Board format">
+            <button data-fi="0">3×3</button>
+            <button data-fi="1" class="active">4×4</button>
+            <button data-fi="2">5×5</button>
+            <button data-fi="3">6×4</button>
+            <button data-fi="4">8×5</button>
+          </div>
+          <div class="actions">
+            <button class="btn" id="peekBtn" title="Hold to peek at the full picture">Peek</button>
+            <button class="btn" id="shuffleBtn" title="Re-shuffle the cards">Shuffle</button>
+            <button class="btn btn-accent" id="newBtn" title="Restart this level">New</button>
+          </div>
+        </div>
+
+        <div class="banner">Move the cards to complete the picture.</div>
+
+        <div class="board-wrap">
+          <div id="board"><div id="peek"></div></div>
+        </div>
+
+        <nav class="levelstrip" id="levelStrip" aria-label="Levels"></nav>
+      </div>
+
+      <div id="winOverlay" class="overlay hidden">
+        <div class="win-card">
+          <div class="win-emoji">🎉</div>
+          <h2>Picture Complete!</h2>
+          <p id="winStats">Nice work.</p>
+          <div class="win-actions">
+            <button class="btn btn-accent" id="winNextBtn">Next →</button>
+            <button class="btn" id="winAgainBtn">Replay</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js?v=4"></script>
+</body>
+</html>

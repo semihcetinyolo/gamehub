@@ -1,0 +1,201 @@
+:root{
+  --frame-w: 432px;
+  --blue-0:#2b59c3;
+  --blue-1:#1f3f93;
+  --blue-2:#16306f;
+  --cell:#16306f;
+  --cell-edge:#0f2350;
+  --gold:#ffce4d;
+}
+
+*{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html,body{ margin:0; height:100%; }
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:#0c1430;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  user-select:none;
+}
+
+.frame{
+  position:relative;
+  width:min(var(--frame-w), 100vw);
+  height:min(936px, 100vh);
+  background:linear-gradient(180deg,#3568d8 0%, #2a55bb 22%, #1d3f95 55%, #16315f 100%);
+  display:flex;
+  flex-direction:column;
+  padding:14px 14px 18px;
+  gap:12px;
+  overflow:hidden;
+}
+
+/* ===== HUD ===== */
+.hud{ display:flex; align-items:center; justify-content:space-between; height:40px; flex:0 0 auto; }
+.hud-btns{ display:flex; gap:8px; }
+.hud-btn{
+  width:42px; height:42px; border:none; border-radius:13px;
+  background:rgba(255,255,255,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25), 0 3px 0 rgba(0,0,0,.18);
+  color:#fff; font-size:20px; cursor:pointer; transition:transform .08s, background .15s;
+}
+.hud-btn:active{ transform:translateY(2px); background:rgba(255,255,255,.24); }
+
+/* ===== HEARTS ===== */
+.hearts{ display:flex; align-items:center; gap:4px; padding:0 4px; }
+.heart{
+  font-size:24px; line-height:1; filter:drop-shadow(0 2px 2px rgba(0,0,0,.35));
+  transition:transform .15s ease, opacity .25s ease, filter .25s ease;
+}
+.heart.lost{ opacity:.35; filter:grayscale(1) brightness(.7); transform:scale(.82); }
+.heart.pop{ animation:heartPop .45s ease; }
+@keyframes heartPop{
+  0%{ transform:scale(1); }
+  30%{ transform:scale(1.45); }
+  60%{ transform:scale(.7) rotate(-8deg); }
+  100%{ transform:scale(.82); }
+}
+
+/* ===== BOARD ===== */
+.board-wrap{
+  position:relative;
+  width:100%;
+  flex:1 1 auto;       /* fill all space between HUD and tray */
+  min-height:0;
+  border-radius:22px;
+  overflow:hidden;
+  background:#0e1f49;
+  box-shadow:inset 0 0 0 3px rgba(255,255,255,.10), 0 10px 26px rgba(0,0,0,.35);
+  cursor:grab;
+  touch-action:none;   /* we handle drag ourselves */
+}
+.board-wrap.grabbing{ cursor:grabbing; }
+/* square scene; sized in px by JS (side = wrap height) so it overflows
+   horizontally and the player drags left/right to explore. */
+.board{ position:absolute; top:0; left:0; transform-origin:0 0; will-change:transform; }
+.bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+
+/* little "drag" hint that fades out after first interaction */
+.drag-hint{
+  position:absolute; top:10px; left:50%; transform:translateX(-50%);
+  background:rgba(8,16,40,.72); color:#dfe7ff; font-size:12px; font-weight:700;
+  padding:5px 12px; border-radius:20px; pointer-events:none; z-index:40;
+  border:1px solid rgba(255,255,255,.15);
+  transition:opacity .4s; opacity:1;
+}
+.drag-hint.hide{ opacity:0; }
+
+.item{ position:absolute; pointer-events:none; will-change:opacity,transform; }
+.item img{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+.item .ob{ transition:opacity .32s ease, transform .32s ease; transform-origin:center; }
+.item.collected .ob{ opacity:0; }
+.item.collected{ pointer-events:none; }
+
+/* standalone glow/shadow art (sN); fades out when the matching odd oN is found */
+.shadow{ position:absolute; pointer-events:none; transition:opacity .32s ease; }
+.shadow img{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+.shadow.gone{ opacity:0; }
+
+/* wrong tap: red shake on the decoy that was tapped */
+.item.wrong{ z-index:45 !important; }
+.item.wrong .ob{ animation:wrongShake .42s ease; }
+@keyframes wrongShake{
+  0%,100%{ transform:translateX(0); filter:none; }
+  10%{ transform:translateX(-6px) rotate(-4deg); }
+  25%{ transform:translateX(6px) rotate(4deg); filter:drop-shadow(0 0 10px rgba(255,60,72,.95)); }
+  40%{ transform:translateX(-5px) rotate(-3deg); }
+  55%{ transform:translateX(5px) rotate(3deg); filter:drop-shadow(0 0 12px rgba(255,60,72,.95)); }
+  70%{ transform:translateX(-3px) rotate(-2deg); }
+  85%{ transform:translateX(3px) rotate(1deg); filter:drop-shadow(0 0 6px rgba(255,60,72,.6)); }
+}
+
+/* hint pulse */
+.item.hint .ob{ animation:hintPulse 1s ease-in-out 2; transform-origin:center; }
+@keyframes hintPulse{
+  0%,100%{ transform:scale(1); filter:drop-shadow(0 0 0 rgba(255,231,107,0)); }
+  50%{ transform:scale(1.16); filter:drop-shadow(0 0 10px rgba(255,231,107,.95)); }
+}
+
+/* progress badge — sits at the tray's top-left corner */
+.progress{
+  position:absolute; left:6px; top:-14px; z-index:3;
+  background:linear-gradient(180deg,#2b59c3,#1c3f93);
+  border:2px solid rgba(255,255,255,.22);
+  border-radius:13px;
+  padding:3px 12px;
+  font-weight:800; font-size:16px; color:#fff;
+  display:flex; align-items:baseline; gap:1px;
+  box-shadow:0 4px 10px rgba(0,0,0,.35);
+  transform-origin:left center;
+}
+.prog-num{ color:var(--gold); font-size:20px; }
+.prog-den{ color:#cdd6f5; font-size:14px; }
+.progress.bump{ animation:bump .45s ease; }
+@keyframes bump{ 0%{transform:scale(1);}35%{transform:scale(1.5);}100%{transform:scale(1);} }
+
+/* ===== TRAY ===== */
+.tray-row{ position:relative; display:flex; align-items:center; flex:0 0 auto; margin-top:14px; }
+.tray{
+  flex:1 1 auto;
+  display:flex; gap:7px;
+  background:linear-gradient(180deg,#0e2152,#0a1840);
+  border-radius:16px;
+  padding:8px;
+  box-shadow:inset 0 3px 8px rgba(0,0,0,.45), 0 1px 0 rgba(255,255,255,.08);
+}
+.slot{
+  flex:1 1 0; aspect-ratio:1/1;
+  border-radius:11px;
+  background:rgba(0,0,0,.28);
+  box-shadow:inset 0 2px 5px rgba(0,0,0,.5);
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+}
+.slot.filled{ background:rgba(255,255,255,.07); }
+.slot img{ width:84%; height:84%; object-fit:contain; pointer-events:none;
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.4));
+  animation:dropIn .25s ease; }
+@keyframes dropIn{ 0%{ transform:scale(.4); opacity:0;} 100%{ transform:scale(1); opacity:1;} }
+
+/* ===== FX ===== */
+.fx-layer{ position:absolute; inset:0; pointer-events:none; overflow:visible; z-index:50; }
+.fly{ position:fixed; pointer-events:none; z-index:60; object-fit:contain;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.45)); }
+/* blue point shown when tapping empty space */
+.point{
+  position:absolute; width:16px; height:16px; margin:-8px 0 0 -8px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(120,190,255,1) 0%, rgba(70,140,255,.85) 45%, rgba(70,140,255,0) 72%);
+  box-shadow:0 0 10px rgba(90,160,255,.9);
+  animation:pointPop .55s ease-out forwards; pointer-events:none;
+}
+@keyframes pointPop{ 0%{ transform:scale(.3); opacity:.95;} 100%{ transform:scale(3); opacity:0;} }
+
+/* ===== OVERLAY ===== */
+.overlay{
+  position:absolute; inset:0; z-index:100;
+  background:rgba(6,12,34,.74); backdrop-filter:blur(3px);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .3s;
+}
+.overlay.show{ opacity:1; pointer-events:auto; }
+.overlay-card{
+  width:78%; max-width:300px; text-align:center;
+  background:linear-gradient(180deg,#264fb0,#1a356f);
+  border:2px solid rgba(255,255,255,.18);
+  border-radius:22px; padding:26px 22px;
+  box-shadow:0 16px 40px rgba(0,0,0,.5);
+  transform:scale(.85); transition:transform .3s;
+}
+.overlay.show .overlay-card{ transform:scale(1); }
+.overlay-emoji{ font-size:54px; }
+.overlay-title{ font-size:27px; font-weight:900; color:#fff; margin-top:6px; }
+.overlay-sub{ font-size:14px; color:#c5d0f0; margin-top:6px; }
+.overlay-btn{
+  margin-top:18px; border:none; cursor:pointer;
+  padding:13px 30px; border-radius:15px; font-size:17px; font-weight:800; color:#5a3b00;
+  background:linear-gradient(180deg,#ffd95e,#f4a93b);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.5), 0 5px 0 #b9781f;
+  transition:transform .08s;
+}
+.overlay-btn:active{ transform:translateY(3px); box-shadow:inset 0 2px 0 rgba(255,255,255,.5), 0 2px 0 #b9781f; }

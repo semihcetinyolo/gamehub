@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Hub</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --sidebar-bg: #161922;
+      --border: #262b38;
+      --text: #e6e8ee;
+      --text-dim: #8b91a1;
+      --accent: #5b8cff;
+      --accent-soft: rgba(91, 140, 255, 0.15);
+      --sidebar-w: 280px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .layout {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-header {
+      padding: 20px 20px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-header h1 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .sidebar-header p {
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .game-list {
+      list-style: none;
+      margin: 0;
+      padding: 8px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .game-list li button {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      padding: 11px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.12s ease;
+    }
+    .game-list li button:hover { background: rgba(255,255,255,0.05); }
+    .game-list li button.active {
+      background: var(--accent-soft);
+      color: #fff;
+      font-weight: 600;
+    }
+    .game-list li button.active .dot { background: var(--accent); }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    /* Main stage */
+    .stage {
+      flex: 1;
+      position: relative;
+      background: #000;
+    }
+
+    .stage iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+      background: var(--bg);
+      gap: 10px;
+      text-align: center;
+      padding: 20px;
+    }
+    .placeholder svg { opacity: 0.4; }
+    .placeholder p { margin: 0; font-size: 15px; }
+
+    .stage-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1>🎮 Game Hub</h1>
+        <p>Soldan bir oyun seçin</p>
+      </div>
+      <ul class="game-list" id="gameList"></ul>
+    </aside>
+
+    <main class="stage">
+      <div class="placeholder" id="placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="6" width="20" height="12" rx="2"/>
+          <path d="M6 12h4M8 10v4"/>
+          <circle cx="16" cy="11" r="1"/>
+          <circle cx="18.5" cy="13.5" r="1"/>
+        </svg>
+        <p>Oynamak için soldaki listeden bir oyun seçin</p>
+      </div>
+      <iframe id="gameFrame" title="game" style="display:none" allow="autoplay; fullscreen; gamepad; accelerometer; gyroscope"></iframe>
+    </main>
+  </div>
+
+  <script>
+    const GAMES = [
+      { name: "Find The Cat",                  path: "Find The Cat/game/index.html" },
+      { name: "Find The Odds",                 path: "Find The Odds/index.html" },
+      { name: "Find The Strange",              path: "Find The Odds v2/game/index.html" },
+      { name: "Furnish Master",                path: "Furnish Master/index.html" },
+      { name: "Hidden By Word",                path: "Hidden By Word/game/index.html" },
+      { name: "Hidden Pairs",                  path: "Hidden Pairs/HiddenMatch2.html" },
+      { name: "Hidden Match3",                 path: "Hidden Match3/oyun/match_factory_weighted_art_v83_candy_direct_level copy/index.html" },
+      { name: "Pack It Up",                    path: "Pack It Up/index.html" },
+      { name: "Hidden Triple Match",           path: "Hidden Triple Match by topic/game/index.html" },
+      { name: "Jigsolitaire",                  path: "Jigsolitaire/index.html" },
+      { name: "Sticker",                       path: "Sticker Oh Yeah/index.html" },
+    ];
+
+    const listEl = document.getElementById("gameList");
+    const frame = document.getElementById("gameFrame");
+    const placeholder = document.getElementById("placeholder");
+
+    function loadGame(game, btn) {
+      // encode each path segment so spaces work in the iframe src
+      frame.src = game.path.split("/").map(encodeURIComponent).join("/");
+      frame.style.display = "block";
+      placeholder.style.display = "none";
+      document.querySelectorAll(".game-list button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      location.hash = encodeURIComponent(game.name);
+    }
+
+    GAMES.sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
+
+    GAMES.forEach(game => {
+      const li = document.createElement("li");
+      const btn = document.createElement("button");
+      btn.innerHTML = '<span class="dot"></span><span></span>';
+      btn.querySelector("span:last-child").textContent = game.name;
+      btn.addEventListener("click", () => loadGame(game, btn));
+      li.appendChild(btn);
+      listEl.appendChild(li);
+    });
+
+    // Open game from URL hash on load (deep-linking)
+    const fromHash = decodeURIComponent(location.hash.replace(/^#/, ""));
+    if (fromHash) {
+      const idx = GAMES.findIndex(g => g.name === fromHash);
+      if (idx >= 0) loadGame(GAMES[idx], listEl.querySelectorAll("button")[idx]);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,766 @@
+{
+  "sceneW": 2048,
+  "sceneH": 2048,
+  "scene": "scene.png",
+  "items": [
+    {
+      "key": "1",
+      "z": 1,
+      "sticker": {
+        "src": "stickers/S_1.png",
+        "left": 1278,
+        "top": 4,
+        "w": 153,
+        "h": 354
+      },
+      "slot": {
+        "src": "slots/L_1.png",
+        "left": 1270,
+        "top": 0,
+        "w": 166,
+        "h": 368
+      },
+      "decor": null,
+      "cx": 1353.0,
+      "cy": 184.0
+    },
+    {
+      "key": "2",
+      "z": 3,
+      "sticker": {
+        "src": "stickers/S_2.png",
+        "left": 512,
+        "top": 521,
+        "w": 144,
+        "h": 229
+      },
+      "slot": {
+        "src": "slots/L_2.png",
+        "left": 504,
+        "top": 516,
+        "w": 157,
+        "h": 244
+      },
+      "decor": null,
+      "cx": 582.5,
+      "cy": 638.0
+    },
+    {
+      "key": "3",
+      "z": 5,
+      "sticker": {
+        "src": "stickers/S_3.png",
+        "left": 1239,
+        "top": 480,
+        "w": 176,
+        "h": 372
+      },
+      "slot": {
+        "src": "slots/L_3.png",
+        "left": 1231,
+        "top": 475,
+        "w": 189,
+        "h": 387
+      },
+      "decor": {
+        "src": "decor/M_3.png",
+        "left": 1227,
+        "top": 591,
+        "w": 337,
+        "h": 391
+      },
+      "cx": 1325.5,
+      "cy": 668.5
+    },
+    {
+      "key": "4",
+      "z": 8,
+      "sticker": {
+        "src": "stickers/S_4.png",
+        "left": 530,
+        "top": 1051,
+        "w": 212,
+        "h": 420
+      },
+      "slot": {
+        "src": "slots/L_4.png",
+        "left": 522,
+        "top": 1046,
+        "w": 225,
+        "h": 435
+      },
+      "decor": {
+        "src": "decor/M_4.png",
+        "left": 533,
+        "top": 1384,
+        "w": 118,
+        "h": 110
+      },
+      "cx": 634.5,
+      "cy": 1263.5
+    },
+    {
+      "key": "5a",
+      "z": 11,
+      "sticker": {
+        "src": "stickers/S_5a.png",
+        "left": 1838,
+        "top": 793,
+        "w": 178,
+        "h": 375
+      },
+      "slot": {
+        "src": "slots/L_5a.png",
+        "left": 1830,
+        "top": 788,
+        "w": 191,
+        "h": 390
+      },
+      "decor": {
+        "src": "decor/M_5a.png",
+        "left": 1896,
+        "top": 1075,
+        "w": 124,
+        "h": 106
+      },
+      "cx": 1925.5,
+      "cy": 983.0
+    },
+    {
+      "key": "5b",
+      "z": 14,
+      "sticker": {
+        "src": "stickers/S_5b.png",
+        "left": 1503,
+        "top": 214,
+        "w": 167,
+        "h": 339
+      },
+      "slot": {
+        "src": "slots/L_5b.png",
+        "left": 1495,
+        "top": 209,
+        "w": 180,
+        "h": 354
+      },
+      "decor": {
+        "src": "decor/M_5b.png",
+        "left": 1477,
+        "top": 237,
+        "w": 227,
+        "h": 343
+      },
+      "cx": 1585.0,
+      "cy": 386.0
+    },
+    {
+      "key": "6",
+      "z": 17,
+      "sticker": {
+        "src": "stickers/S_6.png",
+        "left": 50,
+        "top": 247,
+        "w": 192,
+        "h": 396
+      },
+      "slot": {
+        "src": "slots/L_6.png",
+        "left": 42,
+        "top": 242,
+        "w": 205,
+        "h": 411
+      },
+      "decor": null,
+      "cx": 144.5,
+      "cy": 447.5
+    },
+    {
+      "key": "7",
+      "z": 19,
+      "sticker": {
+        "src": "stickers/S_7.png",
+        "left": 715,
+        "top": 1148,
+        "w": 166,
+        "h": 382
+      },
+      "slot": {
+        "src": "slots/L_7.png",
+        "left": 707,
+        "top": 1143,
+        "w": 179,
+        "h": 397
+      },
+      "decor": null,
+      "cx": 796.5,
+      "cy": 1341.5
+    },
+    {
+      "key": "8",
+      "z": 21,
+      "sticker": {
+        "src": "stickers/S_8.png",
+        "left": 1360,
+        "top": 541,
+        "w": 185,
+        "h": 405
+      },
+      "slot": {
+        "src": "slots/L_8.png",
+        "left": 1352,
+        "top": 536,
+        "w": 198,
+        "h": 420
+      },
+      "decor": {
+        "src": "decor/M_8.png",
+        "left": 1227,
+        "top": 591,
+        "w": 337,
+        "h": 391
+      },
+      "cx": 1451.0,
+      "cy": 746.0
+    },
+    {
+      "key": "9",
+      "z": 24,
+      "sticker": {
+        "src": "stickers/S_9.png",
+        "left": 32,
+        "top": 1676,
+        "w": 228,
+        "h": 372
+      },
+      "slot": {
+        "src": "slots/L_9.png",
+        "left": 24,
+        "top": 1671,
+        "w": 241,
+        "h": 382
+      },
+      "decor": null,
+      "cx": 144.5,
+      "cy": 1862.0
+    },
+    {
+      "key": "10",
+      "z": 26,
+      "sticker": {
+        "src": "stickers/S_10.png",
+        "left": 1520,
+        "top": 959,
+        "w": 213,
+        "h": 345
+      },
+      "slot": {
+        "src": "slots/L_10.png",
+        "left": 1512,
+        "top": 954,
+        "w": 226,
+        "h": 360
+      },
+      "decor": null,
+      "cx": 1625.0,
+      "cy": 1134.0
+    },
+    {
+      "key": "11",
+      "z": 28,
+      "sticker": {
+        "src": "stickers/S_11.png",
+        "left": 326,
+        "top": 565,
+        "w": 186,
+        "h": 211
+      },
+      "slot": {
+        "src": "slots/L_11.png",
+        "left": 318,
+        "top": 560,
+        "w": 199,
+        "h": 226
+      },
+      "decor": null,
+      "cx": 417.5,
+      "cy": 673.0
+    },
+    {
+      "key": "12",
+      "z": 30,
+      "sticker": {
+        "src": "stickers/S_12.png",
+        "left": 1901,
+        "top": 1317,
+        "w": 142,
+        "h": 307
+      },
+      "slot": {
+        "src": "slots/L_12.png",
+        "left": 1893,
+        "top": 1312,
+        "w": 155,
+        "h": 322
+      },
+      "decor": null,
+      "cx": 1970.5,
+      "cy": 1473.0
+    },
+    {
+      "key": "13",
+      "z": 32,
+      "sticker": {
+        "src": "stickers/S_13.png",
+        "left": 163,
+        "top": 1317,
+        "w": 177,
+        "h": 360
+      },
+      "slot": {
+        "src": "slots/L_13.png",
+        "left": 155,
+        "top": 1312,
+        "w": 190,
+        "h": 375
+      },
+      "decor": {
+        "src": "decor/M_13.png",
+        "left": 128,
+        "top": 1307,
+        "w": 227,
+        "h": 385
+      },
+      "cx": 250.0,
+      "cy": 1499.5
+    },
+    {
+      "key": "14",
+      "z": 35,
+      "sticker": {
+        "src": "stickers/S_14.png",
+        "left": 1694,
+        "top": 806,
+        "w": 224,
+        "h": 387
+      },
+      "slot": {
+        "src": "slots/L_14.png",
+        "left": 1686,
+        "top": 801,
+        "w": 237,
+        "h": 402
+      },
+      "decor": null,
+      "cx": 1804.5,
+      "cy": 1002.0
+    },
+    {
+      "key": "15",
+      "z": 37,
+      "sticker": {
+        "src": "stickers/S_15.png",
+        "left": 429,
+        "top": 1608,
+        "w": 169,
+        "h": 403
+      },
+      "slot": {
+        "src": "slots/L_15.png",
+        "left": 421,
+        "top": 1603,
+        "w": 182,
+        "h": 418
+      },
+      "decor": {
+        "src": "decor/M_15.png",
+        "left": 514,
+        "top": 1921,
+        "w": 78,
+        "h": 99
+      },
+      "cx": 512.0,
+      "cy": 1812.0
+    },
+    {
+      "key": "16",
+      "z": 40,
+      "sticker": {
+        "src": "stickers/S_16.png",
+        "left": 963,
+        "top": 750,
+        "w": 184,
+        "h": 418
+      },
+      "slot": {
+        "src": "slots/L_16.png",
+        "left": 955,
+        "top": 745,
+        "w": 197,
+        "h": 433
+      },
+      "decor": {
+        "src": "decor/M_16.png",
+        "left": 932,
+        "top": 840,
+        "w": 125,
+        "h": 356
+      },
+      "cx": 1053.5,
+      "cy": 961.5
+    },
+    {
+      "key": "17",
+      "z": 43,
+      "sticker": {
+        "src": "stickers/S_17.png",
+        "left": 1513,
+        "top": 1181,
+        "w": 146,
+        "h": 367
+      },
+      "slot": {
+        "src": "slots/L_17.png",
+        "left": 1505,
+        "top": 1176,
+        "w": 159,
+        "h": 382
+      },
+      "decor": {
+        "src": "decor/M_17.png",
+        "left": 1396,
+        "top": 1275,
+        "w": 326,
+        "h": 379
+      },
+      "cx": 1584.5,
+      "cy": 1367.0
+    },
+    {
+      "key": "18",
+      "z": 46,
+      "sticker": {
+        "src": "stickers/S_18.png",
+        "left": 1659,
+        "top": 298,
+        "w": 193,
+        "h": 372
+      },
+      "slot": {
+        "src": "slots/L_18.png",
+        "left": 1651,
+        "top": 293,
+        "w": 206,
+        "h": 387
+      },
+      "decor": {
+        "src": "decor/M_18.png",
+        "left": 1640,
+        "top": 380,
+        "w": 221,
+        "h": 311
+      },
+      "cx": 1754.0,
+      "cy": 486.5
+    },
+    {
+      "key": "19",
+      "z": 49,
+      "sticker": {
+        "src": "stickers/S_19.png",
+        "left": 657,
+        "top": 1449,
+        "w": 319,
+        "h": 420
+      },
+      "slot": {
+        "src": "slots/L_19.png",
+        "left": 649,
+        "top": 1444,
+        "w": 332,
+        "h": 435
+      },
+      "decor": {
+        "src": "decor/M_19.png",
+        "left": 671,
+        "top": 1693,
+        "w": 335,
+        "h": 242
+      },
+      "cx": 815.0,
+      "cy": 1661.5
+    },
+    {
+      "key": "20",
+      "z": 52,
+      "sticker": {
+        "src": "stickers/S_20.png",
+        "left": 1120,
+        "top": 1008,
+        "w": 196,
+        "h": 400
+      },
+      "slot": {
+        "src": "slots/L_20.png",
+        "left": 1112,
+        "top": 1003,
+        "w": 209,
+        "h": 415
+      },
+      "decor": {
+        "src": "decor/M_20.png",
+        "left": 1119,
+        "top": 1174,
+        "w": 121,
+        "h": 247
+      },
+      "cx": 1216.5,
+      "cy": 1210.5
+    },
+    {
+      "key": "21",
+      "z": 55,
+      "sticker": {
+        "src": "stickers/S_21.png",
+        "left": 1067,
+        "top": 123,
+        "w": 227,
+        "h": 398
+      },
+      "slot": {
+        "src": "slots/L_21.png",
+        "left": 1059,
+        "top": 118,
+        "w": 240,
+        "h": 413
+      },
+      "decor": {
+        "src": "decor/M_21.png",
+        "left": 1256,
+        "top": 400,
+        "w": 55,
+        "h": 81
+      },
+      "cx": 1179.0,
+      "cy": 324.5
+    },
+    {
+      "key": "22",
+      "z": 58,
+      "sticker": {
+        "src": "stickers/S_22.png",
+        "left": 1756,
+        "top": 1452,
+        "w": 280,
+        "h": 312
+      },
+      "slot": {
+        "src": "slots/L_22.png",
+        "left": 1748,
+        "top": 1447,
+        "w": 293,
+        "h": 326
+      },
+      "decor": {
+        "src": "decor/M_22.png",
+        "left": 1876,
+        "top": 1615,
+        "w": 172,
+        "h": 170
+      },
+      "cx": 1894.5,
+      "cy": 1610.0
+    },
+    {
+      "key": "23",
+      "z": 61,
+      "sticker": {
+        "src": "stickers/S_23.png",
+        "left": 1360,
+        "top": 1261,
+        "w": 167,
+        "h": 377
+      },
+      "slot": {
+        "src": "slots/L_23.png",
+        "left": 1352,
+        "top": 1256,
+        "w": 180,
+        "h": 392
+      },
+      "decor": {
+        "src": "decor/M_23.png",
+        "left": 1396,
+        "top": 1275,
+        "w": 326,
+        "h": 379
+      },
+      "cx": 1442.0,
+      "cy": 1452.0
+    },
+    {
+      "key": "24",
+      "z": 64,
+      "sticker": {
+        "src": "stickers/S_24.png",
+        "left": 976,
+        "top": 1261,
+        "w": 171,
+        "h": 398
+      },
+      "slot": {
+        "src": "slots/L_24.png",
+        "left": 968,
+        "top": 1256,
+        "w": 184,
+        "h": 413
+      },
+      "decor": {
+        "src": "decor/M_24.png",
+        "left": 1112,
+        "top": 1606,
+        "w": 30,
+        "h": 55
+      },
+      "cx": 1060.0,
+      "cy": 1462.5
+    },
+    {
+      "key": "25",
+      "z": 67,
+      "sticker": {
+        "src": "stickers/S_25.png",
+        "left": 1694,
+        "top": 1564,
+        "w": 148,
+        "h": 190
+      },
+      "slot": {
+        "src": "slots/L_25.png",
+        "left": 1686,
+        "top": 1559,
+        "w": 161,
+        "h": 205
+      },
+      "decor": null,
+      "cx": 1766.5,
+      "cy": 1661.5
+    },
+    {
+      "key": "26",
+      "z": 69,
+      "sticker": {
+        "src": "stickers/S_26.png",
+        "left": 1128,
+        "top": 1563,
+        "w": 180,
+        "h": 402
+      },
+      "slot": {
+        "src": "slots/L_26.png",
+        "left": 1120,
+        "top": 1558,
+        "w": 193,
+        "h": 417
+      },
+      "decor": {
+        "src": "decor/M_26.png",
+        "left": 1138,
+        "top": 1780,
+        "w": 105,
+        "h": 163
+      },
+      "cx": 1216.5,
+      "cy": 1766.5
+    },
+    {
+      "key": "27",
+      "z": 72,
+      "sticker": {
+        "src": "stickers/S_27.png",
+        "left": 640,
+        "top": 247,
+        "w": 331,
+        "h": 453
+      },
+      "slot": {
+        "src": "slots/L_27.png",
+        "left": 632,
+        "top": 242,
+        "w": 344,
+        "h": 468
+      },
+      "decor": {
+        "src": "decor/M_27.png",
+        "left": 887,
+        "top": 480,
+        "w": 162,
+        "h": 194
+      },
+      "cx": 804.0,
+      "cy": 476.0
+    },
+    {
+      "key": "28",
+      "z": 75,
+      "sticker": {
+        "src": "stickers/S_28.png",
+        "left": 1600,
+        "top": 1730,
+        "w": 217,
+        "h": 298
+      },
+      "slot": {
+        "src": "slots/L_28.png",
+        "left": 1592,
+        "top": 1725,
+        "w": 230,
+        "h": 313
+      },
+      "decor": null,
+      "cx": 1707.0,
+      "cy": 1881.5
+    },
+    {
+      "key": "29",
+      "z": 77,
+      "sticker": {
+        "src": "stickers/S_29.png",
+        "left": 285,
+        "top": 1638,
+        "w": 167,
+        "h": 373
+      },
+      "slot": {
+        "src": "slots/L_29.png",
+        "left": 277,
+        "top": 1633,
+        "w": 180,
+        "h": 388
+      },
+      "decor": null,
+      "cx": 367.0,
+      "cy": 1827.0
+    },
+    {
+      "key": "30",
+      "z": 79,
+      "sticker": {
+        "src": "stickers/S_30.png",
+        "left": 1381,
+        "top": 1548,
+        "w": 246,
+        "h": 363
+      },
+      "slot": {
+        "src": "slots/L_30.png",
+        "left": 1373,
+        "top": 1543,
+        "w": 259,
+        "h": 378
+      },
+      "decor": null,
+      "cx": 1502.5,
+      "cy": 1732.0
+    }
+  ]
+}

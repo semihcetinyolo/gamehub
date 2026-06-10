@@ -1,0 +1,44 @@
+# ---- OS junk ----
+.DS_Store
+**/.DS_Store
+
+# ---- Design source files (kept on disk, excluded from repo) ----
+*.psd
+*.psb
+Find The Cat/levels/0002psb
+*.pdf
+
+# ============================================================
+# Keep only ONE level's runtime assets per game (the default
+# level each game loads first). Other levels stay on disk but
+# are excluded from the repo. No game code is modified.
+# ============================================================
+
+# Find The Odds — keep only "Sports"
+Find The Odds/levels/*/
+!Find The Odds/levels/Sports/
+
+# Hidden Match3 — exclude only unused root assetpacks (game preloads ALL
+# assets_level*/ folders at startup, so those must stay or the board breaks)
+Hidden Match3/assetpack*/
+
+# Pack It Up — keep only level1
+Pack It Up/level1_2/
+Pack It Up/level1_2wo/
+Pack It Up/level1_3/
+Pack It Up/_disabled_level1_2_outline/
+Pack It Up/2/
+
+# Furnish Master — keep only green_room
+Furnish Master/levels/girl_gaming_room/
+Furnish Master/levels/kitchen/
+Furnish Master/levels/new_green_room/
+Furnish Master/levels/pool_fun/
+
+# Hidden Triple Match by topic — keep only garden
+Hidden Triple Match by topic/game/assets/elvan/
+Hidden Triple Match by topic/game/assets/emir/
+
+# Jigsolitaire — keep only "Kittens" (130001.webp)
+Jigsolitaire/levels/*
+!Jigsolitaire/levels/130001.webp

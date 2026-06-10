@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Find The Cat</title>
+<link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<body>
+  <div class="frame" id="frame">
+
+    <!-- ===== HUD ===== -->
+    <div class="hud">
+      <div class="hearts" id="hearts">
+        <span class="heart">♥</span><span class="heart">♥</span><span class="heart">♥</span>
+      </div>
+
+      <div class="counter" id="counter">
+        <span class="cat-ico">🐱</span>
+        <span class="cnt-num" id="cntNum">0</span><span class="cnt-den" id="cntDen">/0</span>
+      </div>
+
+      <div class="hud-btns">
+        <button class="hud-btn" id="hintBtn" title="Hint">💡</button>
+        <button class="hud-btn admin-toggle" id="adminBtn" title="Admin">⚙</button>
+      </div>
+    </div>
+
+    <!-- ===== BOARD ===== -->
+    <div class="board-wrap" id="boardWrap">
+      <div class="board" id="board">
+        <img class="bg" id="bg" src="assets/0002/bg.jpg" alt="" draggable="false" />
+        <!-- cat layers injected here -->
+      </div>
+      <div class="drag-hint" id="dragHint">⇆ drag · pinch / scroll to zoom</div>
+    </div>
+
+    <!-- ===== ADMIN PANEL ===== -->
+    <div class="admin-panel" id="adminPanel">
+      <div class="admin-title">Admin</div>
+      <button class="admin-item" id="restartBtn">⟳ Restart level</button>
+      <button class="admin-item" id="revealBtn">👁 Reveal all cats</button>
+      <button class="admin-item" id="nextBtn">⏭ Next level</button>
+    </div>
+
+    <!-- ===== OVERLAY ===== -->
+    <div class="overlay" id="overlay">
+      <div class="overlay-card" id="overlayCard">
+        <div class="overlay-emoji" id="ovEmoji">🎉</div>
+        <div class="overlay-title" id="ovTitle">You Win!</div>
+        <div class="overlay-sub" id="ovSub">All cats found.</div>
+        <button class="overlay-btn" id="ovBtn">Play Again</button>
+      </div>
+    </div>
+
+    <!-- fx layer -->
+    <div class="fx-layer" id="fxLayer"></div>
+  </div>
+
+  <script src="game.js?v=2"></script>
+</body>
+</html>

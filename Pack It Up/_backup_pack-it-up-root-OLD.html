@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Pack It Up! 🧳</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Nunito','Arial Rounded MT Bold',sans-serif;
+  background: #d8d3cb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+}
+body::after {
+  content:''; position:fixed; inset:0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.18) 0%, transparent 65%);
+  pointer-events:none;
+}
+#game { display:flex; flex-direction:column; align-items:center; gap:12px; position:relative; z-index:1; }
+
+/* HEADER */
+#hdr { text-align:center; }
+#hdr h1 { font-size:2.4rem; font-weight:900; color:#fff; text-shadow:0 4px 0 rgba(0,0,0,0.16); letter-spacing:-1px; }
+#lvl-pill {
+  display:inline-block; background:#fff; color:#e07b00;
+  font-weight:900; font-size:.8rem; letter-spacing:1px;
+  padding:2px 18px; border-radius:20px; margin-top:4px;
+  box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+/* MAIN ROW */
+#main { display:flex; gap:22px; align-items:flex-start; }
+
+/* STAGING */
+#staging { display:flex; flex-direction:column; align-items:center; gap:8px; }
+#stg-label { font-size:.85rem; font-weight:800; color:rgba(255,255,255,.72); }
+#stg-box {
+  background:rgba(255,255,255,.16);
+  border:2px dashed rgba(255,255,255,.32);
+  border-radius:18px; padding:12px;
+  display:flex; flex-wrap:wrap; gap:12px;
+  justify-content:center; align-content:flex-start;
+  min-width:210px; min-height:200px; max-width:250px;
+}
+
+/* SUITCASE */
+#sv { display:flex; flex-direction:column; align-items:center; }
+#handle { width:70px; height:24px; background:linear-gradient(180deg,#f9b034,#e07b00); border:3px solid #c86a00; border-bottom:none; border-radius:15px 15px 0 0; }
+#suitcase {
+  background:linear-gradient(150deg,#7ed858,#5aad38);
+  border:6px solid #e07b00; border-radius:22px; padding:16px;
+  position:relative;
+  box-shadow:0 10px 0 #3e7922, 0 14px 32px rgba(0,0,0,.26), inset 0 2px 0 rgba(255,255,255,.28);
+}
+.clip { position:absolute; width:20px; height:20px; background:linear-gradient(135deg,#fff,#d8d8d8); border-radius:4px; box-shadow:0 2px 5px rgba(0,0,0,.18); }
+.clip.tl{top:8px;left:8px} .clip.tr{top:8px;right:8px} .clip.bl{bottom:17px;left:8px} .clip.br{bottom:17px;right:8px}
+.latch { position:absolute; bottom:7px; left:50%; transform:translateX(-50%); width:26px; height:13px; background:#d8d8d8; border:2px solid #b4b4b4; border-radius:4px; }
+#gw { position:relative; }
+#grid { display:grid; gap:0; }
+.gc { width:54px; height:54px; background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.2); border-radius:5px; transition:background .07s; }
+.gc.ok { background:rgba(255,255,255,.5); }
+.gc.no { background:rgba(255,70,70,.45); }
+#il { position:absolute; top:0; left:0; pointer-events:none; }
+.pi { position:absolute; pointer-events:auto; cursor:grab; filter:drop-shadow(0 4px 10px rgba(0,0,0,.22)); transition:filter .12s,transform .12s; }
+.pi:hover { filter:drop-shadow(0 6px 18px rgba(0,0,0,.3)); transform:scale(1.04); }
+.pi svg,.si svg { display:block; width:100%; height:100%; }
+.si { cursor:grab; filter:drop-shadow(0 4px 10px rgba(0,0,0,.2)); transition:filter .12s,transform .12s; flex-shrink:0; }
+.si:hover { transform:translateY(-4px) scale(1.06); filter:drop-shadow(0 8px 18px rgba(0,0,0,.25)); }
+
+/* SOLUTION PANEL */
+#sol-panel {
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  background:rgba(255,255,255,.18);
+  border:2px solid rgba(255,255,255,.3);
+  border-radius:18px; padding:14px;
+  min-width:130px;
+}
+#sol-title { font-size:.85rem; font-weight:900; color:rgba(255,255,255,.85); letter-spacing:.5px; }
+#sol-grid { display:grid; gap:2px; border-radius:8px; overflow:hidden; }
+.sol-cell {
+  width:20px; height:20px;
+  border-radius:3px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:10px; line-height:1;
+}
+#sol-legend { display:flex; flex-direction:column; gap:5px; margin-top:4px; }
+.leg-row { display:flex; align-items:center; gap:6px; font-size:.72rem; font-weight:800; color:rgba(255,255,255,.82); }
+.leg-swatch { width:12px; height:12px; border-radius:3px; flex-shrink:0; }
+
+/* BOTTOM */
+#prog { font-size:.95rem; font-weight:800; color:rgba(255,255,255,.9); background:rgba(0,0,0,.13); padding:4px 20px; border-radius:20px; }
+#hint { font-size:.78rem; font-weight:700; color:rgba(255,255,255,.6); background:rgba(0,0,0,.11); padding:5px 16px; border-radius:20px; }
+
+/* GHOST */
+#ghost { position:fixed; pointer-events:none; z-index:4000; display:none; opacity:.88; filter:drop-shadow(0 14px 30px rgba(0,0,0,.3)); }
+#ghost svg { display:block; width:100%; height:100%; }
+
+/* WIN */
+#win { display:none; position:fixed; inset:0; background:rgba(0,0,0,.44); backdrop-filter:blur(10px); z-index:6000; align-items:center; justify-content:center; }
+#win.show { display:flex; }
+#wcard { background:#fff; border-radius:36px; padding:48px 52px; text-align:center; box-shadow:0 32px 80px rgba(0,0,0,.28); max-width:400px; animation:pop .45s cubic-bezier(.175,.885,.32,1.275) both; }
+@keyframes pop { from{transform:scale(.4) translateY(60px);opacity:0} to{transform:scale(1);opacity:1} }
+#wemoji { font-size:5rem; display:block; margin-bottom:10px; }
+#wcard h2 { font-size:1.9rem; font-weight:900; color:#222; margin-bottom:8px; }
+#wcard p  { color:#888; font-size:.95rem; margin-bottom:30px; }
+#wbtn { background:linear-gradient(135deg,#7ed858,#4a9a28); color:#fff; border:none; padding:14px 40px; font-family:inherit; font-size:1rem; font-weight:900; border-radius:50px; cursor:pointer; box-shadow:0 7px 0 #2d7a10; transition:transform .1s,box-shadow .1s; }
+#wbtn:hover { transform:translateY(-2px); box-shadow:0 9px 0 #2d7a10; }
+#wbtn:active { transform:translateY(3px); box-shadow:0 4px 0 #2d7a10; }
+.cf { position:fixed; border-radius:3px; pointer-events:none; z-index:5999; animation:fall linear forwards; }
+@keyframes fall { 0%{transform:translateY(-30px) rotate(0deg);opacity:1} 100%{transform:translateY(105vh) rotate(800deg);opacity:0} }
+</style>
+</head>
+<body>
+<div id="game">
+  <div id="hdr">
+    <h1>🧳 Pack It Up!</h1>
+    <div id="lvl-pill">LEVEL 1</div>
+  </div>
+  <div id="prog">0 / 0 eşya</div>
+  <div id="main">
+    <div id="staging">
+      <div id="stg-label">📦 Eşyaların</div>
+      <div id="stg-box"></div>
+    </div>
+    <div id="sv">
+      <div id="handle"></div>
+      <div id="suitcase">
+        <div class="clip tl"></div><div class="clip tr"></div>
+        <div class="clip bl"></div><div class="clip br"></div>
+        <div class="latch"></div>
+        <div id="gw"><div id="grid"></div><div id="il"></div></div>
+      </div>
+    </div>
+    <div id="sol-panel">
+      <div id="sol-title">💡 Çözüm</div>
+      <div id="sol-grid"></div>
+      <div id="sol-legend"></div>
+    </div>
+  </div>
+  <div id="hint">Eşyaları valize sürükle &nbsp;•&nbsp; Valizden geri almak için üstüne tıkla</div>
+</div>
+<div id="ghost"></div>
+<div id="win">
+  <div id="wcard">
+    <span id="wemoji">🎉</span>
+    <h2 id="wtitle">Harika!</h2>
+    <p id="wdesc">Valizini hazırladın!</p>
+    <button id="wbtn">Devam →</button>
+  </div>
+</div>
+<script>
+const C = 54; // main cell px
+const S = 20; // solution cell px
+
+/* ── SVG DEFINITIONS ── */
+const DEFS = {
+  shirt: {
+    cells:[[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]],
+    color:'#3ab8f0', label:'Gömlek',
+    svg:`<svg viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="40" width="108" height="135" rx="14" fill="#3ab8f0"/>
+      <path d="M6,40 Q6,24 22,16 L42,34 Q30,42 26,56 Z" fill="#2898d8"/>
+      <path d="M114,40 Q114,24 98,16 L78,34 Q90,42 94,56 Z" fill="#2898d8"/>
+      <path d="M24,14 Q46,6 60,42 L54,46 Q44,18 28,18 Z" fill="#7ddcb8"/>
+      <path d="M96,14 Q74,6 60,42 L66,46 Q76,18 92,18 Z" fill="#7ddcb8"/>
+      <ellipse cx="60" cy="42" rx="18" ry="13" fill="#52c49e"/>
+      <rect x="53" y="50" width="14" height="120" rx="7" fill="#7ddcb8"/>
+      <circle cx="60" cy="73"  r="5.5" fill="#3ec890" stroke="#28a870" stroke-width="1.5"/>
+      <circle cx="60" cy="101" r="5.5" fill="#3ec890" stroke="#28a870" stroke-width="1.5"/>
+      <circle cx="60" cy="129" r="5.5" fill="#3ec890" stroke="#28a870" stroke-width="1.5"/>
+      <ellipse cx="34" cy="100" rx="16" ry="45" fill="rgba(255,255,255,.11)"/>
+    </svg>`
+  },
+  sock: {
+    cells:[[0,0],[1,0],[2,0],[2,1]],
+    color:'#e84848', label:'Çorap',
+    svg:`<svg viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
+      <rect x="5"  y="3"  width="50" height="30" rx="22" fill="#f5a882"/>
+      <rect x="5"  y="20" width="50" height="10" rx="5"  fill="rgba(255,255,255,.28)"/>
+      <rect x="8"  y="20" width="44" height="132" rx="22" fill="#e84848"/>
+      <ellipse cx="30" cy="144" rx="26" ry="22" fill="#b01818"/>
+      <path d="M8,138 Q8,176 36,177 L90,177 Q118,177 118,157 Q118,139 90,131 L52,126 L52,138 Z" fill="#e84848"/>
+      <ellipse cx="91" cy="154" rx="24" ry="20" fill="#f5a882"/>
+      <rect x="11" y="22" width="12" height="112" rx="6" fill="rgba(255,255,255,.14)"/>
+    </svg>`
+  },
+  towel: {
+    cells:[[0,0],[1,0],[2,0]],
+    color:'#ec407a', label:'Havlu',
+    svg:`<svg viewBox="0 0 60 180" xmlns="http://www.w3.org/2000/svg">
+      <rect x="5" y="5" width="50" height="170" rx="10" fill="#ec407a"/>
+      <rect x="5" y="46"  width="50" height="10" fill="rgba(255,255,255,.22)"/>
+      <rect x="5" y="94"  width="50" height="10" fill="rgba(255,255,255,.22)"/>
+      <rect x="5" y="142" width="50" height="10" fill="rgba(255,255,255,.22)"/>
+      <rect x="5" y="5"   width="50" height="12" rx="8" fill="rgba(255,255,255,.25)"/>
+      <rect x="7" y="5" width="13" height="170" rx="7" fill="rgba(255,255,255,.2)"/>
+    </svg>`
+  },
+  shorts: {
+    cells:[[0,0],[0,1],[1,0],[1,1]],
+    color:'#7c4dff', label:'Şort',
+    svg:`<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <rect x="5" y="6" width="110" height="26" rx="13" fill="#9575cd"/>
+      <path d="M5,26 L5,82 Q5,110 30,113 L54,113 L60,72 L66,113 L90,113 Q115,110 115,82 L115,26 Z" fill="#7c4dff"/>
+      <line x1="60" y1="30" x2="60" y2="74" stroke="#3d0e8c" stroke-width="2.5" opacity=".4"/>
+      <path d="M15,35 Q14,57 30,57 L46,57 L46,35" fill="none" stroke="#7b1fa2" stroke-width="2.5" opacity=".55"/>
+      <line x1="44" y1="15" x2="76" y2="15" stroke="rgba(255,255,255,.55)" stroke-width="2.5"/>
+      <circle cx="42" cy="15" r="3.5" fill="rgba(255,255,255,.65)"/>
+      <circle cx="78" cy="15" r="3.5" fill="rgba(255,255,255,.65)"/>
+      <rect x="5" y="6" width="110" height="10" rx="10" fill="rgba(255,255,255,.18)"/>
+    </svg>`
+  },
+  flip: {
+    cells:[[0,0],[0,1]],
+    color:'#26c6da', label:'Terlik',
+    svg:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="60" cy="40" rx="54" ry="14" fill="rgba(0,80,88,.25)"/>
+      <ellipse cx="60" cy="30" rx="54" ry="22" fill="#26c6da"/>
+      <path d="M34,18 Q50,36 60,29" fill="none" stroke="#006064" stroke-width="8" stroke-linecap="round"/>
+      <path d="M86,18 Q70,36 60,29" fill="none" stroke="#006064" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="60" cy="29" r="5.5" fill="#004d50"/>
+      <ellipse cx="36" cy="22" rx="18" ry="8" fill="rgba(255,255,255,.22)"/>
+    </svg>`
+  },
+  hat: {
+    cells:[[0,0],[0,1],[0,2],[1,1]],
+    color:'#ffd740', label:'Şapka',
+    svg:`<svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="90" cy="62" rx="82" ry="16" fill="#d4920a" opacity=".55"/>
+      <ellipse cx="90" cy="54" rx="82" ry="22" fill="#ffd740"/>
+      <path d="M58,54 Q56,12 90,7 Q124,12 122,54 Z" fill="#ffca28"/>
+      <path d="M70,52 Q68,20 90,13 Q86,16 80,24 Q74,36 76,52 Z" fill="rgba(255,255,255,.22)"/>
+      <ellipse cx="90" cy="53" rx="32" ry="8" fill="#43a047" opacity=".85"/>
+      <ellipse cx="90" cy="46" rx="80" ry="10" fill="rgba(255,255,255,.2)"/>
+      <circle cx="12"  cy="64" r="7" fill="#f44336"/>
+      <circle cx="38"  cy="73" r="6" fill="#2196f3"/>
+      <circle cx="66"  cy="76" r="6" fill="#f44336"/>
+      <circle cx="114" cy="76" r="6" fill="#2196f3"/>
+      <circle cx="142" cy="73" r="6" fill="#f44336"/>
+      <circle cx="168" cy="64" r="7" fill="#2196f3"/>
+    </svg>`
+  },
+  sunscreen: {
+    cells:[[0,0],[1,0]],
+    color:'#ff7043', label:'Güneş Kremi',
+    svg:`<svg viewBox="0 0 60 120" xmlns="http://www.w3.org/2000/svg">
+      <rect x="22" y="2"  width="16" height="10" rx="5" fill="#7f1900"/>
+      <rect x="14" y="8"  width="32" height="20" rx="8" fill="#bf360c"/>
+      <rect x="8"  y="24" width="44" height="90" rx="10" fill="#ff7043"/>
+      <rect x="10" y="44" width="40" height="52" rx="6" fill="#ff8a65"/>
+      <rect x="12" y="50" width="36" height="16" rx="4" fill="white" opacity=".88"/>
+      <text x="30" y="62" text-anchor="middle" font-family="Arial Black,Arial" font-weight="900" font-size="9" fill="#e64a19">SPF 50</text>
+      <circle cx="30" cy="80" r="7" fill="rgba(255,255,255,.62)"/>
+      <rect x="10" y="26" width="13" height="86" rx="6" fill="rgba(255,255,255,.16)"/>
+    </svg>`
+  },
+  book: {
+    cells:[[0,0],[0,1],[1,0],[1,1]],
+    color:'#ffa726', label:'Kitap',
+    svg:`<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6"  y="8" width="108" height="104" rx="10" fill="#ffa726"/>
+      <rect x="8"  y="10" width="46" height="100" rx="6" fill="#fffde7" opacity=".94"/>
+      <rect x="66" y="10" width="46" height="100" rx="6" fill="#fffde7" opacity=".94"/>
+      <rect x="54" y="8" width="12" height="104" rx="5" fill="#bf360c"/>
+      <rect x="54" y="8" width="4"  height="104" rx="3" fill="rgba(255,255,255,.15)"/>
+      <line x1="15" y1="30" x2="50" y2="30" stroke="#ddc880" stroke-width="2"/>
+      <line x1="15" y1="44" x2="50" y2="44" stroke="#ddc880" stroke-width="2"/>
+      <line x1="15" y1="58" x2="50" y2="58" stroke="#ddc880" stroke-width="2"/>
+      <line x1="15" y1="72" x2="50" y2="72" stroke="#ddc880" stroke-width="2"/>
+      <line x1="15" y1="86" x2="50" y2="86" stroke="#ddc880" stroke-width="2"/>
+      <line x1="69" y1="30" x2="104" y2="30" stroke="#ddc880" stroke-width="2"/>
+      <line x1="69" y1="44" x2="104" y2="44" stroke="#ddc880" stroke-width="2"/>
+      <line x1="69" y1="58" x2="104" y2="58" stroke="#ddc880" stroke-width="2"/>
+      <line x1="69" y1="72" x2="104" y2="72" stroke="#ddc880" stroke-width="2"/>
+      <line x1="69" y1="86" x2="104" y2="86" stroke="#ddc880" stroke-width="2"/>
+    </svg>`
+  }
+};
+
+/*
+ ── LEVEL 1 SOLUTION (verified, 4×6 grid) ──
+   shirt @(0,0): fills (0,0)(0,1)(1,0)(1,1)(2,0)(2,1)
+   sock  @(0,2): fills (0,2)(1,2)(2,2)(2,3)
+   shorts@(0,3): fills (0,3)(0,4)(1,3)(1,4)
+   towel @(0,5): fills (0,5)(1,5)(2,5)
+   flip  @(3,0): fills (3,0)(3,1)
+   Empty: (2,4)(3,2)(3,3)(3,4)(3,5)  ← 5 empty cells, 19/24 filled ✓
+
+ ── LEVEL 2 SOLUTION (verified, 5×6 grid) ──
+   shirt     @(0,0): (0,0)(0,1)(1,0)(1,1)(2,0)(2,1)
+   sock      @(0,2): (0,2)(1,2)(2,2)(2,3)
+   hat       @(0,3): (0,3)(0,4)(0,5)(1,4)
+   towel     @(1,5): (1,5)(2,5)(3,5)
+   sunscreen @(2,4): (2,4)(3,4)
+   shorts    @(3,0): (3,0)(3,1)(4,0)(4,1)
+   book      @(3,2): (3,2)(3,3)(4,2)(4,3)
+   flip      @(4,4): (4,4)(4,5)
+   Empty: (1,3)  ← 1 empty cell, 29/30 filled ✓
+*/
+const LEVELS = [
+  {
+    name:'LEVEL 1', rows:4, cols:6,
+    keys:['shirt','sock','towel','shorts','flip'],
+    solution:[
+      {key:'shirt',   row:0, col:0},
+      {key:'sock',    row:0, col:2},
+      {key:'shorts',  row:0, col:3},
+      {key:'towel',   row:0, col:5},
+      {key:'flip',    row:3, col:0}
+    ],
+    winEmoji:'🎉', winTitle:'Mükemmel! 🌟',
+    winDesc:'Level 1 tamamlandı. Devam ediyor musun?',
+    btnText:"Level 2'ye Geç →"
+  },
+  {
+    name:'LEVEL 2', rows:5, cols:6,
+    keys:['shirt','sock','hat','towel','shorts','flip','sunscreen','book'],
+    solution:[
+      {key:'shirt',     row:0, col:0},
+      {key:'sock',      row:0, col:2},
+      {key:'hat',       row:0, col:3},
+      {key:'towel',     row:1, col:5},
+      {key:'sunscreen', row:2, col:4},
+      {key:'shorts',    row:3, col:0},
+      {key:'book',      row:3, col:2},
+      {key:'flip',      row:4, col:4}
+    ],
+    winEmoji:'✈️', winTitle:'Tatile Hazırsın!',
+    winDesc:'Tüm seviyeleri bitirdin! Harika paketleyicisin! 🏆',
+    btnText:'🔄 Baştan Başla'
+  }
+];
+
+/* ── STATE ── */
+let lvl, gdata, items;
+let dragItem=null, dragOffX=0, dragOffY=0;
+const ghost=document.getElementById('ghost');
+
+/* ── UTILS ── */
+function getBBox(cells){
+  return { w:Math.max(...cells.map(([,c])=>c))+1, h:Math.max(...cells.map(([r])=>r))+1 };
+}
+function canPlace(item,row,col){
+  for(const [r,c] of DEFS[item.key].cells){
+    const gr=row+r, gc=col+c;
+    if(gr<0||gr>=lvl.rows||gc<0||gc>=lvl.cols) return false;
+    if(gdata[gr][gc]!==null && gdata[gr][gc]!==item.id) return false;
+  }
+  return true;
+}
+function snapPos(mx,my){
+  const rect=document.getElementById('grid').getBoundingClientRect();
+  return { row:Math.round((my-dragOffY-rect.top)/C), col:Math.round((mx-dragOffX-rect.left)/C) };
+}
+
+/* ── INIT ── */
+function initLevel(idx){
+  lvl={...LEVELS[idx],idx};
+  gdata=Array.from({length:lvl.rows},()=>Array(lvl.cols).fill(null));
+  items=lvl.keys.map((key,i)=>({id:i,key,placed:false,row:0,col:0}));
+  render();
+}
+
+/* ── RENDER ── */
+function render(){
+  document.getElementById('lvl-pill').textContent=lvl.name;
+  buildGrid(); buildPlaced(); buildStaging(); buildSolution(); updateProg();
+}
+
+function buildGrid(){
+  const el=document.getElementById('grid');
+  el.style.gridTemplateColumns=`repeat(${lvl.cols},${C}px)`;
+  el.style.gridTemplateRows=`repeat(${lvl.rows},${C}px)`;
+  el.innerHTML='';
+  for(let r=0;r<lvl.rows;r++)
+    for(let c=0;c<lvl.cols;c++){
+      const d=document.createElement('div');
+      d.className='gc'; d.dataset.r=r; d.dataset.c=c;
+      el.appendChild(d);
+    }
+}
+
+function buildPlaced(){
+  const layer=document.getElementById('il');
+  layer.innerHTML='';
+  layer.style.width=lvl.cols*C+'px';
+  layer.style.height=lvl.rows*C+'px';
+  items.filter(i=>i.placed).forEach(item=>{
+    const def=DEFS[item.key], bb=getBBox(def.cells);
+    const div=document.createElement('div');
+    div.className='pi';
+    div.style.left=item.col*C+'px'; div.style.top=item.row*C+'px';
+    div.style.width=bb.w*C+'px';   div.style.height=bb.h*C+'px';
+    div.innerHTML=def.svg;
+    div.addEventListener('mousedown',e=>startDrag(e,item.id,true));
+    layer.appendChild(div);
+  });
+}
+
+function buildStaging(){
+  const box=document.getElementById('stg-box');
+  box.innerHTML='';
+  items.filter(i=>!i.placed).forEach(item=>{
+    const def=DEFS[item.key], bb=getBBox(def.cells);
+    const div=document.createElement('div');
+    div.className='si';
+    div.style.width=bb.w*C+'px'; div.style.height=bb.h*C+'px';
+    div.innerHTML=def.svg;
+    div.addEventListener('mousedown',e=>startDrag(e,item.id,false));
+    box.appendChild(div);
+  });
+}
+
+function buildSolution(){
+  const sg=document.getElementById('sol-grid');
+  const legend=document.getElementById('sol-legend');
+  sg.style.gridTemplateColumns=`repeat(${lvl.cols},${S}px)`;
+  sg.style.gridTemplateRows=`repeat(${lvl.rows},${S}px)`;
+  sg.innerHTML=''; legend.innerHTML='';
+
+  // Build cell map from solution
+  const cellMap={};
+  lvl.solution.forEach(s=>{
+    DEFS[s.key].cells.forEach(([r,c])=>{
+      cellMap[`${s.row+r},${s.col+c}`]=s.key;
+    });
+  });
+
+  // Draw mini grid
+  for(let r=0;r<lvl.rows;r++){
+    for(let c=0;c<lvl.cols;c++){
+      const key=cellMap[`${r},${c}`];
+      const d=document.createElement('div');
+      d.className='sol-cell';
+      d.style.background=key ? DEFS[key].color : 'rgba(255,255,255,0.18)';
+      if(key) d.style.boxShadow=`inset 0 2px 0 rgba(255,255,255,0.3), inset 0 -2px 0 rgba(0,0,0,0.15)`;
+      sg.appendChild(d);
+    }
+  }
+
+  // Legend
+  lvl.solution.forEach(s=>{
+    const row=document.createElement('div');
+    row.className='leg-row';
+    row.innerHTML=`<div class="leg-swatch" style="background:${DEFS[s.key].color}"></div>${DEFS[s.key].label}`;
+    legend.appendChild(row);
+  });
+}
+
+function updateProg(){
+  const placed=items.filter(i=>i.placed).length;
+  document.getElementById('prog').textContent=`${placed} / ${items.length} eşya`;
+}
+
+/* ── DRAG ── */
+function startDrag(e,id,fromGrid){
+  e.preventDefault();
+  dragItem=items.find(i=>i.id===id);
+  if(!dragItem) return;
+  const def=DEFS[dragItem.key], bb=getBBox(def.cells);
+
+  if(fromGrid){
+    const gr=document.getElementById('grid').getBoundingClientRect();
+    dragOffX=e.clientX-(gr.left+dragItem.col*C);
+    dragOffY=e.clientY-(gr.top +dragItem.row*C);
+    def.cells.forEach(([r,c])=>{ gdata[dragItem.row+r][dragItem.col+c]=null; });
+    dragItem.placed=false;
+    buildPlaced();
+  } else {
+    const rect=e.currentTarget.getBoundingClientRect();
+    dragOffX=e.clientX-rect.left; dragOffY=e.clientY-rect.top;
+    dragItem._src=e.currentTarget;
+    dragItem._src.style.opacity='0.3';
+  }
+
+  ghost.style.width=bb.w*C+'px'; ghost.style.height=bb.h*C+'px';
+  ghost.innerHTML=def.svg;
+  ghost.style.left=(e.clientX-dragOffX)+'px'; ghost.style.top=(e.clientY-dragOffY)+'px';
+  ghost.style.display='block';
+  window.addEventListener('mousemove',onMove);
+  window.addEventListener('mouseup',onUp);
+}
+
+function onMove(e){
+  if(!dragItem) return;
+  ghost.style.left=(e.clientX-dragOffX)+'px'; ghost.style.top=(e.clientY-dragOffY)+'px';
+  doHL(e.clientX,e.clientY);
+}
+
+function doHL(mx,my){
+  document.querySelectorAll('.gc').forEach(c=>c.classList.remove('ok','no'));
+  const {row,col}=snapPos(mx,my), valid=canPlace(dragItem,row,col);
+  DEFS[dragItem.key].cells.forEach(([r,c])=>{
+    const gr=row+r,gc=col+c;
+    if(gr>=0&&gr<lvl.rows&&gc>=0&&gc<lvl.cols){
+      const el=document.querySelector(`.gc[data-r="${gr}"][data-c="${gc}"]`);
+      if(el) el.classList.add(valid?'ok':'no');
+    }
+  });
+}
+
+function onUp(e){
+  window.removeEventListener('mousemove',onMove);
+  window.removeEventListener('mouseup',onUp);
+  document.querySelectorAll('.gc').forEach(c=>c.classList.remove('ok','no'));
+  const {row,col}=snapPos(e.clientX,e.clientY);
+  if(canPlace(dragItem,row,col)){
+    DEFS[dragItem.key].cells.forEach(([r,c])=>{ gdata[row+r][col+c]=dragItem.id; });
+    dragItem.placed=true; dragItem.row=row; dragItem.col=col;
+    playPlop(); buildPlaced(); buildStaging(); updateProg(); checkWin();
+  } else {
+    if(dragItem._src) dragItem._src.style.opacity='1';
+    if(!dragItem.placed) buildStaging();
+  }
+  ghost.style.display='none'; ghost.innerHTML='';
+  if(dragItem){ dragItem._src=null; dragItem=null; }
+}
+
+/* ── SOUND ── */
+function playPlop(){
+  try{
+    const ctx=new(window.AudioContext||window.webkitAudioContext)();
+    const o=ctx.createOscillator(),g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);
+    o.frequency.setValueAtTime(420,ctx.currentTime);
+    o.frequency.exponentialRampToValueAtTime(640,ctx.currentTime+.12);
+    g.gain.setValueAtTime(.22,ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.3);
+    o.start();o.stop(ctx.currentTime+.3);
+  }catch(_){}
+}
+function playFanfare(){
+  try{
+    const ctx=new(window.AudioContext||window.webkitAudioContext)();
+    [[0,523],[.13,659],[.26,784],[.39,1047]].forEach(([t,f])=>{
+      const o=ctx.createOscillator(),g=ctx.createGain();
+      o.connect(g);g.connect(ctx.destination);
+      o.frequency.value=f;
+      g.gain.setValueAtTime(.2,ctx.currentTime+t);
+      g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+t+.35);
+      o.start(ctx.currentTime+t);o.stop(ctx.currentTime+t+.4);
+    });
+  }catch(_){}
+}
+
+/* ── WIN ── */
+function checkWin(){
+  if(!items.every(i=>i.placed)) return;
+  setTimeout(()=>{
+    playFanfare(); spawnConfetti();
+    document.getElementById('wemoji').textContent=lvl.winEmoji;
+    document.getElementById('wtitle').textContent=lvl.winTitle;
+    document.getElementById('wdesc').textContent=lvl.winDesc;
+    document.getElementById('wbtn').textContent=lvl.btnText;
+    document.getElementById('win').classList.add('show');
+    document.getElementById('wbtn').onclick=()=>{
+      document.getElementById('win').classList.remove('show');
+      initLevel(lvl.idx===LEVELS.length-1?0:lvl.idx+1);
+    };
+  },350);
+}
+
+function spawnConfetti(){
+  const cols=['#ff6b6b','#ffd93d','#6bcb77','#4d96ff','#c77dff','#ff9f1c','#06d6a0'];
+  for(let i=0;i<88;i++) setTimeout(()=>{
+    const p=document.createElement('div'); p.className='cf';
+    const sz=6+Math.random()*10;
+    p.style.cssText=`left:${Math.random()*100}vw;top:-20px;width:${sz}px;height:${sz}px;background:${cols[Math.floor(Math.random()*cols.length)]};border-radius:${Math.random()>.5?'50%':'3px'};animation-duration:${1.8+Math.random()*2.2}s;animation-delay:${Math.random()*.5}s;`;
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),5000);
+  },i*26);
+}
+
+initLevel(0);
+</script>
+</body>
+</html>

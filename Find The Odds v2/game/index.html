@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Find The Strange</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="frame" id="frame">
+
+    <!-- ===== HUD ===== -->
+    <div class="hud">
+      <div class="hearts" id="hearts"><!-- hearts injected here --></div>
+      <div class="hud-btns">
+        <button class="hud-btn" id="hintBtn" title="Hint">💡</button>
+        <button class="hud-btn" id="refreshBtn" title="Restart">⟳</button>
+      </div>
+    </div>
+
+    <!-- ===== BOARD ===== -->
+    <div class="board-wrap" id="boardWrap">
+      <div class="board" id="board">
+        <img class="bg" id="bg" alt="" draggable="false" /><!-- src set per level by game.js -->
+        <!-- item layers injected here -->
+      </div>
+      <div class="drag-hint" id="dragHint">⇆ drag · pinch / scroll to zoom</div>
+    </div>
+
+    <!-- ===== TRAY ===== -->
+    <div class="tray-row">
+      <div class="progress" id="progress">
+        <span class="prog-num" id="progNum">0</span><span class="prog-den" id="progDen">/4</span>
+      </div>
+      <div class="tray" id="tray">
+        <!-- slots injected here (one per odd item) -->
+      </div>
+    </div>
+
+    <!-- ===== OVERLAYS ===== -->
+    <div class="overlay" id="overlay">
+      <div class="overlay-card" id="overlayCard">
+        <div class="overlay-emoji" id="ovEmoji">🎉</div>
+        <div class="overlay-title" id="ovTitle">You Win!</div>
+        <div class="overlay-sub" id="ovSub">All odds found.</div>
+        <button class="overlay-btn" id="ovBtn">Play Again</button>
+      </div>
+    </div>
+
+    <!-- fly / fx layer -->
+    <div class="fx-layer" id="fxLayer"></div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

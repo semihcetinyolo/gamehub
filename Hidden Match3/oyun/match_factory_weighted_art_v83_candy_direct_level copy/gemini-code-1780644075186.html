@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Match Factory 2D - Weighted Sticker Asset Edition</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #101827;
+            font-family: 'Nunito', 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        #skip-level-btn {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 20000;
+            border: 2px solid rgba(186, 198, 220, 1);
+            background: rgba(255,255,255,0.95);
+            color: #324260;
+            border-radius: 16px;
+            padding: 10px 14px;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 0.2px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+            cursor: pointer;
+        }
+        #skip-level-btn:hover {
+            transform: translateY(-1px);
+        }
+        #skip-level-btn:active {
+            transform: translateY(0px);
+        }
+        #phone-container {
+            width: 400px;
+            height: 864px;
+            background: linear-gradient(180deg,#e0f0ff,#c5dcfa);
+            border-radius: 50px;
+            box-shadow: 0 22px 70px rgba(0,0,0,.45);
+            position: relative;
+            overflow: hidden;
+        }
+        #dynamic-island {
+            width: 110px;
+            height: 30px;
+            background-color: #151824;
+            border-radius: 20px;
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        #game-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            cursor: pointer;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(12px);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .overlay h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #1e202c;
+            font-weight: 900;
+        }
+        .overlay .btn {
+            background: #4e54ff;
+            border: none;
+            padding: 16px 44px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 24px;
+            cursor: pointer;
+            box-shadow: 0 6px 0px #2b30c2;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="phone-container">
+        <div id="dynamic-island"></div>
+        <canvas id="game-canvas"></canvas>
+
+        <div id="win-screen" class="overlay">
+            <h2>Tamamlandı! 🎉</h2>
+            <p style="margin-bottom:30px; color:#555;">Hedef eşyaları temizledin. Hedef eşyalar temizlendi. Bonuslar kalabilir.</p>
+            <button class="btn" onclick="goToNextLevel()">Sonraki Level</button>
+        </div>
+
+        <div id="fail-screen" class="overlay">
+            <h2>Bar Doldu! 😢</h2>
+            <p style="margin-bottom:30px; color:#555;">Eşleştirmeleri daha dikkatli yapmalısın.</p>
+            <button class="btn" onclick="resetGame()">Tekrar Dene</button>
+        </div>
+    </div>
+
+    <button id="skip-level-btn" onclick="skipLevel()">Skip Level</button>
+
+    <script>
+        // --- Premium High-End Casual Game Asset Palette ---
+        const LEVELS = [
+            {
+                id: 'home',
+                name: 'Home',
+                totalTriplets: 54,
+                types: [
+                    { id: 'armchair', name: 'Koltuk', asset: 'assets/chair.png', physicsScale: 0.92 },
+                    { id: 'table', name: 'Sehpa', asset: 'assets/table.png', physicsScale: 0.90 },
+                    { id: 'bookshelf', name: 'Kitaplık', asset: 'assets/bookshelf.png', physicsScale: 0.93 },
+                    { id: 'lamp', name: 'Lamba', asset: 'assets/lamp.png', visualScale: 0.85, physicsScale: 0.78 },
+                    { id: 'plant', name: 'Saksı', asset: 'assets/plant.png', physicsScale: 0.88 },
+                    { id: 'frame', name: 'Çerçeve', asset: 'assets/frame.png', physicsScale: 0.90 }
+                ],
+                patterns: [
+                    { target: [36, 30, 27], filler: [24, 23, 22] },
+                    { target: [36, 33, 27], filler: [23, 22, 21] },
+                    { target: [33, 33, 30], filler: [23, 22, 21] },
+                    { target: [36, 30, 30], filler: [23, 22, 21] }
+                ]
+            },
+            {
+                id: 'sports',
+                name: 'Sports',
+                totalTriplets: 52,
+                types: [
+                    { id: 'goal', name: 'Kale', asset: 'assets_level2/goal.png', visualScale: 1.10, physicsScale: 0.92, colliderShape: 'rect' },
+                    { id: 'ball', name: 'Top', asset: 'assets_level2/ball.png', visualScale: 1.10, physicsScale: 0.92, colliderShape: 'circle' },
+                    { id: 'boot', name: 'Krampon', asset: 'assets_level2/boot.png', visualScale: 1.10, physicsScale: 0.94, colliderShape: 'rect' },
+                    { id: 'foamfinger', name: 'Eldiven', asset: 'assets_level2/foam_finger.png', visualScale: 1.10, physicsScale: 0.90, colliderShape: 'rect' },
+                    { id: 'whistle', name: 'Düdük', asset: 'assets_level2/whistle.png', visualScale: 1.10, physicsScale: 0.88, colliderShape: 'rect' },
+                    { id: 'cone', name: 'Koni', asset: 'assets_level2/cone.png', visualScale: 1.10, physicsScale: 0.90, colliderShape: 'rect' },
+                    { id: 'shorts', name: 'Şort', asset: 'assets_level2/shorts.png', visualScale: 1.10, physicsScale: 0.94, colliderShape: 'rect' }
+                ],
+                patterns: [
+                    { target: [33, 30, 27], filler: [18, 17, 16, 15] },
+                    { target: [33, 30, 27], filler: [19, 17, 15, 15] },
+                    { target: [36, 30, 24], filler: [18, 17, 16, 15] },
+                    { target: [33, 27, 27], filler: [18, 18, 17, 16] }
+                ]
+            },
+            {
+                id: 'marine',
+                name: 'Marine',
+                totalTriplets: 52,
+                types: [
+                    { id: 'cap', name: 'Şapka', asset: 'assets_level3/cap.png', visualScale: 1.20, physicsScale: 0.96, colliderShape: 'rect' },
+                    { id: 'boat', name: 'Tekne', asset: 'assets_level3/boat.png', visualScale: 1.20, physicsScale: 0.96, colliderShape: 'rect' },
+                    { id: 'binoculars', name: 'Dürbün', asset: 'assets_level3/binoculars.png', visualScale: 1.20, physicsScale: 0.96, colliderShape: 'rect' },
+                    { id: 'anchor', name: 'Çapa', asset: 'assets_level3/anchor.png', visualScale: 1.20, physicsScale: 0.88, colliderShape: 'rect' },
+                    { id: 'lifebuoy', name: 'Can Simidi', asset: 'assets_level3/lifebuoy.png', visualScale: 1.20, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'starfish', name: 'Deniz Yıldızı', asset: 'assets_level3/starfish.png', visualScale: 1.20, physicsScale: 0.86, colliderShape: 'circle' },
+                    { id: 'wheel', name: 'Dümen', asset: 'assets_level3/wheel.png', visualScale: 1.20, physicsScale: 0.90, colliderShape: 'circle' }
+                ],
+                patterns: [
+                    { target: [33, 30, 27], filler: [18, 17, 16, 15] },
+                    { target: [33, 30, 27], filler: [19, 17, 15, 15] },
+                    { target: [36, 30, 24], filler: [18, 17, 16, 15] },
+                    { target: [33, 27, 27], filler: [18, 18, 17, 16] }
+                ]
+            }
+            ,{
+                id: 'badges',
+                name: 'Badges',
+                totalTriplets: 52,
+                types: [
+                    { id: 'medical', name: 'Sağlık', asset: 'assets_level4/medical.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'campfire', name: 'Kamp Ateşi', asset: 'assets_level4/campfire.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'archery', name: 'Okçuluk', asset: 'assets_level4/archery.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'binoculars_badge', name: 'Dürbün Rozeti', asset: 'assets_level4/binoculars_badge.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'rope', name: 'Düğüm', asset: 'assets_level4/rope.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'music', name: 'Müzik', asset: 'assets_level4/music.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'mountain', name: 'Dağcılık', asset: 'assets_level4/mountain.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' }
+                ],
+                patterns: [
+                    { target: [33, 30, 27], filler: [18, 17, 16, 15] },
+                    { target: [33, 30, 27], filler: [19, 17, 15, 15] },
+                    { target: [36, 30, 24], filler: [18, 17, 16, 15] },
+                    { target: [33, 27, 27], filler: [18, 18, 17, 16] }
+                ]
+            },
+            {
+                id: 'cozy',
+                name: 'Cozy',
+                totalTriplets: 52,
+                types: [
+                    { id: 'remote', name: 'Kumanda', asset: 'assets_level5/remote.png', visualScale: 0.55, physicsScale: 0.484, colliderShape: 'rect' },
+                    { id: 'boot_home', name: 'Bot', asset: 'assets_level5/boot.png', visualScale: 1.10, physicsScale: 1.012, colliderShape: 'rect' },
+                    { id: 'pillow', name: 'Yastık', asset: 'assets_level5/pillow.png', visualScale: 1.10, physicsScale: 0.99, colliderShape: 'circle' },
+                    { id: 'radio', name: 'Radyo', asset: 'assets_level5/radio.png', visualScale: 1.10, physicsScale: 1.012, colliderShape: 'rect' },
+                    { id: 'cookiejar', name: 'Kurabiye Kavanozu', asset: 'assets_level5/cookiejar.png', visualScale: 1.10, physicsScale: 0.99, colliderShape: 'rect' },
+                    { id: 'mug', name: 'Kupa', asset: 'assets_level5/mug.png', visualScale: 1.10, physicsScale: 0.968, colliderShape: 'rect' },
+                    { id: 'clock', name: 'Saat', asset: 'assets_level5/clock.png', visualScale: 1.10, physicsScale: 0.99, colliderShape: 'circle' }
+                ],
+                patterns: [
+                    { target: [33, 30, 27], filler: [18, 17, 16, 15] },
+                    { target: [33, 30, 27], filler: [19, 17, 15, 15] },
+                    { target: [36, 30, 24], filler: [18, 17, 16, 15] },
+                    { target: [33, 27, 27], filler: [18, 18, 17, 16] }
+                ]
+            },
+            {
+                id: 'cozy_plus',
+                name: 'Cozy Plus',
+                totalTriplets: 52,
+                types: [
+                    { id: 'radio2', name: 'Radyo', asset: 'assets_level6/radio.png', visualScale: 1.10, physicsScale: 1.012, colliderShape: 'rect' },
+                    { id: 'pillow2', name: 'Yastık', asset: 'assets_level6/pillow.png', visualScale: 1.10, physicsScale: 0.99, colliderShape: 'circle' },
+                    { id: 'boot2', name: 'Bot', asset: 'assets_level6/boot.png', visualScale: 1.10, physicsScale: 1.012, colliderShape: 'rect' },
+                    { id: 'clock2', name: 'Saat', asset: 'assets_level6/clock.png', visualScale: 1.10, physicsScale: 0.99, colliderShape: 'circle' },
+                    { id: 'cookiejar2', name: 'Kurabiye Kavanozu', asset: 'assets_level6/cookiejar.png', visualScale: 1.10, physicsScale: 0.99, colliderShape: 'rect' },
+                    { id: 'remote2', name: 'Kumanda', asset: 'assets_level6/remote.png', visualScale: 0.55, physicsScale: 0.484, colliderShape: 'rect' },
+                    { id: 'mug2', name: 'Kupa', asset: 'assets_level6/mug.png', visualScale: 1.10, physicsScale: 0.968, colliderShape: 'rect' }
+                ],
+                patterns: [
+                    { target: [33, 30, 27], filler: [18, 17, 16, 15] },
+                    { target: [33, 30, 27], filler: [19, 17, 15, 15] },
+                    { target: [36, 30, 24], filler: [18, 17, 16, 15] },
+                    { target: [33, 27, 27], filler: [18, 18, 17, 16] }
+                ]
+            },
+            {
+                id: 'cozy_alt',
+                name: 'Cozy Alt',
+                totalTriplets: 52,
+                types: [
+                    { id: 'radio3', name: 'Radyo', asset: 'assets_level7/radio.png', visualScale: 1.10, physicsScale: 1.012, colliderShape: 'rect' },
+                    { id: 'pillow3', name: 'Yastık', asset: 'assets_level7/pillow.png', visualScale: 1.10, physicsScale: 0.99, colliderShape: 'circle' },
+                    { id: 'boot3', name: 'Bot', asset: 'assets_level7/boot.png', visualScale: 1.10, physicsScale: 1.012, colliderShape: 'rect' },
+                    { id: 'clock3', name: 'Saat', asset: 'assets_level7/clock.png', visualScale: 1.10, physicsScale: 0.99, colliderShape: 'circle' },
+                    { id: 'cookiejar3', name: 'Kurabiye Kavanozu', asset: 'assets_level7/cookiejar.png', visualScale: 1.10, physicsScale: 0.99, colliderShape: 'rect' },
+                    { id: 'remote3', name: 'Kumanda', asset: 'assets_level7/remote.png', visualScale: 0.55, physicsScale: 0.484, colliderShape: 'rect' },
+                    { id: 'mug3', name: 'Kupa', asset: 'assets_level7/mug.png', visualScale: 1.10, physicsScale: 0.968, colliderShape: 'rect' }
+                ],
+                patterns: [
+                    { target: [33, 30, 27], filler: [18, 17, 16, 15] },
+                    { target: [33, 30, 27], filler: [19, 17, 15, 15] },
+                    { target: [36, 30, 24], filler: [18, 17, 16, 15] },
+                    { target: [33, 27, 27], filler: [18, 18, 17, 16] }
+                ]
+            },
+            {
+                id: 'sweets',
+                name: 'Sweets',
+                totalTriplets: 52,
+                types: [
+                    { id: 'gummy_red', name: 'Kırmızı Jelibon', asset: 'assets_level8/gummy_red.png', visualScale: 0.81, physicsScale: 0.729, colliderShape: 'rect', colliderWidthScale: 0.82, colliderHeightScale: 0.90, colliderBaseMinScale: 0.46, colliderChamferScale: 0.28 },
+                    { id: 'gummy_orange', name: 'Turuncu Jelibon', asset: 'assets_level8/gummy_orange.png', visualScale: 0.81, physicsScale: 0.729, colliderShape: 'rect', colliderWidthScale: 0.82, colliderHeightScale: 0.90, colliderBaseMinScale: 0.46, colliderChamferScale: 0.28 },
+                    { id: 'gummy_yellow', name: 'Sarı Jelibon', asset: 'assets_level8/gummy_yellow.png', visualScale: 0.81, physicsScale: 0.729, colliderShape: 'rect', colliderWidthScale: 0.82, colliderHeightScale: 0.90, colliderBaseMinScale: 0.46, colliderChamferScale: 0.28 },
+                    { id: 'gummy_green', name: 'Yeşil Jelibon', asset: 'assets_level8/gummy_green.png', visualScale: 0.81, physicsScale: 0.729, colliderShape: 'rect', colliderWidthScale: 0.82, colliderHeightScale: 0.90, colliderBaseMinScale: 0.46, colliderChamferScale: 0.28 },
+                    { id: 'donut_pink', name: 'Pembe Donut', asset: 'assets_level8/donut_pink.png', visualScale: 1.20, physicsScale: 1.08, colliderShape: 'circle' },
+                    { id: 'donut_glazed', name: 'Glazeli Donut', asset: 'assets_level8/donut_glazed.png', visualScale: 1.20, physicsScale: 1.08, colliderShape: 'circle' },
+                    { id: 'donut_choco', name: 'Çikolatalı Donut', asset: 'assets_level8/donut_choco.png', visualScale: 1.20, physicsScale: 1.08, colliderShape: 'circle' }
+                ],
+                patterns: [
+                    { target: [33, 30, 27], filler: [18, 17, 16, 15] },
+                    { target: [33, 30, 27], filler: [19, 17, 15, 15] },
+                    { target: [36, 30, 24], filler: [18, 17, 16, 15] },
+                    { target: [33, 27, 27], filler: [18, 18, 17, 16] }
+                ]
+            },
+            {
+                id: 'sweets_alt',
+                name: 'Sweets Alt',
+                totalTriplets: 52,
+                types: [
+                    { id: 'gummy_red2', name: 'Kırmızı Jelibon 2', asset: 'assets_level9/gummy_red2.png', visualScale: 0.81, physicsScale: 0.729, colliderShape: 'rect', colliderWidthScale: 0.82, colliderHeightScale: 0.90, colliderBaseMinScale: 0.46, colliderChamferScale: 0.28 },
+                    { id: 'gummy_orange2', name: 'Turuncu Jelibon 2', asset: 'assets_level9/gummy_orange2.png', visualScale: 0.81, physicsScale: 0.729, colliderShape: 'rect', colliderWidthScale: 0.82, colliderHeightScale: 0.90, colliderBaseMinScale: 0.46, colliderChamferScale: 0.28 },
+                    { id: 'gummy_yellow2', name: 'Sarı Jelibon 2', asset: 'assets_level9/gummy_yellow2.png', visualScale: 0.81, physicsScale: 0.729, colliderShape: 'rect', colliderWidthScale: 0.82, colliderHeightScale: 0.90, colliderBaseMinScale: 0.46, colliderChamferScale: 0.28 },
+                    { id: 'gummy_green2', name: 'Yeşil Jelibon 2', asset: 'assets_level9/gummy_green2.png', visualScale: 0.81, physicsScale: 0.729, colliderShape: 'rect', colliderWidthScale: 0.82, colliderHeightScale: 0.90, colliderBaseMinScale: 0.46, colliderChamferScale: 0.28 },
+                    { id: 'donut_pink2', name: 'Pembe Donut 2', asset: 'assets_level9/donut_pink2.png', visualScale: 1.20, physicsScale: 1.08, colliderShape: 'circle' },
+                    { id: 'donut_glazed2', name: 'Glazeli Donut 2', asset: 'assets_level9/donut_glazed2.png', visualScale: 1.20, physicsScale: 1.08, colliderShape: 'circle' },
+                    { id: 'donut_choco2', name: 'Çikolatalı Donut 2', asset: 'assets_level9/donut_choco2.png', visualScale: 1.20, physicsScale: 1.08, colliderShape: 'circle' }
+                ],
+                patterns: [
+                    { target: [33, 30, 27], filler: [18, 17, 16, 15] },
+                    { target: [33, 30, 27], filler: [19, 17, 15, 15] },
+                    { target: [36, 30, 24], filler: [18, 17, 16, 15] },
+                    { target: [33, 27, 27], filler: [18, 18, 17, 16] }
+                ]
+            },
+            {
+                id: 'home_views',
+                name: 'Home Views',
+                totalTriplets: 60,
+                types: [
+                    { id: 'rot_plant', name: 'Saksı', asset: 'assets_level10_rotate/plant_front.png', variants: [
+                        'assets_level10_rotate/plant_front.png',
+                        'assets_level10_rotate/plant_alt.png',
+                        'assets_level10_rotate/plant_bottom.png'
+                    ], physicsScale: 0.88 },
+                    { id: 'rot_armchair', name: 'Koltuk', asset: 'assets_level10_rotate/armchair_front.png', variants: [
+                        'assets_level10_rotate/armchair_front.png',
+                        'assets_level10_rotate/armchair_angle.png',
+                        'assets_level10_rotate/armchair_back.png'
+                    ], physicsScale: 0.92 },
+                    { id: 'rot_lamp', name: 'Lamba', asset: 'assets_level10_rotate/lamp_front.png', variants: [
+                        'assets_level10_rotate/lamp_front.png',
+                        'assets_level10_rotate/lamp_under.png'
+                    ], visualScale: 0.85, physicsScale: 0.78 },
+                    { id: 'rot_frame', name: 'Çerçeve', asset: 'assets_level10_rotate/frame_front.png', variants: [
+                        'assets_level10_rotate/frame_front.png',
+                        'assets_level10_rotate/frame_angle.png',
+                        'assets_level10_rotate/frame_side.png'
+                    ], physicsScale: 0.90 },
+                    { id: 'rot_bookshelf', name: 'Kitaplık', asset: 'assets_level10_rotate/bookshelf_front.png', variants: [
+                        'assets_level10_rotate/bookshelf_front.png',
+                        'assets_level10_rotate/bookshelf_right.png',
+                        'assets_level10_rotate/bookshelf_left.png'
+                    ], physicsScale: 0.93 },
+                    { id: 'rot_table', name: 'Sehpa', asset: 'assets_level10_rotate/table_front.png', variants: [
+                        'assets_level10_rotate/table_front.png',
+                        'assets_level10_rotate/table_angle.png',
+                        'assets_level10_rotate/table_bottom.png'
+                    ], physicsScale: 0.90 }
+                ],
+                patterns: [
+                    { target: [36, 33, 30], filler: [29, 27, 25] },
+                    { target: [36, 36, 27], filler: [28, 27, 26] },
+                    { target: [39, 30, 30], filler: [29, 27, 25] },
+                    { target: [33, 33, 33], filler: [28, 27, 26] }
+                ]
+            },
+            {
+                id: 'badges_plus',
+                name: 'Badges Plus',
+                totalTriplets: 52,
+                types: [
+                    { id: 'campfire2', name: 'Kamp Ateşi', asset: 'assets_level11_badges2/campfire2.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'binoculars_badge2', name: 'Dürbün Rozeti', asset: 'assets_level11_badges2/binoculars2.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'medical2', name: 'Sağlık', asset: 'assets_level11_badges2/medical2.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'archery2', name: 'Okçuluk', asset: 'assets_level11_badges2/archery2.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'mountain2', name: 'Dağcılık', asset: 'assets_level11_badges2/mountain2.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'rope2', name: 'Düğüm', asset: 'assets_level11_badges2/rope2.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'music2', name: 'Müzik', asset: 'assets_level11_badges2/music2.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' }
+                ],
+                patterns: [
+                    { target: [33, 30, 27], filler: [18, 17, 16, 15] },
+                    { target: [33, 30, 27], filler: [19, 17, 15, 15] },
+                    { target: [36, 30, 24], filler: [18, 17, 16, 15] },
+                    { target: [33, 27, 27], filler: [18, 18, 17, 16] }
+                ]
+
+            },
+            {
+                id: 'badges_plus_2',
+                name: 'Badges Plus 2',
+                totalTriplets: 52,
+                types: [
+                    { id: 'campfire3', name: 'Kamp Ateşi', asset: 'assets_level12_badges3/campfire3.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'binoculars_badge3', name: 'Dürbün Rozeti', asset: 'assets_level12_badges3/binoculars3.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'medical3', name: 'Sağlık', asset: 'assets_level12_badges3/medical3.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'archery3', name: 'Okçuluk', asset: 'assets_level12_badges3/archery3.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'mountain3', name: 'Dağcılık', asset: 'assets_level12_badges3/mountain3.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'rope3', name: 'Düğüm', asset: 'assets_level12_badges3/rope3.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'music3', name: 'Müzik', asset: 'assets_level12_badges3/music3.png', visualScale: 1.15, physicsScale: 0.90, colliderShape: 'circle' }
+                ],
+                patterns: [
+                    { target: [33, 30, 27], filler: [18, 17, 16, 15] },
+                    { target: [33, 30, 27], filler: [19, 17, 15, 15] },
+                    { target: [36, 30, 24], filler: [18, 17, 16, 15] },
+                    { target: [33, 27, 27], filler: [18, 18, 17, 16] }
+                ]
+            },
+            {
+                id: 'marine_plus',
+                name: 'Marine Plus',
+                totalTriplets: 52,
+                types: [
+                    { id: 'cap2', name: 'Şapka', asset: 'assets_level13_marine2/cap2.png', visualScale: 1.20, physicsScale: 0.96, colliderShape: 'rect' },
+                    { id: 'boat2', name: 'Tekne', asset: 'assets_level13_marine2/boat2.png', visualScale: 1.20, physicsScale: 0.96, colliderShape: 'rect' },
+                    { id: 'binoculars2', name: 'Dürbün', asset: 'assets_level13_marine2/binoculars2.png', visualScale: 1.20, physicsScale: 0.96, colliderShape: 'rect' },
+                    { id: 'anchor2', name: 'Çapa', asset: 'assets_level13_marine2/anchor2.png', visualScale: 1.20, physicsScale: 0.88, colliderShape: 'rect' },
+                    { id: 'lifebuoy2', name: 'Can Simidi', asset: 'assets_level13_marine2/lifebuoy2.png', visualScale: 1.20, physicsScale: 0.90, colliderShape: 'circle' },
+                    { id: 'starfish2', name: 'Deniz Yıldızı', asset: 'assets_level13_marine2/starfish2.png', visualScale: 1.20, physicsScale: 0.86, colliderShape: 'circle' },
+                    { id: 'wheel2', name: 'Dümen', asset: 'assets_level13_marine2/wheel2.png', visualScale: 1.20, physicsScale: 0.90, colliderShape: 'circle' }
+                ],
+                patterns: [
+                    { target: [33, 30, 27], filler: [18, 17, 16, 15] },
+                    { target: [33, 30, 27], filler: [19, 17, 15, 15] },
+                    { target: [36, 30, 24], filler: [18, 17, 16, 15] },
+                    { target: [33, 27, 27], filler: [18, 18, 17, 16] }
+                ]
+
+            },
+            {
+                id: 'candy_direct',
+                name: 'Candy Direct',
+                totalTriplets: 52,
+                types: [
+                    { id: 'gummy_red3', name: 'Kırmızı Jelibon', asset: 'assets_level14_candy_direct/gummy_red3.png', visualScale: 0.81, physicsScale: 0.729, colliderShape: 'rect', colliderWidthScale: 0.82, colliderHeightScale: 0.90, colliderBaseMinScale: 0.46, colliderChamferScale: 0.28 },
+                    { id: 'gummy_orange3', name: 'Turuncu Jelibon', asset: 'assets_level14_candy_direct/gummy_orange3.png', visualScale: 0.81, physicsScale: 0.729, colliderShape: 'rect', colliderWidthScale: 0.82, colliderHeightScale: 0.90, colliderBaseMinScale: 0.46, colliderChamferScale: 0.28 },
+                    { id: 'gummy_yellow3', name: 'Sarı Jelibon', asset: 'assets_level14_candy_direct/gummy_yellow3.png', visualScale: 0.81, physicsScale: 0.729, colliderShape: 'rect', colliderWidthScale: 0.82, colliderHeightScale: 0.90, colliderBaseMinScale: 0.46, colliderChamferScale: 0.28 },
+                    { id: 'gummy_green3', name: 'Yeşil Jelibon', asset: 'assets_level14_candy_direct/gummy_green3.png', visualScale: 0.81, physicsScale: 0.729, colliderShape: 'rect', colliderWidthScale: 0.82, colliderHeightScale: 0.90, colliderBaseMinScale: 0.46, colliderChamferScale: 0.28 },
+                    { id: 'donut_pink3', name: 'Pembe Donut', asset: 'assets_level14_candy_direct/donut_pink3.png', visualScale: 1.20, physicsScale: 1.08, colliderShape: 'circle' },
+                    { id: 'donut_white3', name: 'Beyaz Donut', asset: 'assets_level14_candy_direct/donut_white3.png', visualScale: 1.20, physicsScale: 1.08, colliderShape: 'circle' },
+                    { id: 'donut_choco3', name: 'Çikolatalı Donut', asset: 'assets_level14_candy_direct/donut_choco3.png', visualScale: 1.20, physicsScale: 1.08, colliderShape: 'circle' }
+                ],
+                patterns: [
+                    { target: [33, 30, 27], filler: [18, 17, 16, 15] },
+                    { target: [33, 30, 27], filler: [19, 17, 15, 15] },
+                    { target: [36, 30, 24], filler: [18, 17, 16, 15] },
+                    { target: [33, 27, 27], filler: [18, 18, 17, 16] }
+                ]
+            }
+
+        ];
+        const ALL_STICKER_TYPES = LEVELS.flatMap(level => level.types);
+        let currentLevelIndex = 0;
+        function getCurrentLevel() { return LEVELS[currentLevelIndex]; }
+        function getCurrentTypes() { return getCurrentLevel().types; }
+
+        const TOTAL_TRIPLETS = 48; 
+        const BASE_SIZE = 76;
+
+        const { Engine, World, Bodies, Composite, Vector, Body } = Matter;
+        let engine, world;
+        let canvas, ctx;
+        let items = [];
+        let tray = []; 
+        let animatingItems = [];
+        let gameActive = true;
+        let gamePaused = false;
+        let levelComplete = false;
+        let requiredRemainingByType = {};
+        let requiredTypeIds = [];
+        let targetDisplayIds = [];
+        let stickerImages = {};
+        let stickerOutlines = {};
+        let stickerSpriteCache = {};
+        let backgroundCanvas = null;
+
+        const TRAY_Y = 760; 
+        const FLOOR_Y = 690;
+        const ANTI_FLOAT_START_MS = 3200;
+        const POST_PICK_SETTLE_MS = 1300;
+        let antiFloatAllowedAt = 0; 
+
+        window.addEventListener('error', (e) => {
+            document.body.insertAdjacentHTML('beforeend', '<div style="position:fixed;left:10px;right:10px;bottom:10px;z-index:99999;background:#111;color:#fff;padding:10px;border-radius:8px;font:12px monospace;">JS hata: ' + e.message + '</div>');
+        });
+
+        window.onload = async () => {
+            canvas = document.getElementById('game-canvas');
+            ctx = canvas.getContext('2d');
+            canvas.width = 400;
+            canvas.height = 864;
+
+            await loadStickerImages();
+            initPhysics();
+            spawnStickers();
+
+            canvas.addEventListener('mousedown', handleInteraction);
+            canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                if(e.touches.length > 0) handleInteraction(e.touches[0]);
+            }, { passive: false });
+
+            setInterval(gameLoop, 1000 / 60);
+        };
+
+        
+        function loadImage(src) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = () => resolve(img);
+                img.onerror = () => reject(new Error(src + ' yüklenemedi'));
+                img.src = src;
+            });
+        }
+
+        async function loadStickerImages() {
+            for (const type of ALL_STICKER_TYPES) {
+                const img = await loadImage(type.asset);
+                stickerImages[type.id] = img;
+                // Always cache a silhouette so every level can cast a clean shadow.
+                // Whether the white sticker outline is actually rendered is still decided separately.
+                stickerOutlines[type.id] = makeWhiteSilhouette(img);
+                type.frontAspect = img.naturalHeight / img.naturalWidth;
+
+                type.variantKeys = [type.id];
+                if (type.variants && type.variants.length) {
+                    type.variantKeys = [];
+                    for (let i = 0; i < type.variants.length; i++) {
+                        const variantSrc = type.variants[i];
+                        const variantKey = type.id + '__v' + i;
+                        const variantImg = await loadImage(variantSrc);
+                        stickerImages[variantKey] = variantImg;
+                        stickerOutlines[variantKey] = makeWhiteSilhouette(variantImg);
+                        type.variantKeys.push(variantKey);
+                    }
+                }
+            }
+        }
+
+        function shouldUseGeneratedWhiteOutline(type) {
+            const asset = type.asset || '';
+            return !(
+                asset.startsWith('assets_level5/') ||
+                asset.startsWith('assets_level6/') ||
+                asset.startsWith('assets_level7/') ||
+                asset.startsWith('assets_level9/') ||
+                asset.startsWith('assets_level10_rotate/') ||
+                asset.startsWith('assets_level11_badges2/') ||
+                asset.startsWith('assets_level12_badges3/') ||
+                asset.startsWith('assets_level13_marine2/') ||
+                asset.startsWith('assets_level14_candy_direct/')
+            );
+        }
+
+
+        function getShadowProfile(type) {
+            const asset = (type && type.asset) || '';
+            if (asset.startsWith('assets_level10_rotate/')) {
+                return {
+                    color: 'rgba(15, 17, 26, 0.28)',
+                    blur: 16,
+                    offsetX: 4,
+                    offsetY: 9,
+                    spread: 1.75
+                };
+            }
+            return {
+                color: 'rgba(15, 17, 26, 0.18)',
+                blur: 12,
+                offsetX: 3,
+                offsetY: 7,
+                spread: 0
+            };
+        }
+
+        function makeWhiteSilhouette(img) {
+            const c = document.createElement('canvas');
+            c.width = img.naturalWidth;
+            c.height = img.naturalHeight;
+            const g = c.getContext('2d');
+            g.drawImage(img, 0, 0);
+            g.globalCompositeOperation = 'source-in';
+            g.fillStyle = '#ffffff';
+            g.fillRect(0, 0, c.width, c.height);
+            g.globalCompositeOperation = 'source-over';
+            return c;
+        }
+
+        function getStickerSprite(item, sizeMultiplier = 1) {
+            const finalW = Math.round(item.width * sizeMultiplier);
+            const finalH = Math.round(item.height * sizeMultiplier);
+            const spriteKey = item.spriteKey || item.type.id;
+            const cacheKey = spriteKey + '_' + finalW + 'x' + finalH;
+
+            if (stickerSpriteCache[cacheKey]) {
+                return stickerSpriteCache[cacheKey];
+            }
+
+            const img = stickerImages[spriteKey];
+            const outline = stickerOutlines[spriteKey];
+            const useGeneratedOutline = shouldUseGeneratedWhiteOutline(item.type) && !!outline;
+
+            const outlinePx = useGeneratedOutline ? Math.max(3, finalW * 0.042) : 0;
+            const pad = Math.ceil(Math.max(16, outlinePx + (useGeneratedOutline ? 18 : 16)));
+            const c = document.createElement('canvas');
+            c.width = Math.ceil(finalW + pad * 2);
+            c.height = Math.ceil(finalH + pad * 2);
+
+            const g = c.getContext('2d');
+            const cx = pad;
+            const cy = pad;
+
+            // Pre-render soft shadow.
+            const shadowProfile = getShadowProfile(item.type);
+            g.save();
+            g.shadowColor = shadowProfile.color;
+            g.shadowBlur = shadowProfile.blur;
+            g.shadowOffsetX = shadowProfile.offsetX;
+            g.shadowOffsetY = shadowProfile.offsetY;
+
+            if (useGeneratedOutline) {
+                const steps = 10;
+                for (let i = 0; i < steps; i++) {
+                    const a = (Math.PI * 2 * i) / steps;
+                    const ox = Math.cos(a) * outlinePx;
+                    const oy = Math.sin(a) * outlinePx;
+                    g.drawImage(outline, cx + ox, cy + oy, finalW, finalH);
+                }
+            } else {
+                // For direct-user stickers, keep the original outline untouched but still cast a clean shadow.
+                const shadowSource = outline || img;
+                const spread = shadowProfile.spread || 0;
+                if (spread > 0) {
+                    const steps = 8;
+                    for (let i = 0; i < steps; i++) {
+                        const a = (Math.PI * 2 * i) / steps;
+                        const ox = Math.cos(a) * spread;
+                        const oy = Math.sin(a) * spread;
+                        g.drawImage(shadowSource, cx + ox, cy + oy, finalW, finalH);
+                    }
+                }
+                g.drawImage(shadowSource, cx, cy, finalW, finalH);
+            }
+            g.restore();
+
+            // Main sticker art
+            g.drawImage(img, cx, cy, finalW, finalH);
+
+            // Small gloss highlight
+            g.save();
+            g.globalAlpha = 0.16;
+            g.fillStyle = '#ffffff';
+            g.beginPath();
+            g.ellipse(cx + finalW * 0.34, cy + finalH * 0.32, finalW * 0.08, finalH * 0.12, -0.35, 0, Math.PI * 2);
+            g.fill();
+            g.restore();
+
+            const sprite = { canvas: c, w: c.width, h: c.height };
+            stickerSpriteCache[cacheKey] = sprite;
+            return sprite;
+        }
+
+        function initPhysics() {
+            // Fizik iterasyonları yığın kararlılığı için artırıldı
+            engine = Engine.create({ 
+                gravity: { y: 1.6 }, 
+                positionIterations: 12, 
+                velocityIterations: 8 
+            });
+            world = engine.world;
+
+            const thickness = 100;
+            const floor = Bodies.rectangle(canvas.width / 2, FLOOR_Y + thickness/2, canvas.width, thickness, { isStatic: true, friction: 0.40 });
+            const leftWall = Bodies.rectangle(-thickness/2, canvas.height/2, thickness, canvas.height, { isStatic: true, friction: 0.1 });
+            const rightWall = Bodies.rectangle(canvas.width + thickness/2, canvas.height/2, thickness, canvas.height, { isStatic: true, friction: 0.1 });
+            
+            World.add(world, [floor, leftWall, rightWall]);
+        }
+
+        // ÇÖZÜM: İstediğin Özel Ağırlıklı Olasılık Eğrisi (0.9 zirve, 0.6 en düşük ihtimal)
+        function getWeightedColliderOffset() {
+            while (true) {
+                // 0.60 ile 1.0 arasında rastgele bir aday seç
+                let candidate = Math.random() * (1.0 - 0.60) + 0.60;
+                let probability = 0;
+
+                if (candidate <= 0.9) {
+                    // 0.6'dan (olasılık: 0.15) 0.9'a (olasılık: 1.0) doğru doğrusal artış
+                    probability = 0.15 + ((candidate - 0.6) / 0.3) * 0.85;
+                } else {
+                    // 0.9'dan (olasılık: 1.0) 1.0'a (olasılık: 0.55) doğru hafif düşüş
+                    probability = 1.0 - ((candidate - 0.9) / 0.1) * 0.45;
+                }
+
+                // Kabul-Red filtresi
+                if (Math.random() < probability) {
+                    return candidate;
+                }
+            }
+        }
+
+
+        function generateBalancedCounts() {
+            const counts = {};
+            const currentLevel = getCurrentLevel();
+            const currentTypes = [...getCurrentTypes()];
+            const shuffled = [...currentTypes].sort(() => Math.random() - 0.5);
+
+            // En yüksek 3 item hedef olacak ve mutlaka 3'ün katı spawn olacak.
+            const targetTypes = shuffled.slice(0, 3);
+            const fillerTypes = shuffled.slice(3);
+            const patterns = currentLevel.patterns || [];
+            let choice = patterns[Math.floor(Math.random() * patterns.length)] || null;
+            const expectedTotal = (currentLevel.totalTriplets || TOTAL_TRIPLETS) * 3;
+
+            const sumTarget = choice ? choice.target.reduce((a, b) => a + b, 0) : 0;
+            const sumFiller = choice ? choice.filler.reduce((a, b) => a + b, 0) : 0;
+            if (!choice || (sumTarget + sumFiller !== expectedTotal) || choice.filler.length < fillerTypes.length) {
+                // Güvenli fallback: hedefler 3'ün katı, kalan tipler dengeli.
+                if (fillerTypes.length === 4) {
+                    choice = { target: [33, 30, 27], filler: [18, 17, 16, 15] };
+                } else {
+                    choice = { target: [36, 30, 27], filler: [24, 23, 22] };
+                }
+            }
+
+            targetTypes.forEach((type, i) => {
+                counts[type.id] = choice.target[i] || 0;
+            });
+
+            fillerTypes.forEach((type, i) => {
+                counts[type.id] = choice.filler[i] || 0;
+            });
+
+            requiredRemainingByType = {};
+            requiredTypeIds = [];
+            targetDisplayIds = [];
+
+            targetTypes.forEach((type) => {
+                const count = counts[type.id] || 0;
+                requiredRemainingByType[type.id] = count;
+                requiredTypeIds.push(type.id);
+                targetDisplayIds.push(type.id);
+            });
+
+            return counts;
+        }
+
+        function buildAntiClusteredSpawnPool(countsByType) {
+            // Aynı objelerin peş peşe / aynı spawn bandında doğmasını azaltır.
+            // Tamamen eşit veya yapay dizmez; sadece son birkaç seçimi cezalandırır.
+            const remaining = getCurrentTypes()
+                .map(type => ({ type, count: countsByType[type.id] || 0 }))
+                .filter(entry => entry.count > 0);
+
+            const pool = [];
+            const recent = [];
+            const recentWindow = Math.min(4, Math.max(2, getCurrentTypes().length - 2));
+
+            while (remaining.some(entry => entry.count > 0)) {
+                const available = remaining.filter(entry => entry.count > 0);
+                let candidates = available.filter(entry => !recent.includes(entry.type.id));
+
+                // Sonlara doğru mecburen tekrar gerekebilir.
+                if (!candidates.length) {
+                    candidates = available;
+                }
+
+                // Fazla kalan tipleri biraz öne al ama recent tipi tekrar ettirme.
+                const totalLeft = candidates.reduce((sum, entry) => sum + entry.count, 0);
+                let roll = Math.random() * totalLeft;
+                let chosen = candidates[candidates.length - 1];
+
+                for (const entry of candidates) {
+                    roll -= entry.count;
+                    if (roll <= 0) {
+                        chosen = entry;
+                        break;
+                    }
+                }
+
+                pool.push(chosen.type);
+                chosen.count--;
+
+                recent.push(chosen.type.id);
+                while (recent.length > recentWindow) {
+                    recent.shift();
+                }
+            }
+
+            // İkinci pass: kalan küçük adjacency'leri lokal swap ile azalt.
+            for (let i = 1; i < pool.length; i++) {
+                if (pool[i].id === pool[i - 1].id) {
+                    for (let j = i + 1; j < pool.length; j++) {
+                        const prevOk = pool[j].id !== pool[i - 1].id;
+                        const nextOk = (i + 1 >= pool.length) || pool[j].id !== pool[i + 1].id;
+                        const jPrevOk = pool[i].id !== pool[j - 1].id;
+                        const jNextOk = (j + 1 >= pool.length) || pool[i].id !== pool[j + 1].id;
+
+                        if (prevOk && nextOk && jPrevOk && jNextOk) {
+                            const temp = pool[i];
+                            pool[i] = pool[j];
+                            pool[j] = temp;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return pool;
+        }
+
+        function getSpawnXForIndex(index, type) {
+            // Random x yerine hafif lane jitter kullanıyoruz.
+            // Böylece aynı dönemde doğan objeler tek bölgede üst üste başlamaz.
+            const xMargin = 40;
+            const laneCount = 6;
+            const usableWidth = canvas.width - xMargin * 2;
+            const laneWidth = usableWidth / laneCount;
+            const lane = (index * 3 + Math.floor(Math.random() * laneCount)) % laneCount;
+            const jitter = (Math.random() - 0.5) * laneWidth * 0.62;
+            let x = xMargin + laneWidth * (lane + 0.5) + jitter;
+            return Math.max(xMargin, Math.min(canvas.width - xMargin, x));
+        }
+
+        function spawnStickers() {
+            antiFloatAllowedAt = performance.now() + ANTI_FLOAT_START_MS;
+            const countsByType = generateBalancedCounts();
+            let pool = buildAntiClusteredSpawnPool(countsByType);
+
+            pool.forEach((type, index) => {
+                const level = getCurrentLevel();
+                // Level 2 ve 3 artık Level 1 ile aynı spawn profilini kullanır.
+                // Önceden daha sıkışık / daha geniş spawn, ilk anda ezilme ve sonra yukarı açılma yaratıyordu.
+                const x = getSpawnXForIndex(index, type);
+                const spawnModulo = 78;
+                const spawnStep = 19;
+                const waveStep = 96;
+                const spawnRow = index % spawnModulo;
+                const spawnWave = Math.floor(index / spawnModulo);
+                const y = -110 - (spawnRow * spawnStep) - (spawnWave * waveStep) + (Math.random() * 10);
+
+                const itemScale = Math.random() * (1.04 - 0.96) + 0.96;
+                const variantKeys = type.variantKeys || [type.id];
+                const spriteKey = variantKeys[Math.floor(Math.random() * variantKeys.length)];
+                const img = stickerImages[spriteKey];
+                const baseWidth = BASE_SIZE * itemScale * 0.9 * (type.visualScale || 1); // İstediğin gibi tüm objeleri ~0.9x küçült
+                const aspect = img.naturalHeight / img.naturalWidth;
+                const frontAspect = type.frontAspect || aspect;
+                const frontWidth = baseWidth;
+                const frontHeight = baseWidth * frontAspect;
+
+                // Keep alternate angles visually close to the canonical front-view size.
+                let drawWidth = baseWidth;
+                let drawHeight = baseWidth * aspect;
+                const frontMaxDim = Math.max(frontWidth, frontHeight);
+                const variantMaxDim = Math.max(drawWidth, drawHeight);
+                if (variantMaxDim > 0) {
+                    const normalize = frontMaxDim / variantMaxDim;
+                    drawWidth *= normalize;
+                    drawHeight *= normalize;
+                }
+
+                // Ağırlıklı collider scale mantığı korunur.
+                // Level 1 eski circle sistemiyle kalır.
+                // Level 2/3 gibi daha uzun/yassı assetlerde collider artık asset oranına göre rect/circle seçer.
+                const colliderOffset = getWeightedColliderOffset();
+                const physicsScale = (type.physicsScale || 1);
+                const bodyAngle = Math.random() * Math.PI;
+
+                const bodyOptions = {
+                    restitution: 0.0,
+                    friction: 0.35,
+                    frictionAir: 0.015,
+                    density: 0.01,
+                    angle: bodyAngle
+                };
+
+                let body;
+                if (type.colliderShape === 'rect') {
+                    // Varsayılan rect collider mantığını koruyoruz, ancak bazı uzun / karakter benzeri assetlerde
+                    // tip bazlı width/height ince ayarı yapabilmek için opsiyonel çarpanlar ekliyoruz.
+                    const rectBase = Math.max(drawWidth, drawHeight) * colliderOffset * physicsScale;
+                    const colliderWidthScale = (type.colliderWidthScale || 1.05);
+                    const colliderHeightScale = (type.colliderHeightScale || 1.05);
+                    const colliderBaseMinScale = (type.colliderBaseMinScale || 0.54);
+                    const colliderChamferScale = (type.colliderChamferScale || 0.20);
+                    const colliderW = Math.max(30, drawWidth * colliderOffset * physicsScale * colliderWidthScale, rectBase * colliderBaseMinScale);
+                    const colliderH = Math.max(30, drawHeight * colliderOffset * physicsScale * colliderHeightScale, rectBase * colliderBaseMinScale);
+                    body = Bodies.rectangle(x, y, colliderW, colliderH, {
+                        ...bodyOptions,
+                        chamfer: { radius: Math.min(14, Math.min(colliderW, colliderH) * colliderChamferScale) }
+                    });
+                } else {
+                    const physicsRadius = (Math.max(drawWidth, drawHeight) / 2) * colliderOffset * 0.95 * physicsScale;
+                    body = Bodies.circle(x, y, physicsRadius, bodyOptions);
+                }
+
+                items.push({
+                    id: 'premium_' + Date.now() + '_' + index,
+                    body: body,
+                    type: type,
+                    width: drawWidth,
+                    height: drawHeight,
+                    frontWidth: frontWidth,
+                    frontHeight: frontHeight,
+                    spriteKey: spriteKey,
+                    scale: itemScale,
+                    colliderOffset: colliderOffset,
+                    colliderShape: type.colliderShape || 'circle',
+                    stableDepthBias: (colliderOffset * (type.colliderShape === 'rect' ? 58 : 74)) + ((index % 9) * 0.35),
+                    lastAntiFloatY: y,
+                    antiFloatReady: false
+                });
+
+                World.add(world, body);
+            });
+        }
+
+
+        function getBackgroundCanvas() {
+            if (backgroundCanvas) return backgroundCanvas;
+
+            const bg = document.createElement('canvas');
+            bg.width = canvas.width;
+            bg.height = canvas.height;
+            const bctx = bg.getContext('2d');
+
+            bctx.clearRect(0, 0, bg.width, bg.height);
+            bctx.strokeStyle = '#eef3fa';
+            bctx.lineWidth = 1;
+
+            for (let x = 0; x < bg.width; x += 22) {
+                bctx.beginPath();
+                bctx.moveTo(x, 0);
+                bctx.lineTo(x, bg.height);
+                bctx.stroke();
+            }
+            for (let y = 0; y < bg.height; y += 22) {
+                bctx.beginPath();
+                bctx.moveTo(0, y);
+                bctx.lineTo(bg.width, y);
+                bctx.stroke();
+            }
+
+            backgroundCanvas = bg;
+            return backgroundCanvas;
+        }
+
+        function getCanvasSlotX(slotIndex) {
+            const barWidth = canvas.width - 40;
+            const slotWidth = barWidth / 7;
+            return 20 + (slotWidth / 2) + (slotIndex * slotWidth);
+        }
+
+
+
+        function hideAllOverlays() {
+            const win = document.getElementById('win-screen');
+            const fail = document.getElementById('fail-screen');
+            [win, fail].forEach(el => {
+                if (!el) return;
+                el.classList.remove('active');
+                el.style.opacity = '';
+                el.style.pointerEvents = '';
+                el.style.display = '';
+            });
+        }
+
+        function clearCurrentLevelState() {
+            items.forEach(item => Composite.remove(world, item.body));
+            items = [];
+            tray = [];
+            animatingItems = [];
+            requiredRemainingByType = {};
+            requiredTypeIds = [];
+            targetDisplayIds = [];
+            gameActive = true;
+            gamePaused = false;
+            levelComplete = false;
+        }
+
+        function goToNextLevel() {
+            currentLevelIndex = (currentLevelIndex + 1) % LEVELS.length;
+            resetGame();
+        }
+
+        function skipLevel() {
+            goToNextLevel();
+        }
+
+        function showWinScreen() {
+            levelComplete = true;
+            gamePaused = false;
+            gameActive = false;
+
+            const win = document.getElementById('win-screen');
+            if (win) {
+                win.classList.add('active');
+                win.style.opacity = '1';
+                win.style.pointerEvents = 'auto';
+                win.style.display = 'flex';
+                win.style.zIndex = '9999';
+            }
+        }
+
+        function getItemDepth(item) {
+            // Safer stable depth:
+            // y etkisi azaltıldı, colliderOffset etkisi artırıldı.
+            // Visual interpolation eklemiyoruz; v31'in çalışan render akışı korunuyor.
+            return (item.colliderOffset * 9000) + ((item.stableDepthBias || 0) * 8) + (item.body.position.y * 0.12);
+        }
+
+        function isPointInsideOrientedItem(item, pointX, pointY) {
+            // OBB hit-test:
+            // Screen point'i objenin local space'ine çevirip, rotasyonlu width/height kutusunda arıyoruz.
+            const dx = pointX - item.body.position.x;
+            const dy = pointY - item.body.position.y;
+
+            const cos = Math.cos(-item.body.angle);
+            const sin = Math.sin(-item.body.angle);
+
+            const localX = dx * cos - dy * sin;
+            const localY = dx * sin + dy * cos;
+
+            const hitMargin = 2;
+            return (
+                localX >= -item.width / 2 - hitMargin &&
+                localX <=  item.width / 2 + hitMargin &&
+                localY >= -item.height / 2 - hitMargin &&
+                localY <=  item.height / 2 + hitMargin
+            );
+        }
+
+        function handleInteraction(e) {
+            const rect = canvas.getBoundingClientRect();
+            const clickX = (e.clientX || e.pageX) - rect.left;
+            const clickY = (e.clientY || e.pageY) - rect.top;
+
+            if (isPointInPauseButton(clickX, clickY)) {
+                if (!levelComplete) {
+                    gamePaused = !gamePaused;
+                }
+                return;
+            }
+
+            if (!gameActive || gamePaused) return;
+
+            let clickedIndex = -1;
+
+            // Render sırası ile birebir aynı depth metriğini kullanıyoruz.
+            // En önde çizilen objeden geriye doğru taranır.
+            const sortedCheck = [...items].sort((a, b) => getItemDepth(a) - getItemDepth(b));
+
+            for (let i = sortedCheck.length - 1; i >= 0; i--) {
+                const item = sortedCheck[i];
+
+                if (isPointInsideOrientedItem(item, clickX, clickY)) {
+                    clickedIndex = items.indexOf(item);
+                    break;
+                }
+            }
+
+            if (clickedIndex !== -1) {
+                const targetSticker = items[clickedIndex];
+                if (tray.length >= 7) return;
+
+                Composite.remove(world, targetSticker.body);
+                items.splice(clickedIndex, 1);
+                antiFloatAllowedAt = performance.now() + POST_PICK_SETTLE_MS;
+                items.forEach(it => {
+                    it.lastAntiFloatY = it.body.position.y;
+                    it.antiFloatReady = false;
+                });
+
+                let insertIndex = tray.length;
+                for (let i = 0; i < tray.length; i++) {
+                    if (tray[i].type.id === targetSticker.type.id) {
+                        insertIndex = i + 1;
+                    }
+                }
+
+                let trayElement = {
+                    id: targetSticker.id,
+                    type: targetSticker.type,
+                    // Tray uses the canonical front-view art for this type, not the clicked angle variant.
+                    width: targetSticker.frontWidth || targetSticker.width,
+                    height: targetSticker.frontHeight || targetSticker.height,
+                    isPlaceholder: true,
+                    currentX: targetSticker.body.position.x,
+                    currentY: targetSticker.body.position.y,
+                    currentAngle: targetSticker.body.angle
+                };
+
+                tray.splice(insertIndex, 0, trayElement);
+
+                animatingItems.push({
+                    trayItem: trayElement,
+                    startX: targetSticker.body.position.x,
+                    startY: targetSticker.body.position.y,
+                    startAngle: targetSticker.body.angle,
+                    progress: 0
+                });
+            }
+        }
+
+
+        function preventLateFloatOnly() {
+            // Fast start korunur: antiFloatAllowedAt dolana kadar fizik motoruna dokunmuyoruz.
+            // Sonrasında pozisyon zorlaması yok; yalnızca süzülmeyi azaltan velocity damping var.
+            if (!gameActive) return;
+
+            const active = performance.now() >= antiFloatAllowedAt;
+            if (!active) return;
+
+            items.forEach(item => {
+                const body = item.body;
+
+                // Yukarı doğru kalan drift'i daha sert bastır.
+                // Bu, v58'de kalan yavaş süzülmeyi azaltır ama Body.setPosition kullanmaz.
+                if (body.velocity.y < -0.006) {
+                    Body.setVelocity(body, {
+                        x: body.velocity.x * 0.90,
+                        y: body.velocity.y * 0.38
+                    });
+                    Body.setAngularVelocity(body, body.angularVelocity * 0.88);
+                }
+
+                // Genel mikro drift/titreşim damping'i.
+                Body.setVelocity(body, {
+                    x: body.velocity.x * 0.965,
+                    y: body.velocity.y * 0.965
+                });
+
+                Body.setAngularVelocity(body, body.angularVelocity * 0.94);
+
+                if (
+                    Math.abs(body.velocity.x) < 0.035 &&
+                    Math.abs(body.velocity.y) < 0.035 &&
+                    Math.abs(body.angularVelocity) < 0.0035
+                ) {
+                    Body.setVelocity(body, { x: 0, y: 0 });
+                    Body.setAngularVelocity(body, 0);
+                }
+            });
+        }
+
+        function gameLoop() {
+            if (!levelComplete && shouldCompleteLevel()) {
+                showWinScreen();
+            }
+
+            if (gameActive && !gamePaused) {
+                Engine.update(engine, 1000 / 60);
+                preventLateFloatOnly();
+            }
+
+            if (!gamePaused) {
+            for (let i = animatingItems.length - 1; i >= 0; i--) {
+                let anim = animatingItems[i];
+                anim.progress += 0.15; 
+
+                let currentSlotIndex = tray.indexOf(anim.trayItem);
+                if (currentSlotIndex === -1) {
+                    animatingItems.splice(i, 1);
+                    continue;
+                }
+
+                let targetX = getCanvasSlotX(currentSlotIndex);
+
+                anim.trayItem.currentX = anim.startX + (targetX - anim.startX) * anim.progress;
+                anim.trayItem.currentY = anim.startY + (TRAY_Y - anim.startY) * anim.progress;
+                anim.trayItem.currentAngle = anim.startAngle * (1 - anim.progress);
+
+                if (anim.progress >= 1) {
+                    anim.trayItem.currentX = targetX;
+                    anim.trayItem.currentY = TRAY_Y;
+                    anim.trayItem.currentAngle = 0;
+                    anim.trayItem.isPlaceholder = false;
+                    animatingItems.splice(i, 1);
+                    
+                    checkMatches();
+                }
+            }
+
+            tray.forEach((item, index) => {
+                if (!item.isPlaceholder) {
+                    let targetX = getCanvasSlotX(index);
+                    item.currentX += (targetX - item.currentX) * 0.28;
+                    item.currentY += (TRAY_Y - item.currentY) * 0.28;
+                }
+            });
+
+            // Required hedefler bittiyse, bonus eşya kalsa bile level tamamlanır.
+            if (gameActive && shouldCompleteLevel()) {
+                showWinScreen();
+            }
+
+            }
+
+            render();
+        }
+
+
+        function getActiveCountForType(typeId) {
+            let count = 0;
+
+            items.forEach(item => {
+                if (item.type.id === typeId) count++;
+            });
+
+            tray.forEach(item => {
+                if (item.type && item.type.id === typeId) count++;
+            });
+
+            return count;
+        }
+
+        function getRequiredRemainingTotal() {
+            return requiredTypeIds.reduce((sum, typeId) => {
+                return sum + Math.max(0, requiredRemainingByType[typeId] || 0);
+            }, 0);
+        }
+
+        function getRequiredRemainingTriplets(typeId) {
+            return Math.max(0, Math.ceil((requiredRemainingByType[typeId] || 0) / 3));
+        }
+
+        function getRequiredRemainingTripletTotal() {
+            return requiredTypeIds.reduce((sum, typeId) => sum + getRequiredRemainingTriplets(typeId), 0);
+        }
+
+        function isRequiredType(typeId) {
+            return requiredTypeIds.includes(typeId);
+        }
+
+        function targetsActuallyCleared() {
+            // Sayaçta desync olursa diye güvenlik:
+            // hedef 3 tipin aktif item sayısı da sıfırlanmışsa success.
+            return requiredTypeIds.length > 0 && requiredTypeIds.every(typeId => getActiveCountForType(typeId) === 0);
+        }
+
+        function shouldCompleteLevel() {
+            return (requiredTypeIds.length > 0) && (getRequiredRemainingTotal() === 0 || targetsActuallyCleared());
+        }
+
+        function getTypeById(typeId) {
+            return getCurrentTypes().find(t => t.id === typeId) || ALL_STICKER_TYPES.find(t => t.id === typeId);
+        }
+
+        function getPauseButtonRect() {
+            const size = 40;
+            return { x: canvas.width - size - 16, y: 48, w: size, h: size };
+        }
+
+        function isPointInPauseButton(px, py) {
+            const r = getPauseButtonRect();
+            return px >= r.x && px <= r.x + r.w && py >= r.y && py <= r.y + r.h;
+        }
+
+        function drawPauseButton() {
+            const r = getPauseButtonRect();
+
+            ctx.save();
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.94)';
+            ctx.strokeStyle = 'rgba(186, 198, 220, 1)';
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.roundRect(r.x, r.y, r.w, r.h, 16); ctx.fill(); ctx.stroke();
+
+            ctx.fillStyle = '#324260';
+            if (!gamePaused) {
+                ctx.beginPath(); ctx.roundRect(r.x + 12, r.y + 10, 5, 20, 3); ctx.fill();
+                ctx.beginPath(); ctx.roundRect(r.x + 23, r.y + 10, 5, 20, 3); ctx.fill();
+            } else {
+                ctx.beginPath();
+                ctx.moveTo(r.x + 15, r.y + 10);
+                ctx.lineTo(r.x + 15, r.y + 30);
+                ctx.lineTo(r.x + 29, r.y + 20);
+                ctx.closePath();
+                ctx.fill();
+            }
+            ctx.restore();
+        }
+
+        function drawTargetObjectiveCards() {
+            const orderedIds = [...targetDisplayIds].sort((a, b) => (requiredRemainingByType[b] || 0) - (requiredRemainingByType[a] || 0));
+
+            const panelW = 208;
+            const panelH = 56;
+            const panelX = Math.round((canvas.width - panelW) / 2);
+            const panelY = 46;
+
+            ctx.save();
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+            ctx.strokeStyle = 'rgba(186, 198, 220, 1)';
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.roundRect(panelX, panelY, panelW, panelH, 24); ctx.fill(); ctx.stroke();
+            ctx.restore();
+
+            const slotSize = 38;
+            const gap = 17;
+            const totalW = (slotSize * 3) + (gap * 2);
+            const startX = panelX + Math.round((panelW - totalW) / 2);
+            const slotY = panelY + 9;
+
+            orderedIds.forEach((typeId, i) => {
+                const type = getTypeById(typeId);
+                if (!type) return;
+
+                const remaining = Math.max(0, requiredRemainingByType[typeId] || 0);
+                const cleared = remaining <= 0;
+
+                const x = startX + i * (slotSize + gap);
+                const y = slotY;
+
+                ctx.fillStyle = cleared ? '#e7f7ec' : '#eef3fb';
+                ctx.strokeStyle = cleared ? '#7fd29a' : '#c2cde0';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(x + slotSize / 2, y + slotSize / 2, slotSize / 2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+
+                const fakeItem = {
+                    type: type,
+                    width: BASE_SIZE * 0.54 * (type.visualScale || 1),
+                    height: BASE_SIZE * 0.54 * (type.visualScale || 1)
+                };
+                drawStickerElement(ctx, fakeItem, x + slotSize / 2, y + slotSize / 2, 0, 0.54);
+
+                const bubbleW = 18;
+                const bubbleH = 17;
+                const bubbleX = x + slotSize - 11;
+                const bubbleY = y + slotSize - 11;
+
+                ctx.fillStyle = cleared ? '#4dc270' : '#ff944d';
+                ctx.strokeStyle = 'rgba(255,255,255,0.98)';
+                ctx.lineWidth = 2;
+                ctx.beginPath(); ctx.roundRect(bubbleX, bubbleY, bubbleW, bubbleH, 9); ctx.fill(); ctx.stroke();
+
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 10px Nunito, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(String(remaining), bubbleX + bubbleW / 2, bubbleY + bubbleH / 2 + 0.5);
+            });
+
+            drawPauseButton();
+        }
+
+        function checkMatches() {
+            let matchedAny = false;
+            let found = true;
+
+            while (found) {
+                found = false;
+
+                for (let i = 0; i <= tray.length - 3; i++) {
+                    if (!tray[i].isPlaceholder && !tray[i+1].isPlaceholder && !tray[i+2].isPlaceholder) {
+                        if (tray[i].type.id === tray[i+1].type.id && tray[i+1].type.id === tray[i+2].type.id) {
+                            const matchedTypeId = tray[i].type.id;
+                            tray.splice(i, 3);
+
+                            if (isRequiredType(matchedTypeId)) {
+                                requiredRemainingByType[matchedTypeId] = Math.max(0, (requiredRemainingByType[matchedTypeId] || 0) - 3);
+                            }
+
+                            matchedAny = true;
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            // Success yalnızca hedon 3 eşya tamamen bittiğinde.
+            if (shouldCompleteLevel()) {
+                showWinScreen();
+                return;
+            }
+
+            if (!levelComplete && tray.length >= 7) {
+                let activePlaceholders = tray.filter(it => it.isPlaceholder).length;
+                if (activePlaceholders === 0 && !matchedAny) {
+                    gameActive = false;
+                    document.getElementById('fail-screen').classList.add('active');
+                }
+            }
+        }
+
+        // --- PREMIUM CASUAL ASSET VECTOR ART ENGINE ---
+        // --- Bizim Sticker Asset Render Katmanı ---
+        function drawStickerElement(context, item, x, y, angle, sizeMultiplier = 1) {
+            // Optimized render path:
+            // outline + shadow + gloss are pre-rendered once into an offscreen canvas.
+            // Runtime now only rotates and draws one cached sprite.
+            const sprite = getStickerSprite(item, sizeMultiplier);
+
+            context.save();
+            context.translate(x, y);
+            context.rotate(angle);
+            context.drawImage(sprite.canvas, -sprite.w / 2, -sprite.h / 2);
+            context.restore();
+        }
+
+        function render() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Kareli Defter Planı
+            ctx.drawImage(getBackgroundCanvas(), 0, 0);
+
+            // Alt Eşleştirme Barı
+            ctx.fillStyle = '#d0daf0'; 
+            ctx.beginPath(); ctx.roundRect(14, TRAY_Y - 38, canvas.width - 28, 76, 22); ctx.fill();
+
+            for (let i = 0; i < 7; i++) {
+                const slotX = getCanvasSlotX(i);
+                ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#b2c0d6'; ctx.lineWidth = 2;
+                ctx.beginPath(); ctx.roundRect(slotX - 21, TRAY_Y - 28, 42, 56, 12); ctx.fill(); ctx.stroke();
+            }
+
+            // Ana Fizik Yığın Çizimi (Derinlik Sıralı)
+            const sortedPile = [...items].sort((a, b) => getItemDepth(a) - getItemDepth(b));
+            sortedPile.forEach(item => {
+                drawStickerElement(ctx, item, item.body.position.x, item.body.position.y, item.body.angle);
+            });
+
+            // Animasyonlu / Sabit Bar Objeleri
+            tray.forEach((item) => {
+                drawStickerElement(ctx, item, item.currentX, item.currentY, item.currentAngle, 0.68);
+            });
+
+            drawTargetObjectiveCards();
+
+            if (gamePaused && !levelComplete) {
+                ctx.fillStyle = 'rgba(11, 18, 34, 0.08)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+            drawCompletionFallbackBanner();
+        }
+
+
+        function drawCompletionFallbackBanner() {
+            if (!levelComplete) return;
+
+            ctx.save();
+            ctx.fillStyle = 'rgba(8, 13, 25, 0.62)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#ffffff';
+            ctx.strokeStyle = '#6f39ff';
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.roundRect(42, 330, canvas.width - 84, 150, 24);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.fillStyle = '#222533';
+            ctx.font = '900 30px Nunito, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('Tamamlandı!', canvas.width / 2, 382);
+
+            ctx.font = '700 15px Nunito, sans-serif';
+            ctx.fillStyle = '#596273';
+            ctx.fillText('Hedef eşyalar temizlendi.', canvas.width / 2, 422);
+            ctx.restore();
+        }
+
+        function resetGame() {
+            hideAllOverlays();
+            clearCurrentLevelState();
+            spawnStickers();
+        }
+    </script>
+</body>
+</html>

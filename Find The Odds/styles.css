@@ -1,0 +1,243 @@
+:root{
+  --tray-h: 92px;
+}
+
+*{ box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html,body{
+  margin:0; height:100%;
+  background:#1b2440;
+  font-family: "Baloo 2", "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  overflow:hidden;
+  user-select:none; -webkit-user-select:none;
+}
+
+.phone{
+  position:relative;
+  width:min(440px, 100vw);
+  height:min(900px, 100vh);
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  background:
+    radial-gradient(120% 80% at 50% -10%, #6f9bff 0%, #4f78e6 38%, #3358c4 70%, #294aac 100%);
+  overflow:hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,.5);
+}
+
+/* ---------- HUD ---------- */
+.hud{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 18px 8px;
+  flex:0 0 auto;
+}
+/* lives — top-left of the HUD */
+.hearts{ display:flex; gap:3px; align-items:center; }
+.heart{
+  font-size:26px; line-height:1;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.3));
+  transition: transform .2s ease;
+}
+.heart.lost{
+  filter: grayscale(1) brightness(1.5) opacity(.35);
+  animation: heartBreak .45s ease;
+}
+@keyframes heartBreak{
+  0%{ transform:scale(1); }
+  35%{ transform:scale(1.45) rotate(-12deg); }
+  100%{ transform:scale(.92); }
+}
+
+.level-name{
+  flex:1 1 auto; min-width:0;
+  text-align:center; padding:0 8px;
+  font-weight:800; font-size:15px; letter-spacing:.3px;
+  color:#fff; opacity:.92;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  text-shadow: 0 2px 4px rgba(0,0,0,.3);
+}
+.hud-actions{ display:flex; align-items:center; gap:7px; flex:0 0 auto; }
+
+.icon-btn{
+  width:40px; height:40px; border-radius:13px; border:none;
+  background:rgba(255,255,255,.16); color:#fff; font-size:20px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 3px 0 rgba(0,0,0,.18);
+  transition: transform .12s ease, background .12s ease;
+}
+.icon-btn:hover{ background:rgba(255,255,255,.26); }
+.icon-btn:active{ transform: translateY(2px); }
+.restart:active{ transform: translateY(2px) rotate(-25deg); }
+.hint-btn:active{ transform: translateY(2px) scale(1.05); }
+
+/* odds-left counter, pinned to the top-left of the tray */
+.odd-count{
+  position:absolute;
+  left:12px;
+  bottom: calc(var(--tray-h) - 7px);   /* sits on the top-left edge of the tray */
+  z-index:25;
+  display:flex; align-items:center; gap:4px;
+  height:30px; padding:0 11px; border-radius:12px;
+  background: rgba(20,30,60,.82); color:#fff;
+  font-weight:800; line-height:1;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.14), 0 4px 10px rgba(0,0,0,.4);
+}
+.odd-num{ font-size:18px; min-width:12px; text-align:center; }
+.odd-count.bump{ animation: bump .35s cubic-bezier(.3,1.6,.5,1); }
+@keyframes bump{ 0%{ transform:scale(1);} 45%{ transform:scale(1.28);} 100%{ transform:scale(1);} }
+
+/* ---------- Stage ---------- */
+.stage{
+  position:relative;
+  flex:1 1 auto;
+  overflow:hidden;
+  touch-action:none;
+}
+
+/* the visible "bin" where stickers pile up */
+.playfield{
+  position:absolute;
+  left:10px; right:10px; top:6px;
+  bottom: var(--tray-h);
+  border-radius:22px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.10), rgba(0,0,0,.06));
+  box-shadow:
+    inset 0 2px 10px rgba(0,0,0,.18),
+    inset 0 0 0 2px rgba(255,255,255,.10);
+  z-index:1;
+}
+
+/* holders */
+.tray{
+  position:absolute; left:0; right:0; bottom:0;
+  height:var(--tray-h);
+  display:flex; flex-wrap:wrap; gap:6px; align-items:center; align-content:center; justify-content:center;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.28));
+  z-index:5;
+}
+.slot{
+  flex:0 0 auto; aspect-ratio:1/1;
+  border-radius:14px;
+  background: rgba(10,18,45,.55);
+  box-shadow: inset 0 3px 8px rgba(0,0,0,.5), inset 0 0 0 2px rgba(255,255,255,.06);
+  transition: box-shadow .15s ease;
+}
+.slot.filled{ box-shadow: inset 0 0 0 2px rgba(255,255,255,.18), 0 0 14px rgba(120,170,255,.35); }
+
+/* pile layer — clipped to the rounded bin (clip-path set by JS) so
+   stickers stay inside the play area and never cover the holders */
+.stickers{
+  position:absolute; inset:0;
+  z-index:10;
+  pointer-events:none;
+}
+/* flying / parked-in-holder layer — unclipped, sits above the tray */
+.fly{
+  position:absolute; inset:0;
+  z-index:20;
+  pointer-events:none;
+}
+.sticker{
+  position:absolute; top:0; left:0;
+  width:var(--d); height:var(--d);
+  margin-left:calc(var(--d) / -2);
+  margin-top:calc(var(--d) / -2);
+  will-change: transform;
+  transform: translate(-9999px,-9999px);
+}
+.sticker img{
+  width:100%; height:100%; object-fit:contain;
+  filter: drop-shadow(0 5px 4px rgba(0,0,0,.35));
+  pointer-events:none; -webkit-user-drag:none;
+}
+.sticker.flying{ transition: transform .42s cubic-bezier(.34,1.25,.5,1); }
+.sticker.flying img{ filter: drop-shadow(0 8px 8px rgba(0,0,0,.4)); }
+
+/* wrong tap: wiggle the sticker in place (img transform, so it doesn't
+   fight the physics transform on the parent) */
+.sticker.shaking img{ animation: wiggle .4s ease; transform-origin:50% 60%; }
+@keyframes wiggle{
+  0%,100%{ transform: rotate(0) translateX(0); }
+  12%{ transform: rotate(-11deg) translateX(-3px); }
+  28%{ transform: rotate(10deg)  translateX(3px); }
+  44%{ transform: rotate(-8deg)  translateX(-2px); }
+  60%{ transform: rotate(6deg); }
+  76%{ transform: rotate(-4deg); }
+  88%{ transform: rotate(2deg); }
+}
+
+/* red X that pops over a wrongly-tapped sticker */
+.xmark{
+  position:absolute; top:0; left:0;
+  width:46px; height:46px; margin:-23px 0 0 -23px;
+  border-radius:50%;
+  background: radial-gradient(circle at 38% 32%, #ff6a5a, #e0231c);
+  color:#fff; font-size:28px; font-weight:900; line-height:46px; text-align:center;
+  box-shadow: 0 5px 14px rgba(180,20,20,.5), inset 0 0 0 3px rgba(255,255,255,.85);
+  z-index:30; pointer-events:none;
+  animation: xpop .6s ease forwards;
+}
+@keyframes xpop{
+  0%{ transform: scale(.3); opacity:0; }
+  22%{ transform: scale(1.18); opacity:1; }
+  68%{ transform: scale(1); opacity:1; }
+  100%{ transform: scale(1); opacity:0; }
+}
+
+/* spark ring when an odd one is found */
+.spark{
+  position:absolute; top:0; left:0; width:10px; height:10px;
+  margin:-5px 0 0 -5px; border-radius:50%;
+  border:3px solid rgba(255,255,255,.9);
+  z-index:20; pointer-events:none;
+  animation: spark .4s ease-out forwards;
+}
+@keyframes spark{
+  from{ transform: scale(.3); opacity:.9; }
+  to{ transform: scale(7); opacity:0; }
+}
+
+/* ---------- Win ---------- */
+.win{
+  position:absolute; inset:0; z-index:50;
+  display:none; align-items:center; justify-content:center;
+  background: rgba(10,18,45,.55); backdrop-filter: blur(3px);
+}
+.win.show{ display:flex; animation: fade .25s ease; }
+@keyframes fade{ from{opacity:0;} to{opacity:1;} }
+.win-card{
+  background: linear-gradient(180deg,#fff,#eef3ff);
+  border-radius:24px; padding:28px 30px; text-align:center;
+  box-shadow: 0 20px 50px rgba(0,0,0,.45);
+  animation: pop-in .4s cubic-bezier(.2,1.5,.4,1);
+}
+@keyframes pop-in{ from{ transform:scale(.7); opacity:0;} to{ transform:scale(1); opacity:1;} }
+.win-emoji{ font-size:52px; }
+.win-text{ font-weight:800; font-size:22px; color:#2a3a7a; margin:6px 0 16px; }
+.win-btn{
+  border:none; cursor:pointer;
+  background: linear-gradient(180deg,#4f9bff,#2f6fe0);
+  color:#fff; font-weight:800; font-size:17px;
+  padding:12px 26px; border-radius:16px;
+  box-shadow: 0 5px 0 #1f4fb0;
+  transition: transform .1s ease;
+}
+.win-btn:active{ transform: translateY(4px); box-shadow:0 1px 0 #1f4fb0; }
+
+/* ---------- Fail (auto-restarts) ---------- */
+.fail{
+  position:absolute; inset:0; z-index:50;
+  display:none; align-items:center; justify-content:center;
+  background: rgba(70,10,18,.5); backdrop-filter: blur(3px);
+}
+.fail.show{ display:flex; animation: fade .25s ease; }
+.fail-card{
+  background: linear-gradient(180deg,#fff,#ffeef0);
+  border-radius:24px; padding:26px 34px; text-align:center;
+  box-shadow: 0 20px 50px rgba(0,0,0,.45);
+  animation: pop-in .4s cubic-bezier(.2,1.5,.4,1);
+}
+.fail-emoji{ font-size:52px; animation: heartBreak .5s ease; }
+.fail-text{ font-weight:800; font-size:22px; color:#b3243a; margin-top:6px; }

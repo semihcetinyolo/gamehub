@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=390, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Pack It Up!</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{width:100%;height:100%;overflow:hidden;background:#1a1a2e;}
+body{width:390px;height:844px;margin:0 auto;overflow:hidden;font-family:'Nunito','Arial Rounded MT Bold',sans-serif;user-select:none;touch-action:none;background:#1a1a2e;}
+#scr{position:relative;width:390px;height:844px;overflow:hidden;}
+#bg{position:absolute;inset:0;z-index:0;}
+/* HEADER */
+#hdr{position:absolute;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:10px 14px 0;pointer-events:none;}
+.pill{font-size:.7rem;font-weight:900;letter-spacing:1.5px;color:rgba(255,255,255,.92);background:rgba(0,0,0,.3);padding:5px 12px;border-radius:20px;backdrop-filter:blur(8px);pointer-events:auto;}
+#htitle{font-size:1.05rem;font-weight:900;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.35);}
+/* BAG */
+#bag-area{position:absolute;left:0;right:0;z-index:10;display:flex;flex-direction:column;align-items:center;}
+/* GRID */
+#grid-wrap{position:relative;}
+#grid{display:grid;position:relative;z-index:1;}
+.gc{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.13);border-radius:4px;transition:background .15s,border-color .15s;}
+.gc.filled{background:rgba(0,0,0,.38);border-color:rgba(0,0,0,.18);}
+.on-base .gc{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.18);}
+.on-base .gc.filled{background:rgba(0,0,0,.26);border-color:rgba(0,0,0,.16);box-shadow:inset 0 2px 6px rgba(0,0,0,.3);}
+.gc.ok{background:rgba(120,255,160,.35);border-color:rgba(120,255,160,.7);}
+.gc.no{background:rgba(255,80,80,.35);border-color:rgba(255,80,80,.6);}
+/* PLACED */
+#placed-layer{position:absolute;top:0;left:0;pointer-events:none;z-index:4;}
+#snap-shadow{position:absolute;pointer-events:none;z-index:2;border-radius:10px;opacity:0;transition:opacity .12s;}
+.pi{position:absolute;cursor:grab;pointer-events:auto;border-radius:8px;overflow:hidden;}
+.pi.fresh{animation:pop .24s cubic-bezier(.175,.885,.32,1.275) both;}
+@keyframes pop{from{transform:scale(.7);opacity:.3}to{transform:scale(1);opacity:1}}
+/* SCATTER */
+#scatter{position:absolute;inset:0;pointer-events:none;z-index:20;}
+#global-placed{position:absolute;inset:0;pointer-events:none;z-index:12;}
+.si{position:absolute;cursor:grab;touch-action:none;filter:drop-shadow(0 11px 13px rgba(0,0,0,.45));will-change:transform;}
+.si.drag{opacity:.12;}
+/* GHOST */
+#ghost{position:fixed;pointer-events:none;z-index:9000;display:none;transform-origin:center center;filter:drop-shadow(0 24px 30px rgba(0,0,0,.55));}
+/* SUITCASE */
+.sc-handle-wrap{position:relative;width:100%;display:flex;justify-content:center;align-items:flex-end;}
+.sc-handle-arc{position:absolute;top:4px;border:8px solid currentColor;border-bottom:none;border-radius:18px 18px 0 0;width:78px;height:26px;}
+.sc-post{position:absolute;bottom:0;width:10px;border-radius:5px 5px 0 0;}
+.sc-body{position:relative;}
+.sc-corner{position:absolute;width:20px;height:20px;border-radius:6px;}
+.sc-corner.tl{top:7px;left:7px}.sc-corner.tr{top:7px;right:7px}
+.sc-corner.bl{bottom:8px;left:7px}.sc-corner.br{bottom:8px;right:7px}
+.sc-stripe{position:absolute;top:0;bottom:0;width:10px;}
+.sc-stripe.l{left:4px;border-radius:5px}.sc-stripe.r{right:4px;border-radius:5px}
+.sc-latch{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);width:32px;height:16px;border-radius:6px;border:2px solid rgba(0,0,0,.2);}
+.sc-latch::after{content:'';position:absolute;top:3px;left:50%;transform:translateX(-50%);width:12px;height:7px;background:rgba(0,0,0,.18);border-radius:3px;}
+.sc-wheels{position:relative;width:100%;height:18px;}
+.sc-wheel{position:absolute;bottom:2px;width:26px;height:14px;border-radius:7px;box-shadow:0 3px 6px rgba(0,0,0,.4);}
+.sc-wheel.l{left:18px}.sc-wheel.r{right:18px}
+.sc-wheel::after{content:'';position:absolute;inset:3px;border-radius:50%;border:2px solid rgba(0,0,0,.25);}
+/* BACKPACK */
+.bp-wrap{position:relative;}
+.bp-strap{position:absolute;width:16px;border-radius:8px;top:-8px;bottom:-20px;}
+.bp-strap.l{left:20px}.bp-strap.r{right:20px}
+.bp-top-grip{position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:52px;height:14px;border:6px solid rgba(0,0,0,.28);border-bottom:none;border-radius:10px 10px 0 0;}
+.bp-body{position:relative;}
+.bp-opening{position:absolute;left:-3px;right:-3px;top:-10px;height:16px;border-radius:10px 10px 0 0;}
+.bp-pocket{position:absolute;left:14px;right:14px;border:3px solid rgba(0,0,0,.18);border-radius:12px;background:rgba(0,0,0,.06);}
+.bp-pocket-zip{position:absolute;top:-2px;left:8px;right:8px;height:5px;background:rgba(255,255,255,.25);border-radius:3px;}
+/* MAKEUP BAG */
+.mk-wrap{position:relative;}
+.mk-body{position:relative;}
+.mk-zip-open{position:absolute;left:0;right:0;top:-16px;height:20px;display:flex;align-items:center;justify-content:center;}
+.mk-zip-l,.mk-zip-r{flex:1;height:6px;border-radius:3px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.5) 0,rgba(255,255,255,.5) 4px,transparent 4px,transparent 8px);}
+.mk-zip-pull{width:12px;height:24px;border-radius:6px;background:linear-gradient(180deg,#e0e0e0,#9e9e9e);box-shadow:0 2px 5px rgba(0,0,0,.3);margin:0 4px;flex-shrink:0;}
+.mk-top-rim{position:absolute;left:-2px;right:-2px;top:-6px;height:12px;border-radius:6px 6px 0 0;opacity:.6;}
+/* LINING */
+.grid-lining{position:absolute;top:0;left:0;background:rgba(0,0,0,.22);border-radius:10px;box-shadow:inset 0 3px 12px rgba(0,0,0,.4);pointer-events:none;z-index:0;}
+/* WIN / INTRO */
+#win{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(14px);z-index:8000;align-items:center;justify-content:center;}
+#win.show{display:flex;}
+#win-card{background:#fff;border-radius:30px;padding:36px;text-align:center;width:300px;box-shadow:0 24px 60px rgba(0,0,0,.3);animation:crdIn .4s cubic-bezier(.175,.885,.32,1.275) both;}
+@keyframes crdIn{from{transform:scale(.5) translateY(40px);opacity:0}to{transform:scale(1);opacity:1}}
+#w-em{font-size:4rem;display:block;margin-bottom:6px}#w-st{font-size:1.7rem;letter-spacing:4px;margin-bottom:8px}
+#w-ti{font-size:1.65rem;font-weight:900;color:#222;margin-bottom:6px}#w-de{color:#888;font-size:.85rem;margin-bottom:22px;line-height:1.5}
+#w-btn{background:linear-gradient(135deg,#ff9f43,#ee5a24);color:#fff;border:none;padding:13px 32px;font-family:inherit;font-size:.9rem;font-weight:900;border-radius:50px;cursor:pointer;box-shadow:0 5px 0 #c0392b;}
+#w-btn:active{transform:translateY(3px);box-shadow:0 2px 0 #c0392b;}
+#intro{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(16px);z-index:7000;align-items:center;justify-content:center;cursor:pointer;}
+#intro.show{display:flex;}
+#intro-card{background:#fff;border-radius:30px;padding:38px 34px;text-align:center;width:300px;box-shadow:0 24px 60px rgba(0,0,0,.3);animation:crdIn .4s cubic-bezier(.175,.885,.32,1.275) both;}
+#i-em{font-size:3.6rem;display:block;margin-bottom:8px}#i-ti{font-size:1.5rem;font-weight:900;color:#222;margin-bottom:6px}
+#i-su{color:#888;font-size:.84rem;line-height:1.5}#i-tap{margin-top:14px;font-size:.72rem;font-weight:700;color:#ccc;}
+.cf{position:fixed;pointer-events:none;z-index:7999;border-radius:3px;animation:cfFall linear forwards;}
+@keyframes cfFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}85%{opacity:1}100%{transform:translateY(105vh) rotate(700deg);opacity:0}}
+/* SKIP LEVEL (dev control, anchored to viewport top-right, outside the phone frame) */
+#skip-btn{position:fixed;top:16px;right:16px;z-index:9500;
+  background:rgba(0,0,0,.6);color:#fff;border:none;
+  font-family:inherit;font-weight:800;font-size:.78rem;letter-spacing:.5px;
+  padding:10px 16px;border-radius:24px;cursor:pointer;
+  box-shadow:0 4px 14px rgba(0,0,0,.3);backdrop-filter:blur(6px);}
+#skip-btn:active{transform:translateY(1px);}
+</style>
+</head>
+<body>
+<div id="scr">
+  <div id="bg"></div>
+  <div id="hdr">
+    <div class="pill" id="h-lv">LEVEL 1</div>
+    <div id="htitle">🧳 Pack It Up!</div>
+    <div class="pill" id="h-pr">0/0</div>
+  </div>
+  <div id="bag-area"></div>
+  <div id="scatter"></div>
+  <div id="global-placed"></div>
+</div>
+<div id="ghost"></div>
+<div id="win"><div id="win-card">
+  <span id="w-em">🎉</span><div id="w-st">⭐⭐⭐</div>
+  <h2 id="w-ti">Harika!</h2><p id="w-de">Tebrikler!</p>
+  <button id="w-btn">Devam →</button>
+</div></div>
+<div id="intro"><div id="intro-card">
+  <span id="i-em">☀️</span><h2 id="i-ti">Yaz Tatili</h2>
+  <p id="i-su">Eşyaları yerleştir!</p><p id="i-tap">Ekrana dokun</p>
+</div></div>
+<button id="skip-btn">Skip Level ⏭</button>
+<script>
+const SVG={
+shirt:`<svg viewBox="0 0 2 3" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y=".5" width="2" height="2.5" rx=".2" fill="#29b6f6"/>
+  <polygon points="0,.5 .55,0 1,.4 1.45,0 2,.5 1.7,.9 1,.58 .3,.9" fill="#0288d1"/>
+  <rect x="0" y=".5" width=".3" height="1.1" rx=".12" fill="#0288d1"/>
+  <rect x="1.7" y=".5" width=".3" height="1.1" rx=".12" fill="#0288d1"/>
+  <rect x=".3" y="1.5" width="1.4" height=".12" rx=".06" fill="rgba(255,255,255,.3)"/>
+  <rect x=".3" y="1.82" width="1.4" height=".12" rx=".06" fill="rgba(255,255,255,.3)"/>
+  <rect x=".3" y="2.14" width=".9" height=".12" rx=".06" fill="rgba(255,255,255,.3)"/>
+</svg>`,
+beach_hat:`<svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="1.5" cy="1.65" rx="1.44" ry=".3" fill="#ffd54f" stroke="#f9a825" stroke-width=".06"/>
+  <ellipse cx="1.5" cy=".85" rx=".78" ry=".78" fill="#ffd54f" stroke="#f9a825" stroke-width=".06"/>
+  <rect x=".82" y="1.16" width="1.36" height=".18" rx=".09" fill="#e65100" opacity=".4"/>
+  <circle cx="1.5" cy=".44" r=".18" fill="#ff6b6b"/>
+  <ellipse cx="1.22" cy=".7" rx=".13" ry=".09" fill="rgba(255,255,255,.4)"/>
+</svg>`,
+water_bottle:`<svg viewBox="0 0 1 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".25" y="0" width=".5" height=".22" rx=".12" fill="#90a4ae"/>
+  <rect x=".08" y=".22" width=".84" height="1.7" rx=".28" fill="#4fc3f7"/>
+  <rect x=".08" y="1.0" width=".84" height=".65" rx=".14" fill="#0288d1" opacity=".38"/>
+  <ellipse cx=".5" cy=".22" rx=".42" ry=".12" fill="#81d4fa"/>
+  <rect x=".24" y=".48" width=".52" height=".09" rx=".04" fill="rgba(255,255,255,.45)"/>
+</svg>`,
+beach_towel:`<svg viewBox="0 0 4 1" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="4" height="1" rx=".16" fill="#ff6b9d"/>
+  <rect x="0" y="0" width=".52" height="1" rx=".14" fill="#e91e63"/>
+  <rect x="3.48" y="0" width=".52" height="1" rx=".14" fill="#e91e63"/>
+  <rect x=".64" y=".14" width="2.72" height=".14" rx=".07" fill="rgba(255,255,255,.48)"/>
+  <rect x=".64" y=".44" width="2.72" height=".14" rx=".07" fill="rgba(255,255,255,.48)"/>
+  <rect x=".64" y=".72" width="2.72" height=".14" rx=".07" fill="rgba(255,255,255,.48)"/>
+  <circle cx="2" cy=".5" r=".22" fill="#fff176" opacity=".85"/>
+</svg>`,
+camera:`<svg viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".06" y=".36" width="1.88" height="1.52" rx=".28" fill="#37474f"/>
+  <polygon points=".58,.36 .76,.06 1.24,.06 1.42,.36" fill="#455a64"/>
+  <circle cx="1" cy="1.12" r=".55" fill="#212121"/>
+  <circle cx="1" cy="1.12" r=".42" fill="#1565c0"/>
+  <circle cx="1" cy="1.12" r=".26" fill="#42a5f5"/>
+  <circle cx=".88" cy="1.0" r=".08" fill="rgba(255,255,255,.75)"/>
+  <circle cx="1.58" cy=".58" r=".13" fill="#f44336"/>
+  <rect x=".12" y=".5" width=".38" height=".22" rx=".08" fill="#546e7a"/>
+</svg>`,
+shorts:`<svg viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">
+  <path d="M.1,.1 H1.9 L1.65,1.94 H1.1 L1,1.1 L.9,1.94 H.35 Z" rx=".1" fill="#7e57c2"/>
+  <rect x=".1" y=".08" width="1.8" height=".32" rx=".14" fill="#5e35b1"/>
+  <rect x=".28" y=".16" width=".26" height=".12" rx=".06" fill="rgba(255,255,255,.3)"/>
+</svg>`,
+sunscreen:`<svg viewBox="0 0 1 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".12" y=".26" width=".76" height="1.66" rx=".26" fill="#fff9c4"/>
+  <rect x=".12" y=".26" width=".76" height=".48" rx=".26" fill="#ff7043"/>
+  <rect x=".28" y="0" width=".44" height=".3" rx=".12" fill="#bdbdbd"/>
+  <text x=".5" y=".9" text-anchor="middle" font-size=".2" fill="#bf360c" font-family="sans-serif" font-weight="bold">SPF</text>
+  <ellipse cx=".3" cy=".42" rx=".09" ry=".06" fill="rgba(255,255,255,.45)"/>
+</svg>`,
+flip_flops:`<svg viewBox="0 0 1 2" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx=".5" cy=".5" rx=".45" ry=".38" fill="#26c6da" stroke="#00838f" stroke-width=".06"/>
+  <path d="M.5,.14 Q.68,.38 .58,.58" stroke="#00838f" stroke-width=".11" fill="none" stroke-linecap="round"/>
+  <path d="M.5,.14 Q.32,.38 .42,.58" stroke="#00838f" stroke-width=".11" fill="none" stroke-linecap="round"/>
+  <circle cx=".5" cy=".12" r=".09" fill="#ff6b6b"/>
+  <ellipse cx=".5" cy="1.5" rx=".45" ry=".38" fill="#ff8a65" stroke="#e64a19" stroke-width=".06"/>
+  <path d="M.5,1.14 Q.68,1.38 .58,1.58" stroke="#e64a19" stroke-width=".11" fill="none" stroke-linecap="round"/>
+  <path d="M.5,1.14 Q.32,1.38 .42,1.58" stroke="#e64a19" stroke-width=".11" fill="none" stroke-linecap="round"/>
+  <circle cx=".5" cy="1.12" r=".09" fill="#fff176"/>
+</svg>`,
+swimsuit:`<svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg">
+  <path d="M.28,.06 Q1.5,.62 2.72,.06 L2.86,.38 Q1.5,.92 .14,.38 Z" fill="#f50057"/>
+  <path d="M1.42,.46 L1.5,.58 L1.58,.46" stroke="#b0003a" stroke-width=".07" fill="none" stroke-linecap="round"/>
+  <line x1=".28" y1=".06" x2=".04" y2=".48" stroke="#b0003a" stroke-width=".08" stroke-linecap="round"/>
+  <line x1="2.72" y1=".06" x2="2.96" y2=".48" stroke="#b0003a" stroke-width=".08" stroke-linecap="round"/>
+  <path d="M.62,1.06 Q1.5,.9 2.38,1.06 L2.2,1.92 L1.5,1.76 L.8,1.92 Z" fill="#f50057"/>
+  <circle cx=".98" cy="1.38" r=".08" fill="#ff6090"/>
+  <circle cx="1.5" cy="1.22" r=".08" fill="#ff6090"/>
+  <circle cx="2.02" cy="1.38" r=".08" fill="#ff6090"/>
+</svg>`,
+sunglasses:`<svg viewBox="0 0 3 1" xmlns="http://www.w3.org/2000/svg">
+  <circle cx=".76" cy=".5" r=".48" fill="#212121"/>
+  <circle cx="2.24" cy=".5" r=".48" fill="#212121"/>
+  <circle cx=".76" cy=".5" r=".36" fill="#00897b" opacity=".88"/>
+  <circle cx="2.24" cy=".5" r=".36" fill="#00897b" opacity=".88"/>
+  <path d="M1.24,.46 Q1.5,.34 1.76,.46" stroke="#212121" stroke-width=".12" fill="none" stroke-linecap="round"/>
+  <line x1=".28" y1=".5" x2="0" y2=".54" stroke="#212121" stroke-width=".12" stroke-linecap="round"/>
+  <line x1="2.72" y1=".5" x2="3" y2=".54" stroke="#212121" stroke-width=".12" stroke-linecap="round"/>
+  <ellipse cx=".6" cy=".36" rx=".14" ry=".09" fill="rgba(255,255,255,.48)"/>
+  <ellipse cx="2.08" cy=".36" rx=".14" ry=".09" fill="rgba(255,255,255,.48)"/>
+</svg>`,
+snorkel:`<svg viewBox="0 0 3 1" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".06" y=".08" width="1.62" height=".84" rx=".32" fill="#263238"/>
+  <rect x=".16" y=".18" width="1.42" height=".64" rx=".22" fill="#80deea" opacity=".9"/>
+  <ellipse cx=".54" cy=".36" rx=".2" ry=".13" fill="rgba(255,255,255,.55)"/>
+  <rect x="1.68" y=".36" width=".38" height=".14" rx=".07" fill="#37474f"/>
+  <path d="M2.06,.43 Q2.4,.43 2.4,.18 L2.84,.18" stroke="#ff7043" stroke-width=".2" fill="none" stroke-linecap="round"/>
+  <rect x="2.74" y=".06" width=".2" height=".24" rx=".08" fill="#ff7043"/>
+</svg>`,
+book:`<svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".06" y=".06" width="2.88" height="1.88" rx=".22" fill="#ef5350"/>
+  <rect x=".06" y=".06" width=".32" height="1.88" rx=".14" fill="#c62828"/>
+  <rect x=".46" y=".28" width="2.42" height=".2" rx=".1" fill="rgba(255,255,255,.8)"/>
+  <rect x=".46" y=".58" width="1.8" height=".14" rx=".07" fill="rgba(255,255,255,.55)"/>
+  <rect x=".46" y=".94" width="2.42" height=".09" rx=".04" fill="rgba(255,255,255,.35)"/>
+  <rect x=".46" y="1.12" width="1.9" height=".09" rx=".04" fill="rgba(255,255,255,.35)"/>
+  <rect x=".46" y="1.3" width="2.1" height=".09" rx=".04" fill="rgba(255,255,255,.35)"/>
+  <rect x=".46" y="1.48" width="1.6" height=".09" rx=".04" fill="rgba(255,255,255,.35)"/>
+</svg>`,
+headphones:`<svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg">
+  <path d="M.44,1.0 Q.44,.22 1.5,.22 Q2.56,.22 2.56,1.0" stroke="#37474f" stroke-width=".28" fill="none" stroke-linecap="round"/>
+  <rect x=".1" y=".88" width=".6" height=".98" rx=".24" fill="#546e7a"/>
+  <rect x=".18" y=".96" width=".44" height=".74" rx=".18" fill="#00bcd4"/>
+  <ellipse cx=".4" cy="1.06" rx=".12" ry=".08" fill="rgba(255,255,255,.45)"/>
+  <rect x="2.3" y=".88" width=".6" height=".98" rx=".24" fill="#546e7a"/>
+  <rect x="2.38" y=".96" width=".44" height=".74" rx=".18" fill="#00bcd4"/>
+  <ellipse cx="2.6" cy="1.06" rx=".12" ry=".08" fill="rgba(255,255,255,.45)"/>
+</svg>`,
+sweater:`<svg viewBox="0 0 3 3" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y=".72" width="3" height="2.28" rx=".24" fill="#ef5350"/>
+  <polygon points="0,.72 .78,0 1.5,.6 2.22,0 3,.72 2.54,1.08 1.5,.76 .46,1.08" fill="#c62828"/>
+  <rect x="0" y=".72" width=".4" height="1.38" rx=".14" fill="#c62828"/>
+  <rect x="2.6" y=".72" width=".4" height="1.38" rx=".14" fill="#c62828"/>
+  <rect x=".1" y="1.58" width="2.8" height=".13" rx=".06" fill="rgba(255,255,255,.25)"/>
+  <rect x=".1" y="1.88" width="2.8" height=".13" rx=".06" fill="rgba(255,255,255,.25)"/>
+  <rect x=".1" y="2.18" width="2.8" height=".13" rx=".06" fill="rgba(255,255,255,.25)"/>
+</svg>`,
+jacket:`<svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y=".36" width="3" height="1.64" rx=".2" fill="#1e88e5"/>
+  <polygon points="0,.36 .64,0 1.5,.5 2.36,0 3,.36 2.58,.7 1.5,.62 .42,.7" fill="#1565c0"/>
+  <rect x="0" y=".36" width=".38" height="1.02" rx=".12" fill="#1565c0"/>
+  <rect x="2.62" y=".36" width=".38" height="1.02" rx=".12" fill="#1565c0"/>
+  <rect x="1.42" y=".5" width=".18" height="1.5" fill="#1565c0"/>
+  <rect x=".5" y="1.12" width=".56" height=".52" rx=".12" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.22)" stroke-width=".04"/>
+  <rect x="1.94" y="1.12" width=".56" height=".52" rx=".12" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.22)" stroke-width=".04"/>
+</svg>`,
+scarf:`<svg viewBox="0 0 3 1" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y=".1" width="3" height=".8" rx=".28" fill="#ff7043"/>
+  <rect x=".1" y=".22" width="2.8" height=".14" rx=".07" fill="rgba(255,255,255,.3)"/>
+  <rect x=".1" y=".44" width="2.8" height=".14" rx=".07" fill="rgba(255,255,255,.3)"/>
+  <rect x=".1" y=".66" width="2.8" height=".14" rx=".07" fill="rgba(255,255,255,.3)"/>
+  <rect x="0" y=".1" width=".48" height=".8" rx=".28" fill="#e64a19"/>
+  <rect x="2.52" y=".1" width=".48" height=".8" rx=".28" fill="#e64a19"/>
+</svg>`,
+gloves:`<svg viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".08" y=".56" width=".8" height="1.36" rx=".24" fill="#8e24aa"/>
+  <rect x=".08" y=".56" width=".8" height=".28" rx=".14" fill="#ab47bc"/>
+  <rect x=".18" y=".1" width=".22" height=".52" rx=".11" fill="#ab47bc"/>
+  <rect x=".44" y=".02" width=".22" height=".62" rx=".11" fill="#ab47bc"/>
+  <rect x=".68" y=".1" width=".2" height=".5" rx=".1" fill="#ab47bc"/>
+  <rect x="1.12" y=".56" width=".8" height="1.36" rx=".24" fill="#8e24aa"/>
+  <rect x="1.12" y=".56" width=".8" height=".28" rx=".14" fill="#ab47bc"/>
+  <rect x="1.6" y=".1" width=".22" height=".52" rx=".11" fill="#ab47bc"/>
+  <rect x="1.34" y=".02" width=".22" height=".62" rx=".11" fill="#ab47bc"/>
+  <rect x="1.12" y=".1" width=".2" height=".5" rx=".1" fill="#ab47bc"/>
+</svg>`,
+beanie:`<svg viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".08" y=".82" width="1.84" height="1.1" rx=".2" fill="#3949ab"/>
+  <path d="M.08,.82 Q.08,.14 1,.14 Q1.92,.14 1.92,.82 Z" fill="#5c6bc0"/>
+  <circle cx="1" cy=".18" r=".28" fill="#fdd835"/>
+  <rect x=".08" y="1.48" width="1.84" height=".28" rx=".12" fill="#5c6bc0"/>
+  <rect x=".08" y="1.08" width="1.84" height=".12" rx=".06" fill="rgba(255,255,255,.2)"/>
+</svg>`,
+ski_goggles:`<svg viewBox="0 0 2 1" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y=".18" width="2" height=".64" rx=".26" fill="#212121"/>
+  <ellipse cx=".54" cy=".5" rx=".4" ry=".28" fill="#fbc02d" opacity=".92"/>
+  <ellipse cx="1.46" cy=".5" rx=".4" ry=".28" fill="#fbc02d" opacity=".92"/>
+  <ellipse cx=".44" cy=".41" rx=".14" ry=".1" fill="rgba(255,255,255,.55)"/>
+  <ellipse cx="1.36" cy=".41" rx=".14" ry=".1" fill="rgba(255,255,255,.55)"/>
+  <rect x=".9" y=".36" width=".2" height=".28" rx=".06" fill="#212121"/>
+</svg>`,
+ski_boots:`<svg viewBox="0 0 2 1" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".04" y=".04" width=".9" height=".92" rx=".24" fill="#e53935"/>
+  <rect x=".04" y=".52" width=".97" height=".44" rx=".18" fill="#c62828"/>
+  <rect x=".14" y=".16" width=".6" height=".14" rx=".07" fill="rgba(255,255,255,.3)"/>
+  <rect x=".14" y=".36" width=".6" height=".14" rx=".07" fill="rgba(255,255,255,.3)"/>
+  <rect x="1.06" y=".04" width=".9" height=".92" rx=".24" fill="#e53935"/>
+  <rect x="1.0" y=".52" width=".96" height=".44" rx=".18" fill="#c62828"/>
+  <rect x="1.14" y=".16" width=".6" height=".14" rx=".07" fill="rgba(255,255,255,.3)"/>
+  <rect x="1.14" y=".36" width=".6" height=".14" rx=".07" fill="rgba(255,255,255,.3)"/>
+</svg>`,
+thermal_pants:`<svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg">
+  <path d="M.1,.06 H2.9 L2.65,1.94 H1.64 L1.5,1.24 L1.36,1.94 H.35 Z" fill="#b3e5fc"/>
+  <rect x=".1" y=".06" width="2.8" height=".3" rx=".12" fill="#81d4fa"/>
+  <rect x=".12" y=".5" width=".36" height=".09" rx=".04" fill="rgba(255,255,255,.45)"/>
+  <rect x=".12" y=".68" width=".36" height=".09" rx=".04" fill="rgba(255,255,255,.45)"/>
+  <rect x=".12" y=".86" width=".36" height=".09" rx=".04" fill="rgba(255,255,255,.45)"/>
+  <rect x="2.52" y=".5" width=".36" height=".09" rx=".04" fill="rgba(255,255,255,.45)"/>
+  <rect x="2.52" y=".68" width=".36" height=".09" rx=".04" fill="rgba(255,255,255,.45)"/>
+  <rect x="2.52" y=".86" width=".36" height=".09" rx=".04" fill="rgba(255,255,255,.45)"/>
+  <rect x=".52" y=".5" width="1.96" height=".09" rx=".04" fill="rgba(255,255,255,.28)"/>
+  <rect x=".52" y=".68" width="1.96" height=".09" rx=".04" fill="rgba(255,255,255,.28)"/>
+  <rect x=".52" y=".86" width="1.96" height=".09" rx=".04" fill="rgba(255,255,255,.28)"/>
+</svg>`,
+earmuffs:`<svg viewBox="0 0 2 1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M.32,.52 Q1,.06 1.68,.52" stroke="#6d4c41" stroke-width=".18" fill="none" stroke-linecap="round"/>
+  <circle cx=".28" cy=".66" r=".3" fill="#f48fb1"/>
+  <circle cx=".28" cy=".66" r=".18" fill="#f06292"/>
+  <ellipse cx=".18" cy=".56" rx=".08" ry=".06" fill="rgba(255,255,255,.45)"/>
+  <circle cx="1.72" cy=".66" r=".3" fill="#f48fb1"/>
+  <circle cx="1.72" cy=".66" r=".18" fill="#f06292"/>
+  <ellipse cx="1.62" cy=".56" rx=".08" ry=".06" fill="rgba(255,255,255,.45)"/>
+</svg>`,
+thermos:`<svg viewBox="0 0 1 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".22" y=".04" width=".56" height=".24" rx=".1" fill="#607d8b"/>
+  <rect x=".1" y=".28" width=".8" height="1.64" rx=".24" fill="#455a64"/>
+  <rect x=".1" y=".28" width=".8" height=".32" rx=".22" fill="#546e7a"/>
+  <rect x=".1" y=".57" width=".8" height=".06" fill="#37474f"/>
+  <rect x=".2" y=".72" width=".6" height=".78" rx=".1" fill="#546e7a" opacity=".45"/>
+  <rect x=".28" y=".86" width=".44" height=".08" rx=".04" fill="rgba(255,255,255,.3)"/>
+  <ellipse cx=".28" cy=".44" rx=".08" ry=".13" fill="rgba(255,255,255,.22)"/>
+</svg>`,
+wool_socks:`<svg viewBox="0 0 2 1" xmlns="http://www.w3.org/2000/svg">
+  <circle cx=".5" cy=".5" r=".44" fill="#ef5350"/>
+  <circle cx=".5" cy=".5" r=".3" fill="#c62828"/>
+  <circle cx=".5" cy=".5" r=".14" fill="#b71c1c"/>
+  <ellipse cx=".36" cy=".38" rx=".1" ry=".07" fill="rgba(255,255,255,.4)"/>
+  <circle cx="1.5" cy=".5" r=".44" fill="#ef5350"/>
+  <circle cx="1.5" cy=".5" r=".3" fill="#c62828"/>
+  <circle cx="1.5" cy=".5" r=".14" fill="#b71c1c"/>
+  <ellipse cx="1.36" cy=".38" rx=".1" ry=".07" fill="rgba(255,255,255,.4)"/>
+</svg>`,
+hot_water_bottle:`<svg viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".54" y=".06" width=".92" height=".34" rx=".14" fill="#e53935"/>
+  <rect x=".7" y=".0" width=".6" height=".16" rx=".08" fill="#c62828"/>
+  <rect x=".14" y=".38" width="1.72" height="1.54" rx=".44" fill="#e53935"/>
+  <rect x=".14" y=".38" width="1.72" height=".48" rx=".32" fill="#ef5350"/>
+  <ellipse cx=".38" cy=".72" rx=".1" ry=".16" fill="rgba(255,255,255,.35)"/>
+  <rect x=".42" y="1.06" width="1.16" height=".12" rx=".06" fill="rgba(255,255,255,.22)"/>
+  <rect x=".42" y="1.28" width="1.0" height=".12" rx=".06" fill="rgba(255,255,255,.22)"/>
+  <rect x=".42" y="1.5" width=".8" height=".12" rx=".06" fill="rgba(255,255,255,.22)"/>
+</svg>`,
+ski_helmet:`<svg viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">
+  <path d="M.14,1.2 Q.1,.14 1,.14 Q1.9,.14 1.86,1.2 Z" fill="#ff5722"/>
+  <rect x=".08" y="1.12" width="1.84" height=".78" rx=".22" fill="#f4511e"/>
+  <rect x=".08" y="1.12" width="1.84" height=".28" rx=".14" fill="#e64a19"/>
+  <rect x=".3" y=".38" width="1.4" height=".56" rx=".18" fill="rgba(0,0,0,.25)"/>
+  <rect x=".3" y=".38" width="1.4" height=".56" rx=".18" fill="#212121" opacity=".55"/>
+  <ellipse cx=".55" cy=".54" rx=".16" ry=".18" fill="rgba(255,255,255,.22)"/>
+  <rect x=".22" y="1.62" width=".4" height=".12" rx=".06" fill="rgba(255,255,255,.3)"/>
+  <rect x="1.38" y="1.62" width=".4" height=".12" rx=".06" fill="rgba(255,255,255,.3)"/>
+</svg>`,
+snow_boots:`<svg viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".06" y=".3" width=".84" height="1.62" rx=".26" fill="#37474f"/>
+  <rect x=".06" y=".3" width=".84" height=".62" rx=".22" fill="#455a64"/>
+  <rect x=".06" y=".3" width=".84" height=".22" rx=".14" fill="#eceff1"/>
+  <rect x=".0" y="1.74" width=".96" height=".26" rx=".14" fill="#263238"/>
+  <rect x=".16" y=".56" width=".54" height=".12" rx=".06" fill="rgba(255,255,255,.28)"/>
+  <rect x="1.1" y=".3" width=".84" height="1.62" rx=".26" fill="#37474f"/>
+  <rect x="1.1" y=".3" width=".84" height=".62" rx=".22" fill="#455a64"/>
+  <rect x="1.1" y=".3" width=".84" height=".22" rx=".14" fill="#eceff1"/>
+  <rect x="1.04" y="1.74" width=".96" height=".26" rx=".14" fill="#263238"/>
+  <rect x="1.2" y=".56" width=".54" height=".12" rx=".06" fill="rgba(255,255,255,.28)"/>
+</svg>`,
+textbook:`<svg viewBox="0 0 2 3" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="2" height="3" rx=".18" fill="#43a047"/>
+  <rect x=".16" y="0" width=".24" height="3" rx=".1" fill="#2e7d32"/>
+  <rect x=".48" y=".28" width="1.38" height=".2" rx=".1" fill="rgba(255,255,255,.75)"/>
+  <rect x=".48" y=".58" width="1.12" height=".14" rx=".07" fill="rgba(255,255,255,.52)"/>
+  <rect x=".48" y="1.0" width="1.38" height=".08" rx=".04" fill="rgba(255,255,255,.32)"/>
+  <rect x=".48" y="1.18" width="1.0" height=".08" rx=".04" fill="rgba(255,255,255,.32)"/>
+  <rect x=".48" y="1.36" width="1.24" height=".08" rx=".04" fill="rgba(255,255,255,.32)"/>
+  <rect x=".48" y="1.94" width="1.38" height=".08" rx=".04" fill="rgba(255,255,255,.26)"/>
+  <rect x=".48" y="2.12" width="1.0" height=".08" rx=".04" fill="rgba(255,255,255,.26)"/>
+</svg>`,
+pencil_case:`<svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="3" height="2" rx=".38" fill="#fb8c00"/>
+  <rect x=".26" y=".28" width="2.48" height="1.44" rx=".24" fill="#ffa726" stroke="#e65100" stroke-width=".05"/>
+  <ellipse cx="1.5" cy=".28" rx=".52" ry=".2" fill="#e65100" opacity=".4"/>
+  <rect x=".58" y=".58" width=".16" height=".84" rx=".08" fill="#e53935"/>
+  <rect x=".88" y=".48" width=".16" height="1.04" rx=".08" fill="#1e88e5"/>
+  <rect x="1.18" y=".58" width=".16" height=".84" rx=".08" fill="#43a047"/>
+  <rect x="1.48" y=".52" width=".16" height=".94" rx=".08" fill="#ab47bc"/>
+  <rect x="1.78" y=".58" width=".16" height=".84" rx=".08" fill="#00897b"/>
+  <rect x="2.08" y=".52" width=".16" height=".94" rx=".08" fill="#e53935"/>
+</svg>`,
+eraser:`<svg viewBox="0 0 1 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".08" y=".06" width=".84" height="1.88" rx=".24" fill="#ef9a9a"/>
+  <rect x=".08" y=".06" width=".84" height=".64" rx=".24" fill="#e57373"/>
+  <rect x=".08" y=".66" width=".84" height=".09" fill="rgba(255,255,255,.52)"/>
+  <rect x=".22" y=".84" width=".56" height=".08" rx=".04" fill="rgba(255,255,255,.38)"/>
+  <rect x=".22" y=".22" width=".56" height=".08" rx=".04" fill="rgba(255,255,255,.38)"/>
+</svg>`,
+notebook:`<svg viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".22" y="0" width="1.78" height="2" rx=".14" fill="#fafafa" stroke="#e0e0e0" stroke-width=".05"/>
+  <rect x=".05" y=".1" width=".2" height=".2" rx=".1" fill="#bdbdbd"/>
+  <rect x=".05" y=".42" width=".2" height=".2" rx=".1" fill="#bdbdbd"/>
+  <rect x=".05" y=".74" width=".2" height=".2" rx=".1" fill="#bdbdbd"/>
+  <rect x=".05" y="1.06" width=".2" height=".2" rx=".1" fill="#bdbdbd"/>
+  <rect x=".05" y="1.38" width=".2" height=".2" rx=".1" fill="#bdbdbd"/>
+  <rect x=".05" y="1.7" width=".2" height=".2" rx=".1" fill="#bdbdbd"/>
+  <rect x=".38" y=".32" width="1.38" height=".08" rx=".04" fill="#90caf9"/>
+  <rect x=".38" y=".52" width="1.38" height=".08" rx=".04" fill="#eeeeee"/>
+  <rect x=".38" y=".7" width="1.38" height=".08" rx=".04" fill="#eeeeee"/>
+  <rect x=".38" y=".88" width="1.0" height=".08" rx=".04" fill="#eeeeee"/>
+  <rect x=".38" y="1.06" width="1.38" height=".08" rx=".04" fill="#eeeeee"/>
+</svg>`,
+ruler:`<svg viewBox="0 0 4 1" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="4" height="1" rx=".14" fill="#fff176" stroke="#f9a825" stroke-width=".08"/>
+  <line x1=".4" y1="0" x2=".4" y2=".44" stroke="#f57f17" stroke-width=".07"/>
+  <line x1=".8" y1="0" x2=".8" y2=".28" stroke="#f57f17" stroke-width=".05"/>
+  <line x1="1.2" y1="0" x2="1.2" y2=".44" stroke="#f57f17" stroke-width=".07"/>
+  <line x1="1.6" y1="0" x2="1.6" y2=".28" stroke="#f57f17" stroke-width=".05"/>
+  <line x1="2.0" y1="0" x2="2.0" y2=".44" stroke="#f57f17" stroke-width=".07"/>
+  <line x1="2.4" y1="0" x2="2.4" y2=".28" stroke="#f57f17" stroke-width=".05"/>
+  <line x1="2.8" y1="0" x2="2.8" y2=".44" stroke="#f57f17" stroke-width=".07"/>
+  <line x1="3.6" y1="0" x2="3.6" y2=".44" stroke="#f57f17" stroke-width=".07"/>
+</svg>`,
+scissors:`<svg viewBox="0 0 2 1" xmlns="http://www.w3.org/2000/svg">
+  <circle cx=".26" cy=".28" r=".24" fill="none" stroke="#78909c" stroke-width=".11"/>
+  <circle cx=".26" cy=".72" r=".24" fill="none" stroke="#78909c" stroke-width=".11"/>
+  <circle cx=".26" cy=".28" r=".09" fill="#b0bec5"/>
+  <circle cx=".26" cy=".72" r=".09" fill="#b0bec5"/>
+  <line x1=".46" y1=".34" x2="1.94" y2=".1" stroke="#90a4ae" stroke-width=".1" stroke-linecap="round"/>
+  <line x1=".46" y1=".66" x2="1.94" y2=".9" stroke="#90a4ae" stroke-width=".1" stroke-linecap="round"/>
+</svg>`,
+lunch_box:`<svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".06" y=".38" width="2.88" height="1.56" rx=".26" fill="#1976d2"/>
+  <rect x=".06" y=".06" width="2.88" height=".44" rx=".2" fill="#1e88e5" stroke="#1565c0" stroke-width=".05"/>
+  <rect x="1.1" y=".02" width=".8" height=".16" rx=".08" fill="#0d47a1"/>
+  <rect x="1.28" y=".36" width=".44" height=".14" rx=".07" fill="#90caf9"/>
+  <rect x=".3" y=".88" width=".62" height=".54" rx=".12" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.2)" stroke-width=".04"/>
+  <rect x="1.19" y=".88" width=".62" height=".54" rx=".12" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.2)" stroke-width=".04"/>
+  <rect x="2.08" y=".88" width=".62" height=".54" rx=".12" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.2)" stroke-width=".04"/>
+</svg>`,
+calculator:`<svg viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".06" y=".06" width="1.88" height="1.88" rx=".24" fill="#37474f"/>
+  <rect x=".18" y=".15" width="1.64" height=".5" rx=".12" fill="#c8e6c9"/>
+  <text x="1.72" y=".55" text-anchor="end" font-size=".28" fill="#2e7d32" font-family="monospace" font-weight="bold">42</text>
+  <rect x=".18" y=".74" width=".32" height=".24" rx=".08" fill="#78909c"/>
+  <rect x=".58" y=".74" width=".32" height=".24" rx=".08" fill="#78909c"/>
+  <rect x=".98" y=".74" width=".32" height=".24" rx=".08" fill="#78909c"/>
+  <rect x="1.38" y=".74" width=".44" height=".24" rx=".08" fill="#e53935"/>
+  <rect x=".18" y="1.06" width=".32" height=".24" rx=".08" fill="#546e7a"/>
+  <rect x=".58" y="1.06" width=".32" height=".24" rx=".08" fill="#546e7a"/>
+  <rect x=".98" y="1.06" width=".32" height=".24" rx=".08" fill="#546e7a"/>
+  <rect x="1.38" y="1.06" width=".44" height=".24" rx=".08" fill="#ff7043"/>
+  <rect x=".18" y="1.38" width=".32" height=".24" rx=".08" fill="#546e7a"/>
+  <rect x=".58" y="1.38" width=".32" height=".24" rx=".08" fill="#546e7a"/>
+  <rect x=".98" y="1.38" width=".32" height=".24" rx=".08" fill="#546e7a"/>
+  <rect x="1.38" y="1.38" width=".44" height=".24" rx=".08" fill="#ff7043"/>
+  <rect x=".18" y="1.7" width=".72" height=".24" rx=".08" fill="#546e7a"/>
+  <rect x=".98" y="1.7" width=".32" height=".24" rx=".08" fill="#546e7a"/>
+  <rect x="1.38" y="1.7" width=".44" height=".24" rx=".08" fill="#43a047"/>
+</svg>`,
+glue:`<svg viewBox="0 0 1 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".12" y=".48" width=".76" height="1.44" rx=".24" fill="#fff9c4"/>
+  <rect x=".12" y=".48" width=".76" height=".48" rx=".24" fill="#fff176"/>
+  <rect x=".2" y="1.82" width=".6" height=".14" rx=".07" fill="#f9a825"/>
+  <rect x=".1" y=".14" width=".8" height=".38" rx=".18" fill="#f9a825"/>
+  <rect x=".18" y=".04" width=".64" height=".14" rx=".08" fill="#fbc02d"/>
+  <text x=".5" y="1.28" text-anchor="middle" font-size=".18" fill="#f57f17" font-family="sans-serif" font-weight="bold">GLUE</text>
+</svg>`,
+colored_pencils:`<svg viewBox="0 0 4 1" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".08" y=".1" width=".6" height=".64" rx=".12" fill="#ef5350"/>
+  <polygon points=".08,.74 .68,.74 .38,.96" fill="#c62828"/>
+  <rect x=".2" y=".1" width=".36" height=".16" rx=".07" fill="#ffcdd2"/>
+  <rect x=".74" y=".1" width=".6" height=".64" rx=".12" fill="#ff9800"/>
+  <polygon points=".74,.74 1.34,.74 1.04,.96" fill="#e65100"/>
+  <rect x=".86" y=".1" width=".36" height=".16" rx=".07" fill="#ffe0b2"/>
+  <rect x="1.4" y=".1" width=".6" height=".64" rx=".12" fill="#43a047"/>
+  <polygon points="1.4,.74 2.0,.74 1.7,.96" fill="#1b5e20"/>
+  <rect x="1.52" y=".1" width=".36" height=".16" rx=".07" fill="#c8e6c9"/>
+  <rect x="2.06" y=".1" width=".6" height=".64" rx=".12" fill="#1e88e5"/>
+  <polygon points="2.06,.74 2.66,.74 2.36,.96" fill="#0d47a1"/>
+  <rect x="2.18" y=".1" width=".36" height=".16" rx=".07" fill="#bbdefb"/>
+  <rect x="2.72" y=".1" width=".6" height=".64" rx=".12" fill="#8e24aa"/>
+  <polygon points="2.72,.74 3.32,.74 3.02,.96" fill="#4a148c"/>
+  <rect x="2.84" y=".1" width=".36" height=".16" rx=".07" fill="#e1bee7"/>
+</svg>`,
+sharpener:`<svg viewBox="0 0 2 1" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".1" y=".1" width="1.8" height=".8" rx=".2" fill="#ff7043"/>
+  <ellipse cx=".42" cy=".5" rx=".22" ry=".24" fill="#c62828"/>
+  <rect x=".3" y=".68" width=".3" height=".1" rx=".05" fill="#bdbdbd"/>
+  <rect x=".72" y=".2" width=".96" height=".6" rx=".14" fill="rgba(255,255,255,.38)" stroke="#e64a19" stroke-width=".04"/>
+  <path d="M.82,.47 Q1,.34 1.2,.46 Q1.4,.36 1.58,.47" stroke="#a5d6a7" stroke-width=".08" fill="none" opacity=".85"/>
+</svg>`,
+compass:`<svg viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="1" cy=".28" r=".22" fill="#455a64" stroke="#263238" stroke-width=".06"/>
+  <line x1=".86" y1=".44" x2=".42" y2="1.82" stroke="#546e7a" stroke-width=".14" stroke-linecap="round"/>
+  <line x1="1.14" y1=".44" x2="1.58" y2="1.82" stroke="#546e7a" stroke-width=".14" stroke-linecap="round"/>
+  <line x1=".72" y1="1.12" x2="1.28" y2="1.12" stroke="#b0bec5" stroke-width=".09"/>
+  <polygon points=".38,1.82 .46,1.82 .42,1.96" fill="#f44336"/>
+  <polygon points="1.54,1.82 1.62,1.82 1.58,1.96" fill="#37474f"/>
+  <circle cx="1" cy=".28" r=".1" fill="#cfd8dc"/>
+</svg>`,
+sticky_notes:`<svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".06" y=".24" width="2.88" height="1.7" rx=".2" fill="#fdd835"/>
+  <rect x=".2" y=".12" width="2.88" height="1.7" rx=".2" fill="#ff8a65"/>
+  <rect x=".34" y=".0" width="2.88" height="1.7" rx=".2" fill="#fff176"/>
+  <rect x=".54" y=".26" width="2.0" height=".1" rx=".05" fill="#f9a825" opacity=".6"/>
+  <rect x=".54" y=".48" width="2.2" height=".1" rx=".05" fill="#f9a825" opacity=".6"/>
+  <rect x=".54" y=".7" width="1.6" height=".1" rx=".05" fill="#f9a825" opacity=".6"/>
+</svg>`,
+pencil:`<svg viewBox="0 0 1 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".16" y=".14" width=".68" height="1.5" rx=".16" fill="#ffd54f"/>
+  <rect x=".16" y=".14" width=".68" height=".22" rx=".12" fill="#ff8f00"/>
+  <polygon points=".16,1.64 .84,1.64 .5,1.94" fill="#d4a0a0"/>
+  <polygon points=".34,1.86 .66,1.86 .5,1.97" fill="#795548"/>
+  <rect x=".22" y=".36" width=".56" height=".7" rx=".08" fill="rgba(255,255,255,.28)"/>
+</svg>`,
+eyeshadow_palette:`<svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="3" height="2" rx=".22" fill="#fce4ec" stroke="#f48fb1" stroke-width=".07"/>
+  <rect x=".12" y=".12" width=".62" height=".62" rx=".12" fill="#f06292"/>
+  <rect x=".84" y=".12" width=".62" height=".62" rx=".12" fill="#ba68c8"/>
+  <rect x="1.56" y=".12" width=".62" height=".62" rx=".12" fill="#4dd0e1"/>
+  <rect x="2.28" y=".12" width=".62" height=".62" rx=".12" fill="#fff176"/>
+  <rect x=".12" y=".84" width=".62" height=".62" rx=".12" fill="#ef9a9a"/>
+  <rect x=".84" y=".84" width=".62" height=".62" rx=".12" fill="#a5d6a7"/>
+  <rect x="1.56" y=".84" width=".62" height=".62" rx=".12" fill="#90caf9"/>
+  <rect x="2.28" y=".84" width=".62" height=".62" rx=".12" fill="#ffcc80"/>
+  <ellipse cx="1.5" cy="1.76" rx=".22" ry=".13" fill="#f48fb1"/>
+</svg>`,
+lipstick:`<svg viewBox="0 0 1 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".22" y=".86" width=".56" height="1.1" rx=".12" fill="#bdbdbd"/>
+  <rect x=".17" y=".7" width=".66" height=".2" rx=".07" fill="#9e9e9e"/>
+  <rect x=".22" y=".3" width=".56" height=".44" rx=".1" fill="#f50057"/>
+  <path d="M.22,.3 Q.5,.04 .78,.3" fill="#f50057"/>
+  <path d="M.26,.3 Q.5,.1 .74,.3" fill="#b0003a"/>
+  <ellipse cx=".34" cy=".25" rx=".1" ry=".06" fill="rgba(255,255,255,.48)"/>
+</svg>`,
+mascara:`<svg viewBox="0 0 1 3" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".2" y=".56" width=".6" height="2.28" rx=".22" fill="#212121"/>
+  <rect x=".2" y=".56" width=".6" height=".3" rx=".14" fill="#333"/>
+  <rect x=".24" y="0" width=".52" height=".62" rx=".18" fill="#555"/>
+  <line x1=".5" y1=".62" x2=".34" y2=".46" stroke="#111" stroke-width=".1" stroke-linecap="round"/>
+  <line x1=".5" y1=".62" x2=".5" y2=".44" stroke="#111" stroke-width=".1" stroke-linecap="round"/>
+  <line x1=".5" y1=".62" x2=".66" y2=".46" stroke="#111" stroke-width=".1" stroke-linecap="round"/>
+  <rect x=".3" y="1.2" width=".4" height=".08" rx=".04" fill="rgba(255,255,255,.16)"/>
+  <rect x=".3" y="1.44" width=".4" height=".08" rx=".04" fill="rgba(255,255,255,.16)"/>
+</svg>`,
+blush:`<svg viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="1" cy="1" r=".92" fill="#f8bbd0" stroke="#f48fb1" stroke-width=".07"/>
+  <ellipse cx="1" cy="1" rx=".64" ry=".64" fill="#f06292" opacity=".32"/>
+  <ellipse cx="1" cy="1" rx=".32" ry=".32" fill="#e91e63" opacity=".2"/>
+  <ellipse cx=".7" cy=".7" rx=".16" ry=".11" fill="rgba(255,255,255,.58)"/>
+  <text x="1" y="1.08" text-anchor="middle" font-size=".34" fill="rgba(255,255,255,.55)" font-family="sans-serif">♡</text>
+</svg>`,
+powder:`<svg viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".08" y=".08" width="1.84" height="1.84" rx=".4" fill="#ffe0b2" stroke="#ffb74d" stroke-width=".07"/>
+  <ellipse cx="1" cy="1" rx=".66" ry=".66" fill="#ffcc80" opacity=".58"/>
+  <ellipse cx="1" cy="1" rx=".33" ry=".33" fill="#ffb74d" opacity=".48"/>
+  <ellipse cx=".7" cy=".7" rx=".13" ry=".1" fill="rgba(255,255,255,.55)"/>
+  <text x="1" y="1.08" text-anchor="middle" font-size=".32" fill="rgba(255,255,255,.48)" font-family="sans-serif">✦</text>
+</svg>`,
+foundation:`<svg viewBox="0 0 1 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".1" y=".54" width=".8" height="1.4" rx=".26" fill="#ffccbc"/>
+  <rect x=".1" y=".54" width=".8" height=".36" rx=".2" fill="#ffab91"/>
+  <rect x=".2" y=".1" width=".6" height=".48" rx=".16" fill="#cfd8dc"/>
+  <rect x=".26" y=".17" width=".48" height=".1" rx=".05" fill="#b0bec5"/>
+  <rect x=".26" y="1.08" width=".48" height=".08" rx=".04" fill="rgba(255,255,255,.46)"/>
+  <rect x=".26" y="1.28" width=".34" height=".07" rx=".035" fill="rgba(255,255,255,.36)"/>
+</svg>`,
+brush:`<svg viewBox="0 0 2 1" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".55" y=".36" width="1.4" height=".28" rx=".1" fill="#bcaaa4"/>
+  <ellipse cx=".34" cy=".5" rx=".34" ry=".44" fill="#f9d09a"/>
+  <ellipse cx=".34" cy=".5" rx=".34" ry=".44" fill="none" stroke="#e8a840" stroke-width=".05"/>
+  <ellipse cx=".22" cy=".38" rx=".11" ry=".08" fill="rgba(255,255,255,.48)"/>
+</svg>`,
+eyeliner:`<svg viewBox="0 0 2 1" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".06" y=".22" width="1.66" height=".56" rx=".16" fill="#37474f"/>
+  <rect x=".06" y=".22" width=".56" height=".56" rx=".16" fill="#546e7a"/>
+  <path d="M1.72,.3 L1.96,.5 L1.72,.7" fill="#1a2a30"/>
+  <ellipse cx=".22" cy=".36" rx=".08" ry=".06" fill="rgba(255,255,255,.32)"/>
+</svg>`,
+perfume:`<svg viewBox="0 0 1 3" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx=".5" cy=".22" rx=".28" ry=".18" fill="#ce93d8"/>
+  <rect x=".4" y=".3" width=".2" height=".22" rx=".07" fill="#ba68c8"/>
+  <line x1=".5" y1=".3" x2=".82" y2=".24" stroke="#9c27b0" stroke-width=".09" stroke-linecap="round"/>
+  <circle cx=".86" cy=".24" r=".08" fill="#7b1fa2"/>
+  <rect x=".14" y=".5" width=".72" height="2.34" rx=".28" fill="#e1bee7"/>
+  <rect x=".14" y=".5" width=".72" height=".4" rx=".2" fill="#ce93d8"/>
+  <rect x=".18" y=".88" width=".64" height=".1" rx=".05" fill="#ffd54f"/>
+  <rect x=".22" y="1.06" width=".56" height=".36" rx=".1" fill="rgba(255,255,255,.65)"/>
+  <ellipse cx=".28" cy=".7" rx=".09" ry=".17" fill="rgba(255,255,255,.45)"/>
+</svg>`,
+nail_polish:`<svg viewBox="0 0 1 2" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx=".5" cy=".16" rx=".3" ry=".14" fill="#c62828"/>
+  <rect x=".2" y=".12" width=".6" height=".2" rx=".1" fill="#c62828"/>
+  <rect x=".38" y=".28" width=".24" height=".22" rx=".07" fill="#9e9e9e"/>
+  <rect x=".12" y=".48" width=".76" height="1.44" rx=".26" fill="#f44336"/>
+  <ellipse cx=".28" cy=".74" rx=".09" ry=".22" fill="rgba(255,255,255,.42)"/>
+  <rect x=".22" y=".92" width=".56" height=".72" rx=".12" fill="rgba(255,255,255,.18)"/>
+</svg>`,
+mirror:`<svg viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".08" y=".08" width="1.84" height="1.84" rx=".44" fill="#e91e63"/>
+  <rect x=".08" y=".96" width="1.84" height=".09" fill="#c2185b"/>
+  <rect x=".16" y=".16" width="1.68" height=".72" rx=".28" fill="#b0bec5"/>
+  <ellipse cx="1" cy=".52" rx=".72" ry=".3" fill="#eceff1"/>
+  <ellipse cx=".8" cy=".42" rx=".24" ry=".15" fill="rgba(255,255,255,.62)"/>
+  <rect x=".16" y="1.13" width="1.68" height=".65" rx=".28" fill="#f8bbd0"/>
+  <ellipse cx="1" cy="1.46" rx=".58" ry=".23" fill="#f48fb1" opacity=".52"/>
+  <rect x=".82" y=".9" width=".36" height=".2" rx=".1" fill="#ffd54f"/>
+</svg>`,
+concealer:`<svg viewBox="0 0 1 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".14" y=".12" width=".72" height="1.72" rx=".24" fill="#ffe0b2"/>
+  <rect x=".2" y="1.78" width=".6" height=".16" rx=".09" fill="#ffb74d"/>
+  <ellipse cx=".5" cy=".12" rx=".26" ry=".13" fill="#ffcc80"/>
+  <rect x=".14" y=".52" width=".72" height=".54" rx=".1" fill="rgba(255,255,255,.58)"/>
+  <rect x=".22" y=".66" width=".56" height=".07" rx=".035" fill="#ff8a65" opacity=".65)"/>
+  <ellipse cx=".28" cy=".32" rx=".08" ry=".15" fill="rgba(255,255,255,.48)"/>
+</svg>`,
+lip_liner:`<svg viewBox="0 0 1 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".16" y=".14" width=".68" height="1.52" rx=".18" fill="#e91e63"/>
+  <polygon points=".16,1.66 .84,1.66 .5,1.96" fill="#880e4f"/>
+  <polygon points=".36,1.88 .64,1.88 .5,1.98" fill="#ad1457"/>
+  <rect x=".2" y=".08" width=".6" height=".12" rx=".06" fill="#f50057"/>
+  <rect x=".22" y=".34" width=".56" height=".72" rx=".08" fill="rgba(255,255,255,.22)"/>
+  <ellipse cx=".28" cy=".5" rx=".08" ry=".22" fill="rgba(255,255,255,.32)"/>
+</svg>`,
+cotton_pads:`<svg viewBox="0 0 2 1" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="1" cy=".58" rx=".82" ry=".38" fill="#e0e0e0"/>
+  <ellipse cx="1" cy=".52" rx=".82" ry=".38" fill="#eeeeee"/>
+  <ellipse cx="1" cy=".44" rx=".82" ry=".38" fill="#f5f5f5"/>
+  <ellipse cx="1" cy=".36" rx=".82" ry=".38" fill="#ffffff" stroke="#e0e0e0" stroke-width=".04"/>
+  <ellipse cx="1" cy=".36" rx=".56" ry=".26" fill="none" stroke="#eeeeee" stroke-width=".04"/>
+  <ellipse cx=".72" cy=".24" rx=".13" ry=".07" fill="rgba(255,255,255,.85)"/>
+</svg>`,
+tweezers:`<svg viewBox="0 0 2 1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M.1,.08 L.96,.88" stroke="#78909c" stroke-width=".16" stroke-linecap="round"/>
+  <path d="M1.9,.08 L1.04,.88" stroke="#78909c" stroke-width=".16" stroke-linecap="round"/>
+  <path d="M.24,.2 L.38,.33" stroke="#546e7a" stroke-width=".09" stroke-linecap="round"/>
+  <path d="M.32,.3 L.46,.43" stroke="#546e7a" stroke-width=".09" stroke-linecap="round"/>
+  <path d="M1.76,.2 L1.62,.33" stroke="#546e7a" stroke-width=".09" stroke-linecap="round"/>
+  <path d="M1.68,.3 L1.54,.43" stroke="#546e7a" stroke-width=".09" stroke-linecap="round"/>
+  <circle cx="1" cy=".9" r=".07" fill="#455a64"/>
+</svg>`,
+face_roller:`<svg viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".9" y=".06" width=".2" height="1.88" rx=".1" fill="#80cbc4"/>
+  <rect x=".72" y=".44" width=".56" height=".14" rx=".07" fill="#4db6ac"/>
+  <rect x=".72" y="1.42" width=".56" height=".14" rx=".07" fill="#4db6ac"/>
+  <rect x=".12" y=".5" width=".64" height=".96" rx=".28" fill="#a5f3f0"/>
+  <rect x=".12" y=".5" width=".64" height=".96" rx=".28" fill="none" stroke="#4db6ac" stroke-width=".06"/>
+  <ellipse cx=".28" cy=".76" rx=".12" ry=".2" fill="rgba(255,255,255,.52)"/>
+  <rect x="1.24" y=".5" width=".64" height=".96" rx=".28" fill="#a5f3f0"/>
+  <rect x="1.24" y=".5" width=".64" height=".96" rx=".28" fill="none" stroke="#4db6ac" stroke-width=".06"/>
+</svg>`,
+mascara_wand:`<svg viewBox="0 0 1 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".36" y=".56" width=".28" height="1.38" rx=".1" fill="#546e7a"/>
+  <rect x=".36" y=".56" width=".28" height=".2" rx=".08" fill="#37474f"/>
+  <ellipse cx=".5" cy=".38" rx=".44" ry=".44" fill="#212121"/>
+  <line x1=".5" y1=".04" x2=".3" y2=".18" stroke="#212121" stroke-width=".1" stroke-linecap="round"/>
+  <line x1=".5" y1=".04" x2=".5" y2=".16" stroke="#212121" stroke-width=".1" stroke-linecap="round"/>
+  <line x1=".5" y1=".04" x2=".7" y2=".18" stroke="#212121" stroke-width=".1" stroke-linecap="round"/>
+  <line x1=".5" y1=".78" x2=".28" y2=".94" stroke="#212121" stroke-width=".09" stroke-linecap="round"/>
+  <line x1=".5" y1=".78" x2=".5" y2=".96" stroke="#212121" stroke-width=".09" stroke-linecap="round"/>
+  <line x1=".5" y1=".78" x2=".72" y2=".94" stroke="#212121" stroke-width=".09" stroke-linecap="round"/>
+</svg>`,
+setting_spray:`<svg viewBox="0 0 2 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".5" y=".0" width=".36" height=".42" rx=".12" fill="#80deea"/>
+  <rect x=".38" y=".38" width=".56" height=".08" rx=".04" fill="#4dd0e1"/>
+  <rect x=".26" y=".44" width="1.14" height="1.48" rx=".3" fill="#4dd0e1"/>
+  <rect x=".26" y=".44" width="1.14" height=".44" rx=".24" fill="#80deea"/>
+  <ellipse cx=".46" cy=".72" rx=".1" ry=".18" fill="rgba(255,255,255,.45)"/>
+  <rect x=".44" y="1.06" width=".82" height=".1" rx=".05" fill="rgba(255,255,255,.32)"/>
+  <rect x=".44" y="1.26" width=".62" height=".1" rx=".05" fill="rgba(255,255,255,.32)"/>
+  <line x1="1.58" y1=".12" x2="1.74" y2=".04" stroke="#b2ebf2" stroke-width=".06" stroke-linecap="round"/>
+  <line x1="1.58" y1=".22" x2="1.8" y2=".22" stroke="#b2ebf2" stroke-width=".06" stroke-linecap="round"/>
+  <line x1="1.58" y1=".32" x2="1.74" y2=".42" stroke="#b2ebf2" stroke-width=".06" stroke-linecap="round"/>
+</svg>`,
+blotting_paper:`<svg viewBox="0 0 1 2" xmlns="http://www.w3.org/2000/svg">
+  <rect x=".08" y=".06" width=".84" height="1.88" rx=".18" fill="#fce4ec"/>
+  <rect x=".08" y=".06" width=".84" height=".38" rx=".18" fill="#f48fb1"/>
+  <rect x=".16" y=".52" width=".68" height=".08" rx=".04" fill="#f8bbd0"/>
+  <rect x=".16" y=".7" width=".68" height=".08" rx=".04" fill="#f8bbd0"/>
+  <rect x=".16" y=".88" width=".68" height=".08" rx=".04" fill="#f8bbd0"/>
+  <rect x=".16" y="1.06" width=".5" height=".08" rx=".04" fill="#f8bbd0"/>
+  <ellipse cx=".28" cy=".22" rx=".1" ry=".07" fill="rgba(255,255,255,.5)"/>
+</svg>`,
+};
+
+/* Three art-style packs share the same 14-piece footprint set (same solvable layout) */
+const PACK1_PIECES=[
+  ['2x3',2,3],['3x2',3,2],['3x2_2',3,2],['3x2_3',3,2],
+  ['2x2',2,2],['2x2_2',2,2],['2x2_3',2,2],['4x1',4,1],
+  ['3x1',3,1],['3x1_2',3,1],['1x2',1,2],['1x2_2',1,2],['1x2_3',1,2],['1x2',1,2],
+];
+function packItems(dir){return PACK1_PIECES.map(p=>({img:dir+'/'+p[0]+'.png',w:p[1],h:p[2]}));}
+
+const LEVELS=[
+{id:0,title:'Yaz Tatili',emoji:'☀️',sub:'Valize yaz tatili eşyalarını sığdır!',
+ bg:'linear-gradient(180deg,#ffe3bc 0%,#ffc79a 100%)',
+ bagColor:'#0277bd',bagType:'suitcase',handleColor:'#f57c00',rows:9,cols:6,
+ slim:true,frame:'glossy',items:packItems('level1'),sol:[],
+ winEmoji:'🌴',winTitle:'Harika!',winDesc:'Yaz tatili valizin hazır! ✈️',btnText:'Level 2\'ye Geç →'},
+{id:1,title:'Yaz Tatili • Suluboya',emoji:'🎨',sub:'Suluboya eşyaları valize yerleştir!',
+ bg:'linear-gradient(180deg,#f4ecdb 0%,#e7d3bd 100%)',rows:9,cols:6,
+ baseImg:'level1_2/base.png',baseW:792,baseH:1504,face:{l:0.11,t:0.22,r:0.89,b:0.83},
+ items:packItems('level1_2'),sol:[],
+ winEmoji:'🖼️',winTitle:'Çok Güzel!',winDesc:'Suluboya valizin hazır! 🎨',btnText:'Level 3\'e Geç →'},
+{id:2,title:'Yaz Tatili • Kontur',emoji:'🖌️',sub:'Konturlu suluboya eşyaları yerleştir!',
+ bg:'linear-gradient(180deg,#f4ecdb 0%,#e7d3bd 100%)',rows:9,cols:6,
+ baseImg:'level1_2wo/base.png',baseW:792,baseH:1504,face:{l:0.11,t:0.22,r:0.89,b:0.83},
+ items:packItems('level1_2wo'),sol:[],
+ winEmoji:'🖌️',winTitle:'Çok Güzel!',winDesc:'Konturlu suluboya valizin hazır! 🖌️',btnText:'Level 4\'e Geç →'},
+{id:3,title:'Yaz Tatili • Çıkartma',emoji:'✨',sub:'Çıkartma eşyaları valize sığdır!',
+ bg:'linear-gradient(180deg,#c8ede1 0%,#97d9c9 100%)',rows:9,cols:6,
+ baseImg:'level1_3/base.png',baseW:588,baseH:1121,face:{l:0.11,t:0.21,r:0.89,b:0.84},
+ items:packItems('level1_3'),sol:[],
+ winEmoji:'🌟',winTitle:'Süper!',winDesc:'Çıkartma valizin hazır! ✨',btnText:'Level 5\'e Geç →'},
+{id:4,title:'Kış Tatili',emoji:'❄️',sub:'Kış tatili eşyalarını bavula sığdır!',
+ bg:'linear-gradient(158deg,#1a237e 0%,#283593 50%,#4a148c 100%)',
+ bagColor:'#283593',bagType:'suitcase',handleColor:'#607d8b',rows:9,cols:6,
+ items:[
+  {key:'sweater',       cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2]]},
+  {key:'jacket',        cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2]]},
+  {key:'scarf',         cells:[[0,0],[0,1],[0,2]]},
+  {key:'gloves',        cells:[[0,0],[0,1],[1,0],[1,1]]},
+  {key:'beanie',        cells:[[0,0],[0,1],[1,0],[1,1]]},
+  {key:'ski_goggles',   cells:[[0,0],[0,1]]},
+  {key:'ski_boots',     cells:[[0,0],[0,1]]},
+  {key:'thermal_pants', cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2]]},
+  {key:'earmuffs',      cells:[[0,0],[0,1]]},
+  {key:'thermos',       cells:[[0,0],[1,0]]},
+  {key:'wool_socks',    cells:[[0,0],[0,1]]},
+  {key:'hot_water_bottle',cells:[[0,0],[0,1],[1,0],[1,1]]},
+  {key:'ski_helmet',    cells:[[0,0],[0,1],[1,0],[1,1]]},
+  {key:'snow_boots',    cells:[[0,0],[0,1],[1,0],[1,1]]},
+ ],
+ sol:[{r:0,c:0},{r:0,c:3},{r:2,c:3},{r:3,c:0},{r:3,c:2},{r:3,c:4},{r:4,c:4},
+      {r:5,c:0},{r:5,c:3},{r:5,c:5},{r:6,c:3},{r:7,c:0},{r:7,c:2},{r:7,c:4}],
+ winEmoji:'⛄',winTitle:'Bravo!',winDesc:'Kış tatili valizin hazır! ⛷️',btnText:'Level 6\'ya Geç →'},
+{id:5,title:'Okul Çantası',emoji:'🎒',sub:'Eşyaları sırt çantana yerleştir!',
+ bg:'linear-gradient(158deg,#1b5e20 0%,#2e7d32 50%,#33691e 100%)',
+ bagColor:'#2e7d32',bagType:'backpack',handleColor:'#1b5e20',rows:9,cols:6,
+ items:[
+  {key:'textbook',        cells:[[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]]},
+  {key:'pencil_case',     cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2]]},
+  {key:'eraser',          cells:[[0,0],[1,0]]},
+  {key:'notebook',        cells:[[0,0],[0,1],[1,0],[1,1]]},
+  {key:'scissors',        cells:[[0,0],[0,1]]},
+  {key:'ruler',           cells:[[0,0],[0,1],[0,2],[0,3]]},
+  {key:'lunch_box',       cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2]]},
+  {key:'calculator',      cells:[[0,0],[0,1],[1,0],[1,1]]},
+  {key:'glue',            cells:[[0,0],[1,0]]},
+  {key:'colored_pencils', cells:[[0,0],[0,1],[0,2],[0,3]]},
+  {key:'sharpener',       cells:[[0,0],[0,1]]},
+  {key:'compass',         cells:[[0,0],[0,1],[1,0],[1,1]]},
+  {key:'sticky_notes',    cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2]]},
+  {key:'pencil',          cells:[[0,0],[1,0]]},
+ ],
+ sol:[{r:0,c:4},{r:0,c:0},{r:0,c:3},{r:2,c:0},{r:2,c:2},{r:3,c:2},
+      {r:4,c:0},{r:4,c:3},{r:4,c:5},{r:6,c:0},{r:6,c:4},{r:7,c:0},{r:7,c:2},{r:7,c:5}],
+ winEmoji:'📚',winTitle:'Süper!',winDesc:'Okul çantası hazır! 🎉',btnText:'Level 7\'ye Geç →'},
+{id:6,title:'Makyaj Çantası',emoji:'💄',sub:'Makyaj malzemelerini çantaya yerleştir!',
+ bg:'linear-gradient(158deg,#880e4f 0%,#c2185b 50%,#ad1457 100%)',
+ bagColor:'#c2185b',bagType:'makeup',handleColor:'#880e4f',rows:9,cols:6,
+ items:[
+  {key:'eyeshadow_palette',cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2]]},
+  {key:'lipstick',          cells:[[0,0],[1,0]]},
+  {key:'mascara',           cells:[[0,0],[1,0],[2,0]]},
+  {key:'perfume',           cells:[[0,0],[1,0],[2,0]]},
+  {key:'blush',             cells:[[0,0],[0,1],[1,0],[1,1]]},
+  {key:'powder',            cells:[[0,0],[0,1],[1,0],[1,1]]},
+  {key:'foundation',        cells:[[0,0],[1,0]]},
+  {key:'nail_polish',       cells:[[0,0],[1,0]]},
+  {key:'brush',             cells:[[0,0],[0,1]]},
+  {key:'eyeliner',          cells:[[0,0],[0,1]]},
+  {key:'mirror',            cells:[[0,0],[0,1],[1,0],[1,1]]},
+  {key:'concealer',         cells:[[0,0],[1,0]]},
+  {key:'lip_liner',         cells:[[0,0],[1,0]]},
+  {key:'cotton_pads',       cells:[[0,0],[0,1]]},
+  {key:'tweezers',          cells:[[0,0],[0,1]]},
+  {key:'face_roller',       cells:[[0,0],[0,1],[1,0],[1,1]]},
+  {key:'mascara_wand',      cells:[[0,0],[1,0]]},
+  {key:'setting_spray',     cells:[[0,0],[0,1],[1,0],[1,1]]},
+  {key:'blotting_paper',    cells:[[0,0],[1,0]]},
+ ],
+ sol:[{r:0,c:0},{r:0,c:3},{r:0,c:4},{r:0,c:5},{r:2,c:0},{r:2,c:2},
+      {r:3,c:4},{r:3,c:5},{r:4,c:0},{r:4,c:2},{r:5,c:0},{r:5,c:2},
+      {r:5,c:3},{r:5,c:4},{r:6,c:4},{r:7,c:0},{r:7,c:2},{r:7,c:3},{r:7,c:5}],
+ winEmoji:'💄',winTitle:'Harika!',winDesc:'Makyaj çantası hazır! 💋',btnText:'🔄 Baştan Oyna'},
+];
+
+/* ── CONSTANTS & STATE ── */
+const W=390,H=844,BBORDER=3,SS=0.9;
+let lvl,grid,items,CELL=56,baseLay=null;
+let BPAD_H=24,BPAD_V=10;
+let GBODYW=W,GBORDER=BBORDER; // suitcase body width + wall thickness (thin for slim levels)
+let gridOffX=0,gridOffY=0; // grid position relative to #scr
+let dragItem=null,dox=0,doy=0;
+const ghost=document.getElementById('ghost');
+
+/* ── HELPERS ── */
+function mkEl(t='div',c=''){const d=document.createElement(t);if(c)d.className=c;return d;}
+function vbox(s){const m=s.match(/viewBox="0 0 ([0-9.]+) ([0-9.]+)"/);return m?[+m[1],+m[2]]:[1,1];}
+/* Grid footprint [cols,rows] for an item — from PNG dims or SVG viewBox */
+function dimOf(item){return item.img?[item.w,item.h]:vbox(SVG[item.key]);}
+/* Art markup — <img> for asset pieces, inline SVG otherwise */
+function artHTML(item){return item.img?`<img src="${item.img}" draggable="false">`:SVG[item.key];}
+/* Inject + size art into a host element */
+function injectArt(host,item,wPx,hPx){
+  host.innerHTML=artHTML(item);
+  const ch=host.querySelector('svg,img');
+  ch.style.cssText=`width:${wPx}px;height:${hPx}px;display:block;`+(item.img?'object-fit:contain;':'');
+}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function hrgb(h){return[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];}
+function lighten(hex,p){if(!hex.startsWith('#'))return hex;const[r,g,b]=hrgb(hex),f=p/100;return`rgb(${clamp(~~(r+(255-r)*f),0,255)},${clamp(~~(g+(255-g)*f),0,255)},${clamp(~~(b+(255-b)*f),0,255)})`;}
+function darken(hex,p){if(!hex.startsWith('#'))return hex;const[r,g,b]=hrgb(hex),f=p/100;return`rgb(${clamp(~~(r*(1-f)),0,255)},${clamp(~~(g*(1-f)),0,255)},${clamp(~~(b*(1-f)),0,255)})`;}
+
+/* ── INIT ── */
+function initLevel(idx){
+  lvl=LEVELS[idx];
+  if(lvl.baseImg){
+    // Custom portrait suitcase image: fit fully on-screen (small margin); grid fills its front face.
+    const f=lvl.face,M=8,VM=8;
+    const scale=Math.min((W-2*M)/lvl.baseW,(H-2*VM)/lvl.baseH);
+    const artW=Math.round(lvl.baseW*scale),artH=Math.round(lvl.baseH*scale);
+    const faceW=(f.r-f.l)*artW,faceH=(f.b-f.t)*artH;
+    CELL=Math.floor(Math.min(faceW/lvl.cols,faceH/lvl.rows));
+    BPAD_V=8;
+    baseLay={artW,artH,baseLeft:Math.round((W-artW)/2),baseTop:Math.round((H-artH)/2)};
+  }else if(lvl.slim){
+    // Thin-walled suitcase, centered with a small side margin → maximal grid.
+    // Wall thickness varies by art style but pad compensates so grid size stays identical.
+    GBODYW=W-2*14;
+    const fr=lvl.frame||'glossy';
+    GBORDER = fr==='outline'?8 : fr==='soft'?3 : 2;
+    BPAD_V=10-GBORDER;
+    CELL=Math.floor((GBODYW-GBORDER*2-2*BPAD_V)/lvl.cols);
+  }else{
+    GBODYW=W; GBORDER=BBORDER; BPAD_V=10; CELL=56;
+  }
+  BPAD_H=Math.floor((GBODYW-GBORDER*2-lvl.cols*CELL)/2);
+  grid=Array.from({length:lvl.rows},()=>Array(lvl.cols).fill(null));
+  items=lvl.items.map((d,i)=>{
+    let cells=d.cells;
+    if(!cells&&d.w){cells=[];for(let r=0;r<d.h;r++)for(let c=0;c<d.w;c++)cells.push([r,c]);}
+    return{id:i,key:d.key,img:d.img,w:d.w,h:d.h,cells,placed:false,row:0,col:0,sx:0,sy:0,srot:0,el:null};
+  });
+  document.getElementById('bg').style.background=lvl.bg;
+  document.getElementById('h-lv').textContent=`LEVEL ${lvl.id+1}`;
+  document.getElementById('global-placed').innerHTML='';
+  buildBag();
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    // cache grid offset for placed-layer positioning
+    const scr=document.getElementById('scr').getBoundingClientRect();
+    const gr=document.getElementById('grid').getBoundingClientRect();
+    gridOffX=gr.left-scr.left; gridOffY=gr.top-scr.top;
+    buildScatter();updateProg();showIntro();
+  }));
+}
+
+/* ── BAG BUILD (custom portrait suitcase image) ── */
+function buildBagBase(){
+  const area=document.getElementById('bag-area');
+  area.innerHTML=''; area.style.top='0px';
+  const {artW,artH,baseLeft,baseTop}=baseLay, f=lvl.face;
+  const img=mkEl('img'); img.src=lvl.baseImg; img.draggable=false;
+  img.style.cssText=`position:absolute;left:${baseLeft}px;top:${baseTop}px;width:${artW}px;height:${artH}px;pointer-events:none;`;
+  area.appendChild(img);
+  const faceL=baseLeft+f.l*artW, faceT=baseTop+f.t*artH;
+  const faceW=(f.r-f.l)*artW, faceH=(f.b-f.t)*artH;
+  const gridW=lvl.cols*CELL, gridH=lvl.rows*CELL;
+  const gx=Math.round(faceL+(faceW-gridW)/2), gy=Math.round(faceT+(faceH-gridH)/2);
+  const gw=mkEl('div');gw.id='grid-wrap';gw.style.cssText=`position:absolute;left:${gx}px;top:${gy}px;`;
+  const g=mkEl('div');g.id='grid';g.className='on-base';
+  g.style.cssText=`display:grid;position:relative;z-index:1;
+    grid-template-columns:repeat(${lvl.cols},${CELL}px);grid-template-rows:repeat(${lvl.rows},${CELL}px);`;
+  for(let r=0;r<lvl.rows;r++)for(let c=0;c<lvl.cols;c++){const d=mkEl('div','gc');d.dataset.r=r;d.dataset.c=c;g.appendChild(d);}
+  gw.appendChild(g);
+  const ss=mkEl('div');ss.id='snap-shadow';gw.appendChild(ss);
+  area.appendChild(gw);
+}
+
+/* ── BAG BUILD ── */
+function buildBag(){
+  if(lvl.baseImg)return buildBagBase();
+  const area=document.getElementById('bag-area');
+  area.innerHTML='';
+  const bc=lvl.bagColor,dk=darken(bc,24),bd=lvl.borderColor||dk;
+  const fr=lvl.frame||'glossy';
+  const gridH=lvl.rows*CELL;
+  const bodyH=gridH+BPAD_V*2+GBORDER*2;
+  const bgGrad=fr==='outline'
+    ? `linear-gradient(160deg,${lighten(bc,12)} 0%,${bc} 72%)`
+    : `linear-gradient(155deg,${lighten(bc,20)} 0%,${bc} 100%)`;
+  const bodyInset=fr==='soft'?'inset 0 1px 0 rgba(255,255,255,.12)'
+    :fr==='outline'?'inset 0 0 0 2px rgba(255,255,255,.14)'
+    :'inset 0 2px 0 rgba(255,255,255,.18)';
+
+  // compute centered top
+  let extraTop=0,extraBottom=0;
+  if(lvl.bagType==='suitcase'){extraTop=38;extraBottom=18;}
+  else if(lvl.bagType==='backpack'){extraTop=22;}
+  else{extraTop=18;}
+  const totalH=extraTop+bodyH+extraBottom;
+  const bagTop=Math.max(44,Math.floor((H-totalH)/2));
+  area.style.top=bagTop+'px';
+
+  if(lvl.bagType==='suitcase'){
+    // Handle
+    const hw=mkEl('div','sc-handle-wrap');
+    hw.style.cssText=`width:${GBODYW}px;height:${extraTop}px;position:relative;`;
+    const arc=mkEl('div','sc-handle-arc');
+    arc.style.cssText=`border-color:${lvl.handleColor};left:50%;transform:translateX(-50%);`;
+    const pl=mkEl('div','sc-post');
+    pl.style.cssText=`background:${lvl.handleColor};left:calc(50% - 30px);height:28px;bottom:0;`;
+    const pr=mkEl('div','sc-post');
+    pr.style.cssText=`background:${lvl.handleColor};right:calc(50% - 30px);height:28px;bottom:0;`;
+    hw.appendChild(arc);hw.appendChild(pl);hw.appendChild(pr);
+    area.appendChild(hw);
+
+    const body=mkEl('div','sc-body');
+    body.style.cssText=`width:${GBODYW}px;height:${bodyH}px;background:${bgGrad};
+      border:${GBORDER}px solid ${bd};border-radius:${fr==='outline'?16:20}px;position:relative;
+      box-shadow:0 8px 0 ${darken(bc,36)},0 14px 28px rgba(0,0,0,.38),${bodyInset};`;
+    if(!lvl.slim){ // thin-walled levels skip the side straps/latch/corners so the grid stays maximal
+      const sl=mkEl('div','sc-stripe l');sl.style.background=darken(bc,16);body.appendChild(sl);
+      const sr=mkEl('div','sc-stripe r');sr.style.background=darken(bc,16);body.appendChild(sr);
+      const latch=mkEl('div','sc-latch');latch.style.background=lighten(bc,30);body.appendChild(latch);
+      ['tl','tr','bl','br'].forEach(p=>{const c=mkEl('div','sc-corner '+p);c.style.background=`linear-gradient(135deg,rgba(255,255,255,.35),rgba(0,0,0,.18))`;body.appendChild(c);});
+    }
+    injectGrid(body);area.appendChild(body);
+
+    const wb=mkEl('div','sc-wheels');
+    wb.style.cssText=`width:${GBODYW}px;height:${extraBottom}px;position:relative;`;
+    const ax=mkEl('div');ax.style.cssText=`position:absolute;left:22px;right:22px;top:3px;height:5px;background:${darken(bc,30)};border-radius:3px;`;
+    const wl=mkEl('div','sc-wheel l');wl.style.background=`linear-gradient(180deg,#555,#222)`;
+    const wr2=mkEl('div','sc-wheel r');wr2.style.background=`linear-gradient(180deg,#555,#222)`;
+    wb.appendChild(ax);wb.appendChild(wl);wb.appendChild(wr2);area.appendChild(wb);
+
+  }else if(lvl.bagType==='backpack'){
+    const wrap=mkEl('div','bp-wrap');
+    wrap.style.cssText=`width:${W}px;position:relative;margin-top:${extraTop}px;`;
+
+    const strapColor=darken(bc,28);
+    const sl=mkEl('div','bp-strap l');sl.style.background=strapColor;wrap.appendChild(sl);
+    const sr=mkEl('div','bp-strap r');sr.style.background=strapColor;wrap.appendChild(sr);
+    const grip=mkEl('div','bp-top-grip');grip.style.borderColor=darken(bc,32);wrap.appendChild(grip);
+
+    const body=mkEl('div','bp-body');
+    body.style.cssText=`width:${W}px;height:${bodyH}px;background:${bgGrad};
+      border:${BBORDER}px solid ${dk};border-radius:16px 16px 24px 24px;position:relative;
+      box-shadow:0 8px 0 ${darken(bc,36)},0 14px 28px rgba(0,0,0,.38),inset 0 2px 0 rgba(255,255,255,.18);`;
+
+    // Opening rim at top (shows bag is open)
+    const rim=mkEl('div','bp-opening');
+    rim.style.background=darken(bc,18);body.appendChild(rim);
+
+    // Front pocket at bottom
+    const pkt=mkEl('div','bp-pocket');
+    pkt.style.cssText+=`bottom:12px;height:${~~(bodyH*.2)}px;`;
+    const pzip=mkEl('div','bp-pocket-zip');pkt.appendChild(pzip);
+    body.appendChild(pkt);
+
+    injectGrid(body);wrap.appendChild(body);area.appendChild(wrap);
+
+  }else{ // makeup
+    const wrap=mkEl('div','mk-wrap');
+    wrap.style.cssText=`width:${W}px;position:relative;margin-top:${extraTop}px;`;
+
+    // Open zipper visual
+    const zipRow=mkEl('div','mk-zip-open');
+    const zl=mkEl('div','mk-zip-l');
+    const pull=mkEl('div','mk-zip-pull');
+    const zr=mkEl('div','mk-zip-r');
+    zipRow.appendChild(zl);zipRow.appendChild(pull);zipRow.appendChild(zr);
+    wrap.appendChild(zipRow);
+
+    const body=mkEl('div','mk-body');
+    body.style.cssText=`width:${W}px;height:${bodyH}px;background:${bgGrad};
+      border:${BBORDER}px solid ${dk};border-radius:20px;position:relative;
+      box-shadow:0 8px 0 ${darken(bc,36)},0 14px 28px rgba(0,0,0,.38),inset 0 2px 0 rgba(255,255,255,.18);`;
+
+    const rim=mkEl('div','mk-top-rim');
+    rim.style.background=lighten(bc,15);body.appendChild(rim);
+
+    injectGrid(body);wrap.appendChild(body);area.appendChild(wrap);
+  }
+}
+
+function injectGrid(body){
+  const gw=mkEl('div');gw.id='grid-wrap';
+  gw.style.cssText=`position:absolute;top:${BPAD_V}px;left:${BPAD_H+GBORDER}px;`;
+
+  const lining=mkEl('div','grid-lining');
+  lining.style.cssText+=`width:${lvl.cols*CELL}px;height:${lvl.rows*CELL}px;`;
+  gw.appendChild(lining);
+
+  const g=mkEl('div');g.id='grid';
+  g.style.cssText=`display:grid;position:relative;z-index:1;
+    grid-template-columns:repeat(${lvl.cols},${CELL}px);
+    grid-template-rows:repeat(${lvl.rows},${CELL}px);`;
+  for(let r=0;r<lvl.rows;r++)
+    for(let c=0;c<lvl.cols;c++){
+      const d=mkEl('div','gc');d.dataset.r=r;d.dataset.c=c;g.appendChild(d);
+    }
+  gw.appendChild(g);
+
+  const ss=mkEl('div');ss.id='snap-shadow';gw.appendChild(ss);
+  body.appendChild(gw);
+}
+
+/* ── SCATTER — full-screen, non-overlapping ── */
+function buildScatter(){
+  const area=document.getElementById('scatter');
+  area.innerHTML='';
+
+  const n=items.length;
+  const order=[...Array(n).keys()].sort(()=>Math.random()-.5);
+  const placed=[]; // [{x,y,w,h}] obstacles for overlap checking
+
+  order.forEach((itemIdx)=>{
+    const item=items[itemIdx];
+    const[vw,vh]=dimOf(item);
+    const iW=vw*CELL*SS,iH=vh*CELL*SS;
+
+    // Decide rotation first, then keep the rotated bounding box fully on-screen
+    const sign=Math.random()>.5?1:-1;
+    const rot=sign*(6+Math.random()*11);
+    const rad=Math.abs(rot)*Math.PI/180;
+    const ovx=(iW*Math.cos(rad)+iH*Math.sin(rad)-iW)/2;
+    const ovy=(iW*Math.sin(rad)+iH*Math.cos(rad)-iH)/2;
+    const m=8;
+    const minX=m+ovx, maxX=W-iW-ovx-m;
+    const minY=m+ovy, maxY=H-iH-ovy-m;
+
+    let bestX=minX,bestY=minY,bestScore=Infinity;
+    for(let attempt=0;attempt<80;attempt++){
+      const x=minX+Math.random()*Math.max(0,maxX-minX);
+      const y=minY+Math.random()*Math.max(0,maxY-minY);
+      let score=0;
+      for(const p of placed){
+        const ox=Math.max(0,Math.min(x+iW,p.x+p.w+6)-Math.max(x,p.x-6));
+        const oy=Math.max(0,Math.min(y+iH,p.y+p.h+6)-Math.max(y,p.y-6));
+        score+=ox*oy;
+      }
+      if(score<bestScore){bestScore=score;bestX=x;bestY=y;if(score===0)break;}
+    }
+
+    const x=clamp(bestX,minX,Math.max(minX,maxX));
+    const y=clamp(bestY,minY,Math.max(minY,maxY));
+    placed.push({x,y,w:iW,h:iH});
+    item.sx=x;item.sy=y;item.srot=rot;
+
+    const d=mkEl('div','si');
+    d.dataset.id=item.id;
+    d.style.cssText=`left:${x}px;top:${y}px;width:${iW}px;height:${iH}px;transform:rotate(${rot}deg);pointer-events:auto;`;
+    injectArt(d,item,iW,iH);
+    d.addEventListener('mousedown',siMD);
+    d.addEventListener('touchstart',siTS,{passive:false});
+    item.el=d;
+    area.appendChild(d);
+  });
+}
+
+/* ── FILLED CELL FEEDBACK ── */
+function syncFilledCells(){
+  document.querySelectorAll('.gc').forEach(c=>{
+    const r=+c.dataset.r,col=+c.dataset.c;
+    const occupied=grid[r]&&grid[r][col]!==null;
+    c.classList.toggle('filled',occupied);
+  });
+}
+
+/* ── PLACED LAYER (global overlay above scatter) ── */
+function rebuildPlaced(freshId=null){
+  const layer=document.getElementById('global-placed');
+  if(!layer)return;
+  layer.innerHTML='';
+  items.filter(i=>i.placed).forEach(item=>{
+    const[vw,vh]=dimOf(item);
+    const pW=vw*CELL,pH=vh*CELL;
+    const d=mkEl('div','pi'+(item.id===freshId?' fresh':''));
+    d.style.cssText=`position:absolute;left:${gridOffX+item.col*CELL}px;top:${gridOffY+item.row*CELL}px;width:${pW}px;height:${pH}px;pointer-events:auto;`;
+    injectArt(d,item,pW,pH);
+    d.dataset.id=item.id;
+    d.addEventListener('mousedown',piMD);
+    d.addEventListener('touchstart',piTS,{passive:false});
+    layer.appendChild(d);
+  });
+}
+
+/* ── DRAG SCATTER ── */
+function siMD(e){e.preventDefault();fromScatter(+e.currentTarget.dataset.id,e.clientX,e.clientY);window.addEventListener('mousemove',onMM);window.addEventListener('mouseup',onMU);}
+function siTS(e){e.preventDefault();fromScatter(+e.currentTarget.dataset.id,e.touches[0].clientX,e.touches[0].clientY);window.addEventListener('touchmove',onTM,{passive:false});window.addEventListener('touchend',onTE);}
+function fromScatter(id,x,y){
+  const item=items.find(i=>i.id===id);
+  if(!item||item.placed)return;
+  dragItem=item;
+  const[vw,vh]=dimOf(item);
+  dox=vw*CELL/2;doy=vh*CELL/2;
+  dragItem.el.classList.add('drag');
+  showGhost(x,y,item.srot);
+}
+
+/* ── DRAG PLACED ── */
+function piMD(e){e.preventDefault();e.stopPropagation();fromPlaced(+e.currentTarget.dataset.id,e.clientX,e.clientY);window.addEventListener('mousemove',onMM);window.addEventListener('mouseup',onMU);}
+function piTS(e){e.preventDefault();e.stopPropagation();fromPlaced(+e.currentTarget.dataset.id,e.touches[0].clientX,e.touches[0].clientY);window.addEventListener('touchmove',onTM,{passive:false});window.addEventListener('touchend',onTE);}
+function fromPlaced(id,x,y){
+  const item=items.find(i=>i.id===id);
+  if(!item)return;
+  item.cells.forEach(([r,c])=>{grid[item.row+r][item.col+c]=null;});
+  item.placed=false;
+  rebuildPlaced();syncFilledCells();updateProg();
+  dragItem=item;
+  const[vw,vh]=dimOf(item);
+  dox=vw*CELL/2;doy=vh*CELL/2;
+  dragItem.el.style.display='block';
+  dragItem.el.classList.add('drag');
+  showGhost(x,y,0);
+}
+
+/* ── GHOST with rotation animation ── */
+function showGhost(x,y,startRot){
+  const[vw,vh]=dimOf(dragItem);
+  const gW=vw*CELL,gH=vh*CELL;
+  injectArt(ghost,dragItem,gW,gH);
+  ghost.style.cssText=`position:fixed;pointer-events:none;z-index:9000;
+    width:${gW}px;height:${gH}px;display:block;
+    transform-origin:center center;
+    filter:drop-shadow(0 24px 30px rgba(0,0,0,.55));
+    opacity:.93;transition:none;
+    transform:rotate(${startRot}deg) scale(1.0);
+    left:${x-dox}px;top:${y-doy}px;`;
+  // Trigger reflow then animate rotation to 0
+  ghost.offsetHeight;
+  ghost.style.transition='transform .22s cubic-bezier(.175,.885,.32,1.275)';
+  ghost.style.transform='rotate(0deg) scale(1.04)';
+}
+
+/* ── MOVE / DROP ── */
+function onMM(e){move(e.clientX,e.clientY);}
+function onTM(e){e.preventDefault();move(e.touches[0].clientX,e.touches[0].clientY);}
+function onMU(e){window.removeEventListener('mousemove',onMM);window.removeEventListener('mouseup',onMU);drop(e.clientX,e.clientY);}
+function onTE(e){window.removeEventListener('touchmove',onTM);window.removeEventListener('touchend',onTE);drop(e.changedTouches[0].clientX,e.changedTouches[0].clientY);}
+
+function move(x,y){
+  if(!dragItem)return;
+  // Ghost follows cursor freely (no magnetic snap)
+  ghost.style.left=(x-dox)+'px';
+  ghost.style.top=(y-doy)+'px';
+  const{row,col,overGrid}=snapCell(x,y);
+  const ok=overGrid&&canPlace(dragItem,row,col);
+  highlight(overGrid,row,col,ok);
+}
+
+function snapCell(x,y){
+  const g=document.getElementById('grid');
+  if(!g)return{row:-99,col:-99,overGrid:false};
+  const r=g.getBoundingClientRect();
+  const maxC=Math.max(...dragItem.cells.map(([,c])=>c));
+  const maxR=Math.max(...dragItem.cells.map(([rr])=>rr));
+  const rawC=(x-dox-r.left)/CELL;
+  const rawR=(y-doy-r.top)/CELL;
+  const col=clamp(Math.round(rawC),0,lvl.cols-1-maxC);
+  const row=clamp(Math.round(rawR),0,lvl.rows-1-maxR);
+  // overGrid: cursor itself is inside grid bounds (not ghost overlap)
+  const overGrid=x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom;
+  return{row,col,overGrid};
+}
+
+function canPlace(item,row,col){
+  for(const[r,c]of item.cells){
+    const gr=row+r,gc=col+c;
+    if(gr<0||gr>=lvl.rows||gc<0||gc>=lvl.cols)return false;
+    if(grid[gr][gc]!==null)return false;
+  }
+  return true;
+}
+
+function highlight(overGrid,row,col,ok){
+  document.querySelectorAll('.gc').forEach(c=>c.classList.remove('ok','no'));
+  const sh=document.getElementById('snap-shadow');
+  if(!overGrid||!dragItem){if(sh)sh.style.opacity='0';return;}
+  dragItem.cells.forEach(([r,c])=>{
+    const gr=row+r,gc=col+c;
+    if(gr>=0&&gr<lvl.rows&&gc>=0&&gc<lvl.cols){
+      const cell=document.querySelector(`.gc[data-r="${gr}"][data-c="${gc}"]`);
+      if(cell)cell.classList.add(ok?'ok':'no');
+    }
+  });
+  if(sh&&dragItem){
+    const[vw,vh]=dimOf(dragItem);
+    sh.style.cssText=`position:absolute;pointer-events:none;z-index:2;border-radius:10px;
+      left:${col*CELL}px;top:${row*CELL}px;
+      width:${vw*CELL}px;height:${vh*CELL}px;
+      background:${ok?'rgba(100,255,140,.18)':'rgba(255,60,60,.14)'};
+      box-shadow:0 8px 22px rgba(0,0,0,${ok?.28:.12});
+      opacity:1;transition:opacity .12s;`;
+  }
+}
+
+function drop(x,y){
+  document.querySelectorAll('.gc').forEach(c=>c.classList.remove('ok','no'));
+  const sh=document.getElementById('snap-shadow');if(sh)sh.style.opacity='0';
+  ghost.style.display='none';
+  if(!dragItem)return;
+  const{row,col,overGrid}=snapCell(x,y);
+  if(overGrid){
+    if(canPlace(dragItem,row,col)){
+      // Valid grid placement
+      dragItem.cells.forEach(([r,c])=>{grid[row+r][col+c]=dragItem.id;});
+      dragItem.placed=true;dragItem.row=row;dragItem.col=col;
+      dragItem.el.style.display='none';dragItem.el.classList.remove('drag');
+      rebuildPlaced(dragItem.id);syncFilledCells();updateProg();playPlop();checkWin();
+    }else{
+      // Grid occupied — bounce back to original scatter position
+      dragItem.el.classList.remove('drag');
+      dragItem.el.style.display='block';
+      dragItem.el.style.left=dragItem.sx+'px';
+      dragItem.el.style.top=dragItem.sy+'px';
+      dragItem.el.style.transform=`rotate(${dragItem.srot}deg)`;
+    }
+  }else{
+    // Free placement anywhere off-grid
+    const scr=document.getElementById('scr').getBoundingClientRect();
+    const[vw,vh]=dimOf(dragItem);
+    const nx=clamp(x-dox-scr.left,4,W-vw*CELL*SS-4);
+    const ny=clamp(y-doy-scr.top,4,H-vh*CELL*SS-4);
+    // dropped off-grid → let it land with a casual rotation again (like the scatter)
+    const rot=(Math.random()>.5?1:-1)*(6+Math.random()*11);
+    dragItem.sx=nx;dragItem.sy=ny;dragItem.srot=rot;
+    dragItem.el.classList.remove('drag');
+    dragItem.el.style.display='block';
+    dragItem.el.style.left=nx+'px';
+    dragItem.el.style.top=ny+'px';
+    dragItem.el.style.transform=`rotate(${rot}deg)`;
+  }
+  dragItem=null;
+}
+
+/* ── PROGRESS / WIN ── */
+function updateProg(){const p=items.filter(i=>i.placed).length;document.getElementById('h-pr').textContent=`${p}/${items.length}`;}
+function checkWin(){
+  if(!items.every(i=>i.placed))return;
+  setTimeout(()=>{
+    playFanfare();doConfetti();
+    document.getElementById('w-em').textContent=lvl.winEmoji;
+    document.getElementById('w-ti').textContent=lvl.winTitle;
+    document.getElementById('w-de').textContent=lvl.winDesc;
+    document.getElementById('w-btn').textContent=lvl.btnText;
+    document.getElementById('win').classList.add('show');
+    document.getElementById('w-btn').onclick=()=>{
+      document.getElementById('win').classList.remove('show');
+      initLevel((lvl.id+1)%LEVELS.length);
+    };
+  },500);
+}
+function showIntro(){
+  document.getElementById('i-em').textContent=lvl.emoji;
+  document.getElementById('i-ti').textContent=lvl.title;
+  document.getElementById('i-su').textContent=lvl.sub;
+  const ov=document.getElementById('intro');
+  ov.classList.add('show');
+  const dismiss=()=>{ov.classList.remove('show');ov.removeEventListener('click',dismiss);};
+  ov.addEventListener('click',dismiss);
+  setTimeout(dismiss,2200);
+}
+function doConfetti(){
+  const cols=['#ff6b6b','#ffd93d','#6bcb77','#4d96ff','#c77dff','#ff9f1c','#06d6a0','#ff9ff3'];
+  for(let i=0;i<80;i++) setTimeout(()=>{
+    const p=document.createElement('div');p.className='cf';
+    const sz=7+Math.random()*9;
+    p.style.cssText=`left:${Math.random()*100}vw;top:-20px;width:${sz}px;height:${sz}px;
+      background:${cols[~~(Math.random()*cols.length)]};
+      border-radius:${Math.random()>.5?'50%':'3px'};
+      animation-duration:${1.8+Math.random()*2.2}s;animation-delay:${Math.random()*.4}s;`;
+    document.body.appendChild(p);setTimeout(()=>p.remove(),5000);
+  },i*30);
+}
+function playPlop(){try{const ctx=new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.type='sine';o.frequency.setValueAtTime(400,ctx.currentTime);o.frequency.exponentialRampToValueAtTime(660,ctx.currentTime+.1);g.gain.setValueAtTime(.13,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.28);o.start();o.stop(ctx.currentTime+.3);}catch(_){}}
+function playFanfare(){try{const ctx=new(window.AudioContext||window.webkitAudioContext)();[[0,523],[.1,659],[.2,784],[.32,1047],[.44,1319]].forEach(([t,f])=>{const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=f;g.gain.setValueAtTime(.14,ctx.currentTime+t);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+t+.3);o.start(ctx.currentTime+t);o.stop(ctx.currentTime+t+.34);});}catch(_){}}
+
+document.getElementById('skip-btn').onclick=()=>{
+  document.getElementById('win').classList.remove('show');
+  initLevel((lvl.id+1)%LEVELS.length);
+};
+initLevel(0);
+</script>
+</body>
+</html>

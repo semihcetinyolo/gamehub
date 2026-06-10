@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Hidden By Word — Terrace</title>
+<link rel="stylesheet" href="styles.css?v=3" />
+</head>
+<body>
+  <div class="frame" id="frame">
+
+    <!-- ===== HUD ===== -->
+    <div class="hud">
+      <div class="round-pill" id="levelPill">Level 1</div>
+      <div class="progress" id="progress">
+        <span class="prog-num" id="progNum">0</span><span class="prog-den" id="progDen">/30</span>
+      </div>
+      <div class="hud-btns">
+        <button class="hud-btn mode-btn" id="modeBtn" title="Cycle V1 / V2 / V3">V1</button>
+        <button class="hud-btn" id="revealBtn" title="Reveal targets (3s)">👁</button>
+        <button class="hud-btn" id="hintBtn" title="Hint">💡</button>
+        <button class="hud-btn" id="refreshBtn" title="Restart level">⟳</button>
+        <button class="hud-btn" id="adminBtn" title="Admin">⚙</button>
+      </div>
+    </div>
+
+    <!-- ===== BOARD ===== -->
+    <div class="board-wrap" id="boardWrap">
+      <div class="board" id="board">
+        <img class="bg" id="bg" src="assets/bg.jpg" alt="" draggable="false" />
+        <!-- item layers injected here -->
+      </div>
+      <div class="drag-hint" id="dragHint">⇆ drag · pinch / scroll to zoom</div>
+    </div>
+
+    <!-- ===== HOLDERS (find these by name) ===== -->
+    <div class="tray-row">
+      <div class="tray" id="tray">
+        <!-- 3 name holders injected here -->
+      </div>
+    </div>
+
+    <!-- ===== OVERLAY ===== -->
+    <div class="overlay" id="overlay">
+      <div class="overlay-card" id="overlayCard">
+        <div class="overlay-emoji" id="ovEmoji">🎉</div>
+        <div class="overlay-title" id="ovTitle">Level Complete!</div>
+        <div class="overlay-sub" id="ovSub">All items found.</div>
+        <button class="overlay-btn" id="ovBtn">Next Level</button>
+      </div>
+    </div>
+
+    <!-- fx layer (miss pointers / fx) -->
+    <div class="fx-layer" id="fxLayer"></div>
+
+    <!-- ===== ADMIN PANEL ===== -->
+    <div class="adm-overlay" id="admPanel">
+      <div class="adm-card">
+        <div class="adm-head">
+          <span class="adm-title">⚙ Admin</span>
+          <button class="adm-x" id="admClose" title="Close">✕</button>
+        </div>
+        <div class="adm-info" id="admInfo">—</div>
+        <div class="adm-row">
+          <button class="adm-btn" id="admPrev">◀ Prev Level</button>
+          <button class="adm-btn primary" id="admNext">Next Level ▶</button>
+        </div>
+        <button class="adm-btn wide" id="admRestart">⟳ Restart Level</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js?v=3"></script>
+</body>
+</html>

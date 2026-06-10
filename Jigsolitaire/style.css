@@ -1,0 +1,257 @@
+:root {
+  --bg-0: #14110d;
+  --bg-1: #1d1812;
+  --felt: #2f8f6f;
+  --felt-2: #2a7d62;
+  --ink: #f4ece0;
+  --ink-dim: #cdbfa9;
+  --accent: #e8a13a;
+  --accent-2: #f2c36b;
+  --chip: rgba(0, 0, 0, 0.32);
+  --line: rgba(255, 255, 255, 0.12);
+  --card-edge: rgba(255, 255, 255, 0.92);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  font-family: "Avenir Next", "SF Pro Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(1000px 700px at 50% -10%, #2a221a 0%, var(--bg-1) 55%, var(--bg-0) 100%);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#app {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+}
+
+/* ---------- The "phone" ---------- */
+/* Desktop: a centred device mock-up shaped like an iPhone 13 mini (9:19.5). */
+.phone {
+  position: relative;
+  height: 100%;
+  max-height: 880px;
+  aspect-ratio: 375 / 812;
+  background: #0b0a08;
+  border-radius: 42px;
+  padding: 9px;
+  box-shadow: 0 20px 55px rgba(0,0,0,0.6), inset 0 0 0 2px rgba(255,255,255,0.05);
+}
+.phone-inner {
+  position: relative;
+  height: 100%;
+  border-radius: 34px;
+  overflow: hidden;
+  background: radial-gradient(120% 80% at 50% 0%, var(--felt) 0%, var(--felt-2) 68%, #1f6b52 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+}
+
+/* ---------- Top bar ---------- */
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex: 0 0 auto; }
+.brand { display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 16px; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
+.brand .logo { font-size: 18px; }
+.hud { display: flex; gap: 6px; }
+.chip {
+  background: var(--chip);
+  border: 1px solid var(--line);
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* ---------- Toolbar (format + actions) ---------- */
+.toolbar { display: flex; flex-direction: column; gap: 7px; flex: 0 0 auto; }
+.seg { display: flex; width: 100%; background: var(--chip); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.seg button {
+  flex: 1 1 0;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: var(--ink-dim);
+  padding: 8px 2px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button:hover { color: var(--ink); }
+.seg button.active { background: var(--accent); color: #2a1c08; }
+
+.actions { display: flex; gap: 7px; width: 100%; }
+.btn {
+  flex: 1 1 0;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.06);
+  color: var(--ink);
+  padding: 9px 6px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  transition: transform 0.08s, background 0.15s;
+}
+.btn:hover { background: rgba(255,255,255,0.12); }
+.btn:active { transform: translateY(1px); }
+.btn-accent { background: linear-gradient(180deg, var(--accent-2), var(--accent)); color: #2a1c08; border-color: rgba(0,0,0,0.2); }
+
+/* ---------- Banner ---------- */
+.banner {
+  flex: 0 0 auto;
+  background: rgba(0, 70, 50, 0.5);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 14px;
+  padding: 11px 12px;
+  text-align: center;
+  font-weight: 800;
+  font-size: clamp(14px, 2.1vh, 18px);
+  line-height: 1.2;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+/* ---------- Board ---------- */
+.board-wrap { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; min-height: 0; }
+#board { position: relative; touch-action: none; }
+#peek {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.18s;
+  pointer-events: none;
+  z-index: 5000;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.8);
+}
+#peek.show { opacity: 1; }
+
+.piece {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  background-origin: border-box;
+  border-style: solid;
+  border-color: var(--card-edge);
+  cursor: grab;
+  z-index: 10;
+  will-change: transform;
+}
+.piece.dragging { cursor: grabbing; z-index: 9999 !important; filter: drop-shadow(0 10px 16px rgba(0,0,0,0.5)); }
+.piece.valid   { outline: 3px solid rgba(120, 255, 180, 0.95); outline-offset: -3px; }
+.piece.invalid { outline: 3px solid rgba(255, 110, 110, 0.95); outline-offset: -3px; }
+.piece.merged-pop { animation: mergePop 0.34s ease; }
+@keyframes mergePop {
+  0%   { filter: brightness(1); }
+  40%  { filter: brightness(1.35) drop-shadow(0 0 12px rgba(255,240,200,0.9)); }
+  100% { filter: brightness(1); }
+}
+
+/* ---------- Level strip ---------- */
+.levelstrip {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  flex: 0 0 auto;
+  padding: 3px 1px 2px;
+  scrollbar-width: none;
+}
+.levelstrip::-webkit-scrollbar { display: none; }
+.level-thumb {
+  position: relative;
+  flex: 0 0 auto;
+  width: 50px;
+  height: 50px;
+  border-radius: 9px;
+  border: 2px solid transparent;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.35);
+  transition: transform 0.12s, border-color 0.12s;
+}
+.level-thumb:hover { transform: translateY(-2px) scale(1.04); }
+.level-thumb.active { border-color: #fff; }
+.level-thumb .badge {
+  position: absolute; top: 2px; right: 2px;
+  background: var(--accent); color: #2a1c08;
+  font-size: 8px; font-weight: 800; padding: 1px 4px; border-radius: 999px;
+}
+
+/* ---------- Win overlay ---------- */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(3px);
+  z-index: 10000;
+}
+.overlay.hidden { display: none; }
+.win-card {
+  background: linear-gradient(180deg, #2c2018, #1d150f);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 22px 26px;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+  max-width: 86%;
+  animation: rise 0.35s ease;
+}
+@keyframes rise { from { transform: translateY(16px); opacity: 0; } to { transform: none; opacity: 1; } }
+.win-emoji { font-size: 46px; }
+.win-card h2 { margin: 6px 0 4px; font-size: 22px; }
+.win-card p { margin: 0 0 16px; color: var(--ink-dim); font-size: 14px; }
+.win-actions { display: flex; gap: 10px; justify-content: center; }
+.win-actions .btn { flex: 0 0 auto; padding: 9px 16px; }
+
+/* ---------- Confetti ---------- */
+.confetti {
+  position: absolute; top: -20px;
+  width: 9px; height: 14px; border-radius: 2px;
+  z-index: 10001; pointer-events: none;
+  animation: fall linear forwards;
+}
+@keyframes fall { to { transform: translateY(120vh) rotate(720deg); opacity: 0.9; } }
+
+/* ---------- Phone-sized screens: fill the whole device ---------- */
+@media (max-width: 520px), (pointer: coarse) and (max-height: 920px) {
+  #app { padding: 0; }
+  .phone {
+    width: 100%;
+    height: 100dvh;
+    max-height: none;
+    aspect-ratio: auto;
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .phone-inner {
+    border-radius: 0;
+    padding-top: calc(8px + env(safe-area-inset-top));
+    padding-bottom: calc(6px + env(safe-area-inset-bottom));
+    padding-left: calc(12px + env(safe-area-inset-left));
+    padding-right: calc(12px + env(safe-area-inset-right));
+  }
+}
+
+@media (max-width: 340px) {
+  .brand .bname { display: none; }
+}

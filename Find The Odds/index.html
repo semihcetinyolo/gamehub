@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Find the Odds — Sports</title>
+<script>
+  // dev cache-buster so edits show up on reload
+  document.write('<link rel="stylesheet" href="styles.css?t=' + Date.now() + '">');
+</script>
+</head>
+<body>
+  <div class="phone">
+    <!-- HUD -->
+    <header class="hud">
+      <div class="hearts" id="hearts"></div>
+      <div class="level-name" id="levelName"></div>
+      <div class="hud-actions">
+        <button class="icon-btn hint-btn" id="hintBtn" title="Hint — reveal one" aria-label="Hint">💡</button>
+        <button class="icon-btn next-btn" id="nextBtn" title="Next level" aria-label="Next level">⏭</button>
+        <button class="icon-btn restart" id="restart" title="Restart" aria-label="Restart">⟳</button>
+      </div>
+    </header>
+
+    <!-- Play stage: pile lives here, holders pinned at the bottom -->
+    <div class="stage" id="stage">
+      <div class="playfield" id="playfield"></div>
+      <div class="tray" id="tray"></div>
+      <div class="stickers" id="stickers"></div>
+      <div class="fly" id="fly"></div>
+
+      <!-- odds found / total, pinned to the top-left of the tray -->
+      <div class="odd-count" id="oddCount" title="Odd ones found">
+        <span class="odd-num" id="oddNum">0/5</span>
+      </div>
+
+      <!-- Win overlay -->
+      <div class="win" id="win">
+        <div class="win-card">
+          <div class="win-emoji">🎉</div>
+          <div class="win-text">All odd ones found!</div>
+          <button class="win-btn" id="playAgain">Next level →</button>
+        </div>
+      </div>
+
+      <!-- Fail overlay (auto-restarts) -->
+      <div class="fail" id="fail">
+        <div class="fail-card">
+          <div class="fail-emoji">💔</div>
+          <div class="fail-text">Out of hearts!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="matter.min.js"></script>
+  <script src="levels-data.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

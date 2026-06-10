@@ -1,0 +1,243 @@
+:root{
+  --frame-w: 432px;
+  --blue-0:#2b59c3;
+  --blue-1:#1f3f93;
+  --blue-2:#16306f;
+  --cell:#16306f;
+  --cell-edge:#0f2350;
+  --gold:#ffce4d;
+}
+
+*{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html,body{ margin:0; height:100%; }
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:#0c1430;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  user-select:none;
+}
+
+.frame{
+  position:relative;
+  width:min(var(--frame-w), 100vw);
+  height:min(936px, 100vh);
+  background:linear-gradient(180deg,#3568d8 0%, #2a55bb 22%, #1d3f95 55%, #16315f 100%);
+  display:flex;
+  flex-direction:column;
+  padding:14px 14px 18px;
+  gap:12px;
+  overflow:hidden;
+}
+
+/* ===== HUD ===== */
+.hud{ display:flex; align-items:center; justify-content:flex-end; height:40px; flex:0 0 auto; }
+.round-pill{
+  font-size:14px; font-weight:800; color:#fff;
+  background:rgba(8,16,40,.55); border:1px solid rgba(255,255,255,.18);
+  padding:7px 14px; border-radius:20px; letter-spacing:.3px;
+}
+.hud-btns{ display:flex; gap:8px; }
+.hud-btn{
+  width:42px; height:42px; border:none; border-radius:13px;
+  background:rgba(255,255,255,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25), 0 3px 0 rgba(0,0,0,.18);
+  color:#fff; font-size:20px; cursor:pointer; transition:transform .08s, background .15s;
+}
+.hud-btn:active{ transform:translateY(2px); background:rgba(255,255,255,.24); }
+
+/* ===== BOARD ===== */
+.board-wrap{
+  position:relative;
+  width:100%;
+  flex:1 1 auto;       /* fill all space between HUD and tray */
+  min-height:0;
+  border-radius:22px;
+  overflow:hidden;
+  background:#0e1f49;
+  box-shadow:inset 0 0 0 3px rgba(255,255,255,.10), 0 10px 26px rgba(0,0,0,.35);
+  cursor:grab;
+  touch-action:none;   /* we handle drag ourselves */
+}
+.board-wrap.grabbing{ cursor:grabbing; }
+/* the board IS the level frame (the PSB canvas), sized in px by JS so it overflows
+   horizontally and the player drags to explore. overflow:hidden clips the bg's
+   bleed and any item poking past an edge so they look cut off at the frame. */
+.board{ position:absolute; top:0; left:0; transform-origin:0 0; will-change:transform; overflow:hidden; }
+/* bg image is positioned by JS at its true offset within the frame (it may bleed
+   past the edges); object-fit:fill since the box already matches its aspect. */
+.bg{ position:absolute; object-fit:fill; }
+
+/* little "drag" hint that fades out after first interaction */
+.drag-hint{
+  position:absolute; top:10px; left:50%; transform:translateX(-50%);
+  background:rgba(8,16,40,.72); color:#dfe7ff; font-size:12px; font-weight:700;
+  padding:5px 12px; border-radius:20px; pointer-events:none; z-index:40;
+  border:1px solid rgba(255,255,255,.15);
+  transition:opacity .4s; opacity:1;
+}
+.drag-hint.hide{ opacity:0; }
+
+/* static foreground occluders ('m' layers) — never interactive, never change */
+.fg{ position:absolute; pointer-events:none; display:block; }
+
+.item{ position:absolute; pointer-events:none; will-change:opacity,transform; }
+.item img{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+.item .sh{ transition:opacity .32s ease; }
+.item .ob{ transition:opacity .32s ease, transform .32s ease; }
+.item.collected .sh,
+.item.collected .ob{ opacity:0; }
+.item.collected{ pointer-events:none; }
+
+/* hint pulse — scale the whole item (both h + s) so the visible layer pulses */
+.item.hint{ animation:hintPulse 1s ease-in-out 2; transform-origin:center; }
+@keyframes hintPulse{
+  0%,100%{ transform:scale(1); filter:drop-shadow(0 0 0 rgba(255,231,107,0)); }
+  50%{ transform:scale(1.16); filter:drop-shadow(0 0 10px rgba(255,231,107,.95)); }
+}
+
+/* reveal-all glow — glow only the clean h object (.ob), not its s/m layers */
+.item.glow .ob{ animation:glowPulse 1.1s ease-in-out infinite; transform-origin:center; }
+@keyframes glowPulse{
+  0%,100%{ filter:drop-shadow(0 0 1px rgba(255,247,180,.6)); }
+  50%{     filter:drop-shadow(0 0 4px rgba(255,243,150,.95)) drop-shadow(0 0 8px rgba(255,205,70,.6)); }
+}
+
+/* progress badge — sits at the tray's top-left corner */
+.progress{
+  position:absolute; left:6px; top:-14px; z-index:3;
+  background:linear-gradient(180deg,#2b59c3,#1c3f93);
+  border:2px solid rgba(255,255,255,.22);
+  border-radius:13px;
+  padding:3px 12px;
+  font-weight:800; font-size:16px; color:#fff;
+  display:flex; align-items:baseline; gap:1px;
+  box-shadow:0 4px 10px rgba(0,0,0,.35);
+  transform-origin:left center;
+}
+.prog-num{ color:var(--gold); font-size:20px; }
+.prog-den{ color:#cdd6f5; font-size:14px; }
+.progress.bump{ animation:bump .45s ease; }
+@keyframes bump{ 0%{transform:scale(1);}35%{transform:scale(1.5);}100%{transform:scale(1);} }
+
+/* ===== TRAY ===== */
+.tray-row{ position:relative; display:flex; align-items:center; flex:0 0 auto; margin-top:14px; }
+.tray{
+  flex:1 1 auto;
+  display:flex; gap:7px;
+  background:linear-gradient(180deg,#0e2152,#0a1840);
+  border-radius:16px;
+  padding:8px;
+  box-shadow:inset 0 3px 8px rgba(0,0,0,.45), 0 1px 0 rgba(255,255,255,.08);
+}
+.slot{
+  flex:1 1 0; aspect-ratio:1/1;
+  border-radius:11px;
+  background:rgba(0,0,0,.28);
+  box-shadow:inset 0 2px 5px rgba(0,0,0,.5);
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+}
+.slot.filled{ background:rgba(255,255,255,.07); }
+
+/* rewarded (locked) slot — a + with a small ▶ video cue */
+.slot.locked{
+  cursor:pointer;
+  background:rgba(255,206,77,.12);
+  box-shadow:inset 0 0 0 2px rgba(255,206,77,.55);
+  animation:lockPulse 1.6s ease-in-out infinite;
+}
+@keyframes lockPulse{ 0%,100%{ box-shadow:inset 0 0 0 2px rgba(255,206,77,.45); }
+  50%{ box-shadow:inset 0 0 0 2px rgba(255,206,77,.95), 0 0 10px rgba(255,206,77,.5); } }
+.slot.locked .plus{ color:#ffce4d; font-size:30px; font-weight:800; line-height:1;
+  text-shadow:0 2px 3px rgba(0,0,0,.4); pointer-events:none; }
+.slot.locked .rew{
+  position:absolute; right:5px; bottom:4px;
+  font-size:9px; color:#1b2a52; background:#ffce4d;
+  width:15px; height:15px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 1px 2px rgba(0,0,0,.4); pointer-events:none;
+}
+.slot.unlocked{ animation:slotUnlock .65s ease; }
+@keyframes slotUnlock{ 0%{ transform:scale(1); box-shadow:inset 0 0 0 3px #ffce4d, 0 0 18px rgba(255,206,77,.9); }
+  40%{ transform:scale(1.18); } 100%{ transform:scale(1); } }
+/* --br = rotation that seats a (scene-rotated) item upright in the bar */
+.slot img{ width:84%; height:84%; object-fit:contain; pointer-events:none;
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.4));
+  transform:rotate(var(--br,0deg));
+  animation:dropIn .25s ease; }
+@keyframes dropIn{ 0%{ transform:rotate(var(--br,0deg)) scale(.4); opacity:0;} 100%{ transform:rotate(var(--br,0deg)) scale(1); opacity:1;} }
+.slot.matched img{ animation:matchPop .34s ease forwards; }
+@keyframes matchPop{ 0%{transform:rotate(var(--br,0deg)) scale(1);}45%{transform:rotate(var(--br,0deg)) scale(1.3);}100%{transform:rotate(var(--br,0deg)) scale(.1); opacity:0;} }
+.tray.danger{ animation:danger .4s ease; }
+@keyframes danger{ 0%,100%{ box-shadow:inset 0 3px 8px rgba(0,0,0,.45);}
+  50%{ box-shadow:inset 0 0 0 3px #ff4d5e, 0 0 18px rgba(255,77,94,.7);} }
+
+/* ===== FX ===== */
+.fx-layer{ position:absolute; inset:0; pointer-events:none; overflow:visible; z-index:50; }
+.fly{ position:fixed; pointer-events:none; z-index:60; object-fit:contain;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.45)); }
+.ripple{
+  position:absolute; width:14px; height:14px; margin:-7px 0 0 -7px;
+  border-radius:50%; background:radial-gradient(circle, rgba(255,255,255,.9), rgba(255,255,255,0) 70%);
+  animation:ripple .5s ease-out forwards; pointer-events:none;
+}
+@keyframes ripple{ 0%{ transform:scale(.4); opacity:.9;} 100%{ transform:scale(3.4); opacity:0;} }
+
+/* ===== OVERLAY ===== */
+.overlay{
+  position:absolute; inset:0; z-index:100;
+  background:rgba(6,12,34,.74); backdrop-filter:blur(3px);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .3s;
+}
+.overlay.show{ opacity:1; pointer-events:auto; }
+.overlay-card{
+  width:78%; max-width:300px; text-align:center;
+  background:linear-gradient(180deg,#264fb0,#1a356f);
+  border:2px solid rgba(255,255,255,.18);
+  border-radius:22px; padding:26px 22px;
+  box-shadow:0 16px 40px rgba(0,0,0,.5);
+  transform:scale(.85); transition:transform .3s;
+}
+.overlay.show .overlay-card{ transform:scale(1); }
+.overlay-emoji{ font-size:54px; }
+.overlay-title{ font-size:27px; font-weight:900; color:#fff; margin-top:6px; }
+.overlay-sub{ font-size:14px; color:#c5d0f0; margin-top:6px; }
+.overlay-btn{
+  margin-top:18px; border:none; cursor:pointer;
+  padding:13px 30px; border-radius:15px; font-size:17px; font-weight:800; color:#5a3b00;
+  background:linear-gradient(180deg,#ffd95e,#f4a93b);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.5), 0 5px 0 #b9781f;
+  transition:transform .08s;
+}
+.overlay-btn:active{ transform:translateY(3px); box-shadow:inset 0 2px 0 rgba(255,255,255,.5), 0 2px 0 #b9781f; }
+
+/* ===== REWARDED AD overlay (simulated) ===== */
+.ad-overlay{
+  position:absolute; inset:0; z-index:120;
+  background:rgba(4,8,22,.9);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .25s;
+}
+.ad-overlay.show{ opacity:1; pointer-events:auto; }
+.ad-card{
+  width:80%; max-width:300px; text-align:center;
+  background:#11193a; border:1px solid rgba(255,255,255,.14);
+  border-radius:18px; padding:18px; box-shadow:0 16px 40px rgba(0,0,0,.55);
+}
+.ad-badge{
+  display:inline-block; font-size:11px; font-weight:800; letter-spacing:1px;
+  color:#1b2a52; background:#ffce4d; padding:4px 10px; border-radius:20px;
+}
+.ad-screen{
+  margin:14px 0; height:120px; border-radius:12px;
+  background:linear-gradient(135deg,#26407e,#16234c);
+  display:flex; align-items:center; justify-content:center;
+  font-size:44px; color:rgba(255,255,255,.85);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+  animation:adPulse 1.2s ease-in-out infinite;
+}
+@keyframes adPulse{ 0%,100%{ opacity:.85; } 50%{ opacity:1; } }
+.ad-timer{ font-size:18px; font-weight:800; color:#fff; }
+.ad-note{ font-size:13px; color:#c5d0f0; margin-top:4px; }

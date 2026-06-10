@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+<title>Sticker Oh Yeah</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--purple:#5b4b8a;--purple-d:#473a6e;--card:#fffdf8;--ink:#2c2540;
+    --gold:#f4c531;--shadow:0 8px 20px rgba(30,20,50,.25);}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;height:100%;font-family:'Nunito',system-ui,sans-serif;color:var(--ink);overflow:hidden;}
+  body{display:flex;flex-direction:column;background:linear-gradient(180deg,#6a5aa0,#4b3d77);}
+
+  /* top bar */
+  .top{flex:0 0 auto;display:flex;align-items:center;gap:10px;
+    padding:max(10px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left));}
+  .pill{display:flex;align-items:center;gap:7px;background:var(--card);border-radius:999px;padding:5px 14px 5px 8px;
+    box-shadow:var(--shadow);font-family:'Baloo 2';font-weight:800;font-size:18px;color:#5a4a86;}
+  .pill .ic{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:18px;}
+  .pill.coin .ic{background:radial-gradient(circle at 35% 30%,#ffe27a,#e8a91d);color:#7a5500;}
+  .pill.life .ic{background:radial-gradient(circle at 35% 30%,#ff8aa0,#e2455f);color:#fff;}
+  .pill.life.hit{animation:lifehit .5s ease;}
+  @keyframes lifehit{0%,100%{transform:scale(1);box-shadow:var(--shadow);}
+    25%{transform:scale(1.22) rotate(-4deg);box-shadow:0 0 0 4px rgba(235,70,66,.6),var(--shadow);}
+    55%{transform:scale(.9) rotate(3deg);box-shadow:0 0 0 4px rgba(235,70,66,.45),var(--shadow);}}
+  .pill.life .ic.empty{filter:grayscale(1);opacity:.55;}
+  .spacer{flex:1;}
+  .sq{width:46px;height:46px;border-radius:14px;border:none;cursor:pointer;display:grid;place-items:center;
+    background:var(--card);box-shadow:var(--shadow);color:#5a4a86;font-size:20px;}
+  .sq:active{transform:scale(.95);}
+
+  /* viewport */
+  main{flex:1 1 auto;position:relative;overflow:hidden;margin:0 10px;border-radius:18px;
+    box-shadow:inset 0 0 0 3px rgba(255,255,255,.18), var(--shadow);background:#3b3060;}
+  #viewport{position:absolute;inset:0;overflow:hidden;touch-action:none;}
+  #world{position:absolute;left:0;top:0;width:2048px;height:2048px;transform-origin:0 0;}
+  #scene{position:absolute;left:0;top:0;width:2048px;height:2048px;pointer-events:none;user-select:none;}
+  .layer{position:absolute;-webkit-user-drag:none;user-select:none;pointer-events:none;}
+  /* slot silhouette */
+  .slot{filter:drop-shadow(0 0 3px rgba(0,0,0,.45));opacity:.92;transition:opacity .25s;}
+  .slot.hot{filter:drop-shadow(0 0 10px rgba(255,235,140,1)) drop-shadow(0 0 22px rgba(255,205,70,.9));}
+  .slot.peek{animation:peek 1.1s ease-in-out 2;}
+  @keyframes peek{0%,100%{filter:drop-shadow(0 0 3px rgba(0,0,0,.45));}
+    50%{filter:drop-shadow(0 0 12px rgba(120,255,150,1)) drop-shadow(0 0 26px rgba(90,230,120,.9));}}
+  /* revealed art */
+  .char,.decor{opacity:0;}
+  .char.show,.decor.show{opacity:1;}
+  .char.pop{animation:popin .5s cubic-bezier(.34,1.56,.64,1);}
+  @keyframes popin{0%{transform:scale(.55);opacity:0;}55%{transform:scale(1.06);}100%{transform:scale(1);opacity:1;}}
+
+  /* world sparkle */
+  .wsp{position:absolute;pointer-events:none;z-index:9000;line-height:1;transform:translate(-50%,-50%);
+    text-shadow:0 0 6px rgba(255,221,120,.95);animation:wsp .85s ease-out forwards;}
+  @keyframes wsp{0%{opacity:0;transform:translate(-50%,-50%) scale(0);}25%{opacity:1;}
+    100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.3) rotate(45deg);}}
+
+  /* progress */
+  .prog{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:20;
+    background:rgba(30,22,55,.78);color:#fff;font-family:'Baloo 2';font-weight:800;font-size:15px;
+    padding:6px 16px;border-radius:999px;box-shadow:var(--shadow);backdrop-filter:blur(3px);}
+  .prog b{color:var(--gold);}
+
+  /* bottom bar — at most 5 stickers; refills as you solve */
+  .barwrap{flex:0 0 auto;position:relative;padding:6px 0 max(10px,env(safe-area-inset-bottom));}
+  .count{position:absolute;right:14px;top:-15px;z-index:5;background:var(--card);color:#5a4a86;
+    font-family:'Baloo 2';font-weight:800;font-size:15px;padding:4px 12px;border-radius:999px;box-shadow:var(--shadow);}
+  .bar{display:flex;justify-content:center;align-items:center;gap:clamp(6px,2vw,12px);padding:8px 10px;}
+  .card{flex:0 0 auto;width:clamp(54px,16.5vw,108px);aspect-ratio:1/1;border-radius:16px;background:#fff;cursor:grab;
+    box-shadow:0 4px 0 #d9cdbb,0 9px 16px rgba(40,30,60,.24);border:3px solid #fff;position:relative;
+    display:grid;place-items:center;touch-action:none;
+    transition:transform .22s cubic-bezier(.34,1.56,.64,1),opacity .25s,width .3s ease,margin .3s ease;}
+  .card:active{cursor:grabbing;}
+  .card img{max-width:86%;max-height:86%;object-fit:contain;pointer-events:none;
+    filter:drop-shadow(0 1px 1px rgba(0,0,0,.2));}
+  .card.enter{opacity:0;transform:scale(.3) translateY(12px);}
+  .card.gone{opacity:0;transform:scale(.35);width:0 !important;border-width:0;margin:0;padding:0;overflow:hidden;}
+  .card.wrong{animation:cwrong .42s ease;}
+  @keyframes cwrong{
+    0%,100%{transform:translateX(0);box-shadow:0 4px 0 #d9cdbb,0 9px 16px rgba(40,30,60,.24);}
+    20%{transform:translateX(-7px) rotate(-3deg);box-shadow:0 0 0 3px #eb4642,0 9px 18px rgba(235,70,66,.45);}
+    50%{transform:translateX(7px) rotate(3deg);box-shadow:0 0 0 3px #eb4642,0 9px 18px rgba(235,70,66,.45);}
+    80%{transform:translateX(-4px) rotate(-2deg);box-shadow:0 0 0 3px #eb4642,0 9px 18px rgba(235,70,66,.45);}}
+
+  .drag{position:fixed;z-index:9999;pointer-events:none;transform:translate(-50%,-50%) rotate(-3deg);
+    filter:drop-shadow(0 0 5px #fff) drop-shadow(0 8px 10px rgba(0,0,0,.35));will-change:left,top;}
+  .drag.reject{filter:drop-shadow(0 0 7px rgba(235,70,66,1)) drop-shadow(0 0 18px rgba(235,70,66,.75)) drop-shadow(0 8px 10px rgba(0,0,0,.35));}
+  .drag.shakeghost{animation:ghshake .4s ease;}
+  @keyframes ghshake{
+    0%,100%{transform:translate(-50%,-50%) rotate(0);}
+    15%{transform:translate(calc(-50% - 9px),-50%) rotate(-7deg);}
+    35%{transform:translate(calc(-50% + 9px),-50%) rotate(7deg);}
+    55%{transform:translate(calc(-50% - 6px),-50%) rotate(-5deg);}
+    75%{transform:translate(calc(-50% + 6px),-50%) rotate(4deg);}}
+
+  /* controls bottom-left/right */
+  .hint{position:absolute;left:14px;bottom:16px;z-index:6;width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;
+    background:linear-gradient(180deg,#cdbbf0,#a98fde);box-shadow:0 5px 0 #8a72c4,var(--shadow);color:#fff;font-size:22px;}
+  .hint:active{transform:translateY(3px);box-shadow:0 2px 0 #8a72c4;}
+
+  /* overlay */
+  .overlay{position:fixed;inset:0;background:rgba(30,22,55,.55);backdrop-filter:blur(4px);display:none;
+    align-items:center;justify-content:center;z-index:80;padding:24px;}
+  .overlay.show{display:flex;}
+  .modal{background:var(--card);border-radius:26px;padding:26px;box-shadow:var(--shadow);max-width:340px;width:100%;text-align:center;}
+  .modal .big{font-size:54px;}
+  .modal h2{font-family:'Baloo 2';margin:.15em 0;color:var(--purple);font-size:26px;}
+  .stars{font-size:34px;color:var(--gold);letter-spacing:5px;}
+  .modal p{font-size:14px;color:#615a78;line-height:1.5;}
+  .mbtn{margin-top:16px;border:none;cursor:pointer;padding:13px 24px;border-radius:15px;font-weight:800;
+    font-family:'Baloo 2';font-size:16px;color:#fff;background:linear-gradient(180deg,#8e76c9,#6a51b0);box-shadow:var(--shadow);}
+  .toast{position:fixed;left:50%;bottom:120px;transform:translateX(-50%);background:var(--purple-d);color:#fff;
+    font-weight:800;font-size:13px;padding:10px 18px;border-radius:999px;box-shadow:var(--shadow);z-index:70;opacity:0;transition:.25s;}
+  .toast.show{opacity:1;bottom:128px;}
+  .loading{position:fixed;inset:0;display:grid;place-items:center;color:#fff;font-family:'Baloo 2';font-weight:800;font-size:18px;z-index:90;background:linear-gradient(180deg,#6a5aa0,#4b3d77);}
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="pill life" id="lifePill"><div class="ic" id="lifeIc">❤️</div><span id="lives">3</span></div>
+    <div class="spacer"></div>
+    <button class="sq" id="resetBtn" title="Restart">↻</button>
+  </div>
+
+  <main>
+    <div id="viewport">
+      <div id="world"><img id="scene" alt="scene"/></div>
+    </div>
+    <button class="hint" id="hintBtn">💡</button>
+  </main>
+
+  <div class="barwrap">
+    <div class="count" id="barCount">0/0</div>
+    <div class="bar" id="bar"></div>
+  </div>
+
+  <div class="overlay" id="winOv"><div class="modal">
+    <div class="big">🎉</div><h2>Sticker Oh Yeah!</h2><div class="stars">★ ★ ★</div>
+    <p>You found every sticker's home and the whole scene came to life!</p>
+    <button class="mbtn" id="replayBtn">↻ Play Again</button>
+  </div></div>
+  <div class="overlay" id="loseOv"><div class="modal">
+    <div class="big">💔</div><h2>Out of Lives</h2>
+    <p>You ran out of hearts! Match the sticker to its matching outline to keep them.</p>
+    <button class="mbtn" id="retryBtn">↻ Try Again</button>
+  </div></div>
+  <div class="toast" id="toast"></div>
+  <div class="loading" id="loading">Loading level…</div>
+
+<script src="engine.js?v=3"></script>
+<script>
+const $=s=>document.querySelector(s);
+const LEVEL_DIR='levels/level_01';
+const viewport=$('#viewport'), worldEl=$('#world'), sceneImg=$('#scene'), bar=$('#bar');
+let world, manifest, items=[], solved=0;
+const LIVES=3;            // hearts you start with (tune to taste)
+let lives=LIVES, dead=false;
+
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),1400);}
+
+function setLives(n){
+  lives=Math.max(0,n); const el=$('#lives'); if(el) el.textContent=lives;
+  const ic=$('#lifeIc'); if(ic) ic.classList.toggle('empty', lives<=0);
+  const pill=$('#lifePill'); if(pill){ pill.classList.remove('hit'); void pill.offsetWidth; pill.classList.add('hit'); }
+}
+function loseLife(){
+  if(dead) return;
+  setLives(lives-1);
+  if(lives<=0){ dead=true; setTimeout(()=>$('#loseOv').classList.add('show'),520); }
+}
+
+async function boot(){
+  manifest = await (await fetch(LEVEL_DIR+'/manifest.json')).json();
+  await loadImage(LEVEL_DIR+'/'+manifest.scene);          // preload scene
+  sceneImg.src=LEVEL_DIR+'/'+manifest.scene;
+  world = makeWorld(viewport, worldEl, {minZoom:1, maxZoom:4.5});
+  world.setSize(manifest.sceneW, manifest.sceneH);
+  buildLayers();
+  buildBar();
+  updateProgress();
+  $('#loading').style.display='none';
+  // open zoomed-in to fill the screen (re-apply once the bar/fonts settle the layout)
+  const openCover=()=>world.cover();
+  requestAnimationFrame(openCover); setTimeout(openCover,140);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(openCover);
+}
+
+/* ---- build the scene layers (slot silhouette + hidden char + hidden decor) ---- */
+function buildLayers(){
+  items = manifest.items.map(it=>({...it, placed:false}));
+  // decor first (lowest), then by recorded z; chars sit above their decor naturally via z
+  items.forEach(it=>{
+    if(it.decor){ const d=img(LEVEL_DIR+'/'+it.decor.src,'layer decor'); place(d,it.decor); d.style.zIndex=it.z; it._decorEl=d; }
+    const s=img(LEVEL_DIR+'/'+it.slot.src,'layer slot'); place(s,it.slot); s.style.zIndex=2000+it.z; it._slotEl=s;
+    const c=img(LEVEL_DIR+'/'+it.sticker.src,'layer char'); place(c,it.sticker); c.style.zIndex=it.z; it._charEl=c;
+  });
+}
+function img(src,cls){ const e=document.createElement('img'); e.className=cls; e.src=src; e.draggable=false; worldEl.appendChild(e); return e; }
+function place(el,box){ el.style.left=box.left+'px'; el.style.top=box.top+'px'; el.style.width=box.w+'px'; el.style.height=box.h+'px'; }
+
+/* ---- bottom bar: show at most MAX_BAR stickers; refill from the queue on each solve ---- */
+const MAX_BAR=5;
+let queue=[];
+function shuffled(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function buildBar(){
+  bar.innerHTML='';
+  queue = shuffled(items.filter(i=>!i.placed));
+  for(let i=0;i<MAX_BAR && queue.length;i++) addCard(queue.shift(), false);
+  updateProgress();
+}
+function addCard(it, animate){
+  const card=document.createElement('div'); card.className='card draggable'+(animate?' enter':''); card.dataset.key=it.key;
+  card.innerHTML=`<img src="${LEVEL_DIR+'/'+it.sticker.src}" draggable="false">`;
+  attachCardDrag(card,it); bar.appendChild(card); it._card=card;
+  if(animate) requestAnimationFrame(()=>requestAnimationFrame(()=>card.classList.remove('enter')));
+}
+function refillBar(){ if(queue.length) addCard(queue.shift(), true); }
+
+/* ---- drag a sticker out of the bar onto its slot ---- */
+function attachCardDrag(card,it){
+  card.addEventListener('pointerdown',e=>{
+    if(it.placed || dead) return; e.preventDefault();
+    const startX=e.clientX, startY=e.clientY, scrollStart=bar.scrollLeft;
+    let mode=null, ghost=null;           // mode: 'scroll' | 'drag'
+    try{card.setPointerCapture(e.pointerId);}catch(_){}
+    const onMove=ev=>{
+      const dx=ev.clientX-startX, dy=ev.clientY-startY;
+      if(!mode){
+        if(Math.abs(dy)>10 && Math.abs(dy)>Math.abs(dx)) mode='drag';
+        else if(Math.abs(dx)>8) mode='scroll';
+        if(mode==='drag') ghost=makeGhost(it,ev.clientX,ev.clientY);
+      }
+      if(mode==='scroll'){ bar.scrollLeft=scrollStart-dx; }
+      else if(mode==='drag' && ghost){ ghost.style.left=ev.clientX+'px'; ghost.style.top=ev.clientY+'px'; hover(it,ev.clientX,ev.clientY); }
+    };
+    const onUp=ev=>{
+      card.removeEventListener('pointermove',onMove); card.removeEventListener('pointerup',onUp); card.removeEventListener('pointercancel',onUp);
+      if(mode==='drag'){ clearHover(); tryPlace(it,ev.clientX,ev.clientY,ghost); }
+      else if(!mode){ peekSlot(it); }   // a tap = show me where it goes
+    };
+    card.addEventListener('pointermove',onMove); card.addEventListener('pointerup',onUp); card.addEventListener('pointercancel',onUp);
+  });
+}
+function makeGhost(it,x,y){
+  const g=document.createElement('img'); g.className='drag'; g.src=LEVEL_DIR+'/'+it.sticker.src;
+  g.style.width=(it.sticker.w*world.S)+'px'; g.style.left=x+'px'; g.style.top=y+'px';
+  document.body.appendChild(g); return g;
+}
+function tol(it){ return Math.max(90, Math.max(it.slot.w,it.slot.h)*0.55); }
+function hover(it,sx,sy){ const p=world.screenToWorld(sx,sy); const d=Math.hypot(p.x-it.cx,p.y-it.cy);
+  it._slotEl.classList.toggle('hot', d<tol(it)); }
+function clearHover(){ items.forEach(it=>it._slotEl&&it._slotEl.classList.remove('hot')); }
+
+function tryPlace(it,sx,sy,ghost){
+  const p=world.screenToWorld(sx,sy); const d=Math.hypot(p.x-it.cx,p.y-it.cy);
+  if(d<tol(it)){ if(ghost) ghost.remove(); solve(it); }
+  else rejectDrop(it,ghost,sx,sy);
+}
+/* wrong drop: red shake where it landed, then fly the sticker back into the bar */
+function rejectDrop(it,ghost,sx,sy){
+  loseLife();                                   // wrong snap costs a heart
+  toast(lives>0 ? `Not quite — ${lives} ❤️ left` : 'Out of lives!');
+  const card=it._card;
+  if(card){ card.classList.add('wrong'); setTimeout(()=>card.classList.remove('wrong'),440); }
+  if(!ghost){ return; }
+  ghost.style.left=sx+'px'; ghost.style.top=sy+'px';
+  ghost.classList.add('reject','shakeghost');
+  setTimeout(()=>{
+    ghost.classList.remove('shakeghost');
+    const dest = card && card.getBoundingClientRect();
+    if(dest && dest.width){
+      ghost.style.transition='left .42s cubic-bezier(.4,0,.2,1),top .42s cubic-bezier(.4,0,.2,1),width .42s ease,opacity .42s ease';
+      ghost.style.left=(dest.left+dest.width/2)+'px'; ghost.style.top=(dest.top+dest.height/2)+'px';
+      ghost.style.width=(dest.width*0.86)+'px'; ghost.style.opacity='0';
+      setTimeout(()=>ghost.remove(),440);
+    } else ghost.remove();
+  },410);
+}
+
+function solve(it){
+  if(it.placed) return; it.placed=true; solved++;
+  it._slotEl.style.opacity='0'; setTimeout(()=>it._slotEl.style.display='none',260);
+  if(it._decorEl) it._decorEl.classList.add('show');
+  it._charEl.classList.add('show','pop'); setTimeout(()=>it._charEl.classList.remove('pop'),520);
+  sparkleWorld(it.cx,it.cy);
+  if(it._card){ const c=it._card; it._card=null; c.classList.add('gone'); setTimeout(()=>c.remove(),340); }
+  refillBar();                       // slide the next sticker into the freed slot
+  updateProgress();
+  if(solved===items.length) win();
+}
+
+function peekSlot(it){ // flash the slot + gently focus the camera there
+  world.focus(it.cx, it.cy, Math.min(2.2, world.zoom>1.3?world.zoom:2.2));
+  it._slotEl.classList.add('peek'); setTimeout(()=>it._slotEl.classList.remove('peek'),2300);
+}
+
+function updateProgress(){ const b=$('#barCount'); if(b) b.textContent=solved+'/'+items.length; }
+
+/* ---- fx ---- */
+function sparkleWorld(x,y){ const g=['✨','✦','⭐','💫'];
+  for(let i=0;i<10;i++){ const s=document.createElement('div'); s.className='wsp'; s.textContent=g[i%g.length];
+    s.style.left=x+'px'; s.style.top=y+'px'; s.style.fontSize=(16+Math.random()*22)+'px';
+    const a=Math.random()*6.283,d=40+Math.random()*90; s.style.setProperty('--dx',Math.cos(a)*d+'px'); s.style.setProperty('--dy',(Math.sin(a)*d)+'px');
+    worldEl.appendChild(s); setTimeout(()=>s.remove(),900); } }
+
+function win(){ setTimeout(()=>$('#winOv').classList.add('show'),650); }
+
+/* ---- hint: grab a sticker from the bar, fly it to its slot, and stick it ---- */
+$('#hintBtn').onclick=()=>{
+  const card=bar.querySelector('.card:not(.gone)');
+  const it=card && items.find(i=>i.key===card.dataset.key && !i.placed);
+  if(!it){ toast('All found!'); return; }
+  flyHint(it);
+};
+function flyHint(it){
+  if(it._flying || it.placed) return; it._flying=true;
+  world.focus(it.cx, it.cy, Math.max(world.zoom, 2.0));      // bring the slot on-screen
+  const card=it._card; if(card) card.style.transform='scale(1.12)';
+  setTimeout(()=>{
+    if(card) card.style.transform='';
+    const cr=(card||bar).getBoundingClientRect();
+    const start={x:cr.left+cr.width/2, y:cr.top+cr.height/2};
+    const tgt=world.worldToScreen(it.cx, it.cy);
+    const g=document.createElement('img'); g.className='drag'; g.src=LEVEL_DIR+'/'+it.sticker.src;
+    const startW=(cr.width||90)*0.92, endW=it.sticker.w*world.S;
+    g.style.width=startW+'px'; g.style.left=start.x+'px'; g.style.top=start.y+'px';
+    document.body.appendChild(g);
+    if(it._slotEl) it._slotEl.classList.add('hot');
+    requestAnimationFrame(()=>{
+      g.style.transition='left .8s cubic-bezier(.5,0,.25,1),top .8s cubic-bezier(.5,0,.25,1),width .8s ease';
+      g.style.left=tgt.x+'px'; g.style.top=tgt.y+'px'; g.style.width=endW+'px';
+    });
+    setTimeout(()=>{ g.remove(); it._flying=false; solve(it); }, 840);
+  }, 560);
+}
+function restart(){ solved=0; queue=[]; dead=false; setLives(LIVES);
+  $('#winOv').classList.remove('show'); $('#loseOv').classList.remove('show');
+  [...worldEl.querySelectorAll('.layer,.wsp')].forEach(e=>e.remove());
+  document.querySelectorAll('img.drag').forEach(g=>g.remove());
+  buildLayers(); buildBar(); world.cover(); requestAnimationFrame(()=>world.cover()); updateProgress(); }
+$('#resetBtn').onclick=restart; $('#replayBtn').onclick=restart; $('#retryBtn').onclick=restart;
+
+boot();
+</script>
+</body>
+</html>

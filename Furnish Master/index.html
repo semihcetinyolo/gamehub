@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Furnish Master — Green Room</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--sage:#6f8f6a;--sage-d:#4f7350;--ink:#33402f;--card:#fffdf8;
+    --purple:#b9a6e6;--purple-d:#8e76c9;--shadow:0 8px 20px rgba(50,60,40,.18);--bg:#d6c8ad;}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;height:100%;font-family:'Nunito',system-ui,sans-serif;color:var(--ink);overflow:hidden;}
+  body{display:flex;align-items:center;justify-content:center;min-height:100%;padding:14px;
+    background:radial-gradient(circle at 50% 28%,#2c313c,#14161b);}
+  /* ---- iPhone 13 mini frame (375x812 logical, scales to fit) ---- */
+  .device{position:relative;aspect-ratio:375/812;height:min(812px,96vh);max-width:96vw;flex:0 0 auto;
+    background:#0a0c10;border-radius:46px;box-shadow:0 30px 80px rgba(0,0,0,.55),inset 0 0 0 2px #2b2f37;overflow:hidden;}
+  .screen{position:absolute;inset:5px;border-radius:41px;overflow:hidden;display:flex;flex-direction:column;
+    background:radial-gradient(130% 90% at 50% 28%,#e2d6bb 0%,#d2c19f 70%,#c7b694 100%);}
+  .notch{position:absolute;top:5px;left:50%;transform:translateX(-50%);width:36%;height:25px;
+    background:#0a0c10;border-radius:0 0 16px 16px;z-index:60;}
+  .homebar{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:36%;height:5px;
+    background:rgba(30,30,30,.55);border-radius:3px;z-index:60;}
+  .statusbar{flex:0 0 auto;height:38px;display:flex;align-items:flex-end;justify-content:space-between;
+    padding:0 24px 3px;font-weight:800;font-size:13px;color:#4a4636;}
+  .statusbar .r{display:flex;gap:5px;align-items:center;font-size:12px;}
+
+  /* top bar */
+  .top{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:20px 16px 8px;}
+  .sq{width:46px;height:46px;border-radius:14px;border:none;cursor:pointer;display:grid;place-items:center;
+    background:linear-gradient(180deg,#cdbbf0,#a98fde);box-shadow:0 5px 0 #8a72c4,var(--shadow);color:#fff;font-size:18px;font-weight:800;}
+  .sq:active{transform:translateY(3px);box-shadow:0 2px 0 #8a72c4,var(--shadow);}
+  .timer{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;}
+  .timer .t{font-family:'Baloo 2';font-weight:800;font-size:22px;color:#5a4a86;text-shadow:0 1px 0 #fff;}
+  .bar{width:74%;height:18px;border-radius:999px;background:#efe7d4;box-shadow:inset 0 2px 4px rgba(0,0,0,.12);overflow:hidden;border:2px solid #fff;}
+  .bar>i{display:block;height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,#8ee07a,#5bbf6a);transition:width .4s cubic-bezier(.34,1.4,.64,1);}
+  .lvl{display:flex;flex-direction:column;align-items:flex-end;gap:3px;}
+  .lvl .n{font-family:'Baloo 2';font-weight:800;color:#5a4a86;font-size:15px;}
+  .lvl .star{display:flex;align-items:center;gap:4px;background:var(--card);border-radius:999px;padding:3px 10px;box-shadow:var(--shadow);font-weight:800;color:#caa53a;font-size:13px;}
+
+  /* viewport */
+  main{flex:1 1 auto;position:relative;overflow:hidden;}
+  #viewport{position:absolute;inset:0;overflow:hidden;touch-action:none;}
+  #world{position:absolute;left:0;top:0;width:1402px;height:1122px;transform-origin:0 0;}
+  #scene{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;
+    filter:drop-shadow(0 24px 24px rgba(70,60,40,.25));}
+  .it{position:absolute;-webkit-user-drag:none;user-select:none;
+    filter:drop-shadow(0 6px 5px rgba(40,50,30,.30));}
+  .it.floating{cursor:grab;animation:floaty 1.9s ease-in-out infinite;
+    filter:drop-shadow(0 0 6px rgba(255,236,150,.95)) drop-shadow(0 0 15px rgba(255,206,80,.6)) drop-shadow(0 10px 9px rgba(40,50,30,.35));}
+  .it.floating:active{cursor:grabbing;}
+  .it.locked{pointer-events:none;}
+  .it.pop{animation:popin .45s cubic-bezier(.34,1.56,.64,1);}
+  .it.snapped{animation:snap .4s cubic-bezier(.34,1.56,.64,1);}
+  .it.shake{animation:shake .32s ease-in-out;
+    filter:drop-shadow(0 0 5px rgba(232,108,88,.7)) drop-shadow(0 8px 8px rgba(40,50,30,.32));}
+  @keyframes shake{25%{transform:translateX(-3px) rotate(-1deg);}50%{transform:translateX(3px) rotate(1deg);}75%{transform:translateX(-2px) rotate(-0.6deg);}}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(-2.2deg);}50%{transform:translateY(-13px) rotate(2.2deg);}}
+  /* sparkle particles (live inside #world so they scale/pan with the scene) */
+  .wsp{position:absolute;pointer-events:none;z-index:1500;line-height:1;transform:translate(-50%,-50%);
+    text-shadow:0 0 6px rgba(255,221,120,.9);animation:wsp .9s ease-out forwards;}
+  @keyframes wsp{0%{opacity:0;transform:translate(-50%,-50%) scale(0) rotate(0);}
+    25%{opacity:1;}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.25) rotate(55deg);}}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-1deg);}50%{transform:translateY(-9px) rotate(1deg);}}
+  @keyframes popin{0%{transform:scale(.2) translateY(20px);opacity:0;}60%{transform:scale(1.08);}100%{transform:scale(1);opacity:1;}}
+  @keyframes snap{0%{transform:scale(1.14);}100%{transform:scale(1);}}
+  /* box is a static UI control, sitting in the bottom bar where the hint used to be */
+  #box{position:relative;flex:0 0 auto;width:90px;height:94px;cursor:pointer;
+    filter:drop-shadow(0 8px 10px rgba(60,45,20,.35));}
+  #box .badge{position:absolute;top:-6px;right:-8px;min-width:28px;height:28px;padding:0 6px;background:var(--sage);
+    color:#fff;border-radius:999px;display:grid;place-items:center;font-family:'Baloo 2';font-weight:800;font-size:14px;box-shadow:var(--shadow);}
+
+  #ring{position:absolute;border-radius:18px;border:3px dashed rgba(95,122,82,.95);background:rgba(122,170,108,.16);
+    box-shadow:0 0 0 5px rgba(255,255,255,.25);display:none;pointer-events:none;animation:rp 1s ease-in-out infinite;}
+  #ring.hot{border-color:#2f5331;background:rgba(120,200,110,.4);animation:none;}
+  @keyframes rp{0%,100%{opacity:.55;}50%{opacity:1;}}
+
+  /* bottom toolbar: hint (left) · box (center) · close (right) */
+  .bottom{flex:0 0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;padding:6px 22px 24px;position:relative;}
+  .close{position:relative;flex:0 0 auto;width:48px;height:48px;border-radius:13px;border:none;cursor:pointer;
+    background:linear-gradient(180deg,#cdbbf0,#a98fde);box-shadow:0 5px 0 #8a72c4,var(--shadow);color:#fff;font-size:20px;font-weight:800;}
+  .close:active{transform:translateY(3px);box-shadow:0 2px 0 #8a72c4;}
+  .tool{position:relative;width:74px;height:66px;border-radius:16px;border:none;cursor:pointer;
+    background:linear-gradient(180deg,#e7ddff,#cdbbf0);box-shadow:0 5px 0 #a98fde,var(--shadow);display:grid;place-items:center;font-size:26px;}
+  .tool:active{transform:translateY(3px);box-shadow:0 2px 0 #a98fde;}
+  .tool.lock{filter:grayscale(.2);} .tool .lockn{font-size:11px;font-weight:800;color:#6a5aa0;position:absolute;bottom:5px;}
+  .tool .cnt{position:absolute;top:-7px;right:-6px;min-width:24px;height:24px;padding:0 5px;background:#ef6f6f;color:#fff;
+    border-radius:999px;display:grid;place-items:center;font-weight:800;font-size:12px;box-shadow:var(--shadow);}
+  .banner{flex:0 0 auto;height:44px;display:flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;overflow:hidden;
+    background:linear-gradient(90deg,#3a3550,#22304a);color:#dfe6f5;font-weight:800;font-size:11.5px;letter-spacing:.2px;padding-bottom:6px;}
+  .banner b{color:#ffd76a;} .banner .x{margin-left:8px;opacity:.6;font-size:11px;}
+
+  .creator .sq{background:linear-gradient(180deg,#a9d3a0,#6f9f66);box-shadow:0 5px 0 #5a8552,var(--shadow);}
+
+  /* fx + overlay (scoped to .screen) */
+  .spark{position:absolute;z-index:60;pointer-events:none;font-size:18px;animation:spk .7s ease-out forwards;}
+  @keyframes spk{from{transform:translate(-50%,-50%) scale(.2);opacity:1;}to{transform:translate(var(--dx),var(--dy)) scale(1.1);opacity:0;}}
+  .confetti{position:absolute;top:-14px;width:10px;height:15px;border-radius:2px;z-index:55;animation:fall linear forwards;}
+  @keyframes fall{to{transform:translateY(900px) rotate(540deg);opacity:.9;}}
+  .overlay{position:absolute;inset:0;background:rgba(30,40,25,.45);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:80;padding:22px;}
+  .overlay.show{display:flex;}
+  .modal{background:var(--card);border-radius:24px;padding:22px;box-shadow:var(--shadow);max-width:360px;width:100%;text-align:center;}
+  .modal h2{font-family:'Baloo 2';margin:.1em 0 .2em;color:var(--sage-d);font-size:23px;}
+  .modal p{font-size:14px;line-height:1.5;color:#54614b;}
+  .modal .big{font-size:42px;} .stars{font-size:32px;color:#f1c14b;letter-spacing:4px;}
+  .modal .row{display:flex;gap:10px;margin-top:14px;}
+  .mbtn{flex:1;border:none;cursor:pointer;padding:12px;border-radius:14px;font-weight:800;font-family:'Baloo 2';font-size:14px;box-shadow:var(--shadow);}
+  .mbtn.p{background:linear-gradient(180deg,var(--sage),var(--sage-d));color:#fff;} .mbtn.g{background:#ece4d3;color:#5b6b51;}
+  .toast{position:absolute;left:50%;bottom:110px;transform:translateX(-50%);background:var(--sage-d);color:#fff;font-weight:800;font-size:13px;
+    padding:10px 18px;border-radius:999px;box-shadow:var(--shadow);z-index:70;opacity:0;transition:.25s;white-space:nowrap;}
+  .toast.show{opacity:1;bottom:118px;}
+</style>
+</head>
+<body>
+  <div class="device">
+    <div class="screen" id="screen">
+      <div class="top">
+        <button class="sq" id="pauseBtn">⏸</button>
+        <span class="creator"><button class="sq" id="creatorBtn" title="Level Creator">🛠</button></span>
+        <div style="flex:1"></div>
+      </div>
+
+      <main>
+        <div id="viewport">
+          <div id="world">
+            <img id="scene" alt="scene"/>
+            <div id="ring"></div>
+          </div>
+        </div>
+      </main>
+
+      <div class="bottom">
+        <button class="tool" id="hintBtn">💡<span class="cnt">3</span></button>
+        <div id="box" class="tappable"></div>
+        <button class="close" id="resetBtn">✖</button>
+      </div>
+
+      <div class="overlay" id="winOv"><div class="modal">
+        <div class="big">🌿</div><h2>Room Complete!</h2><div class="stars">★ ★ ★</div>
+        <p><b>"A Room to Breathe"</b></p>
+        <p>Every piece found its place. Maya's little green room finally feels like home. 💚</p>
+        <div class="row"><button class="mbtn g" id="replayBtn">↺ Replay</button><button class="mbtn p" id="creator2Btn">🛠 Edit Level</button></div>
+      </div></div>
+      <div class="toast" id="toast"></div>
+    </div>
+    <div class="homebar"></div>
+  </div>
+
+<script src="engine.js?v=7"></script>
+<script>
+const $=s=>document.querySelector(s);
+const viewport=$('#viewport'), worldEl=$('#world'), boxEl=$('#box'), ring=$('#ring'), sceneImg=$('#scene');
+let level=null, queue=[], popped=0;
+const world=makeWorld(viewport, worldEl, {minZoom:0.6, maxZoom:3.4, vAnchor:0.5, initZoom:1.15});  // open zoomed-in (max before the current landscape scene crops door/window)
+const TOL=125;            // snap tolerance in scene px
+const STAGE_F=[[.371,.887],[.499,.918],[.631,.887],[.428,.829],[.578,.829],[.314,.851],[.685,.842]];
+
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),1400);}
+function natural(id){const s=level.sprites[id]; return s?[s.w,s.h]:[100,100];}
+function spriteSrc(id){return level.sprites[id].src;}
+
+const LEVEL_DIR='levels/green_room';
+async function boot(){
+  level = await Store.get('level') || await buildDefaultLevel(LEVEL_DIR);
+  if(!level.box) level.box={x:Math.round((level.sceneW||1402)*0.74),y:Math.round((level.sceneH||1122)*0.76),w:150};
+  sceneImg.src=level.scene; world.setSize(level.sceneW||1402, level.sceneH||1122);
+  startLevel();
+}
+
+function startLevel(){
+  stopAllShimmer();
+  [...worldEl.querySelectorAll('.it,.wsp')].forEach(e=>e.remove());
+  queue=level.items.map(it=>({...it,placed:false})); popped=0;
+  renderBox(); updateBadge(); updateProgress();
+  boxEl.classList.add('tappable');
+}
+function renderBox(){  // box is a fixed UI element (CSS-positioned); just fill its contents
+  boxEl.innerHTML=boxSVG(true)+`<div class="badge" id="boxBadge">0</div>`;
+}
+// world coord under the UI box (so popped items appear to fly out of it)
+function boxWorldPoint(){ const br=boxEl.getBoundingClientRect(); return world.screenToWorld(br.left+br.width/2, br.top+br.height*0.42); }
+function updateBadge(){const left=queue.filter(q=>!q._spawned).length; const b=$('#boxBadge'); if(b)b.textContent=left;
+  if(left===0){boxEl.classList.remove('tappable');}}
+
+/* ---- unpack ---- */
+boxEl.addEventListener('click',()=>{ popNext(); });
+function popNext(){
+  const it=queue.find(q=>!q._spawned); if(!it) return;
+  it._spawned=true;
+  const sf=STAGE_F[popped%STAGE_F.length]; const slot=[sf[0]*world.W, sf[1]*world.H]; popped++;
+  const [w,h]=natural(it.id); const dw=w*it.scale, dh=h*it.scale;
+  const el=document.createElement('img'); el.className='it floating pop draggable'; el.src=spriteSrc(it.id);
+  el.dataset.iid=it.iid; el.draggable=false;
+  el.style.width=dw+'px'; el.style.height=dh+'px'; el.style.zIndex=500+popped;
+  // start at the UI box (converted to world coords), fly to slot
+  const bp=boxWorldPoint();
+  el.style.left=(bp.x-dw/2)+'px'; el.style.top=(bp.y-dh/2)+'px';
+  worldEl.appendChild(el);
+  requestAnimationFrame(()=>{ el.style.transition='left .45s cubic-bezier(.34,1.4,.5,1),top .45s cubic-bezier(.34,1.4,.5,1)';
+    it.x_stage=slot[0]; it.y_stage=slot[1]; el.style.left=(slot[0]-dw/2)+'px'; el.style.top=(slot[1]-dh/2)+'px';
+    setTimeout(()=>{ el.style.transition=''; el.classList.remove('pop'); },470); });  // drop 'pop' so 'floaty' bob runs
+  it._cur={x:slot[0],y:slot[1]};
+  attachDrag(el,it); startShimmer(it);
+  updateBadge();
+}
+
+/* ---- drag / snap / float ---- */
+function attachDrag(el,it){
+  el.addEventListener('pointerdown',e=>{
+    if(it.placed) return; e.stopPropagation();
+    el.classList.remove('floating'); el.style.zIndex=1000; try{el.setPointerCapture(e.pointerId);}catch(_){}
+    const start=world.screenToWorld(e.clientX,e.clientY);
+    const ox=start.x-it._cur.x, oy=start.y-it._cur.y;
+    const [w,h]=natural(it.id), dw=w*it.scale, dh=h*it.scale;
+    const mv=ev=>{ if(world.suppressed) return;
+      const p=world.screenToWorld(ev.clientX,ev.clientY);
+      it._cur.x=p.x-ox; it._cur.y=p.y-oy;
+      el.style.left=(it._cur.x-dw/2)+'px'; el.style.top=(it._cur.y-dh/2)+'px';
+    };
+    const up=()=>{ el.removeEventListener('pointermove',mv); el.removeEventListener('pointerup',up); hideRing();
+      const d=Math.hypot(it._cur.x-it.x, it._cur.y-it.y);
+      if(d<TOL) snap(el,it);
+      else { // wrong spot: shake to reject, then keep floating
+        el.style.zIndex=500+(queue.indexOf(it)+1); el.classList.remove('floating'); el.classList.add('shake');
+        setTimeout(()=>{ el.classList.remove('shake'); if(!it.placed){ el.classList.add('floating'); startShimmer(it); } }, 330);
+      } };
+    el.addEventListener('pointermove',mv); el.addEventListener('pointerup',up);
+  });
+}
+function showRing(it,hot){ const [w,h]=natural(it.id),dw=w*it.scale,dh=h*it.scale;
+  ring.style.left=(it.x-dw/2-10)+'px'; ring.style.top=(it.y-dh/2-10)+'px';
+  ring.style.width=(dw+20)+'px'; ring.style.height=(dh+20)+'px'; ring.style.display='block';
+  ring.classList.toggle('hot',hot); }
+function hideRing(){ ring.style.display='none'; }
+function snap(el,it){
+  const [w,h]=natural(it.id),dw=w*it.scale,dh=h*it.scale;
+  el.classList.remove('floating'); el.style.transition='left .25s cubic-bezier(.34,1.4,.5,1),top .25s cubic-bezier(.34,1.4,.5,1)';
+  el.style.left=(it.x-dw/2)+'px'; el.style.top=(it.y-dh/2)+'px';
+  it._cur={x:it.x,y:it.y}; it.placed=true; stopShimmer(it);
+  setTimeout(()=>{ el.style.transition=''; el.classList.add('locked','snapped'); el.style.zIndex=it.z;
+    setTimeout(()=>el.classList.remove('snapped'),420); },250);
+  sparkleAtWorld(it.x,it.y);
+  updateProgress();
+  if(queue.every(q=>q.placed)) win();
+}
+function updateProgress(){ const b=$('#barFill'); if(!b) return;
+  const done=queue.filter(q=>q.placed).length, total=queue.length||1; b.style.width=(done/total*100)+'%'; }
+
+/* ---- floating sparkle trail (shows an item is NOT placed yet) ---- */
+const shimmers=new Map();
+function worldSparkle(x,y){ const g=['✨','✦','✧']; const s=document.createElement('div'); s.className='wsp';
+  s.textContent=g[Math.floor(Math.random()*g.length)]; s.style.left=x+'px'; s.style.top=y+'px';
+  s.style.fontSize=(11+Math.random()*9)+'px'; s.style.color='#ffd98c'; s.style.opacity=.85;
+  const a=Math.random()*6.283, d=6+Math.random()*14; s.style.setProperty('--dx',Math.cos(a)*d+'px'); s.style.setProperty('--dy',(Math.sin(a)*d-5)+'px');
+  worldEl.appendChild(s); setTimeout(()=>s.remove(),1100); }
+function startShimmer(it){ if(shimmers.has(it.iid))return;
+  const id=setInterval(()=>{ const el=worldEl.querySelector(`.it[data-iid="${it.iid}"]`);
+    if(it.placed||!el){ stopShimmer(it); return; }
+    const [w,h]=natural(it.id), dw=w*it.scale, dh=h*it.scale;
+    if(Math.random()<0.7) worldSparkle(it._cur.x+(Math.random()-0.5)*dw*0.85, it._cur.y+(Math.random()-0.5)*dh*0.85);
+  },520); shimmers.set(it.iid,id); }
+function stopShimmer(it){ const id=shimmers.get(it.iid); if(id){clearInterval(id); shimmers.delete(it.iid);} }
+function stopAllShimmer(){ shimmers.forEach(id=>clearInterval(id)); shimmers.clear(); }
+
+/* world->screen for fx */
+function sparkleAtWorld(x,y){ const r=viewport.getBoundingClientRect();
+  const sx=r.left + (x*world.S) + worldPan().x, sy=r.top + (y*world.S) + worldPan().y; sparkle(sx,sy); }
+function worldPan(){ const m=new DOMMatrixReadOnly(getComputedStyle(worldEl).transform); return {x:m.m41,y:m.m42}; }
+
+/* ---- fx ---- */
+function sparkle(px,py){const sc=$('#screen');const sr=sc.getBoundingClientRect();const x=px-sr.left,y=py-sr.top;
+  const em=['✨','💫','⭐'];for(let i=0;i<7;i++){const s=document.createElement('div');s.className='spark';s.textContent=em[i%3];
+  s.style.left=x+'px';s.style.top=y+'px';const a=Math.random()*6.28,d=26+Math.random()*36;
+  s.style.setProperty('--dx',Math.cos(a)*d+'px');s.style.setProperty('--dy',(Math.sin(a)*d-8)+'px');
+  sc.appendChild(s);setTimeout(()=>s.remove(),720);}}
+function confetti(){const c=['#7fae6b','#e9c46a','#e76f51','#9b8cff','#6f8f6a','#f4a261'];
+  for(let i=0;i<80;i++){const e=document.createElement('div');e.className='confetti';e.style.left=Math.random()*100+'%';
+    e.style.background=c[i%c.length];e.style.animationDuration=(1.7+Math.random()*1.7)+'s';e.style.animationDelay=(Math.random()*.5)+'s';
+    document.body.appendChild(e);setTimeout(()=>e.remove(),3800);}}
+function win(){ confetti(); setTimeout(()=>$('#winOv').classList.add('show'),800); }
+
+/* ---- controls ---- */
+$('#hintBtn').onclick=()=>{ const c=$('#hintBtn .cnt'); let n=+c.textContent; if(n<=0)return; c.textContent=--n;
+  // solve next floating item automatically
+  const it=queue.find(q=>q._spawned&&!q.placed) || queue.find(q=>!q.placed);
+  if(!it){toast('All placed!');return;} if(!it._spawned){popNext();}
+  setTimeout(()=>{const el=worldEl.querySelector(`.it[data-iid="${it.iid}"]`); if(el)snap(el,it);},it._spawned?60:500); };
+$('#resetBtn').onclick=()=>{ startLevel(); world.reset(); };
+$('#pauseBtn').onclick=()=>toast('Paused (demo)');
+$('#creatorBtn').onclick=()=>location.href='creator.html';
+$('#creator2Btn').onclick=()=>location.href='creator.html';
+$('#replayBtn').onclick=()=>{ $('#winOv').classList.remove('show'); startLevel(); world.reset(); };
+
+boot();
+</script>
+</body>
+</html>
