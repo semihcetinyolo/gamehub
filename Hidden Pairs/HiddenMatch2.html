@@ -6,49 +6,50 @@
 <title>Hidden Match — Demo</title>
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; background: #1b1b22;
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #0c1430;
       font-family: -apple-system, "Segoe UI", system-ui, sans-serif; -webkit-user-select: none; user-select: none; }
     #app { position: fixed; inset: 0; }
     canvas { display: block; }
 
     /* ---- Settings overlay ---- */
     #settings-overlay {
-      position: fixed; inset: 0; background: rgba(20,16,34,.55);
+      position: fixed; inset: 0; background: rgba(6,12,34,.74);
       backdrop-filter: blur(3px); display: none; align-items: center; justify-content: center; z-index: 50;
     }
     #settings-overlay.open { display: flex; }
     .settings-card {
-      width: min(86vw, 360px); background: #fff; border-radius: 22px; padding: 22px 22px 18px;
+      width: min(86vw, 360px); background: linear-gradient(180deg,#264fb0,#1a356f); border: 2px solid rgba(255,255,255,.18); border-radius: 22px; padding: 22px 22px 18px;
       box-shadow: 0 18px 50px rgba(0,0,0,.4);
     }
-    .settings-card h2 { font-size: 20px; color: #4a2c8f; margin-bottom: 4px; text-align: center; }
-    .settings-card .sub { font-size: 12px; color: #999; text-align: center; margin-bottom: 18px; }
+    .settings-card h2 { font-size: 20px; color: #fff; margin-bottom: 4px; text-align: center; }
+    .settings-card .sub { font-size: 12px; color: #c5d0f0; text-align: center; margin-bottom: 18px; }
     .row { margin: 16px 0; }
-    .row label { display: flex; justify-content: space-between; font-size: 14px; color: #444; font-weight: 600; margin-bottom: 8px; }
-    .row label .val { color: #7b4ddb; }
-    input[type=range] { width: 100%; accent-color: #7b4ddb; height: 26px; }
-    .hint-note { font-size: 11px; color: #aaa; margin-top: 2px; }
+    .row label { display: flex; justify-content: space-between; font-size: 14px; color: #dfe7ff; font-weight: 600; margin-bottom: 8px; }
+    .row label .val { color: #ffce4d; }
+    input[type=range] { width: 100%; accent-color: #ffce4d; height: 26px; }
+    .hint-note { font-size: 11px; color: #9fb0e0; margin-top: 2px; }
     .level-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-    .level-nav #level-val { font-size: 16px; font-weight: 700; color: #7b4ddb; flex: 1; text-align: center; }
-    .lvl-btn { width: 46px; height: 40px; border: none; border-radius: 12px; background: #7b4ddb; color: #fff;
-      font-size: 18px; font-weight: 700; cursor: pointer; }
-    .lvl-btn:active { background: #6a3dc4; }
+    .level-nav #level-val { font-size: 16px; font-weight: 700; color: #fff; flex: 1; text-align: center; }
+    .lvl-btn { width: 46px; height: 40px; border: none; border-radius: 12px; background: rgba(255,255,255,.14); color: #fff;
+      font-size: 18px; font-weight: 700; cursor: pointer; box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 3px 0 rgba(0,0,0,.18); transition: transform .08s, background .15s; }
+    .lvl-btn:active { background: rgba(255,255,255,.24); transform: translateY(2px); }
     .btn-row { display: flex; gap: 10px; margin-top: 22px; }
-    .btn { flex: 1; border: none; border-radius: 14px; padding: 13px; font-size: 15px; font-weight: 700; cursor: pointer; }
-    .btn.primary { background: #7b4ddb; color: #fff; }
-    .btn.ghost { background: #eee; color: #555; }
+    .btn { flex: 1; border: none; border-radius: 14px; padding: 13px; font-size: 15px; font-weight: 700; cursor: pointer; transition: transform .08s; }
+    .btn.primary { background: linear-gradient(180deg,#ffd95e,#f4a93b); color: #5a3b00; box-shadow: inset 0 2px 0 rgba(255,255,255,.5), 0 5px 0 #b9781f; }
+    .btn.primary:active { transform: translateY(3px); box-shadow: inset 0 2px 0 rgba(255,255,255,.5), 0 2px 0 #b9781f; }
+    .btn.ghost { background: rgba(255,255,255,.14); color: #fff; }
 
     /* ---- End screen ---- */
     #end-overlay {
-      position: fixed; inset: 0; background: rgba(20,16,34,.7); display: none;
+      position: fixed; inset: 0; background: rgba(6,12,34,.74); display: none;
       align-items: center; justify-content: center; z-index: 60; backdrop-filter: blur(4px);
     }
     #end-overlay.open { display: flex; }
-    .end-card { width: min(82vw, 320px); background: #fff; border-radius: 24px; padding: 28px 24px;
+    .end-card { width: min(82vw, 320px); background: linear-gradient(180deg,#264fb0,#1a356f); border: 2px solid rgba(255,255,255,.18); border-radius: 24px; padding: 28px 24px;
       text-align: center; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
     .end-card .emoji { font-size: 54px; }
-    .end-card h2 { font-size: 24px; margin: 8px 0 4px; color: #4a2c8f; }
-    .end-card p { font-size: 14px; color: #777; margin-bottom: 20px; }
+    .end-card h2 { font-size: 24px; margin: 8px 0 4px; color: #fff; }
+    .end-card p { font-size: 14px; color: #c5d0f0; margin-bottom: 20px; }
   </style>
 </head>
 <body>
@@ -2395,7 +2396,7 @@ async function boot() {
   const app = new PIXI.Application({
     width: host.clientWidth || window.innerWidth,
     height: host.clientHeight || window.innerHeight,
-    backgroundColor: 0x12101a,
+    backgroundColor: 0x16315f,
     antialias: true,
     resolution: Math.min(2, window.devicePixelRatio || 1),
     autoDensity: true,
