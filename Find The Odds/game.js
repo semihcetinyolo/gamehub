@@ -397,7 +397,8 @@ function nextLevel() { startLevel(levelIndex + 1); }
 // ---- boot --------------------------------------------------------------
 function boot() {
   if (!LEVELS.length) { console.error('No levels found (levels-data.js missing?)'); return; }
-  startLevel(0);
+  const startIdx = LEVELS.findIndex(l => l.name === 'Bakery 2');
+  startLevel(startIdx >= 0 ? startIdx : 0);
 
   playfield.addEventListener('pointerdown', onStagePointerDown);
   hintBtn.addEventListener('click', useHint);
