@@ -8,8 +8,29 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { width: 100%; height: 100%; overflow: hidden; background: #0c1430;
       font-family: -apple-system, "Segoe UI", system-ui, sans-serif; -webkit-user-select: none; user-select: none; }
-    #app { position: fixed; inset: 0; }
+    body { display: flex; align-items: center; justify-content: center; }
+    .frame { position: relative; width: min(432px, 100vw); height: min(936px, 100vh);
+      background: linear-gradient(180deg,#3568d8 0%, #2a55bb 22%, #1d3f95 55%, #16315f 100%);
+      display: flex; flex-direction: column; padding: 14px 14px 18px; gap: 12px; overflow: hidden; }
+    .hud { display: flex; align-items: center; justify-content: space-between; height: 42px; flex: 0 0 auto; }
+    .lives { display: flex; gap: 4px; font-size: 22px; line-height: 1; }
+    .lives .heart { color: #ff4d5e; filter: drop-shadow(0 1px 1px rgba(0,0,0,.4)); }
+    .lives .heart.off { color: rgba(255,255,255,.22); }
+    .hud-btns { display: flex; gap: 8px; }
+    .hud-btn { width: 42px; height: 42px; border: none; border-radius: 13px; background: rgba(255,255,255,.14);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 3px 0 rgba(0,0,0,.18);
+      color: #fff; font-size: 20px; cursor: pointer; transition: transform .08s, background .15s; }
+    .hud-btn:active { transform: translateY(2px); background: rgba(255,255,255,.24); }
+    .board-wrap { position: relative; width: 100%; flex: 1 1 auto; min-height: 0; border-radius: 22px; overflow: hidden;
+      background: #0e1f49; box-shadow: inset 0 0 0 3px rgba(255,255,255,.10), 0 10px 26px rgba(0,0,0,.35); }
+    #app { position: absolute; inset: 0; }
     canvas { display: block; }
+    .tray-row { position: relative; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; height: 46px; }
+    .progress { background: linear-gradient(180deg,#2b59c3,#1c3f93); border: 2px solid rgba(255,255,255,.22);
+      border-radius: 13px; padding: 5px 16px; font-weight: 800; color: #fff;
+      display: flex; align-items: baseline; gap: 5px; box-shadow: 0 4px 10px rgba(0,0,0,.35); }
+    .prog-num { color: #ffce4d; font-size: 22px; }
+    .prog-den { color: #cdd6f5; font-size: 14px; }
 
     /* ---- Settings overlay ---- */
     #settings-overlay {
@@ -54,7 +75,20 @@
 </head>
 <body>
 
-  <div id="app"></div>
+  <div class="frame" id="frame">
+    <div class="hud">
+      <div class="lives" id="lives"></div>
+      <div class="hud-btns">
+        <button class="hud-btn" id="btnHint" title="İpucu">💡</button>
+        <button class="hud-btn" id="btnRestart" title="Yeniden başlat">⟳</button>
+        <button class="hud-btn" id="btnSettings" title="Ayarlar">⚙</button>
+      </div>
+    </div>
+    <div class="board-wrap"><div id="app"></div></div>
+    <div class="tray-row">
+      <div class="progress"><span class="prog-num" id="pairsNum">0</span><span class="prog-den">çift kaldı</span></div>
+    </div>
+  </div>
 
   <div id="settings-overlay">
     <div class="settings-card">
@@ -2471,6 +2505,29 @@ async function boot() {
   });
   hud.onSettings = () => overlays.openSettings();
   hud.onHint = () => game.hint();
+
+  // ---- DOM HUD overlay (blue/gold theme, mirrors Hidden Triple Match) ----
+  hud.root.visible = false;                          // hide in-canvas HUD chrome (purple bars, banner, sprite buttons)
+  hud.layout = function () { this.insets = { top: 0, bottom: 0 }; };  // board fills the framed area
+  const _livesEl = document.getElementById("lives");
+  const _pairsEl = document.getElementById("pairsNum");
+  const _maxLives = CONFIG.lives;
+  const paintLives = (n) => {
+    if (!_livesEl) return;
+    let html = "";
+    for (let i = 0; i < _maxLives; i++) html += '<span class="heart' + (i < n ? "" : " off") + '">\u2764</span>';
+    _livesEl.innerHTML = html;
+  };
+  const _origSetLives = hud.setLives.bind(hud);
+  hud.setLives = (n, max) => { _origSetLives(n, max); paintLives(n); };
+  const _origSetPairs = hud.setPairsLeft.bind(hud);
+  hud.setPairsLeft = (n) => { _origSetPairs(n); if (_pairsEl) _pairsEl.textContent = String(n); };
+  const _bs = document.getElementById("btnSettings");
+  const _bh = document.getElementById("btnHint");
+  const _br = document.getElementById("btnRestart");
+  if (_bs) _bs.addEventListener("click", () => overlays.openSettings());
+  if (_bh) _bh.addEventListener("click", () => game.hint());
+  if (_br) _br.addEventListener("click", () => { game.restart(currentPairs); relayout(); });
 
   hud.setLives(CONFIG.lives, CONFIG.lives);
   hud.setPairsLeft(game.pairsLeft);
