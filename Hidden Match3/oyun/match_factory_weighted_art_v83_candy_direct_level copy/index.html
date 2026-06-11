@@ -499,7 +499,7 @@
     LEVELS.forEach(l => { if (LEVEL_NAMES[l.id]) l.name = LEVEL_NAMES[l.id]; });
 
     const ALL_STICKER_TYPES = LEVELS.flatMap(level => level.types);
-    let currentLevelIndex = 0;
+    let currentLevelIndex = Math.max(0, LEVELS.findIndex(l => l.id === 'candy_direct'));
     function getCurrentLevel() { return LEVELS[currentLevelIndex]; }
     function getCurrentTypes() { return getCurrentLevel().types; }
 
