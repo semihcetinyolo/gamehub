@@ -393,6 +393,20 @@ def index():
 
 @app.get("/<path:path>")
 def static_files(path):
+    # Some games discover their assets by fetching a folder and parsing the
+    # directory listing (like `python -m http.server` produced). Emulate that
+    # listing for directory requests so those games keep working.
+    target = (ROOT / path)
+    root_r = ROOT.resolve()
+    try:
+        target_r = target.resolve()
+        within = target_r == root_r or root_r in target_r.parents
+    except Exception:
+        within = False
+    if within and target.is_dir():
+        names = sorted(p.name + ("/" if p.is_dir() else "") for p in target.iterdir())
+        links = "".join('<li><a href="{0}">{0}</a></li>'.format(n) for n in names)
+        return "<!doctype html><meta charset=utf-8><title>{0}</title><ul>{1}</ul>".format(path, links)
     return send_from_directory(str(ROOT), path)
 
 

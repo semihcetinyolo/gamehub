@@ -137,12 +137,28 @@ async function loadItemFiles(dir){
   return sprites;
 }
 
+/* ---------- Load item sprites straight from a known id list (id -> <id>.png) ----------
+   Works on any static host (no directory listing needed). Returns {id:{src,w,h}}. */
+async function loadItemsById(dir, ids){
+  const sprites={};
+  for(const id of [...new Set(ids)]){
+    if(sprites[id]) continue;
+    try{ const im=await loadImage(dir+'/'+id+'.png');
+      sprites[id] = {src:dir+'/'+id+'.png', w:im.naturalWidth, h:im.naturalHeight}; }catch(e){}
+  }
+  return sprites;
+}
+
 /* ---------- Build a level from a level folder: cut scene + load item images + optional placements ---------- */
 async function buildDefaultLevel(dir){
   const sc = await prepScene(dir+'/scene.png');
-  const sprites = await loadItemFiles(dir);
   let placements = null;
   try { const r = await fetch(dir+'/level.json'); if(r.ok) placements = await r.json(); } catch(e){}
+  // Prefer building sprites directly from the placement ids (each id maps to
+  // "<id>.png") — this works on any static host. Fall back to scanning the
+  // directory listing only when there are no placements to go by.
+  const ids = (placements && placements.items) ? placements.items.map(it=>it.id) : [];
+  const sprites = ids.length ? await loadItemsById(dir, ids) : await loadItemFiles(dir);
   return { dir, scene:sc.dataURL, sceneW:sc.w, sceneH:sc.h, sprites,
     box: (placements&&placements.box) || {x:Math.round(sc.w*0.74), y:Math.round(sc.h*0.76), w:150},
     items: (placements&&placements.items) || [] };
