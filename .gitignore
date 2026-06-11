@@ -14,9 +14,9 @@ Find The Cat/levels/0002psb
 # are excluded from the repo. No game code is modified.
 # ============================================================
 
-# Find The Odds — keep only "Sports"
+# Find The Odds — keep only "Bakery 2"
 Find The Odds/levels/*/
-!Find The Odds/levels/Sports/
+!Find The Odds/levels/Bakery_2/
 
 # Hidden Match3 — exclude only unused root assetpacks (game preloads ALL
 # assets_level*/ folders at startup, so those must stay or the board breaks)
