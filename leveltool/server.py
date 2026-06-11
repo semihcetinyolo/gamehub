@@ -114,13 +114,13 @@ def run_script(cwd: Path, args):
 
 
 def save_psb(tmp: Path):
-    """Return the path to the single uploaded .psb/.psd, or None."""
-    for fs in request.files.getlist("files"):
-        name = (fs.filename or "").replace("\\", "/").split("/")[-1]
-        if name.lower().endswith((".psb", ".psd")):
-            dest = tmp / name
-            fs.save(str(dest))
-            return dest
+    """Return the path to the uploaded .psb/.psd already saved under tmp by
+    collect_upload(). We must NOT re-read request.files here: Werkzeug upload
+    streams can only be consumed once, so a second fs.save() would write an
+    empty file (extract.py then fails with 'read=0, expected=26')."""
+    for p in sorted(tmp.rglob("*")):
+        if p.is_file() and p.suffix.lower() in (".psb", ".psd"):
+            return p
     return None
 
 
@@ -374,7 +374,8 @@ def api_upload():
         return jsonify(ok=False, message="Dosya yüklenmedi."), 400
     tmp = Path(tempfile.mkdtemp(prefix="lvlup_"))
     try:
-        # save everything into tmp (adapters that need the psb re-read request.files)
+        # save everything into tmp once; adapters then read from tmp (the upload
+        # streams are consumed here and cannot be re-read from request.files)
         collect_upload(tmp)
         result = fn(gdir, level, tmp)
         code = 200 if result.get("ok") else 400
