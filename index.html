@@ -448,7 +448,7 @@
       upFolder.value = ""; upFiles.value = ""; upPicked.textContent = "";
       try {
         if (!gameSpecs.length) {
-          const r = await fetch("/api/games");
+          const r = await fetch("api/games");
           gameSpecs = await r.json();
           upGame.innerHTML = gameSpecs.map(g => `<option>${g.name}</option>`).join("");
         }
@@ -487,7 +487,7 @@
       upSubmit.disabled = true;
       upMsg.className = "msg"; upMsg.textContent = "Yükleniyor…";
       try {
-        const r = await fetch("/api/upload", { method: "POST", body: fd });
+        const r = await fetch("api/upload", { method: "POST", body: fd });
         const data = await r.json();
         upMsg.className = "msg " + (data.ok ? "ok" : "err");
         upMsg.textContent = (data.ok ? "✓ " : "✗ ") + (data.message || "") +
