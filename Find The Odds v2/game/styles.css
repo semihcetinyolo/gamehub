@@ -96,6 +96,10 @@ body{
 .shadow img{ position:absolute; inset:0; width:100%; height:100%; display:block; }
 .shadow.gone{ opacity:0; }
 
+/* foreground masks (mN); always shown on top, never interactive */
+.mask{ position:absolute; pointer-events:none; }
+.mask img{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+
 /* wrong tap: red shake on the decoy that was tapped */
 .item.wrong{ z-index:45 !important; }
 .item.wrong .ob{ animation:wrongShake .42s ease; }

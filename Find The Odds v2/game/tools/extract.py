@@ -6,6 +6,7 @@ For each level <name>.psb it produces, under game/assets/<name>/:
   - o1..oN.png            trimmed "odd" items the player must find
   - r1..rM.png            trimmed decoy items (tapping one costs a heart)
   - s1..sN.png            optional glow/effect for odd N — removed when oN is found
+  - m1..mK.png            foreground masks/overlays — always shown, never interactive
   - manifest.json         normalized bboxes (0..1 of the canvas) + PSB draw order
 
 and maintains game/assets/levels.json — the ordered list of playable levels.
@@ -15,6 +16,8 @@ Layer naming convention in the .psb (case-insensitive bg):
   oN                       a clean cut-out of an odd item to find (may sit in a group)
   rN                       a clean cut-out of a decoy item
   sN                       optional glow/effect for odd N (removed when oN is found)
+  m                        a foreground mask/overlay — always shown, never interactive
+                           (every mask layer is named exactly "m"; numbered on export)
 
 Numbering need not be contiguous (gaps like r6/r29 are fine).
 
@@ -76,7 +79,8 @@ def export_level(psb_path):
     bg = next(l for l in leaves if l.name.lower() == "bg")
     bg.composite().convert("RGB").resize((bg_size, bg_size), Image.LANCZOS).save(out / "bg.jpg", quality=85)
 
-    manifest = {"canvas": canvas, "odds": {}, "traps": {}, "shadows": {}, "order": [l.name for l in leaves]}
+    manifest = {"canvas": canvas, "odds": {}, "traps": {}, "shadows": {}, "masks": [],
+                "order": [l.name for l in leaves]}
 
     # shadows first, so odds can reference them
     shadow_by_num = {}
@@ -99,8 +103,21 @@ def export_level(psb_path):
             save_layer(layer, nm + ".png")
             manifest["traps"][nm] = norm(layer.bbox)
 
+    # masks: foreground overlays. Every one is named just "m", so we can't key
+    # them by name — enumerate in draw order and emit m1.png, m2.png, ...
+    # They are always shown in-game and never interactive (see game.js).
+    mi = 0
+    for layer in leaves:           # iterate leaves, not the name-keyed dict (names collide)
+        if layer.name == "m":
+            mi += 1
+            fname = "m{}".format(mi)
+            save_layer(layer, fname + ".png")
+            rec = norm(layer.bbox)
+            rec["name"] = fname
+            manifest["masks"].append(rec)
+
     (out / "manifest.json").write_text(json.dumps(manifest, indent=1))
-    return name, len(manifest["odds"]), len(manifest["traps"]), len(manifest["shadows"])
+    return name, len(manifest["odds"]), len(manifest["traps"]), len(manifest["shadows"]), len(manifest["masks"])
 
 
 def main():
@@ -110,9 +127,9 @@ def main():
 
     names = []
     for p in psbs:
-        nm, no, nr, ns = export_level(p)
+        nm, no, nr, ns, nm_masks = export_level(p)
         names.append(nm)
-        print(f"{nm}: {no} odds, {nr} traps, {ns} shadows -> assets/{nm}/")
+        print(f"{nm}: {no} odds, {nr} traps, {ns} shadows, {nm_masks} masks -> assets/{nm}/")
 
     # maintain levels.json (preserve existing order, append any new levels)
     lj = ASSETS / "levels.json"

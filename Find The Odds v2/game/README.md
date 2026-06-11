@@ -17,7 +17,7 @@ will not work.)
 ## How it plays
 
 - Levels are played in the order listed in `assets/levels.json` (currently
-  **beach → market**).
+  **beach → market → beach2**).
 - Each scene holds a few **odd items** (`o1`, `o2`, …) and many **decoys**
   (`r1`, `r2`, …).
 - The scene is larger than the viewport — **drag to pan** across it and
@@ -57,6 +57,8 @@ oN         a clean cut-out of an odd item to find (may sit in a group)
 rN         a clean cut-out of a decoy item
 sN         optional glow/effect for odd N — shown in the scene and removed
            when oN is found (matched by number: o1<->s1, o2<->s2, …)
+m          a foreground mask/overlay — always shown on top, never interactive
+           (every mask layer is named exactly "m"; numbered m1..mK on export)
 ```
 
 Numbering need not be contiguous (gaps like `r6`/`r29` are fine). Add a new

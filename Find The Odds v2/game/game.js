@@ -122,9 +122,11 @@ function zoomAt(px, py, newS){
 }
 const clamp = (v,lo,hi)=> Math.max(lo, Math.min(hi, v));
 
+const MASK_Z = 5000; // masks render above every item, always
+
 function buildBoard(){
   // remove any previously injected nodes (on restart / level change)
-  board.querySelectorAll('.item, .shadow').forEach(n=>n.remove());
+  board.querySelectorAll('.item, .shadow, .mask').forEach(n=>n.remove());
   State.items = {};
   State.shadowEls = {};
 
@@ -168,6 +170,16 @@ function buildBoard(){
     State.items[name] = rec;
     buildAlpha(ob, rec);   // pixel-perfect hit map from the clean object
   }
+
+  // masks: foreground overlays. Always shown (never removed) and never
+  // interactive — they sit on top of every item so the scene stays masked.
+  (State.manifest.masks || []).forEach((mb, i)=>{
+    const el = document.createElement('div');
+    el.className = 'mask';
+    placeNode(el, mb, MASK_Z + i);
+    el.appendChild(imgEl(assetUrl(mb.name), 'mob'));
+    board.appendChild(el);
+  });
 }
 
 function imgEl(src, cls){
