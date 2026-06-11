@@ -226,6 +226,30 @@
     .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
     .btn-secondary:hover { background: rgba(255,255,255,0.05); }
 
+    /* Uploaded-levels manager (delete) */
+    .lvl-manage { border-top: 1px solid var(--border); padding-top: 14px; }
+    .lvl-list {
+      display: flex; flex-direction: column; gap: 4px;
+      max-height: 190px; overflow-y: auto;
+      border: 1px solid var(--border); border-radius: 8px; padding: 6px;
+      background: rgba(0,0,0,0.18);
+    }
+    .lvl-row {
+      display: flex; align-items: center; gap: 9px;
+      padding: 7px 8px; border-radius: 6px; cursor: pointer; font-size: 14px;
+    }
+    .lvl-row:hover { background: rgba(255,255,255,0.05); }
+    .lvl-row input { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
+    .lvl-row .lvl-name { flex: 1; }
+    .lvl-row .lvl-ts { font-size: 11px; color: var(--muted, #8b949e); }
+    .lvl-empty { color: var(--muted, #8b949e); font-size: 13px; margin: 2px; }
+    .btn-danger {
+      margin-top: 10px; padding: 9px 16px; border-radius: 8px; border: none;
+      background: #da3633; color: #fff; font-size: 14px; font-weight: 600; cursor: pointer;
+    }
+    .btn-danger:hover { background: #f85149; }
+    .btn-danger:disabled { opacity: 0.45; cursor: default; }
+
     /* Sidebar toggle button (always visible, fixed top-left) */
     .nav-toggle {
       position: fixed;
@@ -349,6 +373,13 @@
           <p class="picked" id="upPicked"></p>
         </div>
         <p class="msg" id="upMsg"></p>
+
+        <div class="field lvl-manage" id="manageWrap">
+          <span>Yüklenen leveller</span>
+          <div class="lvl-list" id="lvlList"><p class="lvl-empty">Yükleniyor…</p></div>
+          <button class="btn-danger" id="lvlDelete" disabled>🗑 Seçili levelları sil</button>
+          <p class="msg" id="delMsg"></p>
+        </div>
       </div>
       <div class="modal-foot">
         <button class="btn-secondary" id="upCancel">İptal</button>
@@ -421,7 +452,63 @@
     const upPicked = document.getElementById("upPicked");
     const upMsg = document.getElementById("upMsg");
     const upSubmit = document.getElementById("upSubmit");
+    const lvlList = document.getElementById("lvlList");
+    const lvlDelete = document.getElementById("lvlDelete");
+    const delMsg = document.getElementById("delMsg");
     let gameSpecs = [];
+
+    function selectedLevelIds() {
+      return [...lvlList.querySelectorAll("input:checked")].map(c => c.value);
+    }
+    function refreshDeleteBtn() {
+      const n = selectedLevelIds().length;
+      lvlDelete.disabled = n === 0;
+      lvlDelete.textContent = n ? `🗑 ${n} level'ı sil` : "🗑 Seçili levelları sil";
+    }
+    async function loadLevels(game) {
+      delMsg.textContent = ""; delMsg.className = "msg";
+      lvlList.innerHTML = '<p class="lvl-empty">Yükleniyor…</p>';
+      lvlDelete.disabled = true;
+      try {
+        const r = await fetch("api/levels?game=" + encodeURIComponent(game));
+        const data = await r.json();
+        const levels = (data && data.levels) || [];
+        if (!levels.length) {
+          lvlList.innerHTML = '<p class="lvl-empty">Bu oyun için yüklenmiş level yok. (Yalnızca buradan eklenen levelları silebilirsin.)</p>';
+          return;
+        }
+        lvlList.innerHTML = levels.map(l => {
+          const ts = (l.ts || "").replace("T", " ");
+          return `<label class="lvl-row"><input type="checkbox" value="${l.id}">` +
+                 `<span class="lvl-name">${l.name}</span>` +
+                 `<span class="lvl-ts">${ts}</span></label>`;
+        }).join("");
+        lvlList.querySelectorAll("input").forEach(c =>
+          c.addEventListener("change", refreshDeleteBtn));
+      } catch (e) {
+        lvlList.innerHTML = '<p class="lvl-empty">Level listesi alınamadı.</p>';
+      }
+      refreshDeleteBtn();
+    }
+    lvlDelete.addEventListener("click", async () => {
+      const ids = selectedLevelIds();
+      if (!ids.length) return;
+      if (!confirm(`${ids.length} level kalıcı olarak silinecek. Emin misin?`)) return;
+      lvlDelete.disabled = true;
+      delMsg.className = "msg"; delMsg.textContent = "Siliniyor…";
+      try {
+        const r = await fetch("api/levels/delete", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ game: upGame.value, ids })
+        });
+        const data = await r.json();
+        delMsg.className = "msg " + (data.ok ? "ok" : "err");
+        delMsg.textContent = (data.ok ? "✓ " : "✗ ") + (data.message || "");
+        await loadLevels(upGame.value);
+      } catch (e) {
+        delMsg.className = "msg err"; delMsg.textContent = "Hata: " + e.message;
+      }
+    });
 
     function currentMode() {
       return document.querySelector('input[name="upMode"]:checked').value;
@@ -441,6 +528,7 @@
       if (spec && spec.accepts.includes("folder")) folderRadio.checked = true;
       else filesRadio.checked = true;
       syncPicker();
+      if (upGame.value) loadLevels(upGame.value);
     }
 
     async function openModal() {
@@ -452,11 +540,13 @@
           gameSpecs = await r.json();
           upGame.innerHTML = gameSpecs.map(g => `<option>${g.name}</option>`).join("");
         }
+        document.getElementById("manageWrap").hidden = false;
         updateHint();
         modal.hidden = false;
       } catch (e) {
         modal.hidden = false;
         upGame.innerHTML = "";
+        document.getElementById("manageWrap").hidden = true;
         upMsg.className = "msg err";
         upMsg.textContent = "Yükleme servisi çalışmıyor. Bu özellik backend (leveltool/server.py) ile sunulmayı gerektirir.";
       }
@@ -492,6 +582,7 @@
         upMsg.className = "msg " + (data.ok ? "ok" : "err");
         upMsg.textContent = (data.ok ? "✓ " : "✗ ") + (data.message || "") +
           (data.detail ? "\n\n" + data.detail : "");
+        if (data.ok) loadLevels(upGame.value);   // refresh the deletable list
       } catch (e) {
         upMsg.className = "msg err"; upMsg.textContent = "Hata: " + e.message;
       } finally {

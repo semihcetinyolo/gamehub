@@ -15,6 +15,7 @@ Input types per game (see ADAPTERS / GET /api/games):
 Run:  python3 leveltool/server.py [--port 8080]
 Then open http://localhost:8080/
 """
+import datetime
 import io
 import json
 import os
@@ -23,6 +24,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import uuid
 import zipfile
 from pathlib import Path
 
@@ -32,6 +34,140 @@ ROOT = Path(__file__).resolve().parent.parent          # repo root (holds the ga
 PY = sys.executable
 
 app = Flask(__name__, static_folder=None)
+
+# ---- upload manifest: lets us list + delete user-added levels ----
+# Each successful upload records the files/folders it created and the registry
+# edits it made, so a delete can reverse exactly that one level.
+MANIFEST = ROOT / "leveltool" / "uploads.json"
+_track = {"paths": [], "edits": [], "rerun": None}
+
+
+def _reset_track():
+    _track["paths"] = []
+    _track["edits"] = []
+    _track["rerun"] = None
+
+
+def _rel_to_root(p) -> str:
+    return str(Path(p).resolve().relative_to(ROOT.resolve()))
+
+
+def track_path(p):
+    """Record a file/folder this upload created (removed on delete)."""
+    try:
+        rel = _rel_to_root(p)
+    except Exception:
+        return
+    if rel not in _track["paths"]:
+        _track["paths"].append(rel)
+
+
+def track_edit(file_path, remove_text=None, json_list_remove=None, restore_level_dir=None):
+    """Record a reversible registry edit (text insert / json-list add / LEVEL_DIR swap)."""
+    e = {"file": _rel_to_root(file_path)}
+    if remove_text is not None:
+        e["remove"] = remove_text
+    if json_list_remove is not None:
+        e["json_list_remove"] = json_list_remove
+    if restore_level_dir is not None:
+        e["restore_level_dir"] = restore_level_dir
+    _track["edits"].append(e)
+
+
+def track_rerun(cwd, args):
+    """Record a script to re-run after deletion (e.g. regenerate a levels list)."""
+    _track["rerun"] = {"cwd": _rel_to_root(cwd), "args": list(args)}
+
+
+def load_manifest():
+    if MANIFEST.exists():
+        try:
+            return json.loads(MANIFEST.read_text(encoding="utf-8"))
+        except Exception:
+            return {}
+    return {}
+
+
+def save_manifest(m):
+    MANIFEST.write_text(json.dumps(m, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def add_record(game, name):
+    if not _track["paths"] and not _track["edits"] and not _track["rerun"]:
+        return
+    m = load_manifest()
+    m.setdefault(game, [])
+    m[game].insert(0, {
+        "id": "lv_" + uuid.uuid4().hex[:10],
+        "name": name,
+        "ts": datetime.datetime.now().isoformat(timespec="seconds"),
+        "paths": list(_track["paths"]),
+        "edits": list(_track["edits"]),
+        "rerun": _track["rerun"],
+    })
+    save_manifest(m)
+
+
+def _remove_text_once(file_path: Path, text: str):
+    if not file_path.exists() or not text:
+        return
+    cur = file_path.read_text(encoding="utf-8")
+    idx = cur.find(text)
+    if idx >= 0:
+        file_path.write_text(cur[:idx] + cur[idx + len(text):], encoding="utf-8")
+
+
+def _json_list_remove(file_path: Path, slug: str):
+    if not file_path.exists():
+        return
+    try:
+        data = json.loads(file_path.read_text(encoding="utf-8"))
+    except Exception:
+        return
+    # supports both {"levels":[...]} (Hidden Pairs) and a bare [...] list
+    if isinstance(data, dict) and isinstance(data.get("levels"), list):
+        data["levels"] = [x for x in data["levels"] if x != slug]
+    elif isinstance(data, list):
+        data = [x for x in data if x != slug]
+    file_path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def _restore_level_dir(file_path: Path, value: str):
+    if not file_path.exists():
+        return
+    text = file_path.read_text(encoding="utf-8")
+    text = re.sub(r"const\s+LEVEL_DIR\s*=\s*['\"][^'\"]*['\"]",
+                  f"const LEVEL_DIR='{value}'", text, count=1)
+    file_path.write_text(text, encoding="utf-8")
+
+
+def delete_record(game, rec):
+    """Reverse one recorded upload: undo edits, remove files, optional re-run."""
+    for e in rec.get("edits", []):
+        f = (ROOT / e["file"])
+        try:
+            if "remove" in e:
+                _remove_text_once(f, e["remove"])
+            if "json_list_remove" in e:
+                _json_list_remove(f, e["json_list_remove"])
+            if "restore_level_dir" in e:
+                _restore_level_dir(f, e["restore_level_dir"])
+        except Exception:
+            pass
+    for rel in rec.get("paths", []):
+        try:
+            p = (ROOT / rel).resolve()
+            if ROOT.resolve() not in p.parents:
+                continue
+            if p.is_dir():
+                shutil.rmtree(p, ignore_errors=True)
+            elif p.exists():
+                p.unlink()
+        except Exception:
+            pass
+    rr = rec.get("rerun")
+    if rr:
+        run_script(ROOT / rr["cwd"], rr["args"])
 
 
 # ---------------------------------------------------------------- helpers ----
@@ -88,8 +224,10 @@ def insert_into_array(file_path: Path, array_decl_regex: str, element_text: str)
     if not m:
         raise RuntimeError(f"array declaration not found in {file_path.name}")
     insert_at = m.end()
-    new = text[:insert_at] + "\n" + element_text + text[insert_at:]
+    inserted = "\n" + element_text
+    new = text[:insert_at] + inserted + text[insert_at:]
     file_path.write_text(new, encoding="utf-8")
+    track_edit(file_path, remove_text=inserted)
 
 
 def append_before_array_close(file_path: Path, element_text: str):
@@ -98,8 +236,10 @@ def append_before_array_close(file_path: Path, element_text: str):
     idx = text.rstrip().rfind("];")
     if idx < 0:
         raise RuntimeError(f"closing '];' not found in {file_path.name}")
-    new = text[:idx].rstrip() + ",\n" + element_text + "\n" + text[idx:]
+    inserted = ",\n" + element_text + "\n"
+    new = text[:idx].rstrip() + inserted + text[idx:]
     file_path.write_text(new, encoding="utf-8")
+    track_edit(file_path, remove_text=inserted)
 
 
 def run_script(cwd: Path, args):
@@ -138,6 +278,7 @@ def adapt_jigsolitaire(gdir, level, tmp):
     fname = f"{slugify(level)}{ext}"
     (gdir / "levels").mkdir(exist_ok=True)
     shutil.copy(src, gdir / "levels" / fname)
+    track_path(gdir / "levels" / fname)
     badge = ", badge: 'GIF'" if ext == ".gif" else ""
     entry = f"  {{ name: {json.dumps(level)}, src: 'levels/{fname}'{badge} }},"
     insert_into_array(gdir / "game.js", r"const\s+LEVELS\s*=\s*\[", entry)
@@ -152,6 +293,10 @@ def adapt_find_the_odds(gdir, level, tmp):
         ok, out = run_script(gdir, ["extract_levels.py"])
         if not ok:
             return dict(ok=False, message="extract_levels.py başarısız.", detail=out[-1500:])
+        # delete = remove the psb (+ its extracted folder) then regenerate levels-data.js
+        track_path(dest)
+        track_path(gdir / "levels" / dest.stem)
+        track_rerun(gdir, ["extract_levels.py"])
         return dict(ok=True, message=f"PSB dilimlendi ve kaydedildi → Find The Odds. ({psb.name})",
                     detail=out[-800:])
     # folder path: expect Real/ and Odd/ (or Fake/) subfolders
@@ -167,6 +312,7 @@ def adapt_find_the_odds(gdir, level, tmp):
         return dict(ok=False, message="Klasörde 'Real/' ve 'Odd/' (veya 'Fake/') alt klasörleri gerekli.")
     folder = slugify(level)
     base = gdir / "levels" / folder
+    track_path(base)
     (base / "Real").mkdir(parents=True, exist_ok=True)
     (base / "Odd").mkdir(parents=True, exist_ok=True)
     real_paths, odd_paths = [], []
@@ -184,11 +330,16 @@ def adapt_find_the_strange(gdir, level, tmp):
     if not psb:
         return dict(ok=False, message="Find The Strange için katmanlı bir .psb yükleyin (bg/o#/r#/s#).")
     (gdir / "levels").mkdir(exist_ok=True)
-    dest = gdir / "levels" / f"{slugify(level)}{psb.suffix.lower()}"
+    slug = slugify(level)
+    dest = gdir / "levels" / f"{slug}{psb.suffix.lower()}"
     shutil.copy(psb, dest)
     ok, out = run_script(gdir / "game", ["tools/extract.py", str(dest)])
     if not ok:
         return dict(ok=False, message="extract.py başarısız.", detail=out[-1500:])
+    # delete = remove the psb + extracted assets folder + its entry in levels.json
+    track_path(dest)
+    track_path(gdir / "game" / "assets" / dest.stem)
+    track_edit(gdir / "game" / "assets" / "levels.json", json_list_remove=dest.stem)
     return dict(ok=True, message=f"PSB dilimlendi → Find The Strange. ({dest.name})", detail=out[-800:])
 
 
@@ -202,6 +353,7 @@ def adapt_match3(gdir, level, tmp):
     slug = slugify(level).lower()
     folder = f"assets_{slug}"
     (game / folder).mkdir(exist_ok=True)
+    track_path(game / folder)
     types = []
     for p in pngs:
         fid = slugify(p.stem).lower() or "item"
@@ -222,6 +374,7 @@ def adapt_pack_it_up(gdir, level, tmp):
     slug = slugify(level).lower()
     dest = gdir / slug
     dest.mkdir(exist_ok=True)
+    track_path(dest)
     names = set()
     for p in pngs:
         shutil.copy(p, dest / p.name); names.add(p.name)
@@ -240,6 +393,7 @@ def adapt_pack_it_up(gdir, level, tmp):
 
 
 def _place_folder(dest: Path, tmp: Path):
+    track_path(dest)
     dest.mkdir(parents=True, exist_ok=True)
     for p in tmp.rglob("*"):
         if p.is_file():
@@ -288,6 +442,7 @@ def adapt_hidden_pairs(gdir, level, tmp):
     if slug not in data["levels"]:
         data["levels"].insert(0, slug)
     lv.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    track_edit(lv, json_list_remove=slug)
     return dict(ok=True, message=f"'{level}' eklendi → Hidden Pairs.")
 
 
@@ -299,9 +454,13 @@ def adapt_hidden_by_word(gdir, level, tmp):
 
 def _replace_level_dir(html: Path, new_dir: str):
     text = html.read_text(encoding="utf-8")
+    old = re.search(r"const\s+LEVEL_DIR\s*=\s*['\"]([^'\"]*)['\"]", text)
     new = re.sub(r"const\s+LEVEL_DIR\s*=\s*['\"][^'\"]*['\"]",
                  f"const LEVEL_DIR='{new_dir}'", text, count=1)
     html.write_text(new, encoding="utf-8")
+    # on delete, point LEVEL_DIR back to whatever it was before this upload
+    if old:
+        track_edit(html, restore_level_dir=old.group(1))
 
 
 def adapt_furnish(gdir, level, tmp):
@@ -373,17 +532,54 @@ def api_upload():
     if not request.files.getlist("files"):
         return jsonify(ok=False, message="Dosya yüklenmedi."), 400
     tmp = Path(tempfile.mkdtemp(prefix="lvlup_"))
+    _reset_track()
     try:
         # save everything into tmp once; adapters then read from tmp (the upload
         # streams are consumed here and cannot be re-read from request.files)
         collect_upload(tmp)
         result = fn(gdir, level, tmp)
+        if result.get("ok"):
+            add_record(game, level)   # remember what was created so it can be deleted
         code = 200 if result.get("ok") else 400
         return jsonify(result), code
     except Exception as e:
         return jsonify(ok=False, message=f"Hata: {type(e).__name__}: {e}"), 500
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
+
+
+@app.get("/api/levels")
+def api_levels():
+    """List the user-uploaded levels for a game (from the upload manifest)."""
+    game = request.args.get("game", "")
+    if game not in ADAPTERS:
+        return jsonify(ok=False, message=f"Bilinmeyen oyun: {game}"), 400
+    recs = load_manifest().get(game, [])
+    return jsonify(ok=True, levels=[{"id": r["id"], "name": r["name"], "ts": r.get("ts", "")}
+                                    for r in recs])
+
+
+@app.post("/api/levels/delete")
+def api_levels_delete():
+    """Delete one or more uploaded levels (by id) for a game."""
+    data = request.get_json(silent=True) or {}
+    game = data.get("game", "")
+    ids = set(data.get("ids") or [])
+    if game not in ADAPTERS:
+        return jsonify(ok=False, message=f"Bilinmeyen oyun: {game}"), 400
+    if not ids:
+        return jsonify(ok=False, message="Silinecek level seçilmedi."), 400
+    m = load_manifest()
+    recs = m.get(game, [])
+    to_delete = [r for r in recs if r["id"] in ids]
+    if not to_delete:
+        return jsonify(ok=False, message="Seçilen level bulunamadı."), 404
+    for r in to_delete:
+        delete_record(game, r)
+    m[game] = [r for r in recs if r["id"] not in ids]
+    save_manifest(m)
+    return jsonify(ok=True, message=f"{len(to_delete)} level silindi.",
+                   deleted=[r["name"] for r in to_delete])
 
 
 # ---- static: serve the hub + all games from the repo root ----
