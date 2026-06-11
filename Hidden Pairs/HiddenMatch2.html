@@ -16,7 +16,7 @@
     .lives { display: flex; gap: 4px; font-size: 22px; line-height: 1; }
     .lives .heart { color: #ff4d5e; filter: drop-shadow(0 1px 1px rgba(0,0,0,.4)); }
     .lives .heart.off { color: rgba(255,255,255,.22); }
-    .hud-btns { display: flex; gap: 8px; }
+    .hud-btns { display: flex; gap: 8px; align-items: center; }
     .hud-btn { width: 42px; height: 42px; border: none; border-radius: 13px; background: rgba(255,255,255,.14);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 3px 0 rgba(0,0,0,.18);
       color: #fff; font-size: 20px; cursor: pointer; transition: transform .08s, background .15s; }
@@ -79,15 +79,12 @@
     <div class="hud">
       <div class="lives" id="lives"></div>
       <div class="hud-btns">
+        <div class="progress"><span class="prog-num" id="pairsNum">0</span><span class="prog-den">çift kaldı</span></div>
         <button class="hud-btn" id="btnHint" title="İpucu">💡</button>
-        <button class="hud-btn" id="btnRestart" title="Yeniden başlat">⟳</button>
         <button class="hud-btn" id="btnSettings" title="Ayarlar">⚙</button>
       </div>
     </div>
     <div class="board-wrap"><div id="app"></div></div>
-    <div class="tray-row">
-      <div class="progress"><span class="prog-num" id="pairsNum">0</span><span class="prog-den">çift kaldı</span></div>
-    </div>
   </div>
 
   <div id="settings-overlay">
@@ -2524,10 +2521,8 @@ async function boot() {
   hud.setPairsLeft = (n) => { _origSetPairs(n); if (_pairsEl) _pairsEl.textContent = String(n); };
   const _bs = document.getElementById("btnSettings");
   const _bh = document.getElementById("btnHint");
-  const _br = document.getElementById("btnRestart");
   if (_bs) _bs.addEventListener("click", () => overlays.openSettings());
   if (_bh) _bh.addEventListener("click", () => game.hint());
-  if (_br) _br.addEventListener("click", () => { game.restart(currentPairs); relayout(); });
 
   hud.setLives(CONFIG.lives, CONFIG.lives);
   hud.setPairsLeft(game.pairsLeft);
