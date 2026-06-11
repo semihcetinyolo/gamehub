@@ -42,3 +42,7 @@ Hidden Triple Match by topic/game/assets/emir/
 # Jigsolitaire — keep only "Kittens" (130001.webp)
 Jigsolitaire/levels/*
 !Jigsolitaire/levels/130001.webp
+
+# Python bytecode (leveltool backend)
+__pycache__/
+*.pyc
