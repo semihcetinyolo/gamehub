@@ -245,6 +245,23 @@ function bindEvents(){
   $('#refreshBtn').addEventListener('click', ()=> hardReset());
   $('#hintBtn').addEventListener('click', onHint);
   $('#ovBtn').addEventListener('click', onOverlayBtn);
+  $('#settingsBtn').addEventListener('click', openSettings);
+  $('#settingsCloseBtn').addEventListener('click', closeSettings);
+  $('#nextLevelBtn').addEventListener('click', goNextLevel);
+  $('#settingsOverlay').addEventListener('click', (e)=>{ if (e.target.id === 'settingsOverlay') closeSettings(); });
+}
+
+/* ---------------- settings ---------------- */
+function openSettings(){
+  $('#settingsLevelInfo').textContent =
+    `Level ${State.levelIndex + 1} / ${State.levels.length}`;
+  $('#settingsOverlay').classList.add('show');
+}
+function closeSettings(){ $('#settingsOverlay').classList.remove('show'); }
+function goNextLevel(){
+  closeSettings();
+  const next = (State.levelIndex + 1) % State.levels.length;   // wraps to first after the last
+  loadLevel(next);
 }
 
 const dist = (a,b)=> Math.hypot(a.x - b.x, a.y - b.y);
