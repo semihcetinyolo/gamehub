@@ -29,30 +29,26 @@
             min-height: 100vh;
             overflow: hidden;
         }
-        /* ===== HUD + Settings (Hidden Triple Match teması) ===== */
-        #hud-bar {
-            position: fixed;
-            top: 14px;
-            right: 14px;
-            z-index: 20000;
-            display: flex;
-            gap: 8px;
-        }
+        /* ===== Settings butonu (eski pause/stop tuşunun yerinde, telefonla ölçeklenir) ===== */
         #settings-btn {
-            width: 44px;
-            height: 44px;
-            border: none;
+            position: absolute;
+            top: 48px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            z-index: 50;
+            border: 1px solid rgba(255,255,255,.28);
             border-radius: 13px;
-            background: rgba(255,255,255,.16);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 3px 0 rgba(0,0,0,.25);
+            background: rgba(16,33,82,.82);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 3px 8px rgba(0,0,0,.4);
             color: #fff;
-            font-size: 21px;
+            font-size: 19px;
             line-height: 1;
             cursor: pointer;
             transition: transform .08s, background .15s;
         }
         #settings-btn:active { transform: translateY(2px); background: rgba(255,255,255,.26); }
-        body.clean #hud-bar,
+        body.clean #settings-btn,
         body.clean #settings-overlay { display: none !important; }
 
         .set-overlay {
@@ -194,6 +190,7 @@
     <div id="phone-container">
         <div id="dynamic-island"></div>
         <canvas id="game-canvas"></canvas>
+        <button id="settings-btn" onclick="openSettings()" title="Ayarlar">⚙️</button>
 
         <div id="win-screen" class="overlay">
             <h2>Tamamlandı! 🎉</h2>
@@ -206,10 +203,6 @@
             <p style="margin-bottom:30px; color:#555;">Eşleştirmeleri daha dikkatli yapmalısın.</p>
             <button class="btn" onclick="resetGame()">Tekrar Dene</button>
         </div>
-    </div>
-
-    <div id="hud-bar">
-        <button id="settings-btn" onclick="openSettings()" title="Ayarlar">⚙️</button>
     </div>
 
     <div id="settings-overlay" class="set-overlay" onclick="if(event.target===this)closeSettings()">
@@ -985,10 +978,6 @@
         const clickX = ((e.clientX || e.pageX) - rect.left) * (LOGICAL_W / rect.width);
         const clickY = ((e.clientY || e.pageY) - rect.top) * (LOGICAL_H / rect.height);
 
-        if (isPointInPauseButton(clickX, clickY)) {
-            if (!levelComplete) gamePaused = !gamePaused;
-            return;
-        }
         if (!gameActive || gamePaused) return;
 
         const sortedCheck = [...items].sort((a, b) => getItemDepth(a) - getItemDepth(b));
@@ -1285,8 +1274,6 @@
             ctx.textBaseline = 'middle';
             ctx.fillText(String(remaining), bubbleX + bubbleW / 2, bubbleY + bubbleH / 2 + 0.5);
         });
-
-        drawPauseButton();
     }
 
     function checkMatches() {
