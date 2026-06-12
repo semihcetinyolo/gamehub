@@ -954,8 +954,7 @@
     }
 
     function getItemDepth(item) {
-        // y kuantalı (4px): oturmuş item'larda mikro-titreme z-order'ı takaslamasın (flicker fix).
-        return (item.colliderOffset * 9000) + ((item.stableDepthBias || 0) * 8) + (Math.round(item.body.position.y / 4) * 4 * 0.12);
+        return (item.colliderOffset * 9000) + ((item.stableDepthBias || 0) * 8) + (item.body.position.y * 0.12);
     }
 
     function isPointInsideOrientedItem(item, pointX, pointY) {
@@ -1364,9 +1363,8 @@
             ctx.beginPath(); ctx.roundRect(slotX - 21, TRAY_Y - 28, 42, 56, 12); ctx.fill(); ctx.stroke();
         }
 
-        // Fizik yığını (derinlik sıralı, arkadan öne). Eşit derinlikte body.id ile
-        // deterministik sırala -> kararsız takas (flicker) olmasın.
-        const sortedPile = [...items].sort((a, b) => (getItemDepth(a) - getItemDepth(b)) || (a.body.id - b.body.id));
+        // Fizik yığını (derinlik sıralı, arkadan öne).
+        const sortedPile = [...items].sort((a, b) => getItemDepth(a) - getItemDepth(b));
         const n = sortedPile.length;
 
         // Örtülme sayımı: her objenin MERKEZİ kaç ön obje (sonra çizilen) tarafından
@@ -1386,28 +1384,13 @@
         // Painter's algorithm: önce cast shadow (arkadakilere düşer), sonra sanat,
         // sonra örtülmeye bağlı multiply koyulaştırma (sadece görünen peek kısma uygulanır).
         sortedPile.forEach((item, i) => {
-            const bx = item.body.position.x, by = item.body.position.y, ba = item.body.angle;
-            // Render-konumu yumuşatma (flicker fix): yoğun yığın tam oturmadığı için
-            // cisimler durduk yerde mikro-titriyor. Hızlı hareket (>6px, düşme) varsa
-            // anında takip et; küçük kıpırtıyı düşük geçişli filtreyle süz. Fizik/çarpışma
-            // ve tıklama gerçek body pozisyonunu kullanmaya devam eder — sadece çizim süzülür.
-            if (item._rx === undefined || Math.hypot(bx - item._rx, by - item._ry) > 6) {
-                item._rx = bx; item._ry = by; item._ra = ba;
-            } else {
-                item._rx += (bx - item._rx) * 0.12;
-                item._ry += (by - item._ry) * 0.12;
-                item._ra += (ba - item._ra) * 0.12;
-            }
-            const px = item._rx, py = item._ry, pa = item._ra;
+            const px = item.body.position.x, py = item.body.position.y, pa = item.body.angle;
             // Performans: ekranın üstünde taşan (görünmeyen) item'ları çizme.
-            if (by < -120 || by > LOGICAL_H + 120) return;
+            if (py < -120 || py > LOGICAL_H + 120) return;
             drawCastShadow(ctx, item, px, py, pa);
             drawStickerElement(ctx, item, px, py, pa);
-            // Örtülme koyuluğunu zamanla yumuşat: tek-frame örtülme değişimi (mikro
-            // kıpırtı eşiği geçince) anında flash etmesin, kademeli geçsin.
-            const targetDark = Math.min(AMBIENT_MAX, cover[i] * AMBIENT_PER_COVER);
-            item._ambient = (item._ambient || 0) + (targetDark - (item._ambient || 0)) * 0.18;
-            if (item._ambient > 0.02) drawAmbientShade(ctx, item, px, py, pa, item._ambient);
+            const dark = Math.min(AMBIENT_MAX, cover[i] * AMBIENT_PER_COVER);
+            if (dark > 0.02) drawAmbientShade(ctx, item, px, py, pa, dark);
         });
 
         // Bar objeleri.
