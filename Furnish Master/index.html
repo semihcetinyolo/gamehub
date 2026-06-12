@@ -43,8 +43,9 @@
   .dock .hud-btn{width:58px;height:58px;border-radius:18px;font-size:26px;margin-bottom:18px;}
 
   /* items */
-  .it{position:absolute;-webkit-user-drag:none;user-select:none;}
-  .it.floating{cursor:grab;animation:floaty 1.9s ease-in-out infinite;
+  .it{position:absolute;-webkit-user-drag:none;user-select:none;transition:transform .22s ease;}
+  /* floating (in the air, not grabbed) = tilted 45° left; grabbing removes 'floating' -> rotates upright */
+  .it.floating{cursor:grab;transform:rotate(var(--tilt,-20deg));transform-origin:center center;
     filter:drop-shadow(0 0 7px rgba(255,236,150,.95)) drop-shadow(0 0 18px rgba(255,206,80,.6)) drop-shadow(0 10px 9px rgba(40,50,30,.4));}
   .it.floating:active{cursor:grabbing;}
   .it.locked{pointer-events:none;}
@@ -55,7 +56,7 @@
   @keyframes revealFade{from{opacity:0;}to{opacity:1;}}
   @keyframes shake{25%{transform:translateX(-3px) rotate(-1deg);}50%{transform:translateX(3px) rotate(1deg);}75%{transform:translateX(-2px) rotate(-0.6deg);}}
   @keyframes floaty{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-12px) rotate(2deg);}}
-  @keyframes popin{0%{transform:scale(.2) translateY(20px);opacity:0;}60%{transform:scale(1.06);}100%{transform:scale(1);opacity:1;}}
+  @keyframes popin{0%{transform:scale(.2) rotate(var(--tilt,-20deg)) translateY(20px);opacity:0;}60%{transform:scale(1.06) rotate(var(--tilt,-20deg));}100%{transform:scale(1) rotate(var(--tilt,-20deg));opacity:1;}}
   @keyframes snap{0%{transform:scale(1.1);}100%{transform:scale(1);}}
   .wsp{position:absolute;pointer-events:none;z-index:99999;line-height:1;transform:translate(-50%,-50%);
     text-shadow:0 0 6px rgba(255,221,120,.9);animation:wsp .9s ease-out forwards;}
@@ -179,6 +180,7 @@ function popNext(){
   const el=document.createElement('img'); el.className='it floating pop draggable'; el.src=BASE+f.src;
   el.dataset.key=it.key; el.draggable=false;
   el.style.width=f.w+'px'; el.style.height=f.h+'px'; el.style.zIndex=100000;
+  el.style.setProperty('--tilt', ((Math.random()<0.5?-1:1)*(10+Math.random()*20)).toFixed(1)+'deg');  // float tilt: ±10–30°
   const bp=boxWorldPoint();
   el.style.left=(bp.x-f.w/2)+'px'; el.style.top=(bp.y-f.h/2)+'px';
   worldEl.appendChild(el);
