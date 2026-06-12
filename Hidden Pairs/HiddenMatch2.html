@@ -1476,9 +1476,9 @@ function playMatch() {
 
 
 class Camera {
-  constructor(world, worldSize) {
+  constructor(world, worldW, worldH) {
     this.world = world;            // PIXI.Container holding all level layers
-    this.worldSize = worldSize;    // 2592
+    this.worldW = worldW; this.worldH = worldH || worldW;   // scene size (px); may be non-square
     this.screenW = 1; this.screenH = 1;
     // Viewport (play area) within the screen — set by resize() from UI insets.
     this.vx = 0; this.vy = 0; this.vw = 1; this.vh = 1;
@@ -1493,12 +1493,13 @@ class Camera {
     this.screenW = w; this.screenH = h;
     this.vx = 0; this.vy = topInset;
     this.vw = w; this.vh = Math.max(1, h - topInset - bottomInset);
-    this.baseScale = this.vh / this.worldSize; // fit world height to the gap
+    this.baseScale = this.vh / this.worldH; // fit the full scene height to the gap
     this.center();
   }
 
   get scale() { return this.baseScale * this.zoom; }
-  get worldPx() { return this.worldSize * this.scale; }
+  get worldPxW() { return this.worldW * this.scale; }
+  get worldPxH() { return this.worldH * this.scale; }
 
   apply() {
     this.world.scale.set(this.scale);
@@ -1507,19 +1508,18 @@ class Camera {
 
   // Keep the world covering the viewport, clamp pan.
   clamp() {
-    const wp = this.worldPx;
+    const wpw = this.worldPxW, wph = this.worldPxH;
     // horizontal — cover [vx, vx+vw]
-    if (wp <= this.vw) this.tx = this.vx + (this.vw - wp) / 2;
-    else this.tx = Math.min(this.vx, Math.max(this.vx + this.vw - wp, this.tx));
+    if (wpw <= this.vw) this.tx = this.vx + (this.vw - wpw) / 2;
+    else this.tx = Math.min(this.vx, Math.max(this.vx + this.vw - wpw, this.tx));
     // vertical — cover [vy, vy+vh]
-    if (wp <= this.vh) this.ty = this.vy + (this.vh - wp) / 2;
-    else this.ty = Math.min(this.vy, Math.max(this.vy + this.vh - wp, this.ty));
+    if (wph <= this.vh) this.ty = this.vy + (this.vh - wph) / 2;
+    else this.ty = Math.min(this.vy, Math.max(this.vy + this.vh - wph, this.ty));
   }
 
   center() {
-    const wp = this.worldPx;
-    this.tx = this.vx + (this.vw - wp) / 2;
-    this.ty = this.vy + (this.vh - wp) / 2;
+    this.tx = this.vx + (this.vw - this.worldPxW) / 2;
+    this.ty = this.vy + (this.vh - this.worldPxH) / 2;
     this.clamp(); this.apply();
   }
 
@@ -1874,6 +1874,7 @@ class Game {
     this.assets = assets;            // { manifest, textures, alpha, uiTextures }
     this.hud = hud;                  // UI hooks
     this.worldSize = assets.manifest.canvas.width;
+    this.worldH = assets.manifest.canvas.height || this.worldSize;
 
     // Containers: world (camera-transformed) + overlay (screen space for pins/pointer)
     this.world = new PIXI.Container();
@@ -1882,7 +1883,7 @@ class Game {
     app.stage.addChild(this.world);
     app.stage.addChild(this.overlay);
 
-    this.camera = new Camera(this.world, this.worldSize);
+    this.camera = new Camera(this.world, this.worldSize, this.worldH);
 
     // runtime
     this.objects = new Map();        // objId -> object record

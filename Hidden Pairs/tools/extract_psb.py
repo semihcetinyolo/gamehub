@@ -147,24 +147,21 @@ def main():
         sys.exit("ERROR: no complete pairs found. Items must be named P<pair>_<copy>, "
                  "e.g. P1_1 and P1_2. Skipped: " + ", ".join(skipped[:20]))
 
-    # Build a SQUARE canvas that fully contains the scene, with the content
-    # centered. The game uses worldSize = canvas.width and fits it to the
-    # viewport HEIGHT, so the canvas side must be >= the scene's height (else the
-    # bottom of the scene — and the items there — fall outside the view). The
-    # PSB's own canvas size is ignored: it may not match the artwork bounds.
+    # Canvas = the exact scene bounds, with content shifted to start at (0,0).
+    # The PSB's own canvas size is ignored (it may not match the artwork). The
+    # player's camera fits the full HEIGHT to the viewport and clamps horizontal
+    # panning to this width, so a non-square (portrait) scene shows fully with no
+    # empty margins.
     minx = min(l["x"] for l in layers)
     miny = min(l["y"] for l in layers)
     maxx = max(l["x"] + l["w"] for l in layers)
     maxy = max(l["y"] + l["h"] for l in layers)
     content_w, content_h = maxx - minx, maxy - miny
-    side = max(content_w, content_h)
-    ox = -minx + (side - content_w) // 2
-    oy = -miny + (side - content_h) // 2
     for l in layers:
-        l["x"] += ox
-        l["y"] += oy
+        l["x"] -= minx
+        l["y"] -= miny
 
-    manifest = {"canvas": {"width": side, "height": side}, "background": "BG",
+    manifest = {"canvas": {"width": content_w, "height": content_h}, "background": "BG",
                 "layers": layers, "pairs": pairs_out, "masks": masks}
     (out / "manifest.json").write_text(json.dumps(manifest, indent=1))
 
