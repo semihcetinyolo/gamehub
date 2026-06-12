@@ -70,7 +70,7 @@ async function loadLevel(i){
   State.rank = {};
   let r = 0;
   for (const nm of State.manifest.order){
-    if (/^[ors]\d+$/.test(nm)) State.rank[nm] = ++r;
+    if (/^(rs\d+|[ors]\d+)$/.test(nm)) State.rank[nm] = ++r;   // rs# (statics) sit at natural depth too
   }
 
   $('#bg').src = State.assetPath + 'bg.jpg';
@@ -126,7 +126,7 @@ const MASK_Z = 5000; // masks render above every item, always
 
 function buildBoard(){
   // remove any previously injected nodes (on restart / level change)
-  board.querySelectorAll('.item, .shadow, .mask').forEach(n=>n.remove());
+  board.querySelectorAll('.item, .shadow, .mask, .static').forEach(n=>n.remove());
   State.items = {};
   State.shadowEls = {};
 
@@ -147,6 +147,19 @@ function buildBoard(){
     el.appendChild(imgEl(assetUrl(sName), 'sob'));
     board.appendChild(el);
     State.shadowEls[sName] = el;
+  }
+
+  // statics (rs#): scene elements shown from the start at their natural depth,
+  // never interactive, never removed (stay visible until the level ends).
+  for (const nm in (State.manifest.statics || {})){
+    const sb = State.manifest.statics[nm];
+    const el = document.createElement('div');
+    el.className = 'static';
+    el.dataset.name = nm;
+    el.style.pointerEvents = 'none';
+    placeNode(el, sb, sb.z || 1);
+    el.appendChild(imgEl(assetUrl(nm), 'sob'));
+    board.appendChild(el);
   }
 
   // odds + traps: tappable items, each placed by its normalized bbox

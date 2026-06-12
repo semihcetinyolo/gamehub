@@ -16,6 +16,8 @@ Layer naming convention in the .psb (case-insensitive bg):
   oN                       a clean cut-out of an odd item to find (may sit in a group)
   rN                       a clean cut-out of a decoy item
   sN                       optional glow/effect for odd N (removed when oN is found)
+  rsN                      static scene element — shown from the start, never
+                           interactive, never removed (stays until the level ends)
   m                        a foreground mask/overlay — always shown, never interactive
                            (every mask layer is named exactly "m"; numbered on export)
 
@@ -37,6 +39,7 @@ ASSETS = ROOT / "assets"
 LEVELS_DIR = ROOT.parent / "levels"
 
 O_RE = re.compile(r"^o(\d+)$")
+RS_RE = re.compile(r"^rs(\d+)$")   # check BEFORE R_RE (rs1 must not be read as r-something)
 R_RE = re.compile(r"^r(\d+)$")
 S_RE = re.compile(r"^s(\d+)$")
 
@@ -79,7 +82,7 @@ def export_level(psb_path):
     bg = next(l for l in leaves if l.name.lower() == "bg")
     bg.composite().convert("RGB").resize((bg_size, bg_size), Image.LANCZOS).save(out / "bg.jpg", quality=85)
 
-    manifest = {"canvas": canvas, "odds": {}, "traps": {}, "shadows": {}, "masks": [],
+    manifest = {"canvas": canvas, "odds": {}, "traps": {}, "shadows": {}, "statics": {}, "masks": [],
                 "order": [l.name for l in leaves]}
 
     # shadows first, so odds can reference them
@@ -103,6 +106,24 @@ def export_level(psb_path):
             save_layer(layer, nm + ".png")
             manifest["traps"][nm] = norm(layer.bbox)
 
+    # statics: scene elements shown from the start, non-interactive, never removed
+    # (stay until the level ends). Layers are named "rs" (or rsN), often colliding
+    # like masks, so enumerate them and store an explicit z = running draw-order
+    # rank so they sit at their natural depth among the items.
+    rank = si = 0
+    for layer in leaves:
+        nl = (layer.name or "").strip().lower()
+        if O_RE.match(nl) or R_RE.match(nl) or S_RE.match(nl):
+            rank += 1
+        elif nl == "rs" or RS_RE.match(nl):
+            si += 1
+            fn = "rs{}".format(si)
+            save_layer(layer, fn + ".png")
+            rec = norm(layer.bbox)
+            rec["name"] = fn
+            rec["z"] = rank
+            manifest["statics"][fn] = rec
+
     # masks: foreground overlays. Every one is named just "m", so we can't key
     # them by name — enumerate in draw order and emit m1.png, m2.png, ...
     # They are always shown in-game and never interactive (see game.js).
@@ -117,7 +138,8 @@ def export_level(psb_path):
             manifest["masks"].append(rec)
 
     (out / "manifest.json").write_text(json.dumps(manifest, indent=1))
-    return name, len(manifest["odds"]), len(manifest["traps"]), len(manifest["shadows"]), len(manifest["masks"])
+    return (name, len(manifest["odds"]), len(manifest["traps"]), len(manifest["shadows"]),
+            len(manifest["masks"]), len(manifest["statics"]))
 
 
 def main():
@@ -127,9 +149,9 @@ def main():
 
     names = []
     for p in psbs:
-        nm, no, nr, ns, nm_masks = export_level(p)
+        nm, no, nr, ns, nm_masks, nrs = export_level(p)
         names.append(nm)
-        print(f"{nm}: {no} odds, {nr} traps, {ns} shadows, {nm_masks} masks -> assets/{nm}/")
+        print(f"{nm}: {no} odds, {nr} traps, {ns} shadows, {nm_masks} masks, {nrs} statics -> assets/{nm}/")
 
     # maintain levels.json (preserve existing order, append any new levels)
     lj = ASSETS / "levels.json"
