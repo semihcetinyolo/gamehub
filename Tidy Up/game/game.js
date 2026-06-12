@@ -17,6 +17,7 @@ let M = null;                  // manifest
 let items = [];                // {id, h, s, group, el:{h,s}, alpha, slot, found}
 let groups = [];               // {id, ss, members, el, lifted}
 let foundCount = 0, hearts = 3, locked = false, soundOn = true;
+let INF_HEALTH = localStorage.getItem('tidyup_infhealth') === '1';   // infinite-health cheat (Settings)
 let mode = "v1";   // v1 = tray shows silhouettes, v2 = tray shows full items
 
 /* ---------- boot ---------- */
@@ -304,6 +305,7 @@ function miss(cx, cy) {
   boardWrap.appendChild(r);
   setTimeout(() => r.remove(), 520);
 
+  if (INF_HEALTH) return;          // infinite-health cheat: a miss costs nothing
   hearts--;
   const hEls = $("hearts").children;
   const lost = hEls[hearts];
@@ -339,10 +341,25 @@ function resetGame() {
   $("settingsOverlay").hidden = true;
 }
 
+/* ---------- infinite health (Settings cheat) ---------- */
+function syncInfHealth() {
+  const s = $("infHealthState");
+  if (s) s.textContent = INF_HEALTH ? "Açık" : "Kapalı";
+  if (INF_HEALTH) {           // refill to full on enable
+    hearts = 3;
+    [...$("hearts").children].forEach((h) => h.classList.remove("lost", "pulse"));
+  }
+}
+
 /* ---------- UI wiring ---------- */
 function wireUI() {
-  $("settingsBtn").onclick = () => { $("settingsOverlay").hidden = false; };
+  $("settingsBtn").onclick = () => { syncInfHealth(); $("settingsOverlay").hidden = false; };
   $("closeSettings").onclick = () => { $("settingsOverlay").hidden = true; };
+  $("infHealthToggle").onclick = () => {
+    INF_HEALTH = !INF_HEALTH;
+    localStorage.setItem('tidyup_infhealth', INF_HEALTH ? '1' : '0');
+    syncInfHealth();
+  };
   $("restartBtn").onclick = resetGame;
   $("endBtn").onclick = resetGame;
   $("soundToggle").onclick = () => {
@@ -354,6 +371,7 @@ function wireUI() {
     $("versionState").textContent = mode === "v1" ? "v1 · silhouette" : "v2 · full item";
     $("frame").classList.toggle("v2", mode === "v2");
   };
+  syncInfHealth();   // apply persisted infinite-health on load
 }
 
 /* ---------- sound ---------- */

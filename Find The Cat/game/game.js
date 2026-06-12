@@ -1,6 +1,7 @@
 /* ================= Find The Cat ================= */
 
 const START_HEARTS = 3;     // hearts per level
+let INF_HEALTH = localStorage.getItem('ftc_infhealth') === '1';   // infinite-health cheat (Admin)
 const ALPHA_HIT    = 28;    // alpha threshold for a "hit" on a cat silhouette
 const HIT_GROW     = 0.10;  // enlarge each cat's clickable silhouette by 10%
 const MIN_SCALE    = 1;     // zoomed-out (fits viewport height)
@@ -193,6 +194,7 @@ function bindEvents(){
 
   // admin panel
   adminBtn.addEventListener('click', toggleAdmin);
+  $('#infHealthBtn').addEventListener('click', toggleInfHealth);
   $('#restartBtn').addEventListener('click', ()=>{ closeAdmin(); hideOverlay(); startLevel(); });
   $('#revealBtn').addEventListener('click', ()=>{ closeAdmin(); revealAll(); });
   $('#nextBtn').addEventListener('click', ()=>{ closeAdmin(); nextLevel(); });
@@ -200,6 +202,7 @@ function bindEvents(){
     if (adminPanel.classList.contains('show') &&
         !adminPanel.contains(e.target) && e.target !== adminBtn) closeAdmin();
   });
+  syncInfHealth();   // apply persisted infinite-health on load
 }
 
 function toggleAdmin(e){
@@ -208,6 +211,18 @@ function toggleAdmin(e){
   adminBtn.classList.toggle('open', adminPanel.classList.contains('show'));
 }
 function closeAdmin(){ adminPanel.classList.remove('show'); adminBtn.classList.remove('open'); }
+
+/* infinite-health cheat */
+function syncInfHealth(){
+  const b = $('#infHealthBtn');
+  if (b) b.textContent = '♾️ Sonsuz Can: ' + (INF_HEALTH ? 'Açık' : 'Kapalı');
+  if (INF_HEALTH){ State.hearts = START_HEARTS; renderHearts(); }  // refill on enable
+}
+function toggleInfHealth(){
+  INF_HEALTH = !INF_HEALTH;
+  localStorage.setItem('ftc_infhealth', INF_HEALTH ? '1' : '0');
+  syncInfHealth();
+}
 
 /* reveal: glow every remaining cat for a few seconds (admin aid) */
 function revealAll(){
@@ -363,6 +378,7 @@ function foundCat(i, clientX, clientY){
 /* ================= miss (lose a heart) ================= */
 function miss(clientX, clientY){
   ripple(clientX, clientY, true);
+  if (INF_HEALTH) return;          // infinite-health cheat (Admin)
   State.hearts = Math.max(0, State.hearts - 1);
   renderHearts();
   // pop the heart we just lost

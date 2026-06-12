@@ -81,6 +81,7 @@ let spawnTimer = null;
 
 const MAX_LIVES = 3;
 let lives = MAX_LIVES;       // hearts; a wrong tap costs one
+let INF_HEALTH = localStorage.getItem('fto_infhealth') === '1';   // infinite-health cheat (Settings)
 let hearts = [];
 let locked = false;          // ignore taps during win/fail transitions
 
@@ -163,6 +164,7 @@ function buildHearts() {
 
 // a wrong tap costs a heart; running out fails the level
 function loseLife() {
+  if (INF_HEALTH) return;          // infinite-health cheat (Settings)
   if (locked || lives <= 0) return;
   lives--;
   if (hearts[lives]) hearts[lives].classList.add('lost');
@@ -405,6 +407,18 @@ function boot() {
   nextBtn.addEventListener('click', nextLevel);
   document.getElementById('restart').addEventListener('click', () => startLevel(levelIndex));
   document.getElementById('playAgain').addEventListener('click', nextLevel);
+
+  // settings + infinite-health toggle
+  const settingsOv = document.getElementById('settingsOv');
+  const infHealth = document.getElementById('infHealth');
+  document.getElementById('settingsBtn').addEventListener('click', () => { infHealth.checked = INF_HEALTH; settingsOv.style.display = 'flex'; });
+  document.getElementById('settingsClose').addEventListener('click', () => { settingsOv.style.display = 'none'; });
+  settingsOv.addEventListener('click', (e) => { if (e.target === settingsOv) settingsOv.style.display = 'none'; });
+  infHealth.addEventListener('change', () => {
+    INF_HEALTH = infHealth.checked;
+    localStorage.setItem('fto_infhealth', INF_HEALTH ? '1' : '0');
+    if (INF_HEALTH) { lives = MAX_LIVES; hearts.forEach(h => h.classList.remove('lost')); }  // refill on enable
+  });
 }
 
 // debug hook (handy for testing in the preview console)

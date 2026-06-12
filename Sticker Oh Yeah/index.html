@@ -120,6 +120,7 @@
     <div class="pill life" id="lifePill"><div class="ic" id="lifeIc">❤️</div><span id="lives">3</span></div>
     <div class="spacer"></div>
     <button class="sq" id="resetBtn" title="Restart">↻</button>
+    <button class="sq" id="settingsBtn" title="Settings">⚙</button>
   </div>
 
   <main>
@@ -144,6 +145,11 @@
     <p>You ran out of hearts! Match the sticker to its matching outline to keep them.</p>
     <button class="mbtn" id="retryBtn">↻ Try Again</button>
   </div></div>
+  <div class="overlay" id="settingsOv"><div class="modal">
+    <div class="big">⚙️</div><h2>Settings</h2>
+    <label style="display:flex;align-items:center;justify-content:space-between;font-size:15px;font-weight:700;margin:8px 4px;">♾️ Sonsuz Can <input type="checkbox" id="infHealth" style="width:20px;height:20px;cursor:pointer"></label>
+    <button class="mbtn" id="settingsClose">Kapat</button>
+  </div></div>
   <div class="toast" id="toast"></div>
   <div class="loading" id="loading">Loading level…</div>
 
@@ -155,6 +161,7 @@ const viewport=$('#viewport'), worldEl=$('#world'), sceneImg=$('#scene'), bar=$(
 let world, manifest, items=[], solved=0;
 const LIVES=3;            // hearts you start with (tune to taste)
 let lives=LIVES, dead=false;
+let INF_HEALTH = localStorage.getItem('sticker_infhealth') === '1';   // infinite-health cheat (Settings)
 
 function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),1400);}
 
@@ -164,6 +171,7 @@ function setLives(n){
   const pill=$('#lifePill'); if(pill){ pill.classList.remove('hit'); void pill.offsetWidth; pill.classList.add('hit'); }
 }
 function loseLife(){
+  if(INF_HEALTH) return;          // infinite-health cheat (Settings)
   if(dead) return;
   setLives(lives-1);
   if(lives<=0){ dead=true; setTimeout(()=>$('#loseOv').classList.add('show'),520); }
@@ -339,6 +347,11 @@ function restart(){ solved=0; queue=[]; dead=false; setLives(LIVES);
   document.querySelectorAll('img.drag').forEach(g=>g.remove());
   buildLayers(); buildBar(); world.cover(); requestAnimationFrame(()=>world.cover()); updateProgress(); }
 $('#resetBtn').onclick=restart; $('#replayBtn').onclick=restart; $('#retryBtn').onclick=restart;
+const _sov=$('#settingsOv'), _inf=$('#infHealth');
+$('#settingsBtn').onclick=()=>{ _inf.checked=INF_HEALTH; _sov.classList.add('show'); };
+$('#settingsClose').onclick=()=>_sov.classList.remove('show');
+_sov.onclick=(e)=>{ if(e.target===_sov) _sov.classList.remove('show'); };
+_inf.onchange=()=>{ INF_HEALTH=_inf.checked; localStorage.setItem('sticker_infhealth',INF_HEALTH?'1':'0'); if(INF_HEALTH){ dead=false; setLives(LIVES); } };
 
 boot();
 </script>

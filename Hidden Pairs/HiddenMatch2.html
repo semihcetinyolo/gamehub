@@ -108,6 +108,9 @@
         <input type="range" id="pairs-slider" min="10" max="20" step="1" value="12" autocomplete="off" />
         <div class="hint-note">Değişiklik yeni oyunda uygulanır.</div>
       </div>
+      <div class="row">
+        <label>♾️ Sonsuz Can <input type="checkbox" id="inf-health" autocomplete="off" style="width:20px;height:20px;accent-color:#ffce4d;cursor:pointer"></label>
+      </div>
       <div class="btn-row">
         <button class="btn ghost" id="settings-close">Kapat</button>
         <button class="btn primary" id="settings-restart">Yeniden Başlat</button>
@@ -1836,6 +1839,19 @@ function wireOverlays({ onCloseSettings, onRestart, getMaxZoom, getPairs,
   document.getElementById("level-prev").addEventListener("click", async () => { await onPrevLevel(); refreshLevel(); });
   document.getElementById("level-next").addEventListener("click", async () => { await onNextLevel(); refreshLevel(); });
 
+  const infHealth = document.getElementById("inf-health");
+  if (infHealth) {
+    infHealth.checked = localStorage.getItem("hp_infhealth") === "1";
+    window.__INF_HEALTH = infHealth.checked;
+    infHealth.addEventListener("change", () => {
+      window.__INF_HEALTH = infHealth.checked;
+      localStorage.setItem("hp_infhealth", infHealth.checked ? "1" : "0");
+      if (infHealth.checked && window.__game && window.__config && window.__hud) {
+        window.__game.lives = window.__config.lives;
+        window.__hud.setLives(window.__config.lives, window.__config.lives);
+      }
+    });
+  }
   document.getElementById("settings-close").addEventListener("click", () => { sOverlay.classList.remove("open"); onCloseSettings && onCloseSettings(); });
   document.getElementById("settings-restart").addEventListener("click", () => { sOverlay.classList.remove("open"); onRestart(+pairs.value); });
 
@@ -2207,6 +2223,7 @@ class Game {
   }
   missclick(sx, sy) {
     this.ripple(sx, sy, 0xff5566, 0.9);
+    if (window.__INF_HEALTH) return;          // infinite-health cheat (Settings)
     this.lives = Math.max(0, this.lives - 1);
     this.hud.setLives(this.lives, CONFIG.lives);
     this.hud.shake && this.hud.shake();

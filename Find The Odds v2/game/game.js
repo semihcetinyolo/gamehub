@@ -232,6 +232,7 @@ function buildHearts(){
   }
 }
 function loseHeart(){
+  if (INF_HEALTH) return;          // infinite-health cheat (Settings)
   if (State.hearts <= 0) return;
   State.hearts--;
   const h = heartsEl.children[State.hearts]; // lose from the right
@@ -260,13 +261,27 @@ function bindEvents(){
   $('#settingsBtn').addEventListener('click', openSettings);
   $('#settingsCloseBtn').addEventListener('click', closeSettings);
   $('#nextLevelBtn').addEventListener('click', goNextLevel);
+  $('#infHealthBtn').addEventListener('click', toggleInfHealth);
   $('#settingsOverlay').addEventListener('click', (e)=>{ if (e.target.id === 'settingsOverlay') closeSettings(); });
+  syncInfHealth();   // apply persisted infinite-health on load
 }
 
 /* ---------------- settings ---------------- */
+let INF_HEALTH = localStorage.getItem('fts_infhealth') === '1';
+function syncInfHealth(){
+  const b = $('#infHealthBtn');
+  if (b) b.textContent = '♾️ Sonsuz Can: ' + (INF_HEALTH ? 'Açık' : 'Kapalı');
+  if (INF_HEALTH){ State.hearts = MAX_HEARTS; buildHearts(); }  // refill on enable
+}
+function toggleInfHealth(){
+  INF_HEALTH = !INF_HEALTH;
+  localStorage.setItem('fts_infhealth', INF_HEALTH ? '1' : '0');
+  syncInfHealth();
+}
 function openSettings(){
   $('#settingsLevelInfo').textContent =
     `Level ${State.levelIndex + 1} / ${State.levels.length}`;
+  syncInfHealth();
   $('#settingsOverlay').classList.add('show');
 }
 function closeSettings(){ $('#settingsOverlay').classList.remove('show'); }
