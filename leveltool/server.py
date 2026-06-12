@@ -417,12 +417,26 @@ def adapt_find_the_cat(gdir, level, tmp):
 
 
 def adapt_hidden_triple(gdir, level, tmp):
-    if not _require_manifest(tmp):
-        return dict(ok=False, message="Hidden Triple Match: klasörde manifest.json gerekli (bg.jpg + h#.png + manifest.json).")
     slug = slugify(level).lower()
+    register = (f"  {{ id:{json.dumps(slug)}, name:{json.dumps(level)} }},")
+    psb = save_psb(tmp)
+    if psb:
+        # layered PSB (bg / h# / s#) -> sliced by the game's own extract.py
+        (gdir / "levels").mkdir(exist_ok=True)
+        dest = gdir / "levels" / f"{slug}.psb"   # extract.py uses LEVEL = stem.lower() = slug
+        shutil.copy(psb, dest)
+        ok, out = run_script(gdir / "game", ["tools/extract.py", str(dest)])
+        if not ok:
+            return dict(ok=False, message="extract.py başarısız.", detail=out[-1500:])
+        track_path(dest)
+        track_path(gdir / "game" / "assets" / slug)
+        insert_into_array(gdir / "game" / "game.js", r"const\s+LEVELS\s*=\s*\[", register)
+        return dict(ok=True, message=f"PSB dilimlendi → Hidden Triple Match. ({level})", detail=out[-800:])
+    # folder path: needs a ready manifest.json (raw PNGs carry no positions)
+    if not _require_manifest(tmp):
+        return dict(ok=False, message="Hidden Triple Match: katmanlı PSB (bg/h#/s#) ya da klasörde manifest.json gerekli (bg.jpg + h#.png + manifest.json).")
     _place_folder(gdir / "game" / "assets" / slug, tmp)
-    insert_into_array(gdir / "game" / "game.js", r"const\s+LEVELS\s*=\s*\[",
-                      f"  {{ id:{json.dumps(slug)}, name:{json.dumps(level)} }},")
+    insert_into_array(gdir / "game" / "game.js", r"const\s+LEVELS\s*=\s*\[", register)
     return dict(ok=True, message=f"'{level}' eklendi → Hidden Triple Match.")
 
 
@@ -497,8 +511,8 @@ ADAPTERS = {
                             "Parça PNG'leri: 2x3.png, 3x2.png, 2x2.png, base.png …", adapt_pack_it_up),
     "Find The Cat":        ("Find The Cat", ["folder"],
                             "Klasör: bg.jpg + cat#.png + manifest.json.", adapt_find_the_cat),
-    "Hidden Triple Match": ("Hidden Triple Match by topic", ["folder"],
-                            "Klasör: bg.jpg + h#.png + manifest.json.", adapt_hidden_triple),
+    "Hidden Triple Match": ("Hidden Triple Match by topic", ["psb", "folder"],
+                            "Katmanlı PSB (bg / h# / s#) veya klasör: bg.jpg + h#.png + manifest.json.", adapt_hidden_triple),
     "Hidden Pairs":        ("Hidden Pairs", ["folder"],
                             "Klasör: layer_*.png + manifest.json.", adapt_hidden_pairs),
     "Furnish Master":      ("Furnish Master", ["folder"],
