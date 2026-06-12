@@ -509,6 +509,46 @@ def _replace_level_dir(html: Path, new_dir: str):
     track_edit(html, restore_level_dir=old)   # restore previous pointer on delete
 
 
+def _furnish_register(gdir, slug):
+    """Add slug to levels/levels.json — the list the game cycles with Skip."""
+    lv = gdir / "levels" / "levels.json"
+    data = []
+    if lv.exists():
+        try:
+            d = json.loads(lv.read_text(encoding="utf-8"))
+            data = d if isinstance(d, list) else d.get("levels", [])
+        except Exception:
+            pass
+    if slug not in data:
+        data.append(slug)
+    lv.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    track_edit(lv, json_list_remove=slug)
+
+
+def adapt_furnish(gdir, level, tmp):
+    slug = slugify(level).lower()
+    psb = save_psb(tmp)
+    if psb:
+        # layered PSB (BG + numbered box groups 1,2,3.. with f#/s#/m# layers)
+        # -> sliced into scene.png + layers/ + manifest.json by the game's tool
+        (gdir / "levels").mkdir(exist_ok=True)
+        dest = gdir / "levels" / f"{slug}.psb"
+        shutil.copy(psb, dest)
+        ok, out = run_script(gdir, ["tools/extract_psb.py", str(dest), f"levels/{slug}"])
+        if not ok:
+            return dict(ok=False, message="extract_psb.py başarısız.", detail=out[-1500:])
+        track_path(dest)
+        track_path(gdir / "levels" / slug)
+        _furnish_register(gdir, slug)
+        return dict(ok=True, message=f"PSB dilimlendi → Furnish Master (level listesine eklendi). ({level})", detail=out[-800:])
+    has_scene = any(p.name.lower() == "scene.png" for p in tmp.rglob("*"))
+    if not has_scene:
+        return dict(ok=False, message="Furnish Master: katmanlı PSB (BG + 1,2,3.. grupları, f#/s#/m#) ya da klasörde scene.png + items_*.png (+ level.json) gerekli.")
+    _place_folder(gdir / "levels" / slug, tmp)
+    _furnish_register(gdir, slug)
+    return dict(ok=True, message=f"'{level}' yüklendi → Furnish Master (level listesine eklendi).")
+
+
 def adapt_sticker(gdir, level, tmp):
     has_scene = any(p.name.lower() == "scene.png" for p in tmp.rglob("*"))
     if not (has_scene and _require_manifest(tmp)):
@@ -537,6 +577,8 @@ ADAPTERS = {
                             "Katmanlı PSB (bg / h# / s#) veya klasör: bg.jpg + h#.png + manifest.json.", adapt_hidden_triple),
     "Hidden Pairs":        ("Hidden Pairs", ["psb", "folder"],
                             "Katmanlı PSB (bg / P#_# çiftler / _B / _T / M_#) veya klasör: manifest.json + layer PNG'leri.", adapt_hidden_pairs),
+    "Furnish Master":      ("Furnish Master", ["psb", "folder"],
+                            "Katmanlı PSB (BG + 1,2,3.. grupları · f#/s#/m#) veya klasör: scene.png + items_*.png + level.json.", adapt_furnish),
     "Sticker":             ("Sticker Oh Yeah", ["folder"],
                             "Klasör: scene.png + stickers/ + slots/ + manifest.json.", adapt_sticker),
     "Hidden By Word":      ("Hidden By Word", ["folder"],
