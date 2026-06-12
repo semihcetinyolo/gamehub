@@ -133,7 +133,7 @@
         #phone-container {
             width: 400px;
             height: 864px;
-            background: linear-gradient(180deg,#e0f0ff,#c5dcfa);
+            background: linear-gradient(180deg,#3568d8 0%,#2a55bb 22%,#1d3f95 55%,#16315f 100%);
             border-radius: 50px;
             box-shadow: 0 22px 70px rgba(0,0,0,.45);
             position: relative;
@@ -898,7 +898,7 @@
         const bctx = bg.getContext('2d');
         bctx.scale(RENDER_SCALE, RENDER_SCALE);
         bctx.clearRect(0, 0, LOGICAL_W, LOGICAL_H);
-        bctx.strokeStyle = '#eef3fa';
+        bctx.strokeStyle = 'rgba(255,255,255,0.06)';
         bctx.lineWidth = 1;
         for (let x = 0; x < LOGICAL_W; x += 22) {
             bctx.beginPath(); bctx.moveTo(x, 0); bctx.lineTo(x, LOGICAL_H); bctx.stroke();
@@ -1206,11 +1206,11 @@
     function drawPauseButton() {
         const r = getPauseButtonRect();
         ctx.save();
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.94)';
-        ctx.strokeStyle = 'rgba(186, 198, 220, 1)';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.16)';
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.30)';
         ctx.lineWidth = 2;
         ctx.beginPath(); ctx.roundRect(r.x, r.y, r.w, r.h, 16); ctx.fill(); ctx.stroke();
-        ctx.fillStyle = '#324260';
+        ctx.fillStyle = '#ffce4d';
         if (!gamePaused) {
             ctx.beginPath(); ctx.roundRect(r.x + 12, r.y + 10, 5, 20, 3); ctx.fill();
             ctx.beginPath(); ctx.roundRect(r.x + 23, r.y + 10, 5, 20, 3); ctx.fill();
