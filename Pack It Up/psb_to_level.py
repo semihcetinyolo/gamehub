@@ -160,6 +160,54 @@ def slugify(name):
 
 BG_PALETTE = "linear-gradient(180deg,#efe6d6 0%,#d6c1a3 100%)"
 
+
+def _trim_grid(grid):
+    """Drop fully-empty border rows/cols so the board hugs the white region."""
+    rows = [r for r in grid if any(r)]
+    if not rows:
+        return None
+    cols = [c for c in range(len(rows[0])) if any(r[c] for r in rows)]
+    if not cols:
+        return None
+    return [[r[c] for c in cols] for r in rows]
+
+
+def read_map(psd, C):
+    """A layer named 'map' marks the playable board: its WHITE grid cells become
+    gridMap=1, everything else 0. Sampled on a C-sized grid (same cell size as
+    the pieces). Returns the gridMap, or None if there's no map layer."""
+    found = [None]
+    def walk(layers):
+        for l in layers:
+            if l.is_group():
+                walk(l); continue
+            if (l.name or "").strip().lower() == "map":
+                found[0] = l
+    walk(psd)
+    layer = found[0]
+    if layer is None:
+        return None
+    pil = layer.topil()
+    if pil is None:
+        return None
+    arr = np.asarray(pil.convert("RGBA")).astype(np.float32)
+    Hm, Wm = arr.shape[:2]
+    alpha = arr[:, :, 3] / 255.0
+    mn = arr[:, :, :3].min(axis=2)              # min channel: high => near-white
+    white = (alpha > 0.5) & (mn > 170)          # opaque AND near-white
+    rows = max(1, int(round(Hm / C)))
+    cols = max(1, int(round(Wm / C)))
+    grid = []
+    for r in range(rows):
+        y0, y1 = int(round(r * C)), int(round((r + 1) * C))
+        row = []
+        for c in range(cols):
+            x0, x1 = int(round(c * C)), int(round((c + 1) * C))
+            cell = white[y0:y1, x0:x1]
+            row.append(1 if (cell.size and float(cell.mean()) >= 0.35) else 0)
+        grid.append(row)
+    return _trim_grid(grid)
+
 def build_level(psb_path, name, cols=6, slug=None, out_dir=None, copy_pngs=True):
     psd = PSDImage.open(psb_path)
     pieces = collect_pieces(psd)
@@ -178,16 +226,25 @@ def build_level(psb_path, name, cols=6, slug=None, out_dir=None, copy_pngs=True)
         if copy_pngs:
             pil.save(os.path.join(out_dir, f"{n}.png"))
         items.append({"img": f"{slug}/{n}.png", "w": w, "h": h, "cells": cells, "art": art})
-    bcols, brows = make_board(items, cols)
-    gridmap = [[1] * bcols for _ in range(brows)]
+    map_grid = read_map(psd, C)
+    if map_grid:                       # board comes from the 'map' layer's white cells
+        gridmap = map_grid
+        brows, bcols = len(map_grid), len(map_grid[0])
+        board_src = "map"
+    else:                              # no map layer: auto-pack a solvable rectangle
+        bcols, brows = make_board(items, cols)
+        gridmap = [[1] * bcols for _ in range(brows)]
+        board_src = "auto"
     level = {
         "title": name, "emoji": "🎁", "sub": f"{name} parçalarını yerleştir!",
         "bg": BG_PALETTE, "rows": brows, "cols": bcols, "bareGrid": True,
         "gridMap": gridmap, "items": items,
         "winEmoji": "🎉", "winTitle": "Harika!", "winDesc": f"{name} tamamlandı!",
     }
+    whites = sum(sum(row) for row in gridmap)
+    pcells = sum(len(it["cells"]) for it in items)
     return level, dict(C=C, ox=ox, oy=oy, resid=resid, slug=slug, n=len(items),
-                       cols=bcols, rows=brows)
+                       cols=bcols, rows=brows, board=board_src, whites=whites, pcells=pcells)
 
 
 def level_to_js(level):
@@ -217,10 +274,13 @@ def main():
     a = ap.parse_args()
     level, info = build_level(a.psb, a.name, cols=a.cols, slug=a.slug,
                               out_dir=a.out_dir, copy_pngs=not a.no_png)
+    warn = "" if info["whites"] == info["pcells"] else \
+        f"  ⚠ board cells ({info['whites']}) != piece cells ({info['pcells']}) — may be unsolvable"
     sys.stderr.write(
         f"[psb_to_level] {info['n']} pieces | cell C={info['C']:.1f} "
         f"origin=({info['ox']:.0f},{info['oy']:.0f}) edge-resid={info['resid']:.3f} "
-        f"| board {info['cols']}x{info['rows']} -> {info['slug']}/\n")
+        f"| board[{info['board']}] {info['cols']}x{info['rows']} "
+        f"({info['whites']} cells) -> {info['slug']}/{warn}\n")
     print(level_to_js(level))
 
 
