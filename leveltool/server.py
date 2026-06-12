@@ -136,8 +136,13 @@ def _restore_level_dir(file_path: Path, value: str):
     if not file_path.exists():
         return
     text = file_path.read_text(encoding="utf-8")
-    text = re.sub(r"const\s+LEVEL_DIR\s*=\s*['\"][^'\"]*['\"]",
-                  f"const LEVEL_DIR='{value}'", text, count=1)
+    # the active-level pointer is `const BASE='...'` (newer builds) or
+    # `const LEVEL_DIR='...'`; restore whichever this file uses, verbatim.
+    for var in ("BASE", "LEVEL_DIR"):
+        if re.search(r"const\s+" + var + r"\s*=", text):
+            text = re.sub(r"const\s+" + var + r"\s*=\s*['\"][^'\"]*['\"]",
+                          f"const {var}='{value}'", text, count=1)
+            break
     file_path.write_text(text, encoding="utf-8")
 
 
@@ -246,7 +251,7 @@ def run_script(cwd: Path, args):
     """Run a python script, return (ok, combined_output)."""
     try:
         r = subprocess.run([PY] + args, cwd=str(cwd), capture_output=True,
-                           text=True, timeout=600)
+                           text=True, timeout=1500)   # big PSBs (100MB+) slice slowly
         out = (r.stdout or "") + (r.stderr or "")
         return r.returncode == 0, out
     except Exception as e:
@@ -491,20 +496,38 @@ def adapt_hidden_by_word(gdir, level, tmp):
 
 def _replace_level_dir(html: Path, new_dir: str):
     text = html.read_text(encoding="utf-8")
-    old = re.search(r"const\s+LEVEL_DIR\s*=\s*['\"]([^'\"]*)['\"]", text)
-    new = re.sub(r"const\s+LEVEL_DIR\s*=\s*['\"][^'\"]*['\"]",
-                 f"const LEVEL_DIR='{new_dir}'", text, count=1)
+    # newer builds select the level with `const BASE='levels/<id>/'` (trailing
+    # slash); older ones use `const LEVEL_DIR='levels/<id>'`. Update whichever.
+    m = re.search(r"const\s+(LEVEL_DIR|BASE)\s*=\s*['\"]([^'\"]*)['\"]", text)
+    if not m:
+        return
+    var, old = m.group(1), m.group(2)
+    val = new_dir + "/" if var == "BASE" else new_dir
+    new = re.sub(r"const\s+" + var + r"\s*=\s*['\"][^'\"]*['\"]",
+                 f"const {var}='{val}'", text, count=1)
     html.write_text(new, encoding="utf-8")
-    # on delete, point LEVEL_DIR back to whatever it was before this upload
-    if old:
-        track_edit(html, restore_level_dir=old.group(1))
+    track_edit(html, restore_level_dir=old)   # restore previous pointer on delete
 
 
 def adapt_furnish(gdir, level, tmp):
+    slug = slugify(level).lower()
+    psb = save_psb(tmp)
+    if psb:
+        # layered PSB (BG + numbered box groups 1,2,3.. with f#/s#/m# layers)
+        # -> sliced into scene.png + layers/ + manifest.json by the game's tool
+        (gdir / "levels").mkdir(exist_ok=True)
+        dest = gdir / "levels" / f"{slug}.psb"
+        shutil.copy(psb, dest)
+        ok, out = run_script(gdir, ["tools/extract_psb.py", str(dest), f"levels/{slug}"])
+        if not ok:
+            return dict(ok=False, message="extract_psb.py başarısız.", detail=out[-1500:])
+        track_path(dest)
+        track_path(gdir / "levels" / slug)
+        _replace_level_dir(gdir / "index.html", f"levels/{slug}")
+        return dict(ok=True, message=f"PSB dilimlendi → Furnish Master (aktif level). ({level})", detail=out[-800:])
     has_scene = any(p.name.lower() == "scene.png" for p in tmp.rglob("*"))
     if not has_scene:
-        return dict(ok=False, message="Furnish Master: klasörde scene.png + items_*.png (+ level.json) gerekli.")
-    slug = slugify(level).lower()
+        return dict(ok=False, message="Furnish Master: katmanlı PSB (BG + 1,2,3.. grupları, f#/s#/m#) ya da klasörde scene.png + items_*.png (+ level.json) gerekli.")
     _place_folder(gdir / "levels" / slug, tmp)
     _replace_level_dir(gdir / "index.html", f"levels/{slug}")
     return dict(ok=True, message=f"'{level}' yüklendi → Furnish Master (aktif level olarak ayarlandı).")
@@ -538,8 +561,8 @@ ADAPTERS = {
                             "Katmanlı PSB (bg / h# / s#) veya klasör: bg.jpg + h#.png + manifest.json.", adapt_hidden_triple),
     "Hidden Pairs":        ("Hidden Pairs", ["psb", "folder"],
                             "Katmanlı PSB (bg / P#_# çiftler / _B / _T / M_#) veya klasör: manifest.json + layer PNG'leri.", adapt_hidden_pairs),
-    "Furnish Master":      ("Furnish Master", ["folder"],
-                            "Klasör: scene.png + items_*.png + level.json.", adapt_furnish),
+    "Furnish Master":      ("Furnish Master", ["psb", "folder"],
+                            "Katmanlı PSB (BG + 1,2,3.. grupları · f#/s#/m#) veya klasör: scene.png + items_*.png + level.json.", adapt_furnish),
     "Sticker":             ("Sticker Oh Yeah", ["folder"],
                             "Klasör: scene.png + stickers/ + slots/ + manifest.json.", adapt_sticker),
     "Hidden By Word":      ("Hidden By Word", ["folder"],
