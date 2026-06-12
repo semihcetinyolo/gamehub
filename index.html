@@ -420,8 +420,9 @@
     setNav(mqMobile.matches);
 
     function loadGame(game, btn) {
-      // encode each path segment so spaces work in the iframe src
-      frame.src = game.path.split("/").map(encodeURIComponent).join("/");
+      // encode each path segment so spaces work in the iframe src; add a
+      // cache-buster so game updates always load fresh (no stale cached doc)
+      frame.src = game.path.split("/").map(encodeURIComponent).join("/") + "?t=" + Date.now();
       frame.style.display = "block";
       placeholder.style.display = "none";
       document.querySelectorAll(".game-list button").forEach(b => b.classList.remove("active"));
