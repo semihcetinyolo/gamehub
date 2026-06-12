@@ -87,7 +87,7 @@
   <div class="toast" id="toast"></div>
   <div class="busy" id="busy">✂️ Detecting items from the sheet…</div>
 
-<script src="engine.js?v=8"></script>
+<script src="engine.js?v=10"></script>
 <script>
 const $=s=>document.querySelector(s);
 const viewport=$('#viewport'), worldEl=$('#world'), sceneImg=$('#scene'), boxMarker=$('#boxMarker');
@@ -97,7 +97,7 @@ let world=makeWorld(viewport, worldEl, {minZoom:0.5, maxZoom:3.6});
 const toast=t=>{const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),1600);};
 const busy=on=>$('#busy').classList.toggle('show',on);
 
-const LEVEL_DIR='levels/green_room';
+const LEVEL_DIR='levels/gaming_room';
 async function boot(){
   const saved = await Store.get('level');
   if(saved){ level=saved; }

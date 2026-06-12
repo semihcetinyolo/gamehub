@@ -4,47 +4,79 @@ function makeWorld(viewport, world, opts={}){
   const minZoom = opts.minZoom ?? 1, maxZoom = opts.maxZoom ?? 3.4;
   const vAnchor = opts.vAnchor ?? 0.5;   // 0=top, .5=center — where the scene sits when it's shorter than the viewport
   const initZoom = opts.initZoom ?? 1;   // default zoom (1 = fit; >1 opens a bit zoomed-in)
+  const hMargin = opts.hMargin ?? 0;     // when fitRect is set: side margin fraction (e.g. .03 = 3%)
+  let fitRect = opts.fitRect || null;    // {x,y,w,h} in world coords: fit THIS to the width, centered on it
   let fit=1, zoom=initZoom, S=1, panX=0, panY=0;
   const listeners=[];
   function vpRect(){ return viewport.getBoundingClientRect(); }
   function apply(){ world.style.transform=`translate(${panX}px,${panY}px) scale(${S})`; listeners.forEach(f=>f()); }
   function clampPan(){
+    if(fitRect) return;                  // free pan; layout re-centers on the rect
     const r=vpRect(), cw=W*S, ch=H*S, m=Math.min(r.width,r.height)*0.25;
     panX = cw<=r.width ? (r.width-cw)/2 : Math.min(m, Math.max(r.width-cw-m, panX));
     panY = ch<=r.height? (r.height-ch)*vAnchor: Math.min(m, Math.max(r.height-ch-m, panY));
   }
-  function layout(){ const r=vpRect(); fit=Math.min(r.width/W, r.height/H); S=fit*zoom;
+  function layout(){ const r=vpRect();
+    if(fitRect){ fit = r.width*(1-2*hMargin)/fitRect.w; S=fit*zoom;
+      panX = r.width/2 - (fitRect.x+fitRect.w/2)*S;
+      panY = r.height/2 - (fitRect.y+fitRect.h/2)*S; apply(); return; }
+    fit=Math.min(r.width/W, r.height/H); S=fit*zoom;
     panX=(r.width-W*S)/2; panY=(r.height-H*S)*vAnchor; clampPan(); apply(); }
   function setSize(w,h){ W=w; H=h; world.style.width=w+'px'; world.style.height=h+'px'; layout(); }
+  function setFitRect(rect){ fitRect=rect; layout(); }
   function screenToWorld(cx,cy){ const r=vpRect(); return {x:(cx-r.left-panX)/S, y:(cy-r.top-panY)/S}; }
+  // when zoomed IN past fit, keep the room covering the viewport (free pan, clamped — no rubber-band)
+  function clampRoom(){ const r=vpRect();
+    const rx0=fitRect.x*S, rx1=(fitRect.x+fitRect.w)*S, ry0=fitRect.y*S, ry1=(fitRect.y+fitRect.h)*S;
+    panX = (rx1-rx0)>=r.width ? Math.min(-rx0, Math.max(r.width-rx1, panX)) : r.width/2-(rx0+rx1)/2;
+    panY = (ry1-ry0)>=r.height ? Math.min(-ry0, Math.max(r.height-ry1, panY)) : r.height/2-(ry0+ry1)/2; }
   function setZoom(nz,fcx,fcy){ const r=vpRect(); nz=Math.max(minZoom,Math.min(maxZoom,nz));
     if(fcx==null){fcx=r.left+r.width/2;fcy=r.top+r.height/2;}
     const fwx=(fcx-r.left-panX)/S, fwy=(fcy-r.top-panY)/S;
-    zoom=nz; S=fit*zoom; panX=fcx-r.left-fwx*S; panY=fcy-r.top-fwy*S; clampPan(); apply(); }
+    zoom=nz; S=fit*zoom; panX=fcx-r.left-fwx*S; panY=fcy-r.top-fwy*S;
+    if(fitRect){ if(zoom<=1.03){ const rp=restPan(); panX=rp.x; panY=rp.y; } else clampRoom(); } else clampPan();
+    apply(); }
   function zoomBy(f,fcx,fcy){ setZoom(zoom*f,fcx,fcy); }
   function reset(){ zoom=initZoom; layout(); }
 
-  const pts=new Map(); let pinch=null, panActive=false, last=null, suppress=false;
+  const pts=new Map(); let pinch=null, panActive=false, last=null, suppress=false, raw=null, retRAF=0;
   const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+  // rubber-band: when fitRect, the scene is tethered to its centred rest position
+  function restPan(){ const r=vpRect(); return fitRect
+    ? {x:r.width/2-(fitRect.x+fitRect.w/2)*S, y:r.height/2-(fitRect.y+fitRect.h/2)*S} : {x:panX,y:panY}; }
+  function rubber(d){ const max=vpRect().width*0.14; return max*Math.tanh(d/max); }   // resists, caps ~14% pull
+  function stopReturn(){ if(retRAF){cancelAnimationFrame(retRAF); retRAF=0;} }
+  function snapBack(){ stopReturn(); const rp=restPan(), sx=panX, sy=panY, t0=performance.now(), dur=300;
+    (function step(now){ const t=Math.min(1,(now-t0)/dur), e=1-Math.pow(1-t,3);   // ease-out, no overshoot/wobble
+      panX=sx+(rp.x-sx)*e; panY=sy+(rp.y-sy)*e; apply();
+      retRAF = t<1 ? requestAnimationFrame(step) : 0; })(t0); }
   viewport.addEventListener('pointerdown',e=>{
     pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
     if(pts.size===2){ const a=[...pts.values()]; pinch={d:dist(a[0],a[1]),zoom}; panActive=false; suppress=true; return; }
     if(e.target.closest('.draggable,.ctl,button,.palette,input,#panel')) return;
+    if(fitRect){ panActive=true; raw={x:0,y:0}; last={x:e.clientX,y:e.clientY}; stopReturn(); try{viewport.setPointerCapture(e.pointerId);}catch(_){} return; }
     if(W*S<=vpRect().width+1 && H*S<=vpRect().height+1) return;
-    panActive=true; last={x:e.clientX,y:e.clientY}; viewport.setPointerCapture(e.pointerId);
+    panActive=true; last={x:e.clientX,y:e.clientY}; try{viewport.setPointerCapture(e.pointerId);}catch(_){}
   });
   viewport.addEventListener('pointermove',e=>{
     if(pts.has(e.pointerId)) pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
     if(pinch && pts.size>=2){ const a=[...pts.values()]; const nd=dist(a[0],a[1]);
       setZoom(pinch.zoom*(nd/pinch.d),(a[0].x+a[1].x)/2,(a[0].y+a[1].y)/2); return; }
-    if(panActive){ panX+=e.clientX-last.x; panY+=e.clientY-last.y; last={x:e.clientX,y:e.clientY}; clampPan(); apply(); }
+    if(!panActive) return;
+    if(fitRect){
+      if(zoom<=1.03){ raw.x+=e.clientX-last.x; raw.y+=e.clientY-last.y;   // at fit: rubber-band tether
+        const rp=restPan(); panX=rp.x+rubber(raw.x); panY=rp.y+rubber(raw.y); }
+      else { panX+=e.clientX-last.x; panY+=e.clientY-last.y; clampRoom(); }  // zoomed in: free pan to explore
+      last={x:e.clientX,y:e.clientY}; apply(); }
+    else { panX+=e.clientX-last.x; panY+=e.clientY-last.y; last={x:e.clientX,y:e.clientY}; clampPan(); apply(); }
   });
-  function end(e){ pts.delete(e.pointerId); if(pts.size<2)pinch=null; if(pts.size===0){panActive=false;suppress=false;} }
+  function end(e){ pts.delete(e.pointerId); if(pts.size<2)pinch=null;
+    if(pts.size===0){ const wasPan=panActive; panActive=false; suppress=false; if(wasPan&&fitRect&&zoom<=1.03) snapBack(); } }
   viewport.addEventListener('pointerup',end); viewport.addEventListener('pointercancel',end);
   viewport.addEventListener('wheel',e=>{ e.preventDefault(); zoomBy(e.deltaY<0?1.12:1/1.12,e.clientX,e.clientY); },{passive:false});
   window.addEventListener('resize',layout);
 
-  return { layout, setSize, reset, setZoom, zoomBy, screenToWorld,
+  return { layout, setSize, setFitRect, reset, setZoom, zoomBy, screenToWorld,
     onChange(f){listeners.push(f);},
     get zoom(){return zoom;}, get S(){return S;}, get W(){return W;}, get H(){return H;},
     get suppressed(){return suppress||pts.size>=2;} };
