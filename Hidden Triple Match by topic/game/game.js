@@ -17,9 +17,8 @@ const LEVEL_ITEMS   = 30;
 // playable levels, in rotation order. id = the assets/<id>/ subfolder the
 // extractor wrote (PSB stem, lowercased). ⏭ / "Next Level" cycle through them.
 const LEVELS = [
+  { id:"yeni_level", name:"Yeni Level" },
   { id:'garden', name:'Garden' },
-  { id:'elvan',  name:'Elvan'  },
-  { id:'emir',   name:'Emir'   },
 ];
 
 // type of item i (1-based). Real triplets share a type.
@@ -75,12 +74,24 @@ async function init(){
 
 /* load a level: point at its asset folder, fetch its manifest, then start it.
    one-time setup (tray, events) is done in init(); this can run on every switch. */
-async function loadLevel(index){
+async function loadLevel(index, _tries){
+  _tries = _tries || 0;
   State.levelIndex = ((index % LEVELS.length) + LEVELS.length) % LEVELS.length;
   State.assetBase  = 'assets/' + LEVELS[State.levelIndex].id + '/';
-  bgImg.src = asset('bg.jpg');
-  const res = await fetch(asset('manifest.json'));
-  State.manifest = await res.json();
+  let manifest;
+  try {
+    const res = await fetch(asset('manifest.json'));
+    if (!res.ok) throw new Error('manifest ' + res.status);
+    manifest = await res.json();
+  } catch (e) {
+    // this level's assets aren't available — skip to the next one so the board
+    // never lands on a missing level (guard against looping if none load)
+    if (_tries < LEVELS.length - 1) return loadLevel(index + 1, _tries + 1);
+    console.error('Hidden Triple Match: no loadable level', e);
+    return;
+  }
+  bgImg.src = asset('bg.jpg');     // only point at the bg once the manifest is good
+  State.manifest = manifest;
 
   // the board IS the canvas frame; its height fills the viewport, width follows
   // the frame aspect. The bg image is placed at its true offset within the frame
