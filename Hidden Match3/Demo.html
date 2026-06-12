@@ -1236,8 +1236,11 @@
         const panelY = 46;
 
         ctx.save();
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-        ctx.strokeStyle = 'rgba(186, 198, 220, 1)';
+        const hdrGrad = ctx.createLinearGradient(0, panelY, 0, panelY + panelH);
+        hdrGrad.addColorStop(0, '#264fb0');
+        hdrGrad.addColorStop(1, '#1a356f');
+        ctx.fillStyle = hdrGrad;
+        ctx.strokeStyle = 'rgba(255,255,255,0.18)';
         ctx.lineWidth = 2;
         ctx.beginPath(); ctx.roundRect(panelX, panelY, panelW, panelH, 24); ctx.fill(); ctx.stroke();
         ctx.restore();
@@ -1253,8 +1256,8 @@
             const x = startX + i * (slotSize + gap);
             const y = slotY;
 
-            ctx.fillStyle = cleared ? '#e7f7ec' : '#eef3fb';
-            ctx.strokeStyle = cleared ? '#7fd29a' : '#c2cde0';
+            ctx.fillStyle = cleared ? 'rgba(120,210,150,0.40)' : 'rgba(255,255,255,0.14)';
+            ctx.strokeStyle = cleared ? '#7fd29a' : 'rgba(255,255,255,0.32)';
             ctx.lineWidth = 2;
             ctx.beginPath();
             ctx.arc(x + slotSize / 2, y + slotSize / 2, slotSize / 2, 0, Math.PI * 2);
@@ -1271,11 +1274,11 @@
             const bubbleW = 18, bubbleH = 17;
             const bubbleX = x + slotSize - 11;
             const bubbleY = y + slotSize - 11;
-            ctx.fillStyle = cleared ? '#4dc270' : '#ff944d';
-            ctx.strokeStyle = 'rgba(255,255,255,0.98)';
+            ctx.fillStyle = cleared ? '#4dc270' : '#ffce4d';
+            ctx.strokeStyle = 'rgba(255,255,255,0.95)';
             ctx.lineWidth = 2;
             ctx.beginPath(); ctx.roundRect(bubbleX, bubbleY, bubbleW, bubbleH, 9); ctx.fill(); ctx.stroke();
-            ctx.fillStyle = '#ffffff';
+            ctx.fillStyle = cleared ? '#ffffff' : '#5a3b00';
             ctx.font = 'bold 10px Nunito, sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
@@ -1360,12 +1363,16 @@
 
         ctx.drawImage(getBackgroundCanvas(), 0, 0, LOGICAL_W, LOGICAL_H);
 
-        // Alt eşleştirme barı.
-        ctx.fillStyle = '#d0daf0';
-        ctx.beginPath(); ctx.roundRect(14, TRAY_Y - 38, LOGICAL_W - 28, 76, 22); ctx.fill();
+        // Alt eşleştirme barı (Hidden Triple Match teması) — her zaman 7 slot.
+        const trayGrad = ctx.createLinearGradient(0, TRAY_Y - 38, 0, TRAY_Y + 38);
+        trayGrad.addColorStop(0, '#1d3f95');
+        trayGrad.addColorStop(1, '#13265a');
+        ctx.fillStyle = trayGrad;
+        ctx.strokeStyle = 'rgba(255,255,255,0.18)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.roundRect(14, TRAY_Y - 38, LOGICAL_W - 28, 76, 22); ctx.fill(); ctx.stroke();
         for (let i = 0; i < 7; i++) {
             const slotX = getCanvasSlotX(i);
-            ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#b2c0d6'; ctx.lineWidth = 2;
+            ctx.fillStyle = 'rgba(255,255,255,0.10)'; ctx.strokeStyle = 'rgba(255,255,255,0.22)'; ctx.lineWidth = 2;
             ctx.beginPath(); ctx.roundRect(slotX - 21, TRAY_Y - 28, 42, 56, 12); ctx.fill(); ctx.stroke();
         }
 
