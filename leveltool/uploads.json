@@ -52,5 +52,22 @@
       "rerun": null
     }
   ],
-  "Furnish Master": []
+  "Find The Strange": [
+    {
+      "id": "lv_a81e3147e5",
+      "name": "Yeni Level",
+      "ts": "2026-06-12T12:16:17",
+      "paths": [
+        "Find The Odds v2/levels/Yeni_Level.psb",
+        "Find The Odds v2/game/assets/Yeni_Level"
+      ],
+      "edits": [
+        {
+          "file": "Find The Odds v2/game/assets/levels.json",
+          "json_list_remove": "Yeni_Level"
+        }
+      ],
+      "rerun": null
+    }
+  ]
 }

@@ -16,9 +16,7 @@
     border-radius:34px;box-shadow:0 30px 80px rgba(0,0,0,.5),inset 0 0 0 2px rgba(255,255,255,.06);
     overflow:hidden;display:flex;flex-direction:column;padding:14px 14px 16px;gap:12px;}
 
-  .hud{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;height:44px;}
-  #lvlInd{align-self:center;font:800 14px/1 'Baloo 2',system-ui,sans-serif;color:#fff;
-    background:rgba(255,255,255,.14);padding:8px 13px;border-radius:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.25);}
+  .hud{flex:0 0 auto;display:flex;align-items:center;justify-content:flex-end;height:44px;}
   .hud-btn{width:44px;height:44px;border:none;border-radius:14px;cursor:pointer;position:relative;
     background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 3px 0 rgba(0,0,0,.2);
     color:#fff;font-size:20px;display:grid;place-items:center;transition:transform .08s,background .15s;}
@@ -92,7 +90,6 @@
 <body>
   <div class="frame" id="screen">
     <div class="hud">
-      <div id="lvlInd">1 / 1</div>
       <button class="hud-btn" id="settingsBtn" title="Settings">⚙️</button>
     </div>
 
@@ -107,8 +104,6 @@
 
     <div class="overlay" id="settingsOv"><div class="ov-card">
       <div class="ov-emoji">⚙️</div><div class="ov-title">Settings</div>
-      <button class="ov-btn" id="levelCreateBtn">🛠 Level Creator</button>
-      <button class="ov-btn ghost" id="skipBtn">⏭ Skip level</button>
       <button class="ov-btn ghost" id="restartBtn">↺ Restart level</button>
       <button class="ov-btn ghost" id="closeSettingsBtn">Close</button>
     </div></div>
@@ -116,7 +111,6 @@
     <div class="overlay" id="winOv"><div class="ov-card">
       <div class="ov-emoji">🎮</div><div class="ov-title">Room Complete!</div>
       <div class="ov-sub">Every box unpacked — the gaming room is fully set up. 💙</div>
-      <button class="ov-btn" id="winNextBtn">⏭ Sonraki Level</button>
       <button class="ov-btn ghost" id="replayBtn">↺ Play Again</button>
     </div></div>
 
@@ -127,39 +121,18 @@
 <script>
 const $=s=>document.querySelector(s);
 const viewport=$('#viewport'), worldEl=$('#world'), boxEl=$('#box'), sceneImg=$('#scene');
-let LEVELS_LIST=['gaming_room'], levelIdx=0, BASE='levels/gaming_room/';
+let BASE='';   // level system removed
 let LEVEL=null, groups=[], gi=0, spawnCount=0;
 let world=makeWorld(viewport, worldEl, {minZoom:1, maxZoom:3, hMargin:0.03});  // fit the room to 94% width (3% side margins); can't shrink below fit
 const STAGE_F=[[.5,.74],[.33,.68],[.67,.68],[.4,.82],[.6,.82],[.26,.76],[.74,.76]];
 
 function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),1500);}
 
-async function boot(){
-  // discover the level list (folders); fall back to the single default
-  try{ const r=await fetch('levels/levels.json'); if(r.ok){ const d=await r.json();
-    const arr=Array.isArray(d)?d:(d&&d.levels); if(arr&&arr.length) LEVELS_LIST=arr; } }catch(e){}
-  await loadLevel(0);
-}
-/* load level #i from the list (wraps). Skips a level whose assets are missing. */
-async function loadLevel(i,_tries){
-  _tries=_tries||0;
-  levelIdx=((i%LEVELS_LIST.length)+LEVELS_LIST.length)%LEVELS_LIST.length;
-  BASE='levels/'+LEVELS_LIST[levelIdx]+'/';
-  let m;
-  try{ const r=await fetch(BASE+'manifest.json'); if(!r.ok) throw 0; m=await r.json(); }
-  catch(e){ if(_tries<LEVELS_LIST.length-1) return loadLevel(i+1,_tries+1); console.error('Furnish: no loadable level'); return; }
-  LEVEL=m;
-  { const li=$('#lvlInd'); if(li) li.textContent=(levelIdx+1)+' / '+LEVELS_LIST.length; }   // visible level indicator
-  // BG flat colour becomes the whole gameplay background
-  if(LEVEL.bgColor){ $('#screen').style.background=LEVEL.bgColor; $('.board-wrap').style.background=LEVEL.bgColor; }
-  sceneImg.src = BASE+LEVEL.scene;
-  sceneImg.style.width=LEVEL.sceneW+'px'; sceneImg.style.height=LEVEL.sceneH+'px';
-  world.setSize(LEVEL.sceneW, LEVEL.sceneH);
-  if(LEVEL.roomRect) world.setFitRect(LEVEL.roomRect);   // fit the room (not the whole canvas) to width
-  startLevel();
-}
+// Level system removed — the game ships without levels (empty shell).
+async function boot(){ /* no level to load */ }
 
 function startLevel(){
+  if(!LEVEL) return;   // no level loaded (level system removed)
   stopAllShimmer();
   [...worldEl.querySelectorAll('.it,.wsp,.reveal')].forEach(e=>e.remove());
   groups = LEVEL.groups.map(g=>({id:g.id, items:g.items.map(it=>({...it, spawned:false, placed:false}))}));
@@ -277,9 +250,7 @@ function confetti(){const c=['#3568d8','#ffce4d','#e76f51','#5bbf6a','#9b8cff','
   for(let i=0;i<90;i++){const e=document.createElement('div');e.className='confetti';e.style.left=Math.random()*100+'%';
     e.style.background=c[i%c.length];e.style.animationDuration=(1.7+Math.random()*1.7)+'s';e.style.animationDelay=(Math.random()*.5)+'s';
     $('#screen').appendChild(e);setTimeout(()=>e.remove(),3800);}}
-function win(){ boxEl.style.display='none'; confetti();
-  const nb=$('#winNextBtn'); if(nb) nb.style.display = LEVELS_LIST.length>1 ? '' : 'none';   // only when there's another level
-  setTimeout(()=>$('#winOv').classList.add('show'),700); }
+function win(){ boxEl.style.display='none'; confetti(); setTimeout(()=>$('#winOv').classList.add('show'),700); }
 
 /* ---- controls ---- */
 $('#hintBtn').onclick=()=>{ const c=$('#hintBtn .cnt'); let n=+c.textContent; if(n<=0)return;
@@ -291,11 +262,7 @@ $('#hintBtn').onclick=()=>{ const c=$('#hintBtn .cnt'); let n=+c.textContent; if
 $('#settingsBtn').onclick=()=>$('#settingsOv').classList.add('show');
 $('#closeSettingsBtn').onclick=()=>$('#settingsOv').classList.remove('show');
 $('#settingsOv').addEventListener('click',e=>{ if(e.target.id==='settingsOv') $('#settingsOv').classList.remove('show'); });
-$('#levelCreateBtn').onclick=()=>location.href='creator.html';
-$('#skipBtn').onclick=()=>{ $('#settingsOv').classList.remove('show'); boxEl.style.display='';
-  if(LEVELS_LIST.length>1){ loadLevel(levelIdx+1).then(()=>toast('Level '+(levelIdx+1)+' / '+LEVELS_LIST.length)); } else { startLevel(); world.reset(); toast('Tek level var'); } };
 $('#restartBtn').onclick=()=>{ $('#settingsOv').classList.remove('show'); boxEl.style.display=''; startLevel(); world.reset(); };
-$('#winNextBtn').onclick=()=>{ $('#winOv').classList.remove('show'); boxEl.style.display=''; loadLevel(levelIdx+1); };
 $('#replayBtn').onclick=()=>{ $('#winOv').classList.remove('show'); boxEl.style.display=''; startLevel(); world.reset(); };
 
 boot();
