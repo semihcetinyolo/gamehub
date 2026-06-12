@@ -399,8 +399,9 @@
         });
     }
 
-    function goToLevel(i) {
+    async function goToLevel(i) {
         currentLevelIndex = i;
+        await loadTypes(getCurrentTypes());
         resetGame();
         closeSettings();
     }
@@ -425,8 +426,11 @@
         });
     }
 
-    async function loadStickerImages() {
-        for (const type of ALL_STICKER_TYPES) {
+    // Sadece verilen tiplerin görsellerini (paralel) yükle; önce yüklenmişse atla.
+    // Açılış gecikmesi fix: tüm levelları değil, yalnızca o anki level'ı yükleriz.
+    async function loadTypes(types) {
+        await Promise.all(types.map(async (type) => {
+            if (type._loaded) return;
             const img = await loadImage(type.asset);
             stickerImages[type.id] = img;
             stickerOutlines[type.id] = makeWhiteSilhouette(img);
@@ -445,7 +449,12 @@
                     type.variantKeys.push(variantKey);
                 }
             }
-        }
+            type._loaded = true;
+        }));
+    }
+
+    async function loadStickerImages() {
+        await loadTypes(getCurrentTypes());
     }
 
     // --- Gölge rengi: objenin ortalama rengini al, satüre et + koyulaştır. ---
@@ -933,8 +942,9 @@
         levelComplete = false;
     }
 
-    function goToNextLevel() {
+    async function goToNextLevel() {
         currentLevelIndex = (currentLevelIndex + 1) % LEVELS.length;
+        await loadTypes(getCurrentTypes());
         resetGame();
     }
 
