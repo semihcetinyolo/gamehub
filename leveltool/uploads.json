@@ -1,6 +1,22 @@
 {
   "Hidden Triple Match": [
     {
+      "id": "lv_699f605937",
+      "name": "Yeni Level",
+      "ts": "2026-06-12T06:50:35",
+      "paths": [
+        "Hidden Triple Match by topic/levels/yeni_level.psb",
+        "Hidden Triple Match by topic/game/assets/yeni_level"
+      ],
+      "edits": [
+        {
+          "file": "Hidden Triple Match by topic/game/game.js",
+          "remove": "\n  { id:\"yeni_level\", name:\"Yeni Level\" },"
+        }
+      ],
+      "rerun": null
+    },
+    {
       "id": "lv_9e2d2a6979",
       "name": "Yeni Level",
       "ts": "2026-06-12T06:35:46",
@@ -16,5 +32,6 @@
       ],
       "rerun": null
     }
-  ]
+  ],
+  "Find The Cat": []
 }

@@ -1639,6 +1639,12 @@ async function loadShared() {
     const idx = await getJSON("levels.json");
     if (idx.levels && idx.levels.length) levels = idx.levels;
   } catch (e) {}
+  // also discover externally-uploaded levels (server mode), even in an embedded
+  // build — getJSON()/imgSrc() already fall back to fetch() for non-embedded ids.
+  try {
+    const ext = await fetch(ASSETS + "levels.json").then((r) => (r.ok ? r.json() : null));
+    if (ext && ext.levels) for (const id of ext.levels) if (!levels.includes(id)) levels.push(id);
+  } catch (e) {}
   return { ui, uiTextures, levels };
 }
 

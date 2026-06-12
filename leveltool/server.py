@@ -440,12 +440,10 @@ def adapt_hidden_triple(gdir, level, tmp):
     return dict(ok=True, message=f"'{level}' eklendi → Hidden Triple Match.")
 
 
-def adapt_hidden_pairs(gdir, level, tmp):
-    if not _require_manifest(tmp):
-        return dict(ok=False, message="Hidden Pairs: klasörde manifest.json gerekli (layer_*.png + manifest.json).")
-    slug = slugify(level).lower()
-    _place_folder(gdir / slug, tmp)
-    lv = gdir / "levels.json"
+def _register_hidden_pairs(assets, slug):
+    """Add slug to assets/levels.json — the list the game fetches at startup."""
+    assets.mkdir(parents=True, exist_ok=True)
+    lv = assets / "levels.json"
     data = {"levels": []}
     if lv.exists():
         try:
@@ -457,6 +455,31 @@ def adapt_hidden_pairs(gdir, level, tmp):
         data["levels"].insert(0, slug)
     lv.write_text(json.dumps(data, indent=2), encoding="utf-8")
     track_edit(lv, json_list_remove=slug)
+
+
+def adapt_hidden_pairs(gdir, level, tmp):
+    # NOTE: the game loads levels from assets/<id>/ (assets/levels.json + per-level
+    # manifest.json), so everything goes under assets/ — not the game root.
+    slug = slugify(level).lower()
+    assets = gdir / "assets"
+    psb = save_psb(tmp)
+    if psb:
+        # layered PSB (bg / P#_# / _B / _T / M_#) -> sliced by the game's extract_psb.py
+        (gdir / "levels").mkdir(exist_ok=True)
+        dest = gdir / "levels" / f"{slug}.psb"
+        shutil.copy(psb, dest)
+        ok, out = run_script(gdir, ["tools/extract_psb.py", str(dest), slug])
+        if not ok:
+            return dict(ok=False, message="extract_psb.py başarısız.", detail=out[-1500:])
+        track_path(dest)
+        track_path(assets / slug)
+        _register_hidden_pairs(assets, slug)
+        return dict(ok=True, message=f"PSB dilimlendi → Hidden Pairs. ({level})", detail=out[-800:])
+    # folder path: a ready manifest.json + layer PNGs
+    if not _require_manifest(tmp):
+        return dict(ok=False, message="Hidden Pairs: katmanlı PSB (bg/P#_#/_B/_T/M_#) ya da klasörde manifest.json + layer PNG'leri gerekli.")
+    _place_folder(assets / slug, tmp)
+    _register_hidden_pairs(assets, slug)
     return dict(ok=True, message=f"'{level}' eklendi → Hidden Pairs.")
 
 
@@ -513,8 +536,8 @@ ADAPTERS = {
                             "Klasör: bg.jpg + cat#.png + manifest.json.", adapt_find_the_cat),
     "Hidden Triple Match": ("Hidden Triple Match by topic", ["psb", "folder"],
                             "Katmanlı PSB (bg / h# / s#) veya klasör: bg.jpg + h#.png + manifest.json.", adapt_hidden_triple),
-    "Hidden Pairs":        ("Hidden Pairs", ["folder"],
-                            "Klasör: layer_*.png + manifest.json.", adapt_hidden_pairs),
+    "Hidden Pairs":        ("Hidden Pairs", ["psb", "folder"],
+                            "Katmanlı PSB (bg / P#_# çiftler / _B / _T / M_#) veya klasör: manifest.json + layer PNG'leri.", adapt_hidden_pairs),
     "Furnish Master":      ("Furnish Master", ["folder"],
                             "Klasör: scene.png + items_*.png + level.json.", adapt_furnish),
     "Sticker":             ("Sticker Oh Yeah", ["folder"],
