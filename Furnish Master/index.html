@@ -113,7 +113,8 @@
     <div class="overlay" id="winOv"><div class="ov-card">
       <div class="ov-emoji">🎮</div><div class="ov-title">Room Complete!</div>
       <div class="ov-sub">Every box unpacked — the gaming room is fully set up. 💙</div>
-      <button class="ov-btn" id="replayBtn">↺ Play Again</button>
+      <button class="ov-btn" id="winNextBtn">⏭ Sonraki Level</button>
+      <button class="ov-btn ghost" id="replayBtn">↺ Play Again</button>
     </div></div>
 
     <div class="toast" id="toast"></div>
@@ -272,7 +273,9 @@ function confetti(){const c=['#3568d8','#ffce4d','#e76f51','#5bbf6a','#9b8cff','
   for(let i=0;i<90;i++){const e=document.createElement('div');e.className='confetti';e.style.left=Math.random()*100+'%';
     e.style.background=c[i%c.length];e.style.animationDuration=(1.7+Math.random()*1.7)+'s';e.style.animationDelay=(Math.random()*.5)+'s';
     $('#screen').appendChild(e);setTimeout(()=>e.remove(),3800);}}
-function win(){ boxEl.style.display='none'; confetti(); setTimeout(()=>$('#winOv').classList.add('show'),700); }
+function win(){ boxEl.style.display='none'; confetti();
+  const nb=$('#winNextBtn'); if(nb) nb.style.display = LEVELS_LIST.length>1 ? '' : 'none';   // only when there's another level
+  setTimeout(()=>$('#winOv').classList.add('show'),700); }
 
 /* ---- controls ---- */
 $('#hintBtn').onclick=()=>{ const c=$('#hintBtn .cnt'); let n=+c.textContent; if(n<=0)return;
@@ -286,8 +289,9 @@ $('#closeSettingsBtn').onclick=()=>$('#settingsOv').classList.remove('show');
 $('#settingsOv').addEventListener('click',e=>{ if(e.target.id==='settingsOv') $('#settingsOv').classList.remove('show'); });
 $('#levelCreateBtn').onclick=()=>location.href='creator.html';
 $('#skipBtn').onclick=()=>{ $('#settingsOv').classList.remove('show'); boxEl.style.display='';
-  if(LEVELS_LIST.length>1){ loadLevel(levelIdx+1); toast('Sonraki level'); } else { startLevel(); world.reset(); toast('Tek level var'); } };
+  if(LEVELS_LIST.length>1){ loadLevel(levelIdx+1).then(()=>toast('Level '+(levelIdx+1)+' / '+LEVELS_LIST.length)); } else { startLevel(); world.reset(); toast('Tek level var'); } };
 $('#restartBtn').onclick=()=>{ $('#settingsOv').classList.remove('show'); boxEl.style.display=''; startLevel(); world.reset(); };
+$('#winNextBtn').onclick=()=>{ $('#winOv').classList.remove('show'); boxEl.style.display=''; loadLevel(levelIdx+1); };
 $('#replayBtn').onclick=()=>{ $('#winOv').classList.remove('show'); boxEl.style.display=''; startLevel(); world.reset(); };
 
 boot();
