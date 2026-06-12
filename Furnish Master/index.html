@@ -105,6 +105,7 @@
     <div class="overlay" id="settingsOv"><div class="ov-card">
       <div class="ov-emoji">⚙️</div><div class="ov-title">Settings</div>
       <button class="ov-btn" id="levelCreateBtn">🛠 Level Creator</button>
+      <button class="ov-btn ghost" id="skipBtn">⏭ Skip level</button>
       <button class="ov-btn ghost" id="restartBtn">↺ Restart level</button>
       <button class="ov-btn ghost" id="closeSettingsBtn">Close</button>
     </div></div>
@@ -118,11 +119,11 @@
     <div class="toast" id="toast"></div>
   </div>
 
-<script src="engine.js?v=11"></script>
+<script src="engine.js?v=12"></script>
 <script>
 const $=s=>document.querySelector(s);
 const viewport=$('#viewport'), worldEl=$('#world'), boxEl=$('#box'), sceneImg=$('#scene');
-const BASE='levels/yeni_level/';
+let LEVELS_LIST=['gaming_room'], levelIdx=0, BASE='levels/gaming_room/';
 let LEVEL=null, groups=[], gi=0, spawnCount=0;
 let world=makeWorld(viewport, worldEl, {minZoom:1, maxZoom:3, hMargin:0.03});  // fit the room to 94% width (3% side margins); can't shrink below fit
 const STAGE_F=[[.5,.74],[.33,.68],[.67,.68],[.4,.82],[.6,.82],[.26,.76],[.74,.76]];
@@ -130,7 +131,20 @@ const STAGE_F=[[.5,.74],[.33,.68],[.67,.68],[.4,.82],[.6,.82],[.26,.76],[.74,.76
 function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),1500);}
 
 async function boot(){
-  LEVEL = await (await fetch(BASE+'manifest.json')).json();
+  // discover the level list (folders); fall back to the single default
+  try{ const r=await fetch('levels/levels.json'); if(r.ok){ const d=await r.json();
+    const arr=Array.isArray(d)?d:(d&&d.levels); if(arr&&arr.length) LEVELS_LIST=arr; } }catch(e){}
+  await loadLevel(0);
+}
+/* load level #i from the list (wraps). Skips a level whose assets are missing. */
+async function loadLevel(i,_tries){
+  _tries=_tries||0;
+  levelIdx=((i%LEVELS_LIST.length)+LEVELS_LIST.length)%LEVELS_LIST.length;
+  BASE='levels/'+LEVELS_LIST[levelIdx]+'/';
+  let m;
+  try{ const r=await fetch(BASE+'manifest.json'); if(!r.ok) throw 0; m=await r.json(); }
+  catch(e){ if(_tries<LEVELS_LIST.length-1) return loadLevel(i+1,_tries+1); console.error('Furnish: no loadable level'); return; }
+  LEVEL=m;
   // BG flat colour becomes the whole gameplay background
   if(LEVEL.bgColor){ $('#screen').style.background=LEVEL.bgColor; $('.board-wrap').style.background=LEVEL.bgColor; }
   sceneImg.src = BASE+LEVEL.scene;
@@ -271,6 +285,8 @@ $('#settingsBtn').onclick=()=>$('#settingsOv').classList.add('show');
 $('#closeSettingsBtn').onclick=()=>$('#settingsOv').classList.remove('show');
 $('#settingsOv').addEventListener('click',e=>{ if(e.target.id==='settingsOv') $('#settingsOv').classList.remove('show'); });
 $('#levelCreateBtn').onclick=()=>location.href='creator.html';
+$('#skipBtn').onclick=()=>{ $('#settingsOv').classList.remove('show'); boxEl.style.display='';
+  if(LEVELS_LIST.length>1){ loadLevel(levelIdx+1); toast('Sonraki level'); } else { startLevel(); world.reset(); toast('Tek level var'); } };
 $('#restartBtn').onclick=()=>{ $('#settingsOv').classList.remove('show'); boxEl.style.display=''; startLevel(); world.reset(); };
 $('#replayBtn').onclick=()=>{ $('#winOv').classList.remove('show'); boxEl.style.display=''; startLevel(); world.reset(); };
 
