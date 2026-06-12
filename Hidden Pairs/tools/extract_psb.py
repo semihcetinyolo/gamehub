@@ -62,11 +62,16 @@ def main():
         l, t, r, b = bbox
         return r <= l or b <= t
 
-    def save(layer, fname, is_bg=False):
-        # Save at native bbox size. The game positions sprites by manifest w/h
-        # but renders them at the texture's NATIVE pixel size, so the two must
-        # match exactly — never resize here.
-        layer.composite().save(out / fname)
+    def save(layer, fname):
+        # Save at native bbox size — the game renders sprites at the texture's
+        # NATIVE pixel size (manifest w/h only sets the centre), so never resize.
+        # Opaque backgrounds go out as JPG: a full-res PNG bg is ~13 MB and made
+        # level switches crawl; JPG is ~0.5 MB with no visible loss.
+        img = layer.composite()
+        if fname.lower().endswith((".jpg", ".jpeg")):
+            img.convert("RGB").save(out / fname, quality=88)
+        else:
+            img.save(out / fname)
 
     layers = []            # manifest layer records, in draw order
     pairs = {}             # pid -> {copy -> {"main":id,"behind":id|None,"top":id|None}}
@@ -74,11 +79,11 @@ def main():
     skipped = []
     z = 0
 
-    def rec(layer, lid, role, **extra):
+    def rec(layer, lid, role, ext="png", **extra):
         nonlocal z
         l, t, r, b = layer.bbox
-        fname = lid + ".png"
-        save(layer, fname, is_bg=(role == "background"))
+        fname = f"{lid}.{ext}"
+        save(layer, fname)
         entry = {"id": lid, "file": fname, "x": l, "y": t, "w": r - l, "h": b - t,
                  "z": z, "role": role}
         entry.update(extra)
@@ -99,7 +104,7 @@ def main():
                 skipped.append(name + " (empty)")
             continue
         if BG_RE.match(key):
-            rec(layer, "BG", "background")
+            rec(layer, "BG", "background", ext="jpg")
             continue
         m = MAIN_RE.match(key)
         if m:
