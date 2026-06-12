@@ -1399,9 +1399,21 @@
         // Painter's algorithm: önce cast shadow (arkadakilere düşer), sonra sanat,
         // sonra örtülmeye bağlı multiply koyulaştırma (sadece görünen peek kısma uygulanır).
         sortedPile.forEach((item, i) => {
-            const px = item.body.position.x, py = item.body.position.y, pa = item.body.angle;
+            const bx = item.body.position.x, by = item.body.position.y, ba = item.body.angle;
+            // Render-konumu yumuşatma (flicker fix): yoğun yığın tam oturmadığı için
+            // cisimler durduk yerde mikro-titriyor. Hızlı hareket (>6px, düşme) varsa
+            // anında takip et; küçük kıpırtıyı düşük geçişli filtreyle süz. Fizik/çarpışma
+            // ve tıklama gerçek body pozisyonunu kullanmaya devam eder — sadece çizim süzülür.
+            if (item._rx === undefined || Math.hypot(bx - item._rx, by - item._ry) > 6) {
+                item._rx = bx; item._ry = by; item._ra = ba;
+            } else {
+                item._rx += (bx - item._rx) * 0.12;
+                item._ry += (by - item._ry) * 0.12;
+                item._ra += (ba - item._ra) * 0.12;
+            }
+            const px = item._rx, py = item._ry, pa = item._ra;
             // Performans: ekranın üstünde taşan (görünmeyen) item'ları çizme.
-            if (py < -120 || py > LOGICAL_H + 120) return;
+            if (by < -120 || by > LOGICAL_H + 120) return;
             drawCastShadow(ctx, item, px, py, pa);
             drawStickerElement(ctx, item, px, py, pa);
             // Örtülme koyuluğunu zamanla yumuşat: tek-frame örtülme değişimi (mikro
