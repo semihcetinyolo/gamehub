@@ -103,35 +103,38 @@ def main():
 
     for layer in leaves:
         name = (layer.name or "").strip()
+        # PSBs author these names with various separators (P1/1/B, P1 1 B,
+        # P1-1-B …); normalise everything to underscores before matching.
+        key = re.sub(r"[\s\\/.-]+", "_", name)
         if empty(layer.bbox):
             if name:
                 skipped.append(name + " (empty)")
             continue
-        if BG_RE.match(name):
+        if BG_RE.match(key):
             rec(layer, "BG", "background")
             continue
-        m = MAIN_RE.match(name)
+        m = MAIN_RE.match(key)
         if m:
             p, c = int(m.group(1)), int(m.group(2))
             pid, lid = f"P{p}", f"P{p}_{c}"
             rec(layer, lid, "main", pair=pid, copy=c)
             slot(pid, c)["main"] = lid
             continue
-        m = BEH_RE.match(name)
+        m = BEH_RE.match(key)
         if m:
             p, c = int(m.group(1)), int(m.group(2))
             pid, lid = f"P{p}", f"P{p}_{c}_B"
             rec(layer, lid, "behind", pair=pid, copy=c)
             slot(pid, c)["behind"] = lid
             continue
-        m = TOP_RE.match(name)
+        m = TOP_RE.match(key)
         if m:
             p, c = int(m.group(1)), int(m.group(2))
             pid, lid = f"P{p}", f"P{p}_{c}_T"
             rec(layer, lid, "top", pair=pid, copy=c)
             slot(pid, c)["top"] = lid
             continue
-        m = MASK_RE.match(name)
+        m = MASK_RE.match(key)
         if m:
             lid = f"M_{int(m.group(1))}"
             rec(layer, lid, "mask")
