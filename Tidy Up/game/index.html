@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Tidy Up</title>
+<link rel="stylesheet" href="styles.css?v=1" />
+</head>
+<body>
+  <div class="frame" id="frame">
+
+    <!-- ===== HUD ===== -->
+    <div class="hud">
+      <div class="hud-side hearts" id="hearts"></div>
+      <div class="counter" id="counter">
+        <span class="prog-num" id="found">0</span><span class="prog-den">/<span id="total">0</span></span>
+      </div>
+      <div class="hud-side right">
+        <button class="hud-btn" id="settingsBtn" title="Settings">⚙</button>
+      </div>
+    </div>
+
+    <!-- ===== BOARD ===== -->
+    <div class="board-wrap" id="boardWrap">
+      <div class="board" id="board">
+        <img class="bg" id="bg" alt="" draggable="false" />
+        <!-- sprite layers injected by game.js -->
+      </div>
+      <div class="hint-pill" id="hintPill">⇆ drag · pinch / scroll to zoom</div>
+    </div>
+
+    <!-- ===== TRAY ===== -->
+    <div class="tray-wrap">
+      <div class="tray" id="tray"><!-- slots injected --></div>
+    </div>
+
+    <!-- ===== SETTINGS MODAL ===== -->
+    <div class="overlay" id="settingsOverlay" hidden>
+      <div class="panel">
+        <h2>Settings</h2>
+        <button class="row-btn" id="versionToggle"><span>Tray items</span><span id="versionState">v1 · silhouette</span></button>
+        <button class="row-btn" id="soundToggle"><span>Sound</span><span id="soundState">On</span></button>
+        <button class="row-btn" id="restartBtn"><span>Restart level</span><span>⟳</span></button>
+        <button class="primary-btn" id="closeSettings">Resume</button>
+      </div>
+    </div>
+
+    <!-- ===== END MODAL ===== -->
+    <div class="overlay" id="endOverlay" hidden>
+      <div class="panel">
+        <h2 id="endTitle">You Win!</h2>
+        <p id="endMsg"></p>
+        <button class="primary-btn" id="endBtn">Play again</button>
+      </div>
+    </div>
+
+    <!-- floating +1 / feedback -->
+    <div class="fx-layer" id="fxLayer"></div>
+  </div>
+
+  <script src="game.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "tidyup",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-c", "import os,http.server,socketserver; os.chdir('game'); socketserver.TCPServer.allow_reuse_address=True; httpd=socketserver.TCPServer(('',int(os.environ.get('PORT','8000'))),http.server.SimpleHTTPRequestHandler); print('serving on',httpd.server_address); httpd.serve_forever()"],
+      "autoPort": true
+    }
+  ]
+}
