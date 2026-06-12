@@ -373,10 +373,32 @@ def adapt_match3(gdir, level, tmp):
 
 
 def adapt_pack_it_up(gdir, level, tmp):
+    slug = slugify(level).lower()
+    psb = save_psb(tmp)
+    if psb:
+        # layered PSB: numbered piece layers -> sliced PNGs + a ready LEVELS entry,
+        # produced by the game's psb_to_level.py (prints the JS entry on stdout).
+        try:
+            r = subprocess.run([PY, "psb_to_level.py", str(psb), level, "--slug", slug,
+                                "--out-dir", slug], cwd=str(gdir),
+                               capture_output=True, text=True, timeout=600)
+        except Exception as e:
+            return dict(ok=False, message=f"psb_to_level.py hata: {type(e).__name__}: {e}")
+        if r.returncode != 0:
+            return dict(ok=False, message="psb_to_level.py başarısız.",
+                        detail=((r.stderr or "") + (r.stdout or ""))[-1500:])
+        entry = (r.stdout or "").strip()
+        if not entry.startswith("{"):
+            return dict(ok=False, message="psb_to_level.py beklenen JS çıktısını üretmedi.",
+                        detail=((r.stderr or "") + (r.stdout or ""))[-1200:])
+        track_path(gdir / slug)
+        insert_into_array(gdir / "index.html", r"const\s+LEVELS\s*=\s*\[", "  " + entry + ",")
+        return dict(ok=True, message=f"PSB dilimlendi → Pack It Up. ({level})",
+                    detail=(r.stderr or "")[-400:])
+    # folder path: piece PNGs (2x3.png, 3x2.png, ...)
     pngs = list_pngs(tmp)
     if not pngs:
-        return dict(ok=False, message="PNG bulunamadı.")
-    slug = slugify(level).lower()
+        return dict(ok=False, message="Katmanlı PSB ya da parça PNG'leri (2x3.png, 3x2.png, 2x2.png, base.png) gerekli.")
     dest = gdir / slug
     dest.mkdir(exist_ok=True)
     track_path(dest)
@@ -569,8 +591,8 @@ ADAPTERS = {
                             "Katmanlı PSB (bg / o# / r# / s#).", adapt_find_the_strange),
     "Hidden Match3":       ("Hidden Match3", ["folder"],
                             "PNG klasörü — her PNG bir obje olur.", adapt_match3),
-    "Pack It Up":          ("Pack It Up", ["folder"],
-                            "Parça PNG'leri: 2x3.png, 3x2.png, 2x2.png, base.png …", adapt_pack_it_up),
+    "Pack It Up":          ("Pack It Up", ["psb", "folder"],
+                            "Katmanlı PSB (parçalar 1,2,3.. diye numaralı) veya parça PNG'leri (2x3.png, 3x2.png …).", adapt_pack_it_up),
     "Find The Cat":        ("Find The Cat", ["folder"],
                             "Klasör: bg.jpg + cat#.png + manifest.json.", adapt_find_the_cat),
     "Hidden Triple Match": ("Hidden Triple Match by topic", ["psb", "folder"],
