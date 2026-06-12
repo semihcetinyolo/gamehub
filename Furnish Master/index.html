@@ -212,7 +212,7 @@ function popNext(){
 function boxWorldPoint(){ const br=boxEl.getBoundingClientRect(); return world.screenToWorld(br.left+br.width/2, br.top+br.height*0.4); }
 
 /* ---- drag / snap / reveal ---- */
-function tolFor(it){ return Math.max(150, 0.42*Math.max(it.f.w, it.f.h)); }
+function tolFor(it){ return Math.max(320, 0.75*Math.max(it.f.w, it.f.h)); }   // forgiving snap: drop near the home, no need for a 1:1 placement
 function attachDrag(el,it){
   el.addEventListener('pointerdown',e=>{
     if(it.placed) return; e.stopPropagation();
