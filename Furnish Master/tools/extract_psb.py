@@ -19,6 +19,10 @@ from psd_tools import PSDImage
 SRC = sys.argv[1] if len(sys.argv) > 1 else 'levels/GamingRoom.psb'
 OUT = sys.argv[2] if len(sys.argv) > 2 else 'levels/gaming_room'
 LAYER_RE = re.compile(r'^\s*([fsmFSM])\s*0*(\d+)\s*$')
+GROUP_RE = re.compile(r'^\s*(?:group\s*)?0*(\d+)\s*$', re.I)   # "1", "01" or "Group 1"
+def group_num(layer):
+    mm = GROUP_RE.match(layer.name or '')
+    return int(mm.group(1)) if mm else None
 
 def main():
     psd = PSDImage.open(SRC)
@@ -26,7 +30,7 @@ def main():
     os.makedirs(os.path.join(OUT, 'layers'), exist_ok=True)
 
     tops = list(psd)                       # bottom -> top
-    groups = [l for l in tops if l.is_group() and l.name.strip().isdigit()]
+    groups = [l for l in tops if l.is_group() and group_num(l) is not None]
     bg = next((l for l in tops if not l.is_group() and l.name.strip().upper() == 'BG'), None)
     room_layer = next((l for l in tops if not l.is_group() and l.name.strip().lower() == 'room'), None)
 
@@ -65,7 +69,7 @@ def main():
                 'w': b[2]-b[0], 'h': b[3]-b[1], 'z': zmap[id(layer)]}
 
     out_groups = []
-    for g in sorted(groups, key=lambda l: int(l.name)):
+    for g in sorted(groups, key=group_num):
         kinds = defaultdict(dict)          # N -> {f,s,m: layer}
         for l in g:
             if l.is_group(): continue
@@ -83,7 +87,7 @@ def main():
             items.append({'key': str(n), 'f': f, 's': s, 'm': m,
                           'cx': round(cx,1), 'cy': round(cy,1)})
             print(f"  grp {g.name}  item {n:3d}  f{'+s' if s else '  '}{'+m' if m else ''}  home=({cx:.0f},{cy:.0f})")
-        out_groups.append({'id': g.name, 'items': items})
+        out_groups.append({'id': str(group_num(g)), 'items': items})
 
     manifest = {'sceneW': W, 'sceneH': H, 'scene': 'scene.png',
                 'bgColor': bg_hex, 'roomRect': room_rect, 'groups': out_groups}
