@@ -118,7 +118,7 @@
     <div class="toast" id="toast"></div>
   </div>
 
-<script src="engine.js?v=10"></script>
+<script src="engine.js?v=11"></script>
 <script>
 const $=s=>document.querySelector(s);
 const viewport=$('#viewport'), worldEl=$('#world'), boxEl=$('#box'), sceneImg=$('#scene');
@@ -174,7 +174,12 @@ function popNext(){
   const it=g.items.find(q=>!q.spawned); if(!it) return;
   it.spawned=true;
   const sf=STAGE_F[spawnCount%STAGE_F.length]; spawnCount++;
-  const slot=[sf[0]*LEVEL.sceneW, sf[1]*LEVEL.sceneH];
+  // drop the item where the player is currently looking: spread it across the
+  // VISIBLE viewport (works zoomed in or out), not at a fixed canvas spot.
+  const vr=viewport.getBoundingClientRect();
+  const tl=world.screenToWorld(vr.left, vr.top), brc=world.screenToWorld(vr.right, vr.bottom);
+  const fx=sf[0], fy=0.30+(sf[1]-0.68)*3.0;            // sf -> spread within the current view
+  const slot=[ tl.x + fx*(brc.x-tl.x), tl.y + fy*(brc.y-tl.y) ];
   const f=it.f;
   const el=document.createElement('img'); el.className='it floating pop draggable'; el.src=BASE+f.src;
   el.dataset.key=it.key; el.draggable=false;

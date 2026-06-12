@@ -28,8 +28,9 @@ function makeWorld(viewport, world, opts={}){
   // when zoomed IN past fit, keep the room covering the viewport (free pan, clamped — no rubber-band)
   function clampRoom(){ const r=vpRect();
     const rx0=fitRect.x*S, rx1=(fitRect.x+fitRect.w)*S, ry0=fitRect.y*S, ry1=(fitRect.y+fitRect.h)*S;
+    const head=r.height*0.16;   // vertical breathing room so the room top/bottom can reach the top/bottom of the screen instead of being clamped flush (lets the player use the upper area when zoomed)
     panX = (rx1-rx0)>=r.width ? Math.min(-rx0, Math.max(r.width-rx1, panX)) : r.width/2-(rx0+rx1)/2;
-    panY = (ry1-ry0)>=r.height ? Math.min(-ry0, Math.max(r.height-ry1, panY)) : r.height/2-(ry0+ry1)/2; }
+    panY = (ry1-ry0)>=r.height ? Math.min(-ry0+head, Math.max(r.height-ry1-head, panY)) : r.height/2-(ry0+ry1)/2; }
   function setZoom(nz,fcx,fcy){ const r=vpRect(); nz=Math.max(minZoom,Math.min(maxZoom,nz));
     if(fcx==null){fcx=r.left+r.width/2;fcy=r.top+r.height/2;}
     const fwx=(fcx-r.left-panX)/S, fwy=(fcy-r.top-panY)/S;
