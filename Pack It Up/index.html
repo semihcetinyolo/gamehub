@@ -24,8 +24,10 @@ body{width:390px;height:844px;margin:0 auto;overflow:hidden;font-family:'Nunito'
 .gc.filled{background:rgba(0,0,0,.38);border-color:rgba(0,0,0,.18);}
 .on-base .gc{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.18);}
 .on-base .gc.filled{background:rgba(0,0,0,.26);border-color:rgba(0,0,0,.16);box-shadow:inset 0 2px 6px rgba(0,0,0,.3);}
-.gc.ok{background:rgba(120,255,160,.35);border-color:rgba(120,255,160,.7);}
-.gc.no{background:rgba(255,80,80,.35);border-color:rgba(255,80,80,.6);}
+.bare .gc{background:rgba(80,55,30,.2);border:2px solid rgba(70,45,20,.22);border-radius:9px;box-shadow:inset 0 3px 7px rgba(0,0,0,.28);}
+.bare .gc.filled{background:rgba(50,32,16,.34);border-color:rgba(50,32,16,.3);}
+.gc.ok{background:rgba(90,230,130,.55)!important;border-color:rgba(40,200,100,.95)!important;box-shadow:inset 0 0 0 3px rgba(40,200,100,.5)!important;}
+.gc.no{background:rgba(255,90,90,.5)!important;border-color:rgba(230,60,60,.9)!important;box-shadow:none!important;}
 /* PLACED */
 #placed-layer{position:absolute;top:0;left:0;pointer-events:none;z-index:4;}
 #snap-shadow{position:absolute;pointer-events:none;z-index:2;border-radius:10px;opacity:0;transition:opacity .12s;}
@@ -697,16 +699,64 @@ const PACK1_PIECES=[
 function packItems(dir){return PACK1_PIECES.map(p=>({img:dir+'/'+p[0]+'.png',w:p[1],h:p[2]}));}
 
 const LEVELS=[
+{title:'Kediler',emoji:'🐱',sub:'Kedileri aktif gride yerleştir!',
+ bg:'linear-gradient(180deg,#efe6d6 0%,#d6c1a3 100%)',rows:8,cols:6,
+ bareGrid:true,
+ gridMap:[
+  [1,1,1,1,1,1],
+  [1,1,1,1,1,1],
+  [1,1,0,0,1,1],
+  [1,1,0,0,1,1],
+  [1,1,0,0,1,1],
+  [1,1,0,0,1,1],
+  [1,1,1,1,1,1],
+  [1,1,1,1,1,1],
+ ],
+ items:[
+  {img:'cat/1.png', w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.05,dy:0.03,iw:0.91,ih:1.96}},
+  {img:'cat/2.png', w:3,h:2,cells:[[0,0],[0,1],[0,2],[1,1]],art:{dx:0.08,dy:0.04,iw:2.85,ih:1.94}},
+  {img:'cat/3.png', w:3,h:2,cells:[[0,0],[0,1],[1,0],[1,1],[1,2]],art:{dx:0.02,dy:0.26,iw:3.04,ih:1.74}},
+  {img:'cat/4.png', w:1,h:2,cells:[[0,0],[1,0]],art:{dx:-0.03,dy:0.06,iw:1.03,ih:1.93}},
+  {img:'cat/5.png', w:2,h:2,cells:[[0,0],[0,1],[1,0]],art:{dx:-0.10,dy:0.05,iw:2.22,ih:1.89}},
+  {img:'cat/6.png', w:2,h:3,cells:[[0,1],[1,0],[1,1],[2,1]],art:{dx:0.26,dy:0.01,iw:1.76,ih:3.05}},
+  {img:'cat/7.png', w:2,h:3,cells:[[0,1],[1,0],[1,1],[2,1]],art:{dx:0.23,dy:0.12,iw:1.76,ih:2.76}},
+  {img:'cat/8.png', w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.02,dy:0.14,iw:0.98,ih:1.80}},
+  {img:'cat/9.png', w:4,h:3,cells:[[0,0],[1,0],[1,1],[1,2],[1,3],[2,0],[2,1]],art:{dx:-0.25,dy:0.00,iw:4.20,ih:2.99}},
+  {img:'cat/10.png',w:4,h:3,cells:[[0,3],[1,2],[1,3],[2,0],[2,1],[2,2],[2,3]],art:{dx:0.14,dy:0.13,iw:3.83,ih:2.74}},
+ ],
+ winEmoji:'🐱',winTitle:'Miyav!',winDesc:'Tüm kediler yerleşti! 🐾'},
+{title:'Vahşi Batı',emoji:'🤠',sub:'Eşyaları aktif gride yerleştir!',
+ bg:'linear-gradient(180deg,#f3dcab 0%,#dcb277 100%)',rows:8,cols:6,
+ bareGrid:true,
+ gridMap:[
+  [1,1,1,1,1,1],
+  [1,1,1,1,1,1],
+  [1,1,0,1,1,1],
+  [1,1,1,0,1,1],
+  [1,1,1,1,1,1],
+  [1,1,1,1,1,1],
+  [1,1,1,1,1,1],
+  [1,1,1,1,1,1],
+ ],
+ items:[
+  {img:'wildwest/1.png', w:3,h:2,cells:[[0,0],[0,1],[0,2],[1,0]]},
+  {img:'wildwest/2.png', w:3,h:2,cells:[[0,0],[0,1],[0,2],[1,1]]},
+  {img:'wildwest/3.png', w:1,h:3,cells:[[0,0],[1,0],[2,0]]},
+  {img:'wildwest/4.png', w:5,h:2,cells:[[0,1],[0,2],[0,3],[1,0],[1,1],[1,3],[1,4]]},
+  {img:'wildwest/5.png', w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]]},
+  {img:'wildwest/6.png', w:2,h:5,cells:[[0,0],[1,0],[1,1],[2,0],[2,1],[3,0],[3,1],[4,1]]},
+  {img:'wildwest/7.png', w:2,h:5,cells:[[0,0],[1,0],[1,1],[2,0],[2,1],[3,0],[3,1],[4,1]]},
+  {img:'wildwest/8.png', w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]]},
+  {img:'wildwest/9.png', w:1,h:1,cells:[[0,0]]},
+  {img:'wildwest/10.png',w:2,h:1,cells:[[0,0],[0,1]]},
+  {img:'wildwest/11.png',w:1,h:1,cells:[[0,0]]},
+ ],
+ winEmoji:'🤠',winTitle:'Yee-haw!',winDesc:'Vahşi Batı bölümü tamam! 🌵'},
 {id:0,title:'Yaz Tatili',emoji:'☀️',sub:'Valize yaz tatili eşyalarını sığdır!',
  bg:'linear-gradient(180deg,#ffe3bc 0%,#ffc79a 100%)',
  bagColor:'#0277bd',bagType:'suitcase',handleColor:'#f57c00',rows:9,cols:6,
  slim:true,frame:'glossy',items:packItems('level1'),sol:[],
  winEmoji:'🌴',winTitle:'Harika!',winDesc:'Yaz tatili valizin hazır! ✈️',btnText:'Level 2\'ye Geç →'},
-{id:1,title:'Yaz Tatili • Suluboya',emoji:'🎨',sub:'Suluboya eşyaları valize yerleştir!',
- bg:'linear-gradient(180deg,#f4ecdb 0%,#e7d3bd 100%)',rows:9,cols:6,
- baseImg:'level1_2/base.png',baseW:792,baseH:1504,face:{l:0.11,t:0.22,r:0.89,b:0.83},
- items:packItems('level1_2'),sol:[],
- winEmoji:'🖼️',winTitle:'Çok Güzel!',winDesc:'Suluboya valizin hazır! 🎨',btnText:'Level 3\'e Geç →'},
 {id:2,title:'Yaz Tatili • Kontur',emoji:'🖌️',sub:'Konturlu suluboya eşyaları yerleştir!',
  bg:'linear-gradient(180deg,#f4ecdb 0%,#e7d3bd 100%)',rows:9,cols:6,
  baseImg:'level1_2wo/base.png',baseW:792,baseH:1504,face:{l:0.11,t:0.22,r:0.89,b:0.83},
@@ -717,83 +767,11 @@ const LEVELS=[
  baseImg:'level1_3/base.png',baseW:588,baseH:1121,face:{l:0.11,t:0.21,r:0.89,b:0.84},
  items:packItems('level1_3'),sol:[],
  winEmoji:'🌟',winTitle:'Süper!',winDesc:'Çıkartma valizin hazır! ✨',btnText:'Level 5\'e Geç →'},
-{id:4,title:'Kış Tatili',emoji:'❄️',sub:'Kış tatili eşyalarını bavula sığdır!',
- bg:'linear-gradient(158deg,#1a237e 0%,#283593 50%,#4a148c 100%)',
- bagColor:'#283593',bagType:'suitcase',handleColor:'#607d8b',rows:9,cols:6,
- items:[
-  {key:'sweater',       cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2]]},
-  {key:'jacket',        cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2]]},
-  {key:'scarf',         cells:[[0,0],[0,1],[0,2]]},
-  {key:'gloves',        cells:[[0,0],[0,1],[1,0],[1,1]]},
-  {key:'beanie',        cells:[[0,0],[0,1],[1,0],[1,1]]},
-  {key:'ski_goggles',   cells:[[0,0],[0,1]]},
-  {key:'ski_boots',     cells:[[0,0],[0,1]]},
-  {key:'thermal_pants', cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2]]},
-  {key:'earmuffs',      cells:[[0,0],[0,1]]},
-  {key:'thermos',       cells:[[0,0],[1,0]]},
-  {key:'wool_socks',    cells:[[0,0],[0,1]]},
-  {key:'hot_water_bottle',cells:[[0,0],[0,1],[1,0],[1,1]]},
-  {key:'ski_helmet',    cells:[[0,0],[0,1],[1,0],[1,1]]},
-  {key:'snow_boots',    cells:[[0,0],[0,1],[1,0],[1,1]]},
- ],
- sol:[{r:0,c:0},{r:0,c:3},{r:2,c:3},{r:3,c:0},{r:3,c:2},{r:3,c:4},{r:4,c:4},
-      {r:5,c:0},{r:5,c:3},{r:5,c:5},{r:6,c:3},{r:7,c:0},{r:7,c:2},{r:7,c:4}],
- winEmoji:'⛄',winTitle:'Bravo!',winDesc:'Kış tatili valizin hazır! ⛷️',btnText:'Level 6\'ya Geç →'},
-{id:5,title:'Okul Çantası',emoji:'🎒',sub:'Eşyaları sırt çantana yerleştir!',
- bg:'linear-gradient(158deg,#1b5e20 0%,#2e7d32 50%,#33691e 100%)',
- bagColor:'#2e7d32',bagType:'backpack',handleColor:'#1b5e20',rows:9,cols:6,
- items:[
-  {key:'textbook',        cells:[[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]]},
-  {key:'pencil_case',     cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2]]},
-  {key:'eraser',          cells:[[0,0],[1,0]]},
-  {key:'notebook',        cells:[[0,0],[0,1],[1,0],[1,1]]},
-  {key:'scissors',        cells:[[0,0],[0,1]]},
-  {key:'ruler',           cells:[[0,0],[0,1],[0,2],[0,3]]},
-  {key:'lunch_box',       cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2]]},
-  {key:'calculator',      cells:[[0,0],[0,1],[1,0],[1,1]]},
-  {key:'glue',            cells:[[0,0],[1,0]]},
-  {key:'colored_pencils', cells:[[0,0],[0,1],[0,2],[0,3]]},
-  {key:'sharpener',       cells:[[0,0],[0,1]]},
-  {key:'compass',         cells:[[0,0],[0,1],[1,0],[1,1]]},
-  {key:'sticky_notes',    cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2]]},
-  {key:'pencil',          cells:[[0,0],[1,0]]},
- ],
- sol:[{r:0,c:4},{r:0,c:0},{r:0,c:3},{r:2,c:0},{r:2,c:2},{r:3,c:2},
-      {r:4,c:0},{r:4,c:3},{r:4,c:5},{r:6,c:0},{r:6,c:4},{r:7,c:0},{r:7,c:2},{r:7,c:5}],
- winEmoji:'📚',winTitle:'Süper!',winDesc:'Okul çantası hazır! 🎉',btnText:'Level 7\'ye Geç →'},
-{id:6,title:'Makyaj Çantası',emoji:'💄',sub:'Makyaj malzemelerini çantaya yerleştir!',
- bg:'linear-gradient(158deg,#880e4f 0%,#c2185b 50%,#ad1457 100%)',
- bagColor:'#c2185b',bagType:'makeup',handleColor:'#880e4f',rows:9,cols:6,
- items:[
-  {key:'eyeshadow_palette',cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2]]},
-  {key:'lipstick',          cells:[[0,0],[1,0]]},
-  {key:'mascara',           cells:[[0,0],[1,0],[2,0]]},
-  {key:'perfume',           cells:[[0,0],[1,0],[2,0]]},
-  {key:'blush',             cells:[[0,0],[0,1],[1,0],[1,1]]},
-  {key:'powder',            cells:[[0,0],[0,1],[1,0],[1,1]]},
-  {key:'foundation',        cells:[[0,0],[1,0]]},
-  {key:'nail_polish',       cells:[[0,0],[1,0]]},
-  {key:'brush',             cells:[[0,0],[0,1]]},
-  {key:'eyeliner',          cells:[[0,0],[0,1]]},
-  {key:'mirror',            cells:[[0,0],[0,1],[1,0],[1,1]]},
-  {key:'concealer',         cells:[[0,0],[1,0]]},
-  {key:'lip_liner',         cells:[[0,0],[1,0]]},
-  {key:'cotton_pads',       cells:[[0,0],[0,1]]},
-  {key:'tweezers',          cells:[[0,0],[0,1]]},
-  {key:'face_roller',       cells:[[0,0],[0,1],[1,0],[1,1]]},
-  {key:'mascara_wand',      cells:[[0,0],[1,0]]},
-  {key:'setting_spray',     cells:[[0,0],[0,1],[1,0],[1,1]]},
-  {key:'blotting_paper',    cells:[[0,0],[1,0]]},
- ],
- sol:[{r:0,c:0},{r:0,c:3},{r:0,c:4},{r:0,c:5},{r:2,c:0},{r:2,c:2},
-      {r:3,c:4},{r:3,c:5},{r:4,c:0},{r:4,c:2},{r:5,c:0},{r:5,c:2},
-      {r:5,c:3},{r:5,c:4},{r:6,c:4},{r:7,c:0},{r:7,c:2},{r:7,c:3},{r:7,c:5}],
- winEmoji:'💄',winTitle:'Harika!',winDesc:'Makyaj çantası hazır! 💋',btnText:'🔄 Baştan Oyna'},
 ];
 
 /* ── CONSTANTS & STATE ── */
 const W=390,H=844,BBORDER=3,SS=0.9;
-let lvl,grid,items,CELL=56,baseLay=null;
+let lvl,grid,items,CELL=56,baseLay=null,curIdx=0;
 let BPAD_H=24,BPAD_V=10;
 let GBODYW=W,GBORDER=BBORDER; // suitcase body width + wall thickness (thin for slim levels)
 let gridOffX=0,gridOffY=0; // grid position relative to #scr
@@ -811,7 +789,14 @@ function artHTML(item){return item.img?`<img src="${item.img}" draggable="false"
 function injectArt(host,item,wPx,hPx){
   host.innerHTML=artHTML(item);
   const ch=host.querySelector('svg,img');
-  ch.style.cssText=`width:${wPx}px;height:${hPx}px;display:block;`+(item.img?'object-fit:contain;':'');
+  if(item.img&&item.art){
+    // place the art exactly as authored over its footprint (offset+size in cells), allow overflow
+    const cell=wPx/item.w, a=item.art;
+    host.style.overflow='visible';
+    ch.style.cssText=`position:absolute;left:${a.dx*cell}px;top:${a.dy*cell}px;width:${a.iw*cell}px;height:${a.ih*cell}px;display:block;`;
+  }else{
+    ch.style.cssText=`width:${wPx}px;height:${hPx}px;display:block;`+(item.img?'object-fit:contain;':'');
+  }
 }
 function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
 function hrgb(h){return[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];}
@@ -820,8 +805,12 @@ function darken(hex,p){if(!hex.startsWith('#'))return hex;const[r,g,b]=hrgb(hex)
 
 /* ── INIT ── */
 function initLevel(idx){
+  curIdx=idx;
   lvl=LEVELS[idx];
-  if(lvl.baseImg){
+  if(lvl.bareGrid){
+    // Bare board defined by a 0/1 active map (from map generator); sized like level 1.
+    CELL=Math.min(Math.floor((W-48)/lvl.cols),Math.floor((H-120)/lvl.rows));
+  }else if(lvl.baseImg){
     // Custom portrait suitcase image: fit fully on-screen (small margin); grid fills its front face.
     const f=lvl.face,M=8,VM=8;
     const scale=Math.min((W-2*M)/lvl.baseW,(H-2*VM)/lvl.baseH);
@@ -843,13 +832,16 @@ function initLevel(idx){
   }
   BPAD_H=Math.floor((GBODYW-GBORDER*2-lvl.cols*CELL)/2);
   grid=Array.from({length:lvl.rows},()=>Array(lvl.cols).fill(null));
+  if(lvl.gridMap){ // mark inactive (hole) cells as blocked so pieces can't be placed there
+    for(let r=0;r<lvl.rows;r++)for(let c=0;c<lvl.cols;c++) if(!lvl.gridMap[r][c]) grid[r][c]='X';
+  }
   items=lvl.items.map((d,i)=>{
     let cells=d.cells;
     if(!cells&&d.w){cells=[];for(let r=0;r<d.h;r++)for(let c=0;c<d.w;c++)cells.push([r,c]);}
-    return{id:i,key:d.key,img:d.img,w:d.w,h:d.h,cells,placed:false,row:0,col:0,sx:0,sy:0,srot:0,el:null};
+    return{id:i,key:d.key,img:d.img,art:d.art,w:d.w,h:d.h,cells,placed:false,row:0,col:0,sx:0,sy:0,srot:0,el:null};
   });
   document.getElementById('bg').style.background=lvl.bg;
-  document.getElementById('h-lv').textContent=`LEVEL ${lvl.id+1}`;
+  document.getElementById('h-lv').textContent=`LEVEL ${idx+1}`;
   document.getElementById('global-placed').innerHTML='';
   buildBag();
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
@@ -883,8 +875,27 @@ function buildBagBase(){
   area.appendChild(gw);
 }
 
+/* ── BARE BOARD (active-cell grid from map generator, no suitcase) ── */
+function buildBagGrid(){
+  const area=document.getElementById('bag-area');
+  area.innerHTML=''; area.style.top='0px';
+  const gridW=lvl.cols*CELL, gridH=lvl.rows*CELL;
+  const gx=Math.round((W-gridW)/2), gy=Math.round((H-gridH)/2);
+  const gw=mkEl('div');gw.id='grid-wrap';gw.style.cssText=`position:absolute;left:${gx}px;top:${gy}px;`;
+  const g=mkEl('div');g.id='grid';g.className='bare';
+  g.style.cssText=`display:grid;position:relative;z-index:1;
+    grid-template-columns:repeat(${lvl.cols},${CELL}px);grid-template-rows:repeat(${lvl.rows},${CELL}px);`;
+  for(let r=0;r<lvl.rows;r++)for(let c=0;c<lvl.cols;c++){
+    if(lvl.gridMap[r][c]){const d=mkEl('div','gc');d.dataset.r=r;d.dataset.c=c;d.style.gridRow=(r+1);d.style.gridColumn=(c+1);g.appendChild(d);}
+  }
+  gw.appendChild(g);
+  const ss=mkEl('div');ss.id='snap-shadow';gw.appendChild(ss);
+  area.appendChild(gw);
+}
+
 /* ── BAG BUILD ── */
 function buildBag(){
+  if(lvl.bareGrid)return buildBagGrid();
   if(lvl.baseImg)return buildBagBase();
   const area=document.getElementById('bag-area');
   area.innerHTML='';
@@ -1183,7 +1194,8 @@ function canPlace(item,row,col){
 function highlight(overGrid,row,col,ok){
   document.querySelectorAll('.gc').forEach(c=>c.classList.remove('ok','no'));
   const sh=document.getElementById('snap-shadow');
-  if(!overGrid||!dragItem){if(sh)sh.style.opacity='0';return;}
+  if(sh)sh.style.opacity='0'; // no spreading rectangle — highlight only the exact snap cells
+  if(!overGrid||!dragItem)return;
   dragItem.cells.forEach(([r,c])=>{
     const gr=row+r,gc=col+c;
     if(gr>=0&&gr<lvl.rows&&gc>=0&&gc<lvl.cols){
@@ -1191,15 +1203,6 @@ function highlight(overGrid,row,col,ok){
       if(cell)cell.classList.add(ok?'ok':'no');
     }
   });
-  if(sh&&dragItem){
-    const[vw,vh]=dimOf(dragItem);
-    sh.style.cssText=`position:absolute;pointer-events:none;z-index:2;border-radius:10px;
-      left:${col*CELL}px;top:${row*CELL}px;
-      width:${vw*CELL}px;height:${vh*CELL}px;
-      background:${ok?'rgba(100,255,140,.18)':'rgba(255,60,60,.14)'};
-      box-shadow:0 8px 22px rgba(0,0,0,${ok?.28:.12});
-      opacity:1;transition:opacity .12s;`;
-  }
 }
 
 function drop(x,y){
@@ -1250,11 +1253,12 @@ function checkWin(){
     document.getElementById('w-em').textContent=lvl.winEmoji;
     document.getElementById('w-ti').textContent=lvl.winTitle;
     document.getElementById('w-de').textContent=lvl.winDesc;
-    document.getElementById('w-btn').textContent=lvl.btnText;
+    const ni=(curIdx+1)%LEVELS.length;
+    document.getElementById('w-btn').textContent=ni===0?'🔄 Baştan Oyna':`Level ${ni+1} →`;
     document.getElementById('win').classList.add('show');
     document.getElementById('w-btn').onclick=()=>{
       document.getElementById('win').classList.remove('show');
-      initLevel((lvl.id+1)%LEVELS.length);
+      initLevel(ni);
     };
   },500);
 }
@@ -1285,7 +1289,7 @@ function playFanfare(){try{const ctx=new(window.AudioContext||window.webkitAudio
 
 document.getElementById('skip-btn').onclick=()=>{
   document.getElementById('win').classList.remove('show');
-  initLevel((lvl.id+1)%LEVELS.length);
+  initLevel((curIdx+1)%LEVELS.length);
 };
 initLevel(0);
 </script>
