@@ -31,14 +31,10 @@ ROOT = Path(__file__).resolve().parents[1]      # the "Hidden Pairs" game dir
 ASSETS = ROOT / "assets"
 
 BG_RE   = re.compile(r"^bg$", re.I)
-MASK_RE = re.compile(r"^m_?(\d+)$", re.I)             # M_0 / M0
+MASK_RE = re.compile(r"^m(?:_?\d+)?$", re.I)          # M / M0 / M_0 / M_12
 MAIN_RE = re.compile(r"^p(\d+)_(\d+)$", re.I)         # P1_2
 BEH_RE  = re.compile(r"^p(\d+)_(\d+)_b$", re.I)       # P1_2_B
 TOP_RE  = re.compile(r"^p(\d+)_(\d+)_t$", re.I)       # P1_2_T
-
-BG_MAX = 2048          # cap the background's longest side
-ITEM_MAX_CANVAS = 3000  # downscale item PNGs only when the canvas is huge
-
 
 def main():
     if len(sys.argv) < 2:
@@ -49,7 +45,6 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
 
     psd = PSDImage.open(str(psb_path))
-    cw, ch = psd.width, psd.height
 
     # flatten to leaf layers in draw order (bottom -> top), descending into groups
     leaves = []
@@ -67,18 +62,11 @@ def main():
         l, t, r, b = bbox
         return r <= l or b <= t
 
-    item_scale = min(1.0, ITEM_MAX_CANVAS / max(cw, ch))
-
     def save(layer, fname, is_bg=False):
-        img = layer.composite()
-        if is_bg:
-            sc = min(1.0, BG_MAX / max(img.width, img.height))
-        else:
-            sc = item_scale
-        if sc < 1.0:
-            img = img.resize((max(1, int(img.width * sc)), max(1, int(img.height * sc))),
-                             Image.LANCZOS)
-        img.save(out / fname)
+        # Save at native bbox size. The game positions sprites by manifest w/h
+        # but renders them at the texture's NATIVE pixel size, so the two must
+        # match exactly — never resize here.
+        layer.composite().save(out / fname)
 
     layers = []            # manifest layer records, in draw order
     pairs = {}             # pid -> {copy -> {"main":id,"behind":id|None,"top":id|None}}
@@ -134,9 +122,8 @@ def main():
             rec(layer, lid, "top", pair=pid, copy=c)
             slot(pid, c)["top"] = lid
             continue
-        m = MASK_RE.match(key)
-        if m:
-            lid = f"M_{int(m.group(1))}"
+        if MASK_RE.match(key):
+            lid = f"M_{len(masks)}"   # masks are often all named "M"; number them in draw order
             rec(layer, lid, "mask")
             masks.append(lid)
             continue
@@ -160,7 +147,24 @@ def main():
         sys.exit("ERROR: no complete pairs found. Items must be named P<pair>_<copy>, "
                  "e.g. P1_1 and P1_2. Skipped: " + ", ".join(skipped[:20]))
 
-    manifest = {"canvas": {"width": cw, "height": ch}, "background": "BG",
+    # Build a SQUARE canvas that fully contains the scene, with the content
+    # centered. The game uses worldSize = canvas.width and fits it to the
+    # viewport HEIGHT, so the canvas side must be >= the scene's height (else the
+    # bottom of the scene — and the items there — fall outside the view). The
+    # PSB's own canvas size is ignored: it may not match the artwork bounds.
+    minx = min(l["x"] for l in layers)
+    miny = min(l["y"] for l in layers)
+    maxx = max(l["x"] + l["w"] for l in layers)
+    maxy = max(l["y"] + l["h"] for l in layers)
+    content_w, content_h = maxx - minx, maxy - miny
+    side = max(content_w, content_h)
+    ox = -minx + (side - content_w) // 2
+    oy = -miny + (side - content_h) // 2
+    for l in layers:
+        l["x"] += ox
+        l["y"] += oy
+
+    manifest = {"canvas": {"width": side, "height": side}, "background": "BG",
                 "layers": layers, "pairs": pairs_out, "masks": masks}
     (out / "manifest.json").write_text(json.dumps(manifest, indent=1))
 

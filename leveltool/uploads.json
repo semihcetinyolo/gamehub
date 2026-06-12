@@ -33,5 +33,23 @@
       "rerun": null
     }
   ],
-  "Find The Cat": []
+  "Find The Cat": [],
+  "Hidden Pairs": [
+    {
+      "id": "lv_6979c0ca2e",
+      "name": "Yeni Level",
+      "ts": "2026-06-12T10:15:10",
+      "paths": [
+        "Hidden Pairs/levels/yeni_level.psb",
+        "Hidden Pairs/assets/yeni_level"
+      ],
+      "edits": [
+        {
+          "file": "Hidden Pairs/assets/levels.json",
+          "json_list_remove": "yeni_level"
+        }
+      ],
+      "rerun": null
+    }
+  ]
 }
