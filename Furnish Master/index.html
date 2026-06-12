@@ -105,7 +105,6 @@
     <div class="overlay" id="settingsOv"><div class="ov-card">
       <div class="ov-emoji">⚙️</div><div class="ov-title">Settings</div>
       <button class="ov-btn" id="levelCreateBtn">🛠 Level Creator</button>
-      <button class="ov-btn ghost" id="skipBtn">⏭ Skip level</button>
       <button class="ov-btn ghost" id="restartBtn">↺ Restart level</button>
       <button class="ov-btn ghost" id="closeSettingsBtn">Close</button>
     </div></div>
@@ -123,7 +122,7 @@
 <script>
 const $=s=>document.querySelector(s);
 const viewport=$('#viewport'), worldEl=$('#world'), boxEl=$('#box'), sceneImg=$('#scene');
-const BASE='levels/yeni_level/';
+const BASE='levels/gaming_room/';
 let LEVEL=null, groups=[], gi=0, spawnCount=0;
 let world=makeWorld(viewport, worldEl, {minZoom:1, maxZoom:3, hMargin:0.03});  // fit the room to 94% width (3% side margins); can't shrink below fit
 const STAGE_F=[[.5,.74],[.33,.68],[.67,.68],[.4,.82],[.6,.82],[.26,.76],[.74,.76]];
@@ -267,7 +266,6 @@ $('#settingsBtn').onclick=()=>$('#settingsOv').classList.add('show');
 $('#closeSettingsBtn').onclick=()=>$('#settingsOv').classList.remove('show');
 $('#settingsOv').addEventListener('click',e=>{ if(e.target.id==='settingsOv') $('#settingsOv').classList.remove('show'); });
 $('#levelCreateBtn').onclick=()=>location.href='creator.html';
-$('#skipBtn').onclick=()=>{ $('#settingsOv').classList.remove('show'); boxEl.style.display=''; startLevel(); world.reset(); toast('Skipped → next level'); };
 $('#restartBtn').onclick=()=>{ $('#settingsOv').classList.remove('show'); boxEl.style.display=''; startLevel(); world.reset(); };
 $('#replayBtn').onclick=()=>{ $('#winOv').classList.remove('show'); boxEl.style.display=''; startLevel(); world.reset(); };
 
