@@ -434,9 +434,23 @@ def _require_manifest(tmp: Path):
 
 
 def adapt_find_the_cat(gdir, level, tmp):
-    if not _require_manifest(tmp):
-        return dict(ok=False, message="Find The Cat: pozisyonlar için klasörde manifest.json gerekli (bg.jpg + cat#.png + manifest.json).")
     slug = slugify(level)
+    psb = save_psb(tmp)
+    if psb:
+        # layered PSB (Background + 'cat' layers) -> sliced by the game's extract.py
+        (gdir / "levels").mkdir(exist_ok=True)
+        dest = gdir / "levels" / f"{slug}.psb"
+        shutil.copy(psb, dest)
+        ok, out = run_script(gdir / "game", ["tools/extract.py", str(dest), slug])
+        if not ok:
+            return dict(ok=False, message="extract.py başarısız.", detail=out[-1500:])
+        track_path(dest)
+        track_path(gdir / "game" / "assets" / slug)
+        insert_into_array(gdir / "game" / "game.js", r"const\s+LEVELS\s*=\s*\[",
+                          f"  'assets/{slug}/manifest.json',")
+        return dict(ok=True, message=f"PSB dilimlendi → Find The Cat. ({level})", detail=out[-800:])
+    if not _require_manifest(tmp):
+        return dict(ok=False, message="Find The Cat: katmanlı PSB (Background + 'cat' katmanları) ya da klasörde manifest.json gerekli (bg.jpg + cat#.png + manifest.json).")
     _place_folder(gdir / "game" / "assets" / slug, tmp)
     insert_into_array(gdir / "game" / "game.js", r"const\s+LEVELS\s*=\s*\[",
                       f"  'assets/{slug}/manifest.json',")
@@ -593,8 +607,8 @@ ADAPTERS = {
                             "PNG klasörü — her PNG bir obje olur.", adapt_match3),
     "Pack It Up":          ("Pack It Up", ["psb", "folder"],
                             "Katmanlı PSB (parçalar 1,2,3.. diye numaralı) veya parça PNG'leri (2x3.png, 3x2.png …).", adapt_pack_it_up),
-    "Find The Cat":        ("Find The Cat", ["folder"],
-                            "Klasör: bg.jpg + cat#.png + manifest.json.", adapt_find_the_cat),
+    "Find The Cat":        ("Find The Cat", ["psb", "folder"],
+                            "Katmanlı PSB (Background + 'cat' katmanları) veya klasör: bg.jpg + cat#.png + manifest.json.", adapt_find_the_cat),
     "Hidden Triple Match": ("Hidden Triple Match by topic", ["psb", "folder"],
                             "Katmanlı PSB (bg / h# / s#) veya klasör: bg.jpg + h#.png + manifest.json.", adapt_hidden_triple),
     "Hidden Pairs":        ("Hidden Pairs", ["psb", "folder"],
