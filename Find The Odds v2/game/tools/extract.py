@@ -110,7 +110,11 @@ def export_level(psb_path):
     # (stay until the level ends). Layers are named "rs" (or rsN), often colliding
     # like masks, so enumerate them and store an explicit z = running draw-order
     # rank so they sit at their natural depth among the items.
-    rank = si = 0
+    # statics (rs) + masks (m): both use a colliding name, so enumerate them and
+    # store an explicit z = the running draw-order rank — so each sits at its TRUE
+    # PSB depth (a mask occludes only the items drawn below it, not everything).
+    # Single pass keeps z consistent with the odds/traps/shadows rank.
+    rank = si = mi = 0
     for layer in leaves:
         nl = (layer.name or "").strip().lower()
         if O_RE.match(nl) or R_RE.match(nl) or S_RE.match(nl):
@@ -119,22 +123,13 @@ def export_level(psb_path):
             si += 1
             fn = "rs{}".format(si)
             save_layer(layer, fn + ".png")
-            rec = norm(layer.bbox)
-            rec["name"] = fn
-            rec["z"] = rank
+            rec = norm(layer.bbox); rec["name"] = fn; rec["z"] = rank
             manifest["statics"][fn] = rec
-
-    # masks: foreground overlays. Every one is named just "m", so we can't key
-    # them by name — enumerate in draw order and emit m1.png, m2.png, ...
-    # They are always shown in-game and never interactive (see game.js).
-    mi = 0
-    for layer in leaves:           # iterate leaves, not the name-keyed dict (names collide)
-        if layer.name == "m":
+        elif nl == "m":
             mi += 1
-            fname = "m{}".format(mi)
-            save_layer(layer, fname + ".png")
-            rec = norm(layer.bbox)
-            rec["name"] = fname
+            fn = "m{}".format(mi)
+            save_layer(layer, fn + ".png")
+            rec = norm(layer.bbox); rec["name"] = fn; rec["z"] = rank
             manifest["masks"].append(rec)
 
     (out / "manifest.json").write_text(json.dumps(manifest, indent=1))

@@ -186,10 +186,10 @@ function buildBoard(){
 
   // masks: foreground overlays. Always shown (never removed) and never
   // interactive — they sit on top of every item so the scene stays masked.
-  (State.manifest.masks || []).forEach((mb, i)=>{
+  (State.manifest.masks || []).forEach((mb)=>{
     const el = document.createElement('div');
     el.className = 'mask';
-    placeNode(el, mb, MASK_Z + i);
+    placeNode(el, mb, mb.z != null ? mb.z : MASK_Z);   // PSB draw depth if known; else old top behaviour (legacy levels)
     el.appendChild(imgEl(assetUrl(mb.name), 'mob'));
     board.appendChild(el);
   });
