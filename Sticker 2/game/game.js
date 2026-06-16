@@ -11,6 +11,9 @@ const TAP_SLOP  = 8;        // px of movement before a press becomes a drag
 
 // levels in rotation order. id = the assets/<id>/ folder the extractor wrote.
 const LEVELS = [
+  { id:"0003", name:"Secret Garden" },
+  { id:"0002", name:"food" },
+  { id:"0001", name:"spooky" },
 ];
 
 /* ---------------- state ---------------- */
@@ -171,6 +174,10 @@ function onTrayPointerDown(e){
   const n = State.tray[k];
   if (n == null) return;
 
+  // belt-and-suspenders: kill any orphan clone left by an interrupted drag
+  document.querySelectorAll('.drag-sticker').forEach(c=> c.remove());
+  e.preventDefault();
+
   const st = stickerByN(n);
   const br = board.getBoundingClientRect();
   const wPx = st.w * br.width, hPx = st.h * br.height;
@@ -211,8 +218,8 @@ function onDragUp(e){
   window.removeEventListener('pointerup',   onDragUp);
   window.removeEventListener('pointercancel', onDragUp);
 
-  // a tap (no real drag) → just reveal where this sticker belongs
-  if (!d.moved){ endDrag(false); pulseRing(d.st); return; }
+  // a tap (no real drag) → drop the clone and just reveal where this sticker belongs
+  if (!d.moved){ endDrag(true); pulseRing(d.st); return; }
 
   const br = board.getBoundingClientRect();
   const nx = (e.clientX - br.left) / br.width;

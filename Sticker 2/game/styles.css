@@ -95,6 +95,7 @@ body{
   border-radius:16px;
   padding:10px;
   box-shadow:inset 0 3px 8px rgba(0,0,0,.45), 0 1px 0 rgba(255,255,255,.08);
+  touch-action:none;   /* we handle the drag ourselves — don't let mobile scroll cancel it */
 }
 .slot{
   flex:1 1 0; aspect-ratio:1/1;
@@ -104,7 +105,9 @@ body{
   position:relative;
   display:flex; align-items:center; justify-content:center;
   overflow:hidden;
+  touch-action:none;
 }
+.slot img{ touch-action:none; }
 .slot.filled{ background:rgba(255,255,255,.07); cursor:grab; }
 .slot.filled:active{ cursor:grabbing; }
 .slot img{
