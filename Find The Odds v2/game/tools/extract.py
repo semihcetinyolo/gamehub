@@ -69,14 +69,22 @@ def export_level(psb_path):
         l, t, r, b = bbox
         return {"x": l / canvas, "y": t / canvas, "w": (r - l) / canvas, "h": (b - t) / canvas}
 
-    bg_size = min(2048, canvas)            # never upscale the background
-    item_scale = min(1.0, 3000 / canvas)   # keep small canvases full-res, downscale big ones
+    # Keep everything at the PSB's native resolution (capped at 4K). The game lets
+    # the player zoom in (up to MAX_SCALE), so the on-screen size can exceed the
+    # canvas; the old 2048 / 3000px caps made big (4096) canvases blurry once
+    # zoomed. We never upscale (no detail to invent) — just stop throwing it away.
+    # The 4K cap only kicks in for an oversized PSB, keeping payloads sane.
+    MAX_DIM = 4096
+    bg_size = min(MAX_DIM, canvas)          # native background resolution, ≤4K (was 2048)
+    item_scale = min(1.0, MAX_DIM / canvas) # items at native resolution, ≤4K (was 3000/canvas)
 
     def save_layer(layer, fname):
         img = layer.composite()
-        w = max(1, int(img.width * item_scale))
-        h = max(1, int(img.height * item_scale))
-        img.resize((w, h), Image.LANCZOS).save(out / fname)
+        if item_scale < 1.0:
+            w = max(1, int(img.width * item_scale))
+            h = max(1, int(img.height * item_scale))
+            img = img.resize((w, h), Image.LANCZOS)
+        img.save(out / fname)
 
     # background (case-insensitive)
     bg = next(l for l in leaves if l.name.lower() == "bg")
