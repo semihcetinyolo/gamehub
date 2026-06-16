@@ -258,13 +258,25 @@ def run_script(cwd: Path, args):
         return False, f"{type(e).__name__}: {e}"
 
 
+def _looks_like_psd(p: Path):
+    """A PSB/PSD by extension OR by its magic bytes (so an extension-less file,
+    e.g. '0001 2', still works)."""
+    if p.suffix.lower() in (".psb", ".psd"):
+        return True
+    try:
+        with open(p, "rb") as f:
+            return f.read(4) == b"8BPS"
+    except Exception:
+        return False
+
+
 def save_psb(tmp: Path):
     """Return the path to the uploaded .psb/.psd already saved under tmp by
     collect_upload(). We must NOT re-read request.files here: Werkzeug upload
     streams can only be consumed once, so a second fs.save() would write an
     empty file (extract.py then fails with 'read=0, expected=26')."""
     for p in sorted(tmp.rglob("*")):
-        if p.is_file() and p.suffix.lower() in (".psb", ".psd"):
+        if p.is_file() and _looks_like_psd(p):
             return p
     return None
 
