@@ -11,7 +11,6 @@ const TAP_SLOP  = 8;        // px of movement before a press becomes a drag
 
 // levels in rotation order. id = the assets/<id>/ folder the extractor wrote.
 const LEVELS = [
-  { id:'0001', name:'Spooky Forest' },
 ];
 
 /* ---------------- state ---------------- */
@@ -59,6 +58,7 @@ function init(){
 
 async function loadLevel(index, _tries){
   _tries = _tries || 0;
+  if (!LEVELS.length) return;   // no levels (deleted) — empty shell, no crash
   State.levelIndex = ((index % LEVELS.length) + LEVELS.length) % LEVELS.length;
   State.assetBase  = 'assets/' + LEVELS[State.levelIndex].id + '/';
   let manifest;
