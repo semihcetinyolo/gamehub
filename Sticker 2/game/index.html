@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Sticker Match</title>
+<link rel="stylesheet" href="styles.css?v=1" />
+</head>
+<body>
+  <div class="frame" id="frame">
+
+    <!-- ===== HUD ===== -->
+    <div class="hud">
+      <div class="level-pill" id="levelPill">Spooky Forest</div>
+      <div class="hud-btns">
+        <button class="hud-btn" id="revealBtn" title="Peek the finished picture">👁</button>
+        <button class="hud-btn" id="hintBtn" title="Where does it go?">💡</button>
+        <button class="hud-btn" id="refreshBtn" title="Restart level">⟳</button>
+        <button class="hud-btn" id="nextBtn" title="Next level">⏭</button>
+      </div>
+    </div>
+
+    <!-- ===== BOARD ===== -->
+    <div class="board-wrap" id="boardWrap">
+      <div class="board" id="board">
+        <img class="bg"    id="bg"    alt="" draggable="false" /><!-- src set per level -->
+        <img class="slots" id="slots" alt="" draggable="false" /><!-- the empty-slot guide -->
+        <!-- placed stickers + hint rings injected here -->
+      </div>
+    </div>
+
+    <!-- ===== TRAY (3 stickers, refilled as you place) ===== -->
+    <div class="tray-row">
+      <div class="progress" id="progress">
+        <span class="prog-num" id="progNum">0</span><span class="prog-den" id="progDen">/0</span>
+      </div>
+      <div class="tray" id="tray">
+        <!-- 3 sticker slots injected here -->
+      </div>
+    </div>
+
+    <!-- ===== WIN OVERLAY ===== -->
+    <div class="overlay" id="overlay">
+      <div class="overlay-card" id="overlayCard">
+        <div class="overlay-emoji" id="ovEmoji">🎉</div>
+        <div class="overlay-title" id="ovTitle">You Win!</div>
+        <div class="overlay-sub" id="ovSub">Every sticker is home.</div>
+        <button class="overlay-btn" id="ovBtn">Next Level</button>
+      </div>
+    </div>
+
+    <!-- drag / fly layer -->
+    <div class="fx-layer" id="fxLayer"></div>
+  </div>
+
+  <script src="game.js?v=1"></script>
+</body>
+</html>

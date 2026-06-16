@@ -46,3 +46,8 @@ Jigsolitaire/levels/*
 # Python bytecode (leveltool backend)
 __pycache__/
 *.pyc
+
+# Sticker 2 — PSB level sources (kept on disk, sliced by game/tools/extract.py)
+Sticker 2/levels/
+# keep only level 0001 in the repo; the 2nd level is uploaded via the tool
+Sticker 2/game/assets/0002/

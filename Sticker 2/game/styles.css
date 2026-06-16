@@ -1,0 +1,182 @@
+:root{
+  --frame-w: 432px;
+  --blue-0:#2b59c3;
+  --blue-1:#1f3f93;
+  --blue-2:#16306f;
+  --gold:#ffce4d;
+}
+
+*{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html,body{ margin:0; height:100%; }
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:#0c1430;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  user-select:none;
+}
+
+.frame{
+  position:relative;
+  width:min(var(--frame-w), 100vw);
+  height:min(936px, 100vh);
+  background:linear-gradient(180deg,#3568d8 0%, #2a55bb 22%, #1d3f95 55%, #16315f 100%);
+  display:flex;
+  flex-direction:column;
+  padding:14px 14px 18px;
+  gap:12px;
+  overflow:hidden;
+}
+
+/* ===== HUD ===== */
+.hud{ display:flex; align-items:center; justify-content:space-between; height:42px; flex:0 0 auto; gap:8px; }
+.level-pill{
+  font-size:14px; font-weight:800; color:#fff;
+  background:rgba(8,16,40,.55); border:1px solid rgba(255,255,255,.18);
+  padding:8px 14px; border-radius:20px; letter-spacing:.3px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.hud-btns{ display:flex; gap:8px; flex:0 0 auto; }
+.hud-btn{
+  width:42px; height:42px; border:none; border-radius:13px;
+  background:rgba(255,255,255,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25), 0 3px 0 rgba(0,0,0,.18);
+  color:#fff; font-size:20px; cursor:pointer; transition:transform .08s, background .15s;
+}
+.hud-btn:active{ transform:translateY(2px); background:rgba(255,255,255,.24); }
+
+/* ===== BOARD ===== */
+.board-wrap{
+  position:relative;
+  width:100%;
+  flex:1 1 auto;       /* fill all space between HUD and tray */
+  min-height:0;
+  border-radius:22px;
+  overflow:hidden;
+  background:#0e1f49;
+  box-shadow:inset 0 0 0 3px rgba(255,255,255,.10), 0 10px 26px rgba(0,0,0,.35);
+  touch-action:none;   /* we handle drag ourselves */
+}
+/* the board is the PSB canvas, sized + centered (contain-fit) by JS so the
+   whole scene is visible. bg, slots and stickers are positioned as % of it. */
+.board{ position:absolute; overflow:hidden; border-radius:8px; }
+.bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:fill; display:block; }
+.slots{ position:absolute; left:0; top:0; width:100%; height:100%;
+  object-fit:fill; display:block; pointer-events:none; }
+
+/* a placed sticker, positioned at its true home (% of the board) */
+.sticker{ position:absolute; display:block; pointer-events:none;
+  filter:drop-shadow(0 3px 5px rgba(0,0,0,.4)); }
+.sticker.pop{ animation:stickPop .42s cubic-bezier(.34,1.56,.5,1); transform-origin:center; }
+@keyframes stickPop{
+  0%{ transform:scale(1.35); filter:drop-shadow(0 0 14px rgba(255,247,180,.95)); }
+  60%{ transform:scale(.94); }
+  100%{ transform:scale(1); filter:drop-shadow(0 3px 5px rgba(0,0,0,.4)); }
+}
+
+/* ghost preview (👁 peek) — faint full picture of what's still missing */
+.ghost{ position:absolute; display:block; pointer-events:none; opacity:0;
+  transition:opacity .35s ease; filter:grayscale(.1); }
+.ghost.show{ opacity:.5; }
+
+/* hint ring drawn over a sticker's target slot */
+.slot-ring{ position:absolute; pointer-events:none; border-radius:14px;
+  box-shadow:0 0 0 3px rgba(255,206,77,.9), 0 0 16px 4px rgba(255,206,77,.6);
+  animation:ringPulse 1s ease-in-out infinite; }
+@keyframes ringPulse{ 0%,100%{ transform:scale(1); opacity:.55; }
+  50%{ transform:scale(1.08); opacity:1; } }
+
+/* ===== TRAY ===== */
+.tray-row{ position:relative; display:flex; align-items:center; flex:0 0 auto; margin-top:14px; }
+.tray{
+  flex:1 1 auto;
+  display:flex; gap:10px;
+  background:linear-gradient(180deg,#0e2152,#0a1840);
+  border-radius:16px;
+  padding:10px;
+  box-shadow:inset 0 3px 8px rgba(0,0,0,.45), 0 1px 0 rgba(255,255,255,.08);
+}
+.slot{
+  flex:1 1 0; aspect-ratio:1/1;
+  border-radius:13px;
+  background:rgba(0,0,0,.28);
+  box-shadow:inset 0 2px 5px rgba(0,0,0,.5);
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.slot.filled{ background:rgba(255,255,255,.07); cursor:grab; }
+.slot.filled:active{ cursor:grabbing; }
+.slot img{
+  width:84%; height:84%; object-fit:contain; pointer-events:none;
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.4));
+  animation:dropIn .3s ease;
+}
+.slot.dragging img{ opacity:.22; }
+@keyframes dropIn{ 0%{ transform:scale(.3) translateY(20px); opacity:0;}
+  100%{ transform:scale(1) translateY(0); opacity:1;} }
+/* fresh sticker sliding in to refill a slot */
+.slot.refill img{ animation:refillIn .42s cubic-bezier(.34,1.4,.5,1); }
+@keyframes refillIn{ 0%{ transform:translateY(120%) scale(.6); opacity:0;}
+  100%{ transform:translateY(0) scale(1); opacity:1;} }
+
+/* progress badge — sits at the tray's top-left corner */
+.progress{
+  position:absolute; left:6px; top:-14px; z-index:3;
+  background:linear-gradient(180deg,#2b59c3,#1c3f93);
+  border:2px solid rgba(255,255,255,.22);
+  border-radius:13px;
+  padding:3px 12px;
+  font-weight:800; font-size:16px; color:#fff;
+  display:flex; align-items:baseline; gap:1px;
+  box-shadow:0 4px 10px rgba(0,0,0,.35);
+  transform-origin:left center;
+}
+.prog-num{ color:var(--gold); font-size:20px; }
+.prog-den{ color:#cdd6f5; font-size:14px; }
+.progress.bump{ animation:bump .45s ease; }
+@keyframes bump{ 0%{transform:scale(1);}35%{transform:scale(1.5);}100%{transform:scale(1);} }
+
+/* ===== drag clone (follows the finger) ===== */
+.fx-layer{ position:absolute; inset:0; pointer-events:none; overflow:visible; z-index:50; }
+.drag-sticker{
+  position:fixed; pointer-events:none; z-index:200; object-fit:contain;
+  filter:drop-shadow(0 8px 12px rgba(0,0,0,.5));
+  will-change:left,top,transform;
+}
+.drag-sticker.snapback{ transition:left .26s ease, top .26s ease, transform .26s ease; }
+
+/* sparkle burst when a sticker lands */
+.spark{ position:absolute; width:10px; height:10px; margin:-5px 0 0 -5px;
+  border-radius:50%; background:radial-gradient(circle, #fff, rgba(255,231,107,0) 70%);
+  animation:spark .5s ease-out forwards; }
+@keyframes spark{ 0%{ transform:scale(.4); opacity:1;} 100%{ transform:scale(3.2); opacity:0;} }
+
+/* ===== OVERLAY ===== */
+.overlay{
+  position:absolute; inset:0; z-index:100;
+  background:rgba(6,12,34,.74); backdrop-filter:blur(3px);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .3s;
+}
+.overlay.show{ opacity:1; pointer-events:auto; }
+.overlay-card{
+  width:78%; max-width:300px; text-align:center;
+  background:linear-gradient(180deg,#264fb0,#1a356f);
+  border:2px solid rgba(255,255,255,.18);
+  border-radius:22px; padding:26px 22px;
+  box-shadow:0 16px 40px rgba(0,0,0,.5);
+  transform:scale(.85); transition:transform .3s;
+}
+.overlay.show .overlay-card{ transform:scale(1); }
+.overlay-emoji{ font-size:54px; }
+.overlay-title{ font-size:27px; font-weight:900; color:#fff; margin-top:6px; }
+.overlay-sub{ font-size:14px; color:#c5d0f0; margin-top:6px; }
+.overlay-btn{
+  margin-top:18px; border:none; cursor:pointer;
+  padding:13px 30px; border-radius:15px; font-size:17px; font-weight:800; color:#5a3b00;
+  background:linear-gradient(180deg,#ffd95e,#f4a93b);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.5), 0 5px 0 #b9781f;
+  transition:transform .08s;
+}
+.overlay-btn:active{ transform:translateY(3px); box-shadow:inset 0 2px 0 rgba(255,255,255,.5), 0 2px 0 #b9781f; }

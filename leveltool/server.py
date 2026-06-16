@@ -595,6 +595,31 @@ def adapt_sticker(gdir, level, tmp):
     return dict(ok=True, message=f"'{level}' yüklendi → Sticker (aktif level olarak ayarlandı).")
 
 
+def adapt_sticker2(gdir, level, tmp):
+    # Sticker 2 levels come from a layered PSB (bg / slots / a "stickers" group of
+    # "si" layers). The game's own tools/extract.py slices it into
+    # game/assets/<id>/ (bg.jpg, slots.png, s1..sN.png, manifest.json). The level
+    # id follows the 0001/0002 convention; pick the next free number.
+    psb = save_psb(tmp)
+    if not psb:
+        return dict(ok=False, message="Sticker 2: katmanlı bir .psb yükleyin (bg / slots / 'stickers' grubu · si katmanları).")
+    assets = gdir / "game" / "assets"
+    nums = [int(d.name) for d in assets.iterdir() if d.is_dir() and d.name.isdigit()] if assets.exists() else []
+    new_id = f"{(max(nums) + 1) if nums else 1:04d}"
+    (gdir / "levels").mkdir(exist_ok=True)
+    dest = gdir / "levels" / f"{new_id}.psb"        # extract.py uses the file stem as the level id
+    shutil.copy(psb, dest)
+    ok, out = run_script(gdir / "game", ["tools/extract.py", str(dest)])
+    if not ok:
+        return dict(ok=False, message="extract.py başarısız.", detail=out[-1500:])
+    track_path(dest)
+    track_path(assets / new_id)
+    entry = "  { id:" + json.dumps(new_id) + ", name:" + json.dumps(level) + " },"
+    insert_into_array(gdir / "game" / "game.js", r"const\s+LEVELS\s*=\s*\[", entry)
+    track_edit(gdir / "game" / "game.js", remove_text="\n" + entry)
+    return dict(ok=True, message=f"PSB dilimlendi → Sticker 2 (level {new_id}: {level}).", detail=(out or "")[-600:])
+
+
 # game display name -> (subdir, accepts[], hint, adapter)
 ADAPTERS = {
     "Jigsolitaire":        ("Jigsolitaire", ["image"],
@@ -617,6 +642,8 @@ ADAPTERS = {
                             "Katmanlı PSB (BG + 1,2,3.. grupları · f#/s#/m#) veya klasör: scene.png + items_*.png + level.json.", adapt_furnish),
     "Sticker":             ("Sticker Oh Yeah", ["folder"],
                             "Klasör: scene.png + stickers/ + slots/ + manifest.json.", adapt_sticker),
+    "Sticker 2":           ("Sticker 2", ["psb"],
+                            "Katmanlı PSB: bg / slots / 'stickers' grubu (si katmanları).", adapt_sticker2),
     "Hidden By Word":      ("Hidden By Word", ["folder"],
                             "Paylaşımlı manifest — şimdilik manuel.", adapt_hidden_by_word),
 }
