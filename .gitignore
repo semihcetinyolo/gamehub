@@ -51,3 +51,6 @@ __pycache__/
 Sticker 2/levels/
 # keep only level 0001 in the repo; the 2nd level is uploaded via the tool
 Sticker 2/game/assets/0002/
+
+# Match3 Pair — self-contained shareable export (13MB embedded duplicate of index.html); kept on disk
+Match3 Pair/PairMatch.html
