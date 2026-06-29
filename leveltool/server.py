@@ -176,8 +176,10 @@ def delete_record(game, rec):
 
 
 # ---------------------------------------------------------------- helpers ----
+_TR = str.maketrans("şŞıİöÖüÜçÇğĞ", "ssiioouuccgg")
+
 def slugify(name: str) -> str:
-    s = re.sub(r"[^A-Za-z0-9 _-]", "", (name or "").strip())
+    s = re.sub(r"[^A-Za-z0-9 _-]", "", (name or "").strip().translate(_TR))
     s = re.sub(r"\s+", "_", s)
     return s or "level"
 

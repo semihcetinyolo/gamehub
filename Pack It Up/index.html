@@ -114,6 +114,18 @@ body{width:390px;height:844px;margin:0 auto;overflow:hidden;font-family:'Nunito'
 #unpack-btn{left:50%;bottom:14px;transform:translateX(-50%);}
 #skip-btn:active{transform:scale(.92);}
 #unpack-btn:active{transform:translateX(-50%) scale(.92);}
+/* difficulty + score tag, top-center (read from the PSB Grid layer name) */
+#diff-tag{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:50;
+  display:none;align-items:center;gap:9px;
+  background:rgba(0,0,0,.55);color:#fff;border:none;
+  font-family:inherit;font-size:.8rem;letter-spacing:1.5px;
+  padding:7px 16px;border-radius:22px;backdrop-filter:blur(6px);
+  box-shadow:0 4px 14px rgba(0,0,0,.3);}
+#diff-tag .dlabel{font-weight:900;}
+#diff-tag .dscore{font-weight:800;opacity:.92;padding-left:9px;border-left:1px solid rgba(255,255,255,.3);}
+#diff-tag.d-easy .dlabel{color:#7be08a;}
+#diff-tag.d-medium .dlabel{color:#ffc25a;}
+#diff-tag.d-hard .dlabel{color:#ff7d7d;}
 </style>
 </head>
 <body>
@@ -123,6 +135,7 @@ body{width:390px;height:844px;margin:0 auto;overflow:hidden;font-family:'Nunito'
   <div id="scatter"></div>
   <div id="global-placed"></div>
   <div id="hl"></div>
+  <div id="diff-tag"></div>
   <button id="skip-btn" title="Sonraki bölüm" aria-label="Sonraki bölüm">⏭</button>
   <button id="unpack-btn" title="Hepsini çıkar" aria-label="Hepsini çıkar">↺</button>
 </div>
@@ -787,7 +800,11 @@ function initLevel(idx){
     return{id:i,key:d.key,img:d.img,art:d.art,w:d.w,h:d.h,cells,placed:false,row:0,col:0,sx:0,sy:0,srot:0,el:null};
   });
   document.getElementById('bg').style.background=lvl.bgImg?`url('${lvl.bgImg}') center/cover no-repeat`:lvl.bg;
-  {const e=document.getElementById('h-lv');if(e)e.textContent=`LEVEL ${idx+1}`;}
+  {const dt=document.getElementById('diff-tag');
+   if(dt){const has=lvl.difficulty||lvl.order!=null;dt.style.display=has?'flex':'none';
+     dt.className=lvl.difficulty?('d-'+String(lvl.difficulty).toLowerCase()):'';
+     dt.innerHTML=(lvl.difficulty?`<span class="dlabel">${String(lvl.difficulty).toUpperCase()}</span>`:'')
+       +(lvl.order!=null?`<span class="dscore">${lvl.order}</span>`:'');}}
   document.getElementById('global-placed').innerHTML='';
   buildBag();
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
