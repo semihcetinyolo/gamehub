@@ -20,6 +20,7 @@ Usage:
 Prints the JS level entry on stdout and writes piece PNGs into the slug folder.
 """
 import sys, os, re, json, argparse
+from collections import Counter, defaultdict
 import numpy as np
 from psd_tools import PSDImage
 
@@ -154,8 +155,10 @@ def make_board(items, cols):
 
 
 # --------------------------------------------------------------- build level ---
+_TR = str.maketrans("şŞıİöÖüÜçÇğĞ", "ssiioouuccgg")
+
 def slugify(name):
-    s = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+    s = re.sub(r"[^a-z0-9]+", "-", (name or "").translate(_TR).lower()).strip("-")
     return s or "level"
 
 BG_PALETTE = "linear-gradient(180deg,#efe6d6 0%,#d6c1a3 100%)"
@@ -208,6 +211,199 @@ def read_map(psd, C):
         grid.append(row)
     return _trim_grid(grid)
 
+# ============================================================================
+#  Convention B — "Solution colour-map" levels  (e.g. levels/deneme.psb)
+#  PSB layout:
+#    Pieces  : group of item-art layers (named 'P'), placed in SOLVED positions
+#    BG      : background image (tiled parchment)
+#    Cell    : one decorative CxC cell tile, copy/pasted to cover the play area
+#    Solution: each piece's footprint painted as a solid colour over the play
+#              area (Grid is the same map plus the outer border) — this is the
+#              authoritative source for both the gridMap and per-piece shapes
+#  Win = fill the play area (= place every piece); pieces tile the board exactly.
+# ============================================================================
+def _find_layer(psd, name, group=False):
+    name = name.strip().lower()
+    hit = [None]
+    def walk(ls):
+        for l in ls:
+            if (l.name or "").strip().lower() == name and l.is_group() == group:
+                hit[0] = l
+            if l.is_group():
+                walk(l)
+    walk(psd)
+    return hit[0]
+
+
+def _find_grid_layer(psd):
+    """The footprint colour-map layer. Its name starts with 'Grid' and may carry
+    metadata, e.g. 'Grid_Hard_67' / 'Grid_Easy_28 (1)'. Falls back to a 'Solution'
+    layer for older PSBs."""
+    hit = [None]
+    def walk(ls):
+        for l in ls:
+            if not l.is_group() and (l.name or "").strip().lower().startswith("grid"):
+                hit[0] = l
+            if l.is_group():
+                walk(l)
+    walk(psd)
+    return hit[0] or _find_layer(psd, "solution")
+
+
+def parse_grid_meta(name):
+    """Extract (difficulty, order) from a grid layer name like 'Grid_Hard_67 (1)'.
+    Returns (None, None) if absent. Used later for level ordering."""
+    m = re.search(r"grid[_\s]+([A-Za-z]+)[_\s]+(\d+)", name or "", re.I)
+    return (m.group(1), int(m.group(2))) if m else (None, None)
+
+
+def _to_canvas_rgba(layer, W, H):
+    """Place a layer's pixels onto a full WxH transparent canvas."""
+    im = np.asarray(layer.topil().convert("RGBA"))
+    cv = np.zeros((H, W, 4), np.uint8)
+    L, T, R, B = layer.bbox
+    x0, y0, x1, y1 = max(0, L), max(0, T), min(W, R), min(H, B)
+    cv[y0:y1, x0:x1] = im[y0 - T:y1 - T, x0 - L:x1 - L]
+    return cv
+
+
+def _trim(layer):
+    """Trimmed RGBA PIL image + its canvas bbox (alpha bounds)."""
+    pil = layer.topil()
+    if pil is None:
+        return None, None
+    pil = pil.convert("RGBA")
+    a = np.asarray(pil)[:, :, 3]
+    ys, xs = np.where(a > ALPHA_T * 255)
+    if len(xs) == 0:
+        return None, None
+    x0, x1, y0, y1 = int(xs.min()), int(xs.max()) + 1, int(ys.min()), int(ys.max()) + 1
+    L, T = layer.bbox[0], layer.bbox[1]
+    return pil.crop((x0, y0, x1, y1)), (L + x0, T + y0, L + x1, T + y1)
+
+
+def is_solution_psb(psd):
+    return _find_layer(psd, "pieces", group=True) is not None and _find_grid_layer(psd) is not None
+
+
+def detect_cell_size(psd):
+    """Cell size from the 'Cell' tile layer (rounded so canvas is an integer
+    number of cells); falls back to the nearest divisor of a ~256 canvas grid."""
+    cell = _find_layer(psd, "cell")
+    if cell is not None:
+        cw = cell.bbox[2] - cell.bbox[0]
+        return psd.width / max(1, round(psd.width / cw))
+    return psd.width / max(1, round(psd.width / 256.0))
+
+
+def build_level_solution(psb_path, name, slug=None, out_dir=None, copy_pngs=True, psd=None):
+    psd = psd or PSDImage.open(psb_path)
+    W, H = psd.width, psd.height
+    C = detect_cell_size(psd); Ci = int(round(C))
+    slug = slug or slugify(name); out_dir = out_dir or slug
+    if copy_pngs:
+        os.makedirs(out_dir, exist_ok=True)
+    # ---- footprint colour map from the Grid layer (it holds each piece's shape;
+    # its outer border/background colours are dropped below since no piece claims
+    # them). Solution is intentionally NOT used. ----
+    smap = _find_grid_layer(psd)
+    difficulty, order = parse_grid_meta(smap.name)   # e.g. Grid_Hard_67 -> ("Hard", 67)
+    rgba = _to_canvas_rgba(smap, W, H)
+    inset = int(Ci * 0.27)
+    def qcol(c): return tuple(int(v) // 32 * 32 for v in c)
+    cellcol = {}
+    for r in range(H // Ci):
+        for c in range(W // Ci):
+            p = rgba[r*Ci+inset:r*Ci+Ci-inset, c*Ci+inset:c*Ci+Ci-inset]
+            op = p[p[:, :, 3] > 128][:, :3]
+            if len(op) >= 40:
+                cellcol[(r, c)] = qcol(np.median(op, axis=0))
+    if not cellcol:
+        raise SystemExit("Solution/Grid katmanında renkli hücre bulunamadı.")
+    regions = defaultdict(list)
+    for cell, col in cellcol.items():
+        regions[col].append(cell)
+    # ---- match each piece (in solved position) to its colour by cell overlap ----
+    grp = _find_layer(psd, "pieces", group=True)
+    parts = [l for l in grp if not l.is_group()]
+    assigned = {}; used = Counter()
+    for idx, layer in enumerate(parts):
+        pil, bbox = _trim(layer)
+        if pil is None:
+            continue
+        a = np.asarray(pil)[:, :, 3].astype(np.float32) / 255.0
+        L, T, R, B = bbox; Hh, Ww = a.shape
+        votes = Counter()
+        for r in range(T // Ci, -(-B // Ci)):
+            for c in range(L // Ci, -(-R // Ci)):
+                if (r, c) not in cellcol:
+                    continue
+                y0, x0 = r*Ci - T, c*Ci - L
+                yy0, xx0 = max(0, y0), max(0, x0)
+                yy1, xx1 = min(Hh, y0 + Ci), min(Ww, x0 + Ci)
+                if yy1 <= yy0 or xx1 <= xx0:
+                    continue
+                if float((a[yy0:yy1, xx0:xx1] > ALPHA_T).mean()) >= 0.15:
+                    votes[cellcol[(r, c)]] += 1
+        if votes:
+            col = votes.most_common(1)[0][0]
+            assigned[idx] = (col, pil, bbox); used[col] += 1
+    bijection = len(assigned) == len(parts) and all(v == 1 for v in used.values())
+    # ---- play area = cells of the colours a piece claimed (drops Grid border/bg) ----
+    play = {cell for col in used for cell in regions[col]}
+    if not play:
+        raise SystemExit("Hiçbir parça Grid rengine eşleşmedi.")
+    rmin = min(r for r, c in play); rmax = max(r for r, c in play)
+    cmin = min(c for r, c in play); cmax = max(c for r, c in play)
+    rows, cols = rmax - rmin + 1, cmax - cmin + 1
+    gridmap = [[1 if (rmin + r, cmin + c) in play else 0 for c in range(cols)]
+               for r in range(rows)]
+    # ---- items (footprint from the colour region; art from the solved bbox) ----
+    items = []; n = 0
+    for idx in sorted(assigned):
+        col, pil, bbox = assigned[idx]
+        reg = regions[col]
+        r0 = min(r for r, c in reg); c0 = min(c for r, c in reg)
+        cells = sorted([[r - r0, c - c0] for r, c in reg])
+        w = max(cc for rr, cc in cells) + 1; h = max(rr for rr, cc in cells) + 1
+        L, T, R, B = bbox
+        art = {"dx": round((L - c0 * C) / C, 2), "dy": round((T - r0 * C) / C, 2),
+               "iw": round((R - L) / C, 2), "ih": round((B - T) / C, 2)}
+        n += 1
+        if copy_pngs:
+            pil.save(os.path.join(out_dir, f"{n}.png"))
+        items.append({"img": f"{slug}/{n}.png", "w": w, "h": h, "cells": cells, "art": art})
+    # ---- background + cell-tile images ----
+    bg_img = cell_img = None
+    bgl = _find_layer(psd, "bg")
+    if bgl is not None:
+        bg_img = f"{slug}/bg.png"
+        if copy_pngs:
+            _trim(bgl)[0].save(os.path.join(out_dir, "bg.png"))
+    cl = _find_layer(psd, "cell")
+    if cl is not None:
+        cell_img = f"{slug}/cell.png"
+        if copy_pngs:
+            _trim(cl)[0].save(os.path.join(out_dir, "cell.png"))
+    level = {
+        "title": name, "emoji": "🎁", "sub": f"{name} parçalarını yerleştir!",
+        "bg": BG_PALETTE, "rows": rows, "cols": cols, "bareGrid": True,
+        "gridMap": gridmap, "items": items,
+        "winEmoji": "🎉", "winTitle": "Harika!", "winDesc": f"{name} tamamlandı!",
+    }
+    if bg_img: level["bgImg"] = bg_img
+    if cell_img: level["cellImg"] = cell_img
+    if difficulty: level["difficulty"] = difficulty   # read from Grid layer name
+    if order is not None: level["order"] = order       # for later level ordering
+    whites = sum(sum(row) for row in gridmap)
+    pcells = sum(len(it["cells"]) for it in items)
+    info = dict(C=C, ox=0.0, oy=0.0, resid=0.0, slug=slug, n=len(items), cols=cols,
+                rows=rows, board=(smap.name or "grid").strip().lower(),
+                whites=whites, pcells=pcells, bijection=bijection,
+                difficulty=difficulty, order=order)
+    return level, info
+
+
 def build_level(psb_path, name, cols=6, slug=None, out_dir=None, copy_pngs=True):
     psd = PSDImage.open(psb_path)
     pieces = collect_pieces(psd)
@@ -257,10 +453,12 @@ def level_to_js(level):
             it["art"]["dx"], it["art"]["dy"], it["art"]["iw"], it["art"]["ih"])
         for it in level["items"])
     gm = "[" + ",".join("[" + ",".join(str(v) for v in row) + "]" for row in level["gridMap"]) + "]"
-    return ("{title:%s,emoji:'%s',sub:%s,bg:%s,rows:%d,cols:%d,bareGrid:true,gridMap:%s,"
+    extra = "".join(",%s:%s" % (k, json.dumps(level[k]))
+                    for k in ("bgImg", "cellImg", "difficulty", "order") if level.get(k) is not None)
+    return ("{title:%s,emoji:'%s',sub:%s,bg:%s%s,rows:%d,cols:%d,bareGrid:true,gridMap:%s,"
             "items:[%s],winEmoji:'%s',winTitle:%s,winDesc:%s}" % (
         json.dumps(level["title"]), level["emoji"], json.dumps(level["sub"]),
-        json.dumps(level["bg"]), level["rows"], level["cols"], gm, items_js,
+        json.dumps(level["bg"]), extra, level["rows"], level["cols"], gm, items_js,
         level["winEmoji"], json.dumps(level["winTitle"]), json.dumps(level["winDesc"])))
 
 
@@ -272,15 +470,25 @@ def main():
     ap.add_argument("--out-dir", default=None)
     ap.add_argument("--no-png", action="store_true")
     a = ap.parse_args()
-    level, info = build_level(a.psb, a.name, cols=a.cols, slug=a.slug,
-                              out_dir=a.out_dir, copy_pngs=not a.no_png)
+    probe = PSDImage.open(a.psb)
+    if is_solution_psb(probe):
+        level, info = build_level_solution(a.psb, a.name, slug=a.slug, out_dir=a.out_dir,
+                                            copy_pngs=not a.no_png, psd=probe)
+    else:
+        level, info = build_level(a.psb, a.name, cols=a.cols, slug=a.slug,
+                                  out_dir=a.out_dir, copy_pngs=not a.no_png)
     warn = "" if info["whites"] == info["pcells"] else \
         f"  ⚠ board cells ({info['whites']}) != piece cells ({info['pcells']}) — may be unsolvable"
+    if info.get("bijection") is False:
+        warn += "  ⚠ piece↔colour matching is not 1-to-1"
+    meta = ""
+    if info.get("difficulty") or info.get("order") is not None:
+        meta = f" | difficulty={info.get('difficulty')} order={info.get('order')}"
     sys.stderr.write(
         f"[psb_to_level] {info['n']} pieces | cell C={info['C']:.1f} "
         f"origin=({info['ox']:.0f},{info['oy']:.0f}) edge-resid={info['resid']:.3f} "
         f"| board[{info['board']}] {info['cols']}x{info['rows']} "
-        f"({info['whites']} cells) -> {info['slug']}/{warn}\n")
+        f"({info['whites']} cells){meta} -> {info['slug']}/{warn}\n")
     print(level_to_js(level))
 
 

@@ -26,8 +26,16 @@ body{width:390px;height:844px;margin:0 auto;overflow:hidden;font-family:'Nunito'
 .on-base .gc.filled{background:rgba(0,0,0,.26);border-color:rgba(0,0,0,.16);box-shadow:inset 0 2px 6px rgba(0,0,0,.3);}
 .bare .gc{background:rgba(80,55,30,.2);border:2px solid rgba(70,45,20,.22);border-radius:9px;box-shadow:inset 0 3px 7px rgba(0,0,0,.28);}
 .bare .gc.filled{background:rgba(50,32,16,.34);border-color:rgba(50,32,16,.3);}
-.gc.ok{background:rgba(90,230,130,.55)!important;border-color:rgba(40,200,100,.95)!important;box-shadow:inset 0 0 0 3px rgba(40,200,100,.5)!important;}
-.gc.no{background:rgba(255,90,90,.5)!important;border-color:rgba(230,60,60,.9)!important;box-shadow:none!important;}
+/* Cell-tile cells: show the PSB 'Cell' artwork instead of the drawn cell.
+   ok/no/filled tints are drawn as an inset box-shadow OVER the tile so the grid
+   artwork stays visible (a background colour would sit behind the opaque tile). */
+.gc.img-cell,.bare .gc.img-cell{background-color:transparent;border:none;border-radius:0;background-size:100% 100%;background-repeat:no-repeat;box-shadow:none;}
+.gc.img-cell.filled{box-shadow:inset 0 0 0 999px rgba(0,0,0,.16)!important;}
+/* ok/no use background-COLOR (not the background shorthand) so background-image survives */
+.gc.ok{background-color:rgba(90,230,130,.55)!important;border-color:rgba(40,200,100,.95)!important;box-shadow:inset 0 0 0 3px rgba(40,200,100,.5)!important;}
+.gc.no{background-color:rgba(255,90,90,.5)!important;border-color:rgba(230,60,60,.9)!important;box-shadow:none!important;}
+.gc.img-cell.ok{box-shadow:inset 0 0 0 999px rgba(60,210,110,.5)!important;}
+.gc.img-cell.no{box-shadow:inset 0 0 0 999px rgba(235,75,75,.45)!important;}
 /* PLACED */
 #placed-layer{position:absolute;top:0;left:0;pointer-events:none;z-index:4;}
 #snap-shadow{position:absolute;pointer-events:none;z-index:2;border-radius:10px;opacity:0;transition:opacity .12s;}
@@ -37,6 +45,11 @@ body{width:390px;height:844px;margin:0 auto;overflow:hidden;font-family:'Nunito'
 /* SCATTER */
 #scatter{position:absolute;inset:0;pointer-events:none;z-index:20;}
 #global-placed{position:absolute;inset:0;pointer-events:none;z-index:12;}
+/* drag highlight overlay — sits ABOVE placed items so red intersections stay visible */
+#hl{position:absolute;inset:0;pointer-events:none;z-index:40;}
+.hl-c{position:absolute;border-radius:5px;box-sizing:border-box;}
+.hl-ok{background:rgba(70,210,120,.42);border:2px solid rgba(40,200,100,.9);}
+.hl-no{background:rgba(240,80,80,.5);border:2px solid rgba(230,55,55,.95);}
 .si{position:absolute;cursor:grab;touch-action:none;filter:drop-shadow(0 11px 13px rgba(0,0,0,.45));will-change:transform;}
 .si.drag{opacity:.12;}
 /* GHOST */
@@ -92,25 +105,26 @@ body{width:390px;height:844px;margin:0 auto;overflow:hidden;font-family:'Nunito'
 .cf{position:fixed;pointer-events:none;z-index:7999;border-radius:3px;animation:cfFall linear forwards;}
 @keyframes cfFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}85%{opacity:1}100%{transform:translateY(105vh) rotate(700deg);opacity:0}}
 /* SKIP LEVEL (dev control, anchored to viewport top-right, outside the phone frame) */
-#skip-btn{position:fixed;top:16px;right:16px;z-index:9500;
-  background:rgba(0,0,0,.6);color:#fff;border:none;
-  font-family:inherit;font-weight:800;font-size:.78rem;letter-spacing:.5px;
-  padding:10px 16px;border-radius:24px;cursor:pointer;
-  box-shadow:0 4px 14px rgba(0,0,0,.3);backdrop-filter:blur(6px);}
-#skip-btn:active{transform:translateY(1px);}
+/* in-playfield icon buttons (positioned within #scr) */
+#skip-btn,#unpack-btn{position:absolute;z-index:50;width:46px;height:46px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;padding:0;line-height:1;
+  background:rgba(0,0,0,.55);color:#fff;border:none;font-size:1.25rem;cursor:pointer;
+  box-shadow:0 4px 14px rgba(0,0,0,.35);backdrop-filter:blur(6px);}
+#skip-btn{top:12px;right:12px;}
+#unpack-btn{left:50%;bottom:14px;transform:translateX(-50%);}
+#skip-btn:active{transform:scale(.92);}
+#unpack-btn:active{transform:translateX(-50%) scale(.92);}
 </style>
 </head>
 <body>
 <div id="scr">
   <div id="bg"></div>
-  <div id="hdr">
-    <div class="pill" id="h-lv">LEVEL 1</div>
-    <div id="htitle">🧳 Pack It Up!</div>
-    <div class="pill" id="h-pr">0/0</div>
-  </div>
   <div id="bag-area"></div>
   <div id="scatter"></div>
   <div id="global-placed"></div>
+  <div id="hl"></div>
+  <button id="skip-btn" title="Sonraki bölüm" aria-label="Sonraki bölüm">⏭</button>
+  <button id="unpack-btn" title="Hepsini çıkar" aria-label="Hepsini çıkar">↺</button>
 </div>
 <div id="ghost"></div>
 <div id="win"><div id="win-card">
@@ -122,7 +136,6 @@ body{width:390px;height:844px;margin:0 auto;overflow:hidden;font-family:'Nunito'
   <span id="i-em">☀️</span><h2 id="i-ti">Yaz Tatili</h2>
   <p id="i-su">Eşyaları yerleştir!</p><p id="i-tap">Ekrana dokun</p>
 </div></div>
-<button id="skip-btn">Skip Level ⏭</button>
 <script>
 const SVG={
 shirt:`<svg viewBox="0 0 2 3" xmlns="http://www.w3.org/2000/svg">
@@ -699,74 +712,7 @@ const PACK1_PIECES=[
 function packItems(dir){return PACK1_PIECES.map(p=>({img:dir+'/'+p[0]+'.png',w:p[1],h:p[2]}));}
 
 const LEVELS=[
-{title:'Kediler',emoji:'🐱',sub:'Kedileri aktif gride yerleştir!',
- bg:'linear-gradient(180deg,#efe6d6 0%,#d6c1a3 100%)',rows:8,cols:6,
- bareGrid:true,
- gridMap:[
-  [1,1,1,1,1,1],
-  [1,1,1,1,1,1],
-  [1,1,0,0,1,1],
-  [1,1,0,0,1,1],
-  [1,1,0,0,1,1],
-  [1,1,0,0,1,1],
-  [1,1,1,1,1,1],
-  [1,1,1,1,1,1],
- ],
- items:[
-  {img:'cat/1.png', w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.05,dy:0.03,iw:0.91,ih:1.96}},
-  {img:'cat/2.png', w:3,h:2,cells:[[0,0],[0,1],[0,2],[1,1]],art:{dx:0.08,dy:0.04,iw:2.85,ih:1.94}},
-  {img:'cat/3.png', w:3,h:2,cells:[[0,0],[0,1],[1,0],[1,1],[1,2]],art:{dx:0.02,dy:0.26,iw:3.04,ih:1.74}},
-  {img:'cat/4.png', w:1,h:2,cells:[[0,0],[1,0]],art:{dx:-0.03,dy:0.06,iw:1.03,ih:1.93}},
-  {img:'cat/5.png', w:2,h:2,cells:[[0,0],[0,1],[1,0]],art:{dx:-0.10,dy:0.05,iw:2.22,ih:1.89}},
-  {img:'cat/6.png', w:2,h:3,cells:[[0,1],[1,0],[1,1],[2,1]],art:{dx:0.26,dy:0.01,iw:1.76,ih:3.05}},
-  {img:'cat/7.png', w:2,h:3,cells:[[0,1],[1,0],[1,1],[2,1]],art:{dx:0.23,dy:0.12,iw:1.76,ih:2.76}},
-  {img:'cat/8.png', w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.02,dy:0.14,iw:0.98,ih:1.80}},
-  {img:'cat/9.png', w:4,h:3,cells:[[0,0],[1,0],[1,1],[1,2],[1,3],[2,0],[2,1]],art:{dx:-0.25,dy:0.00,iw:4.20,ih:2.99}},
-  {img:'cat/10.png',w:4,h:3,cells:[[0,3],[1,2],[1,3],[2,0],[2,1],[2,2],[2,3]],art:{dx:0.14,dy:0.13,iw:3.83,ih:2.74}},
- ],
- winEmoji:'🐱',winTitle:'Miyav!',winDesc:'Tüm kediler yerleşti! 🐾'},
-{title:'Vahşi Batı',emoji:'🤠',sub:'Eşyaları aktif gride yerleştir!',
- bg:'linear-gradient(180deg,#f3dcab 0%,#dcb277 100%)',rows:8,cols:6,
- bareGrid:true,
- gridMap:[
-  [1,1,1,1,1,1],
-  [1,1,1,1,1,1],
-  [1,1,0,1,1,1],
-  [1,1,1,0,1,1],
-  [1,1,1,1,1,1],
-  [1,1,1,1,1,1],
-  [1,1,1,1,1,1],
-  [1,1,1,1,1,1],
- ],
- items:[
-  {img:'wildwest/1.png', w:3,h:2,cells:[[0,0],[0,1],[0,2],[1,0]]},
-  {img:'wildwest/2.png', w:3,h:2,cells:[[0,0],[0,1],[0,2],[1,1]]},
-  {img:'wildwest/3.png', w:1,h:3,cells:[[0,0],[1,0],[2,0]]},
-  {img:'wildwest/4.png', w:5,h:2,cells:[[0,1],[0,2],[0,3],[1,0],[1,1],[1,3],[1,4]]},
-  {img:'wildwest/5.png', w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]]},
-  {img:'wildwest/6.png', w:2,h:5,cells:[[0,0],[1,0],[1,1],[2,0],[2,1],[3,0],[3,1],[4,1]]},
-  {img:'wildwest/7.png', w:2,h:5,cells:[[0,0],[1,0],[1,1],[2,0],[2,1],[3,0],[3,1],[4,1]]},
-  {img:'wildwest/8.png', w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]]},
-  {img:'wildwest/9.png', w:1,h:1,cells:[[0,0]]},
-  {img:'wildwest/10.png',w:2,h:1,cells:[[0,0],[0,1]]},
-  {img:'wildwest/11.png',w:1,h:1,cells:[[0,0]]},
- ],
- winEmoji:'🤠',winTitle:'Yee-haw!',winDesc:'Vahşi Batı bölümü tamam! 🌵'},
-{id:0,title:'Yaz Tatili',emoji:'☀️',sub:'Valize yaz tatili eşyalarını sığdır!',
- bg:'linear-gradient(180deg,#ffe3bc 0%,#ffc79a 100%)',
- bagColor:'#0277bd',bagType:'suitcase',handleColor:'#f57c00',rows:9,cols:6,
- slim:true,frame:'glossy',items:packItems('level1'),sol:[],
- winEmoji:'🌴',winTitle:'Harika!',winDesc:'Yaz tatili valizin hazır! ✈️',btnText:'Level 2\'ye Geç →'},
-{id:2,title:'Yaz Tatili • Kontur',emoji:'🖌️',sub:'Konturlu suluboya eşyaları yerleştir!',
- bg:'linear-gradient(180deg,#f4ecdb 0%,#e7d3bd 100%)',rows:9,cols:6,
- baseImg:'level1_2wo/base.png',baseW:792,baseH:1504,face:{l:0.11,t:0.22,r:0.89,b:0.83},
- items:packItems('level1_2wo'),sol:[],
- winEmoji:'🖌️',winTitle:'Çok Güzel!',winDesc:'Konturlu suluboya valizin hazır! 🖌️',btnText:'Level 4\'e Geç →'},
-{id:3,title:'Yaz Tatili • Çıkartma',emoji:'✨',sub:'Çıkartma eşyaları valize sığdır!',
- bg:'linear-gradient(180deg,#c8ede1 0%,#97d9c9 100%)',rows:9,cols:6,
- baseImg:'level1_3/base.png',baseW:588,baseH:1121,face:{l:0.11,t:0.21,r:0.89,b:0.84},
- items:packItems('level1_3'),sol:[],
- winEmoji:'🌟',winTitle:'Süper!',winDesc:'Çıkartma valizin hazır! ✨',btnText:'Level 5\'e Geç →'},
+  {title:"Japonya",emoji:'🎁',sub:"Japonya par\u00e7alar\u0131n\u0131 yerle\u015ftir!",bg:"linear-gradient(180deg,#efe6d6 0%,#d6c1a3 100%)",bgImg:"japonya/bg.png",cellImg:"japonya/cell.png",difficulty:"Hard",order:67,rows:8,cols:6,bareGrid:true,gridMap:[[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1]],items:[{img:"japonya/1.png",w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]],art:{dx:0.03,dy:0.05,iw:1.9,ih:1.91}},{img:"japonya/2.png",w:3,h:3,cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0]],art:{dx:0.12,dy:0.09,iw:2.83,ih:2.87}},{img:"japonya/3.png",w:3,h:3,cells:[[0,1],[0,2],[1,1],[1,2],[2,0],[2,1],[2,2]],art:{dx:0.09,dy:0.05,iw:2.84,ih:2.92}},{img:"japonya/4.png",w:2,h:3,cells:[[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]],art:{dx:0.17,dy:0.05,iw:1.71,ih:2.9}},{img:"japonya/5.png",w:4,h:3,cells:[[0,1],[0,3],[1,0],[1,1],[1,2],[1,3],[2,1],[2,2]],art:{dx:0.22,dy:0.16,iw:3.63,ih:2.76}},{img:"japonya/6.png",w:1,h:1,cells:[[0,0]],art:{dx:0.02,dy:0.11,iw:0.95,ih:0.79}},{img:"japonya/7.png",w:1,h:1,cells:[[0,0]],art:{dx:0.03,dy:0.12,iw:0.94,ih:0.82}},{img:"japonya/8.png",w:1,h:1,cells:[[0,0]],art:{dx:0.02,dy:0.04,iw:0.97,ih:0.92}},{img:"japonya/9.png",w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.03,dy:0.28,iw:0.96,ih:1.46}},{img:"japonya/10.png",w:3,h:3,cells:[[0,0],[0,1],[0,2],[1,0],[1,2],[2,0],[2,2]],art:{dx:0.08,dy:0.03,iw:2.87,ih:2.93}},{img:"japonya/11.png",w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]],art:{dx:0.03,dy:0.07,iw:1.94,ih:1.85}}],winEmoji:'🎉',winTitle:"Harika!",winDesc:"Japonya tamamland\u0131!"},
 ];
 
 /* ── CONSTANTS & STATE ── */
@@ -840,8 +786,8 @@ function initLevel(idx){
     if(!cells&&d.w){cells=[];for(let r=0;r<d.h;r++)for(let c=0;c<d.w;c++)cells.push([r,c]);}
     return{id:i,key:d.key,img:d.img,art:d.art,w:d.w,h:d.h,cells,placed:false,row:0,col:0,sx:0,sy:0,srot:0,el:null};
   });
-  document.getElementById('bg').style.background=lvl.bg;
-  document.getElementById('h-lv').textContent=`LEVEL ${idx+1}`;
+  document.getElementById('bg').style.background=lvl.bgImg?`url('${lvl.bgImg}') center/cover no-repeat`:lvl.bg;
+  {const e=document.getElementById('h-lv');if(e)e.textContent=`LEVEL ${idx+1}`;}
   document.getElementById('global-placed').innerHTML='';
   buildBag();
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
@@ -849,7 +795,7 @@ function initLevel(idx){
     const scr=document.getElementById('scr').getBoundingClientRect();
     const gr=document.getElementById('grid').getBoundingClientRect();
     gridOffX=gr.left-scr.left; gridOffY=gr.top-scr.top;
-    buildScatter();updateProg();showIntro();
+    buildScatter();updateProg();
   }));
 }
 
@@ -886,7 +832,9 @@ function buildBagGrid(){
   g.style.cssText=`display:grid;position:relative;z-index:1;
     grid-template-columns:repeat(${lvl.cols},${CELL}px);grid-template-rows:repeat(${lvl.rows},${CELL}px);`;
   for(let r=0;r<lvl.rows;r++)for(let c=0;c<lvl.cols;c++){
-    if(lvl.gridMap[r][c]){const d=mkEl('div','gc');d.dataset.r=r;d.dataset.c=c;d.style.gridRow=(r+1);d.style.gridColumn=(c+1);g.appendChild(d);}
+    if(lvl.gridMap[r][c]){const d=mkEl('div','gc');d.dataset.r=r;d.dataset.c=c;d.style.gridRow=(r+1);d.style.gridColumn=(c+1);
+      if(lvl.cellImg){d.classList.add('img-cell');d.style.backgroundImage=`url('${lvl.cellImg}')`;}
+      g.appendChild(d);}
   }
   gw.appendChild(g);
   const ss=mkEl('div');ss.id='snap-shadow';gw.appendChild(ss);
@@ -1163,8 +1111,7 @@ function move(x,y){
   ghost.style.left=(x-dox)+'px';
   ghost.style.top=(y-doy)+'px';
   const{row,col,overGrid}=snapCell(x,y);
-  const ok=overGrid&&canPlace(dragItem,row,col);
-  highlight(overGrid,row,col,ok);
+  highlight(overGrid,row,col);
 }
 
 function snapCell(x,y){
@@ -1190,36 +1137,84 @@ function canPlace(item,row,col){
   }
   return true;
 }
+// Droppable for the "displace" rule: target cells must be on the board and not a
+// blocked hole ('X'); cells occupied by other placed items are OK — they get ejected.
+function canPlaceEject(item,row,col){
+  for(const[r,c]of item.cells){
+    const gr=row+r,gc=col+c;
+    if(gr<0||gr>=lvl.rows||gc<0||gc>=lvl.cols)return false;
+    if(grid[gr][gc]==='X')return false;
+  }
+  return true;
+}
+// Unplace a placed item and throw it clearly OFF the board (into the margin above
+// or below the grid) so it's obvious it was displaced from there.
+function ejectItem(id){
+  const it=items.find(i=>i.id===id);
+  if(!it||!it.placed)return;
+  it.cells.forEach(([r,c])=>{grid[it.row+r][it.col+c]=null;});
+  it.placed=false;
+  const[vw,vh]=dimOf(it);
+  const iW=vw*CELL*SS,iH=vh*CELL*SS;
+  const gTop=gridOffY,gBot=gridOffY+lvl.rows*CELL;
+  const rnd=(a,b)=>a+Math.random()*Math.max(0,b-a);
+  const botLo=gBot+10,botHi=H-iH-10, topLo=10,topHi=gTop-iH-10;
+  let ny;
+  if(botHi>=botLo) ny=rnd(botLo,botHi);        // prefer the tray below the board
+  else if(topHi>=topLo) ny=rnd(topLo,topHi);   // else the strip above it
+  else ny=Math.max(6,H-iH-6);                   // too tall to clear: shove to the bottom
+  const nx=clamp(rnd(8,W-iW-8),4,Math.max(4,W-iW-4));
+  const rot=(Math.random()>.5?1:-1)*(7+Math.random()*12);
+  it.sx=nx;it.sy=ny;it.srot=rot;
+  it.el.classList.remove('drag');
+  it.el.style.display='block';
+  it.el.style.left=nx+'px';
+  it.el.style.top=ny+'px';
+  it.el.style.transform=`rotate(${rot}deg)`;
+}
 
-function highlight(overGrid,row,col,ok){
-  document.querySelectorAll('.gc').forEach(c=>c.classList.remove('ok','no'));
+function clearHL(){const hl=document.getElementById('hl');if(hl)hl.innerHTML='';}
+function highlight(overGrid,row,col){
+  clearHL();
   const sh=document.getElementById('snap-shadow');
   if(sh)sh.style.opacity='0'; // no spreading rectangle — highlight only the exact snap cells
-  if(!overGrid||!dragItem)return;
+  const hl=document.getElementById('hl');
+  if(!overGrid||!dragItem||!hl)return;
+  // Draw on the overlay layer (above placed items) so an intersection shows red
+  // even where it sits on top of an already-placed item.
   dragItem.cells.forEach(([r,c])=>{
     const gr=row+r,gc=col+c;
-    if(gr>=0&&gr<lvl.rows&&gc>=0&&gc<lvl.cols){
-      const cell=document.querySelector(`.gc[data-r="${gr}"][data-c="${gc}"]`);
-      if(cell)cell.classList.add(ok?'ok':'no');
-    }
+    if(gr<0||gr>=lvl.rows||gc<0||gc>=lvl.cols)return;
+    if(lvl.gridMap&&!lvl.gridMap[gr][gc])return; // off-board hole
+    const occ=grid[gr][gc];
+    // red where this cell intersects another placed item (or a blocked hole), green where free
+    const collide=occ==='X'||(occ!==null&&occ!==dragItem.id);
+    const d=document.createElement('div');
+    d.className='hl-c '+(collide?'hl-no':'hl-ok');
+    d.style.cssText=`left:${gridOffX+gc*CELL}px;top:${gridOffY+gr*CELL}px;width:${CELL}px;height:${CELL}px;`;
+    hl.appendChild(d);
   });
 }
 
 function drop(x,y){
-  document.querySelectorAll('.gc').forEach(c=>c.classList.remove('ok','no'));
+  clearHL();
   const sh=document.getElementById('snap-shadow');if(sh)sh.style.opacity='0';
   ghost.style.display='none';
   if(!dragItem)return;
   const{row,col,overGrid}=snapCell(x,y);
   if(overGrid){
-    if(canPlace(dragItem,row,col)){
-      // Valid grid placement
+    if(canPlaceEject(dragItem,row,col)){
+      // Valid placement: eject any items already sitting on the target cells
+      // (throw them back off the board), then drop this item in.
+      const occ=new Set();
+      dragItem.cells.forEach(([r,c])=>{const id=grid[row+r][col+c];if(id!==null&&id!=='X'&&id!==dragItem.id)occ.add(id);});
+      occ.forEach(id=>ejectItem(id));
       dragItem.cells.forEach(([r,c])=>{grid[row+r][col+c]=dragItem.id;});
       dragItem.placed=true;dragItem.row=row;dragItem.col=col;
       dragItem.el.style.display='none';dragItem.el.classList.remove('drag');
       rebuildPlaced(dragItem.id);syncFilledCells();updateProg();playPlop();checkWin();
     }else{
-      // Grid occupied — bounce back to original scatter position
+      // Off-board / blocked hole — bounce back to original scatter position
       dragItem.el.classList.remove('drag');
       dragItem.el.style.display='block';
       dragItem.el.style.left=dragItem.sx+'px';
@@ -1245,7 +1240,7 @@ function drop(x,y){
 }
 
 /* ── PROGRESS / WIN ── */
-function updateProg(){const p=items.filter(i=>i.placed).length;document.getElementById('h-pr').textContent=`${p}/${items.length}`;}
+function updateProg(){const p=items.filter(i=>i.placed).length;const e=document.getElementById('h-pr');if(e)e.textContent=`${p}/${items.length}`;}
 function checkWin(){
   if(!items.every(i=>i.placed))return;
   setTimeout(()=>{
@@ -1290,6 +1285,11 @@ function playFanfare(){try{const ctx=new(window.AudioContext||window.webkitAudio
 document.getElementById('skip-btn').onclick=()=>{
   document.getElementById('win').classList.remove('show');
   initLevel((curIdx+1)%LEVELS.length);
+};
+// Unpack: send every placed item back off the board (de-snap all)
+document.getElementById('unpack-btn').onclick=()=>{
+  items.filter(i=>i.placed).forEach(i=>ejectItem(i.id));
+  rebuildPlaced();syncFilledCells();updateProg();
 };
 initLevel(0);
 </script>
