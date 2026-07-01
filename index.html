@@ -310,6 +310,79 @@
         pointer-events: auto;
       }
     }
+
+    /* ---- Ratings panel (sidebar, above the upload button) ---- */
+    .rate-panel {
+      border-top: 1px solid var(--border);
+      padding: 12px;
+      display: flex; flex-direction: column; gap: 7px;
+      flex-shrink: 0;
+    }
+    .rate-head { font-size: 13px; font-weight: 600; }
+    .rate-game {
+      font-size: 12px; color: var(--accent); min-height: 15px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .rate-form { display: flex; gap: 6px; }
+    .rate-form input[type="text"] {
+      flex: 1; min-width: 0; background: var(--bg); border: 1px solid var(--border);
+      color: var(--text); border-radius: 7px; padding: 7px 9px; font-size: 13px;
+    }
+    .rate-form select {
+      width: 64px; background: var(--bg); border: 1px solid var(--border);
+      color: var(--text); border-radius: 7px; padding: 7px 6px; font-size: 13px;
+    }
+    .rate-form button {
+      background: var(--accent); color: #fff; border: none; border-radius: 7px;
+      padding: 7px 12px; font-size: 13px; font-weight: 600; cursor: pointer;
+    }
+    .rate-form button:disabled,
+    .rate-form input:disabled, .rate-form select:disabled { opacity: .5; cursor: default; }
+    .rate-msg { margin: 0; font-size: 11.5px; min-height: 14px; white-space: pre-wrap; }
+    .rate-msg.ok { color: #5fd08a; }
+    .rate-msg.err { color: #ff7676; }
+    .rate-avg { font-size: 12px; color: var(--text-dim); }
+    .rate-avg b { color: var(--text); font-size: 15px; }
+    .rate-dist, .rt-mini { display: flex; align-items: flex-end; gap: 3px; height: 42px; }
+    .rt-mini { height: 38px; margin-top: 6px; }
+    .db {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      justify-content: flex-end; height: 100%; gap: 2px; min-width: 0;
+    }
+    .db i {
+      width: 100%; background: var(--accent); border-radius: 2px 2px 0 0;
+      display: block; opacity: .88;
+    }
+    .db span { font-size: 8px; color: var(--text-dim); line-height: 1; }
+    .rate-all-btn {
+      background: transparent; border: 1px solid var(--border); color: var(--text-dim);
+      border-radius: 7px; padding: 7px; font-size: 12px; cursor: pointer;
+    }
+    .rate-all-btn:hover { background: rgba(255,255,255,.05); color: var(--text); }
+
+    /* ratings detail modal: per-game summary + raw table */
+    .rt-summary { display: flex; flex-direction: column; gap: 8px; }
+    .rt-grow {
+      border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px;
+      background: rgba(0,0,0,.18);
+    }
+    .rt-top { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; }
+    .rt-top b { color: var(--text); }
+    .rt-top span { color: var(--text-dim); white-space: nowrap; }
+    .ratings-table-wrap {
+      max-height: 280px; overflow: auto;
+      border: 1px solid var(--border); border-radius: 8px;
+    }
+    table.ratings-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    table.ratings-table th, table.ratings-table td {
+      text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--border);
+    }
+    table.ratings-table th {
+      position: sticky; top: 0; background: var(--sidebar-bg);
+      color: var(--text-dim); font-weight: 600;
+    }
+    table.ratings-table td.sc { text-align: center; font-weight: 700; color: var(--accent); }
+    table.ratings-table tr:last-child td { border-bottom: none; }
   </style>
 </head>
 <body>
@@ -326,6 +399,19 @@
         <p>Soldan bir oyun seçin</p>
       </div>
       <ul class="game-list" id="gameList"></ul>
+      <div class="rate-panel" id="ratePanel">
+        <div class="rate-head">⭐ Puanla</div>
+        <div class="rate-game" id="rateGameName">Önce bir oyun seç</div>
+        <div class="rate-form">
+          <input id="rateName" type="text" placeholder="İsmin *" maxlength="60" disabled />
+          <select id="rateScore" disabled><option value="">Puan *</option></select>
+          <button id="rateSubmit" disabled>Ver</button>
+        </div>
+        <p class="rate-msg" id="rateMsg"></p>
+        <div class="rate-avg" id="rateAvg"></div>
+        <div class="rate-dist" id="rateDist"></div>
+        <button class="rate-all-btn" id="rateAllBtn">📊 Tüm puanlar &amp; tablo</button>
+      </div>
       <div class="sidebar-footer">
         <button id="uploadBtn" class="upload-btn">⬆️ Level Yükle</button>
       </div>
@@ -388,6 +474,29 @@
     </div>
   </div>
 
+  <!-- Ratings detail modal -->
+  <div class="modal-overlay" id="ratingsModal" hidden>
+    <div class="modal">
+      <div class="modal-head">
+        <h2>📊 Puanlar</h2>
+        <button class="modal-close" id="ratingsClose" aria-label="Kapat">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="field">
+          <span>Oyun ortalamaları &amp; puan dağılımı</span>
+          <div class="rt-summary" id="rtSummary"><p class="lvl-empty">Yükleniyor…</p></div>
+        </div>
+        <div class="field">
+          <span>Tüm puanlar — kim kaç verdi</span>
+          <div class="ratings-table-wrap" id="rtTableWrap"></div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-secondary" id="ratingsCloseBtn">Kapat</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const GAMES = [
       { name: "Find The Cat",                  path: "Find The Cat/game/index.html" },
@@ -430,6 +539,7 @@
       document.querySelectorAll(".game-list button").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       location.hash = encodeURIComponent(game.name);
+      setRatingGame(game.name);
       // On phones, close the drawer so the game fills the screen.
       if (mqMobile.matches) setNav(true);
     }
@@ -593,6 +703,123 @@
         upSubmit.disabled = false;
       }
     });
+
+    // ---- Ratings ----
+    let rateGame = null;        // currently selected game name
+    let ratingsData = null;     // cached { ratings:[...], stats:{game:{avg,count,dist}} }
+    const rateName = document.getElementById("rateName");
+    const rateScore = document.getElementById("rateScore");
+    const rateSubmit = document.getElementById("rateSubmit");
+    const rateMsg = document.getElementById("rateMsg");
+    const rateGameName = document.getElementById("rateGameName");
+    const rateAvg = document.getElementById("rateAvg");
+    const rateDist = document.getElementById("rateDist");
+    const ratingsModal = document.getElementById("ratingsModal");
+
+    // score options 1..10
+    for (let i = 1; i <= 10; i++) {
+      const o = document.createElement("option");
+      o.value = i; o.textContent = i; rateScore.appendChild(o);
+    }
+
+    const esc = s => String(s).replace(/[&<>"]/g,
+      c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+    // 10 mini bars (scores 1..10); heights scaled to the busiest bucket
+    function distBars(dist) {
+      const max = Math.max(1, ...Object.values(dist || {}));
+      let html = "";
+      for (let i = 1; i <= 10; i++) {
+        const c = (dist && dist[i]) || 0;
+        const h = c ? Math.max(3, Math.round((c / max) * 30)) : 0;
+        html += `<div class="db"><i style="height:${h}px" title="${i} puan: ${c} oy"></i><span>${i}</span></div>`;
+      }
+      return html;
+    }
+
+    function renderRateStats() {
+      const st = (ratingsData && ratingsData.stats && rateGame) ? ratingsData.stats[rateGame] : null;
+      if (st && st.count) {
+        rateAvg.innerHTML = `Ortalama <b>${st.avg}</b> / 10 · ${st.count} oy`;
+        rateDist.innerHTML = distBars(st.dist);
+      } else {
+        rateAvg.textContent = rateGame ? "Henüz puan verilmemiş" : "";
+        rateDist.innerHTML = "";
+      }
+    }
+
+    async function loadRatings() {
+      try {
+        const r = await fetch("api/ratings");
+        ratingsData = await r.json();
+      } catch (e) {
+        ratingsData = { ratings: [], stats: {} };
+      }
+      renderRateStats();
+    }
+
+    function setRatingGame(name) {
+      rateGame = name;
+      rateGameName.textContent = name || "Önce bir oyun seç";
+      const on = !!name;
+      rateName.disabled = rateScore.disabled = rateSubmit.disabled = !on;
+      rateMsg.textContent = ""; rateMsg.className = "rate-msg";
+      renderRateStats();
+    }
+
+    rateSubmit.addEventListener("click", async () => {
+      const name = rateName.value.trim();
+      const score = rateScore.value;
+      if (!rateGame) { rateMsg.className = "rate-msg err"; rateMsg.textContent = "Önce bir oyun seç."; return; }
+      if (!name)     { rateMsg.className = "rate-msg err"; rateMsg.textContent = "İsim zorunlu."; return; }
+      if (!score)    { rateMsg.className = "rate-msg err"; rateMsg.textContent = "Puan zorunlu (1–10)."; return; }
+      rateSubmit.disabled = true;
+      rateMsg.className = "rate-msg"; rateMsg.textContent = "Kaydediliyor…";
+      try {
+        const r = await fetch("api/ratings", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ game: rateGame, name, score: Number(score) })
+        });
+        const data = await r.json();
+        rateMsg.className = "rate-msg " + (data.ok ? "ok" : "err");
+        rateMsg.textContent = (data.ok ? "✓ " : "✗ ") + (data.message || "");
+        if (data.ok) { rateName.value = ""; rateScore.value = ""; await loadRatings(); }
+      } catch (e) {
+        rateMsg.className = "rate-msg err"; rateMsg.textContent = "Puan servisi çalışmıyor (backend gerekli).";
+      } finally {
+        rateSubmit.disabled = !rateGame;
+      }
+    });
+
+    // ---- Ratings detail modal (per-game summary + raw table) ----
+    async function openRatings() {
+      ratingsModal.hidden = false;
+      const rtSummary = document.getElementById("rtSummary");
+      const rtTableWrap = document.getElementById("rtTableWrap");
+      rtSummary.innerHTML = '<p class="lvl-empty">Yükleniyor…</p>';
+      rtTableWrap.innerHTML = "";
+      await loadRatings();
+      const stats = (ratingsData && ratingsData.stats) || {};
+      const games = Object.keys(stats).sort((a, b) => stats[b].avg - stats[a].avg);
+      rtSummary.innerHTML = games.length ? games.map(g =>
+        `<div class="rt-grow"><div class="rt-top"><b>${esc(g)}</b>` +
+        `<span>Ort. ${stats[g].avg} / 10 · ${stats[g].count} oy</span></div>` +
+        `<div class="rt-mini">${distBars(stats[g].dist)}</div></div>`).join("")
+        : '<p class="lvl-empty">Henüz puan verilmemiş.</p>';
+      const rows = (ratingsData && ratingsData.ratings) || [];
+      rtTableWrap.innerHTML = rows.length ?
+        '<table class="ratings-table"><thead><tr><th>Oyun</th><th>İsim</th><th>Puan</th><th>Tarih</th></tr></thead><tbody>' +
+        rows.map(r => `<tr><td>${esc(r.game)}</td><td>${esc(r.name)}</td>` +
+          `<td class="sc">${esc(r.score)}</td><td>${esc((r.ts || "").replace("T", " "))}</td></tr>`).join("") +
+        "</tbody></table>"
+        : '<p class="lvl-empty" style="padding:12px">Henüz puan verilmemiş.</p>';
+    }
+    document.getElementById("rateAllBtn").addEventListener("click", openRatings);
+    document.getElementById("ratingsClose").addEventListener("click", () => ratingsModal.hidden = true);
+    document.getElementById("ratingsCloseBtn").addEventListener("click", () => ratingsModal.hidden = true);
+    ratingsModal.addEventListener("click", e => { if (e.target === ratingsModal) ratingsModal.hidden = true; });
+
+    loadRatings();   // prime avg/distribution on first paint
 
     // Open game from URL hash on load (deep-linking)
     const fromHash = decodeURIComponent(location.hash.replace(/^#/, ""));

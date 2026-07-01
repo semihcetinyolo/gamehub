@@ -54,3 +54,6 @@ Sticker 2/game/assets/0002/
 
 # Match3 Pair — self-contained shareable export (13MB embedded duplicate of index.html); kept on disk
 Match3 Pair/PairMatch.html
+
+# Ratings runtime store (per-server data)
+leveltool/ratings.json

@@ -722,6 +722,84 @@ def api_levels_delete():
                    deleted=[r["name"] for r in to_delete])
 
 
+# ---- ratings: per-game user scores (1..10) — avg, distribution, raw table ----
+RATINGS = ROOT / "leveltool" / "ratings.json"
+
+
+def load_ratings():
+    if RATINGS.exists():
+        try:
+            return json.loads(RATINGS.read_text(encoding="utf-8"))
+        except Exception:
+            return []
+    return []
+
+
+def save_ratings(rows):
+    RATINGS.write_text(json.dumps(rows, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def rating_stats(rows):
+    """Per-game aggregate: {game: {count, avg, dist{'1'..'10'}}}."""
+    stats = {}
+    for r in rows:
+        g = r.get("game", "")
+        try:
+            s = int(r.get("score", 0))
+        except (TypeError, ValueError):
+            continue
+        st = stats.setdefault(g, {"count": 0, "sum": 0,
+                                  "dist": {str(i): 0 for i in range(1, 11)}})
+        st["count"] += 1
+        st["sum"] += s
+        if 1 <= s <= 10:
+            st["dist"][str(s)] += 1
+    for st in stats.values():
+        st["avg"] = round(st["sum"] / st["count"], 2) if st["count"] else 0
+        st.pop("sum", None)
+    return stats
+
+
+@app.post("/api/ratings")
+def api_rate():
+    """Record a score for a game. name + score(1..10) are both required."""
+    data = request.get_json(silent=True) or {}
+    game = (data.get("game") or "").strip()
+    name = (data.get("name") or "").strip()
+    if not game:
+        return jsonify(ok=False, message="Oyun seçilmedi."), 400
+    if not name:
+        return jsonify(ok=False, message="İsim zorunlu."), 400
+    try:
+        score = int(data.get("score"))
+    except (TypeError, ValueError):
+        return jsonify(ok=False, message="Puan zorunlu."), 400
+    if not (1 <= score <= 10):
+        return jsonify(ok=False, message="Puan 1 ile 10 arasında olmalı."), 400
+    rows = load_ratings()
+    rows.append({
+        "id": uuid.uuid4().hex[:10],
+        "game": game[:80],
+        "name": name[:60],
+        "score": score,
+        "ts": datetime.datetime.now().isoformat(timespec="seconds"),
+    })
+    save_ratings(rows)
+    return jsonify(ok=True, message="Puan kaydedildi.")
+
+
+@app.get("/api/ratings")
+def api_ratings():
+    """All ratings (newest first) + per-game stats. Optional ?game= filters the list."""
+    rows = load_ratings()
+    stats = rating_stats(rows)
+    game = request.args.get("game")
+    out = sorted(rows, key=lambda r: r.get("ts", ""), reverse=True)
+    if game:
+        out = [r for r in out if r.get("game") == game]
+    return jsonify(ok=True, ratings=out, stats=stats)
+
+
 # ---- static: serve the hub + all games from the repo root ----
 @app.get("/")
 def index():
