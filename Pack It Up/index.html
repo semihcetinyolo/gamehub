@@ -1135,12 +1135,12 @@ function snapCell(x,y){
   const g=document.getElementById('grid');
   if(!g)return{row:-99,col:-99,overGrid:false};
   const r=g.getBoundingClientRect();
-  const maxC=Math.max(...dragItem.cells.map(([,c])=>c));
-  const maxR=Math.max(...dragItem.cells.map(([rr])=>rr));
   const rawC=(x-dox-r.left)/CELL;
   const rawR=(y-doy-r.top)/CELL;
-  const col=clamp(Math.round(rawC),0,lvl.cols-1-maxC);
-  const row=clamp(Math.round(rawR),0,lvl.rows-1-maxR);
+  // Follow the cursor to the nearest cell WITHOUT clamping inward, so the piece
+  // can hang off the board / over passive cells (which then reads as invalid/red).
+  const col=Math.round(rawC);
+  const row=Math.round(rawR);
   // overGrid: cursor itself is inside grid bounds (not ghost overlap)
   const overGrid=x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom;
   return{row,col,overGrid};
@@ -1197,17 +1197,22 @@ function highlight(overGrid,row,col){
   if(sh)sh.style.opacity='0'; // no spreading rectangle — highlight only the exact snap cells
   const hl=document.getElementById('hl');
   if(!overGrid||!dragItem||!hl)return;
-  // Draw on the overlay layer (above placed items) so an intersection shows red
-  // even where it sits on top of an already-placed item.
+  // If ANY cell falls off the board or on a passive (inactive/hole) cell, the
+  // WHOLE piece preview goes red — the placement is invalid. Otherwise per-cell:
+  // red where it overlaps another placed item (will eject), green where free.
+  // Drawn on the overlay layer (above placed items) so red stays visible.
+  const valid=canPlaceEject(dragItem,row,col);
   dragItem.cells.forEach(([r,c])=>{
     const gr=row+r,gc=col+c;
-    if(gr<0||gr>=lvl.rows||gc<0||gc>=lvl.cols)return;
-    if(lvl.gridMap&&!lvl.gridMap[gr][gc])return; // off-board hole
-    const occ=grid[gr][gc];
-    // red where this cell intersects another placed item (or a blocked hole), green where free
-    const collide=occ==='X'||(occ!==null&&occ!==dragItem.id);
+    let cls='hl-ok';
+    if(!valid){
+      cls='hl-no';
+    }else{
+      const occ=grid[gr][gc];             // valid ⇒ gr,gc are in-bounds
+      if(occ!==null&&occ!=='X'&&occ!==dragItem.id)cls='hl-no';
+    }
     const d=document.createElement('div');
-    d.className='hl-c '+(collide?'hl-no':'hl-ok');
+    d.className='hl-c '+cls;
     d.style.cssText=`left:${gridOffX+gc*CELL}px;top:${gridOffY+gr*CELL}px;width:${CELL}px;height:${CELL}px;`;
     hl.appendChild(d);
   });
