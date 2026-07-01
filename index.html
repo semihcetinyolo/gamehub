@@ -383,6 +383,11 @@
     }
     table.ratings-table td.sc { text-align: center; font-weight: 700; color: var(--accent); }
     table.ratings-table tr:last-child td { border-bottom: none; }
+    table.ratings-table th.cb, table.ratings-table td.cb { width: 30px; text-align: center; padding-right: 0; }
+    table.ratings-table input[type="checkbox"] {
+      width: 15px; height: 15px; accent-color: var(--accent); cursor: pointer; vertical-align: middle;
+    }
+    table.ratings-table tbody tr:hover { background: rgba(255,255,255,0.04); }
   </style>
 </head>
 <body>
@@ -489,9 +494,11 @@
         <div class="field">
           <span>Tüm puanlar — kim kaç verdi</span>
           <div class="ratings-table-wrap" id="rtTableWrap"></div>
+          <p class="msg" id="ratingsDelMsg"></p>
         </div>
       </div>
       <div class="modal-foot">
+        <button class="btn-danger" id="ratingsDelete" disabled style="margin-right:auto">🗑 Seçili puanları sil</button>
         <button class="btn-secondary" id="ratingsCloseBtn">Kapat</button>
       </div>
     </div>
@@ -715,6 +722,8 @@
     const rateAvg = document.getElementById("rateAvg");
     const rateDist = document.getElementById("rateDist");
     const ratingsModal = document.getElementById("ratingsModal");
+    const ratingsDelete = document.getElementById("ratingsDelete");
+    const ratingsDelMsg = document.getElementById("ratingsDelMsg");
 
     // score options 1..10
     for (let i = 1; i <= 10; i++) {
@@ -808,12 +817,50 @@
         : '<p class="lvl-empty">Henüz puan verilmemiş.</p>';
       const rows = (ratingsData && ratingsData.ratings) || [];
       rtTableWrap.innerHTML = rows.length ?
-        '<table class="ratings-table"><thead><tr><th>Oyun</th><th>İsim</th><th>Puan</th><th>Tarih</th></tr></thead><tbody>' +
-        rows.map(r => `<tr><td>${esc(r.game)}</td><td>${esc(r.name)}</td>` +
+        '<table class="ratings-table"><thead><tr>' +
+        '<th class="cb"><input type="checkbox" id="rtCheckAll" title="Tümünü seç"></th>' +
+        '<th>Oyun</th><th>İsim</th><th>Puan</th><th>Tarih</th></tr></thead><tbody>' +
+        rows.map(r => `<tr><td class="cb"><input type="checkbox" class="rt-cb" value="${esc(r.id)}"></td>` +
+          `<td>${esc(r.game)}</td><td>${esc(r.name)}</td>` +
           `<td class="sc">${esc(r.score)}</td><td>${esc((r.ts || "").replace("T", " "))}</td></tr>`).join("") +
         "</tbody></table>"
         : '<p class="lvl-empty" style="padding:12px">Henüz puan verilmemiş.</p>';
+      ratingsDelMsg.textContent = ""; ratingsDelMsg.className = "msg";
+      const checkAll = document.getElementById("rtCheckAll");
+      if (checkAll) checkAll.addEventListener("change", () => {
+        rtTableWrap.querySelectorAll(".rt-cb").forEach(c => c.checked = checkAll.checked);
+        refreshRatingsDeleteBtn();
+      });
+      rtTableWrap.querySelectorAll(".rt-cb").forEach(c => c.addEventListener("change", refreshRatingsDeleteBtn));
+      refreshRatingsDeleteBtn();
     }
+    function checkedRatingIds() {
+      return [...document.querySelectorAll("#rtTableWrap .rt-cb:checked")].map(c => c.value);
+    }
+    function refreshRatingsDeleteBtn() {
+      const n = checkedRatingIds().length;
+      ratingsDelete.disabled = n === 0;
+      ratingsDelete.textContent = n ? `🗑 ${n} puanı sil` : "🗑 Seçili puanları sil";
+    }
+    ratingsDelete.addEventListener("click", async () => {
+      const ids = checkedRatingIds();
+      if (!ids.length) return;
+      if (!confirm(`${ids.length} puan kalıcı olarak silinecek. Emin misin?`)) return;
+      ratingsDelete.disabled = true;
+      ratingsDelMsg.className = "msg"; ratingsDelMsg.textContent = "Siliniyor…";
+      try {
+        const r = await fetch("api/ratings/delete", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ids })
+        });
+        const data = await r.json();
+        await openRatings();   // reload table + summary + sidebar stats
+        ratingsDelMsg.className = "msg " + (data.ok ? "ok" : "err");
+        ratingsDelMsg.textContent = (data.ok ? "✓ " : "✗ ") + (data.message || "");
+      } catch (e) {
+        ratingsDelMsg.className = "msg err"; ratingsDelMsg.textContent = "Hata: " + e.message;
+      }
+    });
     document.getElementById("rateAllBtn").addEventListener("click", openRatings);
     document.getElementById("ratingsClose").addEventListener("click", () => ratingsModal.hidden = true);
     document.getElementById("ratingsCloseBtn").addEventListener("click", () => ratingsModal.hidden = true);

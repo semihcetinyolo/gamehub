@@ -800,6 +800,22 @@ def api_ratings():
     return jsonify(ok=True, ratings=out, stats=stats)
 
 
+@app.post("/api/ratings/delete")
+def api_ratings_delete():
+    """Delete one or more ratings by id."""
+    data = request.get_json(silent=True) or {}
+    ids = set(data.get("ids") or [])
+    if not ids:
+        return jsonify(ok=False, message="Silinecek puan seçilmedi."), 400
+    rows = load_ratings()
+    kept = [r for r in rows if r.get("id") not in ids]
+    removed = len(rows) - len(kept)
+    if not removed:
+        return jsonify(ok=False, message="Seçilen puan bulunamadı."), 404
+    save_ratings(kept)
+    return jsonify(ok=True, message=f"{removed} puan silindi.")
+
+
 # ---- static: serve the hub + all games from the repo root ----
 @app.get("/")
 def index():
