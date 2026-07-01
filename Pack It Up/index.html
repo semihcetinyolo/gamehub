@@ -106,14 +106,30 @@ body{width:390px;height:844px;margin:0 auto;overflow:hidden;font-family:'Nunito'
 @keyframes cfFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}85%{opacity:1}100%{transform:translateY(105vh) rotate(700deg);opacity:0}}
 /* SKIP LEVEL (dev control, anchored to viewport top-right, outside the phone frame) */
 /* in-playfield icon buttons (positioned within #scr) */
-#skip-btn,#unpack-btn{position:absolute;z-index:50;width:46px;height:46px;border-radius:50%;
+#skip-btn,#unpack-btn,#hint-btn,#smart-btn{position:absolute;z-index:50;width:46px;height:46px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;padding:0;line-height:1;
   background:rgba(0,0,0,.55);color:#fff;border:none;font-size:1.25rem;cursor:pointer;
   box-shadow:0 4px 14px rgba(0,0,0,.35);backdrop-filter:blur(6px);}
 #skip-btn{top:12px;right:12px;}
+#hint-btn{top:12px;left:12px;}
+#smart-btn{top:12px;left:66px;}
 #unpack-btn{left:50%;bottom:14px;transform:translateX(-50%);}
-#skip-btn:active{transform:scale(.92);}
+#skip-btn:active,#hint-btn:active,#smart-btn:active{transform:scale(.92);}
 #unpack-btn:active{transform:translateX(-50%) scale(.92);}
+#hint-btn.on{background:rgba(255,193,90,.95);color:#3a2600;}
+/* DEBUG solution-counter holder, bottom-left */
+#sol-count{position:absolute;left:12px;bottom:14px;z-index:50;pointer-events:none;
+  background:rgba(0,0,0,.6);color:#fff;font-family:inherit;font-weight:800;font-size:.72rem;
+  letter-spacing:.5px;padding:6px 12px;border-radius:16px;backdrop-filter:blur(6px);
+  box-shadow:0 3px 10px rgba(0,0,0,.3);}
+#sol-count.zero{color:#ff8a8a;}
+/* locked (hint-placed) piece — fixed, with a small lock badge */
+.pi.locked{cursor:default;}
+.pi.locked::after{content:'🔒';position:absolute;right:1px;bottom:0;font-size:12px;line-height:1;filter:drop-shadow(0 1px 1px rgba(0,0,0,.6));pointer-events:none;z-index:2;}
+/* solution hint overlay — each piece's art shown at its solved cell, above the grid */
+#hint{position:absolute;inset:0;pointer-events:none;z-index:30;display:none;}
+#hint.show{display:block;}
+#hint .hp{position:absolute;opacity:.4;filter:drop-shadow(0 2px 5px rgba(0,0,0,.35));}
 /* difficulty + score tag, top-center (read from the PSB Grid layer name) */
 #diff-tag{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:50;
   display:none;align-items:center;gap:9px;
@@ -134,8 +150,12 @@ body{width:390px;height:844px;margin:0 auto;overflow:hidden;font-family:'Nunito'
   <div id="bag-area"></div>
   <div id="scatter"></div>
   <div id="global-placed"></div>
+  <div id="hint"></div>
   <div id="hl"></div>
   <div id="diff-tag"></div>
+  <div id="sol-count"></div>
+  <button id="hint-btn" title="Çözümü göster" aria-label="Çözümü göster">💡</button>
+  <button id="smart-btn" title="Akıllı ipucu" aria-label="Akıllı ipucu">🪄</button>
   <button id="skip-btn" title="Sonraki bölüm" aria-label="Sonraki bölüm">⏭</button>
   <button id="unpack-btn" title="Hepsini çıkar" aria-label="Hepsini çıkar">↺</button>
 </div>
@@ -725,7 +745,7 @@ const PACK1_PIECES=[
 function packItems(dir){return PACK1_PIECES.map(p=>({img:dir+'/'+p[0]+'.png',w:p[1],h:p[2]}));}
 
 const LEVELS=[
-  {title:"Japonya",emoji:'🎁',sub:"Japonya par\u00e7alar\u0131n\u0131 yerle\u015ftir!",bg:"linear-gradient(180deg,#efe6d6 0%,#d6c1a3 100%)",bgImg:"japonya/bg.png",cellImg:"japonya/cell.png",difficulty:"Hard",order:67,rows:8,cols:6,bareGrid:true,gridMap:[[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1]],items:[{img:"japonya/1.png",w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]],art:{dx:0.03,dy:0.05,iw:1.9,ih:1.91}},{img:"japonya/2.png",w:3,h:3,cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0]],art:{dx:0.12,dy:0.09,iw:2.83,ih:2.87}},{img:"japonya/3.png",w:3,h:3,cells:[[0,1],[0,2],[1,1],[1,2],[2,0],[2,1],[2,2]],art:{dx:0.09,dy:0.05,iw:2.84,ih:2.92}},{img:"japonya/4.png",w:2,h:3,cells:[[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]],art:{dx:0.17,dy:0.05,iw:1.71,ih:2.9}},{img:"japonya/5.png",w:4,h:3,cells:[[0,1],[0,3],[1,0],[1,1],[1,2],[1,3],[2,1],[2,2]],art:{dx:0.22,dy:0.16,iw:3.63,ih:2.76}},{img:"japonya/6.png",w:1,h:1,cells:[[0,0]],art:{dx:0.02,dy:0.11,iw:0.95,ih:0.79}},{img:"japonya/7.png",w:1,h:1,cells:[[0,0]],art:{dx:0.03,dy:0.12,iw:0.94,ih:0.82}},{img:"japonya/8.png",w:1,h:1,cells:[[0,0]],art:{dx:0.02,dy:0.04,iw:0.97,ih:0.92}},{img:"japonya/9.png",w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.03,dy:0.28,iw:0.96,ih:1.46}},{img:"japonya/10.png",w:3,h:3,cells:[[0,0],[0,1],[0,2],[1,0],[1,2],[2,0],[2,2]],art:{dx:0.08,dy:0.03,iw:2.87,ih:2.93}},{img:"japonya/11.png",w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]],art:{dx:0.03,dy:0.07,iw:1.94,ih:1.85}}],winEmoji:'🎉',winTitle:"Harika!",winDesc:"Japonya tamamland\u0131!"},
+  {title:"Japonya",emoji:'🎁',sub:"Japonya par\u00e7alar\u0131n\u0131 yerle\u015ftir!",bg:"linear-gradient(180deg,#efe6d6 0%,#d6c1a3 100%)",bgImg:"japonya/bg.png",cellImg:"japonya/cell.png",difficulty:"Hard",order:67,rows:8,cols:6,bareGrid:true,gridMap:[[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1]],items:[{img:"japonya/1.png",w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]],art:{dx:0.03,dy:0.05,iw:1.9,ih:1.91},sol:[3,2]},{img:"japonya/2.png",w:3,h:3,cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0]],art:{dx:0.12,dy:0.09,iw:2.83,ih:2.87},sol:[0,3]},{img:"japonya/3.png",w:3,h:3,cells:[[0,1],[0,2],[1,1],[1,2],[2,0],[2,1],[2,2]],art:{dx:0.09,dy:0.05,iw:2.84,ih:2.92},sol:[5,3]},{img:"japonya/4.png",w:2,h:3,cells:[[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]],art:{dx:0.17,dy:0.05,iw:1.71,ih:2.9},sol:[2,4]},{img:"japonya/5.png",w:4,h:3,cells:[[0,1],[0,3],[1,0],[1,1],[1,2],[1,3],[2,1],[2,2]],art:{dx:0.22,dy:0.16,iw:3.63,ih:2.76},sol:[5,0]},{img:"japonya/6.png",w:1,h:1,cells:[[0,0]],art:{dx:0.02,dy:0.11,iw:0.95,ih:0.79},sol:[7,0]},{img:"japonya/7.png",w:1,h:1,cells:[[0,0]],art:{dx:0.03,dy:0.12,iw:0.94,ih:0.82},sol:[5,2]},{img:"japonya/8.png",w:1,h:1,cells:[[0,0]],art:{dx:0.02,dy:0.04,iw:0.97,ih:0.92},sol:[5,0]},{img:"japonya/9.png",w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.03,dy:0.28,iw:0.96,ih:1.46},sol:[1,1]},{img:"japonya/10.png",w:3,h:3,cells:[[0,0],[0,1],[0,2],[1,0],[1,2],[2,0],[2,2]],art:{dx:0.08,dy:0.03,iw:2.87,ih:2.93},sol:[0,0]},{img:"japonya/11.png",w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]],art:{dx:0.03,dy:0.07,iw:1.94,ih:1.85},sol:[3,0]}],winEmoji:'🎉',winTitle:"Harika!",winDesc:"Japonya tamamland\u0131!"},
 ];
 
 /* ── CONSTANTS & STATE ── */
@@ -797,7 +817,7 @@ function initLevel(idx){
   items=lvl.items.map((d,i)=>{
     let cells=d.cells;
     if(!cells&&d.w){cells=[];for(let r=0;r<d.h;r++)for(let c=0;c<d.w;c++)cells.push([r,c]);}
-    return{id:i,key:d.key,img:d.img,art:d.art,w:d.w,h:d.h,cells,placed:false,row:0,col:0,sx:0,sy:0,srot:0,el:null};
+    return{id:i,key:d.key,img:d.img,art:d.art,w:d.w,h:d.h,cells,sol:d.sol,placed:false,row:0,col:0,sx:0,sy:0,srot:0,el:null};
   });
   document.getElementById('bg').style.background=lvl.bgImg?`url('${lvl.bgImg}') center/cover no-repeat`:lvl.bg;
   {const dt=document.getElementById('diff-tag');
@@ -805,6 +825,7 @@ function initLevel(idx){
      dt.className=lvl.difficulty?('d-'+String(lvl.difficulty).toLowerCase()):'';
      dt.innerHTML=(lvl.difficulty?`<span class="dlabel">${String(lvl.difficulty).toUpperCase()}</span>`:'')
        +(lvl.order!=null?`<span class="dscore">${lvl.order}</span>`:'');}}
+  hideHint();
   document.getElementById('global-placed').innerHTML='';
   buildBag();
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
@@ -1058,14 +1079,188 @@ function rebuildPlaced(freshId=null){
   items.filter(i=>i.placed).forEach(item=>{
     const[vw,vh]=dimOf(item);
     const pW=vw*CELL,pH=vh*CELL;
-    const d=mkEl('div','pi'+(item.id===freshId?' fresh':''));
+    const d=mkEl('div','pi'+(item.id===freshId?' fresh':'')+(item.locked?' locked':''));
     d.style.cssText=`position:absolute;left:${gridOffX+item.col*CELL}px;top:${gridOffY+item.row*CELL}px;width:${pW}px;height:${pH}px;pointer-events:auto;`;
     injectArt(d,item,pW,pH);
     d.dataset.id=item.id;
-    d.addEventListener('mousedown',piMD);
-    d.addEventListener('touchstart',piTS,{passive:false});
+    if(!item.locked){                     // locked (hint) pieces are fixed — not draggable
+      d.addEventListener('mousedown',piMD);
+      d.addEventListener('touchstart',piTS,{passive:false});
+    }
     layer.appendChild(d);
   });
+}
+
+/* ── SOLUTION HINT (overlay each piece's art at its solved cell) ── */
+function buildHint(){
+  const layer=document.getElementById('hint'); if(!layer)return;
+  layer.innerHTML='';
+  items.forEach(item=>{
+    if(!item.sol)return;
+    const[sr,sc]=item.sol;const[vw,vh]=dimOf(item);
+    const pW=vw*CELL,pH=vh*CELL;
+    const d=mkEl('div','hp');
+    d.style.cssText=`position:absolute;left:${gridOffX+sc*CELL}px;top:${gridOffY+sr*CELL}px;width:${pW}px;height:${pH}px;`;
+    injectArt(d,item,pW,pH);
+    layer.appendChild(d);
+  });
+}
+function hideHint(){const l=document.getElementById('hint'),b=document.getElementById('hint-btn');
+  if(l){l.classList.remove('show');l.innerHTML='';}if(b)b.classList.remove('on');}
+function toggleHint(){
+  const l=document.getElementById('hint'),b=document.getElementById('hint-btn');if(!l)return;
+  const show=!l.classList.contains('show');
+  if(show){buildHint();l.classList.add('show');}else{l.classList.remove('show');l.innerHTML='';}
+  if(b)b.classList.toggle('on',show);
+}
+
+/* ── SMART HINT ── exact-cover (polyomino packing) over the CURRENT board ──
+   Treats already-placed pieces as fixed; asks whether `pieces` can tile the
+   remaining empty active cells. Returns {itemId:{row,col}} or null. MRV
+   backtracking with a node budget — a few ms for our board sizes. */
+function solvePacking(pieces,budget=60000){
+  const rows=lvl.rows,cols=lvl.cols;
+  const idx=new Map(),cellList=[];
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++)
+    if(grid[r][c]===null){idx.set(r*cols+c,cellList.length);cellList.push([r,c]);}
+  const M=cellList.length;
+  if(M===0)return {};
+  if(pieces.reduce((s,p)=>s+p.cells.length,0)!==M)return null; // cell-count mismatch
+  // valid placements per piece (only on empty active cells)
+  const placements=pieces.map(p=>{
+    const maxR=Math.max(...p.cells.map(c=>c[0])),maxC=Math.max(...p.cells.map(c=>c[1])),out=[];
+    for(let row=0;row<=rows-1-maxR;row++)for(let col=0;col<=cols-1-maxC;col++){
+      const ci=[];let ok=true;
+      for(const[dr,dc]of p.cells){const ii=idx.get((row+dr)*cols+(col+dc));if(ii===undefined){ok=false;break;}ci.push(ii);}
+      if(ok)out.push({row,col,ci});
+    }
+    return out;
+  });
+  if(placements.some(pl=>pl.length===0))return null;
+  const cellCands=Array.from({length:M},()=>[]);
+  placements.forEach((pls,p)=>pls.forEach(pl=>pl.ci.forEach(ci=>cellCands[ci].push({p,pl}))));
+  const covered=new Uint8Array(M),used=new Uint8Array(pieces.length),assign={};
+  let nodes=0,budgetHit=false,firstFree=0;
+  // Fill the first uncovered cell each step (cheap per node) with every piece that
+  // can cover it — correct exact-cover strategy, far faster than a full MRV rescan.
+  function dfs(rem){
+    if(rem===0)return true;
+    if(++nodes>budget){budgetHit=true;return false;}
+    let ci=firstFree;while(ci<M&&covered[ci])ci++;
+    if(ci>=M)return false;
+    const saveFF=firstFree;firstFree=ci+1;
+    for(const{p,pl}of cellCands[ci]){
+      if(used[p])continue;
+      let fits=true;for(const c of pl.ci)if(covered[c]){fits=false;break;}
+      if(!fits)continue;
+      used[p]=1;for(const c of pl.ci)covered[c]=1;assign[pieces[p].id]={row:pl.row,col:pl.col};
+      if(dfs(rem-pl.ci.length))return true;
+      used[p]=0;for(const c of pl.ci)covered[c]=0;delete assign[pieces[p].id];
+      if(budgetHit){firstFree=saveFF;return false;}
+    }
+    firstFree=saveFF;
+    return false;
+  }
+  return dfs(M)?assign:null;
+}
+/* DEBUG: count how many ways the board can be completed from the current state
+   (capped + node-budgeted so it stays snappy). Returns {count,capped,budgetHit}. */
+function countPackings(pieces,cap=999,budget=400000){
+  const rows=lvl.rows,cols=lvl.cols;
+  const idx=new Map(),cellList=[];
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++)
+    if(grid[r][c]===null){idx.set(r*cols+c,cellList.length);cellList.push([r,c]);}
+  const M=cellList.length;
+  if(M===0)return{count:pieces.length?0:1,capped:false,budgetHit:false};
+  if(pieces.reduce((s,p)=>s+p.cells.length,0)!==M)return{count:0,capped:false,budgetHit:false};
+  const placements=pieces.map(p=>{
+    const maxR=Math.max(...p.cells.map(c=>c[0])),maxC=Math.max(...p.cells.map(c=>c[1])),out=[];
+    for(let row=0;row<=rows-1-maxR;row++)for(let col=0;col<=cols-1-maxC;col++){
+      const ci=[];let ok=true;
+      for(const[dr,dc]of p.cells){const ii=idx.get((row+dr)*cols+(col+dc));if(ii===undefined){ok=false;break;}ci.push(ii);}
+      if(ok)out.push({ci});
+    }
+    return out;
+  });
+  if(placements.some(pl=>pl.length===0))return{count:0,capped:false,budgetHit:false};
+  const cellCands=Array.from({length:M},()=>[]);
+  placements.forEach((pls,p)=>pls.forEach(pl=>pl.ci.forEach(ci=>cellCands[ci].push({p,pl}))));
+  const covered=new Uint8Array(M),used=new Uint8Array(pieces.length);
+  let count=0,nodes=0,budgetHit=false,firstFree=0;
+  function dfs(rem){
+    if(rem===0){count++;return count>=cap;}
+    if(++nodes>budget){budgetHit=true;return true;}
+    let ci=firstFree;while(ci<M&&covered[ci])ci++;
+    if(ci>=M)return false;
+    const saveFF=firstFree;firstFree=ci+1;
+    for(const{p,pl}of cellCands[ci]){
+      if(used[p])continue;
+      let fits=true;for(const c of pl.ci)if(covered[c]){fits=false;break;}
+      if(!fits)continue;
+      used[p]=1;for(const c of pl.ci)covered[c]=1;
+      const stop=dfs(rem-pl.ci.length);
+      used[p]=0;for(const c of pl.ci)covered[c]=0;
+      if(stop){firstFree=saveFF;return true;}
+    }
+    firstFree=saveFF;
+    return false;
+  }
+  dfs(M);
+  return{count,capped:count>=cap,budgetHit};
+}
+/* Lock a piece into place (hint result) — can no longer be dragged/ejected. */
+function placeLocked(item,row,col){
+  item.cells.forEach(([r,c])=>{grid[row+r][col+c]=item.id;});
+  item.placed=true;item.locked=true;item.row=row;item.col=col;
+  if(item.el){item.el.style.display='none';item.el.classList.remove('drag');}
+  rebuildPlaced(item.id);syncFilledCells();updateProg();playPlop();checkWin();
+}
+// Is the board solvable if we lift the pieces in S off it? (temporarily removes
+// them, re-solves with them back in the pool, then restores.)
+function solvableIfRemoved(S){
+  S.forEach(p=>{p.cells.forEach(([r,c])=>{grid[p.row+r][p.col+c]=null;});p.placed=false;});
+  const ok=!!solvePacking(items.filter(i=>!i.placed));
+  S.forEach(p=>{p.placed=true;p.cells.forEach(([r,c])=>{grid[p.row+r][p.col+c]=p.id;});});
+  return ok;
+}
+// Smallest subset of `placed` whose removal makes the board solvable (k=1,2,3…),
+// bounded by a wall-clock budget so the phone stays responsive.
+function findMinRemoval(placed){
+  const t0=performance.now(),CAP=600,n=placed.length;
+  for(let k=1;k<=n;k++){
+    let found=null;const combo=[];
+    (function rec(start,depth){
+      if(found||performance.now()-t0>CAP)return;
+      if(depth===k){if(solvableIfRemoved(combo))found=combo.slice();return;}
+      for(let i=start;i<n&&!found;i++){combo.push(placed[i]);rec(i+1,depth+1);combo.pop();}
+    })(0,0);
+    if(found)return found;
+    if(performance.now()-t0>CAP)break;
+  }
+  return null;
+}
+function smartHint(){
+  hideHint();
+  const unplaced=items.filter(i=>!i.placed);
+  // 1) Solvable as the user left it? → snap+lock the largest remaining piece
+  let sol=solvePacking(unplaced);
+  if(sol){
+    if(!unplaced.length)return;                       // already solved
+    const big=unplaced.slice().sort((a,b)=>b.cells.length-a.cells.length)[0];
+    const pos=sol[big.id];
+    placeLocked(big,pos.row,pos.col);
+    return;
+  }
+  // 2) Unsolvable → remove the MINIMUM number of placed pieces so a solution exists
+  const placed=items.filter(i=>i.placed&&!i.locked);
+  const toRemove=findMinRemoval(placed);
+  if(toRemove&&toRemove.length){
+    toRemove.forEach(p=>ejectItem(p.id));             // throw the offending pieces off-board
+    rebuildPlaced();syncFilledCells();updateProg();
+    return;
+  }
+  // 3) Couldn't decide within budget → peek the full canonical solution briefly
+  buildHint();const l=document.getElementById('hint');if(l){l.classList.add('show');setTimeout(hideHint,2200);}
 }
 
 /* ── DRAG SCATTER ── */
@@ -1086,7 +1281,7 @@ function piMD(e){e.preventDefault();e.stopPropagation();fromPlaced(+e.currentTar
 function piTS(e){e.preventDefault();e.stopPropagation();fromPlaced(+e.currentTarget.dataset.id,e.touches[0].clientX,e.touches[0].clientY);window.addEventListener('touchmove',onTM,{passive:false});window.addEventListener('touchend',onTE);}
 function fromPlaced(id,x,y){
   const item=items.find(i=>i.id===id);
-  if(!item)return;
+  if(!item||item.locked)return;   // locked (hint) pieces can't be picked up
   item.cells.forEach(([r,c])=>{grid[item.row+r][item.col+c]=null;});
   item.placed=false;
   rebuildPlaced();syncFilledCells();updateProg();
@@ -1160,7 +1355,9 @@ function canPlaceEject(item,row,col){
   for(const[r,c]of item.cells){
     const gr=row+r,gc=col+c;
     if(gr<0||gr>=lvl.rows||gc<0||gc>=lvl.cols)return false;
-    if(grid[gr][gc]==='X')return false;
+    const g=grid[gr][gc];
+    if(g==='X')return false;                          // blocked hole
+    if(g!==null&&items[g]&&items[g].locked)return false; // locked (hint) piece — can't eject
   }
   return true;
 }
@@ -1168,7 +1365,7 @@ function canPlaceEject(item,row,col){
 // or below the grid) so it's obvious it was displaced from there.
 function ejectItem(id){
   const it=items.find(i=>i.id===id);
-  if(!it||!it.placed)return;
+  if(!it||!it.placed||it.locked)return;   // never eject a locked (hint) piece
   it.cells.forEach(([r,c])=>{grid[it.row+r][it.col+c]=null;});
   it.placed=false;
   const[vw,vh]=dimOf(it);
@@ -1262,7 +1459,14 @@ function drop(x,y){
 }
 
 /* ── PROGRESS / WIN ── */
-function updateProg(){const p=items.filter(i=>i.placed).length;const e=document.getElementById('h-pr');if(e)e.textContent=`${p}/${items.length}`;}
+function updateProg(){const p=items.filter(i=>i.placed).length;const e=document.getElementById('h-pr');if(e)e.textContent=`${p}/${items.length}`;updateSolCount();}
+// DEBUG: recompute + show how many ways the board can still be completed
+function updateSolCount(){
+  const el=document.getElementById('sol-count');if(!el)return;
+  const r=countPackings(items.filter(i=>!i.placed));
+  el.textContent='çözüm: '+r.count+(r.capped||r.budgetHit?'+':'');
+  el.classList.toggle('zero',r.count===0&&!r.budgetHit);
+}
 function checkWin(){
   if(!items.every(i=>i.placed))return;
   setTimeout(()=>{
@@ -1308,11 +1512,15 @@ document.getElementById('skip-btn').onclick=()=>{
   document.getElementById('win').classList.remove('show');
   initLevel((curIdx+1)%LEVELS.length);
 };
-// Unpack: send every placed item back off the board (de-snap all)
+// Unpack: send every placed item back off the board (de-snap all; keeps locked hints)
 document.getElementById('unpack-btn').onclick=()=>{
-  items.filter(i=>i.placed).forEach(i=>ejectItem(i.id));
+  items.filter(i=>i.placed&&!i.locked).forEach(i=>ejectItem(i.id));
   rebuildPlaced();syncFilledCells();updateProg();
 };
+// Hint 1 (💡): toggle the full canonical solution overlay
+document.getElementById('hint-btn').onclick=toggleHint;
+// Hint 2 (🪄): smart hint — lock the largest piece into a solution, or fix the board
+document.getElementById('smart-btn').onclick=smartHint;
 initLevel(0);
 </script>
 </body>

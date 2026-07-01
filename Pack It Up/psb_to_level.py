@@ -236,9 +236,10 @@ def _find_layer(psd, name, group=False):
 
 
 def _find_grid_layer(psd):
-    """The footprint colour-map layer. Its name starts with 'Grid' and may carry
-    metadata, e.g. 'Grid_Hard_67' / 'Grid_Easy_28 (1)'. Falls back to a 'Solution'
-    layer for older PSBs."""
+    """The layer whose name starts with 'Grid' (e.g. 'Grid_Hard_67', possibly with
+    a Photoshop ' (1)' suffix). Its coloured areas are the SOLE source of the level:
+    each colour = one piece's footprint AND its solved board position. There is no
+    separate 'Solution' layer."""
     hit = [None]
     def walk(ls):
         for l in ls:
@@ -247,7 +248,7 @@ def _find_grid_layer(psd):
             if l.is_group():
                 walk(l)
     walk(psd)
-    return hit[0] or _find_layer(psd, "solution")
+    return hit[0]
 
 
 def parse_grid_meta(name):
@@ -303,9 +304,10 @@ def build_level_solution(psb_path, name, slug=None, out_dir=None, copy_pngs=True
     slug = slug or slugify(name); out_dir = out_dir or slug
     if copy_pngs:
         os.makedirs(out_dir, exist_ok=True)
-    # ---- footprint colour map from the Grid layer (it holds each piece's shape;
-    # its outer border/background colours are dropped below since no piece claims
-    # them). Solution is intentionally NOT used. ----
+    # ---- The Grid layer's coloured areas ARE the solution: each colour marks one
+    # piece's cells at its solved board position. From it we derive the footprint
+    # (shape), the art offset, AND `sol` (solved position). No 'Solution' layer.
+    # Outer border/background colours are dropped since no piece claims them. ----
     smap = _find_grid_layer(psd)
     difficulty, order = parse_grid_meta(smap.name)   # e.g. Grid_Hard_67 -> ("Hard", 67)
     rgba = _to_canvas_rgba(smap, W, H)
@@ -372,7 +374,10 @@ def build_level_solution(psb_path, name, slug=None, out_dir=None, copy_pngs=True
         n += 1
         if copy_pngs:
             pil.save(os.path.join(out_dir, f"{n}.png"))
-        items.append({"img": f"{slug}/{n}.png", "w": w, "h": h, "cells": cells, "art": art})
+        # sol = the piece's solved board position (its region top-left, relative to
+        # the play-area top-left) — used by the in-game hint overlay
+        items.append({"img": f"{slug}/{n}.png", "w": w, "h": h, "cells": cells, "art": art,
+                      "sol": [r0 - rmin, c0 - cmin]})
     # ---- background + cell-tile images ----
     bg_img = cell_img = None
     bgl = _find_layer(psd, "bg")
@@ -448,9 +453,10 @@ def level_to_js(level):
     def cells_js(cells):
         return "[" + ",".join(f"[{r},{c}]" for r, c in cells) + "]"
     items_js = ",".join(
-        "{img:%s,w:%d,h:%d,cells:%s,art:{dx:%s,dy:%s,iw:%s,ih:%s}}" % (
+        "{img:%s,w:%d,h:%d,cells:%s,art:{dx:%s,dy:%s,iw:%s,ih:%s}%s}" % (
             json.dumps(it["img"]), it["w"], it["h"], cells_js(it["cells"]),
-            it["art"]["dx"], it["art"]["dy"], it["art"]["iw"], it["art"]["ih"])
+            it["art"]["dx"], it["art"]["dy"], it["art"]["iw"], it["art"]["ih"],
+            (",sol:[%d,%d]" % (it["sol"][0], it["sol"][1])) if it.get("sol") else "")
         for it in level["items"])
     gm = "[" + ",".join("[" + ",".join(str(v) for v in row) + "]" for row in level["gridMap"]) + "]"
     extra = "".join(",%s:%s" % (k, json.dumps(level[k]))
