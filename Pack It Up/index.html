@@ -123,6 +123,18 @@ body{width:390px;height:844px;margin:0 auto;overflow:hidden;font-family:'Nunito'
   letter-spacing:.5px;padding:6px 12px;border-radius:16px;backdrop-filter:blur(6px);
   box-shadow:0 3px 10px rgba(0,0,0,.3);}
 #sol-count.zero{color:#ff8a8a;}
+/* move-score bar: last move's rank-score on a red→orange→green scale, 0=orange centre */
+#move-bar{position:absolute;left:12px;bottom:48px;z-index:50;pointer-events:none;display:flex;
+  align-items:center;gap:8px;background:rgba(0,0,0,.6);padding:5px 11px;border-radius:14px;
+  backdrop-filter:blur(6px);box-shadow:0 3px 10px rgba(0,0,0,.3);}
+#move-cap{color:#fff;font-family:inherit;font-weight:900;font-size:.6rem;letter-spacing:1px;}
+#move-track{position:relative;width:96px;height:8px;border-radius:5px;
+  background:linear-gradient(90deg,#e14b4b 0%,#f0a83c 50%,#43c25e 100%);}
+.mt-tick{position:absolute;top:50%;width:2px;height:8px;background:rgba(255,255,255,.5);transform:translate(-50%,-50%);border-radius:1px;pointer-events:none;}
+.mt-tick.mt-zero{height:13px;width:2px;background:rgba(255,255,255,.95);}
+#move-knob{position:absolute;top:50%;left:50%;width:14px;height:14px;border-radius:50%;background:#fff;z-index:2;
+  border:2px solid rgba(0,0,0,.45);transform:translate(-50%,-50%);box-shadow:0 1px 3px rgba(0,0,0,.5);transition:left .25s;}
+#move-score{font-family:inherit;font-weight:900;font-size:.78rem;min-width:26px;text-align:center;color:#f0a83c;transition:color .2s;}
 /* locked (hint-placed) piece — fixed, with a small lock badge */
 .pi.locked{cursor:default;}
 .pi.locked::after{content:'🔒';position:absolute;right:1px;bottom:0;font-size:12px;line-height:1;filter:drop-shadow(0 1px 1px rgba(0,0,0,.6));pointer-events:none;z-index:2;}
@@ -154,6 +166,7 @@ body{width:390px;height:844px;margin:0 auto;overflow:hidden;font-family:'Nunito'
   <div id="hl"></div>
   <div id="diff-tag"></div>
   <div id="sol-count"></div>
+  <div id="move-bar"><span id="move-cap">IQ</span><div id="move-track"><div id="move-knob"></div></div><span id="move-score">0</span></div>
   <button id="hint-btn" title="Çözümü göster" aria-label="Çözümü göster">💡</button>
   <button id="smart-btn" title="Akıllı ipucu" aria-label="Akıllı ipucu">🪄</button>
   <button id="skip-btn" title="Sonraki bölüm" aria-label="Sonraki bölüm">⏭</button>
@@ -745,12 +758,17 @@ const PACK1_PIECES=[
 function packItems(dir){return PACK1_PIECES.map(p=>({img:dir+'/'+p[0]+'.png',w:p[1],h:p[2]}));}
 
 const LEVELS=[
-  {title:"Japonya",emoji:'🎁',sub:"Japonya par\u00e7alar\u0131n\u0131 yerle\u015ftir!",bg:"linear-gradient(180deg,#efe6d6 0%,#d6c1a3 100%)",bgImg:"japonya/bg.png",cellImg:"japonya/cell.png",difficulty:"Hard",order:67,rows:8,cols:6,bareGrid:true,gridMap:[[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1]],items:[{img:"japonya/1.png",w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]],art:{dx:0.03,dy:0.05,iw:1.9,ih:1.91},sol:[3,2]},{img:"japonya/2.png",w:3,h:3,cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0]],art:{dx:0.12,dy:0.09,iw:2.83,ih:2.87},sol:[0,3]},{img:"japonya/3.png",w:3,h:3,cells:[[0,1],[0,2],[1,1],[1,2],[2,0],[2,1],[2,2]],art:{dx:0.09,dy:0.05,iw:2.84,ih:2.92},sol:[5,3]},{img:"japonya/4.png",w:2,h:3,cells:[[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]],art:{dx:0.17,dy:0.05,iw:1.71,ih:2.9},sol:[2,4]},{img:"japonya/5.png",w:4,h:3,cells:[[0,1],[0,3],[1,0],[1,1],[1,2],[1,3],[2,1],[2,2]],art:{dx:0.22,dy:0.16,iw:3.63,ih:2.76},sol:[5,0]},{img:"japonya/6.png",w:1,h:1,cells:[[0,0]],art:{dx:0.02,dy:0.11,iw:0.95,ih:0.79},sol:[7,0]},{img:"japonya/7.png",w:1,h:1,cells:[[0,0]],art:{dx:0.03,dy:0.12,iw:0.94,ih:0.82},sol:[5,2]},{img:"japonya/8.png",w:1,h:1,cells:[[0,0]],art:{dx:0.02,dy:0.04,iw:0.97,ih:0.92},sol:[5,0]},{img:"japonya/9.png",w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.03,dy:0.28,iw:0.96,ih:1.46},sol:[1,1]},{img:"japonya/10.png",w:3,h:3,cells:[[0,0],[0,1],[0,2],[1,0],[1,2],[2,0],[2,2]],art:{dx:0.08,dy:0.03,iw:2.87,ih:2.93},sol:[0,0]},{img:"japonya/11.png",w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]],art:{dx:0.03,dy:0.07,iw:1.94,ih:1.85},sol:[3,0]}],winEmoji:'🎉',winTitle:"Harika!",winDesc:"Japonya tamamland\u0131!"},
+{title:"10041",emoji:'🎁',sub:"10041 par\u00e7alar\u0131n\u0131 yerle\u015ftir!",bg:"linear-gradient(180deg,#efe6d6 0%,#d6c1a3 100%)",bgImg:"10041/bg.png",cellImg:"10041/cell.png",difficulty:"VeryEasy",order:14,rows:6,cols:4,bareGrid:true,gridMap:[[1,1,1,1],[1,1,1,1],[0,0,1,1],[0,0,1,1],[1,1,1,1],[1,1,1,1]],items:[{img:"10041/1.png",w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.08,dy:0.03,iw:0.84,ih:1.95},sol:[4,0]},{img:"10041/2.png",w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]],art:{dx:0.04,dy:0.05,iw:1.92,ih:1.9},sol:[4,1]},{img:"10041/3.png",w:2,h:3,cells:[[0,0],[0,1],[1,1],[2,1]],art:{dx:0.36,dy:0.05,iw:1.36,ih:2.93},sol:[3,2]},{img:"10041/4.png",w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]],art:{dx:0.03,dy:0.06,iw:1.93,ih:1.88},sol:[1,2]},{img:"10041/5.png",w:2,h:1,cells:[[0,0],[0,1]],art:{dx:0.05,dy:0.13,iw:1.91,ih:0.73},sol:[0,2]},{img:"10041/6.png",w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.04,dy:0.06,iw:0.91,ih:1.88},sol:[0,1]},{img:"10041/7.png",w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.03,dy:0.13,iw:0.95,ih:1.77},sol:[0,0]}],winEmoji:'🎉',winTitle:"Harika!",winDesc:"10041 tamamland\u0131!"},
+{title:"10024",emoji:'🎁',sub:"10024 par\u00e7alar\u0131n\u0131 yerle\u015ftir!",bg:"linear-gradient(180deg,#efe6d6 0%,#d6c1a3 100%)",bgImg:"10024/bg.png",cellImg:"10024/cell.png",difficulty:"Easy",order:20,rows:4,cols:3,bareGrid:true,gridMap:[[1,1,1],[1,1,1],[1,1,1],[1,1,1]],items:[{img:"10024/1.png",w:3,h:1,cells:[[0,0],[0,1],[0,2]],art:{dx:0.05,dy:0.01,iw:2.89,ih:0.96},sol:[0,0]},{img:"10024/2.png",w:1,h:1,cells:[[0,0]],art:{dx:0.02,dy:0.03,iw:0.97,ih:0.95},sol:[3,0]},{img:"10024/3.png",w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.03,dy:0.02,iw:0.94,ih:1.95},sol:[2,1]},{img:"10024/4.png",w:1,h:1,cells:[[0,0]],art:{dx:0.04,dy:0.02,iw:0.93,ih:0.96},sol:[3,2]},{img:"10024/5.png",w:2,h:2,cells:[[0,0],[0,1],[1,1]],art:{dx:0.03,dy:0.02,iw:1.95,ih:1.96},sol:[1,1]},{img:"10024/6.png",w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.04,dy:0.02,iw:0.93,ih:1.95},sol:[1,0]}],winEmoji:'🎉',winTitle:"Harika!",winDesc:"10024 tamamland\u0131!"},
+{title:"10017",emoji:'🎁',sub:"10017 par\u00e7alar\u0131n\u0131 yerle\u015ftir!",bg:"linear-gradient(180deg,#efe6d6 0%,#d6c1a3 100%)",bgImg:"10017/bg.png",cellImg:"10017/cell.png",difficulty:"Easy",order:37,rows:7,cols:5,bareGrid:true,gridMap:[[0,1,1,1,0],[1,1,1,1,1],[1,1,1,1,1],[1,1,0,1,1],[1,1,1,1,1],[1,1,1,1,1],[0,1,1,1,0]],items:[{img:"10017/1.png",w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.12,dy:0.1,iw:0.78,ih:1.79},sol:[5,3]},{img:"10017/2.png",w:2,h:1,cells:[[0,0],[0,1]],art:{dx:0.07,dy:0.13,iw:1.86,ih:0.71},sol:[6,1]},{img:"10017/3.png",w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]],art:{dx:0.2,dy:0.06,iw:1.64,ih:1.88},sol:[3,3]},{img:"10017/4.png",w:3,h:2,cells:[[0,1],[0,2],[1,0],[1,1],[1,2]],art:{dx:0.05,dy:0.11,iw:2.84,ih:1.8},sol:[4,0]},{img:"10017/5.png",w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.02,dy:0.14,iw:0.96,ih:1.7},sol:[1,4]},{img:"10017/6.png",w:2,h:1,cells:[[0,0],[0,1]],art:{dx:0.06,dy:0.11,iw:1.86,ih:0.75},sol:[2,2]},{img:"10017/7.png",w:2,h:3,cells:[[0,0],[0,1],[1,0],[1,1],[2,0]],art:{dx:0.11,dy:0.05,iw:1.86,ih:2.73},sol:[2,0]},{img:"10017/8.png",w:2,h:2,cells:[[0,0],[0,1],[1,1]],art:{dx:0.15,dy:0.12,iw:1.75,ih:1.74},sol:[0,2]},{img:"10017/9.png",w:3,h:2,cells:[[0,1],[1,0],[1,1],[1,2]],art:{dx:0.05,dy:0.14,iw:2.88,ih:1.75},sol:[0,0]},{img:"10017/10.png",w:1,h:1,cells:[[0,0]],art:{dx:0.01,dy:0.04,iw:0.97,ih:0.92},sol:[5,4]}],winEmoji:'🎉',winTitle:"Harika!",winDesc:"10017 tamamland\u0131!"},
+{title:"10005",emoji:'🎁',sub:"10005 par\u00e7alar\u0131n\u0131 yerle\u015ftir!",bg:"linear-gradient(180deg,#efe6d6 0%,#d6c1a3 100%)",bgImg:"10005/bg.png",cellImg:"10005/cell.png",difficulty:"Medium",order:41,rows:6,cols:5,bareGrid:true,gridMap:[[1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1]],items:[{img:"10005/1.png",w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]],art:{dx:0.13,dy:0.03,iw:1.72,ih:1.95},sol:[2,3]},{img:"10005/2.png",w:1,h:1,cells:[[0,0]],art:{dx:0.05,dy:0.07,iw:0.9,ih:0.88},sol:[1,2]},{img:"10005/3.png",w:3,h:1,cells:[[0,0],[0,1],[0,2]],art:{dx:0.03,dy:0.09,iw:2.93,ih:0.84},sol:[5,0]},{img:"10005/4.png",w:1,h:1,cells:[[0,0]],art:{dx:0.05,dy:0.03,iw:0.91,ih:0.95},sol:[4,3]},{img:"10005/5.png",w:4,h:2,cells:[[0,0],[0,1],[0,2],[0,3],[1,3]],art:{dx:0.06,dy:0.04,iw:3.9,ih:1.93},sol:[0,1]},{img:"10005/6.png",w:2,h:3,cells:[[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]],art:{dx:0.02,dy:0.05,iw:1.95,ih:2.91},sol:[2,1]},{img:"10005/7.png",w:2,h:2,cells:[[0,1],[1,0],[1,1]],art:{dx:0.07,dy:0.05,iw:1.84,ih:1.9},sol:[4,3]},{img:"10005/8.png",w:1,h:1,cells:[[0,0]],art:{dx:0.03,dy:0.09,iw:0.95,ih:0.84},sol:[1,3]},{img:"10005/9.png",w:2,h:5,cells:[[0,0],[1,0],[1,1],[2,0],[3,0],[4,0]],art:{dx:0.04,dy:0.09,iw:1.91,ih:4.87},sol:[0,0]}],winEmoji:'🎉',winTitle:"Harika!",winDesc:"10005 tamamland\u0131!"},
+{title:"10015",emoji:'🎁',sub:"10015 par\u00e7alar\u0131n\u0131 yerle\u015ftir!",bg:"linear-gradient(180deg,#efe6d6 0%,#d6c1a3 100%)",bgImg:"10015/bg.png",cellImg:"10015/cell.png",difficulty:"Hard",order:63,rows:9,cols:7,bareGrid:true,gridMap:[[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1]],items:[{img:"10015/1.png",w:4,h:3,cells:[[0,0],[0,1],[0,2],[0,3],[1,0],[1,2],[1,3],[2,0],[2,3]],art:{dx:0.07,dy:0.11,iw:3.81,ih:2.81},sol:[0,0]},{img:"10015/2.png",w:1,h:1,cells:[[0,0]],art:{dx:0.05,dy:0.11,iw:0.91,ih:0.8},sol:[1,5]},{img:"10015/3.png",w:2,h:2,cells:[[0,0],[0,1],[1,0]],art:{dx:0.09,dy:0.07,iw:1.74,ih:1.8},sol:[0,4]},{img:"10015/4.png",w:1,h:3,cells:[[0,0],[1,0],[2,0]],art:{dx:0.07,dy:0.11,iw:0.86,ih:2.8},sol:[0,6]},{img:"10015/5.png",w:1,h:1,cells:[[0,0]],art:{dx:0.05,dy:0.06,iw:0.89,ih:0.89},sol:[1,1]},{img:"10015/6.png",w:1,h:1,cells:[[0,0]],art:{dx:0.08,dy:0.08,iw:0.84,ih:0.84},sol:[3,0]},{img:"10015/7.png",w:2,h:1,cells:[[0,0],[0,1]],art:{dx:0.09,dy:0.09,iw:1.81,ih:0.78},sol:[4,0]},{img:"10015/8.png",w:2,h:1,cells:[[0,0],[0,1]],art:{dx:0.1,dy:0.08,iw:1.8,ih:0.86},sol:[5,1]},{img:"10015/9.png",w:3,h:3,cells:[[0,0],[1,0],[1,1],[1,2],[2,0],[2,2]],art:{dx:0.22,dy:0.08,iw:2.56,ih:2.76},sol:[5,0]},{img:"10015/10.png",w:2,h:2,cells:[[0,1],[1,0],[1,1]],art:{dx:0.07,dy:0.14,iw:1.88,ih:1.79},sol:[7,0]},{img:"10015/11.png",w:2,h:1,cells:[[0,0],[0,1]],art:{dx:0.11,dy:0.11,iw:1.81,ih:0.75},sol:[8,2]},{img:"10015/12.png",w:3,h:3,cells:[[0,1],[0,2],[1,0],[1,1],[1,2],[2,0]],art:{dx:0.21,dy:0.09,iw:2.7,ih:2.78},sol:[5,3]},{img:"10015/13.png",w:2,h:3,cells:[[0,1],[1,1],[2,0],[2,1]],art:{dx:0.12,dy:0.24,iw:1.77,ih:2.58},sol:[5,5]},{img:"10015/14.png",w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.09,dy:0.18,iw:0.84,ih:1.64},sol:[2,5]},{img:"10015/15.png",w:3,h:4,cells:[[0,0],[0,1],[1,0],[1,1],[1,2],[2,1],[2,2],[3,2]],art:{dx:0.2,dy:0.11,iw:2.62,ih:3.83},sol:[2,1]},{img:"10015/16.png",w:3,h:3,cells:[[0,0],[1,0],[1,2],[2,0],[2,1],[2,2]],art:{dx:0.09,dy:0.11,iw:2.77,ih:2.83},sol:[2,4]},{img:"10015/17.png",w:2,h:2,cells:[[0,0],[1,0],[1,1]],art:{dx:0.09,dy:0.19,iw:1.74,ih:1.77},sol:[7,4]},{img:"10015/18.png",w:1,h:1,cells:[[0,0]],art:{dx:0.1,dy:0.08,iw:0.8,ih:0.88},sol:[8,6]}],winEmoji:'🎉',winTitle:"Harika!",winDesc:"10015 tamamland\u0131!"},
+{title:"10032",emoji:'🎁',sub:"10032 par\u00e7alar\u0131n\u0131 yerle\u015ftir!",bg:"linear-gradient(180deg,#efe6d6 0%,#d6c1a3 100%)",bgImg:"10032/bg.png",cellImg:"10032/cell.png",difficulty:"Hard",order:67,rows:8,cols:6,bareGrid:true,gridMap:[[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1],[1,1,1,1,1,1]],items:[{img:"10032/1.png",w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]],art:{dx:0.03,dy:0.05,iw:1.9,ih:1.91},sol:[3,2]},{img:"10032/2.png",w:3,h:3,cells:[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0]],art:{dx:0.12,dy:0.09,iw:2.83,ih:2.87},sol:[0,3]},{img:"10032/3.png",w:3,h:3,cells:[[0,1],[0,2],[1,1],[1,2],[2,0],[2,1],[2,2]],art:{dx:0.09,dy:0.05,iw:2.84,ih:2.92},sol:[5,3]},{img:"10032/4.png",w:2,h:3,cells:[[0,0],[0,1],[1,0],[1,1],[2,0],[2,1]],art:{dx:0.17,dy:0.05,iw:1.71,ih:2.9},sol:[2,4]},{img:"10032/5.png",w:4,h:3,cells:[[0,1],[0,3],[1,0],[1,1],[1,2],[1,3],[2,1],[2,2]],art:{dx:0.22,dy:0.16,iw:3.63,ih:2.76},sol:[5,0]},{img:"10032/6.png",w:1,h:1,cells:[[0,0]],art:{dx:0.02,dy:0.11,iw:0.95,ih:0.79},sol:[7,0]},{img:"10032/7.png",w:1,h:1,cells:[[0,0]],art:{dx:0.03,dy:0.12,iw:0.94,ih:0.82},sol:[5,2]},{img:"10032/8.png",w:1,h:1,cells:[[0,0]],art:{dx:0.02,dy:0.04,iw:0.97,ih:0.92},sol:[5,0]},{img:"10032/9.png",w:1,h:2,cells:[[0,0],[1,0]],art:{dx:0.03,dy:0.28,iw:0.96,ih:1.46},sol:[1,1]},{img:"10032/10.png",w:3,h:3,cells:[[0,0],[0,1],[0,2],[1,0],[1,2],[2,0],[2,2]],art:{dx:0.08,dy:0.03,iw:2.87,ih:2.93},sol:[0,0]},{img:"10032/11.png",w:2,h:2,cells:[[0,0],[0,1],[1,0],[1,1]],art:{dx:0.03,dy:0.07,iw:1.94,ih:1.85},sol:[3,0]}],winEmoji:'🎉',winTitle:"Harika!",winDesc:"10032 tamamland\u0131!"}
 ];
 
 /* ── CONSTANTS & STATE ── */
 const W=390,H=844,BBORDER=3,SS=0.9;
-let lvl,grid,items,CELL=56,baseLay=null,curIdx=0;
+let lvl,grid,items,CELL=56,baseLay=null,curIdx=0,LEVEL_SOLUTIONS=[],moveHist=[],CUM_MAX=1;
 let BPAD_H=24,BPAD_V=10;
 let GBODYW=W,GBORDER=BBORDER; // suitcase body width + wall thickness (thin for slim levels)
 let gridOffX=0,gridOffY=0; // grid position relative to #scr
@@ -819,6 +837,8 @@ function initLevel(idx){
     if(!cells&&d.w){cells=[];for(let r=0;r<d.h;r++)for(let c=0;c<d.w;c++)cells.push([r,c]);}
     return{id:i,key:d.key,img:d.img,art:d.art,w:d.w,h:d.h,cells,sol:d.sol,placed:false,row:0,col:0,sx:0,sy:0,srot:0,el:null};
   });
+  LEVEL_SOLUTIONS=(lvl.bareGrid||lvl.gridMap)?allSolutions():[];  // cache all solutions for the move-quality bar (bareGrid levels only)
+  CUM_MAX=0;for(let k=1;k<=items.length;k++)CUM_MAX+=Math.floor((k-1)/2);CUM_MAX=CUM_MAX||1;  // max achievable cumulative score (sum of per-turn maxes)
   document.getElementById('bg').style.background=lvl.bgImg?`url('${lvl.bgImg}') center/cover no-repeat`:lvl.bg;
   {const dt=document.getElementById('diff-tag');
    if(dt){const has=lvl.difficulty||lvl.order!=null;dt.style.display=has?'flex':'none';
@@ -826,6 +846,7 @@ function initLevel(idx){
      dt.innerHTML=(lvl.difficulty?`<span class="dlabel">${String(lvl.difficulty).toUpperCase()}</span>`:'')
        +(lvl.order!=null?`<span class="dscore">${lvl.order}</span>`:'');}}
   hideHint();
+  moveHist=[];resetMoveBar();   // bar visible from the start, centred at 0 (orange)
   document.getElementById('global-placed').innerHTML='';
   buildBag();
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
@@ -1208,6 +1229,108 @@ function countPackings(pieces,cap=999,budget=400000){
   dfs(M);
   return{count,capped:count>=cap,budgetHit};
 }
+/* DEBUG move-quality: across all completions of the board with `targetId` lifted,
+   tally which cell that piece lands in. Returns per-position counts + the max. */
+/* All full solutions of the level (piece→"r,c"), enumerated once per level and
+   cached in LEVEL_SOLUTIONS — the move bar compares the board against these. */
+function allSolutions(cap=5000,budget=1500000){
+  const rows=lvl.rows,cols=lvl.cols;
+  const idx=new Map(),cellList=[];
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++)if(grid[r][c]===null){idx.set(r*cols+c,cellList.length);cellList.push([r,c]);}
+  const M=cellList.length,pieces=items;
+  if(M===0||pieces.reduce((s,p)=>s+p.cells.length,0)!==M)return[];
+  const placements=pieces.map(p=>{
+    const maxR=Math.max(...p.cells.map(c=>c[0])),maxC=Math.max(...p.cells.map(c=>c[1])),out=[];
+    for(let row=0;row<=rows-1-maxR;row++)for(let col=0;col<=cols-1-maxC;col++){
+      const ci=[];let ok=true;
+      for(const[dr,dc]of p.cells){const ii=idx.get((row+dr)*cols+(col+dc));if(ii===undefined){ok=false;break;}ci.push(ii);}
+      if(ok)out.push({row,col,ci});
+    }
+    return out;
+  });
+  if(placements.some(pl=>!pl.length))return[];
+  const cellCands=Array.from({length:M},()=>[]);
+  placements.forEach((pls,p)=>pls.forEach(pl=>pl.ci.forEach(ci=>cellCands[ci].push({p,pl}))));
+  const covered=new Uint8Array(M),used=new Uint8Array(pieces.length),pos={},sols=[];
+  let nodes=0,firstFree=0;
+  function dfs(rem){
+    if(rem===0){sols.push({...pos});return sols.length>=cap;}
+    if(++nodes>budget)return true;
+    let ci=firstFree;while(ci<M&&covered[ci])ci++;
+    if(ci>=M)return false;
+    const saveFF=firstFree;firstFree=ci+1;
+    for(const{p,pl}of cellCands[ci]){
+      if(used[p])continue;
+      let fits=true;for(const c of pl.ci)if(covered[c]){fits=false;break;}
+      if(!fits)continue;
+      used[p]=1;for(const c of pl.ci)covered[c]=1;pos[pieces[p].id]=pl.row+','+pl.col;
+      const stop=dfs(rem-pl.ci.length);
+      used[p]=0;for(const c of pl.ci)covered[c]=0;delete pos[pieces[p].id];
+      if(stop){firstFree=saveFF;return true;}
+    }
+    firstFree=saveFF;return false;
+  }
+  dfs(M);
+  return sols;
+}
+/* Symmetric per-rank score for N ranked items: middle rank → 0 (doubled when N is
+   even), best → +max, worst → −max, max = floor((N−1)/2).
+   11 items → +5,+4,+3,+2,+1,0,−1,−2,−3,−4,−5 ; 10 → +4,+3,+2,+1,0,0,−1,−2,−3,−4. */
+function symScore(r,N){
+  if(N%2===1)return (N-1)/2-(r-1);
+  const h=N/2;return r<=h?(h-r):(h-r+1);
+}
+/* Rate the piece just placed — PER-PIECE (position-quality) scoring. Given the
+   pieces already placed, we look ONLY at where THIS piece could go: its best cell
+   (leaves the most solutions) → +max, a dead/worst cell → −max, the rest spread
+   linearly across the ±max scale. max = floor((N−1)/2) for the N items still in
+   play, so the scale (and CUM_MAX) match the old design and the bar stays
+   cumulative — placing every piece on its own best cell trends toward +CUM_MAX.
+   (Superseded the cross-piece ranking, where only the single most-flexible piece
+   could reach +max; now each piece hits +max at its own best cell.) moveHist lets
+   an undo restore the previous total. */
+function rateMove(X){
+  X.placed=false;                                           // evaluate as of before the move
+  const placed=items.filter(i=>i.placed&&i!==X);
+  let live=LEVEL_SOLUTIONS.filter(T=>placed.every(p=>T[p.id]===p.row+','+p.col));
+  if(live.length===0)live=LEVEL_SOLUTIONS;                  // board already off-solution → keep scoring by ABSOLUTE position quality (don't freeze the IQ bar at 0)
+  const N=items.filter(i=>!i.placed).length;                // items still in play (incl. X)
+  const mx=Math.floor((N-1)/2);
+  const cnt=new Map();                                       // where THIS piece lands across live solutions
+  for(const T of live){const p=T[X.id];cnt.set(p,(cnt.get(p)||0)+1);}
+  const xkey=X.row+','+X.col, vAct=cnt.get(xkey)||0;         // solutions the actual move leaves
+  X.placed=true;
+  const vals=[...new Set(cnt.values())];                     // this piece's achievable solution-counts…
+  if(!vals.includes(0))vals.push(0);                         // …plus a dead-move (0) anchor = its worst cell
+  vals.sort((a,b)=>b-a);
+  const D=vals.length, rank=vals.indexOf(vAct)+1;
+  const s=(D<=1||mx===0)?0:Math.round(mx-(rank-1)/(D-1)*2*mx);// best→+mx, worst→−mx, linear by rank
+  moveHist=moveHist.filter(m=>m.id!==X.id);                  // if re-placed, replace its old entry
+  moveHist.push({id:X.id,score:s});
+  showCumulative();                                          // bar shows the running TOTAL
+}
+/* Undo a snap: drop its score from the running total and refresh the bar. */
+function undoMove(id){
+  if(!moveHist.some(m=>m.id===id))return;                   // wasn't a scored user move
+  moveHist=moveHist.filter(m=>m.id!==id);
+  showCumulative();
+}
+/* Bar shows the CUMULATIVE total of all placed moves, on a ±CUM_MAX scale
+   (CUM_MAX = best achievable total). Good play accumulates → ends green/positive. */
+function showCumulative(){
+  const knob=document.getElementById('move-knob'),txt=document.getElementById('move-score'),track=document.getElementById('move-track');
+  if(!knob||!txt)return;
+  const total=moveHist.reduce((a,m)=>a+m.score,0), mx=CUM_MAX||1;
+  const posOf=v=>50+50*(Math.max(-mx,Math.min(mx,v))/mx);   // 0 centre, ±CUM_MAX at edges
+  if(track){                                                 // 11 evenly-spaced gradation ticks
+    track.querySelectorAll('.mt-tick').forEach(t=>t.remove());
+    for(let i=-5;i<=5;i++){const t=document.createElement('div');t.className='mt-tick'+(i===0?' mt-zero':'');t.style.left=(50+i*10)+'%';track.appendChild(t);}
+  }
+  knob.style.left=posOf(total)+'%';
+  txt.textContent=(total>0?'+':'')+total;
+  txt.style.color=total>0?'#43c25e':total<0?'#e14b4b':'#f0a83c';   // + green / − red / 0 orange
+}
+function resetMoveBar(){showCumulative();}                   // game start: total 0, knob at centre
 /* Lock a piece into place (hint result) — can no longer be dragged/ejected. */
 function placeLocked(item,row,col){
   item.cells.forEach(([r,c])=>{grid[row+r][col+c]=item.id;});
@@ -1284,6 +1407,7 @@ function fromPlaced(id,x,y){
   if(!item||item.locked)return;   // locked (hint) pieces can't be picked up
   item.cells.forEach(([r,c])=>{grid[item.row+r][item.col+c]=null;});
   item.placed=false;
+  undoMove(id);                   // lifting a snap reverts its score (re-placing re-scores it)
   rebuildPlaced();syncFilledCells();updateProg();
   dragItem=item;
   const[vw,vh]=dimOf(item);
@@ -1368,6 +1492,7 @@ function ejectItem(id){
   if(!it||!it.placed||it.locked)return;   // never eject a locked (hint) piece
   it.cells.forEach(([r,c])=>{grid[it.row+r][it.col+c]=null;});
   it.placed=false;
+  undoMove(id);                           // kicking a piece off reverts its score too
   const[vw,vh]=dimOf(it);
   const iW=vw*CELL*SS,iH=vh*CELL*SS;
   const gTop=gridOffY,gBot=gridOffY+lvl.rows*CELL;
@@ -1431,7 +1556,9 @@ function drop(x,y){
       dragItem.cells.forEach(([r,c])=>{grid[row+r][col+c]=dragItem.id;});
       dragItem.placed=true;dragItem.row=row;dragItem.col=col;
       dragItem.el.style.display='none';dragItem.el.classList.remove('drag');
-      rebuildPlaced(dragItem.id);syncFilledCells();updateProg();playPlop();checkWin();
+      rebuildPlaced(dragItem.id);syncFilledCells();updateProg();playPlop();
+      rateMove(dragItem);       // move the IQ bar to this move's score
+      checkWin();
     }else{
       // Off-board / blocked hole — bounce back to original scatter position
       dragItem.el.classList.remove('drag');

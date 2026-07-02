@@ -236,19 +236,24 @@ def _find_layer(psd, name, group=False):
 
 
 def _find_grid_layer(psd):
-    """The layer whose name starts with 'Grid' (e.g. 'Grid_Hard_67', possibly with
+    """The colour-map layer: name starts with 'Grid' (e.g. 'Grid_Hard_67', maybe with
     a Photoshop ' (1)' suffix). Its coloured areas are the SOLE source of the level:
-    each colour = one piece's footprint AND its solved board position. There is no
-    separate 'Solution' layer."""
-    hit = [None]
+    each colour = one piece's footprint AND its solved board position (no 'Solution'
+    layer). A PSB may also carry a plain helper 'Grid' layer — prefer the one that
+    carries metadata (Grid_<difficulty>_<order>) over a bare 'Grid'."""
+    meta = [None]; plain = [None]
     def walk(ls):
         for l in ls:
-            if not l.is_group() and (l.name or "").strip().lower().startswith("grid"):
-                hit[0] = l
+            nm = (l.name or "").strip()
+            if not l.is_group() and nm.lower().startswith("grid"):
+                if re.search(r"grid[_\s]+[A-Za-z]+[_\s]+\d+", nm, re.I):
+                    meta[0] = l
+                else:
+                    plain[0] = l
             if l.is_group():
                 walk(l)
     walk(psd)
-    return hit[0]
+    return meta[0] or plain[0]
 
 
 def parse_grid_meta(name):
