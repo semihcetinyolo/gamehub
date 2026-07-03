@@ -1374,12 +1374,20 @@ function smartHint(){
     placeLocked(big,pos.row,pos.col);
     return;
   }
-  // 2) Unsolvable → remove the MINIMUM number of placed pieces so a solution exists
+  // 2) Unsolvable → remove the MINIMUM number of placed pieces so a solution exists,
+  //    then (like step 1) snap+lock the largest off-board piece into that solution.
   const placed=items.filter(i=>i.placed&&!i.locked);
   const toRemove=findMinRemoval(placed);
   if(toRemove&&toRemove.length){
     toRemove.forEach(p=>ejectItem(p.id));             // throw the offending pieces off-board
     rebuildPlaced();syncFilledCells();updateProg();
+    const unp=items.filter(i=>!i.placed);             // everything now off-board (incl. the just-ejected)
+    const sol2=solvePacking(unp);                     // board is solvable again after the removal
+    if(sol2&&unp.length){
+      const big=unp.slice().sort((a,b)=>b.cells.length-a.cells.length)[0];
+      const pos=sol2[big.id];
+      placeLocked(big,pos.row,pos.col);               // place the largest outside piece for the user
+    }
     return;
   }
   // 3) Couldn't decide within budget → peek the full canonical solution briefly
