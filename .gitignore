@@ -57,3 +57,6 @@ Match3 Pair/PairMatch.html
 
 # Ratings runtime store (per-server data)
 leveltool/ratings.json
+
+# Hidden Pairs — PSB level sources (kept on disk, sliced by tools/extract_psb.py)
+Hidden Pairs/levels/

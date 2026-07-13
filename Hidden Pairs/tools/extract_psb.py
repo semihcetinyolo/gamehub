@@ -1,23 +1,34 @@
 #!/usr/bin/env python3
-"""Extract a layered "Hidden Pairs" .psb into web assets for the playable.
+"""Extract a layered "Hidden Pairs" .psb into web assets (H-group convention).
 
-The game is a spot-the-pair hidden-object scene: every item appears as TWO
-copies somewhere in the picture and the player taps matching pairs.
+The game is a spot-the-pair scene: every item appears twice and the player taps
+matching pairs.
 
-PSB layer-name convention (case-insensitive):
-  bg                 full-canvas background (bottom layer)
-  P<pair>_<copy>     a tappable item   e.g. P1_1, P1_2  (pair P1, copies 1 & 2)
-  P<pair>_<copy>_B   occluder drawn BEHIND that item (optional)
-  P<pair>_<copy>_T   occluder drawn in FRONT (TOP) of that item (optional)
-  M_<n>              a static mask / occluder region (optional)   e.g. M_0, M_1
+PSB layer convention (case-insensitive; separators / \\ space - . _ are ignored):
+  BG                          full-canvas background (bottom layer)
+  H   (group, one per pair)   holds the two items of ONE pair, plus optional
+                              companions/masks:
+       H1                     first item of the pair  (copy 1)
+       H2                     second item of the pair (copy 2)
+       S1  (optional)         companion of H1 — a shadow/hint shown while H1 is
+                              in the scene. It hides when H1 is picked up, comes
+                              back if H1 is put down, and is removed for good
+                              once the pair is matched.
+       S2  (optional)         companion of H2 (same behaviour)
+       M   (optional)         a static mask — always shown, never removed
+  M   (group and/or layers)   static masks — always shown, never removed
+
+20 H groups  ->  20 pairs  ->  40 items.
 
 Outputs under <game>/assets/<level>/:
-  BG.png, P*_*.png, P*_*_B.png, P*_*_T.png, M_*.png, manifest.json
-manifest = { canvas, background, layers[], pairs[], masks[] } matching the
-shape the embedded level01 ships with.
+  BG.jpg, P<n>_1.png, P<n>_2.png, P<n>_1_S.png, P<n>_2_S.png, M_*.png, manifest.json
+manifest = { canvas, background, layers[], pairs[], masks[] } — the shape the
+game loads. Each pair copy may carry a `companion` id; masks are the always-on
+layers.
 
 Usage:  python3 tools/extract_psb.py <path/to.psb> [level_slug]
         (level_slug defaults to the psb stem, lowercased)
+Requires: psd-tools, Pillow.
 """
 import json
 import re
@@ -30,11 +41,16 @@ from psd_tools import PSDImage
 ROOT = Path(__file__).resolve().parents[1]      # the "Hidden Pairs" game dir
 ASSETS = ROOT / "assets"
 
-BG_RE   = re.compile(r"^bg$", re.I)
-MASK_RE = re.compile(r"^m(?:_?\d+)?$", re.I)          # M / M0 / M_0 / M_12
-MAIN_RE = re.compile(r"^p(\d+)_(\d+)$", re.I)         # P1_2
-BEH_RE  = re.compile(r"^p(\d+)_(\d+)_b$", re.I)       # P1_2_B
-TOP_RE  = re.compile(r"^p(\d+)_(\d+)_t$", re.I)       # P1_2_T
+
+def norm(name):
+    """Lower-case a layer name with separators stripped (e.g. 'H 1' -> 'h1')."""
+    return re.sub(r"[\s\\/.\-_]+", "", (name or "").strip()).lower()
+
+
+def is_empty(bbox):
+    l, t, r, b = bbox
+    return r <= l or b <= t
+
 
 def main():
     if len(sys.argv) < 2:
@@ -46,135 +62,124 @@ def main():
 
     psd = PSDImage.open(str(psb_path))
 
-    # flatten to leaf layers in draw order (bottom -> top), descending into groups
-    leaves = []
-
-    def collect(node):
-        for l in node:
-            if l.is_group():
-                collect(l)
-            else:
-                leaves.append(l)
-
-    collect(psd)
-
-    def empty(bbox):
-        l, t, r, b = bbox
-        return r <= l or b <= t
+    layers = []            # manifest layer records, in draw order
+    pairs_out = []         # [{id, copies:[{copy, main, companion}]}]
+    masks = []             # mask layer ids (always shown)
+    skipped = []
+    state = {"z": 0}
 
     def save(layer, fname):
-        # Save at native bbox size — the game renders sprites at the texture's
-        # NATIVE pixel size (manifest w/h only sets the centre), so never resize.
-        # Opaque backgrounds go out as JPG: a full-res PNG bg is ~13 MB and made
-        # level switches crawl; JPG is ~0.5 MB with no visible loss.
+        # Save at native bbox size (the game renders at the texture's native px).
+        # Opaque backgrounds go out as JPG — a full-res PNG bg is huge.
         img = layer.composite()
         if fname.lower().endswith((".jpg", ".jpeg")):
             img.convert("RGB").save(out / fname, quality=88)
         else:
             img.save(out / fname)
 
-    layers = []            # manifest layer records, in draw order
-    pairs = {}             # pid -> {copy -> {"main":id,"behind":id|None,"top":id|None}}
-    masks = []
-    skipped = []
-    z = 0
-
     def rec(layer, lid, role, ext="png", **extra):
-        nonlocal z
+        if is_empty(layer.bbox):
+            if layer.name:
+                skipped.append(f"{layer.name} (empty)")
+            return None
         l, t, r, b = layer.bbox
-        fname = f"{lid}.{ext}"
-        save(layer, fname)
-        entry = {"id": lid, "file": fname, "x": l, "y": t, "w": r - l, "h": b - t,
-                 "z": z, "role": role}
+        save(layer, f"{lid}.{ext}")
+        entry = {"id": lid, "file": f"{lid}.{ext}", "x": l, "y": t,
+                 "w": r - l, "h": b - t, "z": state["z"], "role": role}
         entry.update(extra)
         layers.append(entry)
-        z += 1
+        state["z"] += 1
         return lid
 
-    def slot(pid, copy):
-        return pairs.setdefault(pid, {}).setdefault(copy, {"main": None, "behind": None, "top": None})
-
-    for layer in leaves:
-        name = (layer.name or "").strip()
-        # PSBs author these names with various separators (P1/1/B, P1 1 B,
-        # P1-1-B …); normalise everything to underscores before matching.
-        key = re.sub(r"[\s\\/.-]+", "_", name)
-        if empty(layer.bbox):
-            if name:
-                skipped.append(name + " (empty)")
-            continue
-        if BG_RE.match(key):
-            rec(layer, "BG", "background", ext="jpg")
-            continue
-        m = MAIN_RE.match(key)
-        if m:
-            p, c = int(m.group(1)), int(m.group(2))
-            pid, lid = f"P{p}", f"P{p}_{c}"
-            rec(layer, lid, "main", pair=pid, copy=c)
-            slot(pid, c)["main"] = lid
-            continue
-        m = BEH_RE.match(key)
-        if m:
-            p, c = int(m.group(1)), int(m.group(2))
-            pid, lid = f"P{p}", f"P{p}_{c}_B"
-            rec(layer, lid, "behind", pair=pid, copy=c)
-            slot(pid, c)["behind"] = lid
-            continue
-        m = TOP_RE.match(key)
-        if m:
-            p, c = int(m.group(1)), int(m.group(2))
-            pid, lid = f"P{p}", f"P{p}_{c}_T"
-            rec(layer, lid, "top", pair=pid, copy=c)
-            slot(pid, c)["top"] = lid
-            continue
-        if MASK_RE.match(key):
-            lid = f"M_{len(masks)}"   # masks are often all named "M"; number them in draw order
-            rec(layer, lid, "mask")
+    def add_mask(layer):
+        lid = rec(layer, f"M_{len(masks)}", "mask")   # masks are all "M"; number them
+        if lid:
             masks.append(lid)
-            continue
-        skipped.append(name + " (unrecognised)")
 
-    # assemble pairs[] in numeric order; only keep complete pairs (2 copies w/ a main)
-    pairs_out, dropped = [], []
-    for pid in sorted(pairs, key=lambda x: int(x[1:])):
-        copies = [{"copy": c, "main": pairs[pid][c]["main"],
-                   "behind": pairs[pid][c]["behind"], "top": pairs[pid][c]["top"]}
-                  for c in sorted(pairs[pid])]
-        mains = [c for c in copies if c["main"]]
-        if len(mains) == 2:
+    def classify_in_pair(layer, pid, found):
+        if layer.is_group():
+            for sub in layer:
+                classify_in_pair(sub, pid, found)
+            return
+        n = norm(layer.name)
+        if n in ("h1", "h2"):
+            c = int(n[1])
+            found[c]["main"] = rec(layer, f"{pid}_{c}", "main", pair=pid, copy=c)
+        elif n in ("s1", "s2"):
+            c = int(n[1])
+            lid = rec(layer, f"{pid}_{c}_S", "companion", pair=pid, copy=c)
+            if lid:
+                found[c]["companion"] = lid
+        elif re.fullmatch(r"m\d*", n):
+            add_mask(layer)
+        elif n:
+            skipped.append(f"{layer.name} (in {pid}, unrecognised)")
+
+    def emit_pair_group(group):
+        pid = f"P{len(pairs_out) + 1}"
+        found = {1: {}, 2: {}}
+        for layer in group:            # draw order within the group
+            classify_in_pair(layer, pid, found)
+        copies = [{"copy": c, "main": found[c]["main"],
+                   "companion": found[c].get("companion")}
+                  for c in (1, 2) if found[c].get("main")]
+        if len(copies) == 2:
             pairs_out.append({"id": pid, "copies": copies})
         else:
-            dropped.append(f"{pid} (has {len(mains)} of 2 copies)")
+            skipped.append(f"H group -> {pid} incomplete ({len(copies)}/2 items)")
+
+    def emit_mask_group(group):
+        for layer in group:
+            emit_mask_group(layer) if layer.is_group() else add_mask(layer)
+
+    # walk the top level in draw order (bottom -> top)
+    for node in psd:
+        n = norm(node.name)
+        if node.is_group():
+            if n == "h":
+                emit_pair_group(node)
+            elif re.fullmatch(r"m\d*", n):
+                emit_mask_group(node)
+            else:                       # unknown group: descend, sort by child type
+                for sub in node:
+                    if sub.is_group() and norm(sub.name) == "h":
+                        emit_pair_group(sub)
+                    elif sub.is_group():
+                        emit_mask_group(sub)
+                    else:
+                        add_mask(sub)
+        else:
+            if n == "bg":
+                rec(node, "BG", "background", ext="jpg")
+            elif re.fullmatch(r"m\d*", n):
+                add_mask(node)
+            elif n:
+                skipped.append(f"{node.name} (top-level, unrecognised)")
 
     if not any(l["role"] == "background" for l in layers):
-        sys.exit("ERROR: no 'bg' layer found — the level needs a full-canvas background layer named 'bg'.")
+        sys.exit("ERROR: no 'BG' layer found — the level needs a full-canvas background named 'BG'.")
     if not pairs_out:
-        sys.exit("ERROR: no complete pairs found. Items must be named P<pair>_<copy>, "
-                 "e.g. P1_1 and P1_2. Skipped: " + ", ".join(skipped[:20]))
+        sys.exit("ERROR: no complete pairs found. Each pair is an 'H' group holding "
+                 "'H1' and 'H2' layers. Skipped: " + ", ".join(skipped[:20]))
 
-    # Canvas = the exact scene bounds, with content shifted to start at (0,0).
-    # The PSB's own canvas size is ignored (it may not match the artwork). The
-    # player's camera fits the full HEIGHT to the viewport and clamps horizontal
-    # panning to this width, so a non-square (portrait) scene shows fully with no
-    # empty margins.
+    # Canvas = exact scene bounds, shifted so content starts at (0,0).
     minx = min(l["x"] for l in layers)
     miny = min(l["y"] for l in layers)
     maxx = max(l["x"] + l["w"] for l in layers)
     maxy = max(l["y"] + l["h"] for l in layers)
-    content_w, content_h = maxx - minx, maxy - miny
     for l in layers:
         l["x"] -= minx
         l["y"] -= miny
 
-    manifest = {"canvas": {"width": content_w, "height": content_h}, "background": "BG",
-                "layers": layers, "pairs": pairs_out, "masks": masks}
+    manifest = {"canvas": {"width": maxx - minx, "height": maxy - miny},
+                "background": "BG", "layers": layers, "pairs": pairs_out, "masks": masks}
     (out / "manifest.json").write_text(json.dumps(manifest, indent=1))
 
-    print(f"done [{level}]: {len(pairs_out)} pairs, {len(masks)} masks, {len(layers)} layers -> {out}")
-    if dropped:
-        print("  dropped incomplete pairs:", "; ".join(dropped))
+    companions = sum(1 for l in layers if l["role"] == "companion")
+    print(f"done [{level}]: {len(pairs_out)} pairs ({len(pairs_out) * 2} items), "
+          f"{companions} companions, {len(masks)} masks, {len(layers)} layers -> {out}")
     if skipped:
-        print("  skipped layers:", "; ".join(skipped[:20]))
+        print("  skipped:", "; ".join(skipped[:20]))
 
 
 if __name__ == "__main__":

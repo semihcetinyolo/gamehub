@@ -519,7 +519,7 @@ def adapt_hidden_pairs(gdir, level, tmp):
         return dict(ok=True, message=f"PSB dilimlendi → Hidden Pairs. ({level})", detail=out[-800:])
     # folder path: a ready manifest.json + layer PNGs
     if not _require_manifest(tmp):
-        return dict(ok=False, message="Hidden Pairs: katmanlı PSB (bg/P#_#/_B/_T/M_#) ya da klasörde manifest.json + layer PNG'leri gerekli.")
+        return dict(ok=False, message="Hidden Pairs: katmanlı PSB (BG + her çift bir 'H' grubu: H1/H2 + opsiyonel S1/S2/M) ya da klasörde manifest.json + layer PNG'leri gerekli.")
     _place_folder(assets / slug, tmp)
     _register_hidden_pairs(assets, slug)
     return dict(ok=True, message=f"'{level}' eklendi → Hidden Pairs.")
@@ -638,7 +638,7 @@ ADAPTERS = {
     "Hidden Triple Match": ("Hidden Triple Match by topic", ["psb", "folder"],
                             "Katmanlı PSB (bg / h# / s#) veya klasör: bg.jpg + h#.png + manifest.json.", adapt_hidden_triple),
     "Hidden Pairs":        ("Hidden Pairs", ["psb", "folder"],
-                            "Katmanlı PSB (bg / P#_# çiftler / _B / _T / M_#) veya klasör: manifest.json + layer PNG'leri.", adapt_hidden_pairs),
+                            "Katmanlı PSB (BG + 'H' grupları: H1/H2 çift, opsiyonel S1/S2/M) veya klasör: manifest.json + layer PNG'leri.", adapt_hidden_pairs),
     "Furnish Master":      ("Furnish Master", ["psb", "folder"],
                             "Katmanlı PSB (BG + 1,2,3.. grupları · f#/s#/m#) veya klasör: scene.png + items_*.png + level.json.", adapt_furnish),
     "Sticker":             ("Sticker Oh Yeah", ["folder"],
