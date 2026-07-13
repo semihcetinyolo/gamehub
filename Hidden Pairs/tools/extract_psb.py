@@ -162,16 +162,10 @@ def main():
         sys.exit("ERROR: no complete pairs found. Each pair is an 'H' group holding "
                  "'H1' and 'H2' layers. Skipped: " + ", ".join(skipped[:20]))
 
-    # Canvas = exact scene bounds, shifted so content starts at (0,0).
-    minx = min(l["x"] for l in layers)
-    miny = min(l["y"] for l in layers)
-    maxx = max(l["x"] + l["w"] for l in layers)
-    maxy = max(l["y"] + l["h"] for l in layers)
-    for l in layers:
-        l["x"] -= minx
-        l["y"] -= miny
-
-    manifest = {"canvas": {"width": maxx - minx, "height": maxy - miny},
+    # Canvas = the PSB's own canvas (e.g. 2048x2048). Layers keep their absolute
+    # PSB coordinates so the background fills the frame exactly with no margins;
+    # anything drawn slightly outside the canvas is clipped, as in the PSB.
+    manifest = {"canvas": {"width": psd.width, "height": psd.height},
                 "background": "BG", "layers": layers, "pairs": pairs_out, "masks": masks}
     (out / "manifest.json").write_text(json.dumps(manifest, indent=1))
 
