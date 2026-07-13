@@ -506,7 +506,7 @@ def adapt_hidden_pairs(gdir, level, tmp):
     assets = gdir / "assets"
     psb = save_psb(tmp)
     if psb:
-        # layered PSB (bg / P#_# / _B / _T / M_#) -> sliced by the game's extract_psb.py
+        # layered PSB (BG + one 'H' group per pair: H1/H2 + optional S1/S2/M) -> sliced by the game's extract_psb.py
         (gdir / "levels").mkdir(exist_ok=True)
         dest = gdir / "levels" / f"{slug}.psb"
         shutil.copy(psb, dest)
