@@ -1637,7 +1637,7 @@ async function loadShared() {
       uiTextures[id] = PIXI.Texture.from(im);
     }));
   }
-  let levels = ["level01"];
+  let levels = ["elvan03"];
   try {
     const idx = await getJSON("levels.json");
     if (idx.levels && idx.levels.length) levels = idx.levels;
