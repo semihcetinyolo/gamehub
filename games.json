@@ -48,6 +48,10 @@
     "path": "pixhaku/Pixhaku_prototype.html"
   },
   {
+    "name": "Pixhaku Level Creation",
+    "path": "pixhaku/pixhaku_level_creation.html"
+  },
+  {
     "name": "Sortscapes",
     "path": "Sort/index.html"
   },

@@ -15,7 +15,8 @@ that lists them all in one place.
 
    `entry` is the page to open, relative to the folder. If the folder has an
    `index.html` at the top you can skip `game.json`; the folder name is then used.
-   `"hidden": true` keeps a folder out of the hub.
+   `"hidden": true` keeps a folder out of the hub. To list several pages from one
+   folder (e.g. a game and its level editor), make `game.json` a list of these objects.
 3. Run `python3 build_hub.py` to refresh `games.json`, then commit and push.
    (`leveltool/server.py` rebuilds `games.json` on every request, so there's no need
    to run it while that server is running.)

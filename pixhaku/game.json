@@ -1,4 +1,4 @@
-{
-  "name": "Pixhaku",
-  "entry": "Pixhaku_prototype.html"
-}
+[
+  { "name": "Pixhaku", "entry": "Pixhaku_prototype.html" },
+  { "name": "Pixhaku Level Creation", "entry": "pixhaku_level_creation.html" }
+]

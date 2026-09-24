@@ -9,6 +9,9 @@ Every top-level folder that contains a `game.json` is a game:
       "hidden": false            # optional: true keeps it out of the hub
     }
 
+game.json may also be a list of such objects to put several pages of one
+folder in the hub (e.g. a game plus its level editor).
+
 Folders without game.json are picked up too if they have an index.html at the
 top (name = folder name), so a brand-new game shows up with zero setup.
 
@@ -26,23 +29,26 @@ def scan(root: Path = ROOT):
     for d in sorted(p for p in root.iterdir() if p.is_dir()):
         if d.name.startswith((".", "_")) or d.name in SKIP:
             continue
-        meta = {}
+        entries = [{}]
         cfg = d / "game.json"
         if cfg.is_file():
             try:
-                meta = json.loads(cfg.read_text(encoding="utf-8"))
+                entries = json.loads(cfg.read_text(encoding="utf-8"))
             except ValueError as e:
                 print(f"! {cfg}: {e}")
                 continue
+            if isinstance(entries, dict):
+                entries = [entries]
         elif not (d / "index.html").is_file():
             continue
-        if meta.get("hidden"):
-            continue
-        entry = meta.get("entry", "index.html")
-        if not (d / entry).is_file():
-            print(f"! {d.name}: entry '{entry}' not found, skipped")
-            continue
-        games.append({"name": meta.get("name", d.name), "path": f"{d.name}/{entry}"})
+        for meta in entries:
+            if meta.get("hidden"):
+                continue
+            entry = meta.get("entry", "index.html")
+            if not (d / entry).is_file():
+                print(f"! {d.name}: entry '{entry}' not found, skipped")
+                continue
+            games.append({"name": meta.get("name", d.name), "path": f"{d.name}/{entry}"})
     games.sort(key=lambda g: g["name"].casefold())
     return games
 
