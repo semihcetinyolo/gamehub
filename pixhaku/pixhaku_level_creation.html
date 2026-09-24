@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Level Görsel Taslakları</title>
+<style>
+  :root{--ink:#2b3229;--paper:#e8e3cf;--card:#f8f4e3;--muted:#6a7468}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font:15px/1.55 -apple-system,'Segoe UI',sans-serif;padding:36px 20px 80px}
+  .wrap{max-width:860px;margin:0 auto}
+  h1{font-size:24px;margin-bottom:6px}
+  .lead{color:var(--muted);margin-bottom:8px;max-width:70ch}
+  .note{background:#f5ebd4;border:1px solid #e4ce9a;border-left:4px solid #b07a12;padding:10px 14px;font-size:13.5px;margin:14px 0 30px;max-width:70ch}
+  h2{font-size:19px;margin:38px 0 4px}
+  .sub{color:var(--muted);font-size:13.5px;margin-bottom:14px}
+  .row{display:grid;grid-template-columns:300px 1fr;gap:22px;align-items:start}
+  @media(max-width:720px){.row{grid-template-columns:1fr}}
+  svg{display:block;width:100%;max-width:300px;border:3px solid var(--ink)}
+  svg text{font:700 15px monospace;fill:#1c211b}
+  table{border-collapse:collapse;width:100%;background:var(--card);border:1px solid #cfc9b4;font-size:13px}
+  th,td{padding:7px 10px;text-align:left;border-bottom:1px solid #e3ddc8;vertical-align:top}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  tr:last-child td{border-bottom:none}
+  .sw{display:inline-block;width:12px;height:12px;border:1px solid rgba(0,0,0,.25);vertical-align:-1px;margin-right:6px}
+  pre{background:#2b3229;color:#e8eee9;font:12.5px/1.6 ui-monospace,Menlo,monospace;padding:16px 18px;border-radius:4px;white-space:pre-wrap;margin-top:14px}
+  pre b{color:#7bd8b8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Level 2 &amp; 3 — Görsel Taslakları</h1>
+  <p class="lead">Her taslak, level'ın shikaku çözümündeki bölgelerle birebir aynı yerleşimde. Level 1'deki akışın aynısı: renkli taslak PNG'yi kompozisyon referansı olarak prompt'la birlikte görüntü modeline ver.</p>
+  <div class="note">Kurallar: kare 1024×1024 · görselde yazı olmasın · bölgeler ayrı paneller değil, tek bir sürekli sahnenin altındaki kompozisyon alanları — her bölgenin kendi renk kimliği olsun ama sınırlar doğal geçişlerle (yol, duvar, gölge, çatı çizgisi) ima edilsin. Aşağıdaki prompt'lar, level 3 görselinde doğrulanan "tek sürekli sahne" şablonunu kullanır. Bölge konuları öneri — değiştirebilirsin, yerleşim sabit.</div>
+
+  <!-- ============ LEVEL 2 ============ -->
+  <h2>Level 2 — 5×5, 6 bölge · tema önerisi: Sahil Kasabası</h2>
+  <p class="sub">Referans dosya: <strong>level2-taslak.png</strong></p>
+  <div class="row">
+    <svg viewBox="0 0 300 300">
+      <rect x="0" y="0" width="300" height="300" fill="#2b3229"/>
+      <rect x="3" y="3" width="114" height="54" fill="#f2d16b"/>
+      <rect x="183" y="3" width="114" height="54" fill="#a9d8ef"/>
+      <rect x="123" y="3" width="54" height="174" fill="#e0685a"/>
+      <rect x="3" y="63" width="114" height="234" fill="#8fc177"/>
+      <rect x="183" y="63" width="114" height="234" fill="#6f9fd8"/>
+      <rect x="123" y="183" width="54" height="114" fill="#d8c49a"/>
+      <text x="53" y="36">1</text>
+      <text x="233" y="36">2</text>
+      <text x="144" y="96">3</text>
+      <text x="53" y="186">4</text>
+      <text x="233" y="186">5</text>
+      <text x="144" y="246">6</text>
+    </svg>
+    <table>
+      <tr><th>Bölge</th><th>Konum (x · y, %)</th><th>İçerik önerisi</th></tr>
+      <tr><td><i class="sw" style="background:#f2d16b"></i>1</td><td>0–40 · 0–20</td><td>Sabah göğü, güneş ve yumuşak bulutlar</td></tr>
+      <tr><td><i class="sw" style="background:#a9d8ef"></i>2</td><td>60–100 · 0–20</td><td>Gökyüzü, martılar ve küçük bir sıcak hava balonu</td></tr>
+      <tr><td><i class="sw" style="background:#e0685a"></i>3</td><td>40–60 · 0–60</td><td>Kayalık tabanda kırmızı-beyaz deniz feneri</td></tr>
+      <tr><td><i class="sw" style="background:#8fc177"></i>4</td><td>0–40 · 20–100</td><td>Balıkçı kasabası: taş evler, pazar tezgahları</td></tr>
+      <tr><td><i class="sw" style="background:#6f9fd8"></i>5</td><td>60–100 · 20–100</td><td>Liman: ahşap iskeleler, tekneler</td></tr>
+      <tr><td><i class="sw" style="background:#d8c49a"></i>6</td><td>40–60 · 60–100</td><td>Taş çeşmeli küçük meydan</td></tr>
+    </table>
+  </div>
+<pre>Cozy pixel-art scene, 1024x1024, inspired by warm farming-life RPG pixel art.
+
+Create one single, continuous, coherent <b>seaside harbor town</b> scene viewed from a fixed camera angle. The entire image must share the same perspective, architecture, lighting direction, scale, materials, atmosphere, and visual storytelling.
+
+The image is divided into 6 rectangular color regions that must follow this exact layout (percent of width x height):
+- Zone 1 (x 0-40%, y 0-20%): morning sky with sun and soft clouds
+- Zone 2 (x 60-100%, y 0-20%): open sky with seagulls and a small hot-air balloon
+- Zone 3 (x 40-60%, y 0-60%): tall red-and-white lighthouse on a rocky headland
+- Zone 4 (x 0-40%, y 20-100%): fishing village with stone cottages and market stalls
+- Zone 5 (x 60-100%, y 20-100%): harbor with wooden piers and boats
+- Zone 6 (x 40-60%, y 60-100%): small plaza with a stone fountain
+
+IMPORTANT: These 6 zones are not separate rooms, panels, illustrations, or mini-scenes. They are only underlying compositional regions within one unified town environment. Every zone must feel like part of the same physical place.
+
+Use one continuous town structure across the full image:
+- connected stone paths, quays and seawalls
+- continuous shoreline, piers, stairways, rooftops and garden walls
+- one consistent horizon and perspective
+- one shared warm lighting source (morning sun)
+- repeating architectural details and materials
+- environmental elements that naturally continue across zone boundaries
+
+Each region may have a slightly different dominant color identity, but the colors must blend harmoniously into neighboring regions. Use gradual changes in lighting, water, wall materials, awnings, plants and shadows to establish each region's color identity.
+
+Objects and architectural elements should cross zone boundaries to visually connect the regions. A stairway may begin in one zone and continue into another; paths, seawalls, docks and light beams should flow naturally across the full composition.
+
+Zone boundaries must not look like frames, cards, panels, separate rooms, or hard scene cuts. Boundaries should be implied subtly through natural transitions such as changes in floor material, wall corners, roof lines, shadow edges, garden paths and soft shifts in ambient lighting.
+
+The final image should read immediately as one seaside town scene, with the 6-region structure only becoming noticeable when examined carefully.
+
+Cozy, polished pixel art, soft cream highlights, warm morning light, charming details, harmonious pastel palette, readable silhouettes, consistent pixel density, casual puzzle-game reward image. No text anywhere in the image.
+
+Avoid: six separate pictures, collage layout, comic panels, isolated rooms, mismatched perspectives, different times of day, unrelated environments, hard rectangular borders, abrupt color changes, separate backgrounds, repeated town scenes.</pre>
+
+  <!-- ============ LEVEL 3 ============ -->
+  <h2>Level 3 — 6×6, 8 bölge · tema önerisi: Büyülü Kale</h2>
+  <p class="sub">Referans dosya: <strong>level3-taslak.png</strong></p>
+  <div class="row">
+    <svg viewBox="0 0 300 300">
+      <rect x="0" y="0" width="300" height="300" fill="#2b3229"/>
+      <rect x="3" y="3" width="44" height="94" fill="#b9a6d8"/>
+      <rect x="53" y="3" width="44" height="94" fill="#cbb3e3"/>
+      <rect x="103" y="3" width="194" height="94" fill="#3f4a7a"/>
+      <rect x="3" y="103" width="94" height="44" fill="#c9a271"/>
+      <rect x="3" y="153" width="94" height="144" fill="#7fb98a"/>
+      <rect x="103" y="103" width="94" height="144" fill="#d8b25e"/>
+      <rect x="203" y="103" width="94" height="144" fill="#9a6fc2"/>
+      <rect x="103" y="253" width="194" height="44" fill="#6b6f78"/>
+      <text x="20" y="55">1</text>
+      <text x="70" y="55">2</text>
+      <text x="193" y="55" style="fill:#e8eee9">3</text>
+      <text x="44" y="130">4</text>
+      <text x="44" y="230">5</text>
+      <text x="144" y="180">6</text>
+      <text x="244" y="180">7</text>
+      <text x="193" y="280" style="fill:#e8eee9">8</text>
+    </svg>
+    <table>
+      <tr><th>Bölge</th><th>Konum (x · y, %)</th><th>İçerik önerisi</th></tr>
+      <tr><td><i class="sw" style="background:#b9a6d8"></i>1</td><td>0–16,7 · 0–33,3</td><td>Sol kale kulesi</td></tr>
+      <tr><td><i class="sw" style="background:#cbb3e3"></i>2</td><td>16,7–33,3 · 0–33,3</td><td>Bayraklı ikinci kule</td></tr>
+      <tr><td><i class="sw" style="background:#3f4a7a"></i>3</td><td>33,3–100 · 0–33,3</td><td>Yıldızlı gece göğü, dolunay, ejderha silueti</td></tr>
+      <tr><td><i class="sw" style="background:#c9a271"></i>4</td><td>0–33,3 · 33,3–50</td><td>Kale kapısı ve asma köprü</td></tr>
+      <tr><td><i class="sw" style="background:#7fb98a"></i>5</td><td>0–33,3 · 50–100</td><td>Hendek ve gül bahçesi</td></tr>
+      <tr><td><i class="sw" style="background:#d8b25e"></i>6</td><td>33,3–66,7 · 33,3–83,3</td><td>Taht salonu: şömine, kırmızı halı</td></tr>
+      <tr><td><i class="sw" style="background:#9a6fc2"></i>7</td><td>66,7–100 · 33,3–83,3</td><td>Büyücü kütüphanesi: raflar, iksirler, kazan</td></tr>
+      <tr><td><i class="sw" style="background:#6b6f78"></i>8</td><td>33,3–100 · 83,3–100</td><td>Meşaleli zindan koridoru</td></tr>
+    </table>
+  </div>
+<pre>Cozy pixel-art scene, 1024x1024, inspired by warm farming-life RPG pixel art.
+
+Create one single, continuous, coherent <b>enchanted castle</b> scene viewed from a fixed camera angle. The entire image must share the same perspective, architecture, lighting direction, scale, materials, atmosphere, and visual storytelling.
+
+The image is divided into 8 rectangular color regions that must follow this exact layout (percent of width x height):
+- Zone 1 (x 0-16.7%, y 0-33.3%): left castle tower
+- Zone 2 (x 16.7-33.3%, y 0-33.3%): second tower with a flag
+- Zone 3 (x 33.3-100%, y 0-33.3%): starry night sky with a full moon
+- Zone 4 (x 0-33.3%, y 33.3-50%): castle gate with a drawbridge
+- Zone 5 (x 0-33.3%, y 50-100%): moat and rose garden
+- Zone 6 (x 33.3-66.7%, y 33.3-83.3%): throne hall with fireplace and red carpet
+- Zone 7 (x 66.7-100%, y 33.3-83.3%): wizard's library with shelves, potions and a cauldron
+- Zone 8 (x 33.3-100%, y 83.3-100%): torch-lit dungeon corridor
+
+IMPORTANT: These 8 zones are not separate rooms, panels, illustrations, or mini-scenes. They are only underlying compositional regions within one unified castle environment. Every zone must feel like part of the same physical place.
+
+Use one continuous castle structure across the full image:
+- connected stone walls and floors
+- continuous staircases, bridges, towers, windows, and corridors
+- one consistent horizon and perspective
+- one shared warm lighting source
+- repeating architectural details and materials
+- environmental elements that naturally continue across zone boundaries
+
+Each region may have a slightly different dominant color identity, but the colors must blend harmoniously into neighboring regions. Use gradual changes in lighting, vegetation, wall materials, banners, carpets, stained glass, shadows, and magical glow to establish each region's color identity.
+
+Objects and architectural elements should cross zone boundaries to visually connect the regions. A staircase may begin in one zone and continue into another; castle walls, floors, vines, bridges, and light beams should flow naturally across the full composition.
+
+Zone boundaries must not look like frames, cards, panels, separate rooms, or hard scene cuts. Boundaries should be implied subtly through natural transitions such as changes in floor material, wall corners, roof lines, shadow edges, garden paths, curtains, staircases and soft shifts in ambient lighting.
+
+The final image should read immediately as one enchanted castle scene, with the 8-region structure only becoming noticeable when examined carefully.
+
+Cozy, polished pixel art, soft cream highlights, warm magical lighting, charming details, harmonious pastel palette, readable silhouettes, consistent pixel density, casual puzzle-game reward image. No text anywhere in the image.
+
+Avoid: eight separate pictures, collage layout, comic panels, isolated rooms, mismatched perspectives, different times of day, unrelated environments, hard rectangular borders, abrupt color changes, separate backgrounds, repeated castle scenes.</pre>
+</div>
+</body>
+</html>

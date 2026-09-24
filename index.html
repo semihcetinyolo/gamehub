@@ -505,22 +505,9 @@
   </div>
 
   <script>
-    const GAMES = [
-      { name: "Find The Cat",                  path: "Find The Cat/game/index.html" },
-      { name: "Find The Odds",                 path: "Find The Odds/index.html" },
-      { name: "Find The Strange",              path: "Find The Odds v2/game/index.html" },
-      { name: "Furnish Master",                path: "Furnish Master/index.html" },
-      { name: "Hidden By Word",                path: "Hidden By Word/game/index.html" },
-      { name: "Hidden Pairs",                  path: "Hidden Pairs/HiddenMatch2.html" },
-      { name: "Hidden Match3",                 path: "Hidden Match3/Demo.html" },
-      { name: "Pack It Up",                    path: "Pack It Up/index.html" },
-      { name: "Hidden Triple Match",           path: "Hidden Triple Match by topic/game/index.html" },
-      { name: "Jigsolitaire",                  path: "Jigsolitaire/index.html" },
-      { name: "Match3 Pair",                   path: "Match3 Pair/index.html" },
-      { name: "Sticker",                       path: "Sticker Oh Yeah/index.html" },
-      { name: "Sticker 2",                     path: "Sticker 2/game/index.html" },
-      { name: "Tidy Up",                       path: "Tidy Up/game/index.html" },
-    ];
+    // Game list comes from games.json (built from each folder's game.json by
+    // build_hub.py; leveltool/server.py regenerates it on every request).
+    let GAMES = [];
 
     const listEl = document.getElementById("gameList");
     const frame = document.getElementById("gameFrame");
@@ -550,18 +537,6 @@
       // On phones, close the drawer so the game fills the screen.
       if (mqMobile.matches) setNav(true);
     }
-
-    GAMES.sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
-
-    GAMES.forEach(game => {
-      const li = document.createElement("li");
-      const btn = document.createElement("button");
-      btn.innerHTML = '<span class="dot"></span><span></span>';
-      btn.querySelector("span:last-child").textContent = game.name;
-      btn.addEventListener("click", () => loadGame(game, btn));
-      li.appendChild(btn);
-      listEl.appendChild(li);
-    });
 
     // ---- Level upload modal ----
     const modal = document.getElementById("uploadModal");
@@ -868,12 +843,30 @@
 
     loadRatings();   // prime avg/distribution on first paint
 
-    // Open game from URL hash on load (deep-linking)
-    const fromHash = decodeURIComponent(location.hash.replace(/^#/, ""));
-    if (fromHash) {
-      const idx = GAMES.findIndex(g => g.name === fromHash);
-      if (idx >= 0) loadGame(GAMES[idx], listEl.querySelectorAll("button")[idx]);
-    }
+    // Build the sidebar from games.json, then open the game from the URL hash (deep-linking)
+    (async () => {
+      try {
+        const r = await fetch("games.json?t=" + Date.now());
+        GAMES = await r.json();
+      } catch (e) {
+        placeholder.textContent = "games.json okunamadı — python3 build_hub.py çalıştır.";
+        return;
+      }
+      GAMES.forEach(game => {
+        const li = document.createElement("li");
+        const btn = document.createElement("button");
+        btn.innerHTML = '<span class="dot"></span><span></span>';
+        btn.querySelector("span:last-child").textContent = game.name;
+        btn.addEventListener("click", () => loadGame(game, btn));
+        li.appendChild(btn);
+        listEl.appendChild(li);
+      });
+      const fromHash = decodeURIComponent(location.hash.replace(/^#/, ""));
+      if (fromHash) {
+        const idx = GAMES.findIndex(g => g.name === fromHash);
+        if (idx >= 0) loadGame(GAMES[idx], listEl.querySelectorAll("button")[idx]);
+      }
+    })();
   </script>
 </body>
 </html>

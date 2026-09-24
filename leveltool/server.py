@@ -822,6 +822,14 @@ def index():
     return send_from_directory(str(ROOT), "index.html")
 
 
+@app.get("/games.json")
+def games_json():
+    # rescan on every request so a newly added game folder shows up immediately
+    sys.path.insert(0, str(ROOT))
+    import build_hub
+    return jsonify(build_hub.write(ROOT))
+
+
 @app.get("/<path:path>")
 def static_files(path):
     # Some games discover their assets by fetching a folder and parsing the

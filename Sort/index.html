@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Sortscapes</title>
+<link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<body>
+  <div class="frame" id="frame">
+
+    <!-- ===== HUD ===== -->
+    <div class="hud">
+      <div class="round-pill" id="levelPill">Level 1</div>
+      <div class="hud-btns">
+        <button class="hud-btn" id="peekBtn" title="Peek at the target picture">👁</button>
+        <button class="hud-btn" id="undoBtn" title="Undo last move">↩</button>
+        <button class="hud-btn" id="restartBtn" title="Reshuffle this level">⟳</button>
+        <button class="hud-btn" id="nextBtn" title="Next level">⏭</button>
+      </div>
+    </div>
+
+    <!-- ===== BOARD ===== -->
+    <div class="board-wrap" id="boardWrap">
+      <div class="playfield" id="playfield">
+        <!-- slot frames, tiles and column buttons injected by game.js -->
+      </div>
+      <!-- target picture, shown over the board for 3s -->
+      <div class="peek" id="peek">
+        <img class="peek-img" id="peekImg" alt="" draggable="false" />
+        <span class="peek-tag">TARGET PICTURE</span>
+      </div>
+    </div>
+
+    <!-- ===== STATUS ===== -->
+    <div class="status-row">
+      <div class="stat stat-correct" id="correctStat"><span id="correctNum">0</span><span class="stat-den" id="correctDen">/4</span></div>
+      <div class="stat-hint" id="statusHint">Tap a column to push its bottom tile into the tray</div>
+      <div class="stat stat-moves"><span class="stat-label">moves</span>&nbsp;<span id="movesNum">0</span></div>
+    </div>
+
+    <!-- ===== WIN OVERLAY ===== -->
+    <div class="overlay" id="overlay">
+      <div class="overlay-card">
+        <div class="overlay-emoji">🎉</div>
+        <div class="overlay-title" id="ovTitle">Solved!</div>
+        <div class="overlay-sub" id="ovSub">Nice sorting.</div>
+        <button class="overlay-btn" id="ovBtn">Next Level</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="game.js?v=2"></script>
+</body>
+</html>
