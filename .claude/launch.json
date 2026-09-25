@@ -4,8 +4,22 @@
     {
       "name": "gamehub",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8766"],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8766"
+      ],
       "port": 8766
+    },
+    {
+      "name": "jelly",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8771"
+      ],
+      "port": 8771
     }
   ]
 }

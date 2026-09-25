@@ -32,6 +32,10 @@
     "path": "Hidden Triple Match by topic/game/index.html"
   },
   {
+    "name": "Jelly Squish (Dungeon Slime)",
+    "path": "dungeon_slime/index.html"
+  },
+  {
     "name": "Jigsolitaire",
     "path": "Jigsolitaire/index.html"
   },
@@ -46,10 +50,6 @@
   {
     "name": "Pixhaku",
     "path": "pixhaku/Pixhaku_prototype.html"
-  },
-  {
-    "name": "Pixhaku Level Creation",
-    "path": "pixhaku/pixhaku_level_creation.html"
   },
   {
     "name": "Sortscapes",

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Jelly Squish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg1: #ffe3ef; --bg2: #d9f6ec; --ink: #5a2a48; --ink2: #9a6a86;
+    --pink: #ff7fb0; --jelly: #c438dc; --mint: #54d1a8; --gold: #ffc542; --card: #fffaf4;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; height: 100%; overflow: hidden; }
+  body {
+    font-family: 'Fredoka', system-ui, sans-serif; color: var(--ink);
+    background: linear-gradient(170deg, var(--bg1), var(--bg2));
+    user-select: none; -webkit-user-select: none; touch-action: none;
+  }
+  #app { position: relative; max-width: 480px; height: 100%; margin: 0 auto; display: flex; flex-direction: column; }
+  .screen { position: absolute; inset: 0; display: none; flex-direction: column; }
+  .screen.on { display: flex; }
+
+  /* ---------- map ---------- */
+  #map { padding: 24px 16px calc(24px + env(safe-area-inset-bottom)); overflow-y: auto; touch-action: pan-y; }
+  #map h1 { margin: 8px 0 2px; font-size: 38px; text-align: center; letter-spacing: .5px; color: var(--pink);
+    text-shadow: 0 3px 0 #fff, 0 6px 14px rgba(255,127,176,.35); }
+  #map .sub { text-align: center; color: var(--ink2); margin-bottom: 20px; font-weight: 500; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .lvl { background: var(--card); border: none; border-radius: 22px; padding: 14px 6px 10px; font: inherit; color: var(--ink);
+    box-shadow: 0 5px 0 #f2c6d8, 0 10px 18px rgba(90,42,72,.08); cursor: pointer; transition: transform .1s; }
+  .lvl:active { transform: translateY(3px); box-shadow: 0 2px 0 #f2c6d8; }
+  .lvl .n { font-size: 30px; font-weight: 700; line-height: 1; }
+  .lvl .nm { font-size: 12px; color: var(--ink2); margin-top: 4px; min-height: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lvl .st { margin-top: 6px; font-size: 16px; letter-spacing: 2px; color: #e9d7df; }
+  .lvl .st b { color: var(--gold); font-weight: 400; }
+  .lvl.next { outline: 3px solid var(--pink); }
+  .lvl.hard .n { color: #d8487f; }
+  .lvl { position: relative; }
+  .lvl.hard::after { content: 'ZOR'; position: absolute; top: 8px; right: 10px; font-size: 10px; font-weight: 700; color: #fff; background: #d8487f; border-radius: 8px; padding: 1px 6px; }
+  .legend { margin-top: 22px; background: rgba(255,255,255,.6); border-radius: 18px; padding: 12px 14px; font-size: 13px; color: var(--ink2); line-height: 1.5; }
+  .legend b { color: var(--ink); }
+
+  /* ---------- game ---------- */
+  #game { padding-top: env(safe-area-inset-top); }
+  .top { display: flex; align-items: center; gap: 10px; padding: 12px 16px 4px; }
+  .icon { width: 44px; height: 44px; flex: none; border: none; border-radius: 16px; background: var(--card); color: var(--ink);
+    font: 700 20px 'Fredoka', sans-serif; box-shadow: 0 4px 0 #f2c6d8; cursor: pointer; }
+  .icon:active { transform: translateY(2px); box-shadow: 0 2px 0 #f2c6d8; }
+  .title { flex: 1; min-width: 0; }
+  .title .l { font-size: 13px; color: var(--ink2); font-weight: 600; }
+  .title .t { font-size: 20px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .counter { text-align: right; font-weight: 700; font-size: 22px; line-height: 1; }
+  .counter small { display: block; font-size: 12px; color: var(--ink2); font-weight: 600; margin-top: 3px; }
+  .counter.over { color: #d8487f; }
+  .hud2 { display: flex; justify-content: space-between; align-items: center; padding: 0 18px; height: 26px; font-size: 14px; font-weight: 600; color: var(--ink2); }
+  .shape { display: inline-flex; align-items: center; gap: 6px; }
+  .shape i { display: inline-block; background: var(--jelly); border-radius: 50%; transition: all .2s; }
+  .gem { opacity: .35; transition: opacity .2s; } .gem.got { opacity: 1; }
+  #stage { flex: 1; position: relative; min-height: 0; }
+  #cv { position: absolute; inset: 0; width: 100%; height: 100%; }
+  #tip { position: absolute; left: 16px; right: 16px; bottom: 8px; text-align: center; font-size: 15px; font-weight: 600; color: var(--ink);
+    background: rgba(255,255,255,.75); border-radius: 14px; padding: 8px 12px; transition: opacity .4s; pointer-events: none; }
+  .bottom { display: flex; justify-content: center; gap: 14px; padding: 10px 16px calc(18px + env(safe-area-inset-bottom)); min-height: 20%; align-items: flex-start; }
+  .btn { flex: 1; max-width: 120px; height: 58px; border: none; border-radius: 20px; background: var(--card); color: var(--ink);
+    font: 600 14px 'Fredoka', sans-serif; box-shadow: 0 5px 0 #f2c6d8; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+  .btn span { font-size: 22px; line-height: 1; }
+  .btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #f2c6d8; }
+  .btn:disabled { opacity: .45; }
+
+  /* ---------- result ---------- */
+  #result { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(90,42,72,.35); z-index: 5; padding: 16px; }
+  #result.on { display: flex; animation: fade .25s; }
+  .card { background: var(--card); border-radius: 28px; padding: 26px 22px 20px; width: 100%; max-width: 340px; text-align: center;
+    box-shadow: 0 8px 0 #f2c6d8, 0 20px 40px rgba(90,42,72,.25); animation: pop .35s cubic-bezier(.3,1.6,.5,1); }
+  .card h2 { margin: 0; font-size: 30px; color: var(--pink); }
+  .stars { font-size: 50px; letter-spacing: 6px; margin: 10px 0 4px; color: #eadbe2; }
+  .stars b { color: var(--gold); font-weight: 400; display: inline-block; animation: pop .4s cubic-bezier(.3,1.8,.5,1) both; }
+  .stars b:nth-child(2) { animation-delay: .12s } .stars b:nth-child(3) { animation-delay: .24s }
+  .card p { margin: 6px 0; color: var(--ink2); font-weight: 500; }
+  .card .row { display: flex; gap: 10px; margin-top: 16px; }
+  .card .row button { flex: 1; height: 52px; border: none; border-radius: 18px; font: 700 17px 'Fredoka', sans-serif; cursor: pointer; }
+  .primary { background: var(--pink); color: #fff; box-shadow: 0 5px 0 #d8487f; }
+  .ghost { background: #fbe9f1; color: var(--ink); box-shadow: 0 5px 0 #f2c6d8; }
+  @keyframes pop { from { transform: scale(.4); opacity: 0 } to { transform: scale(1); opacity: 1 } }
+  @keyframes fade { from { opacity: 0 } }
+</style>
+<link rel="stylesheet" href="ui.css?v=stars-3">
+</head>
+<body>
+<div id="app">
+  <section id="map" class="screen on">
+    <div class="map-top"><span class="wordmark">JELLY ADVENTURES</span><span class="total-stars" id="totalStars">★ 0 / 69</span></div>
+    <div class="hero"><div class="mascot" aria-hidden="true"></div><h1>Jelly<br><em>Squish.</em></h1><div class="sub" id="mapSub">Küçük jöli. Büyük kaçış.</div></div>
+    <div class="theme-line" aria-label="Dünyalar"><span>✿ Kristal Bahçe</span><span>☾ Aytaşı Zindanı</span><span>♨ Kor Kalesi</span><span>◉ Zehirli Sera</span></div>
+    <button class="continue" id="bContinue"><span><strong>Maceraya başla</strong><small>Seviye 1 · İlk Kayış</small></span><span class="arrow" aria-hidden="true">→</span></button>
+    <div class="section-label"><h2>Macera haritası</h2><span id="mapProgress">0 / 23 tamamlandı</span></div>
+    <div class="progress-track"><i id="progressFill"></i></div>
+    <div class="grid" id="levels"></div>
+    <details class="legend"><summary>Nasıl oynanır?</summary><p><b>Kaydır ya da ok tuşlarını kullan.</b> Jöli duvara kadar kayar ve her çarpışta şekil değiştirir. Yan duvarlar inceltir, alt ve üst duvarlar yassılaştırır.</p><p>Dar geçitlere sığ, tehlikelerden uzak dur ve <b>yeşil portala ulaş.</b> Gofret duvarları iki vuruşta kırılır. Kilitli portallar için anahtarı bul.</p><p><b>Yıldızlı taşlara çarp:</b> taş vurduğun yönde kayar. Taşı yıldızlı düğmeye oturtarak tehlikeli geçidi aç. Geçit yalnızca taş düğmedeyken açık kalır; taş ayrılınca tehlike geri gelir.</p><p>★ Çıkışı bul · ★★ Hedef hamlede bitir<br>★★★ Mücevheri topla ve onun hedefini tuttur.<br>Mücevher olmayan levellarda hedef hamle üç yıldız getirir.</p></details>
+    <a class="collection-link" href="animation-preview.html">Jöli koleksiyonu ve animasyonlar →</a>
+    <p class="map-foot">KAYDIR · ŞEKİL DEĞİŞTİR · KEŞFET</p>
+  </section>
+
+  <section id="game" class="screen">
+    <div class="top">
+      <button class="icon" id="bMap" aria-label="Macera haritası">‹</button>
+      <div class="title"><div class="l" id="lvlNo"></div><div class="t" id="lvlName"></div></div>
+      <div class="counter" id="counter">0<small>par 0</small></div>
+    </div>
+    <div class="hud2"><span class="shape"><i id="shapeIco"></i><span id="shapeTxt">Yuvarlak</span></span><span class="theme-badge" id="themeBadge"></span><span class="feature-status" id="featureStatus" role="status" hidden></span><span class="gem" id="gemIco" aria-label="Mücevher">💎</span></div>
+    <div id="stage"><canvas id="cv" aria-label="Jelly Squish oyun alanı; ok tuşlarıyla veya kaydırarak oyna"></canvas><div id="tip"></div></div>
+    <div class="bottom">
+      <button class="btn" id="bHint"><span aria-hidden="true">✧</span>İpucu <kbd>H</kbd></button>
+      <button class="btn" id="bRestart"><span aria-hidden="true">↻</span>Baştan <kbd>R</kbd></button>
+    </div>
+    <div class="control-note">Kaydır veya <kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> tuşlarını kullan</div>
+    <div id="result" role="dialog" aria-modal="true" aria-labelledby="rTitle"><div class="card">
+      <div class="result-mark" id="resultTheme"></div>
+      <h2 id="rTitle">Harika!</h2>
+      <div class="stars" id="rStars"></div>
+      <p id="rMoves"></p>
+      <p id="rNote"></p>
+      <div class="row"><button class="ghost" id="rRetry">↻ Tekrar</button><button class="primary" id="rNext">Sonraki ›</button></div>
+    </div></div>
+  </section>
+  <div id="loading" role="status"><span class="loader"></span><span>Dünya hazırlanıyor…</span></div>
+</div>
+
+<script src="engine.js?v=12"></script>
+<script src="levels.js?v=14"></script>
+<script src="bg_palettes.js?v=4"></script>
+<script src="themes.js?v=4"></script>
+<script src="motion.js?v=3"></script>
+<script src="board.js?v=4"></script>
+<script src="features.js?v=2"></script>
+<script>
+(() => {
+const E = window.JellyEngine, LEVELS = window.LEVELS;
+const $ = id => document.getElementById(id);
+const DIR = E.DIRS;
+// floor palette: index.html?bg=<id> (see bg_palettes.js / bg_variants.html)
+const bgParam = new URLSearchParams(location.search).get('bg');
+const BG = bgParam ? JellyBG.byId(bgParam) : null;
+const Themes = window.JellyThemes, Motion = window.JellyMotion, Board = window.JellyBoard, Features = window.JellyFeatures;
+let actor = Motion.SKINS.purple, actorReady = false, impacts = [], morph = null, boardGeometry = null, motionTime = 0;
+let theme = Themes.byId('garden'), themeAssetsReady = false, loading = false, startToken = 0;
+let boardCache = null, winTimer = 0;
+function applyTheme() {
+  const app = $('app'); app.dataset.theme = theme.id;
+  for (const [key, value] of Object.entries({accent:theme.accent, jelly:actor.colors[1], 'stage-a':theme.backdrop[0], 'stage-b':theme.backdrop[1]})) app.style.setProperty('--' + key, value);
+  $('themeBadge').textContent = theme.mark + ' ' + theme.name;
+  $('resultTheme').textContent = theme.name;
+}
+
+// ---------- progress (per-browser convenience only) ----------
+const SAVE = 'jellysquish.v1';
+let prog = { stars: {} };
+try { prog = JSON.parse(localStorage.getItem(SAVE)) || prog; } catch (e) {}
+const saveProg = () => { try { localStorage.setItem(SAVE, JSON.stringify(prog)); } catch (e) {} };
+
+// ---------- audio + haptics ----------
+let ac = null;
+function audio() { if (!ac) { try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} } if (ac && ac.state === 'suspended') ac.resume(); return ac; }
+function tone(f0, f1, dur, type = 'sine', vol = .25, delay = 0) {
+  const a = audio(); if (!a) return;
+  const t = a.currentTime + delay, o = a.createOscillator(), g = a.createGain();
+  o.type = type; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(f1, t + dur);
+  g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(.001, t + dur);
+  o.connect(g).connect(a.destination); o.start(t); o.stop(t + dur + .02);
+}
+function noise(dur, vol = .2, freq = 900) {
+  const a = audio(); if (!a) return;
+  const b = a.createBuffer(1, a.sampleRate * dur, a.sampleRate), d = b.getChannelData(0);
+  for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length) ** 2;
+  const s = a.createBufferSource(), f = a.createBiquadFilter(), g = a.createGain();
+  f.type = 'lowpass'; f.frequency.value = freq; g.gain.value = vol;
+  s.buffer = b; s.connect(f).connect(g).connect(a.destination); s.start();
+}
+const SFX = {
+  round: () => tone(420, 160, .16, 'sine', .35),                 // "blop"
+  flat: () => { noise(.14, .35, 700); tone(220, 90, .12, 'sine', .25); }, // "splat"
+  thin: () => tone(900, 1500, .1, 'triangle', .18),              // "squeak"
+  crack: () => { noise(.12, .4, 2500); tone(300, 120, .1, 'square', .08); },
+  key: () => { tone(880, 880, .08, 'triangle', .2); tone(1320, 1320, .14, 'triangle', .2, .08); },
+  gem: () => [1046, 1318, 1568].forEach((f, i) => tone(f, f, .12, 'triangle', .16, i * .07)),
+  tp: () => tone(300, 1200, .18, 'sine', .15),
+  dead: () => { tone(500, 80, .35, 'sawtooth', .12); noise(.25, .2, 1200); },
+  win: () => [523, 659, 784, 1046].forEach((f, i) => tone(f, f, .18, 'triangle', .2, i * .09)),
+};
+const buzz = ms => { try { if (navigator.vibrate && (!navigator.userActivation || navigator.userActivation.hasBeenActive)) navigator.vibrate(ms); } catch (e) {} }; // only after the first tap
+
+// ---------- map ----------
+function renderMap() {
+  const box = $('levels'); box.innerHTML = '';
+  const completed = LEVELS.filter((_,i) => prog.stars[i] > 0).length;
+  const total = LEVELS.reduce((n,_,i) => n + (prog.stars[i] || 0), 0);
+  $('mapSub').textContent = `Küçük jöli. Büyük kaçış.\n${Object.keys(Themes.THEMES).length} dünya · ${LEVELS.length} bölüm.`;
+  $('totalStars').textContent = `★ ${total} / ${LEVELS.length * 3}`;
+  $('mapProgress').textContent = `${completed} / ${LEVELS.length} tamamlandı`;
+  $('progressFill').style.width = completed / LEVELS.length * 100 + '%';
+  const firstOpen = LEVELS.findIndex((_, i) => !prog.stars[i]);
+  const next = firstOpen < 0 ? 0 : firstOpen;
+  $('bContinue').innerHTML = `<span><strong>${completed === LEVELS.length ? 'Yeniden keşfet' : completed ? 'Maceraya devam' : 'Maceraya başla'}</strong><small>Seviye ${next + 1} · ${LEVELS[next].name}</small></span><span class="arrow" aria-hidden="true">→</span>`;
+  $('bContinue').onclick = () => { audio(); start(next); };
+  LEVELS.forEach((lv, i) => {
+    const st = prog.stars[i] || 0, b = document.createElement('button'), skin = Themes.forLevel(lv), character = Motion.forLevel(lv,skin);
+    b.className = 'lvl' + (i === firstOpen ? ' next' : '') + (lv.hard ? ' hard' : '');
+    b.style.setProperty('--tile-accent', skin.accent); b.style.setProperty('--tile-atlas', `url('${skin.atlas}')`);
+    b.style.setProperty('--actor-atlas', `url('${character.atlas}')`); b.style.setProperty('--actor-pos', `${character.portrait[0]*50}% ${character.portrait[1]*100}%`);
+    b.setAttribute('aria-label', `Seviye ${i + 1}: ${lv.name}, ${skin.name}, ${st} yıldız${lv.hard ? ', zor' : ''}${lv.feature === 'stone' ? ', hareketli taş' : lv.feature === 'switch' ? ', yıldızlı düğme' : ''}`);
+    b.innerHTML = `<div class="level-art">${lv.feature ? '<span class="feature-mark" aria-hidden="true">★</span>' : ''}<div class="n">${String(i + 1).padStart(2,'0')}</div></div><div class="nm">${lv.name}</div><div class="world">${skin.name}</div><div class="st" aria-hidden="true">${'<b>★</b>'.repeat(st)}${'★'.repeat(3 - st)}</div>`;
+    b.onclick = () => { audio(); start(i); }; box.appendChild(b);
+  });
+}
+function show(id) { document.querySelectorAll('.screen').forEach(s => s.classList.toggle('on', s.id === id)); }
+
+// ---------- game state ----------
+let idx = 0, L = null, info = null, state = null, history = [], moves = 0, hints = 0;
+let view = null;        // what is drawn right now (lags `state` during animation)
+let anim = null, queued = null, busy = false, over = false;
+let rockFlights = [], gateOpenings = [];
+// jelly = drawn body rect in cells (x,y,w,h), sprung toward its target (tx,ty,tw,th)
+let jelly = { x: 0, y: 0, w: 2, h: 2, tx: 0, ty: 0, tw: 2, th: 2, vx: 0, vy: 0, vw: 0, vh: 0, look: [0, 0], face: 'idle' };
+let splats = [], particles = [], hintDir = null, hintT = 0, tutorial = false, tipTimer = 0;
+
+const SHAPE_TR = { square: 'Kare', flat: 'Basık', thin: 'İnce', flattest: 'Çok basık', thinnest: 'Çok ince' };
+const shapeName = st => E.shapeOf(st.w, st.h);
+
+async function start(i) {
+  if (!LEVELS[i]) return;
+  const token = ++startToken, selected = Themes.forLevel(LEVELS[i]), selectedActor = Motion.forLevel(LEVELS[i],selected);
+  loading = true; $('loading').classList.add('on');
+  clearTimeout(winTimer);
+  const [ready, characterReady] = await Promise.all([Themes.load(selected), Themes.load(selectedActor), Themes.load(Motion.FX), Themes.load(Features.PLATE)]);
+  if (token !== startToken) return;
+  theme = selected; actor = selectedActor; actorReady = characterReady; themeAssetsReady = ready; boardCache = null; applyTheme();
+  loading = false; $('loading').classList.remove('on');
+  idx = i; L = E.parse(LEVELS[i]);
+  boardGeometry = Board.build(L);
+  spikes = L.solids.filter(r => r.t === 'spike');
+  L.itemBlobs = ['k', 'g'].flatMap(c => L.blobs(c).map(b => ({ c, ...b })));
+  L.waferAt = {}; L.wafers.forEach((blob, j) => blob.forEach(c => { L.waferAt[c.x + ',' + c.y] = j; }));
+  const s0 = E.initialState(L);
+  const sol = E.solve(L, s0);
+  const gsol = L.hasGem ? E.solve(L, s0, true) : null;
+  info = { par: sol.path.length, gemPar: gsol ? gsol.path.length : null };
+  $('lvlNo').textContent = `Seviye ${i + 1}${LEVELS[i].hard ? ' · ZOR' : ''}`;
+  $('lvlName').textContent = LEVELS[i].name;
+  $('gemIco').style.display = L.hasGem ? '' : 'none';
+  hints = 0; reset();
+  show('game'); resize();
+  tutorial = i === 0;
+}
+function showLevelTip() {
+  let tip = LEVELS[idx].tip || '';
+  if (theme.id === 'garden') tip = tip.replace(/Diken/g, 'Kristal').replace(/diken/g, 'kristal');
+  if (theme.id === 'ember') tip = tip.replace(/Dikenli/g, 'Lavlı').replace(/dikenli/g, 'lavlı').replace(/dikensiz/g, 'güvenli').replace(/Diken/g, 'Lav').replace(/diken/g, 'lav');
+  if (theme.id === 'toxic') tip = tip.replace(/Dikenli/g,'Zehirli').replace(/dikenli/g,'zehirli').replace(/dikensiz/g,'güvenli').replace(/Diken/g,'Zehir').replace(/diken/g,'zehir');
+  $('tip').textContent = tip || ''; $('tip').style.opacity = tip ? 1 : 0;
+  clearTimeout(tipTimer);
+}
+function reset({ keepWallMarks = false } = {}) {
+  clearTimeout(winTimer);
+  state = E.initialState(L); view = cloneS(state);
+  history = []; moves = 0; over = false; anim = null; queued = null; busy = false;
+  if (!keepWallMarks) splats = [];
+  particles = []; hintDir = null;
+  wreck = null; trail = []; morph = null; impacts = []; motionTime = 0;
+  rockFlights = []; gateOpenings = [];
+  snapJelly(state); jelly.face = 'idle'; jelly.look = [0, 0]; if (T) { const c = camTarget(); camX = c.x; camY = c.y; } resetFace();
+  $('result').classList.remove('on');
+  hud(); showLevelTip();
+}
+const cloneS = s => ({ ...s, wafer: s.wafer.slice(), rocks:s.rocks.map(r=>({...r})), switches:s.switches.slice() });
+function syncView() {
+  // The solver already knows the outcome. A plate lights only when its stone arrives on screen.
+  const next=cloneS(state);
+  if(rockFlights.length){next.rocks=view.rocks;next.switches=view.switches;}
+  view=next;
+}
+function snapJelly(st) {
+  Object.assign(jelly, { x: st.x, y: st.y, w: st.w, h: st.h, vx: 0, vy: 0, vw: 0, vh: 0, idleAge:0 });
+  aimJelly(st);
+}
+function aimJelly(st) { jelly.tx = st.x; jelly.ty = st.y; jelly.tw = st.w; jelly.th = st.h; }
+function hud() {
+  const c = $('counter');
+  c.firstChild.nodeValue = moves;
+  c.querySelector('small').textContent = 'par ' + info.par;
+  c.classList.toggle('over', moves > info.par);
+  const st = anim ? anim.from : state;
+  const ico = $('shapeIco'); ico.style.width = 3 * st.w + 'px'; ico.style.height = 3 * st.h + 'px'; ico.style.borderRadius = '4px';
+  $('shapeTxt').textContent = SHAPE_TR[shapeName(st)];
+  $('gemIco').classList.toggle('got', !!view.gem);
+  const status=$('featureStatus'),open=L.gates.length&&L.gates.every((_,i)=>E.gateOpen(L,view,i));
+  status.hidden=!L.rocks.length;
+  status.textContent=L.gates.length?(open?'★ Geçit açık':'★ Geçit kapalı'):'★ Taşı kaydır';
+  status.classList.toggle('open',!!open);
+}
+
+// ---------- input ----------
+function input(dir) {
+  if (over || loading || !L) return;
+  audio();
+  if (busy || rockFlights.length) { queued = dir; return; } // one swipe queued during physical movement
+  doMove(dir);
+}
+function doMove(dir) {
+  const r = E.move(L, state, dir);
+  hintDir = null;
+  if (r.result === 'none') { nudge(dir); return; }
+  if (tutorial) tutorial = false;
+  if ($('tip').style.opacity !== '0') { clearTimeout(tipTimer); tipTimer = setTimeout(() => $('tip').style.opacity = 0, 1800); }
+  history.push({ state: cloneS(state), splats: splats.length });
+  moves++;
+  const visible = renderJellyRect(), from = cloneS(state);
+  morph = null; snapJelly(from);
+  state = r.state;
+  anim = { from, r, dir, t: 0, i: 0, seg: [], elapsed:0,
+    blend:{x:visible.x-from.x,y:visible.y-from.y,w:visible.w-from.w,h:visible.h-from.h} };
+  let cx = from.x, cy = from.y;
+  for (const pt of r.path) { anim.seg.push({ x0: cx, y0: cy, x1: pt.x, y1: pt.y, len: Math.abs(pt.x - cx) + Math.abs(pt.y - cy), pt }); cx = pt.x; cy = pt.y; }
+  busy = true; jelly.look = DIR[dir]; jelly.face = 'slide';
+  hud();
+}
+function nudge(dir) { // pushing into what it already touches: tiny wobble, nothing changes
+  const [dx, dy] = DIR[dir];
+  jelly.vx += dx * 2.5; jelly.vy += dy * 2.5; buzz(5);
+}
+
+// swipe on the whole game screen
+let t0 = null;
+$('game').addEventListener('pointerdown', e => { if (e.target.closest('button')) return; t0 = { x: e.clientX, y: e.clientY }; });
+$('game').addEventListener('pointermove', e => {
+  if (!t0) return;
+  const dx = e.clientX - t0.x, dy = e.clientY - t0.y;
+  if (Math.hypot(dx, dy) < 32) return;                 // ~40dp minimum distance
+  input(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
+  t0 = null;
+});
+addEventListener('pointerup', () => t0 = null);
+addEventListener('keydown', e => {
+  const k = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', w: 'up', s: 'down', a: 'left', d: 'right' }[e.key];
+  if ($('game').classList.contains('on')) {
+    if (k) { e.preventDefault(); input(k); }
+    else if (e.key === 'r') restart();
+    else if (e.key === 'h') hint();
+    else if (e.key === 'Enter' && $('result').classList.contains('on')) $('rNext').click();
+  }
+});
+
+function restart() { if (!loading && L && (!busy || over)) reset({ keepWallMarks: !!wreck }); }
+function hint() {
+  if (busy || rockFlights.length || over || loading || !L) return;
+  const sol = E.solve(L, state, !!(L.hasGem && !state.gem && info.gemPar)) || E.solve(L, state);
+  if (!sol) { toast('Buradan çıkış yok. Baştan deneyebilirsin.'); return; }
+  hints++; hintDir = sol.path[0]; hintT = 0;
+}
+function toast(msg) { const t = $('tip'); t.textContent = msg; t.style.opacity = 1; clearTimeout(tipTimer); tipTimer = setTimeout(() => t.style.opacity = 0, 1800); }
+$('bRestart').onclick = restart; $('bHint').onclick = hint;
+$('bMap').onclick = () => { clearTimeout(winTimer); anim = null; morph = null; impacts=[]; wreck=null; rockFlights=[]; gateOpenings=[]; queued = null; busy = false; renderMap(); show('map'); };
+
+// ---------- animation ----------
+const SPEED = 30; // tiles per second
+// ---------- motion trail: faded ghosts of the body while it slides ----------
+let trail = [];
+const TRAIL_LIFE = .16;
+function stepTrail(dt) {
+  for (const g of trail) g.life -= dt;
+  trail = trail.filter(g => g.life > 0);
+  if (anim && !wreck) trail.push({ x: jelly.x, y: jelly.y, w: jelly.w, h: jelly.h, life: TRAIL_LIFE });
+}
+function drawTrail() {
+  for (const g of trail) {
+    const a = (g.life / TRAIL_LIFE) * .32;
+    ctx.fillStyle = `rgba(${actor.rgb},${a.toFixed(3)})`;
+    const w = g.w * T, h = g.h * T, rad = Math.min(w, h) * .16;
+    rr(g.x * T, g.y * T, w, h, rad); ctx.fill();
+  }
+}
+
+function step(dt) {
+  motionTime += dt;
+  stepFace(dt); stepWreck(dt); stepTrail(dt); stepStones(dt);
+  for(const hit of impacts)hit.age+=dt;impacts=impacts.filter(hit=>hit.age<hit.duration);
+  if(morph){
+    morph.age+=dt;Object.assign(jelly,Motion.sampleMorph(morph));
+    if(morph.age>=morph.duration){morph=null;snapJelly(state);busy=false;hud();if(queued&&!rockFlights.length){const q=queued;queued=null;doMove(q);}}
+  }
+  if(!morph&&!anim)jelly.idleAge=Math.min(1,(jelly.idleAge||0)+dt);
+  if (L) { const c = camTarget(), k = Math.min(1, dt * 7); camX += (c.x - camX) * k; camY += (c.y - camY) * k; }
+  if (anim) {
+    anim.elapsed += dt;
+    let adv = dt * SPEED;
+    while (anim && adv > 0) {
+      const s = anim.seg[anim.i];
+      if (!s) { finish(); break; }
+      const need = s.len - anim.t;
+      if (adv >= need) { adv -= need; anim.t = 0; jelly.x = jelly.tx = s.x1; jelly.y = jelly.ty = s.y1; arrive(s.pt); anim.i++; }
+      else { anim.t += adv; adv = 0; const f = s.len ? anim.t / s.len : 1; jelly.x = jelly.tx = s.x0 + (s.x1 - s.x0) * f; jelly.y = jelly.ty = s.y0 + (s.y1 - s.y0) * f; }
+      if (anim) collectAlong();
+      if (anim && anim.i >= anim.seg.length) finish();
+    }
+  }
+  // wobbly spring toward the target rect (this is what makes the spread look like jelly)
+  const K = 320, D = 30; // just under critical damping: a small wobble, no bulging into walls
+  for (const [p, v, t] of [['x', 'vx', 'tx'], ['y', 'vy', 'ty'], ['w', 'vw', 'tw'], ['h', 'vh', 'th']]) {
+    if (morph || (anim && (p === 'x' || p === 'y'))) continue;
+    jelly[v] += ((jelly[t] - jelly[p]) * K - jelly[v] * D) * dt;
+    jelly[p] += jelly[v] * dt;
+  }
+  for (const p of particles) { p.x += p.vx * dt; p.y += p.vy * dt; p.vy += 6 * dt; p.life -= dt; }
+  particles = particles.filter(p => p.life > 0);
+  hintT += dt;
+}
+const hitRect = (a, b) => a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
+function collectAlong() { // pick things up the moment the moving body touches them
+  const b = { x: jelly.x, y: jelly.y, w: anim.from.w, h: anim.from.h };
+  if (!view.key && L.keys.some(r => hitRect(r, b))) { view.key = true; SFX.key(); const r = L.keys[0]; burst(r.x, r.y, '#ffc542', 12); buzz(10); }
+  if (!view.gem && L.gems.some(r => hitRect(r, b))) { view.gem = true; SFX.gem(); const r = L.gems[0]; burst(r.x, r.y, '#7fe3ff', 16); buzz(10); hud(); }
+}
+function arrive(pt) { // events at path points
+  if (pt.ev === 'break') {
+    state.wafer.forEach((v, i) => { if (v === 2 && view.wafer[i] !== 2) { view.wafer[i] = 2; for (const c of L.wafers[i]) burst(c.x, c.y, '#e2b270', 6); } });
+    SFX.crack(); buzz(20);
+  }
+  if(pt.ev==='push'){
+    for(const launch of pt.launches){
+      for(const button of launch.released){
+        view.switches[button]=false;
+        gateOpenings=gateOpenings.filter(e=>L.gates[e.index].button!==button);
+        L.gates.forEach((g,index)=>{if(g.button===button)gateOpenings.push({index,age:0,duration:.16,reactivating:true});});
+      }
+      const distance=Math.abs(launch.to.x-launch.from.x)+Math.abs(launch.to.y-launch.from.y);
+      rockFlights.push({...launch,age:0,duration:Math.min(.34,Math.max(.09,distance/42))});
+    }
+    if(pt.launches.some(f=>f.released.length)){toast('★ Taş ayrıldı, geçit kapandı.');hud();}
+    noise(.09,.22,650);tone(155,75,.09,'triangle',.18);buzz(12);
+  }
+}
+function stepStones(dt){
+  for(const e of gateOpenings)e.age+=dt;
+  gateOpenings=gateOpenings.filter(e=>e.age<e.duration);
+  if(!rockFlights.length)return;
+  for(const f of rockFlights){
+    f.age+=dt;
+    const p=Math.min(1,f.age/f.duration),t=1-Math.pow(1-p,1.35);
+    view.rocks[f.index]={...f.from,x:f.from.x+(f.to.x-f.from.x)*t,y:f.from.y+(f.to.y-f.from.y)*t};
+    if(p===1){
+      view.rocks[f.index]={...f.to};
+      burst(f.to.x+f.to.w/2-.5,f.to.y+f.to.h-.5,'#d8d1bf',4);
+      if(f.activated){
+        view.switches[f.button]=true;
+        L.gates.forEach((g,index)=>{if(g.button===f.button)gateOpenings.push({index,age:0,duration:.25});});
+        SFX.key();buzz(18);toast('★ Geçit açıldı!');hud();
+      }else tone(105,65,.07,'triangle',.12);
+    }
+  }
+  rockFlights=rockFlights.filter(f=>f.age<f.duration);
+  // Consume the swipe on the landing frame; no extra anticipation or settling delay.
+  if(!rockFlights.length&&!anim&&!over&&queued){const q=queued;queued=null;doMove(q);}
+}
+function finish() {
+  const visible=renderJellyRect(), { r, dir, from } = anim; anim = null;
+  const [dx, dy] = DIR[dir];
+  if (r.result === 'dead') {
+    syncView();
+    jelly.face = 'dead'; playFailureSound(); buzz([25,35,45]);
+    wreck = Motion.death(state,dx,dy,actor,theme.hazardType);
+    morph = null; impacts = []; over = true; busy = true;
+
+    return;
+  }
+  syncView();
+  if (r.impact) {
+    const kinds = r.impact.kinds, reshaped = r.impact.reshaped;
+    if (kinds.includes('wafer')) { SFX.crack(); buzz(20); }
+    const sh = shapeName(state);
+    playMaterialSound(sh); buzz(reshaped ? 25 : 10); // stronger on shape change
+    // squash against the face first (where the slide ended), then spread (spring) into the new rect
+    const last = r.path.length ? r.path[r.path.length - 1] : from;
+    const landed = {x:last.x,y:last.y,w:from.w,h:from.h};
+    morph = Motion.morph(visible,state,dir,actor);Object.assign(jelly,visible);
+    jelly.vx=jelly.vy=jelly.vw=jelly.vh=0;
+    impacts.push(Motion.impact(landed,dx,dy,actor));
+    // syrup marks where the face touched each wall (continuous contact segment)
+    const bx = last.x, by = last.y;
+    for (const q of r.impact.rects) {
+      if (q.t !== 'wall') continue;
+      let cx, cy, len;
+      if (dx) { const y0 = Math.max(by, q.y), y1 = Math.min(by + from.h, q.y + q.h); cy = (y0 + y1) / 2; cx = dx > 0 ? q.x : q.x + q.w; len = y1 - y0; }
+      else { const x0 = Math.max(bx, q.x), x1 = Math.min(bx + from.w, q.x + q.w); cx = (x0 + x1) / 2; cy = dy > 0 ? q.y : q.y + q.h; len = x1 - x0; }
+      if (len < .05) continue;
+      splats.push({ x: cx, y: cy, dx, dy, len, seed: Math.random() * 6 });
+      burst(cx - .5 - dx * .1, cy - .5 - dy * .1, actor.colors[1], 3);
+    }
+  }
+  aimJelly(state);
+  jelly.face = 'idle';
+  if (r.impact) { fx.squish = .26; if (r.impact.reshaped && /thinnest|flattest/.test(shapeName(state))) fx.surprise = .9; fx.blink = 0; }
+  if (r.result === 'win') { win(); return; }
+  busy = false; hud();
+  if (queued && !rockFlights.length) { const q = queued; queued = null; doMove(q); }
+}
+
+// Failure clips run on the same simulation clock as motion and pause with the game.
+let wreck = null;
+function stepWreck(dt) { if(wreck){wreck.age+=dt;if(wreck.age>=wreck.duration)reset({ keepWallMarks: true });} }
+function drawWreck() { Motion.drawDeath(ctx,wreck,T,Themes,drawFace); }
+function playMaterialSound(shape) {
+  if(actor.material==='water'){tone(500,180,.18,'sine',.15);noise(.08,.06,1600);}
+  else if(actor.material==='honey'){tone(180,75,.28,'sine',.23);noise(.16,.1,450);}
+  else if(actor.material==='gel'){tone(330,620,.13,'sine',.16);tone(610,290,.13,'sine',.1,.06);}
+  else ({square:SFX.round,flat:SFX.flat,flattest:SFX.flat,thin:SFX.thin,thinnest:SFX.thin})[shape]();
+}
+function playFailureSound() {
+  if(theme.hazardType==='fire'){noise(.55,.22,actor.material==='water'?2300:1000);tone(320,80,.4,'sine',.1);}
+  else if(theme.hazardType==='poison'){[280,210,150].forEach((f,i)=>tone(f,f*.55,.19,'sine',.16,i*.13));}
+  else if(theme.hazardType==='crystal'){noise(.12,.2,3600);tone(1300,320,.35,'triangle',.13);}
+  else if(actor.material==='water'){noise(.2,.16,1700);tone(600,80,.24,'sine',.17);}
+  else SFX.dead();
+}
+
+function win() {
+  over = true; jelly.face = 'happy'; SFX.win(); buzz([20, 30, 20]); hud();
+  const cx = state.x + state.w / 2 - .5, cy = state.y + state.h / 2 - .5;
+  for (const color of [actor.colors[1], '#54d1a8', '#ffc542', '#7fe3ff']) burst(cx, cy, color, 14);
+  let stars = 1;
+  if (moves <= info.par) stars = 2;
+  if (L.hasGem ? (state.gem && moves <= info.gemPar) : moves <= info.par) stars = 3;
+  prog.stars[idx] = Math.max(prog.stars[idx] || 0, stars); saveProg();
+  winTimer = setTimeout(() => {
+    busy = false;
+    $('rTitle').textContent = ['', 'Kaçtın!', 'Süper!', 'Mükemmel!'][stars];
+    $('rStars').innerHTML = '<b>★</b>'.repeat(stars) + '★'.repeat(3 - stars);
+    $('rMoves').textContent = `${moves} hamle · par ${info.par}` + (hints ? ` · ${hints} ipucu` : '');
+    let note = '';
+    if (stars < 2) note = `${info.par} hamlede bitirmeyi dene.`;
+    else if (stars < 3) note = L.hasGem ? (state.gem ? `Mücevherle ${info.gemPar} hamlede bitir.` : `Gizli 💎 mücevheri topla (${info.gemPar} hamle).`) : '';
+    $('rNote').textContent = note;
+    $('rNext').textContent = idx + 1 < LEVELS.length ? 'Sonraki ›' : 'Harita';
+    $('result').classList.add('on');
+  }, 650);
+}
+$('rRetry').onclick = () => { reset(); };
+$('rNext').onclick = () => { if (idx + 1 < LEVELS.length) start(idx + 1); else { renderMap(); show('map'); } };
+
+function burst(x, y, color, n) {
+  for (let i = 0; i < n; i++) {
+    const a = Math.random() * Math.PI * 2, v = 1.5 + Math.random() * 3.5;
+    particles.push({ x: x, y: y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 1.5, life: .4 + Math.random() * .4, color, r: .05 + Math.random() * .07 });
+  }
+}
+
+// ---------- rendering ----------
+const cv = $('cv');
+let ctx = cv.getContext('2d');
+let T = 40, OX = 0, OY = 0, DPR = 1;
+function resize() {
+  const r = $('stage').getBoundingClientRect();
+  DPR = Math.min(3, window.devicePixelRatio || 1);
+  cv.width = r.width * DPR; cv.height = r.height * DPR;
+  if (!L) return;
+  const pad = 16, tipH = 54;
+  boardCache = null;
+  VIEW_H = r.height - tipH; VIEW_W = r.width;
+  // camera: the full map width when it is up to 26 tiles wide, otherwise a 26-tile window;
+  // it follows Jöli in both axes. A map that fits entirely (the tutorials) is shown whole.
+  const zoomT = Math.floor((r.width - pad * 2) / Math.min(L.W, 26));
+  const fitAll = Math.floor(Math.min((r.width - pad * 2) / L.W, (VIEW_H - pad) / L.H));
+  T = Math.max(12, Math.min(fitAll >= zoomT ? fitAll : zoomT, 48));
+  OX = L.W * T <= VIEW_W ? Math.round((VIEW_W - T * L.W) / 2) : 0;
+  OY = L.H * T <= VIEW_H ? Math.round((VIEW_H - T * L.H) / 2 + 4) : 0;
+  const c = camTarget(); camX = c.x; camY = c.y;
+}
+let VIEW_H = 400, VIEW_W = 375, camY = 0, camX = 0;
+function camTarget() { // keep Jöli around the middle of the view; clamp to the map
+  const mapW = L.W * T, mapH = L.H * T;
+  const cx = (jelly.x + jelly.w / 2) * T, cy = (jelly.y + jelly.h / 2) * T;
+  return {
+    x: mapW <= VIEW_W ? 0 : Math.max(0, Math.min(mapW - VIEW_W, cx - VIEW_W * .5)),
+    y: mapH <= VIEW_H ? 0 : Math.max(0, Math.min(mapH - VIEW_H + 8, cy - VIEW_H * .5)),
+  };
+}
+addEventListener('resize', resize);
+
+function rr(x, y, w, h, r) { ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, w, h, r) : ctx.rect(x, y, w, h); }
+let spikes = null;
+function cacheBoard() {
+  boardCache = document.createElement('canvas');
+  boardCache.width = Math.ceil(L.W * T * DPR); boardCache.height = Math.ceil(L.H * T * DPR);
+  const paint = boardCache.getContext('2d'); paint.scale(DPR,DPR);
+  Board.draw(paint,boardGeometry,T,theme,Themes,BG);
+}
+
+function draw(now) {
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  ctx.clearRect(0, 0, cv.width, cv.height);
+  if (!L) return;
+  ctx.save(); ctx.translate(OX - camX, OY - camY);
+  if (!boardCache) cacheBoard();
+  ctx.drawImage(boardCache, 0, 0, L.W * T, L.H * T);
+  // Only interactive objects are redrawn; painted geometry is cached at device resolution.
+  for (let y = 0; y < L.H; y++) for (let x = 0; x < L.W; x++) {
+    const c = L.cells[y][x]; if ('wE'.includes(c)) drawCell(c, x, y, now);
+  }
+  Board.animate(ctx,boardGeometry,T,theme,motionTime,{x:camX-OX,y:camY-OY,w:VIEW_W,h:VIEW_H});
+  Features.draw(ctx,L,view,T,theme,motionTime,rockFlights,gateOpenings,Themes);
+  // key, gem: one big icon per patch (patches are usually 2×2)
+  for (const b of L.itemBlobs) { ctx.save(); ctx.translate(b.x * T, b.y * T); ctx.scale(b.w, b.h); drawCell(b.c, 0, 0, now); ctx.restore(); }
+  // syrup splats: a blob stretched along the wall face that was hit
+  for (const sp of splats) {
+    ctx.fillStyle = `rgba(${actor.rgb},.65)`; // magenta jelly smear on the pink wall
+    const cx = sp.x * T, cy = sp.y * T, along = sp.len * T * .52, depth = T * .28; // a thick smear, clearly visible on the wall
+    ctx.beginPath();
+    for (let i = 0; i < 12; i++) {
+      const a = i / 12 * Math.PI * 2, k = 1 + .25 * Math.sin(i * 2.3 + sp.seed);
+      const ex = sp.dx ? depth * k : along * k, ey = sp.dx ? along * k : depth * k;
+      const px = cx + Math.cos(a) * ex, py = cy + Math.sin(a) * ey;
+      i ? ctx.lineTo(px, py) : ctx.moveTo(px, py);
+    }
+    ctx.closePath(); ctx.fill();
+    if (sp.dx) { ctx.fillRect(cx - sp.dx * T * .1 - T * .06, cy, T * .12, along * .9); ctx.beginPath(); ctx.arc(cx - sp.dx * T * .1, cy + along * .9, T * .1, 0, 7); ctx.fill(); } // drip down the wall
+  }
+  for(const hit of impacts)Motion.drawImpact(ctx,hit,T,Themes);
+  drawHint(now);
+  drawJelly(now);
+  for (const p of particles) { ctx.globalAlpha = Math.min(1, p.life * 2.5); ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(p.x * T + T / 2, p.y * T + T / 2, p.r * T, 0, 7); ctx.fill(); }
+  ctx.globalAlpha = 1;
+  if (tutorial) drawFinger(now);
+  ctx.restore();
+}
+
+function drawCell(c, x, y, now) {
+  const X = x * T, Y = y * T, m = T * .06;
+  switch (c) {
+    case 'w': {
+      const st = view.wafer[L.waferAt[x + ',' + y]];
+      if (st === 2) { ctx.fillStyle = '#e8c28a'; for (let i = 0; i < 5; i++) dot(X + T * (.2 + .15 * i), Y + T * (.7 + .08 * Math.sin(i * 3)), .05); return; }
+      ctx.fillStyle = '#c98f4f'; rr(X + m * .5, Y + m * 1.2, T - m, T - m, T * .12); ctx.fill();
+      ctx.fillStyle = '#eec07e'; rr(X + m * .5, Y + m * .3, T - m, T - m * 1.6, T * .12); ctx.fill();
+      ctx.strokeStyle = '#d19a58'; ctx.lineWidth = Math.max(1, T * .035); ctx.beginPath();
+      for (let i = 1; i < 4; i++) { ctx.moveTo(X + T * i / 4, Y + m); ctx.lineTo(X + T * i / 4, Y + T - m); ctx.moveTo(X + m, Y + T * i / 4); ctx.lineTo(X + T - m, Y + T * i / 4); }
+      ctx.stroke();
+      if (st === 1) { ctx.strokeStyle = '#6b3b1a'; ctx.lineWidth = Math.max(1.5, T * .05); ctx.beginPath(); ctx.moveTo(X + T * .2, Y + T * .15); ctx.lineTo(X + T * .45, Y + T * .45); ctx.lineTo(X + T * .35, Y + T * .6); ctx.lineTo(X + T * .7, Y + T * .88); ctx.moveTo(X + T * .45, Y + T * .45); ctx.lineTo(X + T * .8, Y + T * .35); ctx.stroke(); }
+      return;
+    }
+    case 'k': {
+      if (view.key) return;
+      const b = Math.sin(now / 300) * T * .05;
+      ctx.save(); ctx.translate(X + T / 2, Y + T / 2 + b); ctx.rotate(-.6);
+      ctx.fillStyle = '#ffc542'; ctx.strokeStyle = '#d8962a'; ctx.lineWidth = Math.max(1, T * .04);
+      ctx.beginPath(); ctx.arc(-T * .16, 0, T * .16, 0, 7); ctx.fill(); ctx.stroke();
+      ctx.fillRect(-T * .02, -T * .05, T * .36, T * .1); ctx.fillRect(T * .22, 0, T * .06, T * .14); ctx.fillRect(T * .1, 0, T * .06, T * .1);
+      ctx.fillStyle = '#fff0c4'; ctx.beginPath(); ctx.arc(-T * .16, 0, T * .06, 0, 7); ctx.fill();
+      ctx.restore(); return;
+    }
+    case 'g': {
+      if (view.gem) return;
+      const b = Math.sin(now / 250 + x) * T * .04, cx = X + T / 2, cy = Y + T / 2 + b;
+      ctx.fillStyle = '#7fe3ff'; ctx.strokeStyle = '#3aa9d6'; ctx.lineWidth = Math.max(1, T * .035);
+      ctx.beginPath(); ctx.moveTo(cx, cy - T * .26); ctx.lineTo(cx + T * .22, cy - T * .04); ctx.lineTo(cx, cy + T * .26); ctx.lineTo(cx - T * .22, cy - T * .04); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.beginPath(); ctx.moveTo(cx - T * .08, cy - T * .12); ctx.lineTo(cx, cy - T * .2); ctx.lineTo(cx + T * .02, cy - T * .06); ctx.fill();
+      return;
+    }
+    case 'E': {
+      const locked = L.hasKey && !view.key, cx = X + T / 2, cy = Y + T / 2;
+      if (locked) {
+        ctx.fillStyle = '#b98ad6'; rr(X + m, Y + m, T - 2 * m, T - 2 * m, T * .2); ctx.fill();
+        ctx.fillStyle = '#d7b6ee'; rr(X + m * 2, Y + m * 2, T - 4 * m, T * .22, T * .08); ctx.fill();
+        ctx.fillStyle = '#ffc542'; rr(cx - T * .12, cy - T * .02, T * .24, T * .22, T * .04); ctx.fill();
+        ctx.strokeStyle = '#ffc542'; ctx.lineWidth = T * .05; ctx.beginPath(); ctx.arc(cx, cy - T * .02, T * .09, Math.PI, 0); ctx.stroke();
+      } else {
+        const a = now / 700;
+        ctx.save(); ctx.shadowColor = '#46ffcd'; ctx.shadowBlur = T * .7;
+        ctx.fillStyle = '#37e3b890'; ctx.beginPath(); ctx.arc(cx, cy, T * .42, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+        for (let i = 4; i > 0; i--) { ctx.fillStyle = i % 2 ? '#54d1a8' : '#b8f5dd'; ctx.beginPath(); ctx.arc(cx, cy, T * .1 * i, 0, 7); ctx.fill(); }
+        ctx.strokeStyle = '#fff'; ctx.lineWidth = T * .05; ctx.beginPath(); ctx.arc(cx, cy, T * .28, a, a + 1.4); ctx.stroke(); ctx.beginPath(); ctx.arc(cx, cy, T * .28, a + Math.PI, a + Math.PI + 1.4); ctx.stroke();
+      }
+      return;
+    }
+  }
+}
+function dot(x, y, r = .045) { ctx.beginPath(); ctx.arc(x, y, T * r, 0, 7); ctx.fill(); }
+
+function renderJellyRect() {
+  const b={x:jelly.x,y:jelly.y,w:jelly.w,h:jelly.h};
+  if(anim?.blend){const f=Math.max(0,1-anim.elapsed/.12)**3;for(const k of ['x','y','w','h'])b[k]+=anim.blend[k]*f;}
+  return b;
+}
+function drawJelly(now) {
+  if (wreck) { drawWreck(); return; }
+  drawTrail();
+  // drawn exactly at its collision rect (so THINNEST is exactly one tile wide); the idle
+  // breathing only stretches the long side, never the short one
+  const mat = Motion.profile(actor);
+  const b=renderJellyRect(),wob = busy || morph ? 0 : Math.sin(motionTime * mat.frequency) * mat.breath*(jelly.idleAge||0)**2;
+  const tall = b.h > b.w + .05, wide = b.w > b.h + .05;
+  const w = Math.max(.2, b.w) * T * (wide ? 1 + wob : tall ? 1 : 1 + wob);
+  const h = Math.max(.2, b.h) * T * (tall ? 1 + wob : wide ? 1 : 1 - wob);
+  const x0 = b.x * T + (b.w * T - w) / 2, y0 = b.y * T + (b.h * T - h);
+  const cx = x0 + w / 2, cy = y0 + h / 2, dead = jelly.face === 'dead';
+  // shadow
+  ctx.fillStyle = 'rgba(90,42,72,.14)'; ctx.beginPath(); ctx.ellipse(cx, y0 + h + T * .02, w * .46, T * .07, 0, 0, 7); ctx.fill();
+  Motion.paintBody(ctx,{x:x0,y:y0,w,h},actor,motionTime,Themes,morph?Math.sin(Math.PI*Math.min(1,morph.age/morph.duration)):0);
+  drawFace(cx, cy, w, h, dead);
+}
+
+// ---------- animated face ----------
+// fx holds the face's own little timeline: blinks, where the pupils look, impact/surprise reactions.
+const fx = { t: 0, blink: 0, blinkAt: 1.5, lx: 0, ly: 0, wx: 0, wy: 0, wanderAt: 1, squish: 0, surprise: 0, worry: 0 };
+function resetFace() { Object.assign(fx, { blink: 0, blinkAt: fx.t + 1.2, lx: 0, ly: 0, wx: 0, wy: 0, squish: 0, surprise: 0, worry: 0 }); }
+function stepFace(dt) {
+  fx.t += dt;
+  if (fx.t > fx.blinkAt) { fx.blink = .16; fx.blinkAt = fx.t + (Math.random() < .2 ? .3 : 2 + Math.random() * 3); } // sometimes a double blink
+  fx.blink = Math.max(0, fx.blink - dt); fx.squish = Math.max(0, fx.squish - dt); fx.surprise = Math.max(0, fx.surprise - dt);
+  let tx = 0, ty = 0;
+  if (jelly.face === 'slide') [tx, ty] = jelly.look;
+  else if (hintDir) [tx, ty] = DIR[hintDir];
+  else {
+    if (fx.t > fx.wanderAt) { fx.wx = (Math.random() * 2 - 1) * .8; fx.wy = (Math.random() * 2 - 1) * .5; fx.wanderAt = fx.t + 1.2 + Math.random() * 2.5; }
+    tx = fx.wx; ty = fx.wy;
+  }
+  const k = Math.min(1, dt * 12); fx.lx += (tx - fx.lx) * k; fx.ly += (ty - fx.ly) * k;
+  // worried when a spike is close by
+  let near = Infinity;
+  if (L && spikes) for (const r of spikes.concat(L.gates.filter((_,i)=>!E.gateOpen(L,view,i)))) {
+    const dx = Math.max(r.x - (jelly.x + jelly.w), jelly.x - (r.x + r.w), 0), dy = Math.max(r.y - (jelly.y + jelly.h), jelly.y - (r.y + r.h), 0);
+    near = Math.min(near, Math.hypot(dx, dy));
+  }
+  const want = near < 1.1 ? 1 : 0; fx.worry += (want - fx.worry) * Math.min(1, dt * 6);
+}
+function drawFace(cx, cy, w, h, dead) {
+  const u = Math.min(w, h, T * 2.6);                 // face scales with the short side
+  const ex = u * .23, ey = cy - u * .07, er = u * .18;
+  const lx = fx.lx * er * .5, ly = fx.ly * er * .45;
+  const ink = actor.ink;
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const mood = dead ? 'dead' : jelly.face === 'happy' ? 'happy' : fx.squish > 0 ? 'squish' : fx.surprise > 0 ? 'surprise' : jelly.face === 'slide' ? 'slide' : 'idle';
+  // eyes
+  ctx.strokeStyle = ink; ctx.lineWidth = u * .06;
+  for (const sx of [-1, 1]) {
+    const X = cx + sx * ex, Y = ey;
+    if (mood === 'dead') {
+      ctx.beginPath(); ctx.moveTo(X - er * .7, Y - er * .7); ctx.lineTo(X + er * .7, Y + er * .7); ctx.moveTo(X + er * .7, Y - er * .7); ctx.lineTo(X - er * .7, Y + er * .7); ctx.stroke();
+    } else if (mood === 'happy') {
+      const hop = Math.sin(fx.t * 14) * er * .12;
+      ctx.beginPath(); ctx.arc(X, Y + er * .3 + hop, er * .8, Math.PI * 1.1, Math.PI * 1.9); ctx.stroke();
+    } else if (mood === 'squish') { // squeezed shut: > <
+      ctx.beginPath(); ctx.moveTo(X - sx * er * .7, Y - er * .6); ctx.lineTo(X + sx * er * .5, Y); ctx.lineTo(X - sx * er * .7, Y + er * .6); ctx.stroke();
+    } else {
+      const open = mood === 'surprise' ? 1.35 : mood === 'slide' ? 1.2 : 1.05;
+      const b = fx.blink > 0 ? Math.sin(Math.PI * (1 - fx.blink / .16)) : 0; // 0 open .. 1 shut
+      const eh = er * open * (1 - .92 * b);
+      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.ellipse(X + lx * .35, Y + ly * .35, er * (mood === 'surprise' ? 1.15 : 1), Math.max(er * .08, eh), 0, 0, 7); ctx.fill();
+      if (b < .7) {
+        const pr = er * (mood === 'surprise' ? .38 : .58);
+        ctx.save(); ctx.beginPath(); ctx.ellipse(X + lx * .35, Y + ly * .35, er, Math.max(er * .08, eh), 0, 0, 7); ctx.clip();
+        ctx.fillStyle = ink; ctx.beginPath(); ctx.arc(X + lx, Y + ly, pr, 0, 7); ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(X + lx + pr * .35, Y + ly - pr * .4, pr * .32, 0, 7); ctx.fill();
+        ctx.restore();
+      } else { ctx.beginPath(); ctx.moveTo(X - er * .8, Y); ctx.lineTo(X + er * .8, Y); ctx.stroke(); }
+    }
+    // worried brows
+    if (fx.worry > .05 && (mood === 'idle' || mood === 'slide')) {
+      ctx.globalAlpha = fx.worry; ctx.lineWidth = u * .045;
+      ctx.beginPath(); ctx.moveTo(X - er * .8, Y - er * (1.35 + (sx < 0 ? .35 : 0))); ctx.lineTo(X + er * .8, Y - er * (1.35 + (sx < 0 ? 0 : .35))); ctx.stroke();
+      ctx.globalAlpha = 1; ctx.lineWidth = u * .06;
+    }
+  }
+  // mouth
+  const my = ey + u * .25;
+  ctx.fillStyle = ink; ctx.lineWidth = u * .05; ctx.beginPath();
+  if (mood === 'dead') { ctx.moveTo(cx - u * .1, my); ctx.quadraticCurveTo(cx, my - u * .06, cx + u * .1, my); ctx.stroke(); }
+  else if (mood === 'happy') { ctx.arc(cx, my - u * .06, u * .12, 0, Math.PI); ctx.fill(); }
+  else if (mood === 'squish') { // wobbly mouth
+    ctx.moveTo(cx - u * .12, my); for (let i = 1; i <= 4; i++) ctx.lineTo(cx - u * .12 + i * u * .06, my + (i % 2 ? -1 : 1) * u * .03); ctx.stroke();
+  } else if (mood === 'surprise' || mood === 'slide') { ctx.ellipse(cx + lx * .4, my, u * .05, u * (mood === 'surprise' ? .08 : .06), 0, 0, 7); ctx.fill(); }
+  else if (fx.worry > .5) { ctx.moveTo(cx - u * .08, my); ctx.quadraticCurveTo(cx, my - u * .05, cx + u * .08, my); ctx.stroke(); }
+  else { ctx.arc(cx, my - u * .05, u * .08, .2 * Math.PI, .8 * Math.PI); ctx.stroke(); }
+  // cheeks
+  ctx.fillStyle = 'rgba(255,200,220,.7)';
+  for (const sx of [-1, 1]) { ctx.beginPath(); ctx.ellipse(cx + sx * (ex + er * 1.2), ey + er * 1.4, er * .6, er * .35, 0, 0, 7); ctx.fill(); }
+  // sweat drop when worried
+  if (fx.worry > .3 && !dead) {
+    ctx.globalAlpha = fx.worry * .9; ctx.fillStyle = '#9fdcff';
+    const sx = cx + ex + er * 1.6, sy = ey - er * 1.2 + (fx.t * 3 % 1) * er * .5;
+    ctx.beginPath(); ctx.moveTo(sx, sy - er * .6); ctx.quadraticCurveTo(sx + er * .45, sy + er * .1, sx, sy + er * .35); ctx.quadraticCurveTo(sx - er * .45, sy + er * .1, sx, sy - er * .6); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+}
+
+function drawHint(now) {
+  if (!hintDir || busy) return;
+  const [dx, dy] = DIR[hintDir];
+  const cx = (state.x + state.w / 2) * T, cy = (state.y + state.h / 2) * T;
+  const o = T * ((dx ? state.w : state.h) / 2 + .45 + .15 * Math.sin(hintT * 8));
+  ctx.save(); ctx.translate(cx + dx * o, cy + dy * o); ctx.rotate(Math.atan2(dy, dx));
+  ctx.fillStyle = '#ffc542'; ctx.strokeStyle = '#fff'; ctx.lineWidth = T * .06; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(T * .3, 0); ctx.lineTo(-T * .1, -T * .28); ctx.lineTo(-T * .1, -T * .1); ctx.lineTo(-T * .3, -T * .1); ctx.lineTo(-T * .3, T * .1); ctx.lineTo(-T * .1, T * .1); ctx.lineTo(-T * .1, T * .28); ctx.closePath();
+  ctx.stroke(); ctx.fill(); ctx.restore();
+}
+
+function drawFinger(now) { // level 1: swipe animation
+  const t = (now / 1400) % 1, p = Math.min(1, t / .6);
+  const x0 = (state.x + state.w / 2) * T, x1 = x0 + 3 * T, y = (state.y + state.h) * T + T * .1;
+  const x = x0 + (x1 - x0) * (1 - (1 - p) ** 3);
+  ctx.globalAlpha = t < .75 ? 1 : 1 - (t - .75) * 4;
+  ctx.font = `${T * .8}px serif`; ctx.fillText('👆', x - T * .3, y + T * .7);
+  ctx.globalAlpha = .35 * ctx.globalAlpha; ctx.fillStyle = '#fff'; ctx.fillRect(x0, y - T * .06, x - x0, T * .12);
+  ctx.globalAlpha = 1;
+}
+
+let last = performance.now();
+function frame(now) {
+  const dt = Math.min(.05, (now - last) / 1000); last = now;
+  if (!loading && $('game').classList.contains('on')) {
+    // Stable spring/camera integration even on a long display frame.
+    for(let left=dt;left>1e-6;){const sub=Math.min(left,1/120);step(sub);left-=sub;}
+    draw(now);
+  }
+  requestAnimationFrame(frame);
+}
+renderMap();
+requestAnimationFrame(frame);
+// deep link: index.html#5 opens level 5
+const h = parseInt(location.hash.slice(1), 10);
+if (h >= 1 && h <= LEVELS.length) start(h - 1);
+// read-only hooks for automated playtests
+window.JellyDebug = { busy: () => busy || !!anim || !!rockFlights.length, state: () => state, view: () => cloneS(view), flights: () => rockFlights.length, jelly: () => ({ ...jelly }), render: renderJellyRect, trail: () => trail.length, wallMarks: () => splats.map(mark => ({...mark})), moves: () => moves, level: () => idx, skin: () => actor.id, material: () => actor.material, morph: () => morph && ({age:morph.age,duration:morph.duration}), failure: () => wreck && ({kind:wreck.kind,age:wreck.age,duration:wreck.duration,skin:wreck.actor.id}), theme: () => theme.id, assets: () => themeAssetsReady && actorReady, start,
+  tick: (sec = 1) => { for (let t = 0; t < sec; t += 1 / 60) step(1 / 60); } };
+})();
+</script>
+</body>
+</html>

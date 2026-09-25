@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zemin Varyantları</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg1: #ffe3ef; --bg2: #d9f6ec; --ink: #5a2a48; --ink2: #9a6a86; --pink: #ff7fb0; --card: #fffaf4; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Fredoka', system-ui, sans-serif; color: var(--ink);
+    background: linear-gradient(170deg, var(--bg1), var(--bg2)); min-height: 100vh; }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { margin: 0 0 4px; color: var(--pink); font-size: 32px; }
+  .sub { color: var(--ink2); margin-bottom: 22px; }
+  h2 { margin: 26px 0 4px; font-size: 22px; }
+  .desc { color: var(--ink2); margin: 0 0 12px; font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+  .pid { font-size: 11px; color: var(--ink2); user-select: all; }
+  .card { background: var(--card); border-radius: 20px; padding: 10px; box-shadow: 0 5px 0 #f2c6d8, 0 10px 18px rgba(90,42,72,.08); }
+  .card canvas { width: 100%; display: block; border-radius: 12px; background: #e9dfe5; }
+  .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+  .name { font-weight: 600; }
+  .swatch { display: flex; gap: 3px; }
+  .swatch i { width: 14px; height: 14px; border-radius: 4px; border: 1px solid rgba(90,42,72,.15); }
+  a.try { text-decoration: none; background: var(--pink); color: #fff; font-weight: 600; font-size: 13px; padding: 6px 10px; border-radius: 12px; white-space: nowrap; }
+  a.try:active { transform: translateY(1px); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Zemin Varyantları — Dama</h1>
+  <div class="sub">Level 5'in başlangıç odası, her kartta farklı iki tonlu dama zemin. "Oyunda dene" gerçek oyunu o zeminle açar (<code>index.html?bg=…</code>). Beğendiğinin adını/kodunu söylemen yeterli.</div>
+  <div id="groups"></div>
+</main>
+<script src="engine.js?v=9"></script>
+<script src="levels.js?v=9"></script>
+<script src="bg_palettes.js?v=4"></script>
+<script>
+(() => {
+const E = window.JellyEngine, BGP = window.JellyBG;
+const GROUPS = BGP.GROUPS.map(g => ({ ...g, desc: {
+  current: 'Oyunun önceki zemini. Şu an varsayılan: Leylak — çok yakın tonlar (checker-lilac-close).',
+  close: 'İki ton neredeyse aynı — çok hafif bir dama.',
+  mid: 'Kareler belirgin ama göz yormuyor.',
+  far: 'Kareler net seçiliyor.',
+  pair: 'İki farklı açık renk dönüşümlü.',
+}[g.id] || '' }));
+
+// the scene: level 5, cropped around the start room
+const LEVEL = 4;
+const L = E.parse(LEVELS[LEVEL]);
+const S = E.initialState(L);
+const Y0 = Math.max(0, L.start[1] - 16), Y1 = Math.min(L.H, L.start[1] + 8);
+const at = (x, y) => E.cellAt(L, x, y);
+const solid = c => c === '#';
+const nearFloor = (x, y) => { for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) { const nx = x + dx, ny = y + dy; if (nx >= 0 && ny >= 0 && nx < L.W && ny < L.H && !solid(at(nx, ny))) return true; } return false; };
+
+function rr(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, w, h, r) : ctx.rect(x, y, w, h); }
+
+function drawScene(cv, pal) {
+  const cssW = cv.clientWidth || 260, T = cssW / L.W, rows = Y1 - Y0, dpr = Math.min(3, devicePixelRatio || 1);
+  cv.width = cssW * dpr; cv.height = rows * T * dpr; cv.style.height = rows * T + 'px';
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, -Y0 * T * dpr);
+  for (let y = Y0; y < Y1; y++) for (let x = 0; x < L.W; x++) {
+    const c = at(x, y), X = x * T, Y = y * T;
+    if (!solid(c)) { BGP.drawFloor(ctx, pal, x, y, T); if (c === 'E') { ctx.fillStyle = '#54d1a8'; ctx.beginPath(); ctx.arc(X + T / 2, Y + T / 2, T * .35, 0, 7); ctx.fill(); } continue; }
+    if (!nearFloor(x, y)) continue;
+    const open = (dx, dy) => !solid(at(x + dx, y + dy));
+    ctx.fillStyle = c === '*' ? '#e7b4d0' : '#f7a8c6'; ctx.fillRect(X, Y, T + .5, T + .5);
+    const e = Math.max(1.5, T * .14);
+    ctx.fillStyle = '#d9749c';
+    if (open(0, 1)) ctx.fillRect(X, Y + T - e, T + .5, e);
+    if (open(1, 0)) ctx.fillRect(X + T - e * .7, Y, e * .7, T + .5);
+    if (open(-1, 0)) ctx.fillRect(X, Y, e * .7, T + .5);
+    ctx.fillStyle = '#ffd3e3'; if (open(0, -1)) ctx.fillRect(X, Y, T + .5, e * .6);
+  }
+  // spike strips: floor tiles in front of walls, crystals rooted at the wall filling the tile
+  for (let y = Y0; y < Y1; y++) for (let x = 0; x < L.W; x++) {
+    if (at(x, y) !== '*') continue;
+    const X = x * T, Y = y * T;
+    const d = [[0, 1], [0, -1], [1, 0], [-1, 0]].find(([dx, dy]) => at(x + dx, y + dy) === '#');
+    if (!d) continue;
+    ctx.save(); ctx.translate(X + T / 2, Y + T / 2); ctx.rotate(Math.atan2(-d[1], -d[0]));
+    const root = -T / 2 + T * .14, tip = T / 2 - T * .02, hw = T / 2 - T * .04;
+    ctx.fillStyle = '#c5cedd'; ctx.beginPath(); ctx.moveTo(root, -hw); ctx.lineTo(tip, 0); ctx.lineTo(root, 0); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#7d889f'; ctx.beginPath(); ctx.moveTo(root, 0); ctx.lineTo(tip, 0); ctx.lineTo(root, hw); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#5c667d'; ctx.fillRect(-T / 2, -T / 2 - .5, T * .16, T + 1);
+    ctx.restore();
+  }
+  // a magenta smear on the nearest wall to the right of Jöli, as in the game
+  const sx = (() => { for (let x = Math.ceil(S.x + S.w); x < L.W; x++) if (solid(at(x, Math.floor(S.y + 1)))) return x; return null; })();
+  if (sx !== null) { ctx.fillStyle = 'rgba(186,46,212,.62)'; ctx.beginPath(); ctx.ellipse(sx * T, (S.y + 2) * T, T * .28, T * 1.9, 0, 0, 7); ctx.fill(); }
+  // Jöli (4×4 square) at its start
+  const x0 = S.x * T, y0 = S.y * T, w = S.w * T, h = S.h * T, rad = w * .16;
+  const g = ctx.createLinearGradient(0, y0, 0, y0 + h);
+  g.addColorStop(0, 'rgba(232,120,245,.95)'); g.addColorStop(.55, 'rgba(196,56,220,.95)'); g.addColorStop(1, 'rgba(140,30,175,.97)');
+  ctx.fillStyle = g; rr(ctx, x0, y0, w, h, rad); ctx.fill();
+  ctx.fillStyle = 'rgba(255,255,255,.22)'; rr(ctx, x0 + w * .1, y0 + h * .06, w * .8, h * .22, rad * .8); ctx.fill();
+  ctx.fillStyle = 'rgba(255,255,255,.75)'; ctx.beginPath(); ctx.ellipse(x0 + w * .24, y0 + h * .16, w * .12, h * .06, -.45, 0, 7); ctx.fill();
+  const cx = x0 + w / 2, ey = y0 + h * .44, er = w * .13;
+  for (const s of [-1, 1]) {
+    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.ellipse(cx + s * w * .21, ey, er, er * 1.05, 0, 0, 7); ctx.fill();
+    ctx.fillStyle = '#3b1530'; ctx.beginPath(); ctx.arc(cx + s * w * .21 + er * .15, ey, er * .58, 0, 7); ctx.fill();
+  }
+  ctx.strokeStyle = '#3b1530'; ctx.lineWidth = w * .05; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.arc(cx, ey + w * .2, w * .08, .2 * Math.PI, .8 * Math.PI); ctx.stroke();
+}
+
+const box = document.getElementById('groups');
+const cards = [];
+for (const grp of GROUPS) {
+  const sec = document.createElement('section');
+  sec.innerHTML = `<h2>${grp.title}</h2><p class="desc">${grp.desc}</p><div class="grid"></div>`;
+  const grid = sec.querySelector('.grid');
+  for (const pal of BGP.PALETTES.filter(p => p.group === grp.id)) {
+    const c = document.createElement('div'); c.className = 'card';
+    c.innerHTML = `<canvas></canvas><div class="row"><div><div class="name">${pal.name}</div><div class="pid">${pal.id}</div>
+      <div class="swatch">${pal.colors.map(k => `<i style="background:${k}"></i>`).join('')}</div></div>
+      <a class="try" href="index.html?bg=${pal.id}#${LEVEL + 1}">Oyunda dene →</a></div>`;
+    grid.appendChild(c); cards.push([c.querySelector('canvas'), pal]);
+  }
+  box.appendChild(sec);
+}
+const paint = () => cards.forEach(([cv, pal]) => drawScene(cv, pal));
+addEventListener('resize', paint);
+requestAnimationFrame(paint);
+})();
+</script>
+</body>
+</html>
