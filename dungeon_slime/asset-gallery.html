@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="tr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jelly Escape · Malzeme Koleksiyonu</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#211e30;color:#f8f0ea;font:16px/1.5 system-ui,sans-serif}main{max-width:1160px;margin:auto;padding:48px 24px}a{color:#e6bdff;text-decoration:none}header{max-width:720px;margin-bottom:36px}small{color:#d9b37e;letter-spacing:.18em}h1{font-size:clamp(32px,5vw,56px);line-height:1.08;letter-spacing:-.04em;margin:16px 0}p{color:#bfb7cc}#collection{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:24px}article{background:#302a40;border:1px solid #ffffff12;border-radius:22px;overflow:hidden}article .info{padding:18px 22px}h2{font-size:20px;margin:0 0 6px}.swatches{display:flex;height:80px}.swatches img{width:50%;object-fit:cover}canvas{width:100%;display:block}article p{font-size:13px;margin:8px 0 12px}.props{display:flex;gap:20px;margin:30px 0 42px;flex-wrap:wrap}.prop{flex:1;min-width:150px;text-align:center;background:#302a40;border-radius:22px;padding:20px}.prop img{width:110px;height:110px;object-fit:contain;display:block;margin:0 auto 12px}.legend{display:flex;justify-content:space-between;color:#a9a0b6;font-size:12px;padding:7px 16px}footer{margin-top:32px;color:#bfb7cc;font-size:13px}
+</style>
+<main><header><small>JELLY ESCAPE / YENİ KOLEKSİYON</small><h1>On dünya.<br>Bir küçük jöli.</h1><p>Açık renkli güvenli duvarlar, belirgin tehlike yüzeyleri. Her bölüm boyunca değişmeyen bir malzeme çifti.</p><a href="index.html">← Oyuna dön</a></header>
+<div class="props"><div class="prop"><img src="assets/props/item-key.webp" alt="Altın ve turkuaz anahtar">Anahtar</div><div class="prop"><canvas id="exitPreview" width="220" height="220" aria-label="Dik, etiketli bölüm çıkışı" style="width:110px;height:110px;margin:0 auto 12px"></canvas>Çıkış</div><div class="prop"><img src="assets/props/item-wafer.webp" alt="Altın gofret blok">Gofret</div></div>
+<section id="collection" aria-label="Duvar ve tehlike çiftleri"></section><footer>Önizlemeler oyunun gerçek duvar çizimiyle çalışır. Bölüm bağlantıları 24–33 arasındaki yeni bulmacaları açar.</footer></main>
+<script src="engine.js"></script><script src="materials.js"></script><script src="themes.js"></script><script src="board.js"></script><script src="props.js"></script>
+<script>
+(async()=>{
+const E=JellyEngine,B=JellyBoard,T=JellyThemes;
+const exitCtx=document.getElementById('exitPreview').getContext('2d');exitCtx.scale(2,2);JellyProps.drawExit(exitCtx,{x:2,y:2,w:2,h:1},{W:6,H:6,hasKey:false},{key:false},18,0);
+const grid=['##################','#...............E#','#...............E#','#....####........#','#....#...........#','#....*...........#','#....*...........#','#....*...........#','#.S..#...........#','#................#','###********#######'];
+for(const [i,m] of Object.values(JellyMaterials.MATERIALS).entries()){
+ const card=document.createElement('article');card.innerHTML=`<div class="swatches"><img src="${m.wallArt}" alt="${m.name} güvenli duvar"><img src="${m.hazardArt}" alt="${m.name} tehlike yüzeyi"></div><div class="legend"><span>GÜVENLİ DUVAR</span><span>TEHLİKELİ YÜZEY</span></div><canvas width="540" height="330" aria-label="${m.name} duvar birleşimi"></canvas><div class="info"><h2>${m.name}</h2><p>İç / dış duvar · iç / dış köşe · uç kapak · sütun</p><a href="index.html#${24+i}">${24+i}. bölümü oyna →</a></div>`;
+ document.getElementById('collection').appendChild(card);
+ const theme=T.forLevel({theme:m.theme,material:m.id});await T.load(theme);
+ const ctx=card.querySelector('canvas').getContext('2d');ctx.fillStyle=theme.backdrop[1];ctx.fillRect(0,0,540,330);B.draw(ctx,B.build(E.parse({grid})),30,theme,T);
+}
+})();
+</script></html>

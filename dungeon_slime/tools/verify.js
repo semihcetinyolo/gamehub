@@ -1,9 +1,12 @@
 #!/usr/bin/env node
-// Checks every level: layout rules, solvable, par (min swipes), gem par, solution.
+// Checks every level: layout rules, solvable, par (min swipes), gem par, solution, and the
+// "no surprise death" rule: no reachable move may die only because the new form lands on a
+// hazard (see tools/spikes.js reshapeDeaths).
 //   node tools/verify.js            report
 //   node tools/verify.js --gems     also suggest gem cells (never touched by the optimal route, +1..+4 swipes)
 const E = require('../engine.js');
 const LEVELS = require('../levels.js');
+const SPK = require('./spikes.js');
 const gems = process.argv.includes('--gems');
 let bad = 0;
 LEVELS.forEach((lv, i) => {
@@ -20,6 +23,13 @@ LEVELS.forEach((lv, i) => {
     if (!g) bad++;
   }
   console.log(line + '\n      ' + sol.path.join(' '));
+  const rd = SPK.reshapeDeaths(L);
+  if (rd.deaths.length) {
+    bad++;
+    const d = rd.deaths[0], hz = d.gates.length ? 'a closed gate' : 'spikes';
+    console.log(`      RESHAPE DEATHS: ${rd.deaths.length} (e.g. from ${d.state.x},${d.state.y} ${d.state.w}x${d.state.h} going ${d.dir}, the new form touches ${hz})`);
+  }
+  if (!rd.complete) console.log('      (reshape check hit its state limit; not every state was explored)');
   if (gems && !L.hasGem) {
     // cells the optimal route sweeps over (body rects between path points)
     const hitCells = new Set(); let st = s;

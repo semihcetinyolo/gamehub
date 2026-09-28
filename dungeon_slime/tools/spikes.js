@@ -52,4 +52,68 @@ function addFloorSpikes(grid, touched, p, rnd) {
   return g.map(r => r.join(''));
 }
 
-module.exports = { touchedCells, addFloorSpikes };
+// Level rule: no move may die ONLY because of the reshape. That is a move whose slide was safe but
+// whose new form lands touching a hazard (a spike tile or a closed gate): the player cannot see it
+// coming. Explores every reachable state. Returns { deaths, complete } where each death is
+// { state, dir, body, tiles: spike rects touched, gates: closed gate indices touched }.
+function reshapeDeaths(L, limit = 100000) {
+  const s0 = E.initialState(L), seen = new Set([E.keyOf(s0)]), q = [s0], deaths = [];
+  for (let head = 0; head < q.length; head++) {
+    if (seen.size >= limit) return { deaths, complete: false };
+    const s = q[head];
+    for (const dir of Object.keys(E.DIRS)) {
+      const r = E.move(L, s, dir);
+      if (r.result === 'none' || r.result === 'win') continue;
+      if (r.result === 'dead') {
+        if (r.impact && r.impact.reshaped) {
+          const body = { x: r.state.x, y: r.state.y, w: r.state.w, h: r.state.h };
+          deaths.push({ state: s, dir, body,
+            tiles: L.solids.filter(t => t.t === 'spike' && E.touches(t, body)),
+            gates: L.gates.flatMap((g, i) => !E.gateOpen(L, r.state, i) && E.touches(g, body) ? [i] : []) });
+        }
+        continue;
+      }
+      const k = E.keyOf(r.state);
+      if (!seen.has(k)) { seen.add(k); q.push(r.state); }
+    }
+  }
+  return { deaths, complete: true };
+}
+
+// Remove every reshape death caused by spike tiles: each straight spike segment a reshape can land
+// on becomes plain wall. '*' and '#' are the same solid geometry, so every slide, every reshape
+// and the solution stay exactly the same; only that surface stops being lethal. Repeats until
+// none is left (a defused surface can open new states). Deaths on closed gates cannot be defused
+// this way (the gate is a mechanic) and are returned so the caller can reject or report them.
+function defuseReshapeDeaths(level) {
+  let grid = level.grid.slice(), converted = 0;
+  for (let round = 0; round < 60; round++) {
+    const L = E.parse({ ...level, grid });
+    const { deaths, complete } = reshapeDeaths(L);
+    const gateDeaths = deaths.filter(d => d.gates.length && !d.tiles.length);
+    const cells = new Set();
+    for (const d of deaths) for (const t of d.tiles) for (let i = 0; i < t.w; i++) for (let j = 0; j < t.h; j++) cells.add((t.x + i) + ',' + (t.y + j));
+    if (!cells.size) return { grid, converted, gateDeaths, complete };
+    const g = grid.map(r => r.split('')), H = g.length, W = g[0].length;
+    const at = (x, y) => (y < 0 || y >= H || x < 0 || x >= W) ? '#' : g[y][x];
+    const segment = new Set();
+    for (const c of cells) { // grow each touched tile to its whole straight segment along its wall
+      const [x, y] = c.split(',').map(Number);
+      segment.add(c);
+      for (const [wx, wy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+        if (at(x + wx, y + wy) !== '#') continue;
+        const [ax, ay] = wx ? [0, 1] : [1, 0]; // the strip runs perpendicular to the wall side
+        for (const k of [-1, 1]) for (let n = 1; ; n++) {
+          const nx = x + ax * k * n, ny = y + ay * k * n;
+          if (at(nx, ny) !== '*' || at(nx + wx, ny + wy) !== '#') break;
+          segment.add(nx + ',' + ny);
+        }
+      }
+    }
+    for (const c of segment) { const [x, y] = c.split(',').map(Number); if (g[y][x] === '*') { g[y][x] = '#'; converted++; } }
+    grid = g.map(r => r.join(''));
+  }
+  throw new Error(`${level.name}: reshape deaths did not settle`);
+}
+
+module.exports = { touchedCells, addFloorSpikes, reshapeDeaths, defuseReshapeDeaths };

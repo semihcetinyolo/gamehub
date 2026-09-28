@@ -1,0 +1,41 @@
+{
+  "mode": "builtin imagegen",
+  "assets": [
+    {
+      "id": "lightning",
+      "prompt": "Use case: stylized-concept. Asset type: production transparent game sprite, faceless elemental jelly body, for a cute polished mobile dungeon puzzle game. Lightning jelly: brilliant saturated lemon yellow gel with white-hot branching lightning veins along the sides, two chunky angular lightning tufts on its upper corners, golden rim, large bold lightning energy structure embedded in the upper quarter. Clearly electricity, never purple.\nComposition: one centered front-facing almost square jelly body, large rounded square silhouette, straight-on orthographic view, body fills about 90 percent of square canvas. Hand-painted soft 3D mobile game shading, glossy highlights and bold readable elemental material. Keep the central middle area clean for a face to be drawn by the game engine. NO EYES, NO MOUTH, NO FACE, NO TEXT, NO LETTERS, NO ICON BADGE. No arms, no legs, no floor or pedestal. Genuine transparent background; no checkerboard image, no opaque background, no external drop shadow. Edge motifs should be broad and readable at 60 pixels. This sprite will squash and stretch, so use a cohesive simple silhouette and continuous soft body texture.",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-2ec20622-5178-43fb-9ee0-f9963d2908cc.png",
+      "asset": "assets/characters/lightning.webp"
+    },
+    {
+      "id": "fire",
+      "prompt": "Use case: stylized-concept. Asset type: production transparent game sprite, faceless elemental jelly body, for a cute polished mobile dungeon puzzle game. Fire jelly: glowing vivid orange and vermilion molten gel, lemon-yellow hot core at bottom, three rounded dancing flame lobes forming the upper silhouette, deep burnt-orange outline, visible large molten swirls near edges. Clearly a living flame, never honey or amber candy.\nComposition: one centered front-facing almost square jelly body, large rounded square silhouette, straight-on orthographic view, body fills about 90 percent of square canvas. Hand-painted soft 3D mobile game shading, glossy highlights and bold readable elemental material. Keep the central middle area clean for a face to be drawn by the game engine. NO EYES, NO MOUTH, NO FACE, NO TEXT, NO LETTERS, NO ICON BADGE. No arms, no legs, no floor or pedestal. Genuine transparent background; no checkerboard image, no opaque background, no external drop shadow. Edge motifs should be broad and readable at 60 pixels. This sprite will squash and stretch, so use a cohesive simple silhouette and continuous soft body texture.",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-8ddd69a9-2a6e-47da-a9e1-3681f5ad1617.png",
+      "asset": "assets/characters/fire.webp"
+    },
+    {
+      "id": "ice",
+      "prompt": "Use case: stylized-concept. Asset type: production transparent game sprite, faceless elemental jelly body, for a cute polished mobile dungeon puzzle game. Ice jelly: frosty pale cyan and nearly white translucent ice, crisp beveled crystal corners and a few large icy facets, frost along the bottom edges, a restrained blue ice crack on upper left. Clearly frozen ice, absolutely no purple, violet or indigo.\nComposition: one centered front-facing almost square jelly body, large rounded square silhouette, straight-on orthographic view, body fills about 90 percent of square canvas. Hand-painted soft 3D mobile game shading, glossy highlights and bold readable elemental material. Keep the central middle area clean for a face to be drawn by the game engine. NO EYES, NO MOUTH, NO FACE, NO TEXT, NO LETTERS, NO ICON BADGE. No arms, no legs, no floor or pedestal. Genuine transparent background; no checkerboard image, no opaque background, no external drop shadow. Edge motifs should be broad and readable at 60 pixels. This sprite will squash and stretch, so use a cohesive simple silhouette and continuous soft body texture.",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-da1e0d20-9f82-46b1-b318-287b2957a9cb.png",
+      "asset": "assets/characters/ice.png"
+    },
+    {
+      "id": "air",
+      "prompt": "Use case: stylized-concept. Asset type: production transparent game sprite, faceless elemental jelly body, for a cute polished mobile dungeon puzzle game. Wind jelly: pearly white, soft silver and extremely pale blue, wispy cloud-like rounded corners and large flowing ivory cloud swirls around the perimeter, light translucent center. Clearly a little air cloud, no pink, red, magenta or purple anywhere.\nComposition: one centered front-facing almost square jelly body, large rounded square silhouette, straight-on orthographic view, body fills about 90 percent of square canvas. Hand-painted soft 3D mobile game shading, glossy highlights and bold readable elemental material. Keep the central middle area clean for a face to be drawn by the game engine. NO EYES, NO MOUTH, NO FACE, NO TEXT, NO LETTERS, NO ICON BADGE. No arms, no legs, no floor or pedestal. Genuine transparent background; no checkerboard image, no opaque background, no external drop shadow. Edge motifs should be broad and readable at 60 pixels. This sprite will squash and stretch, so use a cohesive simple silhouette and continuous soft body texture.",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-f90dd25f-b8da-4344-89ef-8491195372d0.png",
+      "asset": "assets/characters/air.webp"
+    },
+    {
+      "id": "void",
+      "prompt": "Use case: stylized-concept. Asset type: production transparent game sprite, faceless elemental jelly body, for a cute polished mobile dungeon puzzle game. Void jelly: midnight black and very deep violet gelatinous body, luminous violet rim, tiny star specks at perimeter and a luminous purple orbital spiral embedded in the upper quarter. Clearly a cosmic void creature, dark center, no lightning marks or flames.\nComposition: one centered front-facing almost square jelly body, large rounded square silhouette, straight-on orthographic view, body fills about 90 percent of square canvas. Hand-painted soft 3D mobile game shading, glossy highlights and bold readable elemental material. Keep the central middle area clean for a face to be drawn by the game engine. NO EYES, NO MOUTH, NO FACE, NO TEXT, NO LETTERS, NO ICON BADGE. No arms, no legs, no floor or pedestal. Genuine transparent background; no checkerboard image, no opaque background, no external drop shadow. Edge motifs should be broad and readable at 60 pixels. This sprite will squash and stretch, so use a cohesive simple silhouette and continuous soft body texture.",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-6bad4ca3-6e73-4476-a923-08dc6124496a.png",
+      "asset": "assets/characters/void.webp"
+    },
+    {
+      "id": "void-pearl",
+      "prompt": "Edit this faceless void jelly game sprite. Preserve the rounded square silhouette, genuinely transparent background, glossy soft 3D mobile puzzle game rendering, and clean central area for a separately drawn face. Make the entire body beautiful luminous medium lavender and orchid purple translucent jelly, pearlescent lilac highlights with a hint of pink, a small elegant swirling galaxy near the upper edge and a few tiny white stars. Remove the black/navy empty center completely: even the darkest body areas must be medium violet, bright and readable. Less busy, soft polished delicious jelly, premium cute game art. No eyes, mouth, face, lettering, backdrop or floor. Single centered square sprite.",
+      "asset": "assets/characters/void-pearl.png",
+      "source": "assets/characters/source/void-pearl.png"
+    }
+  ]
+}

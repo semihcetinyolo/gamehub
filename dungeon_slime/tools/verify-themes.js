@@ -30,7 +30,7 @@ const sandbox = {
   console, Math, Date, Promise, Map, Set, URLSearchParams, location: { search: '', hash: '' },
   performance: { now: () => now }, navigator: {}, devicePixelRatio: 2,
   localStorage: { getItem: () => null, setItem() {} },
-  document: { getElementById: id => elements.get(id), createElement: () => element(), querySelectorAll: () => [elements.get('map'), elements.get('game')] },
+  document: { getElementById: id => elements.get(id), createElement: () => element(), querySelectorAll: () => [elements.get('map'), elements.get('levelSelect'), elements.get('game')] },
   addEventListener: (name, fn) => { listeners[name] = fn; },
   requestAnimationFrame: fn => { frame = fn; },
   setTimeout: fn => { timers.set(++timerId, fn); return timerId; }, clearTimeout: id => timers.delete(id),
@@ -40,7 +40,7 @@ const sandbox = {
 };
 sandbox.window = sandbox;
 vm.createContext(sandbox);
-for (const name of ['engine.js', 'levels.js', 'bg_palettes.js', 'themes.js', 'motion.js', 'board.js', 'features.js']) vm.runInContext(fs.readFileSync(path.join(root,name),'utf8'),sandbox,{filename:name});
+for (const name of ['engine.js', 'levels.js', 'bg_palettes.js', 'materials.js', 'themes.js', 'props.js', 'elements.js', 'motion.js', 'board.js', 'features.js']) vm.runInContext(fs.readFileSync(path.join(root,name),'utf8'),sandbox,{filename:name});
 vm.runInContext(html.match(/<script>([\s\S]*?)<\/script>/)[1],sandbox,{filename:'index.html'});
 const key = direction => listeners.keydown({ key: direction, preventDefault() {} });
 const flush = () => { sandbox.JellyDebug.tick(4); now += 4000; frame(now); };
@@ -49,6 +49,10 @@ const flush = () => { sandbox.JellyDebug.tick(4); now += 4000; frame(now); };
   const expected = JSON.parse(JSON.stringify(sandbox.LEVELS.map(lv => lv.theme)));
   const skins = JSON.parse(JSON.stringify(sandbox.LEVELS.map(lv => lv.jelly)));
   assert.equal(new Set(expected).size,4);
+  elements.get('bLevels').onclick();
+  assert(elements.get('levelSelect').classList.contains('on'),'level picker did not open');
+  elements.get('bLevelsBack').onclick();
+  assert(elements.get('map').classList.contains('on'),'home did not return');
   let moves = 0;
   for (let i = 0; i < sandbox.LEVELS.length; i++) {
     await debug.start(i);
@@ -154,7 +158,7 @@ const flush = () => { sandbox.JellyDebug.tick(4); now += 4000; frame(now); };
     flush();elements.get('bRestart').onclick();
     assert.equal(debug.flights(),0);assert.equal(debug.view().switches[0],false);
     assert.equal(E.keyOf(debug.state()),E.keyOf(stoneStart));
-    assert.equal(elements.get('tip').textContent,sandbox.LEVELS[stoneIndex].tip,'retry kept the gate-open message');
+    assert.equal(elements.get('tip').textContent,'','retry kept the gate-open message');
   }
   // Retry and map navigation cancel a sliding stone before it can press an old plate.
   for(const action of ['bRestart','bMap']){

@@ -1,0 +1,11 @@
+{
+  "mode": "builtin imagegen",
+  "assets": [
+    {
+      "id": "jelly-escape-logo",
+      "prompt": "Production mobile puzzle game logo, exact text JELLY on top and ESCAPE below, centered two-line logo with thick rounded inflated playful bubble letters, JELLY glossy turquoise and cyan with white highlights, ESCAPE sunny golden yellow with orange lower shading, very thick dark plum outline and thin warm cream inset rim, subtle dimensional extrusion. Small charming smiling lavender jelly peeking above the letters, big expressive eyes. Premium polished casual mobile game logo, readable at 220px wide, compact balanced design. Genuine transparent background, no backdrop, no mockup, no other words, no watermark. Brand is Jelly Escape.",
+      "asset": "assets/ui/logo.png",
+      "source": "assets/ui/logo-source.png"
+    }
+  ]
+}

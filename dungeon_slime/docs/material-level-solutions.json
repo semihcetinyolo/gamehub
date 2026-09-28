@@ -1,0 +1,197 @@
+[
+  {
+    "level": 24,
+    "name": "Fildişi Labirent",
+    "material": "limestone",
+    "path": [
+      "right",
+      "left",
+      "right",
+      "up",
+      "left",
+      "up",
+      "down",
+      "up",
+      "left",
+      "right",
+      "up",
+      "right",
+      "left",
+      "up"
+    ]
+  },
+  {
+    "level": 25,
+    "name": "Kuvars Geçidi",
+    "material": "rose",
+    "path": [
+      "down",
+      "left",
+      "up",
+      "right",
+      "left",
+      "right",
+      "up",
+      "right",
+      "up",
+      "down",
+      "up",
+      "left",
+      "right",
+      "up"
+    ]
+  },
+  {
+    "level": 26,
+    "name": "Köz Köprüsü",
+    "material": "sandstone",
+    "path": [
+      "right",
+      "left",
+      "up",
+      "down",
+      "up",
+      "down",
+      "left",
+      "right",
+      "left",
+      "up",
+      "right",
+      "up"
+    ]
+  },
+  {
+    "level": 27,
+    "name": "Donmuş Avlu",
+    "material": "frost",
+    "path": [
+      "up",
+      "right",
+      "left",
+      "right",
+      "left",
+      "up",
+      "right",
+      "down",
+      "up",
+      "down",
+      "left",
+      "right",
+      "left",
+      "up"
+    ]
+  },
+  {
+    "level": 28,
+    "name": "Asit Kuyusu",
+    "material": "forest",
+    "path": [
+      "left",
+      "up",
+      "left",
+      "right",
+      "up",
+      "down",
+      "left",
+      "up",
+      "down",
+      "up",
+      "down",
+      "left",
+      "right",
+      "up"
+    ]
+  },
+  {
+    "level": 29,
+    "name": "Kıvılcım Koridoru",
+    "material": "copper",
+    "path": [
+      "down",
+      "right",
+      "left",
+      "right",
+      "up",
+      "down",
+      "up",
+      "left",
+      "right",
+      "up"
+    ]
+  },
+  {
+    "level": 30,
+    "name": "Ayın Karanlık Yüzü",
+    "material": "moon",
+    "path": [
+      "up",
+      "left",
+      "right",
+      "left",
+      "right",
+      "down",
+      "up",
+      "left",
+      "down",
+      "right",
+      "up",
+      "right",
+      "left",
+      "up"
+    ]
+  },
+  {
+    "level": 31,
+    "name": "Şekerli Tuzak",
+    "material": "candy",
+    "path": [
+      "right",
+      "left",
+      "up",
+      "left",
+      "up",
+      "right",
+      "down",
+      "left",
+      "up"
+    ]
+  },
+  {
+    "level": 32,
+    "name": "Gelgit Harabeleri",
+    "material": "coral",
+    "path": [
+      "right",
+      "left",
+      "up",
+      "right",
+      "up",
+      "down",
+      "up",
+      "left",
+      "up",
+      "right",
+      "left",
+      "up"
+    ]
+  },
+  {
+    "level": 33,
+    "name": "Son Dişli",
+    "material": "clockwork",
+    "path": [
+      "left",
+      "right",
+      "up",
+      "right",
+      "left",
+      "up",
+      "down",
+      "up",
+      "down",
+      "right",
+      "left",
+      "up"
+    ]
+  }
+]

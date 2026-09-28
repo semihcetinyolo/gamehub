@@ -11,7 +11,8 @@
 // exit (E). Side pockets (--pockets p) hang off rooms as detours. Rooms are added one at a time and
 // each must keep the whole map solvable and add >= --roompar swipes. After solving, the floor tiles
 // in front of wall faces the solution never touches get a 1-tile spike strip with probability
-// --spikep (whole runs), so off-route walls are deadly.
+// --spikep (whole runs), so off-route walls are deadly. No generated level ever has a move that
+// dies only because the new form lands on a hazard (see tools/spikes.js reshapeDeaths).
 // --need name[:min]: spread thin flat thinnest flattest square wafer key
 const E = require('../engine.js');
 
@@ -178,9 +179,14 @@ for (let t = 0; t < TRIES; t++) {
   const u = usage(L, sol.path);
   if (!NEED.every(([k, n]) => u[k] >= n)) continue;
   grid = addSpikes(grid, touchedCells(L, sol.path));
+  // no surprise deaths: spikes a reshape could land on become plain wall (same geometry); a level
+  // whose reshapes can still die (e.g. on a gate) or that was not fully explored is rejected
+  const safe = SPK.defuseReshapeDeaths({ name: 'gen', grid });
+  if (safe.gateDeaths.length || !safe.complete) continue;
+  grid = safe.grid;
   L = E.parse({ name: 'gen', grid });
   const sol2 = E.solve(L, E.initialState(L), false, 60000);
-  if (!sol2 || E.lint(L).length) continue;
+  if (!sol2 || E.lint(L).length || SPK.reshapeDeaths(L).deaths.length) continue;
   const dr = deathRate(L);
   const score = sol2.path.length + u.spread + u.thinnest * 2 + u.flattest * 2 + u.wafer * 2 + u.key * 2 + dr.death * 20;
   out.push({ grid, par: sol2.path.length, path: sol2.path.join(' '), u, dr, score });

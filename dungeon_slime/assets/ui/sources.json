@@ -1,0 +1,13 @@
+{
+  "referenceProject": "/Users/semihcetin/Desktop/unityprojects/findinganimals",
+  "assets": {
+    "GreenButton.png": "play.png",
+    "Hintx1_Light.png": "hint.png",
+    "IconSettingsHome.png": "home.png",
+    "SettingsIcon.png": "settings.png",
+    "Star.png": "star.png",
+    "IconSettingsSound.png": "sound.png",
+    "ButtonClosePopup.png": "close.png"
+  },
+  "usage": "Shared game UI artwork, adapted for Jelly Escape."
+}

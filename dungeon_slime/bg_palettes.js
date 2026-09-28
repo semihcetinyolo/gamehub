@@ -1,4 +1,4 @@
-// Floor (background tile) palettes for Jelly Squish: two-tone checkerboards. Shared by
+// Floor (background tile) palettes for Jelly Escape: two-tone checkerboards. Shared by
 // index.html (?bg=<id>) and bg_variants.html. One tile = one unit = THINNEST Jöli's short side;
 // purely decorative.
 //   close / mid / far: one colour family, the second tone a little / more / much darker

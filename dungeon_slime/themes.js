@@ -34,8 +34,15 @@
   };
   const images = new Map();
   const byId = id => THEMES[id] || THEMES.garden;
-  const forLevel = level => byId(level.theme);
+  const materials = typeof module !== 'undefined' && module.exports ? require('./materials.js') : root.JellyMaterials;
+  const forLevel = level => {
+    const base=byId(level.theme), material=materials?.MATERIALS[level.material || materials.defaults[base.id]];
+    return material ? {...base,...material,id:base.id,material:material.id} : base;
+  };
   function load(theme) {
+    return Promise.all([theme.atlas,theme.wallArt,theme.hazardArt].filter(Boolean).map(atlas=>loadImage({atlas}))).then(results=>results.every(Boolean));
+  }
+  function loadImage(theme) {
     if (images.has(theme.atlas)) return images.get(theme.atlas).promise;
     const image = new Image();
     const entry = { image, ready: false, promise: null };
@@ -54,7 +61,29 @@
     ctx.drawImage(im, rect[0] * sx, rect[1] * sy, rect[2] * sx, rect[3] * sy, x, y, w, h);
     return true;
   }
-  const api = { THEMES, byId, forLevel, load, sprite };
+  function image(ctx,atlas,x,y,w,h){
+    const entry=images.get(atlas);if(!entry?.ready)return false;
+    ctx.drawImage(entry.image,x,y,w,h);return true;
+  }
+  // Repeat in world space: corners and adjacent runs share a continuous material.
+  function texture(ctx,atlas,x,y,w,h,size){
+    const entry=images.get(atlas);if(!entry?.ready)return false;
+    ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();
+    for(let yy=Math.floor(y/size)*size;yy<y+h;yy+=size)
+      for(let xx=Math.floor(x/size)*size;xx<x+w;xx+=size)ctx.drawImage(entry.image,xx,yy,size,size);
+    ctx.restore();return true;
+  }
+  // Preserve the illustrated corners while stretching the central panel and rails.
+  function nineSlice(ctx,atlas,x,y,w,h,border){
+    const entry=images.get(atlas);if(!entry?.ready)return false;
+    const im=entry.image,iw=im.naturalWidth,ih=im.naturalHeight,b=Math.min(border,w*.45,h*.45);
+    const sx=[0,iw*.2,iw*.8,iw],sy=[0,ih*.2,ih*.8,ih];
+    const dx=[x,x+b,x+w-b,x+w],dy=[y,y+b,y+h-b,y+h];
+    for(let j=0;j<3;j++)for(let i=0;i<3;i++)ctx.drawImage(im,sx[i],sy[j],sx[i+1]-sx[i],sy[j+1]-sy[j],dx[i],dy[j],dx[i+1]-dx[i],dy[j+1]-dy[j]);
+    return true;
+  }
+  const ready=theme=>!!images.get(theme.atlas)?.ready;
+  const api = { THEMES, byId, forLevel, load, sprite, image, texture, nineSlice, ready };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.JellyThemes = api;
 })(this);

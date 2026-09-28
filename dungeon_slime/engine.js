@@ -1,4 +1,4 @@
-// Jelly Squish — pure game logic (no DOM). Loaded by index.html and by tools/verify.js.
+// Jelly Escape — pure game logic (no DOM). Loaded by index.html and by tools/verify.js.
 //
 // Continuous, not grid-snapped (like Dungeon Slime): Jöli is a free-floating rectangle at any
 // (x, y) in one of three fixed forms, exactly like the original game (sizes in background tiles):
@@ -23,7 +23,7 @@
 //   S  start: top-left of Jöli's 4×4 start square
 //   E  exit aperture: the entire body must fit across it (and have the key if needed)
 //   *  hazardous solid wall: touching any exposed face or corner = fail
-//   w  wafer block: first hit cracks it, the next hit breaks it and Jöli slides through
+//   w  wafer block: first hit cracks it, the next hit breaks it — Jöli stops there (a normal hit)
 //   k  sugar key (opens the exit)     g  hidden gem (3rd star)
 //   o  star stone (each rectangular blob is one sliding stone)
 //   b  star pressure plate (active only while a stone rests on it)
@@ -236,7 +236,7 @@
     const s = { ...s0, wafer: s0.wafer.slice(),rocks:s0.rocks.map(r=>({...r})),switches:s0.switches.slice() };
     let b = { x: s.x, y: s.y, w: s.w, h: s.h };
     const path = [];
-    let impact = null, result = 'stop', travelled = 0, broke = false;
+    let impact = null, result = 'stop', travelled = 0;
     const sign = dir === 'right' || dir === 'down' ? 1 : -1;
     for (let guard = 0; guard < 50; guard++) {
       const sol = solidsFor(L, s);
@@ -272,14 +272,16 @@
         impact={dir,rects:spikesOf(L,s).filter(r=>touches(r,b)),kinds:['spike'],reshaped:false};
         result='dead';break;
       }
-      if (!travelled && !broke && !launches.length) break; // resting against a fixed obstacle
+      if (!travelled && !launches.length) break; // resting against a fixed obstacle
       impact = { dir, rects: hit, kinds, reshaped: false };
       if (kinds.includes('spike')) { result = 'dead'; break; }
       let allCracked = hit.length > 0 && hit.every(r => r.t === 'wafer');
       for (const i of new Set(hit.filter(r => r.t === 'wafer').map(r => r.i))) {
         if (s.wafer[i] === 1) s.wafer[i] = 2; else { s.wafer[i] = 1; allCracked = false; }
       }
-      if (allCracked) { path.push({ x: b.x, y: b.y, ev: 'break' }); impact = null; broke = true; continue; } // burst through
+      // Breaking a cracked wafer is a normal hit: it shatters, and Jöli stops here and takes its
+      // next form. It does not slide on through the gap.
+      if (allCracked) path.push({ x: b.x, y: b.y, ev: 'break' });
       const r = spread(L, s, b, dir);
       if (r) {
         b = r; impact.reshaped = true; pick(L, s, b);

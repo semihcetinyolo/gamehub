@@ -3,119 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<title>Jelly Squish</title>
+<title>Jelly Escape</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg1: #ffe3ef; --bg2: #d9f6ec; --ink: #5a2a48; --ink2: #9a6a86;
-    --pink: #ff7fb0; --jelly: #c438dc; --mint: #54d1a8; --gold: #ffc542; --card: #fffaf4;
-  }
-  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  html, body { margin: 0; height: 100%; overflow: hidden; }
-  body {
-    font-family: 'Fredoka', system-ui, sans-serif; color: var(--ink);
-    background: linear-gradient(170deg, var(--bg1), var(--bg2));
-    user-select: none; -webkit-user-select: none; touch-action: none;
-  }
-  #app { position: relative; max-width: 480px; height: 100%; margin: 0 auto; display: flex; flex-direction: column; }
-  .screen { position: absolute; inset: 0; display: none; flex-direction: column; }
-  .screen.on { display: flex; }
 
-  /* ---------- map ---------- */
-  #map { padding: 24px 16px calc(24px + env(safe-area-inset-bottom)); overflow-y: auto; touch-action: pan-y; }
-  #map h1 { margin: 8px 0 2px; font-size: 38px; text-align: center; letter-spacing: .5px; color: var(--pink);
-    text-shadow: 0 3px 0 #fff, 0 6px 14px rgba(255,127,176,.35); }
-  #map .sub { text-align: center; color: var(--ink2); margin-bottom: 20px; font-weight: 500; }
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .lvl { background: var(--card); border: none; border-radius: 22px; padding: 14px 6px 10px; font: inherit; color: var(--ink);
-    box-shadow: 0 5px 0 #f2c6d8, 0 10px 18px rgba(90,42,72,.08); cursor: pointer; transition: transform .1s; }
-  .lvl:active { transform: translateY(3px); box-shadow: 0 2px 0 #f2c6d8; }
-  .lvl .n { font-size: 30px; font-weight: 700; line-height: 1; }
-  .lvl .nm { font-size: 12px; color: var(--ink2); margin-top: 4px; min-height: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .lvl .st { margin-top: 6px; font-size: 16px; letter-spacing: 2px; color: #e9d7df; }
-  .lvl .st b { color: var(--gold); font-weight: 400; }
-  .lvl.next { outline: 3px solid var(--pink); }
-  .lvl.hard .n { color: #d8487f; }
-  .lvl { position: relative; }
-  .lvl.hard::after { content: 'ZOR'; position: absolute; top: 8px; right: 10px; font-size: 10px; font-weight: 700; color: #fff; background: #d8487f; border-radius: 8px; padding: 1px 6px; }
-  .legend { margin-top: 22px; background: rgba(255,255,255,.6); border-radius: 18px; padding: 12px 14px; font-size: 13px; color: var(--ink2); line-height: 1.5; }
-  .legend b { color: var(--ink); }
-
-  /* ---------- game ---------- */
-  #game { padding-top: env(safe-area-inset-top); }
-  .top { display: flex; align-items: center; gap: 10px; padding: 12px 16px 4px; }
-  .icon { width: 44px; height: 44px; flex: none; border: none; border-radius: 16px; background: var(--card); color: var(--ink);
-    font: 700 20px 'Fredoka', sans-serif; box-shadow: 0 4px 0 #f2c6d8; cursor: pointer; }
-  .icon:active { transform: translateY(2px); box-shadow: 0 2px 0 #f2c6d8; }
-  .title { flex: 1; min-width: 0; }
-  .title .l { font-size: 13px; color: var(--ink2); font-weight: 600; }
-  .title .t { font-size: 20px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .counter { text-align: right; font-weight: 700; font-size: 22px; line-height: 1; }
-  .counter small { display: block; font-size: 12px; color: var(--ink2); font-weight: 600; margin-top: 3px; }
-  .counter.over { color: #d8487f; }
-  .hud2 { display: flex; justify-content: space-between; align-items: center; padding: 0 18px; height: 26px; font-size: 14px; font-weight: 600; color: var(--ink2); }
-  .shape { display: inline-flex; align-items: center; gap: 6px; }
-  .shape i { display: inline-block; background: var(--jelly); border-radius: 50%; transition: all .2s; }
-  .gem { opacity: .35; transition: opacity .2s; } .gem.got { opacity: 1; }
-  #stage { flex: 1; position: relative; min-height: 0; }
-  #cv { position: absolute; inset: 0; width: 100%; height: 100%; }
-  #tip { position: absolute; left: 16px; right: 16px; bottom: 8px; text-align: center; font-size: 15px; font-weight: 600; color: var(--ink);
-    background: rgba(255,255,255,.75); border-radius: 14px; padding: 8px 12px; transition: opacity .4s; pointer-events: none; }
-  .bottom { display: flex; justify-content: center; gap: 14px; padding: 10px 16px calc(18px + env(safe-area-inset-bottom)); min-height: 20%; align-items: flex-start; }
-  .btn { flex: 1; max-width: 120px; height: 58px; border: none; border-radius: 20px; background: var(--card); color: var(--ink);
-    font: 600 14px 'Fredoka', sans-serif; box-shadow: 0 5px 0 #f2c6d8; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
-  .btn span { font-size: 22px; line-height: 1; }
-  .btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #f2c6d8; }
-  .btn:disabled { opacity: .45; }
-
-  /* ---------- result ---------- */
-  #result { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(90,42,72,.35); z-index: 5; padding: 16px; }
-  #result.on { display: flex; animation: fade .25s; }
-  .card { background: var(--card); border-radius: 28px; padding: 26px 22px 20px; width: 100%; max-width: 340px; text-align: center;
-    box-shadow: 0 8px 0 #f2c6d8, 0 20px 40px rgba(90,42,72,.25); animation: pop .35s cubic-bezier(.3,1.6,.5,1); }
-  .card h2 { margin: 0; font-size: 30px; color: var(--pink); }
-  .stars { font-size: 50px; letter-spacing: 6px; margin: 10px 0 4px; color: #eadbe2; }
-  .stars b { color: var(--gold); font-weight: 400; display: inline-block; animation: pop .4s cubic-bezier(.3,1.8,.5,1) both; }
-  .stars b:nth-child(2) { animation-delay: .12s } .stars b:nth-child(3) { animation-delay: .24s }
-  .card p { margin: 6px 0; color: var(--ink2); font-weight: 500; }
-  .card .row { display: flex; gap: 10px; margin-top: 16px; }
-  .card .row button { flex: 1; height: 52px; border: none; border-radius: 18px; font: 700 17px 'Fredoka', sans-serif; cursor: pointer; }
-  .primary { background: var(--pink); color: #fff; box-shadow: 0 5px 0 #d8487f; }
-  .ghost { background: #fbe9f1; color: var(--ink); box-shadow: 0 5px 0 #f2c6d8; }
-  @keyframes pop { from { transform: scale(.4); opacity: 0 } to { transform: scale(1); opacity: 1 } }
-  @keyframes fade { from { opacity: 0 } }
-</style>
-<link rel="stylesheet" href="ui.css?v=stars-3">
+<link rel="stylesheet" href="ui.css?v=escape-1">
 </head>
 <body>
 <div id="app">
-  <section id="map" class="screen on">
-    <div class="map-top"><span class="wordmark">JELLY ADVENTURES</span><span class="total-stars" id="totalStars">★ 0 / 69</span></div>
-    <div class="hero"><div class="mascot" aria-hidden="true"></div><h1>Jelly<br><em>Squish.</em></h1><div class="sub" id="mapSub">Küçük jöli. Büyük kaçış.</div></div>
-    <div class="theme-line" aria-label="Dünyalar"><span>✿ Kristal Bahçe</span><span>☾ Aytaşı Zindanı</span><span>♨ Kor Kalesi</span><span>◉ Zehirli Sera</span></div>
-    <button class="continue" id="bContinue"><span><strong>Maceraya başla</strong><small>Seviye 1 · İlk Kayış</small></span><span class="arrow" aria-hidden="true">→</span></button>
-    <div class="section-label"><h2>Macera haritası</h2><span id="mapProgress">0 / 23 tamamlandı</span></div>
-    <div class="progress-track"><i id="progressFill"></i></div>
-    <div class="grid" id="levels"></div>
-    <details class="legend"><summary>Nasıl oynanır?</summary><p><b>Kaydır ya da ok tuşlarını kullan.</b> Jöli duvara kadar kayar ve her çarpışta şekil değiştirir. Yan duvarlar inceltir, alt ve üst duvarlar yassılaştırır.</p><p>Dar geçitlere sığ, tehlikelerden uzak dur ve <b>yeşil portala ulaş.</b> Gofret duvarları iki vuruşta kırılır. Kilitli portallar için anahtarı bul.</p><p><b>Yıldızlı taşlara çarp:</b> taş vurduğun yönde kayar. Taşı yıldızlı düğmeye oturtarak tehlikeli geçidi aç. Geçit yalnızca taş düğmedeyken açık kalır; taş ayrılınca tehlike geri gelir.</p><p>★ Çıkışı bul · ★★ Hedef hamlede bitir<br>★★★ Mücevheri topla ve onun hedefini tuttur.<br>Mücevher olmayan levellarda hedef hamle üç yıldız getirir.</p></details>
-    <a class="collection-link" href="animation-preview.html">Jöli koleksiyonu ve animasyonlar →</a>
-    <p class="map-foot">KAYDIR · ŞEKİL DEĞİŞTİR · KEŞFET</p>
+  <section id="map" class="screen on" aria-label="Ana menü">
+    <div class="home-top"><div class="star-bank"><img src="assets/ui/star.png" alt=""><span id="totalStars">0</span></div><button class="game-icon" id="bSettings" aria-label="Ayarlar"><img src="assets/ui/settings.png" alt=""></button></div>
+    <h1 class="game-logo"><img src="assets/ui/logo.png" alt="Jelly Escape"></h1>
+    <div class="home-scene" aria-hidden="true"><span class="spark s1">✦</span><span class="spark s2">✧</span><span class="spark s3">✦</span><div class="island"></div><div class="home-jelly side ice"><img src="assets/characters/ice.png" alt=""><div class="jelly-face"><i></i><i></i><b></b></div></div><div class="home-jelly main"><img src="assets/characters/void-pearl.png" alt=""><div class="jelly-face"><i></i><i></i><b></b></div></div><div class="home-jelly side fire"><img src="assets/characters/fire.webp" alt=""><div class="jelly-face"><i></i><i></i><b></b></div></div></div>
+    <div class="home-actions"><button class="play-button" id="bContinue" aria-label="Play"><strong>PLAY</strong><small>BÖLÜM 1</small></button><button class="levels-button" id="bLevels"><span aria-hidden="true">▦</span> BÖLÜMLER</button></div>
+    <p class="home-progress" id="mapProgress"></p><span id="mapSub" hidden></span><span id="progressFill" hidden></span>
   </section>
+  <section id="levelSelect" class="screen" aria-label="Bölümler">
+    <div class="menu-heading"><button class="game-icon" id="bLevelsBack" aria-label="Ana menü">‹</button><h2>BÖLÜMLER</h2><span></span></div>
+    <div class="grid" id="levels"></div>
+  </section>
+  <div id="settings" class="modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" hidden><div class="settings-card"><button class="close-button" id="bSettingsClose" aria-label="Kapat"><img src="assets/ui/close.png" alt=""></button><h2 id="settingsTitle">AYARLAR</h2><button class="settings-option" id="bSound" aria-pressed="true"><img src="assets/ui/sound.png" alt="">SES <span id="soundState">AÇIK</span></button><details class="legend"><summary>Nasıl oynanır?</summary><p>Kaydır; jöli duvara kadar gider ve şekil değiştirir. Dar geçitlerden geçerek çıkışa ulaş.</p><p>Tehlikelerden uzak dur. Gofretleri iki vuruşta kır. Anahtarla çıkışı aç. Yıldızlı taşı düğmede tutarak tehlikeli geçidi kapat.</p><p>★ Çıkışı bul · ★★ Hedef hamlede bitir · ★★★ Mücevheri de topla.</p><p>Bilgisayarda ok tuşları, H (ipucu), R (baştan).</p></details><a href="animation-preview.html">Jöli koleksiyonu ›</a><a href="asset-gallery.html">Dünyalar ›</a></div></div>
 
   <section id="game" class="screen">
     <div class="top">
-      <button class="icon" id="bMap" aria-label="Macera haritası">‹</button>
+      <button class="game-icon" id="bMap" aria-label="Ana menü"><img src="assets/ui/home.png" alt=""></button>
       <div class="title"><div class="l" id="lvlNo"></div><div class="t" id="lvlName"></div></div>
-      <div class="counter" id="counter">0<small>par 0</small></div>
+      <div class="counter" id="counter" aria-label="Hamle">0<small>/ 0</small></div>
     </div>
-    <div class="hud2"><span class="shape"><i id="shapeIco"></i><span id="shapeTxt">Yuvarlak</span></span><span class="theme-badge" id="themeBadge"></span><span class="feature-status" id="featureStatus" role="status" hidden></span><span class="gem" id="gemIco" aria-label="Mücevher">💎</span></div>
-    <div id="stage"><canvas id="cv" aria-label="Jelly Squish oyun alanı; ok tuşlarıyla veya kaydırarak oyna"></canvas><div id="tip"></div></div>
+    <div class="hud2" hidden><span class="shape"><i id="shapeIco"></i><span id="shapeTxt">Yuvarlak</span></span><span class="theme-badge" id="elementBadge"></span><span class="theme-badge" id="themeBadge"></span><span class="feature-status" id="featureStatus" role="status" hidden></span><span class="gem" id="gemIco" aria-label="Mücevher">💎</span></div>
+    <div id="stage"><canvas id="cv" aria-label="Jelly Escape oyun alanı; ok tuşlarıyla veya kaydırarak oyna"></canvas><div id="tip"></div></div>
     <div class="bottom">
-      <button class="btn" id="bHint"><span aria-hidden="true">✧</span>İpucu <kbd>H</kbd></button>
-      <button class="btn" id="bRestart"><span aria-hidden="true">↻</span>Baştan <kbd>R</kbd></button>
+      <button class="booster hint-button" id="bHint" aria-label="İpucu"><span class="booster-art"><img src="assets/ui/hint.png" alt=""></span><strong>İPUCU</strong></button>
+      <button class="booster restart-button" id="bRestart" aria-label="Baştan başlat"><span class="booster-art"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M15 23A22 22 0 1 1 11 40"/><path d="M15 9v16H31"/></svg></span><strong>BAŞTAN</strong></button>
     </div>
-    <div class="control-note">Kaydır veya <kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> tuşlarını kullan</div>
+
     <div id="result" role="dialog" aria-modal="true" aria-labelledby="rTitle"><div class="card">
       <div class="result-mark" id="resultTheme"></div>
       <h2 id="rTitle">Harika!</h2>
@@ -128,12 +49,15 @@
   <div id="loading" role="status"><span class="loader"></span><span>Dünya hazırlanıyor…</span></div>
 </div>
 
-<script src="engine.js?v=12"></script>
-<script src="levels.js?v=14"></script>
+<script src="engine.js?v=wafer-stop-1"></script>
+<script src="levels.js?v=elements-2"></script>
 <script src="bg_palettes.js?v=4"></script>
-<script src="themes.js?v=4"></script>
-<script src="motion.js?v=3"></script>
-<script src="board.js?v=4"></script>
+<script src="materials.js?v=1"></script>
+<script src="themes.js?v=6"></script>
+<script src="props.js?v=3"></script>
+<script src="elements.js?v=2"></script>
+<script src="motion.js?v=8"></script>
+<script src="board.js?v=8"></script>
 <script src="features.js?v=2"></script>
 <script>
 (() => {
@@ -143,27 +67,34 @@ const DIR = E.DIRS;
 // floor palette: index.html?bg=<id> (see bg_palettes.js / bg_variants.html)
 const bgParam = new URLSearchParams(location.search).get('bg');
 const BG = bgParam ? JellyBG.byId(bgParam) : null;
-const Themes = window.JellyThemes, Motion = window.JellyMotion, Board = window.JellyBoard, Features = window.JellyFeatures;
+const Themes = window.JellyThemes, Motion = window.JellyMotion, Board = window.JellyBoard, Features = window.JellyFeatures, Props = window.JellyProps;
 let actor = Motion.SKINS.purple, actorReady = false, impacts = [], morph = null, boardGeometry = null, motionTime = 0;
 let theme = Themes.byId('garden'), themeAssetsReady = false, loading = false, startToken = 0;
 let boardCache = null, winTimer = 0;
 function applyTheme() {
   const app = $('app'); app.dataset.theme = theme.id;
   for (const [key, value] of Object.entries({accent:theme.accent, jelly:actor.colors[1], 'stage-a':theme.backdrop[0], 'stage-b':theme.backdrop[1]})) app.style.setProperty('--' + key, value);
-  $('themeBadge').textContent = theme.mark + ' ' + theme.name;
+  $('elementBadge').textContent=actor.element.mark+' '+actor.element.name;
+  const danger=Motion.Elements.HAZARDS[theme.hazardStyle||theme.hazardType];
+  $('themeBadge').textContent = theme.mark+' '+danger.name;
+  $('themeBadge').setAttribute('title',theme.name);
+  $('themeBadge').setAttribute('aria-label',theme.name+' · '+danger.name);
   $('resultTheme').textContent = theme.name;
 }
 
 // ---------- progress (per-browser convenience only) ----------
-const SAVE = 'jellysquish.v1';
+const SAVE = 'jellyescape.v1';
+const LEGACY_SAVE = 'jellysquish.v1';
 let prog = { stars: {} };
-try { prog = JSON.parse(localStorage.getItem(SAVE)) || prog; } catch (e) {}
+try { prog = JSON.parse(localStorage.getItem(SAVE) || localStorage.getItem(LEGACY_SAVE)) || prog; } catch (e) {}
 const saveProg = () => { try { localStorage.setItem(SAVE, JSON.stringify(prog)); } catch (e) {} };
 
 // ---------- audio + haptics ----------
-let ac = null;
+let ac = null, soundOn = true;
+try { soundOn = localStorage.getItem('jellyescape.sound') !== 'off'; } catch(e) {}
 function audio() { if (!ac) { try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} } if (ac && ac.state === 'suspended') ac.resume(); return ac; }
 function tone(f0, f1, dur, type = 'sine', vol = .25, delay = 0) {
+  if (!soundOn) return;
   const a = audio(); if (!a) return;
   const t = a.currentTime + delay, o = a.createOscillator(), g = a.createGain();
   o.type = type; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(f1, t + dur);
@@ -171,6 +102,7 @@ function tone(f0, f1, dur, type = 'sine', vol = .25, delay = 0) {
   o.connect(g).connect(a.destination); o.start(t); o.stop(t + dur + .02);
 }
 function noise(dur, vol = .2, freq = 900) {
+  if (!soundOn) return;
   const a = audio(); if (!a) return;
   const b = a.createBuffer(1, a.sampleRate * dur, a.sampleRate), d = b.getChannelData(0);
   for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length) ** 2;
@@ -196,18 +128,20 @@ function renderMap() {
   const box = $('levels'); box.innerHTML = '';
   const completed = LEVELS.filter((_,i) => prog.stars[i] > 0).length;
   const total = LEVELS.reduce((n,_,i) => n + (prog.stars[i] || 0), 0);
-  $('mapSub').textContent = `Küçük jöli. Büyük kaçış.\n${Object.keys(Themes.THEMES).length} dünya · ${LEVELS.length} bölüm.`;
-  $('totalStars').textContent = `★ ${total} / ${LEVELS.length * 3}`;
-  $('mapProgress').textContent = `${completed} / ${LEVELS.length} tamamlandı`;
+  $('mapSub').textContent = `Küçük jöli. Büyük kaçış.\n10 görünüm · ${LEVELS.length} bölüm.`;
+  $('totalStars').textContent = total;
+  $('mapProgress').textContent = `${completed} / ${LEVELS.length} bölüm`;
   $('progressFill').style.width = completed / LEVELS.length * 100 + '%';
   const firstOpen = LEVELS.findIndex((_, i) => !prog.stars[i]);
   const next = firstOpen < 0 ? 0 : firstOpen;
-  $('bContinue').innerHTML = `<span><strong>${completed === LEVELS.length ? 'Yeniden keşfet' : completed ? 'Maceraya devam' : 'Maceraya başla'}</strong><small>Seviye ${next + 1} · ${LEVELS[next].name}</small></span><span class="arrow" aria-hidden="true">→</span>`;
+  $('bContinue').innerHTML = `<strong><span aria-hidden="true">▶</span> PLAY</strong><small>BÖLÜM ${next + 1}</small>`;
+  $('bContinue').setAttribute('aria-label',`Play · Bölüm ${next + 1}`);
   $('bContinue').onclick = () => { audio(); start(next); };
   LEVELS.forEach((lv, i) => {
     const st = prog.stars[i] || 0, b = document.createElement('button'), skin = Themes.forLevel(lv), character = Motion.forLevel(lv,skin);
     b.className = 'lvl' + (i === firstOpen ? ' next' : '') + (lv.hard ? ' hard' : '');
-    b.style.setProperty('--tile-accent', skin.accent); b.style.setProperty('--tile-atlas', `url('${skin.atlas}')`);
+    b.style.setProperty('--tile-accent', skin.accent); b.style.setProperty('--tile-atlas', `url('${skin.wallArt || skin.atlas}')`);
+    b.style.setProperty('--actor-size',character.standalone?'contain':'300% 200%');
     b.style.setProperty('--actor-atlas', `url('${character.atlas}')`); b.style.setProperty('--actor-pos', `${character.portrait[0]*50}% ${character.portrait[1]*100}%`);
     b.setAttribute('aria-label', `Seviye ${i + 1}: ${lv.name}, ${skin.name}, ${st} yıldız${lv.hard ? ', zor' : ''}${lv.feature === 'stone' ? ', hareketli taş' : lv.feature === 'switch' ? ', yıldızlı düğme' : ''}`);
     b.innerHTML = `<div class="level-art">${lv.feature ? '<span class="feature-mark" aria-hidden="true">★</span>' : ''}<div class="n">${String(i + 1).padStart(2,'0')}</div></div><div class="nm">${lv.name}</div><div class="world">${skin.name}</div><div class="st" aria-hidden="true">${'<b>★</b>'.repeat(st)}${'★'.repeat(3 - st)}</div>`;
@@ -215,6 +149,16 @@ function renderMap() {
   });
 }
 function show(id) { document.querySelectorAll('.screen').forEach(s => s.classList.toggle('on', s.id === id)); }
+
+$('bLevels').onclick=()=>{renderMap();show('levelSelect');};
+$('bLevelsBack').onclick=()=>show('map');
+const closeSettings=()=>{$('settings').hidden=true;$('map').inert=false;$('bSettings').focus?.();};
+$('bSettings').onclick=()=>{$('settings').hidden=false;$('map').inert=true;$('bSettingsClose').focus?.();};
+$('bSettingsClose').onclick=closeSettings;
+$('settings').addEventListener('click',e=>{if(e.target===$('settings'))closeSettings();});
+function soundUI(){$('soundState').textContent=soundOn?'AÇIK':'KAPALI';$('bSound').setAttribute('aria-pressed',String(soundOn));}
+$('bSound').onclick=()=>{soundOn=!soundOn;try{localStorage.setItem('jellyescape.sound',soundOn?'on':'off');}catch(e){}soundUI();};soundUI();
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('settings').hidden)closeSettings();});
 
 // ---------- game state ----------
 let idx = 0, L = null, info = null, state = null, history = [], moves = 0, hints = 0;
@@ -233,7 +177,7 @@ async function start(i) {
   const token = ++startToken, selected = Themes.forLevel(LEVELS[i]), selectedActor = Motion.forLevel(LEVELS[i],selected);
   loading = true; $('loading').classList.add('on');
   clearTimeout(winTimer);
-  const [ready, characterReady] = await Promise.all([Themes.load(selected), Themes.load(selectedActor), Themes.load(Motion.FX), Themes.load(Features.PLATE)]);
+  const [ready, characterReady] = await Promise.all([Themes.load(selected), Themes.load(selectedActor), Themes.load(Motion.FX), Themes.load(Features.PLATE), ...Object.values(Props.ART).map(atlas=>Themes.load({atlas}))]);
   if (token !== startToken) return;
   theme = selected; actor = selectedActor; actorReady = characterReady; themeAssetsReady = ready; boardCache = null; applyTheme();
   loading = false; $('loading').classList.remove('on');
@@ -246,7 +190,7 @@ async function start(i) {
   const sol = E.solve(L, s0);
   const gsol = L.hasGem ? E.solve(L, s0, true) : null;
   info = { par: sol.path.length, gemPar: gsol ? gsol.path.length : null };
-  $('lvlNo').textContent = `Seviye ${i + 1}${LEVELS[i].hard ? ' · ZOR' : ''}`;
+  $('lvlNo').textContent = `BÖLÜM ${i + 1}`;
   $('lvlName').textContent = LEVELS[i].name;
   $('gemIco').style.display = L.hasGem ? '' : 'none';
   hints = 0; reset();
@@ -254,12 +198,10 @@ async function start(i) {
   tutorial = i === 0;
 }
 function showLevelTip() {
-  let tip = LEVELS[idx].tip || '';
-  if (theme.id === 'garden') tip = tip.replace(/Diken/g, 'Kristal').replace(/diken/g, 'kristal');
-  if (theme.id === 'ember') tip = tip.replace(/Dikenli/g, 'Lavlı').replace(/dikenli/g, 'lavlı').replace(/dikensiz/g, 'güvenli').replace(/Diken/g, 'Lav').replace(/diken/g, 'lav');
-  if (theme.id === 'toxic') tip = tip.replace(/Dikenli/g,'Zehirli').replace(/dikenli/g,'zehirli').replace(/dikensiz/g,'güvenli').replace(/Diken/g,'Zehir').replace(/diken/g,'zehir');
-  $('tip').textContent = tip || ''; $('tip').style.opacity = tip ? 1 : 0;
+  const tip=idx===0&&!prog.stars[0]?'Kaydır ve kaç!':'';
+  $('tip').textContent=tip; $('tip').style.opacity=tip?1:0;
   clearTimeout(tipTimer);
+  if(tip)tipTimer=setTimeout(()=>$('tip').style.opacity=0,2500);
 }
 function reset({ keepWallMarks = false } = {}) {
   clearTimeout(winTimer);
@@ -288,7 +230,8 @@ function aimJelly(st) { jelly.tx = st.x; jelly.ty = st.y; jelly.tw = st.w; jelly
 function hud() {
   const c = $('counter');
   c.firstChild.nodeValue = moves;
-  c.querySelector('small').textContent = 'par ' + info.par;
+  c.querySelector('small').textContent = '/ ' + info.par;
+  c.setAttribute('aria-label',`${moves} hamle, hedef ${info.par}`);
   c.classList.toggle('over', moves > info.par);
   const st = anim ? anim.from : state;
   const ico = $('shapeIco'); ico.style.width = 3 * st.w + 'px'; ico.style.height = 3 * st.h + 'px'; ico.style.borderRadius = '4px';
@@ -468,7 +411,8 @@ function finish() {
   if (r.result === 'dead') {
     syncView();
     jelly.face = 'dead'; playFailureSound(); buzz([25,35,45]);
-    wreck = Motion.death(state,dx,dy,actor,theme.hazardType);
+    wreck = Motion.death(state,dx,dy,actor,theme.hazardStyle||theme.hazardType);
+    toast(wreck.reaction.label);
     morph = null; impacts = []; over = true; busy = true;
 
     return;
@@ -516,7 +460,11 @@ function playMaterialSound(shape) {
   else ({square:SFX.round,flat:SFX.flat,flattest:SFX.flat,thin:SFX.thin,thinnest:SFX.thin})[shape]();
 }
 function playFailureSound() {
-  if(theme.hazardType==='fire'){noise(.55,.22,actor.material==='water'?2300:1000);tone(320,80,.4,'sine',.1);}
+  const hazard=theme.hazardStyle||theme.hazardType;
+  if(hazard==='electric'){noise(.25,.15,3200);tone(880,55,.5,'sawtooth',.08);}
+  else if(hazard==='void'){tone(200,35,.8,'sine',.15);}
+  else if(hazard==='ice'){[1500,1200,900].forEach((f,i)=>tone(f,f*.8,.2,'triangle',.08,i*.11));}
+  else if(theme.hazardType==='fire'){noise(.55,.22,actor.material==='water'?2300:1000);tone(320,80,.4,'sine',.1);}
   else if(theme.hazardType==='poison'){[280,210,150].forEach((f,i)=>tone(f,f*.55,.19,'sine',.16,i*.13));}
   else if(theme.hazardType==='crystal'){noise(.12,.2,3600);tone(1300,320,.35,'triangle',.13);}
   else if(actor.material==='water'){noise(.2,.16,1700);tone(600,80,.24,'sine',.17);}
@@ -563,7 +511,7 @@ function resize() {
   DPR = Math.min(3, window.devicePixelRatio || 1);
   cv.width = r.width * DPR; cv.height = r.height * DPR;
   if (!L) return;
-  const pad = 16, tipH = 54;
+  const pad = 16, tipH = 12;
   boardCache = null;
   VIEW_H = r.height - tipH; VIEW_W = r.width;
   // camera: the full map width when it is up to 26 tiles wide, otherwise a 26-tile window;
@@ -603,13 +551,11 @@ function draw(now) {
   if (!boardCache) cacheBoard();
   ctx.drawImage(boardCache, 0, 0, L.W * T, L.H * T);
   // Only interactive objects are redrawn; painted geometry is cached at device resolution.
-  for (let y = 0; y < L.H; y++) for (let x = 0; x < L.W; x++) {
-    const c = L.cells[y][x]; if ('wE'.includes(c)) drawCell(c, x, y, now);
-  }
   Board.animate(ctx,boardGeometry,T,theme,motionTime,{x:camX-OX,y:camY-OY,w:VIEW_W,h:VIEW_H});
   Features.draw(ctx,L,view,T,theme,motionTime,rockFlights,gateOpenings,Themes);
+  Props.draw(ctx,L,view,T,motionTime,Themes);
   // key, gem: one big icon per patch (patches are usually 2×2)
-  for (const b of L.itemBlobs) { ctx.save(); ctx.translate(b.x * T, b.y * T); ctx.scale(b.w, b.h); drawCell(b.c, 0, 0, now); ctx.restore(); }
+  for (const b of L.itemBlobs.filter(b=>b.c==='g')) { ctx.save(); ctx.translate(b.x * T, b.y * T); ctx.scale(b.w, b.h); drawCell(b.c, 0, 0, now); ctx.restore(); }
   // syrup splats: a blob stretched along the wall face that was hit
   for (const sp of splats) {
     ctx.fillStyle = `rgba(${actor.rgb},.65)`; // magenta jelly smear on the pink wall
@@ -829,7 +775,7 @@ requestAnimationFrame(frame);
 const h = parseInt(location.hash.slice(1), 10);
 if (h >= 1 && h <= LEVELS.length) start(h - 1);
 // read-only hooks for automated playtests
-window.JellyDebug = { busy: () => busy || !!anim || !!rockFlights.length, state: () => state, view: () => cloneS(view), flights: () => rockFlights.length, jelly: () => ({ ...jelly }), render: renderJellyRect, trail: () => trail.length, wallMarks: () => splats.map(mark => ({...mark})), moves: () => moves, level: () => idx, skin: () => actor.id, material: () => actor.material, morph: () => morph && ({age:morph.age,duration:morph.duration}), failure: () => wreck && ({kind:wreck.kind,age:wreck.age,duration:wreck.duration,skin:wreck.actor.id}), theme: () => theme.id, assets: () => themeAssetsReady && actorReady, start,
+window.JellyDebug = { busy: () => busy || !!anim || !!rockFlights.length, state: () => state, view: () => cloneS(view), flights: () => rockFlights.length, jelly: () => ({ ...jelly }), render: renderJellyRect, trail: () => trail.length, wallMarks: () => splats.map(mark => ({...mark})), moves: () => moves, level: () => idx, skin: () => actor.id, material: () => actor.material, morph: () => morph && ({age:morph.age,duration:morph.duration}), failure: () => wreck && ({kind:wreck.kind,hazard:wreck.hazard,reaction:wreck.reaction.id,age:wreck.age,duration:wreck.duration,skin:wreck.actor.id}), theme: () => theme.id, assets: () => themeAssetsReady && actorReady, start,
   tick: (sec = 1) => { for (let t = 0; t < sec; t += 1 / 60) step(1 / 60); } };
 })();
 </script>

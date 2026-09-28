@@ -47,6 +47,21 @@
       }
       loops.push(loop);
     }
+    const corners=[];
+    for(const loop of loops){
+      const area=loop.reduce((sum,e)=>sum+e.ax*e.by-e.bx*e.ay,0);
+      for(let i=0;i<loop.length;i++){
+        const e=loop[i],prev=loop[(i+loop.length-1)%loop.length];
+        e.wallRole=area<0?'inner':'outer';
+        const turn=(prev.bx-prev.ax)*(e.by-e.ay)-(prev.by-prev.ay)*(e.bx-e.ax);
+        if(turn)corners.push({x:e.ax,y:e.ay,type:turn>0?'inner-corner':'outer-corner',before:prev,after:e,hazard:prev.hazard||e.hazard});
+      }
+    }
+    const parts=[...facesByCell.values()].map(faces=>{
+      const first=faces[0],opposite=faces.length===2&&faces[0].nx*faces[1].nx+faces[0].ny*faces[1].ny===-1;
+      const type=faces.length===4?'pillar':faces.length===3?'end-cap':faces.length===2?(opposite?'inner-straight':'outer-corner'):first.wallRole+'-straight';
+      return {x:first.wallX,y:first.wallY,type,hazard:first.hazard,faces};
+    });
     const runs=[],wallRuns=[];
     for(const loop of loops){
       let materialRun=null,wallRun=null;
@@ -62,7 +77,7 @@
       }
     }
     const thinCells=[...facesByCell.values()].filter(faces=>faces.some(e=>e.sharedBack)).map(faces=>({x:faces[0].wallX,y:faces[0].wallY}));
-    return {L,edges,loops,runs,wallRuns,thinCells};
+    return {L,edges,loops,runs,wallRuns,thinCells,corners,parts};
   }
   function faceRegion(e,faces){
     const x=e.wallX,y=e.wallY;
@@ -125,7 +140,7 @@
     stroke(c,'#4e3a5312',Math.max(.5,T*.025));c.restore();
   }
   function draw(c,board,T,theme,Themes,BG) {
-    const {L,loops,runs,wallRuns}=board,p=PALETTES[theme.hazardType];
+    const {L,loops,runs,wallRuns}=board,p={...PALETTES[theme.hazardType],hot:theme.accent};
     drawFloor(c,board,T,theme,BG);
     c.save();path(c,loops,T);c.lineJoin='round';
     stroke(c,'#17122116',T*.38);stroke(c,'#1712212b',T*.15);c.restore();
@@ -139,7 +154,11 @@
     // Facing bevels must not leave a dark "second wall" down a thin pillar's centre.
     c.fillStyle=theme.wall[0];
     for(const loop of loops)if(loop.reduce((sum,e)=>sum+e.ax*e.by-e.bx*e.ay,0)<0){path(c,[loop],T);c.fill();}
-    for(const cell of board.thinCells)c.fillRect(cell.x*T,cell.y*T,T,T);
+    for(const cell of board.thinCells){
+      c.fillRect(cell.x*T,cell.y*T,T,T);
+      const art=L.cells[cell.y][cell.x]==='*'?theme.hazardArt:theme.wallArt;
+      Themes.texture?.(c,art,cell.x*T,cell.y*T,T,T,T*6.5);
+    }
     // Carry the tint around corners too, without a hard rectangular end cap.
     c.lineCap='round';
     for(const e of board.edges){
@@ -161,27 +180,70 @@
           c.fillStyle=g;c.fillRect((i+j/steps)*T,-T*.84,T/steps+.12,T*.84);
         }
       }
-      c.save();c.globalAlpha=theme.hazardType==='poison'?.1:.22;c.beginPath();c.rect(0,-T*.69,length,T*.52);c.clip();
-      for(let x=0;x<length;x+=T*2.8)Themes.sprite(c,theme,[535,20,460,115],x,-T*.69,T*2.8,T*.52);
-      c.restore();
-      // Masonry seams belong to the wall, independently of the floor checkerboard.
-      const seed=e.ax*7+e.ay*17+e.nx*5;
-      for(let u=1.6+hash(seed);u<e.length;u+=1.9+hash(u+seed)*1.4){
-        const x=u*T,t=materialWeight(e.segments[Math.floor(u)],u%1);
-        c.beginPath();c.moveTo(x-T*.07,-T*.78);c.lineTo(x+T*.04,-T*.48);c.lineTo(x,-T*.12);stroke(c,mix(theme.wall[1],p.base,t)+'b0',T*.055);
-        c.beginPath();c.moveTo(x+T*.045,-T*.68);c.lineTo(x+T*.085,-T*.38);stroke(c,'#ffffff28',T*.025);
-      }
       c.beginPath();c.moveTo(0,-T*.035);c.lineTo(length,-T*.035);stroke(c,theme.wall[1],T*.07);
       c.restore();
     }
+    drawWallParts(c,board,T,theme,Themes,p);
     for(const e of runs){
       if(!e.hazard)continue;
       c.save();clipFaces(c,e.segments,T);runSpace(c,e,T);
-      drawMaterial(c,e.length,T,theme.hazardType,p,e.ax*7+e.ay*17+e.nx*5,e);
+      if(!theme.hazardArt)drawMaterial(c,e.length,T,theme.hazardType,p,e.ax*7+e.ay*17+e.nx*5,e);
+      // Danger is readable at the exact contact edge, even at the smallest zoom.
+      c.fillStyle=feather(c,p.base,e.length,T,e,.6);c.fillRect(0,-T*.14,e.length*T,T*.1);
       c.beginPath();c.moveTo(0,-T*.035);c.lineTo(e.length*T,-T*.035);stroke(c,feather(c,p.hot,e.length,T,e,.35),T*.07);
       c.restore();
     }
     c.restore();
+  }
+  function polygon(c,points){c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.closePath();}
+  function faceStrip(c,e,T,start,end,near=.12,far=.76){
+    const dx=e.bx-e.ax,dy=e.by-e.ay;
+    polygon(c,[[e.ax+dx*start+e.nx*near,e.ay+dy*start+e.ny*near],[e.ax+dx*end+e.nx*near,e.ay+dy*end+e.ny*near],[e.ax+dx*end+e.nx*far,e.ay+dy*end+e.ny*far],[e.ax+dx*start+e.nx*far,e.ay+dy*start+e.ny*far]].map(([x,y])=>[x*T,y*T]));c.clip();
+  }
+  function drawWallParts(c,board,T,theme,Themes,p){
+    // Straight outside walls, two-sided inside walls, caps and pillars each own
+    // a single top panel. Textures always share world coordinates on both faces.
+    for(const part of board.parts){
+      const {x,y,type}=part;
+      if(type==='outer-straight'||type==='inner-straight'&&part.faces.length===1)continue;
+      c.save();c.beginPath();c.roundRect((x+.1)*T,(y+.1)*T,T*.8,T*.8,type==='end-cap'?T*.16:T*.07);c.clip();
+      c.fillStyle=part.hazard?p.top:theme.wall[0];c.fill();
+      Themes.texture?.(c,part.hazard?theme.hazardArt:theme.wallArt,x*T,y*T,T,T,T*6.5);
+      c.restore();
+    }
+    for(const e of board.edges){
+      c.save();clipFaces(c,[e],T);faceStrip(c,e,T,0,1);
+      c.globalAlpha=.94;Themes.texture?.(c,theme.wallArt,e.wallX*T,e.wallY*T,T,T,T*6.5);
+      if(e.blend.some(Boolean)){
+        const steps=e.blend.every(Boolean)?1:12;
+        for(let i=0;i<steps;i++){
+          c.save();faceStrip(c,e,T,i/steps,(i+1)/steps);
+          c.globalAlpha=materialWeight(e,(i+.5)/steps)*.97;
+          Themes.texture?.(c,theme.hazardArt,e.wallX*T,e.wallY*T,T,T,T*6.5);c.restore();
+        }
+      }c.restore();
+    }
+    for(const corner of board.corners){
+      const {before:a,after:b,type}=corner,x=corner.x*T,y=corner.y*T;
+      c.save();
+      if(type==='inner-corner'){
+        // The recessed socket occupies the diagonal masonry quadrant, never floor.
+        const nx=a.nx+b.nx,ny=a.ny+b.ny,side=.72*T;
+        const rx=x+(nx<0?-side:0),ry=y+(ny<0?-side:0);
+        c.beginPath();c.arc(x,y,T*.765,0,Math.PI*2);c.clip();
+        c.beginPath();c.roundRect(rx,ry,side,side,T*.08);c.clip();
+        const weight=(Number(a.hazard)+Number(b.hazard))/2;
+        c.fillStyle=mix(theme.wall[0],p.top,weight);c.fill();
+        Themes.texture?.(c,theme.wallArt,rx,ry,side,side,T*6.5);
+        c.globalAlpha=weight;Themes.texture?.(c,theme.hazardArt,rx,ry,side,side,T*6.5);c.globalAlpha=1;
+        c.beginPath();c.moveTo(x+a.nx*T*.68,y+a.ny*T*.68);c.lineTo(x+nx*T*.68,y+ny*T*.68);c.lineTo(x+b.nx*T*.68,y+b.ny*T*.68);stroke(c,'#fff5e536',T*.05);
+      }else{
+        // Convex nose: a mitred bevel joins the two exposed faces.
+        const nx=a.nx+b.nx,ny=a.ny+b.ny;
+        c.beginPath();c.moveTo(x+a.nx*T*.15,y+a.ny*T*.15);c.lineTo(x+nx*T*.17,y+ny*T*.17);c.lineTo(x+b.nx*T*.15,y+b.ny*T*.15);
+        stroke(c,corner.hazard?p.hot+'88':'#fff8e966',T*.045);
+      }c.restore();
+    }
   }
   function feather(c,color,length,T,e,endAlpha=0){
     const g=c.createLinearGradient(0,0,length*T,0),f=Math.min(.4,.65/length);
@@ -228,13 +290,20 @@
     }
   }
   function animate(c,board,T,theme,time,view) {
-    const kind=theme.hazardType,p=PALETTES[kind];c.save();
+    const kind=theme.hazardType,p={...PALETTES[kind],hot:theme.accent};c.save();
     for(const e of board.edges){
       if(!e.hazard)continue;
       const x=(e.ax+e.bx)*T*.5,y=(e.ay+e.by)*T*.5;
       if(view&&(x<view.x-T||x>view.x+view.w+T||y<view.y-T||y>view.y+view.h+T))continue;
       c.save();clipFaces(c,[e],T);runSpace(c,e,T);const seed=e.ax*17.3+e.ay*8.9,phase=(time*.65+hash(seed))%1;
-      if(kind==='fire'){
+      if(theme.hazardStyle==='electric'){
+        c.globalAlpha=.4+.5*Math.max(0,Math.sin(time*13+seed));
+        c.beginPath();c.moveTo(T*.2,-T*.65);c.lineTo(T*.55,-T*.44);c.lineTo(T*.38,-T*.3);c.lineTo(T*.75,-T*.14);
+        c.strokeStyle='#ffed9b';c.lineWidth=T*.045;c.stroke();
+      }else if(theme.hazardStyle==='saws'){
+        c.translate(T*.5,-T*.4);c.rotate(time*2+seed);c.globalAlpha=.65;
+        c.strokeStyle='#f3eedc';c.lineWidth=T*.025;c.beginPath();c.moveTo(-T*.18,0);c.lineTo(T*.18,0);c.moveTo(0,-T*.18);c.lineTo(0,T*.18);c.stroke();
+      }else if(kind==='fire'){
         c.globalAlpha=.58+.12*Math.sin(time*6+seed);
         const x=T*(.2+hash(seed)*.6),height=T*(.17+.15*Math.sin(time*9+seed));
         c.beginPath();c.moveTo(x-T*.1,-T*.12);c.quadraticCurveTo(x-T*.11,-T*.34,x+Math.sin(time*5+seed)*T*.09,-T*.2-height);c.quadraticCurveTo(x+T*.14,-T*.25,x+T*.12,-T*.08);c.fillStyle=p.hot;c.fill();

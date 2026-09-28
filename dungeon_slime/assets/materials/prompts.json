@@ -1,0 +1,147 @@
+{
+  "mode": "builtin imagegen",
+  "assets": [
+    {
+      "id": "wall-limestone",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: ivory limestone masonry, warm cream pale stone, broad softly worn blocks, restrained hairline cracks, peaceful safe surface",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-7da09066-80bd-4fbb-9418-6541c85de04c.png",
+      "asset": "assets/materials/wall-limestone.webp"
+    },
+    {
+      "id": "hazard-obsidian",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: dangerous black obsidian with large sharp ivory metal spikes and jagged silver cutting facets, ominous charcoal base, unmistakably sharp",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-f318185e-57b4-4de7-8065-0699d9f27966.png",
+      "asset": "assets/materials/hazard-obsidian.webp"
+    },
+    {
+      "id": "wall-rose",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: rose quartz masonry, pale blush large stone blocks, cream highlights and soft rose veins, calm safe stone",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-90f3277d-a4ca-40ef-986f-3cc258f66edb.png",
+      "asset": "assets/materials/wall-rose.webp",
+      "revisionSource": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-55bf81ac-37fe-4fdc-ba42-30c911ca4834.png",
+      "revisionPrompt": "Edit this production game texture. Extend the exact same material to completely fill the square canvas edge to edge, including every corner. Remove all transparency, circular cutout, vignette, fade and border. Make a uniform full-bleed seamless square repeating texture with the same blocks, same colors and hand-painted style. Every pixel must be opaque stone or metal. No border, no frame, no outside background."
+    },
+    {
+      "id": "hazard-amethyst",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: dark purple amethyst cavern surface, large sharp violet crystal splinters, black violet recesses and luminous pink tips",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-147d6583-d701-4a2e-91d6-fe1df1a00ddb.png",
+      "asset": "assets/materials/hazard-amethyst.webp"
+    },
+    {
+      "id": "wall-sandstone",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: warm pale honey sandstone masonry, broad sand-coloured blocks, gently weathered chisel marks",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-95a7c1e4-b5b1-41fe-83e8-fb384faa7b5e.png",
+      "asset": "assets/materials/wall-sandstone.webp"
+    },
+    {
+      "id": "hazard-magma",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: black volcanic basalt split by bright orange molten lava rivers, chunky charcoal rock islands, vivid yellow hot cracks",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-8f797b21-9706-4906-99d1-2fbb000f5579.png",
+      "asset": "assets/materials/hazard-magma.webp"
+    },
+    {
+      "id": "wall-frost",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: pale icy blue marble stonework, broad white blue blocks with soft silver veins, smooth and safe not sharp",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-63e8374b-d63e-4b6a-abbb-9129e549d997.png",
+      "asset": "assets/materials/wall-frost.webp"
+    },
+    {
+      "id": "hazard-ice",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: deep navy ice bed with large dangerous triangular frosted cyan ice blades and white sharp tips",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-0b21957b-467f-4597-abc7-06b8d511a35e.png",
+      "asset": "assets/materials/hazard-ice.webp"
+    },
+    {
+      "id": "wall-forest",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: warm light grey ancient stone masonry with restrained moss in narrow seams, mostly neutral grey safe stone, no glowing green",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-85f611cf-30c8-4551-8262-f359fd7b2898.png",
+      "asset": "assets/materials/wall-forest.webp"
+    },
+    {
+      "id": "hazard-venom",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: black aubergine corroded stone bed flooded with thick luminous yellow green poisonous ooze, large menacing rounded bubbles and irregular acid channels",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-5fd4bad3-69f0-4901-9ad6-82aa2aab8c0a.png",
+      "asset": "assets/materials/hazard-venom.webp"
+    },
+    {
+      "id": "wall-copper",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: warm light copper mechanical panels, chunky broad plates with brass rivets, cream highlights, safe solid metal",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-faf4e1e7-6956-4b86-b78a-b2c597208ffa.png",
+      "asset": "assets/materials/wall-copper.webp",
+      "revisionSource": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-0d940102-d96d-4495-9131-b1fb35181cdf.png",
+      "revisionPrompt": "Edit this production game texture. Extend the exact same material to completely fill the square canvas edge to edge, including every corner. Remove all transparency, circular cutout, vignette, fade and border. Make a uniform full-bleed seamless square repeating texture with the same blocks, same colors and hand-painted style. Every pixel must be opaque stone or metal. No border, no frame, no outside background."
+    },
+    {
+      "id": "hazard-electric",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: dark indigo machinery surface with brilliant yellow electrical arcs, blue glowing coils and dangerous zigzag lightning veins",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-26e0ecbb-2890-424c-b783-f6526f32831e.png",
+      "asset": "assets/materials/hazard-electric.webp"
+    },
+    {
+      "id": "wall-moon",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: pale lavender lunar stone masonry, wide moonstone blocks with fine silver fissures, smooth safe material",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-a5bae12d-c5fc-41dd-bdb9-6fa916a40eb7.png",
+      "asset": "assets/materials/wall-moon.webp"
+    },
+    {
+      "id": "hazard-void",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: deep black violet fractured stone with sharp obsidian shards and intensely glowing magenta void fissures",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-a84cfb53-5afe-46dd-817b-8d7ee88525d7.png",
+      "asset": "assets/materials/hazard-void.webp"
+    },
+    {
+      "id": "wall-candy",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: warm vanilla biscuit masonry, broad cream candy blocks with subtle sugar texture and pale peach seams, no sharp shapes",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-ef831924-124f-4178-969f-7207b9d7d43a.png",
+      "asset": "assets/materials/wall-candy.webp"
+    },
+    {
+      "id": "hazard-thorns",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: dark burgundy thorn brambles, chunky black licorice vines with very sharp red ivory thorns, unmistakably dangerous",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-6ce1db75-1691-4021-be69-92c18f689954.png",
+      "asset": "assets/materials/hazard-thorns.webp"
+    },
+    {
+      "id": "wall-coral",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: pale ivory and blush coral ceramic masonry, wide polished tiles, delicate pink mineral speckles, safe soft surfaces",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-d7f4a094-cde2-4378-a6cd-79b257eff055.png",
+      "asset": "assets/materials/wall-coral.webp"
+    },
+    {
+      "id": "hazard-brine",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: dark teal corroded rock covered in vivid turquoise caustic liquid with large bubbles and acid fissures, bright cyan on nearly black",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-2f4a1ccb-5d64-4b95-852b-809c4dd2561b.png",
+      "asset": "assets/materials/hazard-brine.webp"
+    },
+    {
+      "id": "wall-clockwork",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: pale warm brass and silver clockwork plates, broad safe metal slabs, subtle inset screws and brushed highlights",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-92fd30ac-8f35-4078-97d7-fac2147d8013.png",
+      "asset": "assets/materials/wall-clockwork.webp"
+    },
+    {
+      "id": "hazard-saws",
+      "prompt": "Use case: stylized-concept. Production material texture for a polished top-down cute jelly dungeon puzzle game. Square image, entire canvas filled by the material, orthographic top view, seamless repeatable texture, no border, no frame, no text, no symbols, no characters, no perspective, no ground outside the material. Rich hand-painted mobile game illustration, chunky readable forms, soft bevel highlights, restrained detail readable at small size. Uniform lighting from upper left. Material: dark gunmetal mechanical surface with large interlocking dangerous silver circular saw blades, sharp visible teeth and small orange warning accents",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-8ad10516-c41f-4b07-9e7d-78c1f16d6337.png",
+      "asset": "assets/materials/hazard-saws.webp"
+    },
+    {
+      "id": "item-key",
+      "prompt": "Use case: stylized-concept. Single production game sprite: ornate chunky golden dungeon key with a turquoise jewel in a large round bow, thick shaft and two very readable teeth, diagonal top-down view, soft hand-painted mobile puzzle game style, subtle bevels and warm golden highlights. Isolated centered with generous empty margin on genuine transparent background. No text, no frame, no floor, no extra objects. Readable at 48 pixels.",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-54e68f67-e9a6-4d4b-a72f-d46342a99861.png",
+      "asset": "assets/props/item-key.webp"
+    },
+    {
+      "id": "item-exit",
+      "prompt": "Use case: stylized-concept. Single production game sprite: top-down magical emerald exit threshold inset into a chunky ivory stone rectangular frame, glowing swirling mint green energy in the central rectangle, four jewel-like green corners, polished hand-painted cute dungeon mobile game style, clean symmetrical rectangle suitable for nine-slice scaling, square composition. Isolated on genuinely transparent background with small even margin. No text, no characters, no stairs, no upright arch, no perspective, no surrounding floor. The centre is a luminous walkable magical surface.",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-eae2add2-dafc-4fea-963d-14a6257ba951.png",
+      "asset": "assets/props/item-exit.webp"
+    },
+    {
+      "id": "item-wafer",
+      "prompt": "Use case: stylized-concept. Single production game sprite: one square thick golden vanilla wafer block, top-down orthographic view, appetizing caramel waffle grid embossed on top, visible cream wafer layers only as a narrow bevel rim, chunky soft corners, polished hand-painted cute mobile puzzle game art. Isolated centered on genuine transparent background with small even margin. No text, no crumbs outside, no other objects, no perspective, no shadows outside the sprite. A square tile suitable for nine-slice scaling.",
+      "source": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-0c92635c-300e-4f4e-a3e3-ef87bbc8436f.png",
+      "asset": "assets/props/item-wafer.webp"
+    }
+  ]
+}
