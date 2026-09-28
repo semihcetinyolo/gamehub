@@ -63,3 +63,6 @@ Hidden Pairs/levels/
 
 # Per-machine Claude settings
 **/.claude/settings.local.json
+
+# Pixhaku — original generated level PNGs (kept on disk; tools/build_pack.js embeds the JPG copies)
+pixhaku/assets/levels/*.png
