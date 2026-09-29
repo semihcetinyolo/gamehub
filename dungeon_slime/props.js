@@ -1,29 +1,87 @@
 (function(root){
   const ART={key:'assets/props/item-key.webp',exit:'assets/props/item-exit.webp',wafer:'assets/props/item-wafer.webp'};
   const bounds=cells=>({x:Math.min(...cells.map(c=>c.x)),y:Math.min(...cells.map(c=>c.y)),w:Math.max(...cells.map(c=>c.x))-Math.min(...cells.map(c=>c.x))+1,h:Math.max(...cells.map(c=>c.y))-Math.min(...cells.map(c=>c.y))+1});
+  function exitDirection(r,L){
+    // Prefer the aperture's short axis when equally close to two boundaries.
+    const sides=r.h>r.w?['right','left','up','down']:['up','down','right','left'];
+    const distance={up:r.y,down:L.H-r.y-r.h,left:r.x,right:L.W-r.x-r.w};
+    return sides.reduce((best,side)=>distance[side]<distance[best]?side:best,sides[0]);
+  }
   function portalLayout(r,L,T){
-    const width=Math.max(34,Math.min(54,T*1.85)),height=width*1.35;
-    return {width,height,x:Math.max(3,Math.min(L.W*T-width-3,(r.x+r.w/2)*T-width/2)),y:Math.max(16,Math.min(L.H*T-height-3,(r.y+r.h/2)*T-height*.65))};
+    const direction=exitDirection(r,L),vertical=direction==='up'||direction==='down';
+    const width=Math.min(34,Math.max(26,T*1.55)),height=width*1.4;
+    // The upright pennant sits beside the aperture, never in the middle of it.
+    let x,y;
+    if(vertical){
+      x=(r.x+r.w)*T+T*.12;
+      if(x+width>L.W*T-2)x=r.x*T-width-T*.12;
+      y=(direction==='up'?r.y:r.y+r.h)*T-height*.15;
+    }else{
+      x=(direction==='right'?r.x+r.w:r.x)*T-width*.85;
+      y=r.y*T-height-T*.12;
+      if(y<2)y=(r.y+r.h)*T+T*.12;
+      if(y+height>L.H*T-2){
+        x=direction==='right'?r.x*T-width-T*.12:(r.x+r.w)*T+T*.12;
+        y=r.y*T;
+      }
+    }
+    return {direction,width,height,x:Math.max(2,Math.min(L.W*T-width-2,x)),y:Math.max(2,Math.min(L.H*T-height-2,y)),
+      aperture:{x:r.x*T,y:r.y*T,width:r.w*T,height:r.h*T}};
   }
   function drawExit(c,r,L,state,T,time){
-    const x=r.x*T,y=r.y*T,w=r.w*T,h=r.h*T,locked=L.hasKey&&!state.key;
-    const ink=locked?'#ffc66e':'#8cffe0',p=portalLayout(r,L,T),cx=p.x+p.width/2;
-    c.save();
-    // The luminous threshold retains the exact playable aperture; the sign never stretches.
-    c.fillStyle=locked?'#b8975755':'#32deb96b';c.fillRect(x,y,w,h);
-    c.strokeStyle=ink;c.lineWidth=Math.max(1.5,T*.08);c.strokeRect(x+1,y+1,Math.max(1,w-2),Math.max(1,h-2));
-    c.shadowColor=ink;c.shadowBlur=T*.45;c.lineJoin='round';
-    const px=p.x,py=p.y,pw=p.width,ph=p.height;
-    c.beginPath();c.moveTo(px,py+ph);c.lineTo(px,py+pw*.52);c.arc(cx,py+pw*.52,pw/2,Math.PI,0);c.lineTo(px+pw,py+ph);c.closePath();
-    c.fillStyle='#182d3b';c.fill();c.strokeStyle='#f1dfb4';c.lineWidth=4;c.stroke();c.shadowBlur=0;
-    c.save();c.clip();const g=c.createLinearGradient(0,py,0,py+ph);g.addColorStop(0,locked?'#715a40':'#0c8e94');g.addColorStop(1,locked?'#352d32':'#65ffd7');c.fillStyle=g;c.fillRect(px+5,py+5,pw-10,ph-8);
-    c.globalAlpha=.22+.1*Math.sin(time*3);c.fillStyle='#e9ffff';c.beginPath();c.ellipse(cx,py+ph*.52,pw*.23,ph*.47,0,0,7);c.fill();c.restore();
-    if(locked){
-      c.fillStyle='#ffcc75';c.beginPath();c.roundRect(cx-pw*.2,py+ph*.5,pw*.4,ph*.25,3);c.fill();c.strokeStyle='#ffcc75';c.lineWidth=3;c.beginPath();c.arc(cx,py+ph*.5,pw*.13,Math.PI,0);c.stroke();
-    }else{
-      const yy=py+ph*.55+Math.sin(time*3)*2,angle=r.y<=1?-Math.PI/2:r.y+r.h>=L.H-1?Math.PI/2:r.x<=1?Math.PI:0;c.save();c.translate(cx,yy);c.rotate(angle);c.strokeStyle='#f4fffb';c.lineWidth=4;c.lineCap='round';c.beginPath();c.moveTo(-pw*.17,0);c.lineTo(pw*.17,0);c.moveTo(pw*.02,-pw*.15);c.lineTo(pw*.17,0);c.lineTo(pw*.02,pw*.15);c.stroke();c.restore();
+    const locked=L.hasKey&&!state.key,p=portalLayout(r,L,T);
+    const vertical=p.direction==='up'||p.direction==='down';
+    const span=(vertical?r.w:r.h)*T,depth=(vertical?r.h:r.w)*T;
+    const angle={up:0,right:Math.PI/2,down:Math.PI,left:-Math.PI/2}[p.direction];
+    const mint=locked?'#b38b59':'#4a9b91',dark=locked?'#846341':'#326c68',cream='#fff1ce';
+    c.save();c.translate((r.x+r.w/2)*T,(r.y+r.h/2)*T);c.rotate(angle);
+    // A low, soft finish mat: its footprint is exactly the playable opening.
+    c.beginPath();c.roundRect(-span/2,-depth/2,span,depth,T*.1);c.fillStyle=dark;c.fill();
+    c.beginPath();c.roundRect(-span/2+T*.045,-depth/2+T*.035,span-T*.09,depth-T*.11,T*.075);c.fillStyle=cream;c.fill();
+    c.save();c.beginPath();c.roundRect(-span/2+T*.1,-depth/2+T*.09,span-T*.2,depth-T*.24,T*.035);c.clip();
+    c.fillStyle=mint;c.fillRect(-span/2,-depth/2,span,depth);
+    // Fixed-size checks make broad and narrow exits read as the same object.
+    const count=Math.max(2,Math.round(span/(T*.32))),cell=span/count,band=Math.min(depth*.38,T*.36);
+    for(let row=0;row<2;row++)for(let col=0;col<count;col++)if((row+col)%2===0){
+      c.fillStyle=cream;c.fillRect(-span/2+col*cell,-depth/2+T*.08+row*band/2,cell,band/2);
     }
-    c.fillStyle='#203642';c.beginPath();c.roundRect(cx-25,py-15,50,17,6);c.fill();c.fillStyle=ink;c.font='bold 10px system-ui';c.textAlign='center';c.textBaseline='middle';c.fillText(locked?'KİLİTLİ':'ÇIKIŞ',cx,py-6);
+    if(!locked){
+      c.strokeStyle=cream;c.lineWidth=T*.085;c.lineCap='round';c.lineJoin='round';
+      const y=depth*.19,n=Math.max(1,Math.floor(span/(T*1.5)));
+      for(let i=0;i<n;i++){
+        const x=(i-(n-1)/2)*T*1.5;
+        c.beginPath();c.moveTo(x-T*.16,y+T*.07);c.lineTo(x,y-T*.08);c.lineTo(x+T*.16,y+T*.07);c.stroke();
+      }
+    }else{
+      c.strokeStyle=cream;c.lineWidth=T*.07;c.beginPath();c.moveTo(-T*.16,depth*.17);c.lineTo(T*.16,depth*.17);c.stroke();
+    }
+    c.restore();c.restore();
+    drawPennant(c,p,locked,time);
+  }
+  function drawPennant(c,p,locked,time){
+    c.save();c.translate(p.x,p.y);c.scale(p.width/30,p.height/42);
+    c.lineCap='round';c.lineJoin='round';
+    // Small wooden post and weighted foot, with no bloom or floating label.
+    c.fillStyle='#254c4d25';c.beginPath();c.ellipse(6,39,6,2.5,0,0,7);c.fill();
+    c.strokeStyle='#8a6950';c.lineWidth=4;c.beginPath();c.moveTo(5,7);c.lineTo(5,37);c.stroke();
+    c.strokeStyle='#e8c995';c.lineWidth=2;c.beginPath();c.moveTo(4.4,7);c.lineTo(4.4,36);c.stroke();
+    const wave=locked?0:Math.sin(time*2.6)*1.2;
+    c.beginPath();c.moveTo(6,6);c.bezierCurveTo(14,2,21,10+wave,28,6+wave);c.lineTo(27,24+wave);c.bezierCurveTo(19,28+wave,13,19,6,23);c.closePath();
+    c.fillStyle=locked?'#d9a76b':'#f4d277';c.fill();c.strokeStyle='#fff0c7';c.lineWidth=1.5;c.stroke();
+    if(locked){
+      c.strokeStyle='#78553e';c.lineWidth=2.2;c.beginPath();c.arc(17,13,3.3,Math.PI,0);c.stroke();
+      c.fillStyle='#78553e';c.beginPath();c.roundRect(12,13,10,8,2);c.fill();
+      c.fillStyle='#fff0c7';c.beginPath();c.arc(17,16.5,1.2,0,7);c.fill();c.fillRect(16.5,17,1,2);
+    }else{
+      // A miniature finish flag remains recognizable without text at phone size.
+      c.save();c.clip();
+      for(let row=0;row<3;row++)for(let col=0;col<4;col++){
+        c.fillStyle=(row+col)%2?'#fff7de':'#458a82';
+        c.fillRect(8+col*4.4,8+row*4.3+wave*(col/4),4.4,4.4);
+      }c.restore();
+    }
+    c.fillStyle='#f5d57e';c.beginPath();c.arc(5,5,3.1,0,7);c.fill();
+    c.fillStyle='#fff6d7';c.beginPath();c.arc(4.2,4.1,1,0,7);c.fill();
     c.restore();
   }
   function draw(c,L,state,T,time,Themes){
@@ -46,5 +104,5 @@
       c.restore();
     }
   }
-  const api={ART,draw,portalLayout,drawExit};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.JellyProps=api;
+  const api={ART,draw,portalLayout,exitDirection,drawExit};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.JellyProps=api;
 })(this);

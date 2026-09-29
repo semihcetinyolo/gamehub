@@ -12,7 +12,7 @@
     rose:bodyArt('air','air',['#ffffff','#e6f3f7','#a3bdc9'],'230,243,247','#345466'),
     void:{...bodyArt('void','void',['#f4d4ff','#b46af2','#7842ba'],'180,106,242','#513174'),atlas:'assets/characters/void-pearl.png'},
   };
-  for(const [id,skin] of Object.entries(SKINS)){skin.id=id;skin.element=Elements.JELLIES[id];skin.name=skin.element.name+' Jölisi';}
+  for(const [id,skin] of Object.entries(SKINS)){skin.id=id;skin.element=Elements.JELLIES[id];skin.name=skin.element.name+' Jölisi';skin.forms=Object.fromEntries(['tall','flat'].map(form=>[form,{atlas:'assets/characters/forms/'+skin.element.id+'-'+form+'.png'}]));}
   const PROFILES = {
     water:{duration:.20,ease:2.4,breath:.011,frequency:2.5,description:'Akışkan dalga ve su halkaları'},
     electric:{duration:.16,ease:3.2,breath:.014,frequency:5,description:'Hızlı esneme ve parlak elektrik damarları'},
@@ -37,57 +37,44 @@
     const t=clamp(age/m.duration),p=1-(1-t)**profile(m.actor).ease;
     return Object.fromEntries(['x','y','w','h'].map(k=>[k,mix(m.from[k],m.to[k],p)]));
   }
-  // Long forms have their own material surface. Stretching a square illustration
-  // into a ribbon magnifies its middle pixels and turns flames into long streaks.
-  function slimBody(c,b,a,time) {
-    const {x,y,w,h}=b,u=Math.min(w,h),vertical=h>w,el=a.element.id;
-    const top=y+(el==='fire'?u*.24:0),bh=y+h-top,r=u*.28;
-    c.save();
-    rect(c,x,top,w,bh,r);
-    const g=c.createLinearGradient(x,y,vertical?x+w:x,vertical?y:y+h);
-    [[0,a.colors[2]],[.14,a.colors[0]],[.33,a.colors[1]],[.72,a.colors[1]],[1,a.colors[2]]].forEach(([p,v])=>g.addColorStop(p,v));
-    c.fillStyle=g;c.fill();c.strokeStyle=a.colors[2];c.lineWidth=u*.025;c.stroke();
-    // Broad reflections follow the body; the small details use the short edge.
-    c.save();rect(c,x,top,w,bh,r);c.clip();c.globalAlpha*=.32;c.strokeStyle='#fff';c.lineWidth=u*.08;c.lineCap='round';
-    c.beginPath();
-    if(vertical){c.moveTo(x+u*.22,top+u*.33);c.quadraticCurveTo(x+u*.13,y+h*.5,x+u*.22,y+h-u*.3);}
-    else {c.moveTo(x+u*.35,top+u*.18);c.quadraticCurveTo(x+w*.5,top+u*.09,x+w-u*.3,top+u*.18);}
-    c.stroke();c.restore();
-    if(el==='fire'){
-      const n=vertical?3:Math.min(7,Math.ceil(w/u)),span=w*.9/n;
-      for(let i=0;i<n;i++){
-        const left=x+w*.05+i*span,peak=y+u*(.015+.055*(1+Math.sin(time*3+i*1.8)));
-        c.fillStyle=i%2?'#ffd655':'#ffad36';c.beginPath();c.moveTo(left,top+u*.23);
-        c.bezierCurveTo(left-span*.08,top,left+span*.65,top,left+span*.55,peak);
-        c.bezierCurveTo(left+span*.98,top-u*.02,left+span*1.05,top+u*.13,left+span,top+u*.23);c.closePath();c.fill();
-      }
-    }else if(el==='air'){
-      c.fillStyle='#fff';
-      for(const [cx,cy] of [[x+u*.24,y+u*.21],[x+w-u*.25,y+u*.19],[x+u*.25,y+h-u*.21],[x+w-u*.23,y+h-u*.21]]){
-        c.beginPath();c.ellipse(cx,cy,u*.18,u*.13,-.2,0,7);c.fill();
-      }
-    }else if(el==='ice'){
-      c.save();c.globalAlpha*=.5;c.fillStyle='#fff';
-      for(const [cx,cy,s] of [[x,y,1],[x+w,y+h,-1]]){c.beginPath();c.moveTo(cx+s*u*.15,cy+s*u*.08);c.lineTo(cx+s*u*.6,cy+s*u*.13);c.lineTo(cx+s*u*.13,cy+s*u*.68);c.closePath();c.fill();}c.restore();
+  // Square and elongated illustrations share the same material. Blend by aspect
+  // ratio, never replace a loaded character with the generic missing-art fallback.
+  function bodyLayers(b,actor,Themes) {
+    const ratio=Math.max(b.w,b.h)/Math.max(.001,Math.min(b.w,b.h));
+    const form=actor.forms[b.h>b.w?'tall':'flat'];
+    const t=clamp((ratio-1.05)/1.8),blend=Themes.ready?.(form)?t*t*(3-2*t):0;
+    return [{art:actor,rect:actor.body,alpha:1-blend,form:false},
+      {art:form,rect:[0,0,1536,1024],alpha:blend,form:true}].filter(layer=>layer.alpha>.001);
+  }
+  function paintIllustration(c,b,actor,time,Themes,layer) {
+    const {x,y,w,h}=b,[sx,sy,sw,sh]=layer.rect;
+    if(!layer.form){
+      c.save();if(!actor.standalone){rect(c,x,y,w,h,Math.min(w,h)*.24);c.clip();}
+      const e=Math.min(w,h)*.25;
+      const xx=[x,x+e,x+w-e,x+w],yy=[y,y+e,y+h-e,y+h],ax=[sx,sx+sw*.25,sx+sw*.75,sx+sw],ay=[sy,sy+sh*.25,sy+sh*.75,sy+sh];
+      for(let j=0;j<3;j++)for(let i=0;i<3;i++)Themes.sprite(c,layer.art,[ax[i],ay[j],ax[i+1]-ax[i],ay[j+1]-ay[j]],xx[i],yy[j],xx[i+1]-xx[i],yy[j+1]-yy[j]);
+      c.restore();return;
     }
-    c.restore();
+    // A gentle travelling bend keeps every form alive, inside its collision box.
+    // The short edge controls motion and detail size, including the 1×8 forms.
+    const vertical=h>w,u=Math.min(w,h),p=profile(actor),amp=u*(actor.material==='ice'?.009:.025),n=28;
+    for(let i=0;i<n;i++){
+      const a=i/n,z=(i+.5)/n;
+      const bend=Math.sin(time*p.frequency*1.7-z*Math.PI*3)*Math.sin(Math.PI*z)*amp;
+      if(vertical)Themes.sprite(c,layer.art,[sx,sy+sh*a,sw,sh/n],x+amp+bend,y+h*a,w-amp*2,h/n);
+      else Themes.sprite(c,layer.art,[sx+sw*a,sy,sw/n,sh],x+w*a,y+amp+bend,w/n,h-amp*2);
+    }
   }
   function paintBody(c,b,actor,time,Themes,energy=0) {
     const opacity=typeof c.globalAlpha==='number'?c.globalAlpha:1;
     const {x,y,w,h}=b,r=Math.min(w,h)*.24;
-    const illustrated=actor.standalone&&Themes.ready?.(actor);
-    const ratio=Math.max(w,h)/Math.max(.001,Math.min(w,h));
-    const t=clamp((ratio-1.4)/1.1),slim=t*t*(3-2*t);
-    if(slim>0){c.save();c.globalAlpha=opacity*slim;slimBody(c,b,actor,time);c.restore();}
+    const illustrated=Themes.ready?.(actor);
     c.save();
-    c.globalAlpha=opacity*(1-slim);
     if(!illustrated){rect(c,x,y,w,h,r);c.clip();const g=c.createLinearGradient(0,y,0,y+h);actor.colors.forEach((v,i)=>g.addColorStop(i/2,v));c.fillStyle=g;c.fillRect(x,y,w,h);}
-    const [sx,sy,sw,sh]=actor.body,e=Math.min(w,h)*.25;
-    const xx=[x,x+e,x+w-e,x+w], yy=[y,y+e,y+h-e,y+h], ax=[sx,sx+sw*.25,sx+sw*.75,sx+sw],ay=[sy,sy+sh*.25,sy+sh*.75,sy+sh];
-    for(let j=0;j<3;j++)for(let i=0;i<3;i++)Themes.sprite(c,actor,[ax[i],ay[j],ax[i+1]-ax[i],ay[j+1]-ay[j]],xx[i],yy[j],xx[i+1]-xx[i],yy[j+1]-yy[j]);
-    c.restore();c.save();
-    rect(c,x,y,w,h,r);c.clip();
-    if(illustrated){rect(c,x,y,w,h,r);c.clip();}
+    for(const layer of bodyLayers(b,actor,Themes)){
+      c.save();c.globalAlpha=opacity*layer.alpha;paintIllustration(c,b,actor,time,Themes,layer);c.restore();
+    }
+    c.restore();c.save();rect(c,x,y,w,h,r);c.clip();
     if(actor.material==='water') {
       c.strokeStyle='#caffff';c.lineWidth=Math.max(.7,Math.min(w,h)*.022);c.globalAlpha=opacity*(.24+energy*.35);
       for(let i=0;i<3;i++){c.beginPath();c.ellipse(x+w*.5,y+h*(.3+i*.2)+Math.sin(time*5+i)*h*.025,w*(.3+i*.065),h*.065,0,0,7);c.stroke();}
@@ -96,7 +83,7 @@
       for(let i=0;i<5;i++){const t=(time*.14+i*.21)%1;c.beginPath();c.arc(x+w*(.17+(i%3)*.3),y+h*(.87-t*.7),Math.min(w,h)*(.025+i*.007),0,7);c.stroke();}
     } else if(actor.material==='fire') {
       c.fillStyle='#fff59b';c.globalAlpha=opacity*(.21);
-      if(slim<1)for(let i=0;i<3;i++){c.globalAlpha=opacity*.21*(1-slim);rect(c,x+w*(.2+i*.25),y+h*.12,w*.075,h*(.2+.07*Math.sin(time*1.4+i)),w*.04);c.fill();}
+      for(let i=0;i<3;i++){const u=Math.min(w,h),t=(time*.45+i*.31)%1;c.globalAlpha=opacity*.14*Math.sin(t*Math.PI);c.beginPath();c.ellipse(x+w*(.2+i*.3),y+h*(.82-t*.65),u*.04,u*.12,-.2,0,7);c.fill();}
     } else if(energy>.01) {
       c.strokeStyle=actor.element.color;c.globalAlpha=opacity*(energy*.55);c.lineWidth=Math.max(1,Math.min(w,h)*.027);
       rect(c,x+w*.06,y+h*.06,w*.88,h*.88,r);c.stroke();
@@ -124,7 +111,7 @@
     c.save();c.globalAlpha=opacity*(.72);c.fillStyle=actor.element.color;
     const emblem=Math.min(w,h)*.22;c.font=`bold ${emblem}px system-ui`;c.textAlign='center';c.textBaseline='middle';
     if(!actor.standalone)c.fillText(actor.element.mark,x+w*.5,y+h*.15);c.restore();
-    if(!illustrated&&slim<1){c.save();c.globalAlpha=opacity*(1-slim);c.strokeStyle=actor.colors[2];c.lineWidth=Math.max(.7,Math.min(w,h)*.018);rect(c,x,y,w,h,r);c.stroke();c.restore();}
+    if(!illustrated){c.save();c.globalAlpha=opacity;c.strokeStyle=actor.colors[2];c.lineWidth=Math.max(.7,Math.min(w,h)*.018);rect(c,x,y,w,h,r);c.stroke();c.restore();}
   }
   function effect(c,Themes,index,x,y,size,alpha=1) {
     c.save();c.globalAlpha=clamp(alpha);c.globalCompositeOperation='screen';
@@ -255,6 +242,6 @@
       c.restore();
     }
   }
-  const api={Elements,SKINS,PROFILES,FX,forLevel,profile,morph,sampleMorph,paintBody,impact,drawImpact,death,drawDeath,effect};
+  const api={Elements,SKINS,PROFILES,FX,forLevel,profile,morph,sampleMorph,bodyLayers,paintBody,impact,drawImpact,death,drawDeath,effect};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.JellyMotion=api;
 })(this);

@@ -40,7 +40,7 @@
     return material ? {...base,...material,id:base.id,material:material.id} : base;
   };
   function load(theme) {
-    return Promise.all([theme.atlas,theme.wallArt,theme.hazardArt].filter(Boolean).map(atlas=>loadImage({atlas}))).then(results=>results.every(Boolean));
+    return Promise.all([theme.atlas,theme.wallArt,theme.hazardArt,...Object.values(theme.forms||{}).map(form=>form.atlas)].filter(Boolean).map(atlas=>loadImage({atlas}))).then(results=>results.every(Boolean));
   }
   function loadImage(theme) {
     if (images.has(theme.atlas)) return images.get(theme.atlas).promise;

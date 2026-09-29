@@ -13,6 +13,28 @@ for(const actor of Object.values(M.SKINS)){
     M.paintBody(context,{x:0,y:0,w,h},actor,.3,{...themes,ready:()=>ready},.7);
 }
 assert.equal(levels[29].jelly,'void','void must be playable in level 30');
+// Loaded art must survive every form, keep animating, and remain inside the body.
+for(const actor of Object.values(M.SKINS)){
+  for(const form of Object.values(actor.forms))assert(fs.existsSync(path.join(__dirname,'..',form.atlas)),actor.name+' form asset');
+  for(const [w,h] of [[80,80],[120,40],[160,20],[40,120],[20,160]]){
+    const capture=time=>{
+      const sprites=[];M.paintBody(context,{x:10,y:12,w,h},actor,time,{ready:()=>true,sprite(c,a,src,x,y,dw,dh){
+        assert(x>=10-.001&&y>=12-.001&&x+dw<=10+w+.001&&y+dh<=12+h+.001,'texture escaped collision rectangle');
+        sprites.push([a.atlas,x,y,dw,dh]);return true;
+      }});
+      assert(sprites.length>0,'loaded illustration disappeared');return sprites;
+    };
+    const first=capture(0),second=capture(.37);
+    if(w!==h){assert(first.every(s=>s[0]!==actor.atlas),'thin form stretched the square illustration');assert.notDeepEqual(first,second,'thin material became static');}
+    else assert(first.every(s=>s[0]===actor.atlas),'square artwork changed');
+  }
+  for(let i=0;i<=100;i++){
+    const b={w:80-i*.6,h:80+i*.8},layers=M.bodyLayers(b,actor,{ready:()=>true});
+    assert(Math.abs(layers.reduce((n,l)=>n+l.alpha,0)-1)<.002,'texture faded away during morph');
+    const fallback=M.bodyLayers(b,actor,{ready:()=>false});assert.equal(fallback.length,1);assert.equal(fallback[0].art,actor,'missing form discarded the original illustration');
+  }
+}
+
 const ids=new Set();let clips=0;
 for(const actor of Object.values(M.SKINS))for(const hazard of Object.keys(E.HAZARDS)){
   const f=M.death({x:5,y:5,w:4,h:4},0,1,actor,hazard);
@@ -43,10 +65,10 @@ for(const level of levels){
   const neutral=Board.build({...L,cells:L.cells.map(row=>row.map(c=>c==='*'?'#':c))});
   assert.deepEqual(b.parts.map(p=>[p.x,p.y,p.type]),neutral.parts.map(p=>[p.x,p.y,p.type]));
   for(const r of L.portals)for(const scale of [10,18,28]){
-    const p=Props.portalLayout(r,L,scale);assert(p.width>=34);assert.equal(p.height/p.width,1.35);assert(p.x>=0&&p.y>=0);assert(p.x+p.width<=L.W*scale&&p.y+p.height<=L.H*scale);
+    const p=Props.portalLayout(r,L,scale);assert(p.width>=26);assert(Math.abs(p.height/p.width-1.4)<1e-9);assert.deepEqual(p.aperture,{x:r.x*scale,y:r.y*scale,width:r.w*scale,height:r.h*scale});assert(p.x>=0&&p.y>=0);assert(p.x+p.width<=L.W*scale&&p.y+p.height<=L.H*scale);
   }
 }
 for(const type of ['outer-straight','inner-straight','inner-corner','outer-corner','end-cap','pillar'])assert(types.has(type),type);
 assert(calls>1000&&arcs>1000);
 console.log(`${clips} elemental reactions rendered at 8 stages (${calls} canvas calls). Crystal/spike reactions differ for all seven elements.`);
-console.log(`${corners} typed wall corners; six wall part types share identical safe/hazard geometry. Exit signs preserve upright proportions at three scales.`);
+console.log(`${corners} typed wall corners; six wall part types share identical safe/hazard geometry. Finish flags preserve upright proportions and mats match their apertures at three scales.`);

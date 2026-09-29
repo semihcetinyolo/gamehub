@@ -23,6 +23,9 @@ LEVELS.forEach((lv, i) => {
     if (!g) bad++;
   }
   console.log(line + '\n      ' + sol.path.join(' '));
+  // move budget (tools/limits.js): must exist and leave room for the best route
+  if (!Number.isInteger(lv.moves)) { bad++; console.log('      NO MOVE BUDGET (run: node tools/limits.js --write)'); }
+  else if (lv.moves < sol.path.length) { bad++; console.log(`      MOVE BUDGET ${lv.moves} < par ${sol.path.length} (run: node tools/limits.js --write)`); }
   const rd = SPK.reshapeDeaths(L);
   if (rd.deaths.length) {
     bad++;

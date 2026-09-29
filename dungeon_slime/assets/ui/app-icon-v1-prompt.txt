@@ -1,0 +1,10 @@
+Generator: built-in image_gen
+Use case: stylized-concept
+Output: app-icon-v1.png
+
+Use case: stylized-concept
+Asset type: square mobile app icon for the existing cute puzzle game Jelly Escape.
+Create one polished 1:1 square, full-bleed app icon, ideally 1024x1024. A single adorable plump purple jelly slime is the unmistakable hero, filling about 78% of the image, with a softly squared squishy silhouette, translucent grape-purple and pearlescent lavender body, a simple elegant swirl on its crown, two large expressive glossy eyes, tiny raised eyebrows, a joyful open smile with a little pink tongue. No arms or legs. It feels like a tactile premium toy made of glossy jelly, with smooth rounded forms and beautifully controlled highlights. Slight three-quarter pose with an energetic gentle squash, looking toward the viewer.
+Background: a clean rich lagoon-turquoise backdrop with a softly luminous mint center, warm creamy light from upper left, subtle grounding shadow below. A very subtle rounded cream dungeon-tile ledge at the bottom can ground the hero, but keep attention entirely on the face. Palette matches the game: lagoon teal, mint, warm cream, saturated friendly purple and lavender.
+Composition: exceptionally strong silhouette and face readability at 48 pixels. Large simple color masses, no busy fine detail. Keep important facial features safely inside the central 75% so the OS can mask the icon. High-quality cheerful casual mobile game illustration, dimensional painterly 3D finish, crisp clean edges, appealing and characterful rather than generic.
+Constraints: exactly ONE finished square image, opaque background extending fully to all four edges. Do NOT draw rounded outer icon corners, app frame, phone mockup, borders, lettering, game title, text, logos, watermark, secondary characters, interface controls or a collage.

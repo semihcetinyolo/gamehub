@@ -7,14 +7,31 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="ui.css?v=escape-1">
+<link rel="stylesheet" href="ui.css?v=menu-faces-1">
 </head>
 <body>
 <div id="app">
   <section id="map" class="screen on" aria-label="Ana menü">
     <div class="home-top"><div class="star-bank"><img src="assets/ui/star.png" alt=""><span id="totalStars">0</span></div><button class="game-icon" id="bSettings" aria-label="Ayarlar"><img src="assets/ui/settings.png" alt=""></button></div>
     <h1 class="game-logo"><img src="assets/ui/logo.png" alt="Jelly Escape"></h1>
-    <div class="home-scene" aria-hidden="true"><span class="spark s1">✦</span><span class="spark s2">✧</span><span class="spark s3">✦</span><div class="island"></div><div class="home-jelly side ice"><img src="assets/characters/ice.png" alt=""><div class="jelly-face"><i></i><i></i><b></b></div></div><div class="home-jelly main"><img src="assets/characters/void-pearl.png" alt=""><div class="jelly-face"><i></i><i></i><b></b></div></div><div class="home-jelly side fire"><img src="assets/characters/fire.webp" alt=""><div class="jelly-face"><i></i><i></i><b></b></div></div></div>
+    <div class="home-scene" aria-hidden="true"><span class="spark s1">✦</span><span class="spark s2">✧</span><span class="spark s3">✦</span><div class="island"></div><div class="home-jelly side ice"><img src="assets/characters/ice.png" alt=""><div class="jelly-face face-curious"><svg viewBox="0 0 120 90" aria-hidden="true">
+      <g class="curious-brows face-line"><path d="M21 15 Q32 7 44 12"/><path d="M76 12 Q88 7 99 15"/></g>
+      <g class="curious-eyes"><ellipse class="eye-white" cx="34" cy="35" rx="16" ry="19"/><ellipse class="eye-white" cx="86" cy="35" rx="16" ry="19"/>
+        <g class="curious-look"><ellipse class="eye-pupil" cx="36" cy="33" rx="9" ry="12"/><ellipse class="eye-pupil" cx="84" cy="33" rx="9" ry="12"/><circle class="eye-glint" cx="33" cy="28" r="3.5"/><circle class="eye-glint" cx="81" cy="28" r="3.5"/></g></g>
+      <g class="face-blush"><ellipse cx="19" cy="58" rx="9" ry="4"/><ellipse cx="101" cy="58" rx="9" ry="4"/></g>
+      <g class="curious-mouth"><ellipse class="face-ink" cx="60" cy="67" rx="8" ry="10"/><ellipse fill="#e894af" cx="60" cy="72" rx="4" ry="2.5"/></g>
+    </svg></div></div><div class="home-jelly main"><img src="assets/characters/void-pearl.png" alt=""><div class="jelly-face face-cheerful"><svg viewBox="0 0 120 90" aria-hidden="true">
+      <g class="happy-eyes face-line"><path d="M20 37 Q33 16 46 37"/><path d="M74 37 Q87 16 100 37"/></g>
+      <g class="happy-cheeks face-blush"><ellipse cx="21" cy="52" rx="11" ry="5"/><ellipse cx="99" cy="52" rx="11" ry="5"/></g>
+      <g class="happy-mouth"><path class="face-ink" d="M40 51 Q60 59 80 51 Q78 79 60 80 Q42 79 40 51"/><path fill="#fff9ed" d="M45 54 Q60 59 75 54 L72 61 Q60 64 48 61Z"/><path fill="#f28fae" d="M48 73 Q60 64 72 73 Q60 82 48 73"/></g>
+    </svg></div></div><div class="home-jelly side fire"><img src="assets/characters/fire.webp" alt=""><div class="jelly-face face-playful"><svg viewBox="0 0 120 90" aria-hidden="true">
+      <g class="playful-brows face-line"><path d="M20 14 Q33 7 45 16"/><path d="M76 16 L98 10"/></g>
+      <g class="playful-eye"><ellipse class="eye-white" cx="34" cy="35" rx="16" ry="18"/><g class="playful-look"><ellipse class="eye-pupil" cx="37" cy="35" rx="9" ry="12"/><circle class="eye-glint" cx="34" cy="30" r="3.5"/></g></g>
+      <g class="wink-open"><ellipse class="eye-white" cx="86" cy="35" rx="16" ry="18"/><ellipse class="eye-pupil" cx="83" cy="35" rx="9" ry="12"/><circle class="eye-glint" cx="80" cy="30" r="3.5"/></g>
+      <path class="wink-closed face-line" d="M74 37 Q87 27 99 36 M97 35 L102 30"/>
+      <g class="face-blush"><ellipse cx="19" cy="58" rx="9" ry="4"/><ellipse cx="101" cy="53" rx="10" ry="4"/></g>
+      <path class="playful-smile face-line" d="M43 60 Q60 76 80 54"/>
+    </svg></div></div></div>
     <div class="home-actions"><button class="play-button" id="bContinue" aria-label="Play"><strong>PLAY</strong><small>BÖLÜM 1</small></button><button class="levels-button" id="bLevels"><span aria-hidden="true">▦</span> BÖLÜMLER</button></div>
     <p class="home-progress" id="mapProgress"></p><span id="mapSub" hidden></span><span id="progressFill" hidden></span>
   </section>
@@ -22,7 +39,7 @@
     <div class="menu-heading"><button class="game-icon" id="bLevelsBack" aria-label="Ana menü">‹</button><h2>BÖLÜMLER</h2><span></span></div>
     <div class="grid" id="levels"></div>
   </section>
-  <div id="settings" class="modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" hidden><div class="settings-card"><button class="close-button" id="bSettingsClose" aria-label="Kapat"><img src="assets/ui/close.png" alt=""></button><h2 id="settingsTitle">AYARLAR</h2><button class="settings-option" id="bSound" aria-pressed="true"><img src="assets/ui/sound.png" alt="">SES <span id="soundState">AÇIK</span></button><details class="legend"><summary>Nasıl oynanır?</summary><p>Kaydır; jöli duvara kadar gider ve şekil değiştirir. Dar geçitlerden geçerek çıkışa ulaş.</p><p>Tehlikelerden uzak dur. Gofretleri iki vuruşta kır. Anahtarla çıkışı aç. Yıldızlı taşı düğmede tutarak tehlikeli geçidi kapat.</p><p>★ Çıkışı bul · ★★ Hedef hamlede bitir · ★★★ Mücevheri de topla.</p><p>Bilgisayarda ok tuşları, H (ipucu), R (baştan).</p></details><a href="animation-preview.html">Jöli koleksiyonu ›</a><a href="asset-gallery.html">Dünyalar ›</a></div></div>
+  <div id="settings" class="modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" hidden><div class="settings-card"><button class="close-button" id="bSettingsClose" aria-label="Kapat"><img src="assets/ui/close.png" alt=""></button><h2 id="settingsTitle">AYARLAR</h2><button class="settings-option" id="bSound" aria-pressed="true"><img src="assets/ui/sound.png" alt="">SES <span id="soundState">AÇIK</span></button><details class="legend"><summary>Nasıl oynanır?</summary><p>Kaydır; jöli duvara kadar gider ve şekil değiştirir. Dar geçitlerden geçerek çıkışa ulaş.</p><p>Tehlikelerden uzak dur. Gofretleri iki vuruşta kır. Anahtarla çıkışı aç. Yıldızlı taşı düğmede tutarak tehlikeli geçidi kapat.</p><p>Her bölümün bir hamle hakkı var; hakkın bitmeden çıkışa ulaş. ★ Çıkışa ulaş · ★★ Az hamleyle · ★★★ En az hamleyle.</p><p>Bilgisayarda ok tuşları, H (ipucu), R (baştan).</p></details><a href="animation-preview.html">Jöli koleksiyonu ›</a><a href="asset-gallery.html">Dünyalar ›</a></div></div>
 
   <section id="game" class="screen">
     <div class="top">
@@ -50,14 +67,14 @@
 </div>
 
 <script src="engine.js?v=wafer-stop-1"></script>
-<script src="levels.js?v=elements-2"></script>
+<script src="levels.js?v=moves-1"></script>
 <script src="bg_palettes.js?v=4"></script>
 <script src="materials.js?v=1"></script>
-<script src="themes.js?v=6"></script>
-<script src="props.js?v=3"></script>
+<script src="themes.js?v=7"></script>
+<script src="props.js?v=4"></script>
 <script src="elements.js?v=2"></script>
-<script src="motion.js?v=8"></script>
-<script src="board.js?v=8"></script>
+<script src="motion.js?v=9"></script>
+<script src="board.js?v=hazard-depth-1"></script>
 <script src="features.js?v=2"></script>
 <script>
 (() => {
@@ -162,6 +179,7 @@ addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('settings').hidden)closeS
 
 // ---------- game state ----------
 let idx = 0, L = null, info = null, state = null, history = [], moves = 0, hints = 0;
+let stuck = false;      // the exit can no longer be reached with the moves left
 let view = null;        // what is drawn right now (lags `state` during animation)
 let anim = null, queued = null, busy = false, over = false;
 let rockFlights = [], gateOpenings = [];
@@ -189,7 +207,10 @@ async function start(i) {
   const s0 = E.initialState(L);
   const sol = E.solve(L, s0);
   const gsol = L.hasGem ? E.solve(L, s0, true) : null;
-  info = { par: sol.path.length, gemPar: gsol ? gsol.path.length : null };
+  // Move budget from levels.js (tools/limits.js); a level without one gets par + 30% (at least +2).
+  const par = sol.path.length, budget = LEVELS[i].moves;
+  const limit = Number.isInteger(budget) && budget >= par ? budget : par + Math.max(2, Math.ceil(par * .3));
+  info = { par, gemPar: gsol ? gsol.path.length : null, limit, two: par + Math.ceil((limit - par) / 2) };
   $('lvlNo').textContent = `BÖLÜM ${i + 1}`;
   $('lvlName').textContent = LEVELS[i].name;
   $('gemIco').style.display = L.hasGem ? '' : 'none';
@@ -213,6 +234,7 @@ function reset({ keepWallMarks = false } = {}) {
   rockFlights = []; gateOpenings = [];
   snapJelly(state); jelly.face = 'idle'; jelly.look = [0, 0]; if (T) { const c = camTarget(); camX = c.x; camY = c.y; } resetFace();
   $('result').classList.remove('on');
+  stuck = false; $('result').querySelector('.card').classList.remove('fail'); $('rNext').hidden = false; $('rRetry').textContent = '↻ Tekrar'; $('rRetry').className = 'ghost';
   hud(); showLevelTip();
 }
 const cloneS = s => ({ ...s, wafer: s.wafer.slice(), rocks:s.rocks.map(r=>({...r})), switches:s.switches.slice() });
@@ -228,11 +250,12 @@ function snapJelly(st) {
 }
 function aimJelly(st) { jelly.tx = st.x; jelly.ty = st.y; jelly.tw = st.w; jelly.th = st.h; }
 function hud() {
-  const c = $('counter');
-  c.firstChild.nodeValue = moves;
-  c.querySelector('small').textContent = '/ ' + info.par;
-  c.setAttribute('aria-label',`${moves} hamle, hedef ${info.par}`);
-  c.classList.toggle('over', moves > info.par);
+  const c = $('counter'), left = Math.max(0, info.limit - moves);
+  c.firstChild.nodeValue = left;
+  c.querySelector('small').textContent = 'hamle';
+  c.setAttribute('aria-label', `${left} hamle kaldı (hamle hakkı ${info.limit}, en iyi ${info.par})`);
+  c.classList.toggle('low', left > 0 && left <= 3 && !stuck);
+  c.classList.toggle('out', stuck || left === 0);
   const st = anim ? anim.from : state;
   const ico = $('shapeIco'); ico.style.width = 3 * st.w + 'px'; ico.style.height = 3 * st.h + 'px'; ico.style.borderRadius = '4px';
   $('shapeTxt').textContent = SHAPE_TR[shapeName(st)];
@@ -299,6 +322,7 @@ function hint() {
   if (busy || rockFlights.length || over || loading || !L) return;
   const sol = E.solve(L, state, !!(L.hasGem && !state.gem && info.gemPar)) || E.solve(L, state);
   if (!sol) { toast('Buradan çıkış yok. Baştan deneyebilirsin.'); return; }
+  if (sol.path.length > info.limit - moves) { toast('Bu hamlelerle çıkışa yetişemezsin. Baştan dene!'); return; }
   hints++; hintDir = sol.path[0]; hintT = 0;
 }
 function toast(msg) { const t = $('tip'); t.textContent = msg; t.style.opacity = 1; clearTimeout(tipTimer); tipTimer = setTimeout(() => t.style.opacity = 0, 1800); }
@@ -445,6 +469,8 @@ function finish() {
   jelly.face = 'idle';
   if (r.impact) { fx.squish = .26; if (r.impact.reshaped && /thinnest|flattest/.test(shapeName(state))) fx.surprise = .9; fx.blink = 0; }
   if (r.result === 'win') { win(); return; }
+  if (moves >= info.limit) { outOfMoves(); return; }
+  checkStuck();
   busy = false; hud();
   if (queued && !rockFlights.length) { const q = queued; queued = null; doMove(q); }
 }
@@ -471,22 +497,59 @@ function playFailureSound() {
   else SFX.dead();
 }
 
+// ---------- move budget ----------
+// Can Jöli still reach the exit within `left` swipes? A bounded search, run only near the end.
+function canEscape(s0, left) {
+  let frontier = [s0]; const seen = new Set([E.keyOf(s0)]);
+  for (let d = 0; d < left && frontier.length; d++) {
+    const next = [];
+    for (const s of frontier) for (const dir of Object.keys(DIR)) {
+      const r = E.move(L, s, dir);
+      if (r.result === 'win') return true;
+      if (r.result !== 'stop') continue;
+      const k = E.keyOf(r.state); if (!seen.has(k)) { seen.add(k); next.push(r.state); }
+    }
+    frontier = next;
+  }
+  return false;
+}
+function checkStuck() {
+  const left = info.limit - moves;
+  if (stuck || left > 6) return;
+  stuck = !canEscape(state, left);
+  if (stuck) { toast('Bu hamlelerle çıkışa yetişemezsin. Baştan dene!'); buzz(15); }
+}
+function outOfMoves() {
+  over = true; busy = true; queued = null; hud();
+  tone(392, 196, .32, 'triangle', .14); tone(262, 131, .38, 'triangle', .1, .12); buzz([30, 40, 30]);
+  winTimer = setTimeout(() => {
+    busy = false;
+    $('result').querySelector('.card').classList.add('fail');
+    $('rTitle').textContent = 'Hamlen bitti!';
+    $('rStars').innerHTML = '★★★';
+    $('rMoves').textContent = `${info.limit} hamle hakkının hepsini kullandın.`;
+    $('rNote').textContent = `Çıkışa en az ${info.par} hamlede ulaşılabiliyor. Daha kısa bir yol dene!`;
+    $('rNext').hidden = true; $('rRetry').textContent = '↻ Tekrar dene'; $('rRetry').className = 'primary';
+    $('result').classList.add('on');
+  }, 450);
+}
+
 function win() {
   over = true; jelly.face = 'happy'; SFX.win(); buzz([20, 30, 20]); hud();
   const cx = state.x + state.w / 2 - .5, cy = state.y + state.h / 2 - .5;
   for (const color of [actor.colors[1], '#54d1a8', '#ffc542', '#7fe3ff']) burst(cx, cy, color, 14);
-  let stars = 1;
-  if (moves <= info.par) stars = 2;
-  if (L.hasGem ? (state.gem && moves <= info.gemPar) : moves <= info.par) stars = 3;
+  // ★★★ best route (par), ★★ within par + half the slack, ★ within the move budget
+  let stars = moves <= info.par ? 3 : moves <= info.two ? 2 : 1;
+  if (L.hasGem && !(state.gem && moves <= info.gemPar)) stars = Math.min(stars, 2);
   prog.stars[idx] = Math.max(prog.stars[idx] || 0, stars); saveProg();
   winTimer = setTimeout(() => {
     busy = false;
     $('rTitle').textContent = ['', 'Kaçtın!', 'Süper!', 'Mükemmel!'][stars];
     $('rStars').innerHTML = '<b>★</b>'.repeat(stars) + '★'.repeat(3 - stars);
-    $('rMoves').textContent = `${moves} hamle · par ${info.par}` + (hints ? ` · ${hints} ipucu` : '');
+    $('rMoves').textContent = `${moves} / ${info.limit} hamle · en iyi ${info.par}` + (hints ? ` · ${hints} ipucu` : '');
     let note = '';
-    if (stars < 2) note = `${info.par} hamlede bitirmeyi dene.`;
-    else if (stars < 3) note = L.hasGem ? (state.gem ? `Mücevherle ${info.gemPar} hamlede bitir.` : `Gizli 💎 mücevheri topla (${info.gemPar} hamle).`) : '';
+    if (stars === 1) note = `★★ için en fazla ${info.two}, ★★★ için ${info.par} hamle.`;
+    else if (stars === 2) note = L.hasGem && !state.gem ? `Gizli 💎 mücevheri topla (${info.gemPar} hamle).` : `★★★ için ${info.par} hamlede bitir.`;
     $('rNote').textContent = note;
     $('rNext').textContent = idx + 1 < LEVELS.length ? 'Sonraki ›' : 'Harita';
     $('result').classList.add('on');
@@ -775,7 +838,7 @@ requestAnimationFrame(frame);
 const h = parseInt(location.hash.slice(1), 10);
 if (h >= 1 && h <= LEVELS.length) start(h - 1);
 // read-only hooks for automated playtests
-window.JellyDebug = { busy: () => busy || !!anim || !!rockFlights.length, state: () => state, view: () => cloneS(view), flights: () => rockFlights.length, jelly: () => ({ ...jelly }), render: renderJellyRect, trail: () => trail.length, wallMarks: () => splats.map(mark => ({...mark})), moves: () => moves, level: () => idx, skin: () => actor.id, material: () => actor.material, morph: () => morph && ({age:morph.age,duration:morph.duration}), failure: () => wreck && ({kind:wreck.kind,hazard:wreck.hazard,reaction:wreck.reaction.id,age:wreck.age,duration:wreck.duration,skin:wreck.actor.id}), theme: () => theme.id, assets: () => themeAssetsReady && actorReady, start,
+window.JellyDebug = { busy: () => busy || !!anim || !!rockFlights.length, state: () => state, view: () => cloneS(view), flights: () => rockFlights.length, jelly: () => ({ ...jelly }), render: renderJellyRect, trail: () => trail.length, wallMarks: () => splats.map(mark => ({...mark})), moves: () => moves, limit: () => info && info.limit, left: () => info && info.limit - moves, stuck: () => stuck, level: () => idx, skin: () => actor.id, material: () => actor.material, morph: () => morph && ({age:morph.age,duration:morph.duration}), failure: () => wreck && ({kind:wreck.kind,hazard:wreck.hazard,reaction:wreck.reaction.id,age:wreck.age,duration:wreck.duration,skin:wreck.actor.id}), theme: () => theme.id, assets: () => themeAssetsReady && actorReady, start,
   tick: (sec = 1) => { for (let t = 0; t < sec; t += 1 / 60) step(1 / 60); } };
 })();
 </script>

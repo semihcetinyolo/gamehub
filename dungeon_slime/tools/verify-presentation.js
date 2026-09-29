@@ -15,15 +15,10 @@ for(const level of levels){
       assert.equal(a.bx,b.ax,'open contour');assert.equal(a.by,b.ay,'open contour');
       const tile=E.cellAt(L,a.wallX,a.wallY);
       assert(Board.solid(tile));assert.equal(a.hazard,tile==='*');
-      assert(Math.abs(Board.materialWeight(a,1)-Board.materialWeight(b,0))<1e-8,'material tint jumps at a join/corner');
-      for(let t=0;t<=1;t+=.1){const weight=Board.materialWeight(a,t);assert(weight>=-1e-8&&weight<=1+1e-8);}
-      if(a.blend.every(Boolean))assert.equal(Board.materialWeight(a,.5),1);
-      if(a.blend.every(v=>!v))assert.equal(Board.materialWeight(a,.5),0);
     }
   }
-  assert.equal(board.runs.reduce((sum,e)=>sum+e.length,0),board.edges.length);
-  const masonry=b=>b.wallRuns.map(e=>[e.ax,e.ay,e.bx,e.by,e.length]);
-  assert.deepEqual(masonry(board),masonry(neutral),'texture/seams restart at a hazard boundary');
+  assert.deepEqual(board.skinCells,neutral.skinCells,'hazard changes masonry thickness');
+  assert.deepEqual(board.skinEdges,neutral.skinEdges,'hazard changes masonry bevels');
   const cells=new Map();
   for(const e of board.edges){const key=e.wallX+','+e.wallY;if(!cells.has(key))cells.set(key,[]);cells.get(key).push(e);}
   const area=p=>Math.abs(p.reduce((sum,a,i)=>{const b=p[(i+1)%p.length];return sum+a[0]*b[1]-b[0]*a[1];},0))/2;
@@ -64,6 +59,6 @@ for(const actor of Object.values(M.SKINS))for(let f=0;f<forms.length-1;f++)for(c
   clips++;
 }
 console.log(`${levels.length} boards / ${faces} wall faces: closed contours, one geometry for safe and dangerous walls.`);
-console.log('Material tint stays continuous through corners; masonry is independent of hazard boundaries. Disabled traps keep their closing covers.');
+console.log('Wall shell and bevels are independent of hazard boundaries. Disabled traps keep their closing covers.');
 console.log('Exposed wall faces partition every masonry cell exactly once, including thin pillars and corners.');
 console.log(`${clips} shape transitions at 30/60/120fps: immediate, monotonic, exact endpoints, ≤240ms.`);

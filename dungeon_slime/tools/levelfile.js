@@ -27,4 +27,30 @@ function writeGrids(grids) {
   fs.writeFileSync(FILE, out + src.slice(last));
 }
 
-module.exports = { writeGrids };
+// Set one numeric field (e.g. `moves`) on every level, just before its grid. An existing value is
+// replaced in place; otherwise the field is inserted in the entry's own style:
+//   JS style:   { ..., moves: 14, grid: [          JSON style:  "moves": 14,\n      "grid": [
+// values: array (one per level, same order as LEVELS) of numbers, or null to leave a level as is.
+function writeField(key, values) {
+  const src = fs.readFileSync(FILE, 'utf8');
+  const blocks = [...src.matchAll(/("?)grid\1: \[/g)];
+  if (blocks.length !== values.length) throw new Error(`levels.js has ${blocks.length} grids, expected ${values.length}`);
+  const edits = []; // [start, end, text] applied back to front
+  blocks.forEach((m, i) => {
+    if (values[i] == null) return;
+    const open = src.lastIndexOf('{', m.index), head = src.slice(open, m.index), json = m[1] === '"';
+    const existing = head.match(new RegExp(`("?)${key}\\1:\\s*-?\\d+`));
+    if (existing) {
+      const at = open + existing.index;
+      edits.push([at, at + existing[0].length, json ? `"${key}": ${values[i]}` : `${key}: ${values[i]}`]);
+    } else if (json) {
+      const indent = src.slice(src.lastIndexOf('\n', m.index) + 1, m.index);
+      edits.push([m.index, m.index, `"${key}": ${values[i]},\n${indent}`]);
+    } else edits.push([m.index, m.index, `${key}: ${values[i]}, `]);
+  });
+  let out = src;
+  for (const [a, b, t] of edits.sort((x, y) => y[0] - x[0])) out = out.slice(0, a) + t + out.slice(b);
+  fs.writeFileSync(FILE, out);
+}
+
+module.exports = { writeGrids, writeField };

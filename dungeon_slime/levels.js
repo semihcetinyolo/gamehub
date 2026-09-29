@@ -6,7 +6,7 @@
 // from tools/gen.js; * marks solid hazardous wall cells that the solution never touches.
 (function (root) {
   const LEVELS = [
-    { theme: 'garden', jelly: 'purple', name: 'İlk Kayış', tip: 'Kaydır! Jöli bir şeye çarpana kadar kayar.', grid: [
+    { theme: 'garden', jelly: 'purple', name: 'İlk Kayış', tip: 'Kaydır! Jöli bir şeye çarpana kadar kayar.', moves: 9, grid: [
       '##############################',
       '#...........................E#',
       '#...........................E#',
@@ -18,7 +18,7 @@
       '#...........................E#',
       '##############################',
     ]},
-    { theme: 'moon', jelly: 'indigo', name: 'Yayıl', tip: 'Yere çarpınca Jöli yassılaşır — alçak tünelden geçer.', grid: [
+    { theme: 'moon', jelly: 'indigo', name: 'Yayıl', tip: 'Yere çarpınca Jöli yassılaşır — alçak tünelden geçer.', moves: 9, grid: [
       '################################',
       '#..................#############',
       '#..S...............#############',
@@ -32,7 +32,7 @@
       '#.............................E#',
       '################################',
     ]},
-    { theme: 'ember', jelly: 'water', name: 'İnce Jöli', tip: 'Yan duvara çarpınca incelir. 2 karelik geçitten geçmek için hizalan!', grid: [
+    { theme: 'ember', jelly: 'water', name: 'İnce Jöli', tip: 'Yan duvara çarpınca incelir. 2 karelik geçitten geçmek için hizalan!', moves: 8, grid: [
       '###################EE#',
       '###################..#',
       '###################..#',
@@ -51,7 +51,7 @@
       '#....................#',
       '######################',
     ]},
-    { theme: 'garden', jelly: 'amber', name: 'Daha İnce', tip: 'Tekrar yana çarp: bir kademe daha incelirsin. 1 karelik geçit en ince hâli ister.', grid: [
+    { theme: 'garden', jelly: 'amber', name: 'Daha İnce', tip: 'Tekrar yana çarp: bir kademe daha incelirsin. 1 karelik geçit en ince hâli ister.', moves: 8, grid: [
       '#E####################',
       '#.####################',
       '#.####################',
@@ -72,7 +72,7 @@
       '#....................#',
       '######################',
     ]},
-    { theme: 'moon', jelly: 'purple', name: 'Dikenlere Dikkat', tip: 'Dikenlere hiçbir yerinle değme — yanından sürtünmek de yakar!', grid: [
+    { theme: 'moon', jelly: 'purple', name: 'Dikenlere Dikkat', tip: 'Dikenlere hiçbir yerinle değme — yanından sürtünmek de yakar!', moves: 6, grid: [
       '###################EE#',
       '###################..#',
       '###################..#',
@@ -91,7 +91,7 @@
       '##*******************#',
       '######################',
     ]},
-    { theme: 'ember', jelly: 'water', name: 'Lav Koridoru', tip: 'Dikenli duvarlardan uzak dur, dikensiz duvarlara yaslan.', grid: [
+    { theme: 'ember', jelly: 'water', name: 'Lav Koridoru', tip: 'Dikenli duvarlardan uzak dur, dikensiz duvarlara yaslan.', moves: 8, grid: [
       '#E######################',
       '#.######################',
       '#.######################',
@@ -112,7 +112,7 @@
       '#*********************##',
       '########################',
     ]},
-    { theme: 'garden', jelly: 'mint', name: 'Kristal Adımları', grid: [
+    { theme: 'garden', jelly: 'mint', name: 'Kristal Adımları', moves: 14, grid: [
       '############EEEE########',
       '############....########',
       '############....########',
@@ -151,7 +151,7 @@
       '#########.####.........#',
       '########################',
     ]},
-    { theme: 'moon', jelly: 'rose', name: 'Dikenli Duvarlar', grid: [
+    { theme: 'moon', jelly: 'rose', name: 'Dikenli Duvarlar', moves: 19, grid: [
       '##EEEE####################',
       '##*...####################',
       '##*...####################',
@@ -193,7 +193,7 @@
       '#.********.#########.#####',
       '##########################',
     ]},
-    { theme: 'toxic', jelly: 'amber', name: 'Zehirli Geçit', tip: 'Dar kapıya girmek için önce bir duvara yaslanıp hizalan.', grid: [
+    { theme: 'toxic', jelly: 'amber', name: 'Zehirli Geçit', tip: 'Dar kapıya girmek için önce bir duvara yaslanıp hizalan.', moves: 13, grid: [
       '#######EE###############',
       '#######..###############',
       '#######..###############',
@@ -227,7 +227,7 @@
       '#......................#',
       '########################',
     ]},
-    { theme: 'moon', jelly: 'indigo', name: 'İnce Hesap', tip: 'En ince ve en basık hâllerin ikisi de lazım.', grid: [
+    { theme: 'moon', jelly: 'indigo', name: 'İnce Hesap', tip: 'En ince ve en basık hâllerin ikisi de lazım.', moves: 22, grid: [
       '####EE#######################',
       '####..#######################',
       '####..#######################',
@@ -261,7 +261,7 @@
       '#####.............###########',
       '#############################',
     ]},
-    { theme: 'garden', jelly: 'rose', name: 'Kristal Tarlası', tip: 'Duvarların çoğu dikenli — hangi duvara yaslanacağını seç.', grid: [
+    { theme: 'garden', jelly: 'rose', name: 'Kristal Tarlası', tip: 'Duvarların çoğu dikenli — hangi duvara yaslanacağını seç.', moves: 26, grid: [
       '############################E#',
       '############################.#',
       '############################.#',
@@ -295,7 +295,7 @@
       '####.........................#',
       '##############################',
     ]},
-    { theme: 'toxic', jelly: 'mint', name: 'Sisli Yol', grid: [
+    { theme: 'toxic', jelly: 'mint', name: 'Sisli Yol', moves: 27, grid: [
       '#######E##################',
       '#######.##################',
       '#######.##################',
@@ -352,7 +352,7 @@
       '########.#######.........#',
       '##########################',
     ]},
-    { theme: 'moon', jelly: 'purple', name: 'Fabrika Kapısı', hard: true, grid: [
+    { theme: 'moon', jelly: 'purple', name: 'Fabrika Kapısı', hard: true, moves: 28, grid: [
       '############E###################',
       '############.###################',
       '############.###################',
@@ -396,7 +396,7 @@
       '#.##########............#.######',
       '################################',
     ]},
-    { theme: 'garden', jelly: 'amber', name: 'Gofret Kapısı', tip: 'Gofret ilk çarpmada çatlar, ikincide kırılır.', grid: [
+    { theme: 'garden', jelly: 'amber', name: 'Gofret Kapısı', tip: 'Gofret ilk çarpmada çatlar, ikincide kırılır.', moves: 11, grid: [
       '#####EE##########',
       '#####..##########',
       '#####..##########',
@@ -416,7 +416,7 @@
       '#..............##',
       '#################',
     ]},
-    { theme: 'ember', jelly: 'water', name: 'Gofret Duvar', grid: [
+    { theme: 'ember', jelly: 'water', name: 'Gofret Duvar', moves: 23, grid: [
       '############E#########',
       '############.#########',
       '############.#########',
@@ -444,7 +444,7 @@
       '###..........ww......#',
       '######################',
     ]},
-    { theme: 'moon', jelly: 'mint', name: 'Gofret Labirenti', grid: [
+    { theme: 'moon', jelly: 'mint', name: 'Gofret Labirenti', moves: 33, grid: [
       '############EEEE###############',
       '############...################',
       '############...################',
@@ -492,7 +492,7 @@
       '#................##############',
       '###############################',
     ]},
-    { theme: 'garden', jelly: 'rose', name: 'Şeker Anahtar', tip: 'Anahtarı al, çıkış açılsın.', grid: [
+    { theme: 'garden', jelly: 'rose', name: 'Şeker Anahtar', tip: 'Anahtarı al, çıkış açılsın.', moves: 14, grid: [
       '###########EE#################',
       '###########..#################',
       '###########..#################',
@@ -528,7 +528,7 @@
       '#########....................#',
       '##############################',
     ]},
-    { theme: 'toxic', jelly: 'amber', name: 'Zehirli Kilit', grid: [
+    { theme: 'toxic', jelly: 'amber', name: 'Zehirli Kilit', moves: 25, grid: [
       '##########################E#####',
       '##########################.#####',
       '##########################.#####',
@@ -576,7 +576,7 @@
       '#.*********.*.*****......**.####',
       '################################',
     ]},
-    { theme: 'garden', jelly: 'purple', name: 'Büyük Kaçış', hard: true, grid: [
+    { theme: 'garden', jelly: 'purple', name: 'Büyük Kaçış', hard: true, moves: 42, grid: [
       '#############EE###############',
       '#############..###############',
       '#############..###############',
@@ -655,6 +655,7 @@
       "name": "Yıldız Taşı",
       "feature": "stone",
       "tip": "Yıldızlı taşa çarp: taş bir engele kadar kayar. Açılan yoldan devam et.",
+      "moves": 7,
       "grid": [
         "####################EEEE##",
         "##############...........#",
@@ -680,6 +681,7 @@
       "name": "Taşın Yolu",
       "feature": "stone",
       "tip": "Taşı doğru yönden vur. Duvarları kullanarak yeniden hizalan.",
+      "moves": 7,
       "grid": [
         "################",
         "##............##",
@@ -715,6 +717,7 @@
       "name": "Yıldızlı Düğme",
       "feature": "switch",
       "tip": "Taşı yukarıdaki düğmeye bırak, sonra geçide yönel. Taş ayrılırsa tehlike geri gelir.",
+      "moves": 9,
       "grid": [
         "#####################EEEE#",
         "#............######......#",
@@ -743,6 +746,7 @@
       "name": "Geçidi Aç",
       "feature": "switch",
       "tip": "Taşı düğmede bırakıp geçide hizalan. Taş düğmeden ayrılırsa geçit kapanır.",
+      "moves": 9,
       "grid": [
         "#####################EEEE#",
         "#...............#####....#",
@@ -770,6 +774,7 @@
       "jelly": "indigo",
       "name": "Fildişi Labirent",
       "tip": "Açık taşlar güvenli. Koyu tehlike yüzeylerinden uzak dur; geçit için şeklini ayarla.",
+      "moves": 18,
       "grid": [
         "##############EE#####",
         "##############..#####",
@@ -811,6 +816,7 @@
       "jelly": "purple",
       "name": "Kuvars Geçidi",
       "tip": "Açık taşlar güvenli. Koyu tehlike yüzeylerinden uzak dur; geçit için şeklini ayarla.",
+      "moves": 17,
       "grid": [
         "########EEEE###########",
         "########....###########",
@@ -854,6 +860,7 @@
       "jelly": "water",
       "name": "Köz Köprüsü",
       "tip": "Açık taşlar güvenli. Koyu tehlike yüzeylerinden uzak dur; geçit için şeklini ayarla.",
+      "moves": 15,
       "grid": [
         "##EE######################",
         "##..######################",
@@ -889,6 +896,7 @@
       "jelly": "mint",
       "name": "Donmuş Avlu",
       "tip": "Açık taşlar güvenli. Koyu tehlike yüzeylerinden uzak dur; geçit için şeklini ayarla.",
+      "moves": 16,
       "grid": [
         "#EE###################",
         "#..###################",
@@ -923,6 +931,7 @@
       "jelly": "rose",
       "name": "Asit Kuyusu",
       "tip": "Açık taşlar güvenli. Koyu tehlike yüzeylerinden uzak dur; geçit için şeklini ayarla.",
+      "moves": 18,
       "grid": [
         "##########EEEE##########",
         "##########....##########",
@@ -961,6 +970,7 @@
       "jelly": "amber",
       "name": "Kıvılcım Koridoru",
       "tip": "Açık taşlar güvenli. Koyu tehlike yüzeylerinden uzak dur; geçit için şeklini ayarla.",
+      "moves": 11,
       "grid": [
         "########EEEE#############",
         "########....#############",
@@ -1002,6 +1012,7 @@
       "jelly": "void",
       "name": "Ayın Karanlık Yüzü",
       "tip": "Açık taşlar güvenli. Koyu tehlike yüzeylerinden uzak dur; geçit için şeklini ayarla.",
+      "moves": 17,
       "grid": [
         "###############EE######",
         "###############..######",
@@ -1041,6 +1052,7 @@
       "jelly": "rose",
       "name": "Şekerli Tuzak",
       "tip": "Açık taşlar güvenli. Koyu tehlike yüzeylerinden uzak dur; geçit için şeklini ayarla.",
+      "moves": 11,
       "grid": [
         "############EE############",
         "############..############",
@@ -1086,6 +1098,7 @@
       "jelly": "water",
       "name": "Gelgit Harabeleri",
       "tip": "Açık taşlar güvenli. Koyu tehlike yüzeylerinden uzak dur; geçit için şeklini ayarla.",
+      "moves": 16,
       "grid": [
         "########EE##############",
         "########..##############",
@@ -1130,6 +1143,7 @@
       "jelly": "amber",
       "name": "Son Dişli",
       "tip": "Açık taşlar güvenli. Koyu tehlike yüzeylerinden uzak dur; geçit için şeklini ayarla.",
+      "moves": 14,
       "grid": [
         "#################EEEE#####",
         "#################....#####",

@@ -1,0 +1,117 @@
+{
+  "mode": "builtin imagegen",
+  "assets": [
+    {
+      "id": "lightning",
+      "form": "tall",
+      "path": "/Users/semihcetin/Desktop/quest_projects/dungeon_slime/assets/characters/lightning.webp",
+      "prompt": "Use case: stylized-concept. Production game sprite EDIT: draw the SAME referenced jelly character in a VERTICAL TALL SLIM rounded rectangle, body width:height exactly 1:5 form. Match lemon-yellow translucent gel, branching white electric veins and two small angular lightning tufts. No purple. Preserve exactly the original palette, glossy painted 3D material quality, soft jelly volume, rich internal organic textures, thick luminous edge and lighting. Redistribute the texture and elemental details naturally for this stretched form, do not simply stretch pixels or turn it into a plain gradient. Keep little circular bubbles, facets, curls or flames proportional and rounded. Center face area must remain unobstructed; absolutely NO EYES, NO MOUTH, NO FACE, no text, no arms or legs. One single body only, no reference square, no comparison, no sheet. Genuine transparent background with no checkerboard, no floor, no shadow, no backdrop. Portrait canvas, narrow body occupying the center and most height. Fully isolated sprite.",
+      "generated": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-c4674a32-967a-4bde-ae34-ff11335ab8bd.png",
+      "runtime": "assets/characters/forms/lightning-tall.png"
+    },
+    {
+      "id": "lightning",
+      "form": "flat",
+      "path": "/Users/semihcetin/Desktop/quest_projects/dungeon_slime/assets/characters/lightning.webp",
+      "prompt": "Use case: stylized-concept. Production game sprite EDIT: draw the SAME referenced jelly character in a HORIZONTAL WIDE FLAT rounded rectangle, body width:height exactly 5:1 form. Match lemon-yellow translucent gel, branching white electric veins and two small angular lightning tufts. No purple. Preserve exactly the original palette, glossy painted 3D material quality, soft jelly volume, rich internal organic textures, thick luminous edge and lighting. Redistribute the texture and elemental details naturally for this stretched form, do not simply stretch pixels or turn it into a plain gradient. Keep little circular bubbles, facets, curls or flames proportional and rounded. Center face area must remain unobstructed; absolutely NO EYES, NO MOUTH, NO FACE, no text, no arms or legs. One single body only, no reference square, no comparison, no sheet. Genuine transparent background with no checkerboard, no floor, no shadow, no backdrop. Landscape canvas, long body occupying most width and centered vertically. Fully isolated sprite.",
+      "generated": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-e22999a9-18a2-485c-8e3c-1499a0fc744c.png",
+      "runtime": "assets/characters/forms/lightning-flat.png"
+    },
+    {
+      "id": "fire",
+      "form": "tall",
+      "path": "/Users/semihcetin/Desktop/quest_projects/dungeon_slime/assets/characters/fire.webp",
+      "prompt": "Use case: stylized-concept. Production game sprite EDIT: draw the SAME referenced jelly character in a VERTICAL TALL SLIM rounded rectangle, body width:height exactly 1:5 form. Match vivid orange-red translucent molten jelly, rounded flowing yellow swirls and small upward curling flame lobes on top. It is a jelly creature, NOT a candle, pencil, flame pillar or plain bar. Preserve exactly the original palette, glossy painted 3D material quality, soft jelly volume, rich internal organic textures, thick luminous edge and lighting. Redistribute the texture and elemental details naturally for this stretched form, do not simply stretch pixels or turn it into a plain gradient. Keep little circular bubbles, facets, curls or flames proportional and rounded. Center face area must remain unobstructed; absolutely NO EYES, NO MOUTH, NO FACE, no text, no arms or legs. One single body only, no reference square, no comparison, no sheet. Genuine transparent background with no checkerboard, no floor, no shadow, no backdrop. Portrait canvas, narrow body occupying the center and most height. Fully isolated sprite.",
+      "generated": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-2d2e4ef3-c324-4c24-bbed-6e00d02fec2e.png",
+      "runtime": "assets/characters/forms/fire-tall.png"
+    },
+    {
+      "id": "fire",
+      "form": "flat",
+      "path": "/Users/semihcetin/Desktop/quest_projects/dungeon_slime/assets/characters/fire.webp",
+      "prompt": "Use case: stylized-concept. Production game sprite EDIT: draw the SAME referenced jelly character in a HORIZONTAL WIDE FLAT rounded rectangle, body width:height exactly 5:1 form. Match vivid orange-red translucent molten jelly, rounded flowing yellow swirls and small upward curling flame lobes on top. It is a jelly creature, NOT a candle, pencil, flame pillar or plain bar. Preserve exactly the original palette, glossy painted 3D material quality, soft jelly volume, rich internal organic textures, thick luminous edge and lighting. Redistribute the texture and elemental details naturally for this stretched form, do not simply stretch pixels or turn it into a plain gradient. Keep little circular bubbles, facets, curls or flames proportional and rounded. Center face area must remain unobstructed; absolutely NO EYES, NO MOUTH, NO FACE, no text, no arms or legs. One single body only, no reference square, no comparison, no sheet. Genuine transparent background with no checkerboard, no floor, no shadow, no backdrop. Landscape canvas, long body occupying most width and centered vertically. Fully isolated sprite.",
+      "generated": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-f6e5e6c0-49d0-4107-ae77-96e9f1c3da72.png",
+      "runtime": "assets/characters/forms/fire-flat.png"
+    },
+    {
+      "id": "ice",
+      "form": "tall",
+      "path": "/Users/semihcetin/Desktop/quest_projects/dungeon_slime/assets/characters/ice.png",
+      "prompt": "Use case: stylized-concept. Production game sprite EDIT: draw the SAME referenced jelly character in a VERTICAL TALL SLIM rounded rectangle, body width:height exactly 1:5 form. Match pale cyan-white translucent ice jelly with crisp rim facets and restrained blue ice cracks. No purple. Preserve exactly the original palette, glossy painted 3D material quality, soft jelly volume, rich internal organic textures, thick luminous edge and lighting. Redistribute the texture and elemental details naturally for this stretched form, do not simply stretch pixels or turn it into a plain gradient. Keep little circular bubbles, facets, curls or flames proportional and rounded. Center face area must remain unobstructed; absolutely NO EYES, NO MOUTH, NO FACE, no text, no arms or legs. One single body only, no reference square, no comparison, no sheet. Genuine transparent background with no checkerboard, no floor, no shadow, no backdrop. Portrait canvas, narrow body occupying the center and most height. Fully isolated sprite.",
+      "generated": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-effe658a-db89-4922-b92d-b6a03f21fbfb.png",
+      "runtime": "assets/characters/forms/ice-tall.png"
+    },
+    {
+      "id": "ice",
+      "form": "flat",
+      "path": "/Users/semihcetin/Desktop/quest_projects/dungeon_slime/assets/characters/ice.png",
+      "prompt": "Use case: stylized-concept. Production game sprite EDIT: draw the SAME referenced jelly character in a HORIZONTAL WIDE FLAT rounded rectangle, body width:height exactly 5:1 form. Match pale cyan-white translucent ice jelly with crisp rim facets and restrained blue ice cracks. No purple. Preserve exactly the original palette, glossy painted 3D material quality, soft jelly volume, rich internal organic textures, thick luminous edge and lighting. Redistribute the texture and elemental details naturally for this stretched form, do not simply stretch pixels or turn it into a plain gradient. Keep little circular bubbles, facets, curls or flames proportional and rounded. Center face area must remain unobstructed; absolutely NO EYES, NO MOUTH, NO FACE, no text, no arms or legs. One single body only, no reference square, no comparison, no sheet. Genuine transparent background with no checkerboard, no floor, no shadow, no backdrop. Landscape canvas, long body occupying most width and centered vertically. Fully isolated sprite.",
+      "generated": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-abeb574e-646b-4fe1-a8cd-2ce0e3f7bdb9.png",
+      "runtime": "assets/characters/forms/ice-flat.png"
+    },
+    {
+      "id": "air",
+      "form": "tall",
+      "path": "/Users/semihcetin/Desktop/quest_projects/dungeon_slime/assets/characters/air.webp",
+      "prompt": "Use case: stylized-concept. Production game sprite EDIT: draw the SAME referenced jelly character in a VERTICAL TALL SLIM rounded rectangle, body width:height exactly 1:5 form. Match white and very pale blue pearly translucent cloud jelly with soft cloud curls along the edges. Preserve exactly the original palette, glossy painted 3D material quality, soft jelly volume, rich internal organic textures, thick luminous edge and lighting. Redistribute the texture and elemental details naturally for this stretched form, do not simply stretch pixels or turn it into a plain gradient. Keep little circular bubbles, facets, curls or flames proportional and rounded. Center face area must remain unobstructed; absolutely NO EYES, NO MOUTH, NO FACE, no text, no arms or legs. One single body only, no reference square, no comparison, no sheet. Genuine transparent background with no checkerboard, no floor, no shadow, no backdrop. Portrait canvas, narrow body occupying the center and most height. Fully isolated sprite.",
+      "generated": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-373f6bc5-a142-4ba3-97ea-22285511a1c2.png",
+      "runtime": "assets/characters/forms/air-tall.png"
+    },
+    {
+      "id": "air",
+      "form": "flat",
+      "path": "/Users/semihcetin/Desktop/quest_projects/dungeon_slime/assets/characters/air.webp",
+      "prompt": "Use case: stylized-concept. Production game sprite EDIT: draw the SAME referenced jelly character in a HORIZONTAL WIDE FLAT rounded rectangle, body width:height exactly 5:1 form. Match white and very pale blue pearly translucent cloud jelly with soft cloud curls along the edges. Preserve exactly the original palette, glossy painted 3D material quality, soft jelly volume, rich internal organic textures, thick luminous edge and lighting. Redistribute the texture and elemental details naturally for this stretched form, do not simply stretch pixels or turn it into a plain gradient. Keep little circular bubbles, facets, curls or flames proportional and rounded. Center face area must remain unobstructed; absolutely NO EYES, NO MOUTH, NO FACE, no text, no arms or legs. One single body only, no reference square, no comparison, no sheet. Genuine transparent background with no checkerboard, no floor, no shadow, no backdrop. Landscape canvas, long body occupying most width and centered vertically. Fully isolated sprite.",
+      "generated": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-e8f6effa-2c59-4b97-ad79-b19bb431d9fa.png",
+      "runtime": "assets/characters/forms/air-flat.png"
+    },
+    {
+      "id": "void",
+      "form": "tall",
+      "path": "/Users/semihcetin/Desktop/quest_projects/dungeon_slime/assets/characters/void-pearl.png",
+      "prompt": "Use case: stylized-concept. Production game sprite EDIT: draw the SAME referenced jelly character in a VERTICAL TALL SLIM rounded rectangle, body width:height exactly 1:5 form. Match luminous medium lavender and orchid purple, pearlescent highlights, small galaxy swirl and tiny white stars. NO black or dark navy. Preserve exactly the original palette, glossy painted 3D material quality, soft jelly volume, rich internal organic textures, thick luminous edge and lighting. Redistribute the texture and elemental details naturally for this stretched form, do not simply stretch pixels or turn it into a plain gradient. Keep little circular bubbles, facets, curls or flames proportional and rounded. Center face area must remain unobstructed; absolutely NO EYES, NO MOUTH, NO FACE, no text, no arms or legs. One single body only, no reference square, no comparison, no sheet. Genuine transparent background with no checkerboard, no floor, no shadow, no backdrop. Portrait canvas, narrow body occupying the center and most height. Fully isolated sprite.",
+      "generated": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-287aa6e5-95de-4681-b24c-7ba6a0cd49fa.png",
+      "runtime": "assets/characters/forms/void-tall.png"
+    },
+    {
+      "id": "void",
+      "form": "flat",
+      "path": "/Users/semihcetin/Desktop/quest_projects/dungeon_slime/assets/characters/void-pearl.png",
+      "prompt": "Use case: stylized-concept. Production game sprite EDIT: draw the SAME referenced jelly character in a HORIZONTAL WIDE FLAT rounded rectangle, body width:height exactly 5:1 form. Match luminous medium lavender and orchid purple, pearlescent highlights, small galaxy swirl and tiny white stars. NO black or dark navy. Preserve exactly the original palette, glossy painted 3D material quality, soft jelly volume, rich internal organic textures, thick luminous edge and lighting. Redistribute the texture and elemental details naturally for this stretched form, do not simply stretch pixels or turn it into a plain gradient. Keep little circular bubbles, facets, curls or flames proportional and rounded. Center face area must remain unobstructed; absolutely NO EYES, NO MOUTH, NO FACE, no text, no arms or legs. One single body only, no reference square, no comparison, no sheet. Genuine transparent background with no checkerboard, no floor, no shadow, no backdrop. Landscape canvas, long body occupying most width and centered vertically. Fully isolated sprite.",
+      "generated": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-5186c5c1-8034-473a-9585-13661f05b1d7.png",
+      "runtime": "assets/characters/forms/void-flat.png"
+    },
+    {
+      "id": "water",
+      "form": "tall",
+      "path": "/Users/semihcetin/Desktop/quest_projects/dungeon_slime/assets/themes/ember-atlas.webp",
+      "prompt": "Use case: stylized-concept. Production game sprite EDIT: draw the SAME referenced jelly character in a VERTICAL TALL SLIM rounded rectangle, body width:height exactly 1:5 form. The source is an atlas: use ONLY the cyan-blue FACELESS jelly in the BOTTOM LEFT cell as reference. Match its watery blue gel, bubbles and bright rounded rim. Ignore every other cell. Preserve exactly the original palette, glossy painted 3D material quality, soft jelly volume, rich internal organic textures, thick luminous edge and lighting. Redistribute the texture and elemental details naturally for this stretched form, do not simply stretch pixels or turn it into a plain gradient. Keep little circular bubbles, facets, curls or flames proportional and rounded. Center face area must remain unobstructed; absolutely NO EYES, NO MOUTH, NO FACE, no text, no arms or legs. One single body only, no reference square, no comparison, no sheet. Genuine transparent background with no checkerboard, no floor, no shadow, no backdrop. Portrait canvas, narrow body occupying the center and most height. Fully isolated sprite.",
+      "generated": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-8b66860a-6b08-4918-81b2-fe1b60f59d85.png",
+      "runtime": "assets/characters/forms/water-tall.png"
+    },
+    {
+      "id": "water",
+      "form": "flat",
+      "path": "/Users/semihcetin/Desktop/quest_projects/dungeon_slime/assets/themes/ember-atlas.webp",
+      "prompt": "Use case: stylized-concept. Production game sprite EDIT: draw the SAME referenced jelly character in a HORIZONTAL WIDE FLAT rounded rectangle, body width:height exactly 5:1 form. The source is an atlas: use ONLY the cyan-blue FACELESS jelly in the BOTTOM LEFT cell as reference. Match its watery blue gel, bubbles and bright rounded rim. Ignore every other cell. Preserve exactly the original palette, glossy painted 3D material quality, soft jelly volume, rich internal organic textures, thick luminous edge and lighting. Redistribute the texture and elemental details naturally for this stretched form, do not simply stretch pixels or turn it into a plain gradient. Keep little circular bubbles, facets, curls or flames proportional and rounded. Center face area must remain unobstructed; absolutely NO EYES, NO MOUTH, NO FACE, no text, no arms or legs. One single body only, no reference square, no comparison, no sheet. Genuine transparent background with no checkerboard, no floor, no shadow, no backdrop. Landscape canvas, long body occupying most width and centered vertically. Fully isolated sprite.",
+      "generated": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-2c4fa8cf-5f12-40d5-82eb-303bc7e4b274.png",
+      "runtime": "assets/characters/forms/water-flat.png"
+    },
+    {
+      "id": "nature",
+      "form": "tall",
+      "path": "/Users/semihcetin/Desktop/quest_projects/dungeon_slime/assets/animation/jellies.webp",
+      "prompt": "Use case: stylized-concept. Production game sprite EDIT: draw the SAME referenced jelly character in a VERTICAL TALL SLIM rounded rectangle, body width:height exactly 1:5 form. The source is an atlas: use ONLY the mint-green FACELESS jelly in the TOP LEFT cell as reference. Match its emerald-mint transparent gel, small bubbles and bright rounded rim. Ignore other cells. Preserve exactly the original palette, glossy painted 3D material quality, soft jelly volume, rich internal organic textures, thick luminous edge and lighting. Redistribute the texture and elemental details naturally for this stretched form, do not simply stretch pixels or turn it into a plain gradient. Keep little circular bubbles, facets, curls or flames proportional and rounded. Center face area must remain unobstructed; absolutely NO EYES, NO MOUTH, NO FACE, no text, no arms or legs. One single body only, no reference square, no comparison, no sheet. Genuine transparent background with no checkerboard, no floor, no shadow, no backdrop. Portrait canvas, narrow body occupying the center and most height. Fully isolated sprite.",
+      "generated": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-b9d3babb-c89e-47bb-9c28-9655cda21011.png",
+      "runtime": "assets/characters/forms/nature-tall.png"
+    },
+    {
+      "id": "nature",
+      "form": "flat",
+      "path": "/Users/semihcetin/Desktop/quest_projects/dungeon_slime/assets/animation/jellies.webp",
+      "prompt": "Use case: stylized-concept. Production game sprite EDIT: draw the SAME referenced jelly character in a HORIZONTAL WIDE FLAT rounded rectangle, body width:height exactly 5:1 form. The source is an atlas: use ONLY the mint-green FACELESS jelly in the TOP LEFT cell as reference. Match its emerald-mint transparent gel, small bubbles and bright rounded rim. Ignore other cells. Preserve exactly the original palette, glossy painted 3D material quality, soft jelly volume, rich internal organic textures, thick luminous edge and lighting. Redistribute the texture and elemental details naturally for this stretched form, do not simply stretch pixels or turn it into a plain gradient. Keep little circular bubbles, facets, curls or flames proportional and rounded. Center face area must remain unobstructed; absolutely NO EYES, NO MOUTH, NO FACE, no text, no arms or legs. One single body only, no reference square, no comparison, no sheet. Genuine transparent background with no checkerboard, no floor, no shadow, no backdrop. Landscape canvas, long body occupying most width and centered vertically. Fully isolated sprite.",
+      "generated": "/Users/semihcetin/.codex/generated_images/01a0d7ce-2086-7d11-aac0-977fa241ca1c/exec-5e6f06d4-8d25-4fdd-8786-3e48a737d9ff.png",
+      "runtime": "assets/characters/forms/nature-flat.png"
+    }
+  ]
+}

@@ -2,7 +2,6 @@
 // '*' changes its material. Backing tiles never create another visible wall row.
 (function(root) {
   const solid = c => c === '#' || c === '*';
-  const hash = n => { const v=Math.sin(n*127.13+17.71)*43758.5453; return v-Math.floor(v); };
   function build(L) {
     if(L.start){
       // Tiny floor pockets sealed behind hazardous masonry are not playable rooms.
@@ -29,9 +28,8 @@
     const facesByCell=new Map();
     for(const e of edges){const key=e.wallX+','+e.wallY;if(!facesByCell.has(key))facesByCell.set(key,[]);facesByCell.get(key).push(e);}
     for(const e of edges){
-      const own=facesByCell.get(e.wallX+','+e.wallY),back=facesByCell.get((e.wallX+e.nx)+','+(e.wallY+e.ny))||[];
+      const own=facesByCell.get(e.wallX+','+e.wallY);
       e.region=faceRegion(e,own);
-      e.sharedBack=own.concat(back).some(other=>e.nx*other.nx+e.ny*other.ny===-1);
     }
     const starts=new Map();
     for(const e of edges){const k=e.ax+','+e.ay;if(!starts.has(k))starts.set(k,[]);starts.get(k).push(e);}
@@ -62,29 +60,41 @@
       const type=faces.length===4?'pillar':faces.length===3?'end-cap':faces.length===2?(opposite?'inner-straight':'outer-corner'):first.wallRole+'-straight';
       return {x:first.wallX,y:first.wallY,type,hazard:first.hazard,faces};
     });
-    const runs=[],wallRuns=[];
-    for(const loop of loops){
-      let materialRun=null,wallRun=null;
-      for(let i=0;i<loop.length;i++){
-        const e=loop[i],before=loop[(i+loop.length-1)%loop.length],after=loop[(i+1)%loop.length];
-        e.blend=[before.hazard,e.hazard,after.hazard];
-        if(materialRun&&materialRun.nx===e.nx&&materialRun.ny===e.ny&&materialRun.hazard===e.hazard){
-          materialRun.bx=e.bx;materialRun.by=e.by;materialRun.length++;materialRun.fadeEnd=e.hazard&&!after.hazard;materialRun.segments.push(e);
-        }else{materialRun={...e,length:1,segments:[e],fadeStart:e.hazard&&!before.hazard,fadeEnd:e.hazard&&!after.hazard};runs.push(materialRun);}
-        // Texture and masonry joints do not restart at a material boundary.
-        if(wallRun&&wallRun.nx===e.nx&&wallRun.ny===e.ny){wallRun.bx=e.bx;wallRun.by=e.by;wallRun.length++;wallRun.segments.push(e);}
-        else{wallRun={...e,length:1,segments:[e]};wallRuns.push(wallRun);}
-      }
+    // One-cell masonry shell, including diagonal corner cells. Enclosed solid
+    // islands are filled completely; backing outside the room stays hidden.
+    const backing=new Set(),pending=[];
+    for(let x=0;x<L.W;x++)pending.push([x,0],[x,L.H-1]);
+    for(let y=0;y<L.H;y++)pending.push([0,y],[L.W-1,y]);
+    while(pending.length){
+      const [x,y]=pending.pop(),key=x+','+y;
+      if(x<0||y<0||x>=L.W||y>=L.H||backing.has(key)||!solid(at(x,y)))continue;
+      backing.add(key);pending.push([x+1,y],[x-1,y],[x,y+1],[x,y-1]);
     }
-    const thinCells=[...facesByCell.values()].filter(faces=>faces.some(e=>e.sharedBack)).map(faces=>({x:faces[0].wallX,y:faces[0].wallY}));
-    return {L,edges,loops,runs,wallRuns,thinCells,corners,parts};
+    const skinCells=[];
+    for(let y=0;y<L.H;y++)for(let x=0;x<L.W;x++)if(solid(at(x,y))){
+      let exposed=!backing.has(x+','+y);
+      for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++)if(!solid(at(x+dx,y+dy)))exposed=true;
+      if(exposed)skinCells.push({x,y});
+    }
+    const skinSet=new Set(skinCells.map(c=>c.x+','+c.y)),skinEdges=[];
+    for(const {x,y} of skinCells)for(const [dx,dy,ax,ay,bx,by] of [[0,-1,x,y,x+1,y],[1,0,x+1,y,x+1,y+1],[0,1,x+1,y+1,x,y+1],[-1,0,x,y+1,x,y]])
+      if(!skinSet.has((x+dx)+','+(y+dy)))skinEdges.push({ax,ay,bx,by,nx:dx,ny:dy});
+    // Carve the visible wall sides into the existing footprint. Weighted mitres
+    // let the deeper south/east faces join the shallow north/west bevels cleanly.
+    const depthFaces=skinEdges.map(e=>({...e,
+      wallX:Math.floor((e.ax+e.bx-e.nx)/2),wallY:Math.floor((e.ay+e.by-e.ny)/2),
+      nx:-e.nx,ny:-e.ny,depth:e.ny>0?STYLE.front:e.nx>0?STYLE.side:STYLE.bevel}));
+    const depthCells=new Map();
+    for(const e of depthFaces){const key=e.wallX+','+e.wallY;if(!depthCells.has(key))depthCells.set(key,[]);depthCells.get(key).push(e);}
+    for(const faces of depthCells.values())for(const e of faces)e.region=faceRegion(e,faces);
+    return {L,edges,loops,corners,parts,skinCells,skinEdges,depthFaces};
   }
   function faceRegion(e,faces){
     const x=e.wallX,y=e.wallY;
     let polygon=[[x,y],[x+1,y],[x+1,y+1],[x,y+1]];
     for(const other of faces){
       if(other===e)continue;
-      const distance=p=>(p[0]-e.ax)*e.nx+(p[1]-e.ay)*e.ny-(p[0]-other.ax)*other.nx-(p[1]-other.ay)*other.ny;
+      const distance=p=>((p[0]-e.ax)*e.nx+(p[1]-e.ay)*e.ny)/(e.depth||1)-((p[0]-other.ax)*other.nx+(p[1]-other.ay)*other.ny)/(other.depth||1);
       const next=[];
       for(let i=0;i<polygon.length;i++){
         const a=polygon[i],b=polygon[(i+1)%polygon.length],da=distance(a),db=distance(b);
@@ -100,34 +110,29 @@
     for(const e of edges){e.region.forEach(([x,y],i)=>i?c.lineTo(x*T,y*T):c.moveTo(x*T,y*T));c.closePath();}
     c.clip();
   }
-  // A compact tent filter follows the contour through corners and the closed-loop seam.
-  // Only the stone's colour is blended: hazard geometry and its visible teeth/lava stay exact.
-  function materialWeight(e,t){
-    const radius=.85;
-    const integral=x=>x<=-radius?0:x>=radius?1:x<0?(x+radius)**2/(2*radius*radius):1-(radius-x)**2/(2*radius*radius);
-    return e.blend.reduce((sum,on,i)=>sum+(on?integral(i-t)-integral(i-1-t):0),0);
-  }
-  function mix(a,b,t){
-    const out=[1,3,5].map(i=>Math.round(parseInt(a.slice(i,i+2),16)*(1-t)+parseInt(b.slice(i,i+2),16)*t).toString(16).padStart(2,'0'));
-    return '#'+out.join('');
-  }
   function path(c,loops,T) {
     c.beginPath();
     for(const loop of loops){if(!loop.length)continue;c.moveTo(loop[0].ax*T,loop[0].ay*T);for(const e of loop)c.lineTo(e.bx*T,e.by*T);c.closePath();}
   }
-  function solidClip(c,L,T) {
-    c.beginPath();
-    for(let y=0;y<L.H;y++)for(let x=0;x<L.W;x++)if(solid(L.cells[y][x]))c.rect(x*T,y*T,T,T);
-    c.clip();
-  }
-  const PALETTES={
-    fire:{top:'#4c3540',base:'#281e2b',rim:'#96664f',hot:'#ff963b',core:'#ffe4a0'},
-    poison:{top:'#35283e',base:'#181c26',rim:'#695572',hot:'#c1f54b',core:'#efffc4'},
-    crystal:{top:'#65407e',base:'#2d223f',rim:'#ad7bcc',hot:'#e3a1ff',core:'#fff0ff'},
-    spikes:{top:'#474961',base:'#252738',rim:'#82899e',hot:'#dfd8f6',core:'#f4f3ff'},
+  // Shared measurements are in board units, independent of zoom and theme.
+  const STYLE=Object.freeze({bevel:.10,front:.34,side:.23,shadowX:.20,shadowY:.32,housing:.58,rail:.44,lip:.035,textureAlpha:.14});
+  const HAZARDS={
+    spikes: {base:'#343947',hot:'#c9d6e4',core:'#f7fbff'},
+    crystal:{base:'#493353',hot:'#cb8ce9',core:'#f6d9ff'},
+    fire:   {base:'#4b3031',hot:'#ff873f',core:'#ffe7a0'},
+    ice:    {base:'#2c475b',hot:'#83d9f4',core:'#e3fcff'},
+    poison: {base:'#374329',hot:'#b6e94b',core:'#efffc0'},
+    electric:{base:'#42404b',hot:'#ffda63',core:'#fff8c6'},
+    void:   {base:'#352b4b',hot:'#c099f2',core:'#f1dcff'},
+    thorns: {base:'#473941',hot:'#d7969f',core:'#ffced3'},
+    brine:  {base:'#284b4c',hot:'#65d9c4',core:'#c7fff1'},
+    saws:   {base:'#43434a',hot:'#cdd2d9',core:'#fff0c5'},
   };
+  const hazardStyle=theme=>theme.hazardStyle||theme.hazardType;
+  const palette=theme=>HAZARDS[hazardStyle(theme)]||HAZARDS.spikes;
   function stroke(c,color,width){c.strokeStyle=color;c.lineWidth=width;c.stroke();}
   function runSpace(c,e,T){c.translate(e.ax*T,e.ay*T);c.rotate(Math.atan2(e.by-e.ay,e.bx-e.ax));}
+  function skinPath(c,board,T){c.beginPath();for(const {x,y} of board.skinCells)c.rect(x*T,y*T,T,T);}
   function drawFloor(c,board,T,theme,BG) {
     const {L}=board,colors=BG?.colors||theme.floor;
     // Exactly one grid: no multi-stone atlas repeated inside a grid square.
@@ -140,183 +145,152 @@
     stroke(c,'#4e3a5312',Math.max(.5,T*.025));c.restore();
   }
   function draw(c,board,T,theme,Themes,BG) {
-    const {L,loops,runs,wallRuns}=board,p={...PALETTES[theme.hazardType],hot:theme.accent};
     drawFloor(c,board,T,theme,BG);
-    c.save();path(c,loops,T);c.lineJoin='round';
-    stroke(c,'#17122116',T*.38);stroke(c,'#1712212b',T*.15);c.restore();
-    c.save();solidClip(c,L,T);c.lineJoin='round';c.lineCap='butt';
-    // Interior pillars are solid stone, including their centre; only exterior backing is hidden.
-    for(const loop of loops){
-      const area=loop.reduce((sum,e)=>sum+e.ax*e.by-e.bx*e.ay,0);
-      if(area<0){path(c,[loop],T);c.fillStyle=theme.wall[1];c.fill();}
+    // Soft cast shadow, clipped to playable floor. The wall itself never
+    // intrudes into a corridor; a one-cell passage retains its full width.
+    c.save();path(c,board.loops,T);c.clip('evenodd');
+    for(const [spread,alpha] of [[1.3,'09'],[1,'13'],[.65,'15']]){
+      c.save();c.translate(T*STYLE.shadowX*spread,T*STYLE.shadowY*spread);
+      skinPath(c,board,T);c.fillStyle='#262339'+alpha;c.fill();c.restore();
     }
-    path(c,loops,T);stroke(c,'#191525',T*1.94);stroke(c,theme.wall[1],T*1.8);stroke(c,theme.wall[0],T*1.55);
-    // Facing bevels must not leave a dark "second wall" down a thin pillar's centre.
-    c.fillStyle=theme.wall[0];
-    for(const loop of loops)if(loop.reduce((sum,e)=>sum+e.ax*e.by-e.bx*e.ay,0)<0){path(c,[loop],T);c.fill();}
-    for(const cell of board.thinCells){
-      c.fillRect(cell.x*T,cell.y*T,T,T);
-      const art=L.cells[cell.y][cell.x]==='*'?theme.hazardArt:theme.wallArt;
-      Themes.texture?.(c,art,cell.x*T,cell.y*T,T,T,T*6.5);
+    path(c,board.loops,T);c.lineJoin='miter';
+    stroke(c,'#27223714',T*.20);stroke(c,'#27223722',T*.075);c.restore();
+    c.save();skinPath(c,board,T);c.clip();
+    c.fillStyle=theme.wall[0];c.fillRect(0,0,board.L.W*T,board.L.H*T);
+    c.save();c.globalAlpha=STYLE.textureAlpha;
+    Themes.texture?.(c,theme.wallArt,0,0,board.L.W*T,board.L.H*T,T*6);
+    c.restore();
+    // A single quiet masonry bond. It never restarts at a corner or trap.
+    c.beginPath();
+    for(let y=0;y<=board.L.H;y++){
+      c.moveTo(0,y*T);c.lineTo(board.L.W*T,y*T);
+      for(let x=y%2;x<board.L.W;x+=2){c.moveTo(x*T,y*T);c.lineTo(x*T,(y+1)*T);}
     }
-    // Carry the tint around corners too, without a hard rectangular end cap.
-    c.lineCap='round';
-    for(const e of board.edges){
-      if(!e.blend.some(Boolean))continue;
-      for(const [normal,material,width] of [[theme.wall[1],p.base,1.79],[theme.wall[0],p.top,1.53]]){
-        const g=c.createLinearGradient(e.ax*T,e.ay*T,e.bx*T,e.by*T);
-        for(let i=0;i<=8;i++)g.addColorStop(i/8,mix(normal,material,materialWeight(e,i/8)));
-        c.beginPath();c.moveTo(e.ax*T,e.ay*T);c.lineTo(e.bx*T,e.by*T);stroke(c,g,T*width);
+    stroke(c,theme.wall[1]+'55',T*.035);
+    // One raised cap with directional vertical faces, lit from upper left.
+    // All side shading is partitioned by cell; corners are never double-painted.
+    for(const e of board.depthFaces){
+      c.save();clipFaces(c,[e],T);runSpace(c,e,T);
+      const d=e.depth*T,front=e.ny<0,right=e.nx<0;
+      const base=mix(theme.wall[1],'#292735',front?.27:right?.14:0);
+      const upper=mix(theme.wall[1],theme.wall[0],front?.18:right?.34:.58);
+      const face=c.createLinearGradient(0,0,0,d);
+      face.addColorStop(0,base);face.addColorStop(.22,theme.wall[1]);face.addColorStop(.85,upper);face.addColorStop(1,upper);
+      c.fillStyle=face;c.fillRect(-T*.5,0,T*2,d);
+      // A thin ledge separates the lit top from its face; the base stays dark.
+      c.beginPath();c.moveTo(-T*.5,d+T*.018);c.lineTo(T*1.5,d+T*.018);
+      stroke(c,front||right?'#fff4d97d':'#fff8e9c7',T*.055);
+      c.beginPath();c.moveTo(-T*.5,T*.025);c.lineTo(T*1.5,T*.025);stroke(c,'#27233355',T*.045);
+      const joint=e.ny!==0?((e.ax+e.ay)%2===0):(e.ay%2===0);
+      if(joint&&e.depth>STYLE.bevel){
+        c.beginPath();c.moveTo(0,T*.04);c.lineTo(0,d-T*.045);stroke(c,'#29253638',T*.035);
       }
-    }
-    c.lineCap='butt';
-    for(const e of wallRuns){
-      c.save();clipFaces(c,e.segments,T);runSpace(c,e,T);const length=e.length*T;
-      for(let i=0;i<e.segments.length;i++){
-        const edge=e.segments[i],steps=edge.blend.every(v=>v===edge.hazard)?1:16;
-        for(let j=0;j<steps;j++){
-          const t=materialWeight(edge,(j+.5)/steps),base=mix(theme.wall[1],p.base,t),top=mix(theme.wall[0],p.top,t),rim=mix(theme.wall[0],p.rim,t);
-          const g=c.createLinearGradient(0,-T*.84,0,0);g.addColorStop(0,edge.sharedBack?top:base);g.addColorStop(.18,edge.sharedBack?top:rim);g.addColorStop(.32,top);g.addColorStop(.73,top);g.addColorStop(1,base);
-          c.fillStyle=g;c.fillRect((i+j/steps)*T,-T*.84,T/steps+.12,T*.84);
-        }
-      }
-      c.beginPath();c.moveTo(0,-T*.035);c.lineTo(length,-T*.035);stroke(c,theme.wall[1],T*.07);
-      c.restore();
-    }
-    drawWallParts(c,board,T,theme,Themes,p);
-    for(const e of runs){
-      if(!e.hazard)continue;
-      c.save();clipFaces(c,e.segments,T);runSpace(c,e,T);
-      if(!theme.hazardArt)drawMaterial(c,e.length,T,theme.hazardType,p,e.ax*7+e.ay*17+e.nx*5,e);
-      // Danger is readable at the exact contact edge, even at the smallest zoom.
-      c.fillStyle=feather(c,p.base,e.length,T,e,.6);c.fillRect(0,-T*.14,e.length*T,T*.1);
-      c.beginPath();c.moveTo(0,-T*.035);c.lineTo(e.length*T,-T*.035);stroke(c,feather(c,p.hot,e.length,T,e,.35),T*.07);
       c.restore();
     }
     c.restore();
+    // Hazard rail is an overlay on the SAME stone body. Exact hard endpoints
+    // preserve safe/dangerous boundaries; all art stays inside solid geometry.
+    for(const e of board.edges)if(e.hazard){
+      drawHazardFace(c,e,T,theme,0);
+    }
+  }
+  function mix(a,b,t){
+    return '#'+[1,3,5].map(i=>Math.round(parseInt(a.slice(i,i+2),16)*(1-t)+parseInt(b.slice(i,i+2),16)*t).toString(16).padStart(2,'0')).join('');
+  }
+  function railFill(c,T,p){
+    const g=c.createLinearGradient(0,-T*(STYLE.rail+.02),0,-T*.08);
+    g.addColorStop(0,mix(p.base,'#111523',.65));g.addColorStop(.24,mix(p.base,'#111523',.3));
+    g.addColorStop(.75,p.base);g.addColorStop(1,mix(p.base,p.hot,.2));return g;
+  }
+  function drawHazardFace(c,e,T,theme,time){
+    const p=palette(theme),kind=hazardStyle(theme);
+    c.save();clipFaces(c,[e],T);runSpace(c,e,T);
+    // A raised, bevelled housing and a deep inset share one opaque paint pass.
+    // Animated frames redraw the same profile, so neither shadows nor faces vanish.
+    const front=e.ny<0||e.nx<0;
+    const body=c.createLinearGradient(0,-T*STYLE.housing,0,0);
+    body.addColorStop(0,mix(p.base,p.core,.42));
+    body.addColorStop(.22,mix(p.base,p.hot,.24));
+    body.addColorStop(.68,p.base);
+    body.addColorStop(1,mix(p.base,'#111523',front?.65:.4));
+    c.fillStyle=body;c.fillRect(-T*.5,-T*STYLE.housing,T*2,T*STYLE.housing);
+    // Rear raised lip, recessed channel, and solid front fascia.
+    c.fillStyle=mix(p.hot,p.core,.4);c.fillRect(-T*.5,-T*.565,T*2,T*.035);
+    c.fillStyle=mix(p.base,'#111523',.5);c.fillRect(-T*.5,-T*.48,T*2,T*.06);
+    c.fillStyle=railFill(c,T,p);c.fillRect(-T*.5,-T*STYLE.rail,T*2,T*(STYLE.rail-.10));
+    c.fillStyle=mix(p.base,p.hot,.35);c.fillRect(-T*.5,-T*.105,T*2,T*.035);
+    // Shadow offsets stay down/right in world space on every wall orientation.
+    const dx=e.bx-e.ax,dy=e.by-e.ay;
+    drawHazard(c,T,kind,p,e.wallX*17+e.wallY*31,time,{x:.045*dx+.06*dy,y:-.045*dy+.06*dx});
+    c.fillStyle=mix(p.hot,p.core,.12);c.fillRect(-T*.5,-T*STYLE.lip,T*2,T*STYLE.lip);
+    c.restore();
   }
   function polygon(c,points){c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.closePath();}
-  function faceStrip(c,e,T,start,end,near=.12,far=.76){
-    const dx=e.bx-e.ax,dy=e.by-e.ay;
-    polygon(c,[[e.ax+dx*start+e.nx*near,e.ay+dy*start+e.ny*near],[e.ax+dx*end+e.nx*near,e.ay+dy*end+e.ny*near],[e.ax+dx*end+e.nx*far,e.ay+dy*end+e.ny*far],[e.ax+dx*start+e.nx*far,e.ay+dy*start+e.ny*far]].map(([x,y])=>[x*T,y*T]));c.clip();
-  }
-  function drawWallParts(c,board,T,theme,Themes,p){
-    // Straight outside walls, two-sided inside walls, caps and pillars each own
-    // a single top panel. Textures always share world coordinates on both faces.
-    for(const part of board.parts){
-      const {x,y,type}=part;
-      if(type==='outer-straight'||type==='inner-straight'&&part.faces.length===1)continue;
-      c.save();c.beginPath();c.roundRect((x+.1)*T,(y+.1)*T,T*.8,T*.8,type==='end-cap'?T*.16:T*.07);c.clip();
-      c.fillStyle=part.hazard?p.top:theme.wall[0];c.fill();
-      Themes.texture?.(c,part.hazard?theme.hazardArt:theme.wallArt,x*T,y*T,T,T,T*6.5);
-      c.restore();
-    }
-    for(const e of board.edges){
-      c.save();clipFaces(c,[e],T);faceStrip(c,e,T,0,1);
-      c.globalAlpha=.94;Themes.texture?.(c,theme.wallArt,e.wallX*T,e.wallY*T,T,T,T*6.5);
-      if(e.blend.some(Boolean)){
-        const steps=e.blend.every(Boolean)?1:12;
-        for(let i=0;i<steps;i++){
-          c.save();faceStrip(c,e,T,i/steps,(i+1)/steps);
-          c.globalAlpha=materialWeight(e,(i+.5)/steps)*.97;
-          Themes.texture?.(c,theme.hazardArt,e.wallX*T,e.wallY*T,T,T,T*6.5);c.restore();
-        }
-      }c.restore();
-    }
-    for(const corner of board.corners){
-      const {before:a,after:b,type}=corner,x=corner.x*T,y=corner.y*T;
-      c.save();
-      if(type==='inner-corner'){
-        // The recessed socket occupies the diagonal masonry quadrant, never floor.
-        const nx=a.nx+b.nx,ny=a.ny+b.ny,side=.72*T;
-        const rx=x+(nx<0?-side:0),ry=y+(ny<0?-side:0);
-        c.beginPath();c.arc(x,y,T*.765,0,Math.PI*2);c.clip();
-        c.beginPath();c.roundRect(rx,ry,side,side,T*.08);c.clip();
-        const weight=(Number(a.hazard)+Number(b.hazard))/2;
-        c.fillStyle=mix(theme.wall[0],p.top,weight);c.fill();
-        Themes.texture?.(c,theme.wallArt,rx,ry,side,side,T*6.5);
-        c.globalAlpha=weight;Themes.texture?.(c,theme.hazardArt,rx,ry,side,side,T*6.5);c.globalAlpha=1;
-        c.beginPath();c.moveTo(x+a.nx*T*.68,y+a.ny*T*.68);c.lineTo(x+nx*T*.68,y+ny*T*.68);c.lineTo(x+b.nx*T*.68,y+b.ny*T*.68);stroke(c,'#fff5e536',T*.05);
-      }else{
-        // Convex nose: a mitred bevel joins the two exposed faces.
-        const nx=a.nx+b.nx,ny=a.ny+b.ny;
-        c.beginPath();c.moveTo(x+a.nx*T*.15,y+a.ny*T*.15);c.lineTo(x+nx*T*.17,y+ny*T*.17);c.lineTo(x+b.nx*T*.15,y+b.ny*T*.15);
-        stroke(c,corner.hazard?p.hot+'88':'#fff8e966',T*.045);
-      }c.restore();
-    }
-  }
-  function feather(c,color,length,T,e,endAlpha=0){
-    const g=c.createLinearGradient(0,0,length*T,0),f=Math.min(.4,.65/length);
-    const alpha=t=>color+Math.round(t*255).toString(16).padStart(2,'0');
-    g.addColorStop(0,alpha(e.fadeStart?endAlpha:1));g.addColorStop(f,color);
-    g.addColorStop(1-f,color);g.addColorStop(1,alpha(e.fadeEnd?endAlpha:1));return g;
-  }
-  function drawMaterial(c,length,T,kind,p,seed,e) {
-    const N=length*T;
-    if(kind==='spikes'){
-      c.fillStyle=feather(c,p.base,length,T,e);c.fillRect(0,-T*.53,N,T*.43);
-      for(let u=.27;u<length;u+=.54){const x=u*T,r=T*.235;
-        c.beginPath();c.moveTo(x-r,-T*.47);c.lineTo(x,0);c.lineTo(x+r,-T*.47);c.closePath();c.fillStyle='#c7c8e2';c.fill();
-        c.beginPath();c.moveTo(x,0);c.lineTo(x+r,-T*.47);c.lineTo(x+T*.03,-T*.39);c.closePath();c.fillStyle='#7e82a4';c.fill();
-        c.beginPath();c.moveTo(x-r,-T*.47);c.lineTo(x,0);stroke(c,'#f1edff',T*.035);
+  function drawHazard(c,T,kind,p,seed,time,shadow){
+    c.save();c.scale(T,T);
+    const gradient=(x1,y1,x2,y2,colors)=>{const g=c.createLinearGradient(x1,y1,x2,y2);colors.forEach((color,i)=>g.addColorStop(i/(colors.length-1),color));return g;};
+    const dark=mix(p.base,'#0f1421',.55),shade=mix(p.base,p.hot,.3);
+    if(kind==='spikes'||kind==='thorns'||kind==='crystal'||kind==='ice'){
+      for(const x of [.25,.75]){
+        const crystal=kind==='crystal'||kind==='ice',bend=kind==='thorns'?.09:0;
+        const shape=crystal?[[x-.18,-.30],[x,-.035],[x+.16,-.29],[x+.04,-.47]]:[[x-.19,-.43],[x+bend,-.035],[x+.19,-.43]];
+        c.save();c.translate(shadow.x,shadow.y);polygon(c,shape);c.fillStyle='#101320a8';c.fill();c.restore();
+        // Dark sockets hold faceted teeth above the raised rail.
+        c.beginPath();c.ellipse(x,-.41,.205,.057,0,0,7);c.fillStyle=dark;c.fill();
+        polygon(c,shape);c.fillStyle=gradient(x-.18,-.4,x+.18,-.2,[p.core,p.hot,shade]);c.fill();
+        polygon(c,crystal?[[x,-.035],[x+.16,-.29],[x+.04,-.47]]:[[x+bend,-.035],[x+.19,-.43],[x+.015,-.40]]);
+        c.fillStyle=gradient(x,-.4,x+.2,-.05,[p.hot,shade,p.base]);c.fill();
+        c.beginPath();c.moveTo(x+(crystal?.04:.015),crystal?-.46:-.40);c.lineTo(x+bend,-.055);stroke(c,p.core,.035);
       }
-    }else if(kind==='fire'){
-      c.beginPath();c.moveTo(0,0);
-      for(let u=0;u<=length;u+=.08)c.lineTo(u*T,-T*(.11+.045*Math.sin(u*7+seed)));
-      c.lineTo(N,0);c.closePath();c.fillStyle=feather(c,'#f77029',length,T,e,.25);c.fill();
-      c.save();c.shadowColor='#ff702c';c.shadowBlur=T*.19;
-      for(let u=.35;u<length;u+=.8+hash(u+seed)*.55){
-        const x=u*T,flip=hash(u*4+seed)>.5?1:-1;
-        c.beginPath();c.moveTo(x,0);c.lineTo(x-T*.13*flip,-T*.2);c.lineTo(x+T*.12*flip,-T*.43);c.lineTo(x+T*.04,-T*(.55+hash(u+seed)*.18));
-        stroke(c,'#c34832',T*.18);stroke(c,p.hot,T*.085);stroke(c,p.core,T*.028);
+    }else if(kind==='fire'||kind==='poison'||kind==='brine'){
+      const fire=kind==='fire',surface=x=>-.265-(fire?.06:.028)*Math.sin(x*Math.PI*4+seed+time*(fire?2:1.5));
+      c.beginPath();c.moveTo(0,-.06);
+      for(let i=0;i<=24;i++){const x=i/24;c.lineTo(x,surface(x));}
+      c.lineTo(1,-.06);c.closePath();
+      c.fillStyle=gradient(0,-.33,0,-.04,[p.core,p.hot,mix(p.hot,p.base,.6)]);c.fill();
+      // Bright liquid meniscus and a darker vertical edge show actual thickness.
+      c.beginPath();for(let i=0;i<=24;i++){const x=i/24;i?c.lineTo(x,surface(x)):c.moveTo(x,surface(x));}stroke(c,p.core,.03);
+      c.fillStyle=mix(p.hot,p.base,.55);c.fillRect(0,-.09,1,.04);
+      if(fire){
+        c.beginPath();c.moveTo(.12,-.13);c.lineTo(.35,-.2);c.lineTo(.55,-.15);c.lineTo(.84,-.22);stroke(c,p.core,.04);
+      }else for(const x of [.25,.72]){
+        const y=-.27+Math.sin(time*2+seed+x)*.025;
+        c.beginPath();c.ellipse(x+.035,y+.04,.105,.045,0,0,7);c.fillStyle=mix(p.hot,p.base,.6);c.fill();
+        c.beginPath();c.arc(x,y,.095,0,7);c.fillStyle=gradient(x-.06,y-.08,x+.065,y+.08,[p.core,p.hot,shade]);c.fill();
+        c.beginPath();c.arc(x-.025,y-.035,.023,0,7);c.fillStyle=p.core;c.fill();
       }
-      c.restore();
-    }else if(kind==='poison'){
-      // A dark corroded channel and thick luminous ooze read as dangerous even
-      // without relying on the theme's green colour or on tiny animated bubbles.
-      c.fillStyle=feather(c,p.base,length,T,e);c.fillRect(0,-T*.59,N,T*.59);
-      c.beginPath();c.moveTo(0,0);
-      for(let u=0;u<=length;u+=.06)c.lineTo(u*T,-T*(.29+.095*Math.sin(u*5+seed)+.04*Math.sin(u*13)));
-      c.lineTo(N,0);c.closePath();c.fillStyle=feather(c,p.hot,length,T,e,.5);c.fill();
-      for(let u=.34;u<length;u+=.72){const x=u*T,y=-T*(.13+hash(u+seed)*.13),r=T*(.055+hash(u*3+seed)*.045);
-        c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fillStyle='#425326';c.fill();
-        c.beginPath();c.arc(x-r*.2,y-r*.25,r*.35,0,Math.PI*2);c.fillStyle=p.core;c.fill();
+    }else if(kind==='electric'){
+      for(const x of [.08,.80]){
+        c.fillStyle=dark;c.fillRect(x+shadow.x,-.40+shadow.y,.13,.30);
+        c.fillStyle=gradient(x,-.4,x+.13,-.4,[p.core,p.hot,shade]);c.fillRect(x,-.40,.13,.29);
+        for(const y of [-.36,-.25,-.15]){c.fillStyle=p.base;c.fillRect(x,y,.13,.025);}
       }
-    }else{
-      for(let u=.4;u<length;u+=.7){const x=u*T,r=T*(.13+hash(u+seed)*.06),depth=T*(.33+hash(u*3+seed)*.26);
-        c.beginPath();c.moveTo(x-r,-depth);c.lineTo(x,0);c.lineTo(x+r*.8,-depth*.75);c.lineTo(x+r*.2,-depth-T*.1);c.closePath();c.fillStyle='#c589e0';c.fill();
-        c.beginPath();c.moveTo(x,0);c.lineTo(x+r*.2,-depth-T*.1);c.lineTo(x+r*.8,-depth*.75);c.closePath();c.fillStyle='#8453b8';c.fill();stroke(c,'#edc7ff',T*.025);
-      }
+      c.beginPath();c.moveTo(.22,-.27);c.lineTo(.43,-.36);c.lineTo(.53,-.19);c.lineTo(.79,-.3);stroke(c,shade,.1);stroke(c,p.hot,.055);stroke(c,p.core,.022);
+    }else if(kind==='void'){
+      c.beginPath();c.ellipse(.5+shadow.x,-.255+shadow.y,.29,.17,0,0,7);c.fillStyle=dark;c.fill();
+      c.beginPath();c.ellipse(.5,-.285,.28,.155,0,0,7);c.fillStyle=gradient(.3,-.44,.7,-.13,[p.core,p.hot,p.base]);c.fill();
+      c.beginPath();c.ellipse(.5,-.285,.21,.105,0,0,7);c.fillStyle=dark;c.fill();
+      c.beginPath();c.ellipse(.5,-.265,.13,.057,0,0,7);stroke(c,mix(p.base,p.hot,.5),.024);
+      c.beginPath();c.arc(.5+Math.cos(time+seed)*.25,-.285+Math.sin(time+seed)*.13,.033,0,7);c.fillStyle=p.core;c.fill();
+    }else if(kind==='saws'){
+      const points=[];for(let i=0;i<24;i++){const a=i*Math.PI/12+time*1.8+seed,r=i%2?.175:.235;points.push([.5+Math.cos(a)*r,-.275+Math.sin(a)*r]);}
+      c.save();c.translate(shadow.x,shadow.y);polygon(c,points);c.fillStyle=dark;c.fill();c.restore();
+      polygon(c,points);c.fillStyle=gradient(.3,-.46,.7,-.1,[p.core,p.hot,shade]);c.fill();stroke(c,p.core,.016);
+      c.beginPath();c.arc(.5,-.275,.115,0,7);c.fillStyle=p.base;c.fill();stroke(c,p.hot,.025);
+      c.beginPath();c.arc(.5,-.275,.057,0,7);c.fillStyle=gradient(.46,-.32,.54,-.23,[p.core,p.hot,shade]);c.fill();
     }
+    c.restore();
   }
   function animate(c,board,T,theme,time,view) {
-    const kind=theme.hazardType,p={...PALETTES[kind],hot:theme.accent};c.save();
+    const kind=hazardStyle(theme);
+    if(['spikes','thorns','crystal','ice','electric'].includes(kind))return;
     for(const e of board.edges){
       if(!e.hazard)continue;
       const x=(e.ax+e.bx)*T*.5,y=(e.ay+e.by)*T*.5;
       if(view&&(x<view.x-T||x>view.x+view.w+T||y<view.y-T||y>view.y+view.h+T))continue;
-      c.save();clipFaces(c,[e],T);runSpace(c,e,T);const seed=e.ax*17.3+e.ay*8.9,phase=(time*.65+hash(seed))%1;
-      if(theme.hazardStyle==='electric'){
-        c.globalAlpha=.4+.5*Math.max(0,Math.sin(time*13+seed));
-        c.beginPath();c.moveTo(T*.2,-T*.65);c.lineTo(T*.55,-T*.44);c.lineTo(T*.38,-T*.3);c.lineTo(T*.75,-T*.14);
-        c.strokeStyle='#ffed9b';c.lineWidth=T*.045;c.stroke();
-      }else if(theme.hazardStyle==='saws'){
-        c.translate(T*.5,-T*.4);c.rotate(time*2+seed);c.globalAlpha=.65;
-        c.strokeStyle='#f3eedc';c.lineWidth=T*.025;c.beginPath();c.moveTo(-T*.18,0);c.lineTo(T*.18,0);c.moveTo(0,-T*.18);c.lineTo(0,T*.18);c.stroke();
-      }else if(kind==='fire'){
-        c.globalAlpha=.58+.12*Math.sin(time*6+seed);
-        const x=T*(.2+hash(seed)*.6),height=T*(.17+.15*Math.sin(time*9+seed));
-        c.beginPath();c.moveTo(x-T*.1,-T*.12);c.quadraticCurveTo(x-T*.11,-T*.34,x+Math.sin(time*5+seed)*T*.09,-T*.2-height);c.quadraticCurveTo(x+T*.14,-T*.25,x+T*.12,-T*.08);c.fillStyle=p.hot;c.fill();
-        if(hash(seed)>.6){c.globalAlpha=(1-phase)*.7;c.beginPath();c.arc(x+Math.sin(seed+phase)*T*.13,-T*(.3+phase*.5),T*.025,0,7);c.fillStyle=p.core;c.fill();}
-      }else if(kind==='poison'){
-        c.globalAlpha=Math.sin(phase*Math.PI)*.65;c.beginPath();c.arc(T*(.2+hash(seed)*.6),-T*(.18+phase*.42),T*(.035+phase*.055),0,7);c.strokeStyle=p.core;c.lineWidth=Math.max(.6,T*.035);c.stroke();
-      }else{
-        const a=Math.max(0,Math.sin(time*1.8+seed))**12;c.globalAlpha=a*.75;c.beginPath();c.moveTo(T*.3,-T*.4);c.lineTo(T*.44,-T*.07);c.strokeStyle=p.core;c.lineWidth=Math.max(.6,T*.04);c.stroke();
-      }
-      c.restore();
+      drawHazardFace(c,e,T,theme,time);
     }
-    c.restore();
   }
-  const api={build,draw,animate,solid,materialWeight};
+  const api={build,draw,animate,solid,STYLE,HAZARDS};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.JellyBoard=api;
 })(this);
