@@ -5,7 +5,7 @@
 //   taslaklar/levelN-taslak.png        1024×1024 zone drafts for the image model (no numbers)
 //   levels_4-23.js                     level objects in Pixhaku_prototype.html's format
 //   Pixhaku_prototype.html             the generated level block (pictures, or drafts until they exist)
-//   fugo_export/Pixhaku.html           the prototype as one file with admin.js inlined (if the folder exists)
+//   (Fugo upload: python3 fugo_export.py pixhaku from the repo root)
 // Every level is checked first: unique solution, solvable without guessing, and its
 // spec's opening rules; the build stops on the first level that fails.
 //
@@ -620,17 +620,6 @@ function staticLevels() {
   return out;
 }
 
-// fugo_export/Pixhaku.html: the prototype as one self-contained file, admin panel inlined
-function writeFugoExport() {
-  const dir = path.join(ROOT, "fugo_export");
-  if (!fs.existsSync(dir)) return;
-  const html = fs.readFileSync(path.join(ROOT, "Pixhaku_prototype.html"), "utf8");
-  const admin = fs.readFileSync(path.join(ROOT, "admin.js"), "utf8");
-  const tag = '<script src="admin.js"></script>';
-  if (!html.includes(tag) || admin.includes("</script")) throw new Error("fugo export: can't inline admin.js");
-  fs.writeFileSync(path.join(dir, "Pixhaku.html"), html.replace(tag, () => `<script>\n${admin}\n</script>`));
-}
-
 // ---------- main ----------
 function main() {
   const search = process.argv.includes("--search");
@@ -646,7 +635,6 @@ function main() {
   writeData(pack);
   writePage(pack, order);
   updatePrototype(pack, statics);
-  writeFugoExport();
   for (const m of order) {
     const t = m.a.techCounts;
     const where = m.static ? "prototipte sabit" : `${m.layout.cols}x${m.layout.rows} ${String(m.layout.zones.length).padStart(2)} parça`;
