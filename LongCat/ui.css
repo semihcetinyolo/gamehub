@@ -1,0 +1,90 @@
+/* Long Dog — biscuit, caramel and cream; custom doghouse, paw and treat artwork. */
+:root{color-scheme:light;--ink:#683d28;--muted:#967153;--cream:#fff5df;--rim:#fff6e5;--caramel:#d79c60;--lip:#9a6037;--gold:#e5aa3b}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;height:100%;overflow:hidden}
+body{font-family:Fredoka,system-ui,sans-serif;background:radial-gradient(ellipse at top,#e8d2b2,#bba184);color:var(--ink);user-select:none;-webkit-user-select:none;touch-action:none}
+button,a,summary{touch-action:manipulation}button{font:inherit;cursor:pointer;color:inherit}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #82502e;outline-offset:5px}button:active{transform:translateY(3px)}button:disabled{opacity:.43;cursor:default}button img,button svg{pointer-events:none}button,svg{flex-shrink:0}[hidden]{display:none!important}
+.ui-icon{display:block;width:30px;height:30px;overflow:visible}
+#app{position:relative;max-width:520px;height:100%;height:100dvh;margin:0 auto;background:#f5e7ce;overflow:hidden;box-shadow:0 20px 100px #633d2433}
+.screen{position:absolute;inset:0;display:none;flex-direction:column}.screen.on{display:flex}
+#map,#levelSelect,#game{background:radial-gradient(ellipse at 50% 35%,#fff9eb,#f4e5c9 70%,#edd7b5)}
+#map::before,#levelSelect::before,#game::before{content:'';position:absolute;inset:0;pointer-events:none;background:url('assets/ui/paw-pattern.svg') 10px 12px/120px 120px;z-index:0}
+#map>* ,#levelSelect>* ,#game>*{position:relative}
+/* Home */
+#map{align-items:center;padding:calc(20px + env(safe-area-inset-top)) 24px calc(20px + env(safe-area-inset-bottom))}
+.home-top{width:100%;display:flex;align-items:center;justify-content:space-between;z-index:1}
+.star-bank{min-width:102px;height:42px;background:#fff7e7;border:1.5px solid #d6b58c;border-radius:24px;display:flex;align-items:center;gap:8px;padding:0 16px 0 8px;font-size:22px;box-shadow:0 3px 0 #ceb18a,inset 0 2px #fff}
+.star-bank .ui-icon{width:34px;height:34px}
+.game-icon{width:48px;height:48px;border:1.5px solid #c99c6c;border-radius:17px;background:linear-gradient(#fff8e8,#f0d4ac);box-shadow:0 4px 0 #b98a59,inset 0 2px 0 #fff;display:grid;place-items:center;font-size:34px;line-height:1}
+.game-icon .ui-icon{width:29px;height:29px}
+.game-logo{margin:12px 0 0;z-index:1;text-align:center;line-height:.88;font-weight:700;letter-spacing:2px;flex-shrink:0;transform:rotate(-3deg)}
+.game-logo span{display:block;font-size:clamp(58px,17vw,80px);-webkit-text-stroke:7px #794327;paint-order:stroke fill;text-shadow:0 6px 0 #794327,0 10px 0 #c9945c44}
+.game-logo .l1{color:#e8ad6e}.game-logo .l2{color:#fff0cc;font-size:clamp(66px,20vw,94px);margin-top:1px}.game-logo img{width:min(88%,330px);max-height:200px;object-fit:contain}
+.home-scene{position:relative;flex:1;min-height:150px;max-height:300px;width:100%;margin:12px 0 8px}
+#homeCv{position:absolute;inset:0;width:100%;height:100%}
+.spark{position:absolute;color:#d69b4b;font-size:25px;animation:twinkle 3s ease-in-out infinite}.s1{left:7%;top:7%}.s2{right:7%;top:19%;font-size:33px;animation-delay:-1s}.s3{left:18%;bottom:8%;font-size:18px;animation-delay:-2s}
+.home-actions{width:min(100%,310px);z-index:3;display:flex;flex-direction:column;align-items:center;gap:12px}
+.play-button{position:relative;width:100%;height:104px;border:0;background:url('assets/ui/bone-button.svg?v=green') center/100% 100% no-repeat;padding:0;color:#fffced;filter:drop-shadow(0 5px 5px #86532f1c)}
+.play-button strong{position:absolute;left:50%;top:46.6%;transform:translate(-50%,-50%);font-size:30px;letter-spacing:1px;line-height:1.05;text-shadow:0 2px #3e822e}
+.levels-button{height:49px;min-width:210px;border:1.5px solid #c7a17a;border-radius:17px;background:#fff7e8;box-shadow:0 3px #c4a17d,inset 0 2px #fff;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:9px;padding:0 18px}
+.levels-button .ui-icon{width:24px;height:24px}.home-progress{font-size:12px;color:#9b7652;font-weight:500;margin:17px 0 0;z-index:1;letter-spacing:.4px}
+/* Level cards are biscuit collection tiles. */
+#levelSelect{padding:calc(17px + env(safe-area-inset-top)) 18px 24px;overflow-y:auto;touch-action:pan-y}
+.menu-heading{display:flex;align-items:center;justify-content:space-between;position:sticky!important;top:-18px;z-index:4;margin:-17px -18px 0;padding:22px 18px 23px;background:linear-gradient(#f7e9cf 80%,#f7e9cf00)}
+.menu-heading h2{font-size:25px;letter-spacing:1px;margin:0}.menu-heading>span{width:48px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 13px;padding:5px 2px 15px}
+.lvl{position:relative;min-width:0;border:1.5px solid #c39561;border-radius:19px;background:linear-gradient(#fff4db,#edd1a5);box-shadow:0 4px 0 #b3895f;padding:5px 5px 8px;overflow:hidden}
+.lvl.next{outline:3px solid #b97b40;outline-offset:3px}.lvl.hard::after{content:'✦';position:absolute;right:9px;top:7px;color:#ad5e37;font-size:18px}.lvl.locked{filter:saturate(.35)}
+.level-art{height:70px;position:relative;border-radius:12px;overflow:hidden;background:#cfad82}
+.level-art img{position:absolute;inset:6px;width:calc(100% - 12px);height:calc(100% - 12px);object-fit:contain;opacity:.38;filter:sepia(.45)}
+.lvl .n{position:absolute;inset:0;z-index:1;font-size:31px;line-height:70px;color:#fff6e3;text-shadow:0 2px #825432,-1px 0 #825432,1px 0 #825432}
+.lvl .nm{font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:7px 2px 0;color:#805835}
+.lvl .st{font-size:21px;letter-spacing:1px;color:#c7ad87}.lvl .st b{color:#d49330;font-weight:400;text-shadow:0 1px #fff3cf}
+/* Game: centred level name, paw stamp, a quiet progress track. */
+#game{padding-top:env(safe-area-inset-top);isolation:isolate}
+.top{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;align-items:center;gap:12px;padding:18px 20px 14px;flex:none}
+.title{text-align:center;min-width:0}.title .l{font-size:23px;font-weight:600;letter-spacing:.6px;color:#774529}
+.title .l .tag{display:inline-block;vertical-align:3px;margin-left:6px;font-size:9px;letter-spacing:.5px;padding:3px 6px;border-radius:7px;background:#d99360;color:#fff7e9;border:1px solid #c68150}
+.title .t{font-size:12px;color:#a07956;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-paw{width:42px;height:42px;display:grid;place-items:center;opacity:.43;transform:rotate(13deg)}.header-paw .ui-icon{width:30px;height:30px}
+.progress{height:6px;margin:0 24px 4px;border-radius:5px;background:#ddc7a7;box-shadow:inset 0 1px #bda17d44;overflow:hidden;flex:none}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#b77640,#dda66c);border-radius:5px;transition:width .18s ease-out}
+#stage{position:relative;flex:1;min-height:0;margin:0 5px;overflow:hidden}
+#cv{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+#tip{position:absolute;left:10%;right:10%;bottom:12px;text-align:center;background:#fff7e8ed;border:1px solid #dfc5a3;color:#886140;font-size:13px;padding:9px 12px;border-radius:15px;pointer-events:none;transition:opacity .25s;opacity:0}
+#tip.on{opacity:1}
+.bottom{display:flex;justify-content:center;align-items:center;gap:22px;padding:16px 18px calc(22px + env(safe-area-inset-bottom));flex:none;background:linear-gradient(0deg,#ead5b3aa,transparent)}
+.booster{position:relative;width:88px;height:86px;border:1.5px solid #cfa778;border-radius:24px;background:linear-gradient(#fff7e5,#f1d6ac);box-shadow:0 5px 0 #b99167,inset 0 2px 0 #fffaf0;color:#805033;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:5px 6px 9px}
+.booster::after{content:'';position:absolute;inset:5px;border:1px dashed #c49a6680;border-radius:18px;pointer-events:none}
+.booster-art{width:47px;height:47px;display:grid;place-items:center}.booster-art .ui-icon{width:39px;height:39px}
+.booster strong{font-size:11px;letter-spacing:.8px;font-weight:500;margin-top:2px}
+.hint-button{background:linear-gradient(#ffe8b3,#efc27d);border-color:#c79a60;box-shadow:0 5px 0 #b38652,inset 0 2px #fff4d9}
+.restart-button{background:linear-gradient(#f8ebd9,#e5cbb0)}.booster.nudge{animation:nudge .9s ease-in-out 3}
+.booster .badge{position:absolute;top:-8px;right:-8px;min-width:26px;height:26px;border-radius:13px;background:#b97543;border:2px solid #fff3dc;color:white;font-size:14px;display:grid;place-items:center;padding:0 5px}
+/* Cream paper cards with caramel edges. */
+#result,.modal{position:absolute!important;inset:0;align-items:center;justify-content:center;background:#49332270;backdrop-filter:blur(6px);z-index:10;padding:22px;display:none}
+#result.on,.modal:not([hidden]){display:flex}#result.on{animation:fade .2s}
+.card,.settings-card{position:relative;width:100%;max-width:350px;border:2px solid #c9a077;background:linear-gradient(#fff9eb,#f6e5c7);border-radius:30px;padding:28px 23px;box-shadow:0 7px #a87e55,0 22px 45px #4c321d33;text-align:center}
+.card{animation:pop .3s}.card h2,.settings-card h2{font-size:28px;margin:0 0 15px;color:#815132}
+.card .face{width:135px;height:103px;margin:-8px auto 6px;display:block}
+.stars{font-size:49px;letter-spacing:3px;color:#d4bd99}.stars b{color:#dda139;font-weight:400;display:inline-block;animation:pop .35s both;text-shadow:0 2px #a67636}.stars b:nth-child(2){animation-delay:.1s}.stars b:nth-child(3){animation-delay:.2s}
+.card p{font-size:14px;color:#95704d;margin:8px 0}.card .row{display:flex;gap:12px;margin-top:22px}
+.card .row button{min-width:0;flex:1;min-height:52px;border-radius:17px;font:500 15px Fredoka,sans-serif;border:1.5px solid #c49563}
+.primary{background:linear-gradient(#f4cd91,#dfa460);box-shadow:0 4px #ac7745;color:#6c3e23}.ghost{background:#fff7e6;box-shadow:0 4px #c5a482;color:#866244}
+.close-button{position:absolute;right:10px;top:10px;width:35px;height:35px;border:1px solid #d8b68e;border-radius:50%;background:#f5e3c7;display:grid;place-items:center;padding:0}.close-button .ui-icon{width:24px;height:24px}
+.settings-card{max-height:90%;overflow-y:auto;touch-action:pan-y;padding-top:38px}
+.settings-option{display:flex;align-items:center;gap:11px;width:100%;background:#fff7e7;border:1px solid #ddbf98;border-radius:16px;padding:12px;color:#805435;font-size:16px;box-shadow:0 2px #dcc3a2;margin-top:11px}
+.settings-option .ui-icon,.settings-option .ico{width:27px;height:27px;font-size:22px;display:grid;place-items:center}
+.settings-option span:last-child{margin-left:auto;font-size:11px;color:#7c643c;background:#e9dfbd;padding:5px 8px;border-radius:9px}.settings-option[aria-pressed=false] span:last-child{color:#9d8265;background:#ecdfcc}
+.legend{text-align:left;margin-top:22px;color:#94704f;font-size:13px;line-height:1.5}.legend summary{font-size:16px;cursor:pointer;color:#805334}.legend p{margin:12px 0}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}@keyframes fade{from{opacity:0}}@keyframes twinkle{50%{opacity:.4;scale:.85}}@keyframes nudge{0%,100%{transform:none}25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}
+@media(min-width:650px){#app{margin:16px auto;height:calc(100dvh - 32px);max-height:980px;border-radius:30px;border:2px solid #fff1d9}}
+@media(max-height:700px){#map{padding-top:12px}.game-logo span{font-size:51px}.game-logo .l2{font-size:59px}.home-scene{min-height:110px;margin:8px 0 0}.home-actions{gap:8px;width:min(90%,280px)}.play-button{height:86px}.play-button strong{font-size:27px}.levels-button{height:43px}.home-progress{margin-top:12px}.top{padding:12px 16px}.bottom{padding-top:8px;padding-bottom:calc(16px + env(safe-area-inset-bottom));gap:22px}.booster{width:76px;height:74px;border-radius:21px}.booster::after{border-radius:16px}.booster-art{width:40px;height:40px}.booster-art .ui-icon{width:34px;height:34px}.title .l{font-size:21px}}
+@media(max-height:550px){#map{overflow-y:auto;touch-action:pan-y}.home-scene{flex:none;height:125px}.game-icon{width:40px;height:40px;border-radius:14px}.top{grid-template-columns:40px minmax(0,1fr) 40px}.play-button{height:79px}.booster{height:62px;width:70px;border-radius:18px}.booster-art,.booster-art .ui-icon{width:30px;height:30px}.booster strong{font-size:9px}}
+@media(max-width:360px){#map{padding-inline:16px}.top{gap:6px;padding-inline:14px}.title .l{font-size:20px}.grid{gap:15px 9px}.lvl .n{font-size:28px}.lvl .nm{font-size:9px}.bottom{gap:16px}.booster{width:78px}.settings-option{font-size:14px;gap:7px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+.settings-option span:last-child:empty{display:none}
+
+/* Two action buttons, with comfortable reach on phone screens. */
+.bottom{gap:32px}.bottom .booster{width:104px}
+@media(max-width:360px),(max-height:700px){.bottom{gap:28px}.bottom .booster{width:92px}}

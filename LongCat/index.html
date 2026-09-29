@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Puppy Maze</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ui.css?v=puppy-maze-3">
+</head>
+<body>
+<div id="app">
+  <section id="map" class="screen on" aria-label="Ana menü">
+    <div class="home-top"><div class="star-bank"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#star"></use></svg><span id="totalStars">0</span></div><button class="game-icon" id="bSettings" aria-label="Ayarlar"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#settings"></use></svg></button></div>
+    <h1 class="game-logo" id="logo" aria-label="Puppy Maze"><span class="l1">PUPPY</span><span class="l2">MAZE</span></h1>
+    <div class="home-scene" aria-hidden="true"><span class="spark s1">✦</span><span class="spark s2">✧</span><span class="spark s3">✦</span><canvas id="homeCv"></canvas></div>
+    <div class="home-actions"><button class="play-button" id="bContinue" aria-label="Oyna"><strong>OYNA</strong></button><button class="levels-button" id="bLevels"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#levels"></use></svg> BÖLÜMLER</button></div>
+    <p class="home-progress" id="mapProgress"></p>
+  </section>
+
+  <section id="levelSelect" class="screen" aria-label="Bölümler">
+    <div class="menu-heading"><button class="game-icon" id="bLevelsBack" aria-label="Ana menü">‹</button><h2>BÖLÜMLER</h2><span></span></div>
+    <div class="grid" id="levels"></div>
+  </section>
+
+  <div id="settings" class="modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" hidden><div class="settings-card">
+    <button class="close-button" id="bSettingsClose" aria-label="Kapat"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#close"></use></svg></button>
+    <h2 id="settingsTitle">AYARLAR</h2>
+    <button class="settings-option" id="bSound" aria-pressed="true"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#sound"></use></svg>SES <span id="soundState">AÇIK</span></button>
+    <button class="settings-option" id="bDepth" aria-pressed="true"><span class="ico" aria-hidden="true">◧</span>DERİNLİK <span id="depthState">YUMUŞAK</span></button>
+    <button class="settings-option" id="bReset" aria-pressed="false"><span class="ico" aria-hidden="true">⟲</span>İLERLEMEYİ SIFIRLA <span></span></button>
+    <details class="legend"><summary>Nasıl oynanır?</summary>
+      <p>Kaydır: sosisin kafası bir duvara ya da kendi gövdesine çarpana kadar gider, geçtiği her kare gövde olur.</p>
+      <p>Bütün kareleri doldur. Kendi üstünden geçemezsin. Hiçbir yöne gidemezsen sıkışırsın ve bölüm baştan başlar. Hamle sınırı yok.</p>
+      <p>★ Bitir · ★★ İpucusuz · ★★★ İpucusuz ve geri almadan.</p>
+      <p>Bilgisayarda ok tuşları / WASD, Z veya Backspace (geri al), R (baştan), H (ipucu).</p>
+    </details>
+  </div></div>
+
+  <section id="game" class="screen">
+    <div class="top">
+      <button class="game-icon" id="bMap" aria-label="Ana menü"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#home"></use></svg></button>
+      <div class="title"><div class="l" id="lvlNo"></div><div class="t" id="lvlName"></div></div>
+      <div class="header-paw" aria-hidden="true"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#paw"></use></svg></div>
+    </div>
+    <div class="progress" aria-hidden="true"><i id="progressFill"></i></div>
+    <div id="stage"><canvas id="cv" aria-label="Oyun alanı; ok tuşlarıyla veya kaydırarak oyna"></canvas><div id="tip"></div></div>
+    <div class="bottom">
+      <button class="booster hint-button" id="bHint" aria-label="İpucu"><span class="booster-art"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#hint"></use></svg></span><strong>İPUCU</strong></button>
+      <button class="booster restart-button" id="bRestart" aria-label="Baştan başlat"><span class="booster-art"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#restart"></use></svg></span><strong>BAŞTAN</strong></button>
+    </div>
+
+    <div id="result" role="dialog" aria-modal="true" aria-labelledby="rTitle"><div class="card" id="rCard">
+      <canvas class="face" id="rFace" width="240" height="184"></canvas>
+      <h2 id="rTitle">Harika!</h2>
+      <div class="stars" id="rStars"></div>
+      <p id="rNote"></p>
+      <div class="row"><button class="ghost" id="rRetry">↻ Tekrar</button><button class="primary" id="rNext">Sonraki ›</button></div>
+    </div></div>
+  </section>
+</div>
+
+<script src="engine.js?v=1"></script>
+<script src="levels.js?v=1"></script>
+<script src="art.js?v=6"></script>
+<script src="render.js?v=4"></script>
+<script src="dog.js?v=7"></script>
+<script src="game.js?v=puppy-maze-3"></script>
+</body>
+</html>

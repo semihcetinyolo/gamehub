@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="tr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Puppy Maze · Animasyonlar</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#25345d;color:#fff5dd;font:16px system-ui,sans-serif;padding:32px}main{max-width:1100px;margin:auto}h1{margin:0 0 10px;font-size:32px}p{color:#c1cce7;line-height:1.6}a{color:#ffe1a0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:28px 0}figure{margin:0;border:1px solid #7389bb;border-radius:24px;overflow:hidden;background:#fff0d5;color:#613c27}canvas{width:100%;display:block}figcaption{padding:0 20px 18px;font-weight:700}header{display:flex;justify-content:space-between;gap:20px;align-items:center}button{border:0;border-radius:16px;background:#fbd481;color:#533313;padding:14px 22px;font-weight:bold;cursor:pointer}.boards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}.boards figure{background:#b2c9f1}.note{font-size:14px}
+</style>
+<main>
+<header><div><h1>Sosis köpek · Animasyonlar</h1><p>Hareketli kulaklar, patiler, kuyruk ve canlı yüz ifadeleri.</p></div><button id="toggle">Duraklat</button></header>
+<figure style="margin-top:22px"><canvas id="faces" width="1200" height="320" aria-label="Tombul suratın yakın plan animasyonları"></canvas><figcaption>Yakın plan · Bekleme · Sevinme · Kayma · Çarpma</figcaption></figure>
+<div class="grid" id="poses"></div>
+<h2>Duvar renkleri · Her bölümde değişir</h2><div class="boards" id="wallColors"></div>
+<div class="boards"><figure><canvas id="deep" width="720" height="680"></canvas><figcaption>Derinlikli duvarlar</figcaption></figure><figure><canvas id="flat" width="720" height="680"></canvas><figcaption>Düz görünüm</figcaption></figure></div>
+<p class="note">Görseller oyundaki animasyon sistemiyle canlı çiziliyor. <a href="index.html">Oyunu aç →</a></p>
+</main>
+<script src="art.js?v=6"></script><script src="engine.js"></script><script src="levels.js"></script><script src="render.js?v=4"></script><script src="dog.js?v=7"></script>
+<script>
+(async()=>{
+const D=LongDog,R=LongCatRender,E=LongCatEngine;
+await Promise.all([D.load(),R.load()]);
+const closeups=['idle','happy','slide','squish'].map(state=>({state,fx:D.newFace()})), faceCanvas=document.getElementById('faces'), faceG=faceCanvas.getContext('2d');
+const specs=[['idle','Bekleme · nefes ve göz kırpma'],['slide','Kayma · kulak ve pati hareketi'],['squish','Çarpma · esneme ve toparlanma'],['surprise','Şaşırma'],['worried','Sıkışma endişesi'],['happy','Sevinme · kuyruk sallama'],['dead','Üzülme · gözyaşı'],['turn','Dönüş · kesintisiz gövde']];
+const poses=specs.map(([state,label])=>{const f=document.createElement('figure'),c=document.createElement('canvas');c.width=600;c.height=480;f.append(c);const caption=document.createElement('figcaption');caption.textContent=label;f.append(caption);document.getElementById('poses').append(f);return{state,c,g:c.getContext('2d'),fx:D.newFace()}});
+for(const mode of ['deep','flat']){const c=document.getElementById(mode),L=E.parse(LEVELS[5]),lay=R.layout(L,360,340,40),g=c.getContext('2d');g.drawImage(R.bakeBoard(L,lay,2,mode==='deep'?'soft':'flat'),0,0);g.scale(2,2);for(let i=0;i<L.open.length;i++)if(L.open[i])R.paw(g,lay.ox+(i%L.W+.5)*lay.cell,lay.oy+(Math.floor(i/L.W)+.5)*lay.cell,lay.cell*.42,R.PAL.paw)}
+for(let i=0;i<4;i++){const f=document.createElement('figure'),c=document.createElement('canvas'),caption=document.createElement('figcaption');c.width=720;c.height=680;const L=E.parse(LEVELS[5]),lay=R.layout(L,360,340,40);c.getContext('2d').drawImage(R.bakeBoard(L,lay,2,'soft',i),0,0);caption.textContent=R.wallTheme(i).name;f.append(c,caption);document.getElementById('wallColors').append(f)}
+let running=true,last=0,t=0;document.getElementById('toggle').onclick=()=>{running=!running;document.getElementById('toggle').textContent=running?'Duraklat':'Oynat'};
+function frame(now){const dt=Math.min(.04,(now-(last||now))/1000);last=now;if(running){t+=dt;faceG.clearRect(0,0,1200,320);closeups.forEach((p,i)=>{const pulse=t%2.4,hit=p.state==='squish'&&pulse<.30;if(hit)D.trigger(p.fx,'squish',.08);const state=p.state==='squish'?'idle':p.state;D.stepFace(p.fx,dt,{state,look:[1,0]});D.drawHead(faceG,150+i*300,165,245,{fx:p.fx,state,dir:[1,0],squash:hit?Math.sin(pulse/.30*Math.PI)*.48:0,t})});for(const p of poses){const{g,c,fx,state}=p;g.clearRect(0,0,c.width,c.height);let mood=['worried','turn','squish','surprise'].includes(state)?'idle':state;if(state==='squish'&&t%2.4<.28)D.trigger(fx,'squish',.1);if(state==='surprise'&&t%3<1.8)D.trigger(fx,'surprise',.1);D.stepFace(fx,dt,{state:mood,look:[1,0],worried:state==='worried'});const bounce=state==='slide'?Math.sin(t*10)*4:0;const pts=state==='turn'?[{x:135,y:140},{x:135,y:300},{x:360,y:300}]:[{x:125,y:250},{x:370,y:250+bounce}];const squash=state==='squish'?Math.max(0,Math.sin(Math.min(1,t%2.4/.28)*Math.PI))*.48:0;D.drawDog(g,pts,145,{fx,state:mood,dir:[1,0],squash,stretch:state==='slide'?.055:0,t,tailDir:[-1,0],depth:'soft'})}}requestAnimationFrame(frame)}requestAnimationFrame(frame);
+})();
+</script>
+</html>
