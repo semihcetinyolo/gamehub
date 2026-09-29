@@ -2,27 +2,42 @@
 // Pixhaku Level 4–23 — kaynak veri. build_pack.js bunu doğrular ve
 // pixhaku_level_creation_4-23.html, taslaklar/*.png ve levels_4-23.js dosyalarını üretir.
 //
-//   grid     her harf bir bölge (dikdörtgen olmalı); bölge numaraları sol üst köşelerin okuma sırası
-//   spec     bulmaca profili (tools/shikaku.js → checkSpec): start = boş tahtadaki kesin açılış sayısı,
-//            dilemmas = "dik mi yatay mı" karar anı sayısı, maxTech = en zor adım (2 tek sahip, 3 kesişim, 4 eleme)…
-//   clues    bölge → ipucu hücresi [satır, sütun]; sayı = bölgenin alanı. hidden'daki bölgeler "?" olur.
-//            Bir bölgeyi değiştirince clues'u silip `node tools/build_pack.js --search` çalıştır.
-//   zones    bölge → [içerik (TR), prompt satırı (EN), taslak rengi]
+//   artGrid  görselin bölge düzeni (taslak PNG, bölge tablosu ve prompt bunu kullanır); her harf bir
+//            dikdörtgen bölge, numaralar sol üst köşelerin okuma sırası
+//   spec     bulmaca profili (tools/shikaku.js → checkSpec): cols × rows = tahta (en fazla 8 geniş, 10 yüksek), start = boş tahtadaki
+//            kesin açılış sayısı, t1Max = en fazla "kendiliğinden belli" parça oranı, decMin = karar anı,
+//            liveMin = karar anında ortalama seçenek, deepMin = kesişim/eleme hamlesi, effortTarget…
+//   puzzle   oyundaki bulmaca: grid (parçalar), clues (parça → ipucu hücresi [satır, sütun]), hidden ("?"
+//            parçalar). Görselin bölgelerinden bağımsız. Yeniden üretmek için `puzzle: null,` yazıp
+//            `node tools/build_pack.js --search` çalıştır.
+//   zones    görsel bölgesi → [içerik (TR), prompt satırı (EN), taslak rengi]
 //   scene    görsel prompt şablonunun sahneye özel parçaları
+//   id       sabit kimlik (görsel ve taslak dosya adları); oyundaki level sırası build'de zorluk
+//            skoruna göre belirlenir
 module.exports = [
   {
-    no: 4, tier: "Kolay", variety: "Köşe açılışı",
+    id: "cherry-blossom-shrine", variety: "Dik mi yatay mı",
     tr: "Kiraz Çiçeği Tapınağı", artName: "Cherry Blossom Shrine",
-    grid: [
+    artGrid: [
       "AAAPP",
       "AAAPP",
       "CTTPP",
       "CTTKK",
       "CLLKK",
     ],
-    spec: { start: [1, 1], maxTech: 2, calm: 2, dilemmas: [1, 2], dilemmaTarget: 1, startRawMax: 4, startAt: "tl", effortTarget: 16 },
-    clues: { A: [0, 0], P: [2, 3], C: [2, 0], T: [3, 2], K: [4, 4], L: [4, 2] },
-    hidden: [],
+    spec: { cols: 6, rows: 6, start: [1, 1], maxTech: 4, pieces: [7, 10], effortTarget: 30, t1Max: 0.5, decMin: 3, liveMin: 2.3, deepMin: 0, hiddenCount: 0 },
+    puzzle: {
+      grid: [
+        "AAABBB",
+        "CCCBBB",
+        "CCCBBB",
+        "DDDEEF",
+        "DDDEEF",
+        "GGGEEF",
+      ],
+      clues: { A: [0, 0], B: [1, 3], C: [1, 0], D: [3, 2], E: [5, 4], F: [4, 5], G: [5, 1] },
+      hidden: [],
+    },
     zones: {
       A: ["Bahar sabahı göğü, uzakta karlı dağ zirvesi", "spring morning sky with a distant snow-capped mountain", "#a9d8ef"],
       P: ["Beş katlı kırmızı pagoda", "five-tiered red pagoda on a small hill", "#e0685a"],
@@ -47,9 +62,9 @@ module.exports = [
   },
 
   {
-    no: 5, tier: "Kolay", variety: "Çift açılış",
+    id: "coral-reef", variety: "Çift açılış",
     tr: "Mercan Resifi", artName: "Coral Reef",
-    grid: [
+    artGrid: [
       "SSSSTT",
       "SSSSTT",
       "WWWFFK",
@@ -57,9 +72,19 @@ module.exports = [
       "WWWCCK",
       "RRRCCK",
     ],
-    spec: { start: [2, 2], maxTech: 2, calm: 2, dilemmas: [1, 2], dilemmaTarget: 2, startRawMax: 4, effortTarget: 20 },
-    clues: { S: [1, 1], T: [1, 5], W: [3, 0], F: [3, 3], K: [3, 5], C: [4, 3], R: [5, 0] },
-    hidden: [],
+    spec: { cols: 6, rows: 6, start: [2, 2], maxTech: 4, pieces: [7, 10], effortTarget: 38, t1Max: 0.45, decMin: 4, liveMin: 2.5, deepMin: 0, hiddenCount: 0 },
+    puzzle: {
+      grid: [
+        "AAAAAA",
+        "AAAAAA",
+        "BBBBCC",
+        "BBBBCC",
+        "DDEFCC",
+        "GGEFHH",
+      ],
+      clues: { A: [0, 3], B: [2, 0], C: [2, 5], D: [4, 1], E: [5, 2], F: [5, 3], G: [5, 1], H: [5, 5] },
+      hidden: [],
+    },
     zones: {
       S: ["Güneş ışınlarının süzüldüğü su yüzeyi", "sunlit water surface with shimmering light rays", "#a9e0ef"],
       T: ["Süzülen deniz kaplumbağası", "sea turtle gliding through open water", "#6f9fd8"],
@@ -87,9 +112,9 @@ module.exports = [
   },
 
   {
-    no: 6, tier: "Orta", variety: "Art arda kararlar",
+    id: "harvest-farm", variety: "Dik mi yatay mı",
     tr: "Hasat Çiftliği", artName: "Harvest Farm",
-    grid: [
+    artGrid: [
       "GGGWHH",
       "GGGWHH",
       "BBBWHH",
@@ -97,9 +122,20 @@ module.exports = [
       "PPSOOO",
       "PPSYYY",
     ],
-    spec: { start: [1, 1], maxTech: 3, dilemmas: [3, 4], dilemmaTarget: 3, maxT1Run: 3, startAt: "br", effortTarget: 32 },
-    clues: { G: [0, 2], W: [1, 3], H: [1, 4], B: [2, 2], O: [4, 5], P: [5, 1], S: [4, 2], Y: [5, 5] },
-    hidden: [],
+    spec: { cols: 7, rows: 7, start: [1, 1], maxTech: 4, pieces: [9, 12], effortTarget: 50, t1Max: 0.4, decMin: 5, liveMin: 2.7, deepMin: 0, hiddenCount: 1 },
+    puzzle: {
+      grid: [
+        "AABBCCD",
+        "AABBCCD",
+        "AABBCCD",
+        "EEBBCCF",
+        "EEBBCCF",
+        "EEBBGHF",
+        "EEIIGHF",
+      ],
+      clues: { A: [1, 0], B: [0, 3], C: [1, 5], D: [2, 6], E: [6, 0], F: [3, 6], G: [5, 4], H: [5, 5], I: [6, 3] },
+      hidden: ["B"],
+    },
     zones: {
       G: ["Göçmen kazların uçtuğu sonbahar göğü", "autumn sky with a flock of migrating geese", "#f5d9a8"],
       W: ["Ahşap yel değirmeni", "wooden windmill with turning sails", "#c9a271"],
@@ -126,18 +162,28 @@ module.exports = [
   },
 
   {
-    no: 7, tier: "Kolay", variety: "Nefes molası",
+    id: "candy-land", variety: "Nefes molası",
     tr: "Şeker Diyarı", artName: "Candy Land",
-    grid: [
+    artGrid: [
       "CCCRR",
       "LHHRR",
       "LHHUU",
       "LFFUU",
       "VVVVV",
     ],
-    spec: { start: [1, 1], maxTech: 2, calm: 2, dilemmas: [1, 2], dilemmaTarget: 1, startRawMax: 3, startAt: "tr", effortTarget: 16 },
-    clues: { C: [0, 1], R: [0, 4], L: [3, 0], H: [1, 2], U: [2, 4], F: [3, 1], V: [4, 3] },
-    hidden: [],
+    spec: { cols: 6, rows: 6, start: [1, 1], maxTech: 4, pieces: [7, 10], effortTarget: 32, t1Max: 0.5, decMin: 3, liveMin: 2.3, deepMin: 0, hiddenCount: 1 },
+    puzzle: {
+      grid: [
+        "ABBCCD",
+        "ABBCCD",
+        "ABBCCD",
+        "EEECCF",
+        "EEEGGF",
+        "EEEGGF",
+      ],
+      clues: { A: [1, 0], B: [2, 2], C: [3, 4], D: [2, 5], E: [3, 0], F: [5, 5], G: [5, 4] },
+      hidden: ["E"],
+    },
     zones: {
       C: ["Pamuk şeker bulutları", "cotton-candy clouds", "#f6c6de"],
       R: ["Jelibon tepesinin üstünde gökkuşağı", "rainbow over a gumdrop hill", "#b9a6d8"],
@@ -163,9 +209,9 @@ module.exports = [
   },
 
   {
-    no: 8, tier: "Orta", variety: "Dev bloklar",
+    id: "desert-oasis", variety: "Gizli sayı",
     tr: "Çöl Vahası", artName: "Desert Oasis",
-    grid: [
+    artGrid: [
       "SSSSPPP",
       "SSSSPPP",
       "TTOOODD",
@@ -174,9 +220,20 @@ module.exports = [
       "BBBCCCC",
       "BBBCCCC",
     ],
-    spec: { start: [2, 2], maxTech: 3, dilemmas: [2, 4], dilemmaTarget: 3, maxT1Run: 3, effortTarget: 34 },
-    clues: { S: [0, 0], P: [0, 5], T: [3, 0], O: [2, 3], D: [4, 5], B: [5, 1], C: [6, 6] },
-    hidden: [],
+    spec: { cols: 7, rows: 7, start: [1, 1], maxTech: 4, pieces: [9, 12], effortTarget: 58, t1Max: 0.4, decMin: 6, liveMin: 2.8, deepMin: 0, hiddenCount: 1 },
+    puzzle: {
+      grid: [
+        "AAABBBB",
+        "AAACCCD",
+        "AAACCCD",
+        "EEECCCD",
+        "EEECCCD",
+        "FFFFGGH",
+        "FFFFIIH",
+      ],
+      clues: { A: [0, 0], B: [0, 6], C: [3, 4], D: [3, 6], E: [3, 1], F: [6, 0], G: [5, 4], H: [6, 6], I: [6, 4] },
+      hidden: ["F"],
+    },
     zones: {
       S: ["Güneşli masmavi gök, süzülen şahin", "blazing blue sky with the sun and a soaring falcon", "#a9d8ef"],
       P: ["Ufukta piramitler", "pyramids on the distant horizon", "#e8c27a"],
@@ -202,9 +259,9 @@ module.exports = [
   },
 
   {
-    no: 9, tier: "Orta", variety: "Gizli sayı",
+    id: "arctic-night", variety: "Çift açılış",
     tr: "Kutup Gecesi", artName: "Arctic Night",
-    grid: [
+    artGrid: [
       "AAAAMM",
       "AAAAMM",
       "GGIIIB",
@@ -212,9 +269,20 @@ module.exports = [
       "LLLHHB",
       "LLLHHB",
     ],
-    spec: { start: [1, 1], maxTech: 3, dilemmas: [3, 4], dilemmaTarget: 3, maxT1Run: 3, startAt: "bl", effortTarget: 36 },
-    clues: { A: [1, 3], M: [1, 4], G: [3, 0], I: [3, 4], B: [5, 5], L: [5, 0], H: [5, 3] },
-    hidden: ["M"],
+    spec: { cols: 7, rows: 7, start: [2, 2], maxTech: 4, pieces: [9, 12], effortTarget: 64, t1Max: 0.35, decMin: 6, liveMin: 3, deepMin: 1, hiddenCount: 1 },
+    puzzle: {
+      grid: [
+        "AABBBCC",
+        "AABBBCC",
+        "DDBBBCC",
+        "DDBBBEE",
+        "DDFFGEE",
+        "HIFFGEE",
+        "HIFFGJJ",
+      ],
+      clues: { A: [0, 1], B: [3, 3], C: [2, 5], D: [4, 1], E: [5, 5], F: [6, 3], G: [5, 4], H: [6, 0], I: [6, 1], J: [6, 5] },
+      hidden: ["F"],
+    },
     zones: {
       A: ["Yıldızlı gökte yeşil kuzey ışıkları", "green aurora ribbons over a starry sky", "#5fbf9a"],
       M: ["Dolunay ve parlayan yıldızlar", "full moon and twinkling stars", "#3f4a7a"],
@@ -241,9 +309,9 @@ module.exports = [
   },
 
   {
-    no: 10, tier: "Zor", variety: "Kalabalık parçalar · eleme",
+    id: "steampunk-sky-city", variety: "Dik mi yatay mı",
     tr: "Buharlı Gök Şehri", artName: "Steampunk Sky City",
-    grid: [
+    artGrid: [
       "SSSAAAA",
       "SSSAAAA",
       "KHHGGGD",
@@ -252,9 +320,21 @@ module.exports = [
       "KRRMMWD",
       "LLLLLLL",
     ],
-    spec: { start: [1, 1], maxTech: 4, dilemmas: [5, 7], dilemmaTarget: 6, minLookahead: 1, maxT1Run: 2, startAt: "bottom", effortTarget: 60 },
-    clues: { S: [0, 2], A: [0, 4], K: [5, 0], H: [2, 1], G: [3, 3], D: [3, 6], T: [4, 4], W: [5, 5], R: [5, 1], M: [5, 4], L: [6, 1] },
-    hidden: [],
+    spec: { cols: 8, rows: 8, start: [1, 1], maxTech: 4, pieces: [11, 15], effortTarget: 80, t1Max: 0.35, decMin: 7, liveMin: 3, deepMin: 1, hiddenCount: 2 },
+    puzzle: {
+      grid: [
+        "ABBBBCCD",
+        "ABBBBCCD",
+        "AEEEECCD",
+        "AFFGGCCD",
+        "HHHGGCCD",
+        "IIIGGJJD",
+        "IIIGGJJD",
+        "IIIGGKKD",
+      ],
+      clues: { A: [3, 0], B: [1, 2], C: [2, 5], D: [6, 7], E: [2, 2], F: [3, 2], G: [7, 4], H: [4, 1], I: [7, 0], J: [5, 6], K: [7, 6] },
+      hidden: ["G","H"],
+    },
     zones: {
       S: ["Pembe bulutlu gün batımı göğü", "sunset sky with pink clouds", "#f4a6a0"],
       A: ["Dev pirinç zeplin", "giant brass airship", "#d8b25e"],
@@ -284,9 +364,9 @@ module.exports = [
   },
 
   {
-    no: 11, tier: "Kolay", variety: "Nefes molası · iç mekan",
+    id: "bookshop-cafe", variety: "Nefes molası",
     tr: "Kitapçı Kafe", artName: "Bookshop Café",
-    grid: [
+    artGrid: [
       "BWWWWS",
       "BWWWWS",
       "BAAFFS",
@@ -294,9 +374,20 @@ module.exports = [
       "CCCRRP",
       "CCCRRP",
     ],
-    spec: { start: [2, 2], maxTech: 2, calm: 2, dilemmas: [1, 2], dilemmaTarget: 2, startRawMax: 4, effortTarget: 22 },
-    clues: { B: [1, 0], W: [0, 1], S: [2, 5], A: [2, 1], F: [2, 4], C: [5, 2], R: [4, 4], P: [4, 5] },
-    hidden: [],
+    spec: { cols: 7, rows: 7, start: [1, 1], maxTech: 4, pieces: [9, 12], effortTarget: 50, t1Max: 0.4, decMin: 5, liveMin: 2.7, deepMin: 0, hiddenCount: 1 },
+    puzzle: {
+      grid: [
+        "AAAABBB",
+        "AAAABBB",
+        "CCCDBBB",
+        "CCCDEFF",
+        "GHHHEFF",
+        "GIIIEFF",
+        "GIIIEJJ",
+      ],
+      clues: { A: [1, 0], B: [0, 6], C: [2, 1], D: [2, 3], E: [4, 4], F: [4, 6], G: [4, 0], H: [4, 2], I: [6, 1], J: [6, 5] },
+      hidden: ["A"],
+    },
     zones: {
       B: ["Uzun ahşap kitap rafı", "tall wooden bookshelf", "#b0824d"],
       W: ["Yağmurlu sokağa bakan büyük kemerli pencere", "big arched window looking out on a rainy street", "#6f9fd8"],
@@ -324,9 +415,9 @@ module.exports = [
   },
 
   {
-    no: 12, tier: "Orta", variety: "Dik mi yatay mı",
+    id: "pirate-cove", variety: "Gizli sayı",
     tr: "Korsan Koyu", artName: "Pirate Cove",
-    grid: [
+    artGrid: [
       "YYVVVKK",
       "YYVVVKK",
       "SSSSPKK",
@@ -335,9 +426,21 @@ module.exports = [
       "RRDDDBB",
       "RRDDDBB",
     ],
-    spec: { start: [1, 1], maxTech: 3, dilemmas: [3, 5], dilemmaTarget: 4, maxT1Run: 3, startAt: "right", effortTarget: 40 },
-    clues: { Y: [1, 1], V: [1, 2], K: [2, 6], S: [3, 3], P: [4, 4], C: [4, 6], R: [6, 0], D: [6, 3], B: [5, 6] },
-    hidden: [],
+    spec: { cols: 8, rows: 8, start: [1, 1], maxTech: 4, pieces: [11, 15], effortTarget: 86, t1Max: 0.33, decMin: 8, liveMin: 3, deepMin: 1, hiddenCount: 2 },
+    puzzle: {
+      grid: [
+        "AABBBCDE",
+        "AAFGGCDE",
+        "AAFGGCDE",
+        "HHFGGCDE",
+        "HHFGGCDE",
+        "IIFGGCDJ",
+        "IIFGGCKJ",
+        "IILLLCKJ",
+      ],
+      clues: { A: [0, 1], B: [0, 4], C: [2, 5], D: [5, 6], E: [0, 7], F: [5, 2], G: [6, 4], H: [4, 1], I: [5, 1], J: [5, 7], K: [6, 6], L: [7, 2] },
+      hidden: ["I","K"],
+    },
     zones: {
       Y: ["Papağanların uçtuğu parlak gök", "bright sky with flying parrots", "#a9d8ef"],
       V: ["Duman tüten volkan adası", "volcano island with a thin plume of smoke", "#b9785a"],
@@ -366,9 +469,9 @@ module.exports = [
   },
 
   {
-    no: 13, tier: "Zor", variety: "Dev bloklar · kesişim",
+    id: "dinosaur-valley", variety: "Çift açılış",
     tr: "Dinozor Vadisi", artName: "Dinosaur Valley",
-    grid: [
+    artGrid: [
       "PPPPVVVV",
       "PPPPVVVV",
       "BBWWVVVV",
@@ -378,9 +481,21 @@ module.exports = [
       "EERRXXXX",
       "EERRXXXX",
     ],
-    spec: { start: [2, 2], maxTech: 4, dilemmas: [4, 6], dilemmaTarget: 5, maxT1Run: 2, effortTarget: 58 },
-    clues: { P: [0, 1], V: [2, 7], B: [5, 1], W: [2, 2], T: [3, 5], G: [5, 7], R: [6, 2], E: [7, 0], X: [7, 7] },
-    hidden: [],
+    spec: { cols: 8, rows: 8, start: [2, 2], maxTech: 4, pieces: [11, 15], effortTarget: 92, t1Max: 0.3, decMin: 9, liveMin: 3.1, deepMin: 1, hiddenCount: 1 },
+    puzzle: {
+      grid: [
+        "ABBBBBCC",
+        "ABBBBBCC",
+        "ADDDDDDE",
+        "FFFFGGGE",
+        "FFFFGGGE",
+        "HHHHHHHH",
+        "IJJKKKLL",
+        "IJJKKKLL",
+      ],
+      clues: { A: [1, 0], B: [1, 3], C: [1, 7], D: [2, 6], E: [2, 7], F: [3, 1], G: [4, 5], H: [5, 2], I: [7, 0], J: [7, 1], K: [6, 4], L: [7, 7] },
+      hidden: ["H"],
+    },
     zones: {
       P: ["Pterozorların süzüldüğü gök", "hazy sky with gliding pterosaurs", "#f5d9a8"],
       V: ["Lav fışkırtan volkan", "erupting volcano with glowing lava", "#e0685a"],
@@ -409,9 +524,9 @@ module.exports = [
   },
 
   {
-    no: 14, tier: "Orta", variety: "İki cephe",
+    id: "mushroom-village", variety: "Dik mi yatay mı",
     tr: "Mantar Ormanı Peri Köyü", artName: "Mushroom Village",
-    grid: [
+    artGrid: [
       "FFFMMT",
       "LLLMMT",
       "LLLHHT",
@@ -419,9 +534,23 @@ module.exports = [
       "WWGBBB",
       "RRGBBB",
     ],
-    spec: { start: [2, 2], maxTech: 3, dilemmas: [3, 4], dilemmaTarget: 3, maxT1Run: 3, twoFronts: true, effortTarget: 36 },
-    clues: { F: [0, 1], M: [1, 3], T: [1, 5], L: [1, 2], H: [2, 3], W: [4, 0], G: [4, 2], B: [5, 4], R: [5, 0] },
-    hidden: [],
+    spec: { cols: 8, rows: 9, start: [1, 1], maxTech: 4, pieceStyle: "big", pieces: [10, 13], effortTarget: 100, t1Max: 0.3, decMin: 9, liveMin: 3, deepMin: 2, cornerMax: 0.35, hiddenCount: 1, lockCount: 1 },
+    puzzle: {
+      grid: [
+        "AAAABBCD",
+        "AAAABBCD",
+        "AAAABBCD",
+        "AAAABBCD",
+        "EEEFBBCD",
+        "EEEFGHCD",
+        "EEEFGHCI",
+        "EEEFGHJI",
+        "KKKKKKJI",
+      ],
+      clues: { A: [2, 2], B: [1, 5], C: [0, 6], D: [1, 7], E: [6, 0], F: [5, 3], G: [6, 4], H: [6, 5], I: [8, 7], J: [8, 6], K: [8, 2] },
+      hidden: ["A"],
+      locks: { G: 4 },
+    },
     zones: {
       F: ["Ateşböcekli alacakaranlık yaprakları", "dusk canopy full of fireflies", "#6a5a9a"],
       M: ["Yaprakların arasından hilal ay", "crescent moon peeking through the leaves", "#b9a6d8"],
@@ -449,9 +578,9 @@ module.exports = [
   },
 
   {
-    no: 15, tier: "Zor", variety: "Gizli sayı · eleme",
+    id: "crystal-cave", variety: "Gizli sayı",
     tr: "Kristal Mağarası", artName: "Crystal Cave",
-    grid: [
+    artGrid: [
       "SSSSEEE",
       "CCCWEEE",
       "CCCWGGM",
@@ -460,9 +589,24 @@ module.exports = [
       "LLLLLVV",
       "LLLLLVV",
     ],
-    spec: { start: [1, 1], maxTech: 4, dilemmas: [4, 6], dilemmaTarget: 5, minLookahead: 1, maxT1Run: 2, startAt: "br", effortTarget: 62 },
-    clues: { S: [0, 1], E: [0, 4], C: [2, 0], W: [2, 3], G: [2, 5], M: [3, 6], T: [4, 2], L: [6, 4], V: [6, 6] },
-    hidden: ["C"],
+    spec: { cols: 7, rows: 10, start: [1, 1], maxTech: 4, pieceStyle: "big", pieces: [10, 13], effortTarget: 106, t1Max: 0.3, decMin: 9, liveMin: 3, deepMin: 2, cornerMax: 0.35, hiddenCount: 1, lockCount: 1 },
+    puzzle: {
+      grid: [
+        "AABCDEE",
+        "AABCDEE",
+        "AABCDEE",
+        "FFBCDGH",
+        "FFBCDGH",
+        "FFBCIGH",
+        "JJBCIGH",
+        "JJKCIGH",
+        "JJKCIGH",
+        "LLLLLLL",
+      ],
+      clues: { A: [1, 1], B: [3, 2], C: [3, 3], D: [2, 4], E: [1, 6], F: [4, 1], G: [6, 5], H: [7, 6], I: [7, 4], J: [8, 1], K: [7, 2], L: [9, 5] },
+      hidden: ["B"],
+      locks: { D: 4 },
+    },
     zones: {
       S: ["Işıl ışıl solucanlı sarkıt tavan", "stalactite ceiling with glowworms", "#3f4a7a"],
       E: ["Fenerli, ahşap destekli maden girişi", "mine entrance with lanterns and wooden beams", "#8b603f"],
@@ -492,18 +636,30 @@ module.exports = [
   },
 
   {
-    no: 16, tier: "Kolay", variety: "Nefes molası",
+    id: "carnival-night", variety: "Nefes molası",
     tr: "Lunapark Gecesi", artName: "Carnival Night",
-    grid: [
+    artGrid: [
       "FFWWW",
       "FFWWW",
       "CCWWW",
       "CCTTR",
       "SSTTR",
     ],
-    spec: { start: [1, 1], maxTech: 2, calm: 2, dilemmas: [1, 2], dilemmaTarget: 2, startAt: "tr", effortTarget: 18 },
-    clues: { F: [0, 1], W: [0, 4], C: [3, 1], T: [4, 2], R: [3, 4], S: [4, 0] },
-    hidden: [],
+    spec: { cols: 8, rows: 8, start: [1, 1], maxTech: 4, pieces: [11, 15], effortTarget: 78, t1Max: 0.35, decMin: 7, liveMin: 3, deepMin: 1, hiddenCount: 2 },
+    puzzle: {
+      grid: [
+        "AAABBBCC",
+        "AAABBBCC",
+        "AAABBBCC",
+        "DDDDDDCC",
+        "EEFFGHCC",
+        "EEFFGHII",
+        "EEFFGJII",
+        "EEKKKJII",
+      ],
+      clues: { A: [0, 0], B: [0, 5], C: [4, 6], D: [3, 4], E: [6, 1], F: [4, 3], G: [5, 4], H: [4, 5], I: [6, 6], J: [6, 5], K: [7, 3] },
+      hidden: ["B","I"],
+    },
     zones: {
       F: ["Havai fişekli gece göğü", "night sky with fireworks", "#3f4a7a"],
       W: ["Işıklı dönme dolap", "glowing Ferris wheel", "#f2d16b"],
@@ -528,9 +684,9 @@ module.exports = [
   },
 
   {
-    no: 17, tier: "Zor", variety: "Kalabalık parçalar · iç mekan",
+    id: "toy-workshop", variety: "Çift açılış · Kesişim ve eleme",
     tr: "Oyuncak Atölyesi", artName: "Toy Workshop",
-    grid: [
+    artGrid: [
       "AAAAACWW",
       "AAAAACWW",
       "SSSDDDWW",
@@ -540,9 +696,23 @@ module.exports = [
       "NNHBBBRR",
       "NNXXXXRR",
     ],
-    spec: { start: [2, 2], maxTech: 4, dilemmas: [5, 8], dilemmaTarget: 7, minLookahead: 1, maxT1Run: 2, effortTarget: 75 },
-    clues: { A: [0, 0], C: [0, 5], W: [1, 7], S: [3, 1], D: [2, 3], T: [3, 7], P: [5, 1], H: [6, 2], B: [5, 5], N: [7, 1], R: [6, 7], X: [7, 3] },
-    hidden: [],
+    spec: { cols: 8, rows: 9, start: [2, 2], maxTech: 4, pieceStyle: "big", pieces: [10, 13], effortTarget: 112, t1Max: 0.3, decMin: 9, liveMin: 3, deepMin: 2, cornerMax: 0.35, hiddenCount: 1, lockCount: 1 },
+    puzzle: {
+      grid: [
+        "ABCCDEFG",
+        "ABCCDEFG",
+        "ABCCDEFG",
+        "ABCCDEFG",
+        "ABCCDEFG",
+        "AHCCIEFG",
+        "AHCCIEFG",
+        "AHJJIEFK",
+        "AHJJLLLK",
+      ],
+      clues: { A: [1, 0], B: [2, 1], C: [1, 3], D: [1, 4], E: [4, 5], F: [5, 6], G: [3, 7], H: [7, 1], I: [6, 4], J: [7, 3], K: [7, 7], L: [8, 5] },
+      hidden: ["F"],
+      locks: { G: 4 },
+    },
     zones: {
       A: ["Tavan kirişlerinden sarkan model uçaklar ve uçurtmalar", "model airplanes and kites hanging from wooden ceiling beams", "#d8c49a"],
       C: ["Guguklu saat", "cuckoo clock", "#8b603f"],
@@ -574,9 +744,9 @@ module.exports = [
   },
 
   {
-    no: 18, tier: "Orta", variety: "Merkezden açılış",
+    id: "savanna-sunset", variety: "Gizli sayı",
     tr: "Savana Gün Batımı", artName: "Savanna Sunset",
-    grid: [
+    artGrid: [
       "SSSSAAA",
       "SSSSAAA",
       "GLLLAAA",
@@ -585,9 +755,24 @@ module.exports = [
       "MMJJJFF",
       "MMJJJFF",
     ],
-    spec: { start: [1, 1], maxTech: 3, dilemmas: [3, 5], dilemmaTarget: 4, maxT1Run: 3, startAt: "center", effortTarget: 42 },
-    clues: { S: [0, 2], A: [2, 5], G: [4, 0], L: [3, 1], W: [4, 6], Z: [4, 1], M: [6, 1], J: [5, 4], F: [5, 5] },
-    hidden: [],
+    spec: { cols: 8, rows: 10, start: [1, 1], maxTech: 4, pieceStyle: "big", pieces: [11, 14], effortTarget: 118, t1Max: 0.3, decMin: 10, liveMin: 3, deepMin: 2, cornerMax: 0.35, hiddenCount: 1, lockCount: 1 },
+    puzzle: {
+      grid: [
+        "AAABCDEF",
+        "AAABCDEF",
+        "AAABCDEF",
+        "GGGBCDEF",
+        "GGGBCDEF",
+        "GGGBHDEF",
+        "IIIJHDEK",
+        "IIIJHDEK",
+        "IIIJHLEK",
+        "MMMMHLEK",
+      ],
+      clues: { A: [0, 1], B: [1, 3], C: [3, 4], D: [4, 5], E: [7, 6], F: [4, 7], G: [4, 1], H: [7, 4], I: [7, 1], J: [7, 3], K: [7, 7], L: [8, 5], M: [9, 2] },
+      hidden: ["I"],
+      locks: { E: 3 },
+    },
     zones: {
       S: ["Dev güneşli altın gün batımı göğü", "golden sunset sky with a huge setting sun", "#f7c96b"],
       A: ["Kuş yuvalı akasya ağacı", "acacia tree with weaver-bird nests", "#d9824e"],
@@ -616,9 +801,9 @@ module.exports = [
   },
 
   {
-    no: 19, tier: "Zor", variety: "Eleme",
+    id: "moon-base", variety: "Çok seçenekli kararlar",
     tr: "Ay Üssü", artName: "Moon Base",
-    grid: [
+    artGrid: [
       "EEEEERPP",
       "EEEEERPP",
       "OODDDRPP",
@@ -628,9 +813,24 @@ module.exports = [
       "CCGGVVVT",
       "CCLLLLLT",
     ],
-    spec: { start: [1, 1], maxTech: 4, dilemmas: [5, 8], dilemmaTarget: 6, minLookahead: 1, maxT1Run: 2, startAt: "bl", effortTarget: 72 },
-    clues: { E: [0, 2], R: [3, 5], P: [0, 7], O: [3, 0], D: [2, 4], H: [4, 6], S: [5, 0], G: [6, 3], V: [6, 5], T: [5, 7], C: [7, 0], L: [7, 2] },
-    hidden: [],
+    spec: { cols: 8, rows: 10, start: [1, 1], maxTech: 4, pieceStyle: "big", pieces: [11, 14], effortTarget: 124, t1Max: 0.3, decMin: 10, liveMin: 3, deepMin: 2, cornerMax: 0.35, hiddenCount: 2, lockCount: 1 },
+    puzzle: {
+      grid: [
+        "ABCCCCCD",
+        "ABEFFGHD",
+        "ABEFFGHD",
+        "ABEFFGHD",
+        "IBEFFGHD",
+        "IBEFFJHK",
+        "ILEMMJHK",
+        "ILEMMJHK",
+        "ILEMMJHK",
+        "NNEMMJHK",
+      ],
+      clues: { A: [1, 0], B: [2, 1], C: [0, 3], D: [1, 7], E: [7, 2], F: [2, 4], G: [2, 5], H: [2, 6], I: [8, 0], J: [6, 5], K: [7, 7], L: [7, 1], M: [7, 3], N: [9, 0] },
+      hidden: ["K","L"],
+      locks: { F: 4 },
+    },
     zones: {
       E: ["Dünya'nın doğduğu yıldızlı uzay", "starry space with the Earth rising", "#3f4a7a"],
       R: ["Fırlatma kulesinde uzun roket", "tall rocket on its launch tower", "#e0685a"],
@@ -661,9 +861,9 @@ module.exports = [
   },
 
   {
-    no: 20, tier: "Orta", variety: "Çift gizli sayı",
+    id: "haunted-manor", variety: "Çift gizli sayı",
     tr: "Perili Köşk", artName: "Haunted Manor",
-    grid: [
+    artGrid: [
       "MMHHHB",
       "MMHHHB",
       "TTHHHB",
@@ -671,9 +871,24 @@ module.exports = [
       "FFGGPP",
       "FFCCPP",
     ],
-    spec: { start: [1, 1], maxTech: 3, dilemmas: [3, 4], dilemmaTarget: 4, maxT1Run: 3, startAt: "top", effortTarget: 45 },
-    clues: { M: [1, 0], H: [0, 4], B: [1, 5], T: [2, 0], G: [3, 3], P: [4, 4], F: [4, 0], C: [5, 3] },
-    hidden: ["G","P"],
+    spec: { cols: 7, rows: 10, start: [1, 1], maxTech: 4, pieceStyle: "big", pieces: [10, 13], effortTarget: 114, t1Max: 0.3, decMin: 9, liveMin: 3, deepMin: 2, cornerMax: 0.35, hiddenCount: 2, lockCount: 1 },
+    puzzle: {
+      grid: [
+        "ABCCDDD",
+        "ABCCDDD",
+        "ABEFDDD",
+        "ABEFDDD",
+        "AGEFDDD",
+        "AGEFHHI",
+        "AGEFHHI",
+        "AGEJHHI",
+        "AGEJHHI",
+        "AGEJKKI",
+      ],
+      clues: { A: [1, 0], B: [2, 1], C: [0, 2], D: [3, 4], E: [3, 2], F: [4, 3], G: [8, 1], H: [6, 4], I: [6, 6], J: [8, 3], K: [9, 5] },
+      hidden: ["E","H"],
+      locks: { D: 4 },
+    },
     zones: {
       M: ["Yarasalı dolunay", "big full moon with little bats", "#f2d16b"],
       H: ["Pencereleri parlayan eğri büğrü perili köşk", "crooked haunted manor with glowing windows", "#6a5a9a"],
@@ -700,9 +915,9 @@ module.exports = [
   },
 
   {
-    no: 21, tier: "Zor", variety: "İki cephe",
+    id: "viking-fjord", variety: "Çift açılış",
     tr: "Viking Fiyortu", artName: "Viking Fjord",
-    grid: [
+    artGrid: [
       "SSSMMMW",
       "SSSMMMW",
       "TLLLLHW",
@@ -711,9 +926,24 @@ module.exports = [
       "BBBBBBD",
       "BBBBBBD",
     ],
-    spec: { start: [2, 2], maxTech: 4, dilemmas: [4, 6], dilemmaTarget: 5, maxT1Run: 2, twoFronts: true, effortTarget: 55 },
-    clues: { S: [0, 1], M: [0, 5], W: [0, 6], T: [3, 0], L: [2, 3], H: [3, 5], F: [4, 1], K: [4, 3], D: [4, 6], B: [5, 0] },
-    hidden: [],
+    spec: { cols: 8, rows: 10, start: [0, 0], openTech: 3, calm: 0, maxTech: 4, pieceStyle: "big", pieces: [11, 14], effortTarget: 128, t1Max: 0.3, decMin: 10, liveMin: 3, deepMin: 3, cornerMax: 0.35, hiddenCount: 1, lockCount: 1 },
+    puzzle: {
+      grid: [
+        "AAAAAABB",
+        "CDEFFGBB",
+        "CDEFFGBB",
+        "CDEFFGHH",
+        "CDEFFGHH",
+        "CDEIIGHH",
+        "CDEIIGHH",
+        "CDEIIJHH",
+        "KKKIIJLL",
+        "KKKIIJLL",
+      ],
+      clues: { A: [0, 4], B: [1, 7], C: [6, 0], D: [3, 1], E: [4, 2], F: [2, 4], G: [5, 5], H: [6, 7], I: [8, 4], J: [8, 5], K: [8, 1], L: [8, 6] },
+      hidden: ["G"],
+      locks: { H: 4 },
+    },
     zones: {
       S: ["Martılı sisli şafak göğü", "misty dawn sky with seabirds", "#f2c4b0"],
       M: ["Karlı dağ zirveleri", "snowy mountain peaks", "#cfe8f5"],
@@ -742,9 +972,9 @@ module.exports = [
   },
 
   {
-    no: 22, tier: "Uzman", variety: "Gizli dev · eleme",
+    id: "sky-islands", variety: "Gizli sayı · Kesişim ve eleme",
     tr: "Gökyüzü Adaları", artName: "Sky Islands",
-    grid: [
+    artGrid: [
       "AAABBBBC",
       "AAABBBBC",
       "DDEEEEFC",
@@ -754,9 +984,24 @@ module.exports = [
       "JJLLKKKH",
       "JJLLKKKH",
     ],
-    spec: { start: [1, 1], maxTech: 4, dilemmas: [7, 9], dilemmaTarget: 7, minLookahead: 2, maxT1Run: 2, startAt: "top", effortTarget: 92 },
-    clues: { A: [0, 2], B: [0, 3], C: [2, 7], D: [3, 0], E: [2, 3], F: [3, 6], G: [4, 0], H: [5, 7], I: [5, 4], J: [6, 0], L: [6, 3], K: [6, 6] },
-    hidden: ["E"],
+    spec: { cols: 8, rows: 10, start: [0, 0], openTech: 3, calm: 0, maxTech: 4, pieceStyle: "big", pieces: [11, 14], effortTarget: 134, t1Max: 0.3, decMin: 10, liveMin: 3, deepMin: 3, cornerMax: 0.35, hiddenCount: 2, lockCount: 1 },
+    puzzle: {
+      grid: [
+        "AABCDEEF",
+        "AABCDEEF",
+        "AABCDEEF",
+        "AABCDGGF",
+        "AABCDGGF",
+        "HIBCDGGF",
+        "HIBCDGGF",
+        "HIJCDGGK",
+        "HIJCDGGK",
+        "HIJCDLLL",
+      ],
+      clues: { A: [3, 1], B: [5, 2], C: [5, 3], D: [7, 4], E: [1, 5], F: [1, 7], G: [5, 5], H: [6, 0], I: [7, 1], J: [8, 2], K: [8, 7], L: [9, 6] },
+      hidden: ["A","D"],
+      locks: { J: 4 },
+    },
     zones: {
       A: ["Kuş sürülü pastel gök", "pastel sky with flocks of birds", "#f6c6de"],
       B: ["Bulutlar arasında süzülen gökyüzü balinası", "friendly sky whale drifting among clouds", "#a9d8ef"],
@@ -788,9 +1033,9 @@ module.exports = [
   },
 
   {
-    no: 23, tier: "Uzman", variety: "Final · hepsi bir arada",
+    id: "jungle-temple", variety: "Çift açılış · Gizli sayı",
     tr: "Orman Tapınağı", artName: "Jungle Temple",
-    grid: [
+    artGrid: [
       "CCMPPPKK",
       "CCMPPPKK",
       "WHHPPPKK",
@@ -800,9 +1045,24 @@ module.exports = [
       "NNVVVVBB",
       "NNLLLLBB",
     ],
-    spec: { start: [2, 2], maxTech: 4, dilemmas: [8, 11], dilemmaTarget: 10, minLookahead: 2, maxT1Run: 2, effortTarget: 125 },
-    clues: { C: [0, 1], M: [1, 2], P: [0, 5], K: [0, 6], W: [2, 0], H: [3, 2], J: [3, 6], R: [4, 2], S: [5, 4], B: [7, 6], N: [7, 0], V: [6, 2], L: [7, 3] },
-    hidden: ["H"],
+    spec: { cols: 8, rows: 10, start: [0, 0], openTech: 3, calm: 0, maxTech: 4, pieceStyle: "big", pieces: [11, 14], effortTarget: 140, t1Max: 0.3, decMin: 11, liveMin: 3, deepMin: 3, cornerMax: 0.35, hiddenCount: 2, lockCount: 1 },
+    puzzle: {
+      grid: [
+        "ABBCCCDE",
+        "ABBCCCDE",
+        "ABBCCCDE",
+        "ABBCCCDE",
+        "ABBFFFDE",
+        "ABBFFFGG",
+        "ABBFFFGG",
+        "HHHHHHGG",
+        "IIIIIIIJ",
+        "KKKKKLLJ",
+      ],
+      clues: { A: [4, 0], B: [4, 1], C: [1, 5], D: [3, 6], E: [1, 7], F: [4, 4], G: [6, 6], H: [7, 1], I: [8, 2], J: [8, 7], K: [9, 3], L: [9, 6] },
+      hidden: ["B","J"],
+      locks: { D: 4 },
+    },
     zones: {
       C: ["Tukanlı sisli orman tepesi", "misty canopy with toucans", "#7fb98a"],
       M: ["Sarmaşıkta sallanan maymun", "monkey swinging on vines", "#b0824d"],

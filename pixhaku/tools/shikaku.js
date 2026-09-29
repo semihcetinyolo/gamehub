@@ -270,6 +270,18 @@ function analyse(p, { skipUnique = false } = {}) {
     startOptions,
     startRaw: first ? prep.raw[first.clue] : 0,
     decisions: steps.filter((s) => s.tech >= 2).length,
+    // share of pieces that are plainly certain, options weighed per decision, deep steps
+    t1Frac: steps.length ? Math.round((techCounts[1] / steps.length) * 100) / 100 : 0,
+    avgLive: (() => {
+      const d = steps.filter((s) => s.tech >= 2);
+      return d.length ? Math.round((d.reduce((t, s) => t + s.live, 0) / d.length) * 10) / 10 : 0;
+    })(),
+    deep: techCounts[3] + techCounts[4],
+    // clues in a corner of their piece let it grow one way only; on a side it can go two ways
+    cornerFrac: steps.length ? Math.round((steps.filter((s) => {
+      const k = p.clues[s.clue], q = s.rect;
+      return (k.r === q.r0 || k.r === q.r1) && (k.c === q.c0 || k.c === q.c1);
+    }).length / steps.length) * 100) / 100 : 0,
     dilemmas: steps.filter((s) => s.tech >= 2 && s.orients.length >= 2).length,
     firstDecision: steps.findIndex((s) => s.tech >= 2),
     t1Run,
@@ -328,14 +340,28 @@ function placeOf(q, R, C) {
 //   startRawMax  the (first) opening clue fits at most this many ways, ignoring other clues
 //   startAt      where the opening(s) sit: a placeOf value, or a list for two openings
 //   twoFronts    the two openings sit far apart
-//   effortTarget / dilemmaTarget  what searchClues aims for
+//   t1Max        highest share of plainly certain (T1) pieces
+//   decMin       at least this many decision moments (steps above T1)
+//   liveMin      average rectangles the resolving clue still shows at a decision
+//   deepMin      at least this many kesişim/eleme (T3/T4) moves
+//   cornerMax    highest share of clues sitting in a corner of their piece
+//   start [0, 0] no plainly certain opening; the first piece may need up to openTech (default T3)
+//   pieces / pieceStyle  piece count range; "big" favours large pieces and long 1-wide strips
+//   lockCount    hidden clues shown as a lock that opens after N placed pieces
+//   effortTarget / dilemmaTarget  what the searches aim for
 // Returns null when the analysed puzzle meets the spec, else the first failed rule.
 function checkSpec(a, spec, layout) {
   if (!a.solved) return "needs guessing";
   if (a.maxTech > spec.maxTech) return `needs T${a.maxTech}`;
-  if (a.startTech !== 1) return "opening is not a plain T1";
   const [smin, smax] = spec.start;
-  if (a.startOptions < smin || a.startOptions > smax) return `${a.startOptions} openings`;
+  if (smin === 0 && smax === 0) {
+    // no plainly certain opening: the first piece already needs reasoning, never guessing
+    if (a.startTech === 1) return "opening is plainly certain";
+    if (a.startTech > (spec.openTech ?? 3)) return `opening needs T${a.startTech}`;
+  } else {
+    if (a.startTech !== 1) return "opening is not a plain T1";
+    if (a.startOptions < smin || a.startOptions > smax) return `${a.startOptions} openings`;
+  }
   const calm = spec.calm ?? 1;
   for (let s = a.startOptions; s < Math.min(a.startOptions + calm, a.steps.length); s++) {
     if (a.steps[s].tech > 2) return `T${a.steps[s].tech} right after the opening`;
@@ -347,6 +373,11 @@ function checkSpec(a, spec, layout) {
   if (spec.minLookahead && a.techCounts[4] < spec.minLookahead) return "too few what-if moves";
   if (spec.maxT1Run != null && a.t1Run > spec.maxT1Run) return `T1 run of ${a.t1Run}`;
   if (spec.startRawMax && a.startRaw > spec.startRawMax) return "opening not obvious enough";
+  if (spec.t1Max != null && a.t1Frac > spec.t1Max) return `${Math.round(a.t1Frac * 100)}% of pieces plainly certain`;
+  if (spec.decMin && a.decisions < spec.decMin) return `${a.decisions} decision moments`;
+  if (spec.liveMin && a.avgLive < spec.liveMin) return `${a.avgLive} options per decision`;
+  if (spec.deepMin && a.deep < spec.deepMin) return `${a.deep} kesişim/eleme moves`;
+  if (spec.cornerMax != null && a.cornerFrac > spec.cornerMax) return `${Math.round(a.cornerFrac * 100)}% of clues in a piece corner`;
   if (spec.startAt) {
     const want = [].concat(spec.startAt).sort().join();
     const got = a.steps[0].forcedAll.map((f) => placeOf(f.rect, layout.rows, layout.cols)).sort().join();
@@ -427,4 +458,111 @@ function searchClues(layout, spec, { iters = 20000, polish = 2500, seeds = 4, se
   return best && best.clues;
 }
 
-module.exports = { prepare, countSolutions, humanSolve, analyse, parseLayout, placeOf, orient, checkSpec, searchClues };
+// ---------- whole puzzles ----------
+// Random tiling of a rows×cols board: the first empty cell in reading order is always a
+// top-left corner, so a rectangle is picked there, weighted by area.
+const AREA_WEIGHT = { 2: 0.5, 3: 0.8, 4: 1.4, 5: 0.9, 6: 1.6, 7: 0.4, 8: 1.4, 9: 1.1, 10: 1.1, 12: 1.0 };
+// "big": few small pieces, many 5–14 areas and long 1-wide strips (the expert benchmark's mix)
+const BIG_WEIGHT = { 2: 0.12, 3: 0.35, 4: 0.7, 5: 1.3, 6: 1.3, 7: 1.3, 8: 1.3, 9: 1.1, 10: 1.1, 12: 1.0, 14: 0.6, 15: 0.3, 16: 0.3 };
+function randomTiling(R, C, rand, style) {
+  const table = style === "big" ? BIG_WEIGHT : AREA_WEIGHT;
+  const weight = (h, w) => {
+    const base = table[h * w];
+    if (!base) return 0;
+    return style === "big" && (h === 1 || w === 1) && h * w >= 5 ? base * 1.8 : base;
+  };
+  const g = Array.from({ length: R }, () => Array(C).fill(-1));
+  const rects = [];
+  for (;;) {
+    let r0 = -1, c0 = -1;
+    for (let x = 0; x < R * C && r0 < 0; x++) if (g[Math.floor(x / C)][x % C] < 0) { r0 = Math.floor(x / C); c0 = x % C; }
+    if (r0 < 0) return rects;
+    const opts = [];
+    let maxW = 0;
+    while (c0 + maxW < C && g[r0][c0 + maxW] < 0) maxW++;
+    for (let h = 1; r0 + h <= R && maxW > 0; h++) {
+      for (let w = 1; w <= maxW; w++) {
+        if (g[r0 + h - 1].slice(c0, c0 + w).some((v) => v >= 0)) { maxW = w - 1; break; }
+        const wt = weight(h, w);
+        if (wt) opts.push([h, w, wt]);
+      }
+    }
+    if (!opts.length) return null;
+    let x = rand() * opts.reduce((t, o) => t + o[2], 0), pick = opts[0];
+    for (const o of opts) { x -= o[2]; if (x <= 0) { pick = o; break; } }
+    const [h, w] = pick;
+    for (let r = r0; r < r0 + h; r++) for (let c = c0; c < c0 + w; c++) g[r][c] = rects.length;
+    rects.push({ r0, c0, r1: r0 + h - 1, c1: c0 + w - 1, area: h * w });
+  }
+}
+
+const KEYS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+// A whole level: many random tilings, clue cells sampled and then moved one at a time
+// towards the spec (hard rules must hold; effort, certain-share, decisions, options and
+// deep moves are scored). Returns { grid, clues, hidden } in pack format, or null.
+function generatePuzzle(cols, rows, spec, { seed = 1, tilings = 40, samples = 400, polish = 1500 } = {}) {
+  const rand = rng(seed);
+  const pick = (list) => list[Math.floor(rand() * list.length)];
+  const hard = { ...spec, dilemmas: null, minLookahead: 0, maxT1Run: null, t1Max: null, decMin: 0, liveMin: 0, deepMin: 0, cornerMax: null };
+  const lockCount = spec.lockCount || 0;
+  // a lock opens after N placed pieces, so its piece must come late enough in the solve
+  const lockable = (a, clues) => a.steps.map((s, idx) => ({ s, idx })).filter(({ s, idx }) => clues[s.clue].h && idx >= 2 && idx <= a.steps.length - 2);
+  const scoreOf = (a) => {
+    let sc = Math.abs(a.effort - (spec.effortTarget || a.effort)) + a.startRaw * 0.3;
+    if (spec.t1Max != null) sc += Math.max(0, a.t1Frac - spec.t1Max) * 200;
+    if (spec.decMin) sc += Math.max(0, spec.decMin - a.decisions) * 8;
+    if (spec.liveMin) sc += Math.max(0, spec.liveMin - a.avgLive) * 15;
+    if (spec.deepMin) sc += Math.max(0, spec.deepMin - a.deep) * 10;
+    if (spec.cornerMax != null) sc += Math.max(0, a.cornerFrac - spec.cornerMax) * 120 + a.cornerFrac * 10;
+    return sc;
+  };
+  let best = null;
+  for (let t = 0, guard = 0; t < tilings && guard < tilings * 50; guard++) {
+    const rects = randomTiling(rows, cols, rand, spec.pieceStyle);
+    if (!rects || (spec.pieces && (rects.length < spec.pieces[0] || rects.length > spec.pieces[1]))) continue;
+    t++;
+    const zones = rects.map((q, k) => ({ ...q, key: KEYS[k] }));
+    const layout = { rows, cols, zones };
+    const cells = rects.map((q) => { const o = []; for (let r = q.r0; r <= q.r1; r++) for (let c = q.c0; c <= q.c1; c++) o.push([r, c]); return o; });
+    const evaluate = (clues) => {
+      const p = { rows, cols, clues };
+      if (countSolutions(p, 2) !== 1) return null;
+      const a = analyse(p, { skipUnique: true });
+      if (checkSpec(a, hard, layout)) return null;
+      if (lockCount && lockable(a, clues).length < lockCount) return null;
+      return { clues, a, sc: scoreOf(a), zones };
+    };
+    let cur = null;
+    for (let s = 0; s < samples; s++) {
+      const hid = new Set();
+      while (hid.size < (spec.hiddenCount || 0) + lockCount) hid.add(Math.floor(rand() * rects.length));
+      const e = evaluate(rects.map((q, k) => { const [r, c] = pick(cells[k]); return hid.has(k) ? { r, c, n: q.area, h: 1 } : { r, c, n: q.area }; }));
+      if (e && (!cur || e.sc < cur.sc)) cur = e;
+    }
+    for (let it = 0; cur && it < polish; it++) {
+      const k = Math.floor(rand() * rects.length);
+      const [r, c] = pick(cells[k]);
+      const clues = cur.clues.slice();
+      clues[k] = { ...clues[k], r, c };
+      const e = evaluate(clues);
+      if (e && e.sc <= cur.sc) cur = e;
+    }
+    if (cur && !checkSpec(cur.a, spec, layout) && (!best || cur.sc < best.sc)) best = cur;
+  }
+  if (!best) return null;
+  const grid = Array.from({ length: rows }, () => Array(cols).fill("."));
+  best.zones.forEach((z) => { for (let r = z.r0; r <= z.r1; r++) for (let c = z.c0; c <= z.c1; c++) grid[r][c] = z.key; });
+  // the latest-solved hidden clues become locks; each opens after min(4, its solve position) pieces
+  const locks = {};
+  lockable(best.a, best.clues).sort((x, y) => y.idx - x.idx).slice(0, lockCount)
+    .forEach(({ s, idx }) => { locks[best.zones[s.clue].key] = Math.min(4, idx); });
+  return {
+    grid: grid.map((row) => row.join("")),
+    clues: Object.fromEntries(best.zones.map((z, k) => [z.key, [best.clues[k].r, best.clues[k].c]])),
+    hidden: best.zones.filter((z, k) => best.clues[k].h && !(z.key in locks)).map((z) => z.key),
+    locks,
+  };
+}
+
+module.exports = { prepare, countSolutions, humanSolve, analyse, parseLayout, placeOf, orient, checkSpec, searchClues, generatePuzzle };

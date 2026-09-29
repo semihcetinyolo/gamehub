@@ -101,7 +101,7 @@
     levels.forEach((lv, i) => {
       const opt = document.createElement("option");
       opt.value = String(i);
-      opt.textContent = `${i + 1} · ${lv.artName}`;
+      opt.textContent = `${i + 1} · ${lv.tag || ""}${lv.difficulty != null ? ` ${lv.difficulty}` : ""} · ${lv.artName}`;
       select.appendChild(opt);
     });
   }
@@ -227,7 +227,7 @@
     const status = completed ? "çözüldü" : failed ? "kaybedildi" : `${new Set(assignments.filter((v) => v !== null)).size}/${level.clues.length} parça`;
     stateEl.innerHTML = "";
     const title = document.createElement("b");
-    title.textContent = `LEVEL ${levelIndex + 1} / ${levels.length}`;
+    title.textContent = `LEVEL ${levelIndex + 1} / ${levels.length}${level.tag ? ` · ${level.tag.toUpperCase()} ${level.difficulty}` : ""}`;
     stateEl.append(title, document.createElement("br"),
       document.createTextNode(level.artName), document.createElement("br"),
       document.createTextNode(`${where} · ${status} · ♥${lives} · hint ${hintLeft} · biten ${finishedLevels.size}`));

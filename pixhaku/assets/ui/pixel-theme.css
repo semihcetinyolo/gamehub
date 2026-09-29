@@ -128,3 +128,24 @@
     .fail-card button:disabled { opacity:.6; cursor:default; }
     @media (max-width:350px) { .fail-card { padding-inline:18px; } #failModal h2 { font-size:14px; } .revive-main { font-size:12px; } }
     @media (max-height:700px) { .fail-card { padding-top:20px; padding-bottom:22px; } .fail-level { margin-bottom:14px; } .empty-hearts { margin-bottom:12px; } #failModal h2 { margin-bottom:16px; } .fail-prompt { margin-top:16px; } }
+    /* live cell count shown while a rectangle is being drawn */
+    .area-badge { position:absolute; z-index:6; left:0; top:0; min-width:20px; height:20px; padding:0 4px; transform:translate(-50%,-50%); display:grid; place-items:center; background:#fff3d3e6; color:#6b5a40; font:400 9px/1 var(--px-font); box-shadow:0 0 0 2px #8d7b5b99; pointer-events:none; opacity:0; transition:opacity .08s; }
+    .area-badge.show { opacity:.9; }
+    /* locked clues: lock + pieces left; size hidden until it opens */
+    .clue.locked { display:inline-flex; align-items:center; gap:2px; background:#e7c77a; color:#6b4a1f; }
+    .clue.locked .lock-icon { width:9px; height:10px; image-rendering:pixelated; }
+    .clue.locked b { font-weight:400; }
+    .clue.locked.nudge { animation:lock-nudge .32s steps(4); }
+    @keyframes lock-nudge { 25% { transform:translateX(-3px); } 75% { transform:translateX(3px); } }
+    .clue.unlocked { animation:lock-open .45s steps(3); }
+    @keyframes lock-open { 0% { transform:scale(1.35); background:#f6dc8f; } 100% { transform:scale(1); } }
+    .help-lock { display:flex; align-items:center; gap:8px; text-align:left; }
+    .help-lock .clue { flex:none; }
+    /* difficulty tag: next to the level number, and a stripe on the level tiles */
+    .level-tag { display:inline-block; margin-left:8px; padding:3px 5px 2px; font-size:7px; line-height:1; letter-spacing:1px; color:#fff4d4; vertical-align:2px; box-shadow:2px 0 var(--tag-edge),-2px 0 var(--tag-edge),0 2px var(--tag-edge),0 -2px var(--tag-edge); background:var(--tag); }
+    .tag-easy { --tag:#6f8a48; --tag-edge:#4c6331; }
+    .tag-medium { --tag:#b98b3a; --tag-edge:#8a6526; }
+    .tag-hard { --tag:#b66240; --tag-edge:#86452c; }
+    .tag-expert { --tag:#7a4f8f; --tag-edge:#57366a; }
+    .level-tile.tile-easy { --tile-tag:#6f8a48; } .level-tile.tile-medium { --tile-tag:#b98b3a; } .level-tile.tile-hard { --tile-tag:#b66240; } .level-tile.tile-expert { --tile-tag:#7a4f8f; }
+    .level-tile[class*="tile-"] { background-image:linear-gradient(var(--tile-tag),var(--tile-tag)); background-size:100% 4px; background-position:bottom; background-repeat:no-repeat; }
