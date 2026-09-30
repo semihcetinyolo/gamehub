@@ -177,11 +177,15 @@ function undo() {
   anim = { dir: m.dir, cells: m.cells, from: center(st.head), t0: performance.now(), dur: 40 + m.cells.length * 16, undo: true };
   SFX.undo(); hud(); kick();
 }
+const HINT_STEP = 320, HINT_HOLD = 900, HINT_EASE = 300, HINT_PASSES = 3; // ms between paws, full-trail hold, per-paw ease-in; loops
 function showHint(auto) {
   if (!L || over || anim) return;
   const d = S.hint(st);
   if (!auto) { attempt.hints++; SFX.hint(); }
-  if (d) hint = { dir: d, cells: E.slide(L, st.filled, st.head, d), t0: performance.now(), until: performance.now() + 2600 };
+  if (d) {
+    const cells = E.slide(L, st.filled, st.head, d), now = performance.now();
+    hint = { dir: d, cells, t0: now, until: now + HINT_PASSES * (cells.length * HINT_STEP + HINT_HOLD) }; // a few full passes; any move clears it
+  }
   else { tip('Bu yoldan çıkış yok — baştan dene.', 2600); $('bRestart').classList.remove('nudge'); void $('bRestart').offsetWidth; $('bRestart').classList.add('nudge'); }
   kick();
 }
@@ -316,17 +320,21 @@ function draw(now) {
     const p = center(i); R.paw(ctx, p.x, p.y, c * .42, R.PAL.paw);
   }
   if (hint && now > hint.until) hint = null;
-  if (hint) { // the paws on the hinted path light up, in a wave running away from the dog
-    const fadeIn = Math.min(1, (now - hint.t0) / 180), fadeOut = Math.min(1, (hint.until - now) / 300);
+  if (hint) { // the paws on the hinted path light up one after another, walking away from the dog
+    const cycle = hint.cells.length * HINT_STEP + HINT_HOLD, el = (now - hint.t0) % cycle;
+    const fadeOut = Math.min(1, (hint.until - now) / 400);
+    const cycleFade = el > cycle - 400 ? (cycle - el) / 400 : 1; // the whole trail dims before the next pass
     hint.cells.forEach((i, k) => {
-      const p = center(i), wave = .5 + .5 * Math.sin(now / 1000 * 7 - k * .9), a = fadeIn * fadeOut;
-      const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, c * .62);
-      glow.addColorStop(0, `rgba(255,214,90,${(.55 + .4 * wave) * a})`); glow.addColorStop(1, 'rgba(255,214,90,0)');
-      ctx.fillStyle = glow; ctx.fillRect(p.x - c * .62, p.y - c * .62, c * 1.24, c * 1.24);
-      const sz = c * (.46 + .1 * wave);
-      ctx.globalAlpha = a;
-      R.paw(ctx, p.x, p.y + c * .02, sz * 1.14, '#b0641a');   // dark rim so the gold reads on cream
-      R.paw(ctx, p.x, p.y, sz, wave > .5 ? '#ffe27a' : '#ffc93c');
+      const on = Math.min(1, Math.max(0, (el - k * HINT_STEP) / HINT_EASE)); // each paw eases in on its turn
+      if (!on) return;
+      const a = on * fadeOut * cycleFade, pop = on < 1 ? on * (1 - on) * .5 : 0, p = center(i);
+      const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, c * .55);
+      glow.addColorStop(0, `rgba(255,214,110,${.32 * a})`); glow.addColorStop(1, 'rgba(255,214,110,0)');
+      ctx.fillStyle = glow; ctx.fillRect(p.x - c * .55, p.y - c * .55, c * 1.1, c * 1.1);
+      const sz = c * (.44 + pop * .2);
+      ctx.globalAlpha = a * .75;
+      R.paw(ctx, p.x, p.y + c * .015, sz * 1.1, '#c8914a'); // soft rim so the gold still reads on cream
+      R.paw(ctx, p.x, p.y, sz, '#f6cf72');
       ctx.globalAlpha = 1;
     });
   }

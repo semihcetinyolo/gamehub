@@ -7,7 +7,7 @@ Referans: Long Cat (Google Play `com.martinmagni.longcat`). Bizde kedi yerine **
 
 - `index.html`: oyun. `index.html#7` doğrudan 7. bölümü açar. Ok tuşları / WASD, Z veya Backspace geri al, R baştan, H ipucu.
 - **Kontrol:** Kaydır. Parmağını kaldırmadan yön değiştirebilirsin: sağa sürükleyip duvara yaslandıktan sonra aynı hareketle yukarı sürüklersen köpek yukarı devam eder. Köpek kayarken verilen yönler sıraya girer (en fazla 3). Ayrıca köpeğin satırında veya sütununda, gideceği yol üzerindeki bir kareye **dokunursan** köpek o yöne gider. Ulaşılamayan bir kareye dokunursan köpek sadece o yöne küçük bir sarsılma yapar.
-- **İpucu:** Ok gösterilmez. Doğru yöndeki karelerin patileri 2,6 saniye boyunca altın renginde parlar; parlama köpekten uzağa doğru dalga hâlinde ilerler.
+- **İpucu:** Ok gösterilmez. Doğru yöndeki karelerin patileri köpekten başlayarak sırayla yumuşak bir altın renginde yanar. Her pati 0,3 sn'de yanar ve patiler arasında 0,32 sn vardır. Bütün iz 0,9 sn yanık kalır, söner ve baştan başlar. Bu 3 tur sürer; köpek hareket edince ipucu kapanır. Ayar: `game.js` → `HINT_STEP`, `HINT_HOLD`, `HINT_EASE`, `HINT_PASSES`.
 - `engine.js`: saf mantık (kaydırma, kazanma, sıkışma) ve çözücü (ipucu + zorluk ölçümü). Node'da da çalışır.
 - `render.js`: tahta çizimi. `dog.js`: üretilmiş sosis köpek atlası, hareketli kulaklar/patiler ve canlı yüz. `art.js`: görsel slotları. `game.js`: ekranlar, girdi, animasyon. `ui.css`: arayüz.
 - [ART.md](ART.md): üretilmiş görseller, animasyonlar ve tam prompt dosyası. [Animasyon önizlemesi](art-preview.html): canlı karakter animasyonları ve derinlik karşılaştırması.
