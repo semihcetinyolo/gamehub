@@ -88,7 +88,7 @@ settingsUI();
 const cv = $('cv'), ctx = cv.getContext('2d');
 const headCv = document.createElement('canvas'), hctx = headCv.getContext('2d');
 let idx = 0, lv = null, L = null, S = null, st = null, lay = null, board = null, dpr = 1;
-let anim = null, rewind = null, queued = null, over = false, attempt = null;
+let anim = null, rewind = null, queued = [], over = false, attempt = null;
 let mood = 'idle', fx = D.newFace(), lastDir = [0, 1], squashAt = -1e9, bonkLen = 0, lastT = 0;
 let particles = [], trail = [], hint = null, tipTimer = 0, failTimer = 0;
 
@@ -106,7 +106,7 @@ function start(i) {
 }
 function reset() { // fresh board for the current level
   clearTimeout(failTimer);
-  st = E.newState(L); anim = null; rewind = null; queued = null; over = false; particles = []; trail = []; hint = null;
+  st = E.newState(L); anim = null; rewind = null; queued = []; over = false; particles = []; trail = []; hint = null;
   mood = 'idle'; fx = D.newFace(); lastDir = tailDir().map(v => -v);
   $('result').classList.remove('on'); hud(); kick();
 }
@@ -145,15 +145,21 @@ const center = i => ({ x: lay.ox + (i % L.W + 0.5) * lay.cell, y: lay.oy + (((i 
 
 // ---------- input ----------
 const SLIDE_SPEED = 0.6; // 1 = the first prototype's pace (~33 cells/s); 0.8 = 80% of it
+function nudge(dir) { // blocked: a small nudge of the head, never the screen
+  lastDir = E.DIRS[dir].slice(); squashAt = performance.now() - 60; bonkLen = 0; D.trigger(fx, 'squish', .12); kick();
+}
+// returns true when a slide started
 function input(dir) {
-  if (!L || over || !$('game').classList.contains('on')) return;
+  if (!L || over || !$('game').classList.contains('on')) return false;
   audio();
-  if (anim) { queued = dir; return; }
+  if (anim) { // chained swipes run in order once the current slide lands
+    const lastQ = queued.length ? queued[queued.length - 1] : anim.undo ? null : anim.dir;
+    if (dir !== lastQ && queued.length < 3) queued.push(dir);
+    return false;
+  }
   const cells = E.slide(L, st.filled, st.head, dir);
   const [dx, dy] = E.DIRS[dir];
-  if (!cells.length) { // blocked: a small nudge of the head, never the screen
-    lastDir = [dx, dy]; squashAt = performance.now() - 60; bonkLen = 0; D.trigger(fx, 'squish', .12); kick(); return;
-  }
+  if (!cells.length) { nudge(dir); return false; }
   const from = center(st.head);
   E.apply(L, st, dir);
   hint = null; lastDir = [dx, dy]; mood = 'slide';
@@ -161,7 +167,7 @@ function input(dir) {
   anim = { dir, cells, from, t0: performance.now(), dur: (50 + cells.length * 30) / SLIDE_SPEED, undo: false };
   SFX.slide(cells.length);
   if (lv.tip && st.moves.length >= 2) tip('');
-  hud(); kick();
+  hud(); kick(); return true;
 }
 function undo() {
   if (!L || anim || over || !st.moves.length) return;
@@ -175,7 +181,7 @@ function showHint(auto) {
   if (!L || over || anim) return;
   const d = S.hint(st);
   if (!auto) { attempt.hints++; SFX.hint(); }
-  if (d) hint = { dir: d, cells: E.slide(L, st.filled, st.head, d), until: performance.now() + 2600 };
+  if (d) hint = { dir: d, cells: E.slide(L, st.filled, st.head, d), t0: performance.now(), until: performance.now() + 2600 };
   else { tip('Bu yoldan çıkış yok — baştan dene.', 2600); $('bRestart').classList.remove('nudge'); void $('bRestart').offsetWidth; $('bRestart').classList.add('nudge'); }
   kick();
 }
@@ -194,17 +200,39 @@ addEventListener('keydown', e => {
   else if (k === 'r') restart();
   else if (k === 'h') showHint(false);
 });
+// Drag: one finger can steer several slides without lifting — every 18 px of travel re-anchors
+// the gesture, and a new direction fires a new swipe (queued while the dog is still moving).
+// Tap: a floor cell in the dog's row or column that its slide would pass sends it that way.
+const SWIPE_PX = 18;
 let touch = null;
-cv.addEventListener('pointerdown', e => { touch = { x: e.clientX, y: e.clientY, used: false }; cv.setPointerCapture?.(e.pointerId); });
+cv.addEventListener('pointerdown', e => { touch = { x: e.clientX, y: e.clientY, fired: null, moved: false }; try { cv.setPointerCapture(e.pointerId); } catch (_) {} });
 cv.addEventListener('pointermove', e => {
-  if (!touch || touch.used) return;
+  if (!touch) return;
   const dx = e.clientX - touch.x, dy = e.clientY - touch.y;
-  if (Math.hypot(dx, dy) < 18) return;
-  touch.used = true;
-  input(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
+  if (Math.hypot(dx, dy) < SWIPE_PX) return;
+  const dir = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
+  touch.x = e.clientX; touch.y = e.clientY; touch.moved = true;
+  if (dir !== touch.fired) { touch.fired = dir; input(dir); }
 });
-const endTouch = () => { touch = null; };
-cv.addEventListener('pointerup', endTouch); cv.addEventListener('pointercancel', endTouch);
+cv.addEventListener('pointerup', e => { if (touch && !touch.moved) tapAt(e.clientX, e.clientY); touch = null; });
+cv.addEventListener('pointercancel', () => { touch = null; });
+function tapAt(px, py) {
+  if (!L || !lay || over) return;
+  const r = cv.getBoundingClientRect();
+  const x = Math.floor((px - r.left - lay.ox) / lay.cell), y = Math.floor((py - r.top - lay.oy) / lay.cell);
+  if (x < 0 || y < 0 || x >= L.W || y >= L.H) return;
+  const target = y * L.W + x;
+  if (!L.open[target]) return;
+  // where the head will be once the current slide and any queued swipes have landed
+  const filled = new Uint8Array(st.filled); let head = st.head;
+  for (const d of queued) { const c = E.slide(L, filled, head, d); for (const i of c) filled[i] = 1; if (c.length) head = c[c.length - 1]; }
+  if (filled[target]) return;
+  const hx = head % L.W, hy = (head / L.W) | 0;
+  const dir = y === hy ? (x > hx ? 'right' : 'left') : x === hx ? (y > hy ? 'down' : 'up') : null;
+  if (!dir) return;
+  if (E.slide(L, filled, head, dir).includes(target)) input(dir);
+  else if (!anim && !queued.length) nudge(dir); // out of reach: the head bumps toward it, nothing moves
+}
 
 // ---------- frame loop (runs while the game screen is up; the face is always alive) ----------
 let raf = 0;
@@ -225,7 +253,8 @@ function finishAnim(now) {
     else if (E.stuck(L, st)) fail(now);
   } else mood = 'idle';
   hud();
-  if (queued && !over) { const q = queued; queued = null; input(q); } else queued = null;
+  while (queued.length && !over && !input(queued.shift())); // skip queued swipes that are blocked
+  if (over) queued = [];
 }
 function win(now) {
   over = true; mood = 'happy'; SFX.win(); hud();
@@ -287,10 +316,19 @@ function draw(now) {
     const p = center(i); R.paw(ctx, p.x, p.y, c * .42, R.PAL.paw);
   }
   if (hint && now > hint.until) hint = null;
-  if (hint) {
-    ctx.globalAlpha = .35 + .2 * Math.sin(now / 120); ctx.fillStyle = R.PAL.hint;
-    for (const i of hint.cells) { const p = center(i); ctx.beginPath(); ctx.arc(p.x, p.y, c * .2, 0, Math.PI * 2); ctx.fill(); }
-    ctx.globalAlpha = 1;
+  if (hint) { // the paws on the hinted path light up, in a wave running away from the dog
+    const fadeIn = Math.min(1, (now - hint.t0) / 180), fadeOut = Math.min(1, (hint.until - now) / 300);
+    hint.cells.forEach((i, k) => {
+      const p = center(i), wave = .5 + .5 * Math.sin(now / 1000 * 7 - k * .9), a = fadeIn * fadeOut;
+      const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, c * .62);
+      glow.addColorStop(0, `rgba(255,214,90,${(.55 + .4 * wave) * a})`); glow.addColorStop(1, 'rgba(255,214,90,0)');
+      ctx.fillStyle = glow; ctx.fillRect(p.x - c * .62, p.y - c * .62, c * 1.24, c * 1.24);
+      const sz = c * (.46 + .1 * wave);
+      ctx.globalAlpha = a;
+      R.paw(ctx, p.x, p.y + c * .02, sz * 1.14, '#b0641a');   // dark rim so the gold reads on cream
+      R.paw(ctx, p.x, p.y, sz, wave > .5 ? '#ffe27a' : '#ffc93c');
+      ctx.globalAlpha = 1;
+    });
   }
   let p = 1, pts;
   if (anim) { const u = Math.min(1, (now - anim.t0) / anim.dur); p = anim.undo ? u : 1 - (1 - u) * (1 - u); }
@@ -321,7 +359,6 @@ function draw(now) {
   const blit = (x, y) => ctx.drawImage(headCv, x - hs / dpr / 2, y - hs / dpr / 2, hs / dpr, hs / dpr);
   trail.forEach((g, i) => { ctx.globalAlpha = .28 * (g.life / .1) * ((i + 1) / trail.length); blit(g.x, g.y); });
   ctx.globalAlpha = 1; blit(head.x, head.y);
-  if (hint) R.arrow(ctx, head.x, head.y, E.DIRS[hint.dir], c, now / 1000);
 
   // particles
   particles = particles.filter(q => now - q.t0 < q.life);
@@ -389,6 +426,7 @@ const home = (() => {
 window.LongDogGame = {
   start, undo, restart, input, state: () => ({ idx, head: st && st.head, count: st && st.count, floor: L && L.floor, over, mood, rewinding: !!rewind }),
   solve: () => S && S.hint(st), tick: () => draw(performance.now()),
+  cellCenter: i => { const r = cv.getBoundingClientRect(), p = center(i); return { x: r.left + p.x, y: r.top + p.y }; }, // page coords, for tap tests
 };
 
 Promise.all([D.load(), R.load()]).then(() => { home.rebake(); if (L) resize(); kick(); });
