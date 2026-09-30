@@ -79,6 +79,12 @@
     <div class="adm-row">
       <button class="adm-b" type="button" data-act="reset" title="Tamamlanan level kayıtlarını sil">İLERLEMEYİ SIFIRLA</button>
     </div>
+    <div class="adm-row c2 adm-gen" title="Oyun içi üreticiyle hemen yeni bir level üret">
+      <button class="adm-b" type="button" data-act="genEasy">ÜRET EASY</button>
+      <button class="adm-b" type="button" data-act="genMedium">ÜRET MEDIUM</button>
+      <button class="adm-b" type="button" data-act="genHard">ÜRET HARD</button>
+      <button class="adm-b" type="button" data-act="genExpert">ÜRET EXPERT</button>
+    </div>
     <div class="adm-msg"></div>
     <div class="adm-keys">← → LEVEL · W GEÇ · F KAYBET<br>N PARÇA · R BAŞTAN</div>`;
   document.body.append(toggle, panel);
@@ -216,9 +222,19 @@
     say("İlerleme sıfırlandı");
   }
 
+  function makeCustom(tag) {
+    if (typeof playCustom !== "function") { say("Bu oyunda üretici yok"); return; }
+    if (adPlaying) { say("Reklam bitince tekrar dene"); return; }
+    closeSideModals();
+    say("Üretiliyor…");
+    playCustom(tag);
+  }
+
   const actions = {
     prev: () => go(levelIndex - 1), next: () => go(levelIndex + 1), win, fail, piece, restart,
     heal, hurt, hints, reset: resetProgress,
+    // straight to the in-game puzzle maker, without clearing the built-in levels first
+    genEasy: () => makeCustom("easy"), genMedium: () => makeCustom("medium"), genHard: () => makeCustom("hard"), genExpert: () => makeCustom("expert"),
   };
 
   function refresh() {

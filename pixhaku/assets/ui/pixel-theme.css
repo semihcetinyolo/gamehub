@@ -149,3 +149,12 @@
     .tag-expert { --tag:#7a4f8f; --tag-edge:#57366a; }
     .level-tile.tile-easy { --tile-tag:#6f8a48; } .level-tile.tile-medium { --tile-tag:#b98b3a; } .level-tile.tile-hard { --tile-tag:#b66240; } .level-tile.tile-expert { --tile-tag:#7a4f8f; }
     .level-tile[class*="tile-"] { background-image:linear-gradient(var(--tile-tag),var(--tile-tag)); background-size:100% 4px; background-position:bottom; background-repeat:no-repeat; }
+    /* in-game puzzle maker */
+    .custom-note { margin:0 0 16px; font-size:9px; line-height:1.9; color:var(--muted); }
+    .custom-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .custom-pick { min-height:48px; font-size:10px; color:#fff4d4; background:var(--tag); box-shadow:4px 0 var(--tag-edge),-4px 0 var(--tag-edge),0 -4px var(--tag-edge),0 4px var(--tag-edge),0 8px #0002; }
+    .custom-status { min-height:1.9em; margin:16px 0 0; font-size:9px; color:var(--ink); }
+    .custom-modal.busy .custom-pick, .busy .custom-pick { opacity:.5; pointer-events:none; }
+    #customModal.busy .custom-status::after { content:""; display:inline-block; width:8px; height:8px; margin-left:8px; background:var(--ink); animation:maker-blink .6s steps(2) infinite; }
+    @keyframes maker-blink { 50% { opacity:0; } }
+    .level-tile.tile-new { background:#fff3d3; color:#7a4f8f; font-size:16px; }

@@ -549,7 +549,7 @@ module.exports = [
       ],
       clues: { A: [2, 2], B: [1, 5], C: [0, 6], D: [1, 7], E: [6, 0], F: [5, 3], G: [6, 4], H: [6, 5], I: [8, 7], J: [8, 6], K: [8, 2] },
       hidden: ["A"],
-      locks: { G: 4 },
+      locks: { G: 3 },
     },
     zones: {
       F: ["Ateşböcekli alacakaranlık yaprakları", "dusk canopy full of fireflies", "#6a5a9a"],
@@ -605,7 +605,7 @@ module.exports = [
       ],
       clues: { A: [1, 1], B: [3, 2], C: [3, 3], D: [2, 4], E: [1, 6], F: [4, 1], G: [6, 5], H: [7, 6], I: [7, 4], J: [8, 1], K: [7, 2], L: [9, 5] },
       hidden: ["B"],
-      locks: { D: 4 },
+      locks: { D: 3 },
     },
     zones: {
       S: ["Işıl ışıl solucanlı sarkıt tavan", "stalactite ceiling with glowworms", "#3f4a7a"],
@@ -771,7 +771,7 @@ module.exports = [
       ],
       clues: { A: [0, 1], B: [1, 3], C: [3, 4], D: [4, 5], E: [7, 6], F: [4, 7], G: [4, 1], H: [7, 4], I: [7, 1], J: [7, 3], K: [7, 7], L: [8, 5], M: [9, 2] },
       hidden: ["I"],
-      locks: { E: 3 },
+      locks: { E: 2 },
     },
     zones: {
       S: ["Dev güneşli altın gün batımı göğü", "golden sunset sky with a huge setting sun", "#f7c96b"],
@@ -829,7 +829,7 @@ module.exports = [
       ],
       clues: { A: [1, 0], B: [2, 1], C: [0, 3], D: [1, 7], E: [7, 2], F: [2, 4], G: [2, 5], H: [2, 6], I: [8, 0], J: [6, 5], K: [7, 7], L: [7, 1], M: [7, 3], N: [9, 0] },
       hidden: ["K","L"],
-      locks: { F: 4 },
+      locks: { F: 3 },
     },
     zones: {
       E: ["Dünya'nın doğduğu yıldızlı uzay", "starry space with the Earth rising", "#3f4a7a"],
@@ -887,7 +887,7 @@ module.exports = [
       ],
       clues: { A: [1, 0], B: [2, 1], C: [0, 2], D: [3, 4], E: [3, 2], F: [4, 3], G: [8, 1], H: [6, 4], I: [6, 6], J: [8, 3], K: [9, 5] },
       hidden: ["E","H"],
-      locks: { D: 4 },
+      locks: { D: 2 },
     },
     zones: {
       M: ["Yarasalı dolunay", "big full moon with little bats", "#f2d16b"],
@@ -942,7 +942,7 @@ module.exports = [
       ],
       clues: { A: [0, 4], B: [1, 7], C: [6, 0], D: [3, 1], E: [4, 2], F: [2, 4], G: [5, 5], H: [6, 7], I: [8, 4], J: [8, 5], K: [8, 1], L: [8, 6] },
       hidden: ["G"],
-      locks: { H: 4 },
+      locks: { H: 5 },
     },
     zones: {
       S: ["Martılı sisli şafak göğü", "misty dawn sky with seabirds", "#f2c4b0"],
@@ -1000,7 +1000,7 @@ module.exports = [
       ],
       clues: { A: [3, 1], B: [5, 2], C: [5, 3], D: [7, 4], E: [1, 5], F: [1, 7], G: [5, 5], H: [6, 0], I: [7, 1], J: [8, 2], K: [8, 7], L: [9, 6] },
       hidden: ["A","D"],
-      locks: { J: 4 },
+      locks: { J: 6 },
     },
     zones: {
       A: ["Kuş sürülü pastel gök", "pastel sky with flocks of birds", "#f6c6de"],

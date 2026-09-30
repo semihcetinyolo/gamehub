@@ -5,6 +5,7 @@
 //   taslaklar/levelN-taslak.png        1024×1024 zone drafts for the image model (no numbers)
 //   levels_4-23.js                     level objects in Pixhaku_prototype.html's format
 //   Pixhaku_prototype.html             the generated level block (pictures, or drafts until they exist)
+//   generator.js                       the solver + difficulty profiles for making levels in the game
 //   (Fugo upload: python3 fugo_export.py pixhaku from the repo root)
 // Every level is checked first: unique solution, solvable without guessing, and its
 // spec's opening rules; the build stops on the first level that fails.
@@ -620,6 +621,135 @@ function staticLevels() {
   return out;
 }
 
+// ---------- in-game generator ----------
+// generator.js: tools/shikaku.js plus these profiles, for making levels inside the game
+// once the built-in ones are done. Each profile mirrors its tag's band in the pack; a
+// result that lands in another band is retried with a new seed.
+const INGAME = {
+  easy:   { sizes: [[6, 6], [6, 7]], spec: { start: [1, 2], maxTech: 4, pieces: [7, 10], effortTarget: 32, t1Max: 0.5, decMin: 3, liveMin: 2.3, hiddenCount: 0 } },
+  medium: { sizes: [[7, 7], [7, 8]], spec: { start: [1, 2], maxTech: 4, pieces: [9, 12], effortTarget: 62, t1Max: 0.38, decMin: 6, liveMin: 2.8, deepMin: 1, hiddenCount: 1 } },
+  hard:   { sizes: [[8, 8], [8, 9], [7, 10]], spec: { start: [1, 1], maxTech: 4, pieceStyle: "big", pieces: [10, 13], effortTarget: 96, t1Max: 0.3, decMin: 8, liveMin: 3, deepMin: 2, cornerMax: 0.35, hiddenCount: 1, lockCount: 1 } },
+  expert: { sizes: [[8, 10]], spec: { start: [0, 0], openTech: 3, calm: 0, maxTech: 4, pieceStyle: "big", pieces: [11, 14], effortTarget: 128, t1Max: 0.25, decMin: 10, liveMin: 3, deepMin: 3, cornerMax: 0.35, hiddenCount: 2, lockCount: 1 } },
+};
+
+function writeGenerator() {
+  const solver = fs.readFileSync(path.join(__dirname, "shikaku.js"), "utf8").replace(/\nmodule\.exports = \{[^}]*\};\s*$/, "\n");
+  if (/module\.exports/.test(solver)) throw new Error("generator.js: couldn't strip module.exports from shikaku.js");
+  const js = `// Pixhaku in-game level generator. Built from tools/shikaku.js by tools/build_pack.js; edit those, not this.
+// PixhakuGen.generate(tag) → Promise of a level { rows, cols, clues, solution, difficulty, tag } that is
+// uniquely solvable without guessing, made in a Web Worker so the game keeps running.
+// PixhakuGen.mosaic(level) → data-URL picture of the solution, used as the reward image.
+(function () {
+  "use strict";
+  function pixhakuEngine(scope) {
+${solver}
+    const PROFILES = ${JSON.stringify(INGAME)};
+    const difficultyOf = ${difficultyOf.toString()};
+    const tagOf = ${tagOf.toString()};
+    function generateLevel(tag, seed) {
+      const prof = PROFILES[tag];
+      if (!prof) throw new Error("unknown difficulty " + tag);
+      let best = null;
+      const budget = Date.now() + 9000; // stop retrying after ~9 s and keep the closest valid puzzle
+      for (let t = 0; t < 8 && (t === 0 || Date.now() < budget || !best); t++) {
+        const s = (seed + t * 7919) >>> 0;
+        const [cols, rows] = prof.sizes[s % prof.sizes.length];
+        // vary the target inside the band so puzzles of one difficulty don't all feel the same
+        const effortTarget = Math.round(prof.spec.effortTarget * (0.82 + ((s % 997) / 997) * 0.36));
+        const p = generatePuzzle(cols, rows, { ...prof.spec, effortTarget, cols, rows }, { seed: s, tilings: 6, samples: 150, polish: 400, deadline: Date.now() + 3000 });
+        if (!p) continue;
+        const layout = parseLayout(p.grid);
+        const locks = p.locks || {};
+        const clues = layout.zones.map((z) => {
+          const [r, c] = p.clues[z.key];
+          return p.hidden.includes(z.key) || z.key in locks ? { r, c, n: z.area, h: 1 } : { r, c, n: z.area };
+        });
+        const a = analyse({ rows, cols, clues });
+        if (!a.unique || !a.solved) continue;
+        const difficulty = difficultyOf(a.effort);
+        const level = {
+          rows, cols,
+          clues: layout.zones.map((z, k) => (z.key in locks ? { r: clues[k].r, c: clues[k].c, n: clues[k].n, lock: locks[z.key] } : clues[k])),
+          solution: a.steps.map((st) => [st.rect.r0, st.rect.c0, st.rect.r1, st.rect.c1]),
+          difficulty, tag: tagOf(difficulty),
+        };
+        if (level.tag === tag) return level;
+        if (!best || Math.abs(level.difficulty - difficultyOf(prof.spec.effortTarget)) < Math.abs(best.difficulty - difficultyOf(prof.spec.effortTarget))) best = level;
+      }
+      return best;
+    }
+    if (scope) scope.onmessage = (e) => {
+      try { scope.postMessage({ id: e.data.id, level: generateLevel(e.data.tag, e.data.seed) }); }
+      catch (err) { scope.postMessage({ id: e.data.id, error: String(err && err.message || err) }); }
+    };
+    return { generateLevel };
+  }
+
+  let worker = null, nextId = 1;
+  const pending = new Map();
+  function getWorker() {
+    if (worker !== null) return worker;
+    try {
+      const url = URL.createObjectURL(new Blob(["(" + pixhakuEngine.toString() + ")(self);"], { type: "text/javascript" }));
+      worker = new Worker(url);
+      worker.onmessage = (e) => {
+        const job = pending.get(e.data.id);
+        if (!job) return;
+        pending.delete(e.data.id);
+        if (e.data.error || !e.data.level) job.reject(new Error(e.data.error || "no level")); else job.resolve(e.data.level);
+      };
+    } catch (_) { worker = false; }
+    return worker;
+  }
+
+  function generate(tag, seed = (Date.now() ^ Math.floor(Math.random() * 1e9)) >>> 0) {
+    const w = getWorker();
+    if (!w) {
+      // no worker (some file previews): run on the page after a frame so the spinner shows
+      return new Promise((resolve, reject) => setTimeout(() => {
+        try { const level = pixhakuEngine(null).generateLevel(tag, seed); level ? resolve(level) : reject(new Error("no level")); }
+        catch (err) { reject(err); }
+      }, 30));
+    }
+    return new Promise((resolve, reject) => {
+      const id = nextId++;
+      pending.set(id, { resolve, reject });
+      w.postMessage({ id, tag, seed });
+    });
+  }
+
+  // reward picture: every piece of the solution as a soft tile in the game's palette
+  const TINTS = ["#e7cf92", "#c9d59a", "#e9b98f", "#d9c3a0", "#b9cfa8", "#efd9a6", "#dfae8c", "#c5c08c", "#f1e2b8", "#d6b98a"];
+  function mosaic(level) {
+    const S = 48, canvas = document.createElement("canvas");
+    canvas.width = level.cols * S; canvas.height = level.rows * S;
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#51432f"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    const owner = Array.from({ length: level.rows }, () => Array(level.cols).fill(-1));
+    level.solution.forEach(([r0, c0, r1, c1], k) => { for (let r = r0; r <= r1; r++) for (let c = c0; c <= c1; c++) owner[r][c] = k; });
+    const color = [];
+    level.solution.forEach(([r0, c0, r1, c1], k) => {
+      const near = new Set();
+      for (let r = r0 - 1; r <= r1 + 1; r++) for (let c = c0 - 1; c <= c1 + 1; c++) {
+        if (r >= 0 && c >= 0 && r < level.rows && c < level.cols && owner[r][c] !== k && owner[r][c] >= 0 && owner[r][c] < k) near.add(color[owner[r][c]]);
+      }
+      let i = k % TINTS.length;
+      while (near.has(i)) i = (i + 1) % TINTS.length;
+      color[k] = i;
+      const x = c0 * S + 3, y = r0 * S + 3, w = (c1 - c0 + 1) * S - 6, h = (r1 - r0 + 1) * S - 6;
+      ctx.fillStyle = TINTS[i]; ctx.fillRect(x, y, w, h);
+      ctx.fillStyle = "#ffffff40"; ctx.fillRect(x, y, w, 4); ctx.fillRect(x, y, 4, h);
+      ctx.fillStyle = "#0000001f"; ctx.fillRect(x, y + h - 4, w, 4); ctx.fillRect(x + w - 4, y, 4, h);
+    });
+    return canvas.toDataURL("image/png");
+  }
+
+  window.PixhakuGen = { generate, mosaic, tags: Object.keys(${JSON.stringify(INGAME)}) };
+})();
+`;
+  fs.writeFileSync(path.join(ROOT, "generator.js"), js);
+}
+
 // ---------- main ----------
 function main() {
   const search = process.argv.includes("--search");
@@ -635,6 +765,7 @@ function main() {
   writeData(pack);
   writePage(pack, order);
   updatePrototype(pack, statics);
+  writeGenerator();
   for (const m of order) {
     const t = m.a.techCounts;
     const where = m.static ? "prototipte sabit" : `${m.layout.cols}x${m.layout.rows} ${String(m.layout.zones.length).padStart(2)} parça`;
