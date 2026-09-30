@@ -15,13 +15,25 @@
   // ---------- sprite loading (missing files just fall back to the placeholder) ----------
   function load(onReady) {
     const jobs = [];
-    const add = (key, src) => { if (!src) return; jobs.push(new Promise(res => { const i = new Image(); i.onload = () => { img[key] = i; res(); }; i.onerror = () => { console.warn('art missing:', src); res(); }; i.src = src; })); };
+    // Images are decoded before first use: on phones a big PNG decoded mid-slide showed the
+    // dark outline layers without the coat for a moment (the dog looked darker on the first drag).
+    const add = (key, src) => { if (!src) return; jobs.push(new Promise(res => {
+      const i = new Image();
+      i.onload = () => Promise.resolve(i.decode ? i.decode() : 0).catch(() => {}).then(() => { img[key] = key === 'coat' ? shrink(i, 512) : i; warm(img[key]); res(); });
+      i.onerror = () => { console.warn('art missing:', src); res(); }; i.src = src;
+    })); };
     add('rig', ART.rig); add('coat', ART.coat); add('puppy', ART.puppy);
     for (const f of FACES) add('head_' + f, ART.head && ART.head[f]);
     add('straight', ART.bodyStraight); add('corner', ART.bodyCorner); add('rear', ART.rear);
     return Promise.all(jobs).then(() => onReady && onReady());
   }
   const tiles = () => img.straight && img.corner && img.rear;
+  // the coat repeats every ~1.5 cells, so 512 px is plenty and far cheaper to upload than 1254
+  function shrink(im, size) { const cv = document.createElement('canvas'); cv.width = cv.height = size; cv.getContext('2d').drawImage(im, 0, 0, size, size); return cv; }
+  const warmCv = document.createElement('canvas'); warmCv.width = warmCv.height = 2;
+  function warm(im) { try { warmCv.getContext('2d').drawImage(im, 0, 0, 2, 2); } catch (_) {} } // forces decode + upload now
+  const coatPatterns = new WeakMap(); // one pattern per context instead of one per frame
+  function coatPattern(g) { let p = coatPatterns.get(g); if (!p) { p = g.createPattern(img.coat, 'repeat'); coatPatterns.set(g, p); } return p; }
 
   function part(g, name, x, y, w, h) {
     const r = ART.parts && ART.parts[name]; if (!img.rig || !r) return;
@@ -139,7 +151,7 @@
     // so paws emerge from the same silhouette rather than floating above its edge.
     g.strokeStyle = '#68341b'; g.lineWidth = width + c * .028; path(); g.stroke();
     if (img.coat) {
-      const coat = g.createPattern(img.coat, 'repeat');
+      const coat = coatPattern(g);
       const scale = c * 1.55 / img.coat.width;
       coat.setTransform(new DOMMatrix().scale(scale));
       g.strokeStyle = coat; g.lineWidth = width; path(); g.stroke();
