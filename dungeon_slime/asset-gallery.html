@@ -6,16 +6,17 @@
 </style>
 <main><header><small>JELLY ESCAPE / YENİ KOLEKSİYON</small><h1>On dünya.<br>Bir küçük jöli.</h1><p>Aynı taş gövde, aynı kalınlık, on farklı tehlike. Köşeler, dar duvarlar ve sütunlar tek sistemle birleşir.</p><a href="index.html">← Oyuna dön</a></header>
 <div class="props"><div class="prop"><img src="assets/props/item-key.webp" alt="Altın ve turkuaz anahtar">Anahtar</div><div class="prop"><canvas id="exitPreview" width="220" height="220" aria-label="Damalı bitiş eşiği ve bayrak" style="width:110px;height:110px;margin:0 auto 12px"></canvas>Çıkış</div><div class="prop"><img src="assets/props/item-wafer.webp" alt="Altın gofret blok">Gofret</div></div>
-<section id="collection" aria-label="Duvar ve tehlike çiftleri"></section><footer>Önizlemeler oyunun gerçek duvar çizimiyle çalışır. Bölüm bağlantıları 24–33 arasındaki yeni bulmacaları açar.</footer></main>
-<script src="engine.js"></script><script src="materials.js"></script><script src="themes.js"></script><script src="board.js"></script><script src="props.js"></script>
+<section id="collection" aria-label="Duvar ve tehlike çiftleri"></section><footer>Önizlemeler oyunun gerçek duvar çizimiyle çalışır. Bölüm bağlantıları her malzemenin kendi bulmacasını açar.</footer></main>
+<script src="engine.js"></script><script src="levels.js"></script><script src="materials.js"></script><script src="themes.js"></script><script src="board.js"></script><script src="props.js"></script>
 <script>
 (async()=>{
 const E=JellyEngine,B=JellyBoard,T=JellyThemes;
 const exitCtx=document.getElementById('exitPreview').getContext('2d');exitCtx.scale(2,2);JellyProps.drawExit(exitCtx,{x:2,y:0,w:2,h:1},{W:6,H:6,hasKey:false},{key:false},18,0);
 const grid=['####******########','#S...............#','#..###....#......#','#..#......*......#','#..*.....#*#.....#','#..*.............#','#................#','#..#...*...##....#','#..........##....#','#................#','###********#######'];
 const previews=[];
-for(const [i,m] of Object.values(JellyMaterials.MATERIALS).entries()){
- const card=document.createElement('article');card.innerHTML=`<canvas width="540" height="330" aria-label="${m.name} duvar birleşimi"></canvas><div class="info"><h2>${m.name}</h2><p>Düz duvar · L / T birleşimi · köşe · sütun</p><a href="index.html#${24+i}">${24+i}. bölümü oyna →</a></div>`;
+for(const m of Object.values(JellyMaterials.MATERIALS)){
+ const n=LEVELS.findIndex(l=>l.material===m.id)+1;
+ const card=document.createElement('article');card.innerHTML=`<canvas width="540" height="330" aria-label="${m.name} duvar birleşimi"></canvas><div class="info"><h2>${m.name}</h2><p>Düz duvar · L / T birleşimi · köşe · sütun</p>${n?`<a href="index.html#${n}">${n}. bölümü oyna →</a>`:''}</div>`;
  document.getElementById('collection').appendChild(card);
  const theme=T.forLevel({theme:m.theme,material:m.id});await T.load(theme);
  const ctx=card.querySelector('canvas').getContext('2d');ctx.fillStyle=theme.backdrop[1];ctx.fillRect(0,0,540,330);const board=B.build(E.parse({grid}));B.draw(ctx,board,30,theme,T);previews.push({ctx,board,theme});

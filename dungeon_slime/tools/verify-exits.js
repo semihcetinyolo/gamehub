@@ -22,8 +22,8 @@ for(const [turn,dir] of ['up','right','down','left'].entries()){
   }
   grid=rotateGrid(grid);
 }
-// Exact reported level-22 sequence: the 6×2 body cannot leave through the 4-wide portal.
-const L=E.parse(levels[21]);let s=E.initialState(L);
+// Exact reported 'Yıldızlı Düğme' sequence: the 6×2 body cannot leave through the 4-wide portal.
+const L=E.parse(levels.find(l=>l.name==='Yıldızlı Düğme'));let s=E.initialState(L);
 for(const dir of ['up','down','right'])s=E.move(L,s,dir).state;
 assert.equal(s.w,6);assert.equal(s.h,2);
 assert.notEqual(E.move(L,s,'up').result,'win');
@@ -34,7 +34,7 @@ for(const dir of solution.path){last=E.move(L,s,dir);s=last.state;}assert.equal(
 const K=E.parse({name:'Keyed aperture',grid:base.map(row=>row.join(''))});K.hasKey=true;
 assert.notEqual(E.move(K,E.initialState(K),'up').result,'win');
 assert.equal(E.move(K,{...E.initialState(K),key:true},'up').result,'win');
-console.log('Exit apertures: full fit, thin fit, oversized/partial rejection in all 4 directions; level-22 regression and keyed exits OK.');
+console.log('Exit apertures: full fit, thin fit, oversized/partial rejection in all 4 directions; Yıldızlı Düğme regression and keyed exits OK.');
 
 // The finish mat marks the exact opening; its flag must not cover that opening.
 for(const level of levels){

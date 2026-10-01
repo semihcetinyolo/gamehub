@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#294f43">
+<title>Cartograph</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <svg class="map-backdrop" viewBox="0 0 430 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="1.2">
+      <path d="M-80 100C20-10 150 40 159 137S32 252 65 328 3 453-90 430M-68 117C20 21 126 61 134 143S8 251 42 331-10 426-80 408M-52 132C23 49 101 82 108 149S-15 253 17 334-19 398-71 387M-35 148C26 77 77 102 82 155S-39 255-9 336-27 369-62 365"/>
+      <path d="M500 292C380 242 304 310 324 400S451 485 403 572 447 716 516 696M496 317C395 271 329 325 348 403S479 486 429 580 465 689 520 674M491 344C410 301 355 341 373 406S504 488 456 587 485 663 524 652M485 372C426 332 381 359 398 410S529 490 484 595 503 638 529 630"/>
+      <path d="M-60 683C31 600 161 643 167 740S292 864 328 942M-53 711C35 629 135 665 143 746S265 875 299 945M-44 741C40 660 109 688 119 753S238 886 271 948"/>
+      <path d="M282 104v44m-22-22h44M64 548v28m-14-14h28M352 772v32m-16-16h32"/>
+    </g>
+  </svg>
+  <header class="topbar">
+    <div class="lives" id="lives" aria-label="Kalan can">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27S3 19 3 10.5C3 3 12 2 16 8c4-6 13-5 13 2.5C29 19 16 27 16 27Z" fill="currentColor"/><path d="M7 10a4 4 0 0 1 5-3" fill="none" stroke="#ffe9d8" stroke-width="2" stroke-linecap="round"/></svg>
+      <span id="livesNum">3</span>
+    </div>
+    <div class="level-heading">
+      <span class="wordmark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 1 3 8 8 3-8 3-3 8-3-8-8-3 8-3Z" fill="currentColor"/><path d="m12 5 0 7 7 0-5-2Z" fill="#faf3df"/></svg>CARTOGRAPH</span>
+      <div class="level-pill" id="levelPill">SEVİYE 1</div>
+      <div class="map-progress" aria-label="Boyanan bölge">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="m3 7 8-3 10 3 8-3v21l-8 3-10-3-8 3Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M11 4v21M21 7v21" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        <span class="progress" id="progress">0/0</span>
+      </div>
+    </div>
+    <button class="round-btn settings-btn" id="settingsBtn" aria-label="Ayarlar">
+      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19.4 13a7.5 7.5 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.6 7.6 0 0 0-1.7-1L15 3.3h-4l-.4 2.6a7.6 7.6 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.5 7.5 0 0 0 0 2l-2.2 1.6 2 3.5 2.5-1a7.6 7.6 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.6 7.6 0 0 0 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z" transform="translate(-1 0)"/></svg>
+    </button>
+  </header>
+
+  <main class="stage" id="stage">
+    <div class="board-card" id="boardCard">
+      <svg id="board" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div class="solved-tick" id="solvedTick" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="#4f7660" stroke="#faf3df" stroke-width="4"/><path d="m19 33 9 9 18-19" fill="none" stroke="#faf3df" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+    <p class="map-rule" id="mapRule">KOMŞU BÖLGELER, FARKLI RENKLER</p>
+    <button class="color-chip" id="colorChip" type="button" aria-label="Rengi değiştir" hidden><i></i><span id="chipName">RENK SEÇ</span></button>
+    <div class="toast" id="toast" role="status"></div>
+  </main>
+
+  <footer class="dock" id="dock">
+    <div class="dock-tools">
+      <button class="dock-btn hint-btn" id="hintBtn" aria-label="İpucu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3a6 6 0 0 0-3.5 10.9L9.5 17h5l1-3.1A6 6 0 0 0 12 3ZM9.5 20h5M11 23h2M12 17v-5m-2-2 2 2 2-2M1 8h2M21 8h2"/></svg>
+        <span>İPUCU</span>
+        <span class="badge" id="hintBadge">3</span>
+      </button>
+    </div>
+    <div class="color-bar" id="colorBar">
+      <div class="palette" id="palette" role="group" aria-label="Renkler"></div>
+    </div>
+  </footer>
+
+  <section class="region-picker" id="regionPicker" aria-label="Renk seç" hidden>
+    <div class="picker-heading">
+      <p class="picker-tip"><b>RENK SEÇ</b></p>
+      <button class="picker-close" id="pickerClose" type="button" aria-label="Renk seçimini kapat">×</button>
+    </div>
+    <div class="picker-palette" id="pickerPalette" role="group" aria-label="Bölge renkleri"></div>
+  </section>
+
+
+  <div class="overlay hidden" id="overlay">
+    <div class="card" id="card"></div>
+  </div>
+</div>
+<script src="engine.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

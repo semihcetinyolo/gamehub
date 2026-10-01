@@ -1,6 +1,6 @@
 [
   {
-    "level": 24,
+    "level": 22,
     "name": "Fildişi Labirent",
     "material": "limestone",
     "path": [
@@ -21,7 +21,7 @@
     ]
   },
   {
-    "level": 25,
+    "level": 23,
     "name": "Kuvars Geçidi",
     "material": "rose",
     "path": [
@@ -42,7 +42,7 @@
     ]
   },
   {
-    "level": 26,
+    "level": 17,
     "name": "Köz Köprüsü",
     "material": "sandstone",
     "path": [
@@ -82,7 +82,7 @@
     ]
   },
   {
-    "level": 28,
+    "level": 32,
     "name": "Asit Kuyusu",
     "material": "forest",
     "path": [
@@ -103,7 +103,7 @@
     ]
   },
   {
-    "level": 29,
+    "level": 30,
     "name": "Kıvılcım Koridoru",
     "material": "copper",
     "path": [
@@ -120,7 +120,7 @@
     ]
   },
   {
-    "level": 30,
+    "level": 12,
     "name": "Ayın Karanlık Yüzü",
     "material": "moon",
     "path": [
@@ -157,7 +157,7 @@
     ]
   },
   {
-    "level": 32,
+    "level": 26,
     "name": "Gelgit Harabeleri",
     "material": "coral",
     "path": [

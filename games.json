@@ -1,5 +1,9 @@
 [
   {
+    "name": "Cartograph",
+    "path": "Cartograph/index.html"
+  },
+  {
     "name": "Find The Cat",
     "path": "Find The Cat/game/index.html"
   },

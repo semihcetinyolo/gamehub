@@ -1,6 +1,7 @@
-// Rewrite level grids inside levels.js in place. Only the grid rows change; every other field
-// (theme, jelly, feature, tips, comments, formatting) is left exactly as it is. Handles both the
-// JS style (grid: [ 'row', ... ]) and the JSON style ("grid": [ "row", ... "row" ]) entries.
+// Edit levels.js in place: level grids, one numeric field (`moves`), one flag (`hard`) or the level
+// order. Every other field (theme, jelly, feature, tips, comments, formatting) is left exactly as
+// it is. Handles both the JS style (grid: [ 'row', ... ]) and the JSON style
+// ("grid": [ "row", ... "row" ]) entries.
 const fs = require('fs'), path = require('path');
 const FILE = path.join(__dirname, '..', 'levels.js');
 
@@ -53,4 +54,42 @@ function writeField(key, values) {
   fs.writeFileSync(FILE, out);
 }
 
-module.exports = { writeGrids, writeField };
+// Set or clear one boolean flag (e.g. `hard`) on every level: true writes `key: true` just before
+// `moves` (or the grid) in the entry's own style; false removes it. values: one per level, or null
+// to leave a level as is.
+function writeFlag(key, values) {
+  const src = fs.readFileSync(FILE, 'utf8');
+  const blocks = [...src.matchAll(/("?)grid\1: \[/g)];
+  if (blocks.length !== values.length) throw new Error(`levels.js has ${blocks.length} grids, expected ${values.length}`);
+  const edits = [];
+  blocks.forEach((m, i) => {
+    if (values[i] == null) return;
+    const open = src.lastIndexOf('{', m.index), head = src.slice(open, m.index), json = m[1] === '"';
+    const existing = json ? head.match(new RegExp(`"${key}": (true|false),\\n\\s*`)) : head.match(new RegExp(`${key}: (true|false), `));
+    if (existing && !values[i]) edits.push([open + existing.index, open + existing.index + existing[0].length, '']);
+    else if (existing && existing[1] !== 'true') edits.push([open + existing.index, open + existing.index + existing[0].length, existing[0].replace('false', 'true')]);
+    else if (!existing && values[i]) {
+      const before = head.match(json ? /"moves":/ : /moves:/), at = before ? open + before.index : m.index;
+      const indent = src.slice(src.lastIndexOf('\n', at) + 1, at);
+      edits.push([at, at, json ? `"${key}": true,\n${indent}` : `${key}: true, `]);
+    }
+  });
+  let out = src;
+  for (const [a, b, t] of edits.sort((x, y) => y[0] - x[0])) out = out.slice(0, a) + t + out.slice(b);
+  fs.writeFileSync(FILE, out);
+}
+
+// Reorder the level entries: order[k] = the current (0-based) index of the level that goes to
+// position k. Each entry is moved as text, so its fields, style and formatting stay as they are.
+function reorder(order) {
+  const src = fs.readFileSync(FILE, 'utf8');
+  const start = src.indexOf('const LEVELS = [\n') + 'const LEVELS = [\n'.length, end = src.indexOf('\n  ];', start) + 1;
+  const body = src.slice(start, end), cuts = [...body.matchAll(/^    \{/gm)].map(m => m.index);
+  const entries = cuts.map((c, k) => body.slice(c, k + 1 < cuts.length ? cuts[k + 1] : body.length));
+  if (cuts[0] !== 0 || entries.length !== order.length || new Set(order).size !== order.length || order.some(i => !entries[i]))
+    throw new Error(`levels.js has ${entries.length} entries; the order must be a permutation of them`);
+  if (entries.some(e => !/,\n$/.test(e))) throw new Error('every level entry must end with a comma');
+  fs.writeFileSync(FILE, src.slice(0, start) + order.map(i => entries[i]).join('') + src.slice(end));
+}
+
+module.exports = { writeGrids, writeField, writeFlag, reorder };

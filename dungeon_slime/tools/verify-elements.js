@@ -12,7 +12,7 @@ for(const actor of Object.values(M.SKINS)){
   for(const ready of [false,true])for(const [w,h] of [[80,80],[120,40],[160,20],[40,120],[20,160]])
     M.paintBody(context,{x:0,y:0,w,h},actor,.3,{...themes,ready:()=>ready},.7);
 }
-assert.equal(levels[29].jelly,'void','void must be playable in level 30');
+assert.equal(levels.find(l=>l.name==='Ayın Karanlık Yüzü').jelly,'void','void must be playable (Ayın Karanlık Yüzü)');
 // Loaded art must survive every form, keep animating, and remain inside the body.
 for(const actor of Object.values(M.SKINS)){
   for(const form of Object.values(actor.forms))assert(fs.existsSync(path.join(__dirname,'..',form.atlas)),actor.name+' form asset');

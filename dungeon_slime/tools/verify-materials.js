@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),M=require('../materials').MATERIALS,levels=require('../levels'),E=require('../engine'),SPK=require('./spikes');
-const materials=Object.values(M),newLevels=levels.slice(23);
+const materials=Object.values(M),newLevels=levels.filter(l=>l.material);
 assert.equal(materials.length,10);assert.equal(newLevels.length,10);
 assert.equal(new Set(materials.flatMap(m=>[m.wallArt,m.hazardArt])).size,20);
 assert.equal(new Set(newLevels.map(l=>l.material)).size,10);

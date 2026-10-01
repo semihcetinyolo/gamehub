@@ -171,7 +171,7 @@ const flush = () => { sandbox.JellyDebug.tick(4); now += 4000; frame(now); };
     assert.equal(E.keyOf(debug.state()),E.keyOf(stoneStart));
   }
   // The hazard returns at departure, not when the stone finishes its next flight.
-  await debug.start(22);key('ArrowRight');flush();
+  await debug.start(sandbox.LEVELS.findIndex(lv=>lv.name==='Geçidi Aç'));key('ArrowRight');flush();
   assert.equal(debug.view().switches[0],true);
   key('ArrowRight');
   assert.equal(debug.view().switches[0],true,'plate released before the jelly touched its stone');
@@ -180,7 +180,7 @@ const flush = () => { sandbox.JellyDebug.tick(4); now += 4000; frame(now); };
   assert.equal(elements.get('featureStatus').textContent,'★ Geçit kapalı');
   flush();assert.equal(debug.state().switches[0],false);assert.equal(debug.view().switches[0],false);
   // The reported wide-body exit contact must not show the success overlay.
-  await debug.start(21);
+  await debug.start(sandbox.LEVELS.findIndex(lv=>lv.name==='Yıldızlı Düğme'));
   for(const dir of ['ArrowUp','ArrowDown','ArrowRight','ArrowUp']){key(dir);flush();}
   assert.equal(debug.state().w,6);
   for(const callback of [...timers.values()])callback();

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-// Checks every level: layout rules, solvable, par (min swipes), gem par, solution, and the
-// "no surprise death" rule: no reachable move may die only because the new form lands on a
-// hazard (see tools/spikes.js reshapeDeaths).
+// Checks every level: layout rules, solvable, par (min swipes), gem par, solution, the
+// "no surprise death" rule (no reachable move may die only because the new form lands on a
+// hazard, see tools/spikes.js reshapeDeaths) and the difficulty curve of tools/limits.js
+// (HARD flags on the HARD slots; every HARD level is followed by two easier ones).
 //   node tools/verify.js            report
 //   node tools/verify.js --gems     also suggest gem cells (never touched by the optimal route, +1..+4 swipes)
 const E = require('../engine.js');
@@ -58,5 +59,12 @@ LEVELS.forEach((lv, i) => {
     console.log('      gem options: ' + (opts.slice(0, 12).join(' ') || '-'));
   }
 });
+// the difficulty curve, measured with the stored budgets
+const CURVE = require('./limits.js'), rows = CURVE.analyse(LEVELS);
+for (const r of rows) if ((r.kind === 'HARD') !== !!r.lv.hard) {
+  bad++; console.log(`${r.i + 1}. ${r.lv.name}: ${r.kind === 'HARD' ? 'HARD slot without the hard flag' : 'hard flag outside a HARD slot'} (run: node tools/limits.js --write)`);
+}
+for (const p of CURVE.curveProblems(rows, 'dStored')) { bad++; console.log('CURVE: ' + p); }
+console.log(`curve: HARD ${rows.filter(r => r.lv.hard).map(r => r.i + 1).join(', ')}; difficulty ${rows.map(r => r.dStored === null ? '-' : r.dStored.toFixed(2)).join(' ')}`);
 if (bad) { console.log(`${bad} problem(s)`); process.exit(1); }
 console.log('all levels OK');
