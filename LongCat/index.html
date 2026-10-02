@@ -8,7 +8,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="ui.css?v=puppy-maze-3">
+<link rel="stylesheet" href="ui.css?v=puppy-maze-5">
 </head>
 <body>
 <div id="app">
@@ -30,6 +30,8 @@
     <h2 id="settingsTitle">AYARLAR</h2>
     <button class="settings-option" id="bSound" aria-pressed="true"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#sound"></use></svg>SES <span id="soundState">AÇIK</span></button>
     <button class="settings-option" id="bDepth" aria-pressed="true"><span class="ico" aria-hidden="true">◧</span>DERİNLİK <span id="depthState">YUMUŞAK</span></button>
+    <button class="settings-option" id="bFail"><span class="ico" aria-hidden="true">✖</span>FAIL ACTION <span id="failState">RESTART</span></button>
+    <button class="settings-option" id="bTimes"><span class="ico" aria-hidden="true">⏱</span>SÜRELERİ KOPYALA <span id="timesState"></span></button>
     <button class="settings-option" id="bReset" aria-pressed="false"><span class="ico" aria-hidden="true">⟲</span>İLERLEMEYİ SIFIRLA <span></span></button>
     <details class="legend"><summary>Nasıl oynanır?</summary>
       <p>Kaydır: sosisin kafası bir duvara ya da kendi gövdesine çarpana kadar gider, geçtiği her kare gövde olur.</p>
@@ -42,20 +44,22 @@
   <section id="game" class="screen">
     <div class="top">
       <button class="game-icon" id="bMap" aria-label="Ana menü"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#home"></use></svg></button>
-      <div class="title"><div class="l" id="lvlNo"></div><div class="t" id="lvlName"></div></div>
-      <div class="header-paw" aria-hidden="true"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#paw"></use></svg></div>
+      <div class="title"><div class="l" id="lvlNo"></div><div class="t"><span id="lvlName"></span><span id="lvlTime"></span></div></div>
+      <button class="game-icon" id="bSettingsGame" aria-label="Ayarlar"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#settings"></use></svg></button>
     </div>
     <div class="progress" aria-hidden="true"><i id="progressFill"></i></div>
     <div id="stage"><canvas id="cv" aria-label="Oyun alanı; ok tuşlarıyla veya kaydırarak oyna"></canvas><div id="tip"></div></div>
     <div class="bottom">
-      <button class="booster hint-button" id="bHint" aria-label="İpucu"><span class="booster-art"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#hint"></use></svg></span><strong>İPUCU</strong></button>
       <button class="booster restart-button" id="bRestart" aria-label="Baştan başlat"><span class="booster-art"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#restart"></use></svg></span><strong>BAŞTAN</strong></button>
+      <button class="booster hint-button" id="bHint" aria-label="İpucu"><span class="booster-art"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#hint"></use></svg></span><strong>İPUCU</strong></button>
+      <button class="booster" id="bUndo" aria-label="Geri al"><span class="booster-art"><svg class="ui-icon" aria-hidden="true"><use href="assets/ui/dog-icons.svg#undo"></use></svg></span><strong>GERİ AL</strong></button>
     </div>
 
     <div id="result" role="dialog" aria-modal="true" aria-labelledby="rTitle"><div class="card" id="rCard">
       <canvas class="face" id="rFace" width="240" height="184"></canvas>
       <h2 id="rTitle">Harika!</h2>
       <div class="stars" id="rStars"></div>
+      <p id="rTime"></p>
       <p id="rNote"></p>
       <div class="row"><button class="ghost" id="rRetry">↻ Tekrar</button><button class="primary" id="rNext">Sonraki ›</button></div>
     </div></div>
@@ -63,10 +67,10 @@
 </div>
 
 <script src="engine.js?v=1"></script>
-<script src="levels.js?v=1"></script>
+<script src="levels.js?v=join-7"></script>
 <script src="art.js?v=6"></script>
 <script src="render.js?v=4"></script>
-<script src="dog.js?v=coat-decode-1"></script>
-<script src="game.js?v=hint-steps-2"></script>
+<script src="dog.js?v=coat-flat-1"></script>
+<script src="game.js?v=timer-1"></script>
 </body>
 </html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="tr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bölüm Karar Grafiği</title>
+<style>
+/* Layout: summary numbers on top, two stacked bar panels sharing the level axis, table view below. */
+:root{--bg:#f7f1e6;--panel:#fffaf0;--ink:#3b2616;--ink2:#6e5440;--muted:#9a8268;--grid:#e6d9c3;--axis:#c9b793;--choice:#b0612c;--free:#e0b48a;--sol:#2f7487;--ratio:#5b7a3a;--hard:#a8321f;--surface:#fffaf0;
+--f-body:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;--f-num:'Nunito',system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1610;--panel:#271d15;--ink:#f2e6d4;--ink2:#cdb89c;--muted:#9c8668;--grid:#3a2d21;--axis:#5a4836;--choice:#e79a60;--free:#8a6446;--sol:#6fc0d4;--ratio:#a6c97a;--hard:#ff8f78;--surface:#271d15;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1d1610;--panel:#271d15;--ink:#f2e6d4;--ink2:#cdb89c;--muted:#9c8668;--grid:#3a2d21;--axis:#5a4836;--choice:#e79a60;--free:#8a6446;--sol:#6fc0d4;--ratio:#a6c97a;--hard:#ff8f78;--surface:#271d15;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);padding-inline:16px;padding-block:24px;max-width:860px;margin-inline:auto}
+h1{font-size:26px;margin:0 0 4px;letter-spacing:.2px;text-wrap:balance}
+.sub{color:var(--ink2);margin:0 0 20px;font-size:14px;max-width:62ch}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
+.stat{background:var(--panel);border:1px solid var(--grid);border-radius:12px;padding:12px 14px;min-width:0}
+.stat b{display:block;font-size:30px;font-variant-numeric:tabular-nums;line-height:1.1}
+.stat span{font-size:12px;color:var(--ink2)}
+.panel{background:var(--panel);border:1px solid var(--grid);border-radius:12px;padding:14px 14px 8px;margin-bottom:16px;min-width:0}
+.panel h2{font-size:15px;margin:0 0 2px;display:flex;align-items:center;gap:8px}
+.keys{display:flex;flex-wrap:wrap;gap:6px 16px}.keys span{display:inline-flex;align-items:center;gap:6px}.keys i,.panel h2 i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.panel p{margin:0 0 8px;font-size:12.5px;color:var(--ink2)}
+.scroll{overflow-x:auto}
+svg{display:block;min-width:600px;width:100%;height:auto}
+svg text{fill:var(--muted);font-family:var(--f-body);font-size:11px}
+svg .val{fill:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
+svg .hardlab{fill:var(--hard);font-weight:700;font-size:9px}
+.bar{cursor:default}.bar:hover rect{filter:brightness(1.12)}
+.legend{font-size:12px;color:var(--ink2);margin:0 0 12px;display:flex;gap:6px;align-items:center}
+.legend b{color:var(--hard);font-size:11px}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:6px 9px;border-radius:7px;opacity:0;transition:opacity .08s;z-index:5;max-width:220px}
+details{margin-top:4px}summary{cursor:pointer;color:var(--ink2);font-size:13px;padding:6px 0}
+.tbl{overflow-x:auto}table{border-collapse:collapse;font-size:12.5px;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:right;padding:5px 10px;border-bottom:1px solid var(--grid)}th:nth-child(2),td:nth-child(2){text-align:left}th{color:var(--ink2);font-weight:600}
+</style>
+
+<h1>Bölüm Karar Grafiği</h1>
+<p class="sub">30 bölümün her biri için çözüm yolundaki karar sayısı ve farklı çözüm sayısı. Karar, birden fazla yöne gidebildiğin an. Tuzak, yanlış seçimin bölümü kaybettirdiği karar. Zorluğu asıl tuzaklar belirliyor: çok çözüm olsa da tek hata hepsini kapatıyorsa bölüm yine zordur.</p>
+
+<div class="stats" id="stats"></div>
+<p class="legend"><b>ZOR</b> işaretli bölümler zor bölümler. 1–3. bölümler öğretici.</p>
+
+<div class="panel">
+  <h2>Kararlar bölümün neresinde</h2>
+  <p class="keys"><span><i style="background:var(--choice)"></i>Tuzak</span><span><i style="background:var(--free)"></i>Serbest</span></p>
+  <p>Her nokta, doğru yoldaki bir karar. Yukarıdan aşağı bölümün başından sonuna (doldurulan kare oranı). İdeal bölüm: başlangıçta sadece serbest kararlar, tuzaklar ortada, sonda nadiren tuzak.</p>
+  <div class="scroll"><svg id="c0" role="img" aria-label="Kararların bölüm içindeki yeri"></svg></div>
+</div>
+
+<div class="panel">
+  <h2>Karar sayısı</h2>
+  <p class="keys"><span><i style="background:var(--choice)"></i>Tuzak: yanlış seçim bölümü kaybettirir</span><span><i style="background:var(--free)"></i>Serbest: her seçenek hâlâ çözülebilir</span></p>
+  <div class="scroll"><svg id="c1" role="img" aria-label="Bölüm başına karar sayısı"></svg></div>
+</div>
+<div class="panel">
+  <h2><i style="background:var(--sol)"></i>Farklı çözüm sayısı</h2>
+  <p>Bölümü bitiren birbirinden farklı hamle dizisi sayısı.</p>
+  <div class="scroll"><svg id="c2" role="img" aria-label="Bölüm başına farklı çözüm sayısı"></svg></div>
+</div>
+
+<div class="panel">
+  <h2><i style="background:var(--ratio)"></i>Çözüm oranı</h2>
+  <p>Bölümü oynamanın bütün yollarının (kazanana ya da sıkışana kadar) kaçı çözüm. Düşük oran, rastgele oynayan birinin bitirme şansının düşük olduğu anlamına gelir. Çubuk üstündeki sayılar yüzde. Ölçek %50'de kesik; 1–3. bölümler %100.</p>
+  <div class="scroll"><svg id="c3" role="img" aria-label="Bölüm başına çözüm oranı"></svg></div>
+</div>
+
+<details><summary>Tablo olarak göster</summary><div class="tbl"><table id="tbl"></table></div></details>
+<div id="tip"></div>
+
+<script>
+const D=[{"n":1,"name":"İlk adım","hard":false,"ch":0,"tr":0,"sols":1,"paths":1,"sec":6,"risk":1,"shape":[]},{"n":2,"name":"Kıvrıl","hard":false,"ch":0,"tr":0,"sols":1,"paths":1,"sec":8,"risk":1,"shape":[]},{"n":3,"name":"Kendi kuyruğun","hard":false,"ch":1,"tr":0,"sols":2,"paths":2,"sec":14,"risk":1,"shape":[{"at":0.06,"free":true}]},{"n":4,"name":"Sabah esnemesi","hard":false,"ch":3,"tr":2,"sols":2,"paths":16,"sec":45,"risk":0.27,"shape":[{"at":0.04,"free":true},{"at":0.31,"free":false},{"at":0.42,"free":false}]},{"n":5,"name":"Koridor","hard":false,"ch":3,"tr":0,"sols":4,"paths":12,"sec":42,"risk":0.26,"shape":[{"at":0.03,"free":true},{"at":0.19,"free":true},{"at":0.77,"free":true}]},{"n":6,"name":"Yumak","hard":true,"ch":5,"tr":3,"sols":4,"paths":22,"sec":77,"risk":0.4,"shape":[{"at":0.02,"free":true},{"at":0.38,"free":true},{"at":0.4,"free":false},{"at":0.44,"free":false},{"at":0.48,"free":false}]},{"n":7,"name":"Minder","hard":false,"ch":2,"tr":1,"sols":2,"paths":8,"sec":36,"risk":0.37,"shape":[{"at":0.04,"free":true},{"at":0.37,"free":false}]},{"n":8,"name":"Pencere önü","hard":false,"ch":2,"tr":1,"sols":2,"paths":6,"sec":39,"risk":0.62,"shape":[{"at":0.03,"free":true},{"at":0.62,"free":false}]},{"n":9,"name":"Mama kabı","hard":false,"ch":3,"tr":1,"sols":3,"paths":16,"sec":45,"risk":0.24,"shape":[{"at":0.03,"free":true},{"at":0.24,"free":false},{"at":0.82,"free":true}]},{"n":10,"name":"Çatı katı","hard":false,"ch":3,"tr":2,"sols":2,"paths":11,"sec":51,"risk":0.23,"shape":[{"at":0.03,"free":true},{"at":0.29,"free":false},{"at":0.39,"free":false}]},{"n":11,"name":"Sepet","hard":true,"ch":5,"tr":4,"sols":2,"paths":26,"sec":88,"risk":0.35,"shape":[{"at":0.02,"free":true},{"at":0.35,"free":false},{"at":0.63,"free":false},{"at":0.68,"free":false},{"at":0.72,"free":false}]},{"n":12,"name":"Halı","hard":false,"ch":2,"tr":1,"sols":2,"paths":6,"sec":35,"risk":0.26,"shape":[{"at":0.04,"free":true},{"at":0.26,"free":false}]},{"n":13,"name":"Kutu","hard":false,"ch":2,"tr":1,"sols":2,"paths":6,"sec":39,"risk":0.37,"shape":[{"at":0.22,"free":true},{"at":0.59,"free":false}]},{"n":14,"name":"Merdiven","hard":false,"ch":2,"tr":1,"sols":2,"paths":6,"sec":45,"risk":0.63,"shape":[{"at":0.03,"free":true},{"at":0.63,"free":false}]},{"n":15,"name":"Kilim","hard":false,"ch":4,"tr":3,"sols":2,"paths":18,"sec":66,"risk":0.41,"shape":[{"at":0.02,"free":true},{"at":0.41,"free":false},{"at":0.61,"free":false},{"at":0.8,"free":false}]},{"n":16,"name":"Bahçe","hard":true,"ch":5,"tr":3,"sols":4,"paths":32,"sec":86,"risk":0.4,"shape":[{"at":0.02,"free":true},{"at":0.38,"free":true},{"at":0.4,"free":false},{"at":0.44,"free":false},{"at":0.48,"free":false}]},{"n":17,"name":"Kitaplık","hard":false,"ch":3,"tr":1,"sols":4,"paths":6,"sec":31,"risk":0.23,"shape":[{"at":0.03,"free":true},{"at":0.39,"free":true},{"at":0.42,"free":false}]},{"n":18,"name":"Güneşlik","hard":false,"ch":3,"tr":2,"sols":2,"paths":10,"sec":45,"risk":0.22,"shape":[{"at":0.03,"free":true},{"at":0.22,"free":false},{"at":0.69,"free":false}]},{"n":19,"name":"Dolap üstü","hard":false,"ch":4,"tr":3,"sols":2,"paths":16,"sec":66,"risk":0.42,"shape":[{"at":0.02,"free":true},{"at":0.42,"free":false},{"at":0.69,"free":false},{"at":0.79,"free":false}]},{"n":20,"name":"Çamaşır","hard":false,"ch":5,"tr":3,"sols":6,"paths":34,"sec":82,"risk":0.37,"shape":[{"at":0.02,"free":true},{"at":0.37,"free":false},{"at":0.63,"free":false},{"at":0.69,"free":true},{"at":0.72,"free":false}]},{"n":21,"name":"Balkon","hard":true,"ch":4,"tr":3,"sols":2,"paths":32,"sec":89,"risk":0.35,"shape":[{"at":0.02,"free":true},{"at":0.35,"free":false},{"at":0.65,"free":false},{"at":0.84,"free":false}]},{"n":22,"name":"Mutfak","hard":false,"ch":2,"tr":1,"sols":2,"paths":6,"sec":46,"risk":0.61,"shape":[{"at":0.03,"free":true},{"at":0.61,"free":false}]},{"n":23,"name":"Kiler","hard":false,"ch":2,"tr":1,"sols":2,"paths":6,"sec":45,"risk":0.74,"shape":[{"at":0.03,"free":true},{"at":0.74,"free":false}]},{"n":24,"name":"Tavan arası","hard":false,"ch":4,"tr":2,"sols":4,"paths":12,"sec":66,"risk":0.46,"shape":[{"at":0.02,"free":true},{"at":0.46,"free":false},{"at":0.65,"free":false},{"at":0.8,"free":true}]},{"n":25,"name":"Bodrum","hard":false,"ch":4,"tr":3,"sols":2,"paths":18,"sec":76,"risk":0.42,"shape":[{"at":0.02,"free":true},{"at":0.42,"free":false},{"at":0.67,"free":false},{"at":0.77,"free":false}]},{"n":26,"name":"Sokak","hard":true,"ch":4,"tr":3,"sols":2,"paths":30,"sec":94,"risk":0.41,"shape":[{"at":0.02,"free":true},{"at":0.41,"free":false},{"at":0.63,"free":false},{"at":0.72,"free":false}]},{"n":27,"name":"Çit","hard":false,"ch":3,"tr":2,"sols":2,"paths":6,"sec":52,"risk":0.51,"shape":[{"at":0.02,"free":true},{"at":0.51,"free":false},{"at":0.54,"free":false}]},{"n":28,"name":"Ay ışığı","hard":false,"ch":3,"tr":2,"sols":2,"paths":8,"sec":57,"risk":0.5,"shape":[{"at":0.02,"free":true},{"at":0.5,"free":false},{"at":0.52,"free":false}]},{"n":29,"name":"Uzun gece","hard":false,"ch":4,"tr":3,"sols":2,"paths":14,"sec":65,"risk":0.6,"shape":[{"at":0.02,"free":true},{"at":0.6,"free":false},{"at":0.66,"free":false},{"at":0.7,"free":false}]},{"n":30,"name":"Yıldızlar","hard":false,"ch":4,"tr":3,"sols":2,"paths":16,"sec":80,"risk":0.48,"shape":[{"at":0.02,"free":true},{"at":0.48,"free":false},{"at":0.5,"free":false},{"at":0.77,"free":false}]}];
+D.forEach(d=>d.pct=Math.round(1000*d.sols/d.paths)/10);
+const sum=k=>D.reduce((a,d)=>a+d[k],0);
+document.getElementById('stats').innerHTML=[
+ [sum('ch'),'toplam karar'],[sum('tr'),'bunların tuzak olanı'],[D.slice(3).filter(d=>d.shape.length&&d.shape[0].free).length+'/'+(D.length-3),'güvenli başlayan bölüm'],
+ [sum('ch')-sum('tr'),'serbest karar'],['%'+(100*D.slice(3).reduce((a,d)=>a+d.sols,0)/D.slice(3).reduce((a,d)=>a+d.paths,0)).toFixed(1),'çözüm oranı (4. bölümden sonra)']
+].map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
+
+const tip=document.getElementById('tip');
+function chart(id,key,color,lowKey,lowColor,o={}){
+  const W=720,H=230,L=34,R=8,T=26,B=44,max=o.max||Math.max(4,...D.map(d=>d[key])),step=o.step||1,fmt=o.fmt||(v=>v),pw=(W-L-R)/D.length,bw=Math.min(16,pw*.62);
+  const y=v=>T+(H-T-B)*(1-Math.min(v,max)/max);
+  let s=`<svg viewBox="0 0 ${W} ${H}" id="${id}-i" style="min-width:600px"></svg>`;
+  const el=document.getElementById(id);el.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  let g='';
+  for(let v=0;v<=max;v+=step){g+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="${v?'var(--grid)':'var(--axis)'}" stroke-width="1"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end">${fmt(v)}</text>`;}
+  D.forEach((d,i)=>{
+    const cx=L+pw*i+pw/2,h=y(0)-y(d[key]);
+    const r=Math.min(4,h/2);
+    g+=`<g class="bar" data-i="${i}"><rect x="${cx-pw/2}" y="${T}" width="${pw}" height="${H-T-B}" fill="transparent"/>`;
+    if(lowKey&&d[lowKey]>0&&d[lowKey]<d[key]){const yl=y(d[lowKey]);g+=`<rect x="${cx-bw/2}" y="${yl}" width="${bw}" height="${y(0)-yl}" fill="${lowColor}"/>`;}
+    if(lowKey&&d[lowKey]>0&&d[lowKey]<d[key]){const yl=y(d[lowKey])-2;g+=`<path d="M${cx-bw/2},${yl}V${y(d[key])+r}Q${cx-bw/2},${y(d[key])} ${cx-bw/2+r},${y(d[key])}H${cx+bw/2-r}Q${cx+bw/2},${y(d[key])} ${cx+bw/2},${y(d[key])+r}V${yl}Z" fill="var(--free)"/>`;}
+    else if(d[key]>0)g+=`<path d="M${cx-bw/2},${y(0)}V${y(d[key])+r}Q${cx-bw/2},${y(d[key])} ${cx-bw/2+r},${y(d[key])}H${cx+bw/2-r}Q${cx+bw/2},${y(d[key])} ${cx+bw/2},${y(d[key])+r}V${y(0)}Z" fill="${lowKey&&!d[lowKey]?'var(--free)':color}"/>`;
+    g+=`<text class="val" ${d[key]>=100?'style="font-size:8.5px"':''} x="${cx}" y="${y(d[key])-5}" text-anchor="middle">${(o.lab||fmt)(d[key])}</text>`;
+    g+=`<text x="${cx}" y="${H-B+15}" text-anchor="middle">${d.n}</text>`;
+    if(d.hard)g+=`<text class="hardlab" x="${cx}" y="${H-B+28}" text-anchor="middle">ZOR</text>`;
+    g+='</g>';
+  });
+  g+=`<text x="${(L+W-R)/2}" y="${H-3}" text-anchor="middle">bölüm numarası</text>`;
+  el.innerHTML=g;
+}
+(function(){
+  const W=720,H=300,L=58,R=8,T=10,B=40,pw=(W-L-R)/D.length,y=v=>T+(H-T-B)*v;
+  let g='';
+  [[0,.2,'Başlangıç'],[.2,.8,'Orta'],[.8,1,'Son']].forEach(([a,b,t],i)=>{
+    g+=`<rect x="${L}" y="${y(a)}" width="${W-L-R}" height="${y(b)-y(a)}" fill="${i===1?'var(--grid)':'transparent'}" opacity=".45"/>`;
+    g+=`<line x1="${L}" x2="${W-R}" y1="${y(a)}" y2="${y(a)}" stroke="var(--axis)"/>`;
+    g+=`<text x="${L-8}" y="${(y(a)+y(b))/2+4}" text-anchor="end">${t}</text>`;
+  });
+  g+=`<line x1="${L}" x2="${W-R}" y1="${y(1)}" y2="${y(1)}" stroke="var(--axis)"/>`;
+  D.forEach((d,i)=>{const cx=L+pw*i+pw/2;
+    g+=`<g class="bar" data-i="${i}"><rect x="${cx-pw/2}" y="${T}" width="${pw}" height="${H-T-B}" fill="transparent"/>`;
+    (d.shape||[]).forEach(p=>{g+=`<circle cx="${cx}" cy="${y(p.at)}" r="5" fill="${p.free?'var(--free)':'var(--choice)'}" stroke="var(--surface)" stroke-width="2"/>`;});
+    g+=`<text x="${cx}" y="${H-B+15}" text-anchor="middle">${d.n}</text>`;
+    if(d.hard)g+=`<text class="hardlab" x="${cx}" y="${H-B+28}" text-anchor="middle">ZOR</text>`;
+    g+='</g>';});
+  const el=document.getElementById('c0');el.setAttribute('viewBox',`0 0 ${W} ${H}`);el.innerHTML=g;
+})();
+chart('c1','ch','var(--choice)','tr','var(--choice)');chart('c2','sols','var(--sol)');chart('c3','pct','var(--ratio)',null,null,{max:50,step:10,fmt:v=>v+'%',lab:v=>Math.round(v)});
+document.addEventListener('mousemove',e=>{
+  const g=e.target.closest&&e.target.closest('.bar');
+  if(!g){tip.style.opacity=0;return}
+  const d=D[+g.dataset.i];
+  tip.innerHTML=`<b>${d.n}. ${d.name}${d.hard?' · ZOR':''}</b><br>${d.ch} karar (${d.tr} tuzak) · ${d.sols} / ${d.paths} oynanış çözüm (%${d.pct}) · ~${d.sec} sn<br>ilk tuzak en erken %${Math.round(d.risk*100)} ilerlemede`;
+  tip.style.opacity=1;tip.style.left=Math.min(innerWidth-230,e.clientX+12)+'px';tip.style.top=(e.clientY+14)+'px';
+});
+document.getElementById('tbl').innerHTML='<tr><th>#</th><th>Bölüm</th><th>Karar</th><th>Tuzak</th><th>Çözüm</th><th>Toplam oynanış</th><th>Oran</th><th>Tahmini sn</th></tr>'+D.map(d=>`<tr><td>${d.n}</td><td>${d.name}${d.hard?' · ZOR':''}</td><td>${d.ch}</td><td>${d.tr}</td><td>${d.sols}</td><td>${d.paths}</td><td>%${d.pct}</td><td>${d.sec}</td></tr>`).join('');
+</script>

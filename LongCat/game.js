@@ -10,7 +10,7 @@ try { prog = JSON.parse(localStorage.getItem(SAVE)) || prog; } catch (e) {}
 const saveProg = () => { try { localStorage.setItem(SAVE, JSON.stringify(prog)); } catch (e) {} };
 const pref = (k, d) => { try { return localStorage.getItem('longdog.' + k) ?? d; } catch (e) { return d; } };
 const setPref = (k, v) => { try { localStorage.setItem('longdog.' + k, v); } catch (e) {} };
-let soundOn = pref('sound', 'on') !== 'off', depth = pref('depth', 'soft');
+let soundOn = pref('sound', 'on') !== 'off', depth = pref('depth', 'soft'), failMode = pref('fail', 'restart');
 
 // ---------- audio + haptics ----------
 let ac = null;
@@ -40,6 +40,7 @@ function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.toggle('on', s.id === id));
   if (id === 'map') home.start(); else home.stop();
   if (id === 'game') kick();
+  syncClock();
 }
 const thumbs = {};
 function thumb(i) {
@@ -72,13 +73,45 @@ function renderMenus() {
 $('bLevels').onclick = () => { renderMenus(); show('levelSelect'); };
 $('bLevelsBack').onclick = () => show('map');
 $('bMap').onclick = () => { renderMenus(); show('map'); };
-const openSettings = () => { $('settings').hidden = false; }, closeSettings = () => { $('settings').hidden = true; };
-$('bSettings').onclick = openSettings; $('bSettingsClose').onclick = closeSettings;
+// ---------- solve timer: counts only while the level is on screen and being played ----------
+// (paused in settings, in a background tab and after the win; fails and restarts keep counting)
+const clock = { ms: 0, since: 0, done: false, shown: -1 };
+const clockNow = () => clock.ms + (clock.since ? performance.now() - clock.since : 0);
+function syncClock() {
+  const run = !clock.done && L && $('game').classList.contains('on') && $('settings').hidden && !document.hidden;
+  if (run && !clock.since) clock.since = performance.now();
+  else if (!run && clock.since) { clock.ms += performance.now() - clock.since; clock.since = 0; }
+}
+const fmtTime = ms => { const s = Math.floor(ms / 1000); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+function showClock() { const s = Math.floor(clockNow() / 1000); if (s !== clock.shown) { clock.shown = s; $('lvlTime').textContent = ' · ' + fmtTime(s * 1000); } }
+document.addEventListener('visibilitychange', syncClock);
+const TIMES = 'longdog.times'; // { levelNo: [{ s, f, h, u }] } — solve times for balancing
+const readTimes = () => { try { return JSON.parse(localStorage.getItem(TIMES)) || {}; } catch (e) { return {}; } };
+function recordTime(ms) {
+  const all = readTimes(), k = idx + 1;
+  (all[k] = all[k] || []).push({ s: Math.round(ms / 100) / 10, f: attempt.fails, h: attempt.hints, u: attempt.undos });
+  try { localStorage.setItem(TIMES, JSON.stringify(all)); } catch (e) {}
+}
+function timesReport() {
+  const all = readTimes();
+  return JSON.stringify(LEVELS.map((lv, i) => ({ level: i + 1, est: lv.secs, runs: all[i + 1] || [] })).filter(r => r.runs.length));
+}
+const openSettings = () => { $('settings').hidden = false; syncClock(); }, closeSettings = () => { $('settings').hidden = true; syncClock(); };
+$('bTimes').onclick = () => {
+  const text = timesReport(), ta = document.createElement('textarea');
+  ta.value = text; ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta); ta.select();
+  let ok = false; try { ok = document.execCommand('copy'); } catch (e) {} ta.remove();
+  if (!ok) prompt('Süreleri kopyala:', text);
+  $('timesState').textContent = ok ? 'KOPYALANDI' : '';
+};
+$('bSettings').onclick = $('bSettingsGame').onclick = openSettings; $('bSettingsClose').onclick = closeSettings;
 $('settings').addEventListener('click', e => { if (e.target === $('settings')) closeSettings(); });
 function settingsUI() {
   $('soundState').textContent = soundOn ? 'AÇIK' : 'KAPALI'; $('bSound').setAttribute('aria-pressed', String(soundOn));
   $('depthState').textContent = depth === 'flat' ? 'DÜZ' : 'DERİNLİKLİ'; $('bDepth').setAttribute('aria-pressed', String(depth !== 'flat'));
+  $('failState').textContent = failMode === 'checkpoint' ? 'CHECKPOINT' : 'RESTART';
 }
+$('bFail').onclick = () => { failMode = failMode === 'restart' ? 'checkpoint' : 'restart'; setPref('fail', failMode); settingsUI(); };
 $('bSound').onclick = () => { soundOn = !soundOn; setPref('sound', soundOn ? 'on' : 'off'); settingsUI(); };
 $('bDepth').onclick = () => { depth = depth === 'flat' ? 'soft' : 'flat'; setPref('depth', depth); settingsUI(); home.rebake(); if (L) resize(); };
 $('bReset').onclick = () => { if (!confirm('Tüm yıldızlar silinsin mi?')) return; prog = { stars: {} }; saveProg(); renderMenus(); };
@@ -88,7 +121,7 @@ settingsUI();
 const cv = $('cv'), ctx = cv.getContext('2d');
 const headCv = document.createElement('canvas'), hctx = headCv.getContext('2d');
 let idx = 0, lv = null, L = null, S = null, st = null, lay = null, board = null, dpr = 1;
-let anim = null, rewind = null, queued = [], over = false, attempt = null;
+let rewindDirs = [], anim = null, rewind = null, queued = [], over = false, attempt = null;
 let mood = 'idle', fx = D.newFace(), lastDir = [0, 1], squashAt = -1e9, bonkLen = 0, lastT = 0;
 let particles = [], trail = [], hint = null, tipTimer = 0, failTimer = 0;
 
@@ -96,11 +129,12 @@ function start(i) {
   if (!LEVELS[i]) return;
   idx = i; lv = LEVELS[i]; L = E.parse(lv); S = E.makeSolver(L);
   attempt = { hints: 0, undos: 0, fails: 0, restarts: 0 };
+  clock.ms = 0; clock.since = 0; clock.done = false; clock.shown = -1; showClock();
   $('lvlNo').innerHTML = `BÖLÜM ${i + 1}${lv.hard ? '<span class="tag">ZOR</span>' : ''}`;
   $('lvlName').textContent = lv.name;
   history.replaceState(null, '', '#' + (i + 1));
   reset();
-  show('game'); resize();
+  show('game'); resize(); syncClock();
   tip(lv.tip || '', lv.tip ? 4200 : 0);
   if (i === 0) setTimeout(() => { if (idx === 0 && !st.moves.length) showHint(true); }, 700);
 }
@@ -190,6 +224,9 @@ function showHint(auto) {
   kick();
 }
 $('bHint').onclick = () => showHint(false);
+$('bUndo').onclick = () => { // the icon spins back even when there is nothing to undo
+  const b = $('bUndo'); b.classList.remove('spin'); void b.offsetWidth; b.classList.add('spin'); undo();
+};
 $('bRestart').onclick = () => { audio(); restart(); };
 $('rRetry').onclick = restart;
 $('rNext').onclick = () => { if (idx + 1 < LEVELS.length) start(idx + 1); else { renderMenus(); show('levelSelect'); } };
@@ -241,7 +278,7 @@ function tapAt(px, py) {
 // ---------- frame loop (runs while the game screen is up; the face is always alive) ----------
 let raf = 0;
 function kick() { if (!raf) raf = requestAnimationFrame(frame); }
-function frame(now) { raf = 0; if (!$('game').classList.contains('on')) return; draw(now); kick(); }
+function frame(now) { raf = 0; if (!$('game').classList.contains('on')) return; showClock(); draw(now); kick(); }
 
 function finishAnim(now) {
   const a = anim; anim = null;
@@ -262,6 +299,7 @@ function finishAnim(now) {
 }
 function win(now) {
   over = true; mood = 'happy'; SFX.win(); hud();
+  const solveMs = clockNow(); clock.done = true; syncClock(); recordTime(solveMs); showClock(); $('rTime').textContent = 'Süre ' + fmtTime(solveMs);
   bodyPoints(null).forEach((p, i) => { for (let k = 0; k < 2; k++) particles.push({ x: p.x, y: p.y, vx: (Math.random() - .5) * lay.cell * 3, vy: -lay.cell * (1.5 + Math.random() * 2), t0: now + i * 45, life: 700, r: lay.cell * .16, kind: 'star', rot: Math.random() * 6 }); });
   const stars = !attempt.hints && !attempt.undos && !attempt.fails ? 3 : !attempt.hints ? 2 : 1;
   prog.stars[idx] = Math.max(prog.stars[idx] || 0, stars); saveProg();
@@ -271,7 +309,15 @@ function win(now) {
 function fail(now) {
   over = true; mood = 'dead'; attempt.fails++; SFX.stuck(); buzz([20, 40, 20]); hud();
   failTimer = setTimeout(() => {
-    rewind = { t0: performance.now(), dur: 280 + st.moves.length * 25, pts: bodyPoints(null) }; SFX.rewind(); kick();
+    rewindDirs = st.moves.map(m => m.dir);
+    const pts = bodyPoints(null);
+    let keepMoves = 0;
+    if (failMode === 'checkpoint') { // furthest prefix of this run that can still be solved
+      const t = E.newState(L);
+      for (let i = 0; i < st.moves.length; i++) { E.apply(L, t, st.moves[i].dir); if (S.solvable(t)) keepMoves = i + 1; }
+    }
+    const keep = keepMoves ? polyLen(pts.slice(0, keepMoves + 1)) : 0;
+    rewind = { t0: performance.now(), dur: 280 + (st.moves.length - keepMoves) * 25, pts, keep, keepMoves }; SFX.rewind(); kick();
   }, 950);
 }
 function card(stars) {
@@ -342,8 +388,16 @@ function draw(now) {
   if (anim) { const u = Math.min(1, (now - anim.t0) / anim.dur); p = anim.undo ? u : 1 - (1 - u) * (1 - u); }
   if (rewind) {
     const u = Math.min(1, (now - rewind.t0) / rewind.dur), k = u * u * (3 - 2 * u);
-    pts = truncate(rewind.pts, polyLen(rewind.pts) * (1 - k));
-    if (u >= 1) { reset(); tip('Sıkıştın — baştan!', 1400); pts = bodyPoints(null); }
+    const full = polyLen(rewind.pts);
+    pts = truncate(rewind.pts, rewind.keep + (full - rewind.keep) * (1 - k));
+    if (u >= 1) {
+      if (rewind.keepMoves) {
+        const n = rewind.keepMoves; reset();
+        for (let i = 0; i < n; i++) E.apply(L, st, rewindDirs[i]);
+        lastDir = E.DIRS[rewindDirs[n - 1]]; hud(); tip('Sıkıştın — son çözülebilir hamleye döndün.', 1800);
+      } else { reset(); tip('Sıkıştın — baştan!', 1400); }
+      pts = bodyPoints(null);
+    }
   } else pts = bodyPoints(anim, p);
   const head = pts.at(-1);
 

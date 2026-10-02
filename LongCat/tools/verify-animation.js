@@ -20,7 +20,7 @@ const D = {newFace:()=>({}),stepFace(){},trigger(){},load:()=>Promise.resolve(),
 const R = {PAL:{},wallTheme:()=>({top:'#8fa3ef'}),paw(){},arrow(){},load:()=>Promise.resolve(),bakeBoard:()=>({}),
   layout:(L,w,h)=>({cell:40*(w/360),ox:25,oy:30})};
 const sandbox = {console,LongCatEngine:E,LongCatRender:R,LongDog:D,
-  document:{getElementById(id){if(!nodes.has(id))nodes.set(id,node(id));return nodes.get(id)},querySelectorAll:()=>['map','game','levelSelect'].map(id=>nodes.get(id)),createElement:()=>node()},
+  document:{getElementById(id){if(!nodes.has(id))nodes.set(id,node(id));return nodes.get(id)},querySelectorAll:()=>['map','game','levelSelect'].map(id=>nodes.get(id)),createElement:()=>node(),addEventListener(){},hidden:false},
   localStorage:{getItem:()=>null,setItem(){}},performance:{now:()=>now},
   location:{hash:'',pathname:'/',search:''},history:{replaceState(){}},navigator:{},devicePixelRatio:1,
   addEventListener:(name,fn)=>{events[name]=fn},setTimeout:()=>0,clearTimeout(){},

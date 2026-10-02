@@ -104,6 +104,10 @@
     const first = points.length > 1 ? direction(rear, points[1]) : [-td[0], -td[1]];
     const last = points.length > 1 ? direction(points.at(-2), head) : first;
     const width = c * .68;
+    // Safari skips pattern strokes whose path box is flat (a single straight run, i.e. the first
+    // move), which left the body as the dark outline colour. Tilt the end by half a pixel.
+    const flat = points.every(p => Math.abs(p.x - rear.x) < .01) || points.every(p => Math.abs(p.y - rear.y) < .01);
+    const tip = !flat ? head : { x: head.x + (Math.abs(head.x - rear.x) < .01 ? .5 : 0), y: head.y + (Math.abs(head.y - rear.y) < .01 ? .5 : 0) };
     const path = () => {
       g.beginPath(); g.moveTo(rear.x, rear.y);
       for (let i = 1; i < points.length - 1; i++) {
@@ -113,7 +117,7 @@
         g.lineTo(p.x - incoming[0] * radius, p.y - incoming[1] * radius);
         g.quadraticCurveTo(p.x, p.y, p.x + outgoing[0] * radius, p.y + outgoing[1] * radius);
       }
-      if (points.length > 1) g.lineTo(head.x, head.y);
+      if (points.length > 1) g.lineTo(tip.x, tip.y);
       // A tiny segment makes the rounded cap visible even before the first move.
       else g.lineTo(rear.x + first[0] * .01, rear.y + first[1] * .01);
     };

@@ -109,21 +109,71 @@
     };
   }
 
+  // ---------- time estimate ----------
+  // Expected seconds for a careful player who remembers dead ends: they avoid swipes that
+  // leave them stuck at once, try the rest in random order, and back out of a lost branch
+  // (restart + replay). Constants are guesses until real playtest times replace them.
+  const T = { move: 1.3, decide: 1.0, think: 0.6, fail: 2.0, back: 1.5, backPerMove: 0.5, capLost: 20, read: 3 };
+  function estimateSeconds(root) {
+    const think = k => k > 1 ? T.decide + T.think * (k - 1) : 0; // every real choice costs a pause, more options cost more
+    const pool = n => { const ok = n.kids.filter(x => x.c.win || x.c.kids.length); return ok.length ? ok : n.kids; };
+    const lost = new Map(), won = new Map();
+    function F(n) { // time to exhaust a lost subtree (capped: nobody explores it all)
+      if (lost.has(n)) return lost.get(n);
+      let t = T.fail;
+      if (n.kids.length) { const p = pool(n); t = think(p.length) + p.reduce((a, x) => a + T.move + F(x.c) + T.back, 0); }
+      t = Math.min(t, T.capLost); lost.set(n, t); return t;
+    }
+    function E(n, depth) {
+      if (!n.kids.length) return 0;
+      if (won.has(n)) return won.get(n);
+      const p = pool(n), W = p.filter(x => x.c.win), Lz = p.filter(x => !x.c.win);
+      let t = think(p.length) + W.reduce((a, x) => a + T.move + E(x.c, depth + 1), 0) / W.length;
+      if (Lz.length) t += (Lz.length / (W.length + 1)) * (Lz.reduce((a, x) => a + T.move + F(x.c), 0) / Lz.length + T.back + T.backPerMove * depth);
+      won.set(n, t); return t;
+    }
+    return T.read + E(root, 0);
+  }
+
   // Level stats for ordering. Difficulty = -log2(chance a careful-but-blind player solves it)
   // plus a small length term; traps that bite late count extra.
   function analyse(lv) {
     const L = parse(lv), S = makeSolver(L), s = newState(L), root = S.at(s);
     if (!root.win) return { solvable: false };
     // walk one solution, measuring decision points and how late wrong turns fail
-    let n = root, moves = 0, decisions = 0, lateTraps = 0; const path = [];
+    // shape = where the decisions sit on the solver's line: at = share of the floor already covered (0 start, 1 end)
+    let n = root, moves = 0, decisions = 0, lateTraps = 0, choices = 0, count = 1; const path = [], shape = [];
     while (n.kids.length) {
       const w = n.kids.find(x => x.c.win);
       const bad = n.kids.filter(x => !x.c.win);
+      if (n.kids.length > 1) { choices++; shape.push({ at: +(count / L.floor).toFixed(2), free: !bad.length }); } // a real choice: 2+ legal swipes here
       if (bad.length) { decisions++; if (bad.some(x => x.c.dead >= 2)) lateTraps++; }
-      path.push(w.d); n = w.c; moves++;
+      path.push(w.d); count += w.len; n = w.c; moves++;
     }
+    // Ideal level: the first decisions are all safe, the traps sit in the middle, the end is calm.
+    // firstRisk = progress at which ANY play (not just the solver's line) first meets a losing option;
+    // endTraps = most trap decisions after 80% progress on any winning line.
+    // openFree = fewest free decisions any winning line passes before its first trap.
+    let firstRisk = 1, openFree = Infinity; const seen = new Map(), endMemo = new Map();
+    (function walk(n, c, f) {
+      if (seen.has(n) && seen.get(n) <= f) return; seen.set(n, f);
+      if (n.kids.some(x => !x.c.win)) { firstRisk = Math.min(firstRisk, c / L.floor); openFree = Math.min(openFree, f); return; }
+      for (const x of n.kids) walk(x.c, c + x.len, f + (n.kids.length > 1 ? 1 : 0));
+    })(root, 1, 0);
+    if (openFree === Infinity) openFree = choices;
+    const endTraps = (function E(n, c) {
+      if (!n.kids.length) return 0;
+      let v = endMemo.get(n); if (v !== undefined) return v;
+      const trap = c / L.floor >= 0.8 && n.kids.some(x => !x.c.win) ? 1 : 0;
+      v = trap + Math.max(...n.kids.filter(x => x.c.win).map(x => E(x.c, c + x.len)));
+      endMemo.set(n, v); return v;
+    })(root, 1);
+    const rootLegal = root.kids.length, rootWin = root.kids.filter(x => x.c.win).length;
+    const seconds = estimateSeconds(root);
+    // every distinct way to play until the level ends (won or stuck); sols counts the won ones
+    const pc = new Map(), paths = (function P(n) { if (!n.kids.length) return 1; let v = pc.get(n); if (v === undefined) { v = Math.min(1e9, n.kids.reduce((a, x) => a + P(x.c), 0)); pc.set(n, v); } return v; })(root);
     const d = -Math.log2(Math.max(root.pSmart, 1e-9)) + 0.06 * moves + 0.35 * lateTraps;
-    return { solvable: true, moves, decisions, lateTraps, sols: root.sols, pRand: root.pRand, pSmart: root.pSmart,
+    return { solvable: true, rootLegal, rootWin, choices, paths, shape, firstRisk: +firstRisk.toFixed(2), openFree, endTraps, seconds: +seconds.toFixed(1), moves, decisions, lateTraps, sols: root.sols, pRand: root.pRand, pSmart: root.pSmart,
       difficulty: +d.toFixed(2), states: S.states(), solution: path, floor: L.floor, W: L.W, H: L.H };
   }
 
