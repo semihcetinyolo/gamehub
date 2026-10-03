@@ -1,0 +1,21 @@
+{
+  "id": "snail",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-03T15:04:12.711455+00:00",
+  "prompt": "Use case: style-transfer. Edit this exact geometric colour guide into a photographic real stained-glass artwork. Apply gently rippled translucent glass textures INSIDE the existing panes and thin dark metallic lead on the existing lines. Keep EVERY boundary pixel-aligned to the input. Preserve exact scale and position: on the 768x1024 reference canvas the circular panel extends from y=126 to y=898, centered at (384,512), and touches the left and right edges. Maintain the top and bottom margins exactly 12.3% of image height. DO NOT move the circle upward or enlarge it vertically. Preserve every pane's existing hue (including every tiny yellow pane in the snail guide or purple pane in the pumpkin guide). Do not add any seams, details, anatomy, cracks or colours. Replace only the exterior light-grey background with solid dark neutral grey. A beautiful luminous crafted glass artwork with subtle texture, restrained highlights and rich colour. Perfect frontal view, no perspective, no framing changes. Output 3:4 portrait. Exact input layout and margins are essential because this art overlays a puzzle map.",
+  "references": [
+    "tools/stained/guides/snail.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "e2766491d28cd4e4bf8c89b41ba10740a6975dae51331b44908f11be45b14426",
+  "sha256": "d71ad3760e758036416b6bafb6c9289099d99102c650a794976f7d1e326d6f6e",
+  "palette": [
+    "#e14504",
+    "#fdcc28",
+    "#47750f",
+    "#044187"
+  ]
+}

@@ -802,3 +802,7 @@ def fox():
             return (2,)
         return (3, 2)
     return lines, prefer, face
+
+
+from extra_designs import register as register_extra
+register_extra(design)

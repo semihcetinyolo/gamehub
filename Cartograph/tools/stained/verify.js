@@ -19,7 +19,7 @@ const FIRST = ['cat', 'cactus', 'lotus', 'heart', 'fox', 'fish', 'flower', 'moon
     page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
     await page.goto(URL);
     const total = await page.evaluate(() => window.CARTO_STAINED.length);
-    assert(total >= 25, `only ${total} levels`);
+    assert.equal(total, 50, `expected 50 levels, got ${total}`);
     assert.deepEqual(await page.evaluate(n => window.CARTO_STAINED.slice(0, n).map(l => l.id), FIRST.length), FIRST);
     // only the default way to play is left
     assert.equal(await page.locator('#lives, #colorChip, #regionPicker').count(), 0);
