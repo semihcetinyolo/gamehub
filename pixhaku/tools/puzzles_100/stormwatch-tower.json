@@ -1,0 +1,149 @@
+{
+  "id": "stormwatch-tower",
+  "tr": "Fırtına Kulesi",
+  "artName": "Stormwatch Tower",
+  "variety": "Uzak hücre ilişkileri · kesişim",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "dramatic ocean clouds",
+      "dramatic ocean clouds",
+      "#a9cce2"
+    ],
+    "B": [
+      "stone watchtower",
+      "stone watchtower",
+      "#b88c67"
+    ],
+    "C": [
+      "sea cliffs",
+      "sea cliffs",
+      "#759783"
+    ],
+    "D": [
+      "heather and lantern",
+      "heather and lantern",
+      "#d6b57c"
+    ],
+    "E": [
+      "winding cliff path",
+      "winding cliff path",
+      "#bdb5a2"
+    ],
+    "F": [
+      "waves around rocks",
+      "waves around rocks",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "stormwatch tower",
+    "place": "stormwatch tower",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: stone watchtower, connected naturally to sea cliffs",
+      "foreground: heather and lantern, winding cliff path, and waves around rocks"
+    ],
+    "light": "a single coherent light source appropriate to dramatic ocean clouds",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "stormwatch tower"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 10,
+    "start": [
+      0,
+      0
+    ],
+    "maxTech": 4,
+    "effortTarget": 116,
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      14
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 2,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBBCCD",
+      "ABBBBCCD",
+      "ABBBBCCD",
+      "ABBBBCCD",
+      "AEEEEEED",
+      "AFFFGGGD",
+      "AFFFGGGD",
+      "AFFFGGGD",
+      "AHHHHHHH",
+      "AIIIIJJJ"
+    ],
+    "clues": {
+      "A": [
+        9,
+        0
+      ],
+      "B": [
+        1,
+        3
+      ],
+      "C": [
+        1,
+        5
+      ],
+      "D": [
+        4,
+        7
+      ],
+      "E": [
+        4,
+        2
+      ],
+      "F": [
+        6,
+        3
+      ],
+      "G": [
+        5,
+        5
+      ],
+      "H": [
+        8,
+        2
+      ],
+      "I": [
+        9,
+        1
+      ],
+      "J": [
+        9,
+        6
+      ]
+    },
+    "hidden": [
+      "D",
+      "E"
+    ],
+    "locks": {
+      "A": 3
+    }
+  }
+}

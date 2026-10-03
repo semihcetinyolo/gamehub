@@ -1,0 +1,134 @@
+{
+  "id": "autumn-bridge",
+  "tr": "Sonbahar Köprüsü",
+  "artName": "Autumn Bridge",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "orange woodland",
+      "orange woodland",
+      "#a9cce2"
+    ],
+    "B": [
+      "arched stone bridge",
+      "arched stone bridge",
+      "#b88c67"
+    ],
+    "C": [
+      "golden birches",
+      "golden birches",
+      "#759783"
+    ],
+    "D": [
+      "leaf-covered bank",
+      "leaf-covered bank",
+      "#d6b57c"
+    ],
+    "E": [
+      "riverside trail",
+      "riverside trail",
+      "#bdb5a2"
+    ],
+    "F": [
+      "reflective stream",
+      "reflective stream",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "autumn bridge",
+    "place": "autumn bridge",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: arched stone bridge, connected naturally to golden birches",
+      "foreground: leaf-covered bank, riverside trail, and reflective stream"
+    ],
+    "light": "a single coherent light source appropriate to orange woodland",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "autumn bridge"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 7,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 71,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBBCC",
+      "ADEEECC",
+      "ADEEECC",
+      "ADFFGGG",
+      "ADFFGGG",
+      "ADHHGGG",
+      "ADHHIII"
+    ],
+    "clues": {
+      "A": [
+        3,
+        0
+      ],
+      "B": [
+        0,
+        2
+      ],
+      "C": [
+        2,
+        5
+      ],
+      "D": [
+        2,
+        1
+      ],
+      "E": [
+        2,
+        3
+      ],
+      "F": [
+        4,
+        2
+      ],
+      "G": [
+        3,
+        4
+      ],
+      "H": [
+        5,
+        2
+      ],
+      "I": [
+        6,
+        5
+      ]
+    },
+    "hidden": [
+      "G"
+    ],
+    "locks": {}
+  }
+}

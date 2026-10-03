@@ -1,0 +1,144 @@
+{
+  "id": "stone-giant-valley",
+  "tr": "Taş Devler Vadisi",
+  "artName": "Stone Giant Valley",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "misty valley sky",
+      "misty valley sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "weathered gentle stone giant",
+      "weathered gentle stone giant",
+      "#b88c67"
+    ],
+    "C": [
+      "steep forest cliffs",
+      "steep forest cliffs",
+      "#759783"
+    ],
+    "D": [
+      "wildflower meadow",
+      "wildflower meadow",
+      "#d6b57c"
+    ],
+    "E": [
+      "ancient stone steps",
+      "ancient stone steps",
+      "#bdb5a2"
+    ],
+    "F": [
+      "narrow river",
+      "narrow river",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "stone giant valley",
+    "place": "stone giant valley",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: weathered gentle stone giant, connected naturally to steep forest cliffs",
+      "foreground: wildflower meadow, ancient stone steps, and narrow river"
+    ],
+    "light": "a single coherent light source appropriate to misty valley sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "stone giant valley"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 8,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 110,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAAAA",
+      "BBBCCDEF",
+      "BBBCCDEF",
+      "GGGCCDEF",
+      "GGGCCDEF",
+      "GGGCCDHF",
+      "GGGIIIHF",
+      "JJJIIIHF"
+    ],
+    "clues": {
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        1,
+        1
+      ],
+      "C": [
+        3,
+        3
+      ],
+      "D": [
+        5,
+        5
+      ],
+      "E": [
+        3,
+        6
+      ],
+      "F": [
+        4,
+        7
+      ],
+      "G": [
+        5,
+        1
+      ],
+      "H": [
+        6,
+        6
+      ],
+      "I": [
+        7,
+        4
+      ],
+      "J": [
+        7,
+        1
+      ]
+    },
+    "hidden": [
+      "G"
+    ],
+    "locks": {
+      "C": 5
+    }
+  }
+}

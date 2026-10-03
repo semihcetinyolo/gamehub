@@ -1,0 +1,150 @@
+{
+  "id": "dragon-nursery",
+  "tr": "Ejderha Yuvası",
+  "artName": "Dragon Nursery",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "warm cave roof",
+      "warm cave roof",
+      "#a9cce2"
+    ],
+    "B": [
+      "sleeping baby dragon",
+      "sleeping baby dragon",
+      "#b88c67"
+    ],
+    "C": [
+      "glowing egg nests",
+      "glowing egg nests",
+      "#759783"
+    ],
+    "D": [
+      "soft moss bed",
+      "soft moss bed",
+      "#d6b57c"
+    ],
+    "E": [
+      "cavern stepping stones",
+      "cavern stepping stones",
+      "#bdb5a2"
+    ],
+    "F": [
+      "gentle lava spring",
+      "gentle lava spring",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "dragon nursery",
+    "place": "dragon nursery",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: sleeping baby dragon, connected naturally to glowing egg nests",
+      "foreground: soft moss bed, cavern stepping stones, and gentle lava spring"
+    ],
+    "light": "a single coherent light source appropriate to warm cave roof",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "dragon nursery"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 10,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 90,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBCCDE",
+      "ABBCCDE",
+      "ABBCCDE",
+      "ABBCCDE",
+      "ABBCCDF",
+      "ABBGHDF",
+      "AIIGHDF",
+      "AIIGHJF",
+      "AIIGHJF",
+      "AKKGHJF"
+    ],
+    "clues": {
+      "A": [
+        8,
+        0
+      ],
+      "B": [
+        2,
+        1
+      ],
+      "C": [
+        2,
+        4
+      ],
+      "D": [
+        3,
+        5
+      ],
+      "E": [
+        2,
+        6
+      ],
+      "F": [
+        8,
+        6
+      ],
+      "G": [
+        6,
+        3
+      ],
+      "H": [
+        8,
+        4
+      ],
+      "I": [
+        7,
+        1
+      ],
+      "J": [
+        9,
+        5
+      ],
+      "K": [
+        9,
+        2
+      ]
+    },
+    "hidden": [
+      "E"
+    ],
+    "locks": {
+      "G": 6
+    }
+  }
+}

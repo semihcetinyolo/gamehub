@@ -17,7 +17,9 @@
   const fallbackTheme = { name: 'Lavanta', top: PAL.slabTop, hi: PAL.slabHi, edge: '#c3d0ff', outer: ['#7d8fdb', '#5d6dc0', '#435398'], face: ['#8799e4', '#7183ce', '#5263a9'], side: '#7687ca' };
   const themes = (window.BOARD_ART || {}).themes || [{ ...fallbackTheme, src: (window.BOARD_ART || {}).wall }];
   const wallTextures = [];
-  function wallTheme(levelIndex = 0) { return themes[((levelIndex % themes.length) + themes.length) % themes.length]; }
+  // one wall colour per block of five levels (1–5, 6–10, …), as Longcat changes its colour scheme every 5 levels
+  const themeIndex = levelIndex => ((Math.floor(levelIndex / 5) % themes.length) + themes.length) % themes.length;
+  function wallTheme(levelIndex = 0) { return themes[themeIndex(levelIndex)]; }
   function load() {
     return Promise.all(themes.map(({ src }, index) => new Promise(resolve => {
       if (!src) { resolve(); return; }
@@ -38,7 +40,7 @@
   }
 
   function bakeBoard(L, lay, dpr, depth, levelIndex = 0) {
-    const theme = wallTheme(levelIndex), wallTexture = wallTextures[((levelIndex % themes.length) + themes.length) % themes.length];
+    const theme = wallTheme(levelIndex), wallTexture = wallTextures[themeIndex(levelIndex)];
     const { cell: c, ox, oy, m } = lay, deep = depth !== 'flat';
     const cv = document.createElement('canvas');
     cv.width = Math.ceil(lay.cssW * dpr); cv.height = Math.ceil(lay.cssH * dpr);

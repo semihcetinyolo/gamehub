@@ -1,0 +1,119 @@
+{
+  "id": "lavender-cottage",
+  "tr": "Lavanta Evi",
+  "artName": "Lavender Cottage",
+  "variety": "Mantığa alışma",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "hazy violet hills",
+      "hazy violet hills",
+      "#a9cce2"
+    ],
+    "B": [
+      "thatched cottage",
+      "thatched cottage",
+      "#b88c67"
+    ],
+    "C": [
+      "lavender rows",
+      "lavender rows",
+      "#759783"
+    ],
+    "D": [
+      "garden baskets",
+      "garden baskets",
+      "#d6b57c"
+    ],
+    "E": [
+      "flower-lined path",
+      "flower-lined path",
+      "#bdb5a2"
+    ],
+    "F": [
+      "stone well",
+      "stone well",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "lavender cottage",
+    "place": "lavender cottage",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: thatched cottage, connected naturally to lavender rows",
+      "foreground: garden baskets, flower-lined path, and stone well"
+    ],
+    "light": "a single coherent light source appropriate to hazy violet hills",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "lavender cottage"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 7,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 25,
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBBB",
+      "ABBBBB",
+      "ACCCCD",
+      "ACCCCD",
+      "ACCCCD",
+      "EEEFFD",
+      "EEEFFD"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        0,
+        5
+      ],
+      "C": [
+        3,
+        2
+      ],
+      "D": [
+        4,
+        5
+      ],
+      "E": [
+        6,
+        1
+      ],
+      "F": [
+        6,
+        4
+      ]
+    },
+    "hidden": [],
+    "locks": {}
+  }
+}

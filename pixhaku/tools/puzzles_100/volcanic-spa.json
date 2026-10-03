@@ -1,0 +1,154 @@
+{
+  "id": "volcanic-spa",
+  "tr": "Volkan Kaplıcası",
+  "artName": "Volcanic Spa",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "smoky mountain horizon",
+      "smoky mountain horizon",
+      "#a9cce2"
+    ],
+    "B": [
+      "steaming mineral pool",
+      "steaming mineral pool",
+      "#b88c67"
+    ],
+    "C": [
+      "basalt columns",
+      "basalt columns",
+      "#759783"
+    ],
+    "D": [
+      "warm stones",
+      "warm stones",
+      "#d6b57c"
+    ],
+    "E": [
+      "wooden spa bridge",
+      "wooden spa bridge",
+      "#bdb5a2"
+    ],
+    "F": [
+      "red mineral waterfall",
+      "red mineral waterfall",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "volcanic spa",
+    "place": "volcanic spa",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: steaming mineral pool, connected naturally to basalt columns",
+      "foreground: warm stones, wooden spa bridge, and red mineral waterfall"
+    ],
+    "light": "a single coherent light source appropriate to smoky mountain horizon",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "volcanic spa"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 10,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 105,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAAA",
+      "BCDEEFG",
+      "BCDEEFG",
+      "BCDEEFG",
+      "BCDHIFG",
+      "JCDHIFG",
+      "JCDHIFG",
+      "JCDHIFG",
+      "JCDHIKG",
+      "JCDLLKG"
+    ],
+    "clues": {
+      "A": [
+        0,
+        2
+      ],
+      "B": [
+        2,
+        0
+      ],
+      "C": [
+        8,
+        1
+      ],
+      "D": [
+        3,
+        2
+      ],
+      "E": [
+        2,
+        3
+      ],
+      "F": [
+        6,
+        5
+      ],
+      "G": [
+        5,
+        6
+      ],
+      "H": [
+        7,
+        3
+      ],
+      "I": [
+        7,
+        4
+      ],
+      "J": [
+        6,
+        0
+      ],
+      "K": [
+        8,
+        5
+      ],
+      "L": [
+        9,
+        3
+      ]
+    },
+    "hidden": [
+      "D"
+    ],
+    "locks": {
+      "F": 3
+    }
+  }
+}

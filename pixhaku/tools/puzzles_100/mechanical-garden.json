@@ -1,0 +1,146 @@
+{
+  "id": "mechanical-garden",
+  "tr": "Mekanik Bahçe",
+  "artName": "Mechanical Garden",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "glass dome sky",
+      "glass dome sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "brass botanical greenhouse",
+      "brass botanical greenhouse",
+      "#b88c67"
+    ],
+    "C": [
+      "clockwork trees",
+      "clockwork trees",
+      "#759783"
+    ],
+    "D": [
+      "metal flowers",
+      "metal flowers",
+      "#d6b57c"
+    ],
+    "E": [
+      "copper garden path",
+      "copper garden path",
+      "#bdb5a2"
+    ],
+    "F": [
+      "reflective gear fountain",
+      "reflective gear fountain",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "mechanical garden",
+    "place": "mechanical garden",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: brass botanical greenhouse, connected naturally to clockwork trees",
+      "foreground: metal flowers, copper garden path, and reflective gear fountain"
+    ],
+    "light": "a single coherent light source appropriate to glass dome sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "mechanical garden"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 10,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 113,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAAA",
+      "BCDDDDD",
+      "BCEFFGH",
+      "BCEFFGH",
+      "BCEFFGH",
+      "BCEFFGH",
+      "ICEFFGH",
+      "ICEFFGH",
+      "ICJJJGH",
+      "ICJJJGH"
+    ],
+    "clues": {
+      "A": [
+        0,
+        2
+      ],
+      "B": [
+        4,
+        0
+      ],
+      "C": [
+        6,
+        1
+      ],
+      "D": [
+        1,
+        4
+      ],
+      "E": [
+        3,
+        2
+      ],
+      "F": [
+        2,
+        3
+      ],
+      "G": [
+        8,
+        5
+      ],
+      "H": [
+        6,
+        6
+      ],
+      "I": [
+        8,
+        0
+      ],
+      "J": [
+        8,
+        3
+      ]
+    },
+    "hidden": [
+      "F"
+    ],
+    "locks": {
+      "D": 6
+    }
+  }
+}

@@ -30,6 +30,8 @@ const SFX = {
   stuck: () => { tone(640, 420, .16, 'sine', .18); tone(470, 300, .3, 'sine', .16, .16); },
   rewind: () => tone(900, 250, .35, 'triangle', .1),
   hint: () => tone(880, 1320, .12, 'triangle', .12),
+  glass: () => { tone(2400, 1800, .08, 'square', .05); tone(3100, 2200, .12, 'triangle', .06, .03); },
+  box: () => tone(180, 120, .12, 'sawtooth', .07),
 };
 const buzz = ms => { try { if (navigator.vibrate && (!navigator.userActivation || navigator.userActivation.hasBeenActive)) navigator.vibrate(ms); } catch (e) {} };
 
@@ -49,7 +51,9 @@ function thumb(i) {
   cv.width = L.W * s + 4; cv.height = L.H * s + 4; const g = cv.getContext('2d');
   g.fillStyle = R.wallTheme(i).top; g.beginPath(); g.roundRect(0, 0, cv.width, cv.height, 5); g.fill();
   for (let y = 0; y < L.H; y++) for (let x = 0; x < L.W; x++) if (L.open[y * L.W + x]) {
-    g.fillStyle = y * L.W + x === L.start ? '#c9692e' : '#fff1d9'; g.fillRect(2 + x * s, 2 + y * s, s - 1, s - 1);
+    const t = L.t[y * L.W + x];
+    g.fillStyle = y * L.W + x === L.start ? '#c9692e' : t === E.T.GLASS ? '#9fd3ea' : t === E.T.BOX ? '#a8743f' : t === E.T.FLOOR ? '#fff1d9' : '#f2b25c';
+    g.fillRect(2 + x * s, 2 + y * s, s - 1, s - 1);
   }
   return thumbs[i] = cv.toDataURL();
 }
@@ -123,7 +127,9 @@ const headCv = document.createElement('canvas'), hctx = headCv.getContext('2d');
 let idx = 0, lv = null, L = null, S = null, st = null, lay = null, board = null, dpr = 1;
 let rewindDirs = [], anim = null, rewind = null, queued = [], over = false, attempt = null;
 let mood = 'idle', fx = D.newFace(), lastDir = [0, 1], squashAt = -1e9, bonkLen = 0, lastT = 0;
-let particles = [], trail = [], hint = null, tipTimer = 0, failTimer = 0;
+let boxAnim = null, particles = [], trail = [], hint = null, tipTimer = 0, failTimer = 0, idleAt = 0, idleNudged = false;
+const IDLE_NUDGE = 12000; // no move for this long → the hint button wiggles once (Longcat warns at 6.3 / 12 s)
+const stirred = () => { idleAt = performance.now(); idleNudged = false; };
 
 function start(i) {
   if (!LEVELS[i]) return;
@@ -135,13 +141,13 @@ function start(i) {
   history.replaceState(null, '', '#' + (i + 1));
   reset();
   show('game'); resize(); syncClock();
-  tip(lv.tip || '', lv.tip ? 4200 : 0);
+  tip(lv.tip || '', lv.tip ? (lv.intro ? 6500 : 4200) : 0);
   if (i === 0) setTimeout(() => { if (idx === 0 && !st.moves.length) showHint(true); }, 700);
 }
 function reset() { // fresh board for the current level
   clearTimeout(failTimer);
-  st = E.newState(L); anim = null; rewind = null; queued = []; over = false; particles = []; trail = []; hint = null;
-  mood = 'idle'; fx = D.newFace(); lastDir = tailDir().map(v => -v);
+  st = E.newState(L); anim = null; rewind = null; queued = []; over = false; particles = []; trail = []; hint = null; boxAnim = null;
+  mood = 'idle'; fx = D.newFace(); lastDir = tailDir().map(v => -v); stirred();
   $('result').classList.remove('on'); hud(); kick();
 }
 function restart() { if (!L || rewind) return; attempt.restarts++; reset(); }
@@ -154,7 +160,7 @@ function tailDir() { // the tail points at a solid side of the start cell
   return [0, 1];
 }
 function hud() {
-  $('progressFill').style.width = (st.count / L.floor * 100).toFixed(1) + '%';
+  $('progressFill').style.width = (st.count / st.need * 100).toFixed(1) + '%';
 }
 function tip(text, ms) {
   clearTimeout(tipTimer); const t = $('tip');
@@ -185,21 +191,20 @@ function nudge(dir) { // blocked: a small nudge of the head, never the screen
 // returns true when a slide started
 function input(dir) {
   if (!L || over || !$('game').classList.contains('on')) return false;
-  audio();
+  audio(); stirred();
   if (anim) { // chained swipes run in order once the current slide lands
     const lastQ = queued.length ? queued[queued.length - 1] : anim.undo ? null : anim.dir;
     if (dir !== lastQ && queued.length < 3) queued.push(dir);
     return false;
   }
-  const cells = E.slide(L, st.filled, st.head, dir);
-  const [dx, dy] = E.DIRS[dir];
-  if (!cells.length) { nudge(dir); return false; }
-  const from = center(st.head);
-  E.apply(L, st, dir);
-  hint = null; lastDir = [dx, dy]; mood = 'slide';
-  if (cells.length >= 5) D.trigger(fx, 'surprise', .2);
-  anim = { dir, cells, from, t0: performance.now(), dur: (50 + cells.length * 30) / SLIDE_SPEED, undo: false };
-  SFX.slide(cells.length);
+  const m = E.apply(L, st, dir);
+  if (!m) { nudge(dir); return false; }
+  const n = m.cells.length;
+  hint = null; lastDir = E.DIRS[dir].slice(); mood = n ? 'slide' : 'idle';
+  if (n >= 5) D.trigger(fx, 'surprise', .2);
+  // a swipe that only breaks glass or pushes a box in front of the dog is a short bump
+  anim = { dir, m, t0: performance.now(), dur: n ? (50 + n * 30) / SLIDE_SPEED : 150, undo: false };
+  if (n) SFX.slide(n); else bump(m, performance.now());
   if (lv.tip && st.moves.length >= 2) tip('');
   hud(); kick(); return true;
 }
@@ -207,8 +212,8 @@ function undo() {
   if (!L || anim || over || !st.moves.length) return;
   audio();
   const m = E.undo(L, st);
-  attempt.undos++; hint = null; mood = 'idle';
-  anim = { dir: m.dir, cells: m.cells, from: center(st.head), t0: performance.now(), dur: 40 + m.cells.length * 16, undo: true };
+  attempt.undos++; hint = null; mood = 'idle'; boxAnim = null;
+  anim = { dir: m.dir, m, t0: performance.now(), dur: 40 + m.cells.length * 16, undo: true };
   SFX.undo(); hud(); kick();
 }
 const HINT_STEP = 320, HINT_HOLD = 900, HINT_EASE = 300, HINT_PASSES = 3; // ms between paws, full-trail hold, per-paw ease-in; loops
@@ -217,7 +222,8 @@ function showHint(auto) {
   const d = S.hint(st);
   if (!auto) { attempt.hints++; SFX.hint(); }
   if (d) {
-    const cells = E.slide(L, st.filled, st.head, d), now = performance.now();
+    const m = E.move(L, st, d), now = performance.now();
+    const cells = m.cells.length ? m.cells : m.mut.slice(0, 1).map(x => x[0]); // in-place: light the glass / box
     hint = { dir: d, cells, t0: now, until: now + HINT_PASSES * (cells.length * HINT_STEP + HINT_HOLD) }; // a few full passes; any move clears it
   }
   else { tip('Bu yoldan çıkış yok — baştan dene.', 2600); $('bRestart').classList.remove('nudge'); void $('bRestart').offsetWidth; $('bRestart').classList.add('nudge'); }
@@ -265,13 +271,14 @@ function tapAt(px, py) {
   const target = y * L.W + x;
   if (!L.open[target]) return;
   // where the head will be once the current slide and any queued swipes have landed
-  const filled = new Uint8Array(st.filled); let head = st.head;
-  for (const d of queued) { const c = E.slide(L, filled, head, d); for (const i of c) filled[i] = 1; if (c.length) head = c[c.length - 1]; }
-  if (filled[target]) return;
-  const hx = head % L.W, hy = (head / L.W) | 0;
+  const sim = E.cloneState(st);
+  for (const d of queued) E.apply(L, sim, d);
+  if (sim.filled[target]) return;
+  const head = sim.head, hx = head % L.W, hy = (head / L.W) | 0;
   const dir = y === hy ? (x > hx ? 'right' : 'left') : x === hx ? (y > hy ? 'down' : 'up') : null;
   if (!dir) return;
-  if (E.slide(L, filled, head, dir).includes(target)) input(dir);
+  const m = E.move(L, sim, dir);
+  if (m && (m.cells.includes(target) || m.mut.some(x => x[0] === target))) input(dir);
   else if (!anim && !queued.length) nudge(dir); // out of reach: the head bumps toward it, nothing moves
 }
 
@@ -280,12 +287,24 @@ let raf = 0;
 function kick() { if (!raf) raf = requestAnimationFrame(frame); }
 function frame(now) { raf = 0; if (!$('game').classList.contains('on')) return; showClock(); draw(now); kick(); }
 
+// what happens in front of the resting dog: glass shatters, a box slides one cell
+function bump(m, now) {
+  for (const [i, o, n] of m.mut) {
+    const p = center(i);
+    if (o === E.T.GLASS) {
+      SFX.glass(); buzz(14);
+      for (let k = 0; k < 10; k++) particles.push({ x: p.x, y: p.y, vx: (Math.random() - .5) * lay.cell * 4, vy: (Math.random() - .7) * lay.cell * 4, t0: now, life: 420, r: lay.cell * (.06 + Math.random() * .07), kind: 'shard', rot: Math.random() * 6 });
+    }
+    if (n === E.T.BOX) { boxAnim = { to: i, from: m.mut.find(x => x[1] === E.T.BOX)[0], t0: now }; SFX.box(); buzz(10); }
+  }
+}
 function finishAnim(now) {
   const a = anim; anim = null;
   if (!a.undo) {
-    squashAt = now; bonkLen = a.cells.length; D.trigger(fx, 'squish', .16); mood = 'idle';
-    SFX.bonk(a.cells.length); buzz(8);
-    const h = center(st.head), [dx, dy] = E.DIRS[a.dir];
+    squashAt = now; bonkLen = a.m.cells.length; D.trigger(fx, 'squish', .16); mood = 'idle';
+    if (a.m.cells.length) { SFX.bonk(a.m.cells.length); buzz(8); bump(a.m, now); }
+    lastDir = E.DIRS[a.m.last].slice();
+    const h = center(st.head), [dx, dy] = E.DIRS[a.m.last];
     for (let k = 0; k < 6; k++) {
       const sp = (Math.random() - .5) * 1.6;
       particles.push({ x: h.x + dx * lay.cell * .48, y: h.y + dy * lay.cell * .48, vx: (-dx * .5 + dy * sp) * lay.cell * 2.2, vy: (-dy * .5 + dx * sp) * lay.cell * 2.2, t0: now, life: 260, r: lay.cell * (.07 + Math.random() * .06), kind: 'dust' });
@@ -300,7 +319,7 @@ function finishAnim(now) {
 function win(now) {
   over = true; mood = 'happy'; SFX.win(); hud();
   const solveMs = clockNow(); clock.done = true; syncClock(); recordTime(solveMs); showClock(); $('rTime').textContent = 'Süre ' + fmtTime(solveMs);
-  bodyPoints(null).forEach((p, i) => { for (let k = 0; k < 2; k++) particles.push({ x: p.x, y: p.y, vx: (Math.random() - .5) * lay.cell * 3, vy: -lay.cell * (1.5 + Math.random() * 2), t0: now + i * 45, life: 700, r: lay.cell * .16, kind: 'star', rot: Math.random() * 6 }); });
+  bodyPieces(null).flat().forEach((p, i) => { for (let k = 0; k < 2; k++) particles.push({ x: p.x, y: p.y, vx: (Math.random() - .5) * lay.cell * 3, vy: -lay.cell * (1.5 + Math.random() * 2), t0: now + i * 45, life: 700, r: lay.cell * .16, kind: 'star', rot: Math.random() * 6 }); });
   const stars = !attempt.hints && !attempt.undos && !attempt.fails ? 3 : !attempt.hints ? 2 : 1;
   prog.stars[idx] = Math.max(prog.stars[idx] || 0, stars); saveProg();
   setTimeout(() => card(stars), 750);
@@ -310,13 +329,13 @@ function fail(now) {
   over = true; mood = 'dead'; attempt.fails++; SFX.stuck(); buzz([20, 40, 20]); hud();
   failTimer = setTimeout(() => {
     rewindDirs = st.moves.map(m => m.dir);
-    const pts = bodyPoints(null);
+    const pts = bodyPieces(null);
     let keepMoves = 0;
     if (failMode === 'checkpoint') { // furthest prefix of this run that can still be solved
       const t = E.newState(L);
       for (let i = 0; i < st.moves.length; i++) { E.apply(L, t, st.moves[i].dir); if (S.solvable(t)) keepMoves = i + 1; }
     }
-    const keep = keepMoves ? polyLen(pts.slice(0, keepMoves + 1)) : 0;
+    const keep = keepMoves ? piecesLen(piecesOf(st.moves.slice(0, keepMoves))) : 0;
     rewind = { t0: performance.now(), dur: 280 + (st.moves.length - keepMoves) * 25, pts, keep, keepMoves }; SFX.rewind(); kick();
   }, 950);
 }
@@ -330,16 +349,34 @@ function card(stars) {
   $('result').classList.add('on');
 }
 
-// polyline tail → head; `a` = current animation (partial last segment)
-function bodyPoints(a, p = 1) {
-  const pts = [center(L.start)];
-  const moves = st.moves, n = a && !a.undo ? moves.length - 1 : moves.length;
-  for (let i = 0; i < n; i++) pts.push(center(moves[i].cells.at(-1)));
-  if (a) {
-    const end = center(a.cells.at(-1)), from = a.from, k = a.undo ? 1 - p : p;
-    pts.push({ x: from.x + (end.x - from.x) * k, y: from.y + (end.y - from.y) * k });
-  }
-  return pts;
+// The body as polylines tail → head through cell centres. A pit or portal breaks it into pieces:
+// each piece after the first comes out of a hole. `a` = current animation (partial last move).
+function piecesOf(moves, a = null, p = 1) {
+  const pieces = [[center(L.start)]];
+  const add = (m, frac) => {
+    let k = frac * m.cells.length;
+    m.segs.forEach((seg, si) => {
+      if (k <= 0) return;
+      if (si) pieces.push([]);
+      const piece = pieces[pieces.length - 1];
+      for (const q of seg) {
+        if (k <= 0) break;
+        const c = center(q);
+        if (k >= 1 || !piece.length) { if (k >= 1) piece.push(c); k -= 1; continue; }
+        const b = piece[piece.length - 1]; piece.push({ x: b.x + (c.x - b.x) * k, y: b.y + (c.y - b.y) * k }); k = 0;
+      }
+    });
+  };
+  for (const m of moves) add(m, 1);
+  if (a) add(a.m, a.undo ? 1 - p : p);
+  return pieces.filter((pc, i) => pc.length || i === 0);
+}
+const bodyPieces = (a, p = 1) => piecesOf(a && !a.undo ? st.moves.slice(0, -1) : st.moves, a, p);
+const piecesLen = ps => ps.reduce((s, pc) => s + polyLen(pc), 0);
+function truncPieces(ps, keep) { // the first `keep` px of the body, across pieces
+  const out = [];
+  for (const pc of ps) { const l = polyLen(pc); if (keep >= l) { out.push(pc); keep -= l; continue; } out.push(truncate(pc, keep)); break; }
+  return out.length ? out : [ps[0].slice(0, 1)];
 }
 function truncate(pts, keep) { // first `keep` px of a polyline
   const out = [pts[0]];
@@ -354,15 +391,21 @@ const polyLen = pts => pts.reduce((s, p, i) => i ? s + Math.hypot(p.x - pts[i - 
 
 function draw(now) {
   if (!lay) return;
+  if (!over && !anim && !rewind && !hint && !idleNudged && $('settings').hidden && now - idleAt > IDLE_NUDGE) {
+    idleNudged = true; const b = $('bHint'); b.classList.remove('nudge'); void b.offsetWidth; b.classList.add('nudge');
+  }
   const dt = Math.min(.05, (now - (lastT || now)) / 1000); lastT = now;
   const c = lay.cell;
   ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height);
   ctx.drawImage(board, 0, 0);
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  drawMechs(now);
   // paws on empty floor (all of them while rewinding — the body covers the rest)
-  const pending = anim ? new Set(anim.cells) : null;
+  const pending = anim ? new Set(anim.m.cells) : null;
   for (let i = 0; i < L.open.length; i++) {
-    if (!L.open[i] || (!rewind && st.filled[i] && !(pending && pending.has(i)))) continue;
+    if (shownType(i) !== E.T.FLOOR && !(rewind && L.t[i] === E.T.FLOOR)) continue;
+    if (!rewind && st.filled[i] && !(pending && pending.has(i))) continue;
+    if (boxAnim && i === boxAnim.to) continue;
     const p = center(i); R.paw(ctx, p.x, p.y, c * .42, R.PAL.paw);
   }
   if (hint && now > hint.until) hint = null;
@@ -388,24 +431,28 @@ function draw(now) {
   if (anim) { const u = Math.min(1, (now - anim.t0) / anim.dur); p = anim.undo ? u : 1 - (1 - u) * (1 - u); }
   if (rewind) {
     const u = Math.min(1, (now - rewind.t0) / rewind.dur), k = u * u * (3 - 2 * u);
-    const full = polyLen(rewind.pts);
-    pts = truncate(rewind.pts, rewind.keep + (full - rewind.keep) * (1 - k));
+    const full = piecesLen(rewind.pts);
+    pts = truncPieces(rewind.pts, rewind.keep + (full - rewind.keep) * (1 - k));
     if (u >= 1) {
       if (rewind.keepMoves) {
         const n = rewind.keepMoves; reset();
         for (let i = 0; i < n; i++) E.apply(L, st, rewindDirs[i]);
         lastDir = E.DIRS[rewindDirs[n - 1]]; hud(); tip('Sıkıştın — son çözülebilir hamleye döndün.', 1800);
       } else { reset(); tip('Sıkıştın — baştan!', 1400); }
-      pts = bodyPoints(null);
+      pts = bodyPieces(null);
     }
-  } else pts = bodyPoints(anim, p);
-  const head = pts.at(-1);
+  } else pts = bodyPieces(anim, p);
+  const lastPiece = pts[pts.length - 1], head = lastPiece[lastPiece.length - 1];
+  if (anim && !anim.undo && lastPiece.length > 1) { // the head looks the way it is moving (turns, arrows)
+    const b = lastPiece[lastPiece.length - 2], l = Math.hypot(head.x - b.x, head.y - b.y);
+    if (l > 1) lastDir = [Math.round((head.x - b.x) / l), Math.round((head.y - b.y) / l)];
+  }
 
   // face
   const sliding = anim && !anim.undo;
   // worried when cornered: one way out, and it is short
-  const ways = !anim && !over && st.moves.length ? E.legal(L, st.filled, st.head) : null;
-  const cornered = ways && ways.length === 1 && E.slide(L, st.filled, st.head, ways[0]).length <= 2;
+  const ways = !anim && !over && st.moves.length ? E.legal(L, st) : null;
+  const cornered = ways && ways.length === 1 && E.move(L, st, ways[0]).cells.length <= 2;
   D.stepFace(fx, dt, { state: mood, look: lastDir, hint: hint && E.DIRS[hint.dir], worried: cornered });
   const sqT = (now - squashAt) / 170, squash = sqT >= 0 && sqT < 1 ? Math.sin(sqT * Math.PI) * (1 - sqT) * (bonkLen ? Math.min(1, .45 + bonkLen * .08) : .35) : 0;
 
@@ -414,7 +461,7 @@ function draw(now) {
   trail = trail.filter(g => g.life > 0);
   if (sliding || rewind) trail.push({ x: head.x, y: head.y, life: .1 });
 
-  D.drawBody(ctx, pts, c, { tailDir: tailDir(), depth, state: mood, t: now / 1000 });
+  pts.forEach((pc, k) => D.drawBody(ctx, pc, c, { tailDir: tailDir(), depth, state: mood, t: now / 1000, cont: k > 0 }));
   // head → bitmap once, then blit ghosts + head
   const hs = headCv.width; hctx.setTransform(1, 0, 0, 1, 0, 0); hctx.clearRect(0, 0, hs, hs); hctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   D.drawHead(hctx, hs / dpr / 2, hs / dpr / 2, c, { fx, state: mood, dir: lastDir, squash, stretch: sliding ? .07 : 0, t: now / 1000 });
@@ -429,11 +476,61 @@ function draw(now) {
     const k = (now - q.t0) / q.life, x = q.x + q.vx * t, y = q.y + q.vy * t + (q.kind === 'star' ? 600 * t * t : 0);
     ctx.globalAlpha = 1 - k;
     if (q.kind === 'dust') { ctx.fillStyle = '#fff8ea'; ctx.beginPath(); ctx.arc(x, y, q.r * (1 + k), 0, Math.PI * 2); ctx.fill(); }
+    else if (q.kind === 'shard') { ctx.fillStyle = '#bfe6f5'; ctx.save(); ctx.translate(x, y + 500 * t * t); ctx.rotate(q.rot + t * 8); ctx.beginPath(); ctx.moveTo(0, -q.r); ctx.lineTo(q.r * .8, q.r * .6); ctx.lineTo(-q.r * .7, q.r * .4); ctx.closePath(); ctx.fill(); ctx.restore(); }
     else { ctx.fillStyle = '#ffd45e'; ctx.save(); ctx.translate(x, y); ctx.rotate(q.rot + t * 5); star(ctx, q.r); ctx.fill(); ctx.restore(); }
   }
   ctx.globalAlpha = 1;
   if (anim && now - anim.t0 >= anim.dur) finishAnim(now);
 }
+// ---------- mechanic cells (drawn every frame: glass breaks, boxes move) ----------
+const PORTAL_COL = ['#8a6cf0', '#22a99a', '#f06a9b'];
+// while a slide is still travelling, the glass / box it will hit stay as they were
+const shownType = i => { if (anim && !anim.undo && anim.m.cells.length) for (const [j, o] of anim.m.mut) if (j === i) return o; return st.t[i]; };
+function drawMechs(now) {
+  const c = lay.cell, T = E.T;
+  if (boxAnim && now - boxAnim.t0 > 140) boxAnim = null;
+  for (let i = 0; i < L.open.length; i++) {
+    const t = shownType(i); if (t === T.FLOOR || t === T.WALL) continue;
+    if (st.filled[i] && t !== T.BOX) continue; // the body covers walkable mechanics once crossed
+    const p = center(i), x = p.x - c / 2, y = p.y - c / 2, d = L.d[i];
+    ctx.save();
+    if (t === T.GLASS) {
+      ctx.fillStyle = 'rgba(160,214,236,.9)'; ctx.strokeStyle = '#6fb3cf'; ctx.lineWidth = c * .05;
+      ctx.beginPath(); ctx.roundRect(x + c * .08, y + c * .08, c * .84, c * .84, c * .14); ctx.fill(); ctx.stroke();
+      ctx.strokeStyle = 'rgba(255,255,255,.85)'; ctx.lineWidth = c * .06; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(x + c * .28, y + c * .6); ctx.lineTo(x + c * .6, y + c * .28); ctx.moveTo(x + c * .45, y + c * .72); ctx.lineTo(x + c * .72, y + c * .45); ctx.stroke();
+    } else if (t === T.BOX) {
+      let bx = p.x, by = p.y;
+      if (boxAnim && boxAnim.to === i) { const f = center(boxAnim.from), u = Math.min(1, (now - boxAnim.t0) / 140); bx = f.x + (p.x - f.x) * u; by = f.y + (p.y - f.y) * u; }
+      const X = bx - c / 2, Y = by - c / 2;
+      ctx.fillStyle = '#b97a43'; ctx.strokeStyle = '#7a4b25'; ctx.lineWidth = c * .06;
+      ctx.beginPath(); ctx.roundRect(X + c * .1, Y + c * .1, c * .8, c * .8, c * .1); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(X + c * .2, Y + c * .2); ctx.lineTo(X + c * .8, Y + c * .8); ctx.moveTo(X + c * .8, Y + c * .2); ctx.lineTo(X + c * .2, Y + c * .8); ctx.stroke();
+    } else if (t === T.ARROW) {
+      ctx.translate(p.x, p.y); ctx.rotate([-Math.PI / 2, 0, Math.PI / 2, Math.PI][d]);
+      ctx.fillStyle = '#e39a3b'; ctx.beginPath(); ctx.moveTo(c * .3, 0); ctx.lineTo(-c * .16, -c * .26); ctx.lineTo(-c * .05, 0); ctx.lineTo(-c * .16, c * .26); ctx.closePath(); ctx.fill();
+    } else if (t === T.TURN) { // a rail from one open side to the other; the closed side is shaded like a wall
+      const mid = k => [[p.x, y], [x + c, p.y], [p.x, y + c], [x, p.y]][k];
+      const a = mid(d), b = mid([3, 0, 1, 2][d]);
+      const K = [a[0] === p.x ? b[0] : a[0], a[1] === p.y ? b[1] : a[1]]; // the cell corner between the open sides
+      const A2 = [2 * a[0] - K[0], 2 * a[1] - K[1]], B2 = [2 * b[0] - K[0], 2 * b[1] - K[1]], F = [A2[0] + B2[0] - K[0], A2[1] + B2[1] - K[1]];
+      ctx.fillStyle = 'rgba(150,92,52,.32)'; ctx.beginPath(); ctx.moveTo(...a); ctx.quadraticCurveTo(...K, ...b); ctx.lineTo(...B2); ctx.lineTo(...F); ctx.lineTo(...A2); ctx.closePath(); ctx.fill();
+      ctx.strokeStyle = '#e39a3b'; ctx.lineWidth = c * .12; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(...a); ctx.quadraticCurveTo(...K, ...b); ctx.stroke();
+    } else if (t === T.PIT) {
+      ctx.fillStyle = '#5a3a24'; ctx.beginPath(); ctx.ellipse(p.x, p.y, c * .36, c * .3, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#2a1a10'; ctx.beginPath(); ctx.ellipse(p.x, p.y + c * .04, c * .26, c * .2, 0, 0, Math.PI * 2); ctx.fill();
+    } else if (t === T.PORTAL) { // a ring open on its face side, coloured by pair
+      const col = PORTAL_COL[pairOf(i) % 3];
+      const ang = [-Math.PI / 2, 0, Math.PI / 2, Math.PI][d];
+      ctx.strokeStyle = col; ctx.lineWidth = c * .12; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.arc(p.x, p.y, c * .3, ang + .7, ang - .7 + Math.PI * 2); ctx.stroke();
+      ctx.globalAlpha = .35; ctx.fillStyle = col; ctx.beginPath(); ctx.arc(p.x, p.y, c * .22, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.restore();
+  }
+}
+const pairOf = i => { const k = Object.keys(lv.portals || {}).find(k => { const [x, y] = k.split(',').map(Number); return y * L.W + x === i; }); return k ? lv.portals[k][1] : 0; };
 function star(g, r) { g.beginPath(); for (let i = 0; i < 10; i++) { const a = i * Math.PI / 5 - Math.PI / 2, rr = i % 2 ? r * .45 : r; g.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); } g.closePath(); }
 
 // ---------- home scene: the dog solves the 4×4 spiral on a loop ----------
@@ -486,7 +583,7 @@ const home = (() => {
 
 // ---------- debug / playtest hooks ----------
 window.LongDogGame = {
-  start, undo, restart, input, state: () => ({ idx, head: st && st.head, count: st && st.count, floor: L && L.floor, over, mood, rewinding: !!rewind }),
+  start, undo, restart, input, state: () => ({ idx, head: st && st.head, count: st && st.count, floor: st && st.need, over, mood, rewinding: !!rewind }),
   solve: () => S && S.hint(st), tick: () => draw(performance.now()),
   cellCenter: i => { const r = cv.getBoundingClientRect(), p = center(i); return { x: r.left + p.x, y: r.top + p.y }; }, // page coords, for tap tests
 };

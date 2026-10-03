@@ -1,0 +1,36 @@
+{
+  "id": "cat",
+  "model": "gpt-image-2",
+  "generatedAt": "2026-10-03T13:40:28.750281+00:00",
+  "prompt": "Generate a NEW, exquisite PHOTOGRAPHIC ARTWORK of a real artisan-made stained-glass panel depicting a ginger orange cat sitting on a dark tiled rooftop, gazing at a full yellow moon in a teal night sky.\nImage 1 is the exact pane layout and colour plan. Image 2 is only a real-world material reference. The output must NOT look like image 1's flat vector drawing: turn every flat area into stunning, convincingly real, richly textured handmade translucent glass — organic ripples, hammered dimples, tiny trapped bubbles, light refracting inside the coloured glass, glowing sunlight transmitted from behind, delicate dark aged metal solder seams. A high-end Tiffany-style art object, photographed perfectly straight-on. Deep and jewel-like, not a cartoon, not paint, not paper.\nCRITICAL STRUCTURE: every flat-coloured area of image 1 is exactly ONE glass pane and every black line is a lead seam. Keep all seams exactly where they are — same positions, same curves, same silhouette and proportions — so the artwork aligns with image 1 when superimposed. Do not add, remove, subdivide, merge or move any pane or seam. Do not paint extra details (no eyes, veins, faces, stripes, text) onto the glass beyond what the panes already show. The flat light-grey area outside the panel's silhouette is not glass: render it as plain dark neutral grey.\nFOUR COLOURS ONLY, PANE BY PANE: the glass uses exactly these four colours: ginger orange (#f28a1e), lemon yellow (#f9e04b), charcoal grey (#3b3f45), teal (#16808a). Every pane keeps the colour image 1 gives it. Make them rich, luminous, translucent versions of those same hues, with natural light and texture variation inside each hue, but no fifth glass colour. Neutral lead seams and specular highlights do not count as colours.\nCOMPOSITION: exactly 3:4 portrait, frontal/orthographic, the panel filling the frame as in image 1. No frame, no wall, no room, no hanging chain, no perspective, no mockup, no vignette, no border. NO TEXT, NO LETTERING, NO LOGOS. Deliver only the finished raster artwork.",
+  "guide": "598ae4747b9afeb5a0afadafd9a36c80b3fa14a0a45ee47257470905e80715a7",
+  "sha256": "beb0867cf47bb326fe2871e8a20fa99763c24e585885b467b8a9abce06ce0fad",
+  "size": [
+    768,
+    1024
+  ],
+  "palette": [
+    "#f76f02",
+    "#fbdf1e",
+    "#343338",
+    "#016872"
+  ],
+  "alignment": {
+    "affine": [
+      [
+        0.99643,
+        0.00038,
+        1.11446
+      ],
+      [
+        8e-05,
+        0.99695,
+        2.39435
+      ]
+    ],
+    "seamCorrelation": [
+      0.839,
+      0.862
+    ]
+  }
+}

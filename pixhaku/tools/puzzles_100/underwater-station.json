@@ -1,0 +1,145 @@
+{
+  "id": "underwater-station",
+  "tr": "Sualtı İstasyonu",
+  "artName": "Underwater Station",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "deep blue ocean",
+      "deep blue ocean",
+      "#a9cce2"
+    ],
+    "B": [
+      "glass research dome",
+      "glass research dome",
+      "#b88c67"
+    ],
+    "C": [
+      "kelp forest",
+      "kelp forest",
+      "#759783"
+    ],
+    "D": [
+      "submarine tools",
+      "submarine tools",
+      "#d6b57c"
+    ],
+    "E": [
+      "lit connecting tunnel",
+      "lit connecting tunnel",
+      "#bdb5a2"
+    ],
+    "F": [
+      "coral reef",
+      "coral reef",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "underwater station",
+    "place": "underwater station",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: glass research dome, connected naturally to kelp forest",
+      "foreground: submarine tools, lit connecting tunnel, and coral reef"
+    ],
+    "light": "a single coherent light source appropriate to deep blue ocean",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "underwater station"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 88,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABCCDDD",
+      "AABCCDDD",
+      "AABCCEEE",
+      "AABCCEEE",
+      "AABCCEEE",
+      "AABFGEEE",
+      "AABFGHHH",
+      "AABFGHHH",
+      "IIIFJJJJ"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        1,
+        2
+      ],
+      "C": [
+        3,
+        3
+      ],
+      "D": [
+        0,
+        6
+      ],
+      "E": [
+        5,
+        5
+      ],
+      "F": [
+        6,
+        3
+      ],
+      "G": [
+        7,
+        4
+      ],
+      "H": [
+        7,
+        6
+      ],
+      "I": [
+        8,
+        1
+      ],
+      "J": [
+        8,
+        5
+      ]
+    },
+    "hidden": [
+      "E"
+    ],
+    "locks": {
+      "F": 4
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "id": "canyon-monastery",
+  "tr": "Kanyon Manastırı",
+  "artName": "Canyon Monastery",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "sunlit canyon sky",
+      "sunlit canyon sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "cliffside monastery",
+      "cliffside monastery",
+      "#b88c67"
+    ],
+    "C": [
+      "red sandstone cliffs",
+      "red sandstone cliffs",
+      "#759783"
+    ],
+    "D": [
+      "prayer garden",
+      "prayer garden",
+      "#d6b57c"
+    ],
+    "E": [
+      "rock-cut stairs",
+      "rock-cut stairs",
+      "#bdb5a2"
+    ],
+    "F": [
+      "blue river far below",
+      "blue river far below",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "canyon monastery",
+    "place": "canyon monastery",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: cliffside monastery, connected naturally to red sandstone cliffs",
+      "foreground: prayer garden, rock-cut stairs, and blue river far below"
+    ],
+    "light": "a single coherent light source appropriate to sunlit canyon sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "canyon monastery"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 112,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABBCCDE",
+      "AABBCCDE",
+      "AABBCCDE",
+      "AABBCCDE",
+      "AABBCCFE",
+      "GHHHHIFE",
+      "GHHHHIFJ",
+      "GHHHHIFJ",
+      "GKKKLLFJ"
+    ],
+    "clues": {
+      "A": [
+        2,
+        1
+      ],
+      "B": [
+        3,
+        3
+      ],
+      "C": [
+        1,
+        5
+      ],
+      "D": [
+        3,
+        6
+      ],
+      "E": [
+        2,
+        7
+      ],
+      "F": [
+        7,
+        6
+      ],
+      "G": [
+        6,
+        0
+      ],
+      "H": [
+        6,
+        4
+      ],
+      "I": [
+        7,
+        5
+      ],
+      "J": [
+        7,
+        7
+      ],
+      "K": [
+        8,
+        2
+      ],
+      "L": [
+        8,
+        5
+      ]
+    },
+    "hidden": [
+      "A"
+    ],
+    "locks": {
+      "J": 5
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "id": "bamboo-onsen",
+  "tr": "Bambu Kaplıcası",
+  "artName": "Bamboo Onsen",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "misty mountain sky",
+      "misty mountain sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "outdoor hot spring",
+      "outdoor hot spring",
+      "#b88c67"
+    ],
+    "C": [
+      "bamboo grove",
+      "bamboo grove",
+      "#759783"
+    ],
+    "D": [
+      "smooth mossy rocks",
+      "smooth mossy rocks",
+      "#d6b57c"
+    ],
+    "E": [
+      "wooden walkway",
+      "wooden walkway",
+      "#bdb5a2"
+    ],
+    "F": [
+      "stone lantern",
+      "stone lantern",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "bamboo onsen",
+    "place": "bamboo onsen",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: outdoor hot spring, connected naturally to bamboo grove",
+      "foreground: smooth mossy rocks, wooden walkway, and stone lantern"
+    ],
+    "light": "a single coherent light source appropriate to misty mountain sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "bamboo onsen"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 8,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 47,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAABCD",
+      "AAABCD",
+      "EEEBCD",
+      "FFGBCD",
+      "FFGBCD",
+      "FFGBHH",
+      "FFGBHH",
+      "FFGBII"
+    ],
+    "clues": {
+      "A": [
+        1,
+        2
+      ],
+      "B": [
+        3,
+        3
+      ],
+      "C": [
+        1,
+        4
+      ],
+      "D": [
+        0,
+        5
+      ],
+      "E": [
+        2,
+        1
+      ],
+      "F": [
+        7,
+        0
+      ],
+      "G": [
+        6,
+        2
+      ],
+      "H": [
+        5,
+        5
+      ],
+      "I": [
+        7,
+        5
+      ]
+    },
+    "hidden": [
+      "D"
+    ],
+    "locks": {}
+  }
+}

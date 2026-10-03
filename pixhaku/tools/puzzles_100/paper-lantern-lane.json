@@ -1,0 +1,139 @@
+{
+  "id": "paper-lantern-lane",
+  "tr": "Fenerli Sokak",
+  "artName": "Paper Lantern Lane",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "indigo evening sky",
+      "indigo evening sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "lantern-lit tea stall",
+      "lantern-lit tea stall",
+      "#b88c67"
+    ],
+    "C": [
+      "timber facades",
+      "timber facades",
+      "#759783"
+    ],
+    "D": [
+      "flower cart",
+      "flower cart",
+      "#d6b57c"
+    ],
+    "E": [
+      "narrow stone lane",
+      "narrow stone lane",
+      "#bdb5a2"
+    ],
+    "F": [
+      "small koi canal",
+      "small koi canal",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "paper lantern lane",
+    "place": "paper lantern lane",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: lantern-lit tea stall, connected naturally to timber facades",
+      "foreground: flower cart, narrow stone lane, and small koi canal"
+    ],
+    "light": "a single coherent light source appropriate to indigo evening sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "paper lantern lane"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 8,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 61,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABCCD",
+      "AABEED",
+      "AABEED",
+      "AABEED",
+      "AABEED",
+      "FFBEEG",
+      "FFBHHG",
+      "IIBJJG"
+    ],
+    "clues": {
+      "A": [
+        1,
+        1
+      ],
+      "B": [
+        2,
+        2
+      ],
+      "C": [
+        0,
+        3
+      ],
+      "D": [
+        4,
+        5
+      ],
+      "E": [
+        1,
+        4
+      ],
+      "F": [
+        6,
+        0
+      ],
+      "G": [
+        7,
+        5
+      ],
+      "H": [
+        6,
+        4
+      ],
+      "I": [
+        7,
+        1
+      ],
+      "J": [
+        7,
+        4
+      ]
+    },
+    "hidden": [
+      "E"
+    ],
+    "locks": {}
+  }
+}

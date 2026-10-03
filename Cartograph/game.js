@@ -3,14 +3,11 @@
 
   const E = window.CartoEngine;
   const NS = 'http://www.w3.org/2000/svg';
-  const PALETTE = [
-    { name: 'Yeşil', base: '#8ca473', dark: '#6f8a57' },
-    { name: 'Hardal', base: '#d6bd6f', dark: '#b89d4f' },
-    { name: 'Kiremit', base: '#bf8c70', dark: '#9f6d52' },
-    { name: 'Gök', base: '#7f9bb8', dark: '#617d9b' },
-  ];
-  const EMPTY = '#efeddc';
-  const MAX_LIVES = 3;
+  // Unpainted panes are pale paper; levels with white or cream glass get a darker paper so a
+  // painted light pane never looks empty.
+  const PAPER = '#efeddc', PAPER_DARK = '#c9c5ad';
+  let EMPTY = PAPER;
+  let PALETTE = [];
   const START_HINTS = 3;
   const DOUBLE_MS = 300;
 
@@ -20,28 +17,23 @@
     get(k, d) { try { const v = localStorage.getItem('carto.' + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
     set(k, v) { try { localStorage.setItem('carto.' + k, JSON.stringify(v)); } catch { /* private mode */ } },
   };
+  // 3D is the default look (user, 2026-10-03); a choice saved before that is reset once.
+  if (store.get('boardLookVersion', 0) < 1) {
+    try { localStorage.removeItem('carto.boardLook'); } catch { /* private mode */ }
+    store.set('boardLookVersion', 1);
+  }
+  let boardLook = store.get('boardLook', '3d') === 'classic' ? 'classic' : '3d';
+  $('app').dataset.boardLook = boardLook;
 
+  // One way to play: pick a colour at the bottom, tap a pane = note, double tap = paint.
+  // No hearts: anything can be painted; a full board is either the panel or shows its clashes.
   const S = {
     level: store.get('level', 1),
     sound: store.get('sound', true),
     puzzle: null, given: [], fill: [], marks: [], color: 0,
-    lives: MAX_LIVES, hints: START_HINTS, done: false,
-    locks: new Map(), opened: new Set(),
+    hints: START_HINTS, done: false,
   };
-  // v1: tap a region = note, double tap = paint, with the selected bar colour.
-  // v3: the colour comes from a bubble that pops up where you tap (first tap, long press, or the
-  //     colour chip); after that, tap a region = note, double tap = paint, like v1.
-  const CONTROLS = {
-    v1: { name: 'V1', desc: 'Tek dokun not, çift dokun boya. Alttaki seçili renk kullanılır.' },
-    v3: { name: 'V3', desc: 'Dokunduğun yerde renk balonu açılır, rengi seç. Sonra bölgeye tek dokun not, çift dokun boya. Rengi değiştirmek için basılı tut.' },
-  };
-  let controls = CONTROLS[store.get('controls', 'v1')] ? store.get('controls', 'v1') : 'v1';
-  // Lives off: anything can be painted; only a full board is judged (tick → next level, or "wrong").
-  let livesOn = store.get('lives', true) !== false;
-  // 'clues': level opens with its given colours and locks; 'empty': nothing painted, any valid colouring wins.
-  let startMode = store.get('start', 'clues') === 'empty' ? 'empty' : 'clues';
   let lastTap = null;
-  let armed = false;
   let layers = {};
   let regionEls = [];
 
@@ -69,7 +61,6 @@
     select: () => tone(300, 0.06, 'square', 0.035),
     bad: () => { tone(180, 0.22, 'sawtooth', 0.07, 120); },
     hint: () => { tone(660, 0.12, 'sine', 0.1); setTimeout(() => tone(990, 0.18, 'sine', 0.1), 90); },
-    unlock: () => { tone(520, 0.1, 'square', 0.05); setTimeout(() => tone(780, 0.1, 'square', 0.05), 80); setTimeout(() => tone(1170, 0.22, 'triangle', 0.1), 160); },
     win: () => [523, 659, 784, 1047].forEach((f, i) => setTimeout(() => tone(f, 0.25, 'triangle', 0.12), i * 110)),
   };
   const buzz = ms => { try { navigator.vibrate && navigator.vibrate(ms); } catch { /* unsupported */ } };
@@ -82,60 +73,105 @@
     return n;
   }
   const fmt = v => +v.toFixed(3);
-
-  function regionPath(map, r) {
-    let d = '';
-    for (let c = 0; c < map.cols * map.rows; c++) {
-      for (let k = 0; k < 2; k++) {
-        if (map.atoms[c * 2 + k] !== r) continue;
-        const tri = E.triangle(c % map.cols, (c / map.cols) | 0, map.orient[c], k);
-        d += `M${tri[0][0]} ${tri[0][1]}L${tri[1][0]} ${tri[1][1]}L${tri[2][0]} ${tri[2][1]}Z`;
-      }
-    }
-    return d;
-  }
-
-  function edgesPath(edges) {
-    return edges.map(e => `M${e[0]} ${e[1]}L${e[2]} ${e[3]}`).join('');
-  }
+  const edgesPath = edges => edges.map(e => `M${e[0]} ${e[1]}L${e[2]} ${e[3]}`).join('');
 
   function buildBoard() {
     const { map } = S.puzzle;
     svg.innerHTML = '';
     svg.setAttribute('viewBox', `0 0 ${map.cols} ${map.rows}`);
     const defs = el('defs', {}, svg);
-    PALETTE.forEach((p, i) => {
-      const pat = el('pattern', { id: 'hatch' + i, width: 0.16, height: 0.16, patternUnits: 'userSpaceOnUse', patternTransform: 'rotate(45)' }, defs);
-      el('rect', { width: 0.16, height: 0.16, fill: p.base }, pat);
-      el('rect', { width: 0.05, height: 0.16, fill: p.dark, opacity: 0.55 }, pat);
-    });
-    const lockPat = el('pattern', { id: 'lockHatch', width: 0.2, height: 0.2, patternUnits: 'userSpaceOnUse', patternTransform: 'rotate(45)' }, defs);
-    el('rect', { width: 0.2, height: 0.2, fill: '#ddd6bd' }, lockPat);
-    el('rect', { width: 0.07, height: 0.2, fill: '#c9c0a2' }, lockPat);
-    const gRegions = el('g', {}, svg);
+    layers.depth = null;
+    layers.surface = el('g', { id: 'boardSurface' }, svg);
+    $('boardCard').classList.add('shaped');
+    const clip = el('clipPath', { id: 'boardShape', clipPathUnits: 'userSpaceOnUse' }, defs);
+    el('path', { d: map.shape }, clip);
+    layers.surface.setAttribute('clip-path', 'url(#boardShape)');
+    const gRegions = el('g', {}, layers.surface);
     regionEls = [];
     for (let r = 0; r < map.count; r++) {
       const g = el('g', { class: 'region', 'data-r': r, tabindex: 0, role: 'button', 'aria-label': `Bölge ${r + 1}` }, gRegions);
-      const path = el('path', { class: 'fill', d: regionPath(map, r), 'stroke-width': 0.04, 'stroke-linejoin': 'round' }, g);
+      const path = el('path', { class: 'fill', d: map.paths[r], fill: EMPTY, stroke: EMPTY, 'stroke-width': 0.04, 'stroke-linejoin': 'round' }, g);
       regionEls.push({ g, path });
     }
-    layers.hint = el('g', {}, svg);
+    // Pre-painted panes carry thin diagonal stripes in a darker tone of their own colour;
+    // the player's paint is plain.
+    PALETTE.forEach((p, i) => {
+      const pat = el('pattern', { id: 'stripes' + i, width: 0.24, height: 0.24, patternUnits: 'userSpaceOnUse', patternTransform: 'rotate(45)' }, defs);
+      el('rect', { width: 0.065, height: 0.24, fill: shade(p.base, -0.2) }, pat);
+    });
+    layers.fixed = el('g', { 'pointer-events': 'none' }, layers.surface);
+    for (let r = 0; r < map.count; r++) {
+      if (S.given[r] >= 0) el('path', { class: 'fixed-stripes', d: map.paths[r], fill: `url(#stripes${S.given[r]})` }, layers.fixed);
+    }
+    layers.wrong = el('g', { 'pointer-events': 'none' }, layers.surface);
+    layers.hint = el('g', { 'pointer-events': 'none', 'aria-hidden': 'true' }, layers.surface);
     el('path', {
-      d: edgesPath(map.edges), fill: 'none', stroke: '#454e3e', 'stroke-width': 1.7,
-      'stroke-linecap': 'round', 'vector-effect': 'non-scaling-stroke', 'pointer-events': 'none',
-    }, svg);
-    el('rect', {
-      x: 0, y: 0, width: map.cols, height: map.rows, fill: 'none', stroke: '#454e3e',
-      'stroke-width': 2.6, 'vector-effect': 'non-scaling-stroke', 'pointer-events': 'none',
-    }, svg);
+      class: 'board-seams', d: map.edgePath, fill: 'none', stroke: '#3a4234', 'stroke-width': 1.9,
+      'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'vector-effect': 'non-scaling-stroke', 'pointer-events': 'none',
+    }, layers.surface);
+    el('path', {
+      class: 'board-rim', d: map.shape, fill: 'none', stroke: '#3a4234',
+      'stroke-width': 3.5, 'vector-effect': 'non-scaling-stroke', 'pointer-events': 'none',
+    }, layers.surface);
     layers.conflict = el('path', {
-      fill: 'none', stroke: '#e2343f', 'stroke-width': 4.5, 'stroke-linecap': 'round',
+      fill: 'none', stroke: '#e2343f', 'stroke-width': 5, 'stroke-linecap': 'round',
       'vector-effect': 'non-scaling-stroke', 'pointer-events': 'none', class: 'conflict', d: '',
-    }, svg);
-    layers.dots = el('g', { 'pointer-events': 'none' }, svg);
-    layers.locks = el('g', { 'pointer-events': 'none' }, svg);
-    buildDotGrid(map);
+    }, layers.surface);
+    layers.dots = el('g', { 'pointer-events': 'none' }, layers.surface);
+    layers.coach = el('g', { 'pointer-events': 'none' }, layers.surface);
+    dotCache = [];
+    if (boardLook === '3d') buildDepth();
     fitBoard();
+  }
+
+  // Reuse the playable paths: lighting never changes geometry or hit targets.
+  function buildDepth() {
+    if (layers.depth) return;
+    const defs = svg.querySelector('defs'), { map } = S.puzzle;
+    [EMPTY, ...PALETTE.map(p => p.base)].forEach((color, i) => {
+      const gradient = el('linearGradient', { id: 'tileColor' + i, x1: '0%', y1: '0%', x2: '75%', y2: '100%' }, defs);
+      [[0, shade(color, .22)], [.35, shade(color, .05)], [.7, color], [1, shade(color, -.18)]].forEach(([offset, value]) => {
+        el('stop', { offset, 'stop-color': value }, gradient);
+      });
+    });
+    const glaze = el('linearGradient', { id: 'tileGlaze', x1: '0%', y1: '0%', x2: '65%', y2: '100%' }, defs);
+    [[0, .22], [.28, .04], [.48, .1], [.65, 0], [1, 0]].forEach(([offset, opacity]) => {
+      el('stop', { offset, 'stop-color': '#fff', 'stop-opacity': opacity }, glaze);
+    });
+    // Inset highlights and shadows follow each pane, including concave outlines.
+    const bevel = el('filter', { id: 'tileBevel', x: '-10%', y: '-10%', width: '120%', height: '120%', 'color-interpolation-filters': 'sRGB' }, defs);
+    el('feOffset', { in: 'SourceAlpha', dx: .065, dy: .075, result: 'down' }, bevel);
+    el('feComposite', { in: 'SourceAlpha', in2: 'down', operator: 'out', result: 'topEdge' }, bevel);
+    el('feGaussianBlur', { in: 'topEdge', stdDeviation: .025, result: 'topSoft' }, bevel);
+    el('feFlood', { 'flood-color': '#fff9de', 'flood-opacity': .85, result: 'light' }, bevel);
+    el('feComposite', { in: 'light', in2: 'topSoft', operator: 'in', result: 'highlight' }, bevel);
+    el('feOffset', { in: 'SourceAlpha', dx: -.075, dy: -.1, result: 'up' }, bevel);
+    el('feComposite', { in: 'SourceAlpha', in2: 'up', operator: 'out', result: 'bottomEdge' }, bevel);
+    el('feGaussianBlur', { in: 'bottomEdge', stdDeviation: .035, result: 'bottomSoft' }, bevel);
+    el('feFlood', { 'flood-color': '#15201d', 'flood-opacity': .7, result: 'shade' }, bevel);
+    el('feComposite', { in: 'shade', in2: 'bottomSoft', operator: 'in', result: 'shadow' }, bevel);
+    const merge = el('feMerge', {}, bevel);
+    el('feMergeNode', { in: 'shadow' }, merge);
+    el('feMergeNode', { in: 'highlight' }, merge);
+    layers.depth = el('g', { class: 'tile-depth', 'pointer-events': 'none', 'aria-hidden': 'true' });
+    layers.surface.insertBefore(layers.depth, layers.wrong);
+    for (const d of map.paths) {
+      el('path', { d, fill: 'url(#tileGlaze)' }, layers.depth);
+      el('path', { d, fill: '#fff', filter: 'url(#tileBevel)' }, layers.depth);
+    }
+  }
+
+  function panePaint(c) {
+    return boardLook === '3d' ? `url(#tileColor${c + 1})` : c < 0 ? EMPTY : PALETTE[c].base;
+  }
+
+  function setBoardLook(value) {
+    boardLook = value === '3d' ? '3d' : 'classic';
+    store.set('boardLook', boardLook);
+    $('app').dataset.boardLook = boardLook;
+    clearHint();
+    if (boardLook === '3d') buildDepth();
+    render();
   }
 
   function fitBoard() {
@@ -149,18 +185,16 @@
     const cell = Math.max(10, Math.min(availW / cols, availH / rows));
     svg.style.width = Math.floor(cell * cols) + 'px';
     svg.style.height = Math.floor(cell * rows) + 'px';
-    if (bubble) placeBubble();
+    setZoom(1, 0, 0);
   }
 
   // Pencil dots: each mark count gets its own layout over the whole region —
   // 1 colour: hex grid, 2: checkerboard square grid, 3 and 4: hex grid with an even colour cycle.
   const HEX_STEP = 0.3, SQ_STEP = 0.28, DOT_R = 0.065, DOT_MARGIN = 0.1;
   let dotCache = [];
-  function buildDotGrid() { dotCache = []; }
 
   function regionGeom(r) {
-    const map = S.puzzle.map;
-    const outline = E.regionOutline(map, r);
+    const outline = S.puzzle.map.outlines[r];
     let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
     for (const s of outline) {
       x0 = Math.min(x0, s[0], s[2]); x1 = Math.max(x1, s[0], s[2]);
@@ -168,11 +202,13 @@
     }
     return { outline, box: [x0, y0, x1, y1] };
   }
-  function insideRegion(map, r, outline, x, y) {
+  function insideRegion(map, outline, x, y) {
     if (x <= 0 || y <= 0 || x >= map.cols || y >= map.rows) return false;
-    const cx = Math.floor(x), cy = Math.floor(y), fx = x - cx, fy = y - cy, c = cy * map.cols + cx;
-    const k = map.orient[c] === 0 ? (fx > fy ? 0 : 1) : (fx + fy < 1 ? 0 : 1);
-    if (map.atoms[c * 2 + k] !== r) return false;
+    let inside = false;
+    for (const [ax, ay, bx, by] of outline) {
+      if ((ay > y) !== (by > y) && x < (bx - ax) * (y - ay) / (by - ay) + ax) inside = !inside;
+    }
+    if (!inside) return false;
     for (const s of outline) {
       const dx = s[2] - s[0], dy = s[3] - s[1];
       const t = Math.max(0, Math.min(1, ((x - s[0]) * dx + (y - s[1]) * dy) / (dx * dx + dy * dy)));
@@ -201,7 +237,7 @@
           const iMin = Math.floor((box[0] - x0 - shift) / ax) - 1, iMax = Math.ceil((box[2] - x0 - shift) / ax) + 1;
           for (let i = iMin; i <= iMax; i++) {
             const x = x0 + shift + i * ax;
-            if (insideRegion(map, r, outline, x, y)) pts.push([fmt(x), fmt(y), i, j]);
+            if (insideRegion(map, outline, x, y)) pts.push([fmt(x), fmt(y), i, j]);
           }
         }
         if (pts.length > best.length) best = pts;
@@ -232,12 +268,13 @@
     }
     return out;
   }
+
   // ---------- render ----------
   function render(pop) {
-    const { map } = S.puzzle, given = S.given;
+    const { map } = S.puzzle;
     for (let r = 0; r < map.count; r++) {
       const c = S.fill[r];
-      const paint = lockLeft(r) > 0 ? 'url(#lockHatch)' : c < 0 ? EMPTY : given[r] >= 0 ? `url(#hatch${c})` : PALETTE[c].base;
+      const paint = panePaint(c);
       regionEls[r].path.setAttribute('fill', paint);
       regionEls[r].path.setAttribute('stroke', paint);
     }
@@ -251,81 +288,38 @@
         if (fresh) dot.style.animationDelay = Math.min(260, Math.hypot(x - pop.x, y - pop.y) * 70) + 'ms';
       }
     }
-    layers.locks.innerHTML = '';
-    for (const r of S.locks.keys()) {
-      const left = lockLeft(r);
-      if (left > 0) lockBadge(r, left, layers.locks);
-    }
-    layers.conflict.setAttribute('d', livesOn ? edgesPath(conflictEdges()) : '');
+    showMistakes();
     const filled = S.fill.filter(c => c >= 0).length;
     $('progress').textContent = `${filled}/${map.count}`;
-    $('livesNum').textContent = S.lives;
-    $('lives').hidden = !livesOn;
     $('levelPill').textContent = 'SEVİYE ' + S.level;
     const badge = $('hintBadge');
     badge.textContent = S.hints > 0 ? S.hints : '+';
     badge.classList.toggle('plus', S.hints <= 0);
   }
 
-  // ---------- locked clues ----------
-  const LOCK_ICON = 'M2 0h4v1h1v3h1v5H0V4h1V1h1zm1 1v3h2V1zM3 5v2h2V5z';
-  const paintedCount = () => S.fill.filter((c, r) => c >= 0 && S.given[r] < 0).length;
-  const lockLeft = r => (S.locks.has(r) && !S.opened.has(r) ? Math.max(0, S.locks.get(r) - paintedCount()) : 0);
-
-  function lockBadge(r, left, parent, cls) {
-    const [ax, ay] = S.puzzle.map.anchors[r];
-    const g = el('g', { class: 'lock-badge' + (cls ? ' ' + cls : ''), 'data-r': r, transform: `translate(${ax} ${ay})` }, parent);
-    const inner = el('g', { class: 'lock-inner' }, g);
-    const w = left >= 10 ? 1.1 : 0.94, x0 = -w / 2;
-    el('rect', { x: x0, y: -0.25, width: w, height: 0.5, rx: 0.15, fill: '#e7c77a', stroke: '#6b4a1f', 'stroke-width': 0.045 }, inner);
-    el('path', { d: LOCK_ICON, fill: '#6b4a1f', transform: `translate(${fmt(x0 + 0.1)} -0.165) scale(0.037)`, 'shape-rendering': 'crispEdges' }, inner);
-    const t = el('text', {
-      x: fmt((x0 + 0.4 + w / 2 - 0.05) / 2), y: 0.125, 'text-anchor': 'middle', 'font-size': 0.36, fill: '#6b4a1f',
-      'font-family': 'Rounded, sans-serif', 'font-weight': 900,
-    }, inner);
-    t.textContent = left > 0 ? left : '';
-    return g;
-  }
-
-  function nudgeLock(r) {
-    const b = layers.locks.querySelector(`.lock-badge[data-r="${r}"]`);
-    if (b) { b.classList.remove('nudge'); void b.getBBox(); b.classList.add('nudge'); }
-    sfx.undot();
-    const left = lockLeft(r);
-    toast(`Kilitli: ${left} bölge daha boya`);
-  }
-
-  // Reveal any lock whose count has been reached; once open it stays open.
-  function openLocks() {
-    const revealed = [];
-    for (const r of S.locks.keys()) {
-      if (S.opened.has(r) || lockLeft(r) > 0) continue;
-      S.opened.add(r);
-      revealed.push(r);
-      S.fill[r] = S.given[r];
-      S.marks[r] = 0;
-      const fx = lockBadge(r, 0, layers.hint, 'opening');
-      setTimeout(() => fx.remove(), 600);
-      pulse(r, 'paint');
-      sfx.unlock();
-      const clash = S.puzzle.map.adj[r].some(j => S.fill[j] === S.fill[r]);
-      toast(clash ? 'Kilit açıldı! Kırmızı sınırdaki rengi düzelt' : 'Kilit açıldı!', clash ? 2400 : 1600);
-    }
-    return revealed;
-  }
-
   const popcount = m => { let c = 0; while (m) { c += m & 1; m >>= 1; } return c; };
+  const clashEdges = () => S.puzzle.map.edges.filter(e => S.fill[e[4]] >= 0 && S.fill[e[4]] === S.fill[e[5]]);
 
-  function conflictEdges(extra) {
+  // A full board that isn't the panel: red borders on every clash and the clashing panes pulse.
+  function showMistakes() {
+    const full = S.fill.every(c => c >= 0);
+    const clashes = full && !S.done ? clashEdges() : [];
+    layers.conflict.setAttribute('d', edgesPath(clashes));
+    layers.wrong.innerHTML = '';
     const { map } = S.puzzle;
-    return map.edges.filter(e => {
-      const a = e[4], b = e[5];
-      if (extra && (a === extra.r || b === extra.r)) {
-        const other = a === extra.r ? b : a;
-        return S.fill[other] === extra.c;
-      }
-      return S.fill[a] >= 0 && S.fill[a] === S.fill[b];
-    });
+    for (const r of new Set(clashes.flatMap(e => [e[4], e[5]]))) {
+      if (S.given[r] >= 0) continue;
+      el('path', { d: map.paths[r], class: 'wrong-pane' }, layers.wrong);
+      el('path', {
+        d: edgesPath(map.outlines[r]), fill: 'none', stroke: '#e2343f', 'stroke-width': 3,
+        'stroke-dasharray': '6 4', 'vector-effect': 'non-scaling-stroke',
+      }, layers.wrong);
+      const [x, y] = map.anchors[r];
+      const g = el('g', { class: 'wrong-mark', transform: `translate(${fmt(x)} ${fmt(y)})` }, layers.dots);
+      el('circle', { r: 0.27, fill: '#e2343f', stroke: '#fff', 'stroke-width': 0.06 }, g);
+      el('path', { d: 'M-.1-.1L.1.1M.1-.1L-.1.1', stroke: '#fff', 'stroke-width': 0.07, 'stroke-linecap': 'round' }, g);
+    }
+    return clashes;
   }
 
   function pulse(r, cls) {
@@ -348,78 +342,175 @@
   }
 
   // ---------- level ----------
-  function startLevel(n) {
-    closeBubble();
-    S.level = n;
-    store.set('level', n);
-    S.puzzle = E.generate(n);
-    const empty = startMode === 'empty';
-    S.given = empty ? new Array(S.puzzle.map.count).fill(-1) : S.puzzle.given.slice();
-    S.fill = S.given.slice();
-    S.locks = new Map(empty ? [] : (S.puzzle.locks || []).map(l => [l.r, l.k]));
-    S.opened = new Set();
-    for (const r of S.locks.keys()) S.fill[r] = -1;
-    S.marks = new Array(S.puzzle.map.count).fill(0);
-    S.lives = MAX_LIVES;
-    S.hints = START_HINTS;
-    S.done = false;
-    lastTap = null;
-    $('boardCard').classList.remove('won');
-    $('solvedTick').classList.remove('show');
-    buildBoard();
-    render();
-    if (n === 1 && !store.get('seenHow', false)) { store.set('seenHow', true); showHow(); }
+  // Every level is a stained-glass panel (stained-levels.js); after the last one it starts over.
+  const STAINED = window.CARTO_STAINED;
+  const wrap = n => ((n - 1) % STAINED.length + STAINED.length) % STAINED.length + 1;
+  let glassTimer = 0, glassImage = null;
+
+  // Maps ship only shared edges + rim segments; each pane's outline is rebuilt here.
+  function outlinesOf(map) {
+    const out = Array.from({ length: map.count }, () => []);
+    for (const [x1, y1, x2, y2, a, b] of map.edges) { out[a].push([x1, y1, x2, y2]); out[b].push([x1, y1, x2, y2]); }
+    for (const [x1, y1, x2, y2, a] of map.rim) out[a].push([x1, y1, x2, y2]);
+    return out;
   }
 
-  // ---------- input ----------
-  const LONG_PRESS_MS = 450;
-  let downAt = null, pressTimer = 0, longPressed = false;
-  svg.addEventListener('pointerdown', e => {
-    downAt = { x: e.clientX, y: e.clientY };
-    longPressed = false;
-    clearTimeout(pressTimer);
-    if (controls === 'v3') {
-      pressTimer = setTimeout(() => { longPressed = true; buzz(10); openBubble(downAt.x, downAt.y); }, LONG_PRESS_MS);
+  function startLevel(n) {
+    n = wrap(n);
+    S.level = n;
+    store.set('level', n);
+    const glass = STAINED[n - 1];
+    if (!glass.map.outlines) glass.map.outlines = outlinesOf(glass.map);
+    setupPuzzle({ map: glass.map, given: glass.given, solution: glass.solution, glass });
+    if (n === 1 && !store.get('tutorial', false)) startCoach();
+  }
+
+  const restartLevel = () => startLevel(S.level);
+  function nextLevel() {
+    const last = S.level === STAINED.length;
+    startLevel(S.level + 1);
+    if (last) toast('Bütün vitraylar tamam! Baştan başlıyor', 2400);
+  }
+
+  function setupPuzzle(puzzle) {
+    clearTimeout(glassTimer);
+    clearHint();
+    endCoach(false);
+    $('glassComplete').hidden = true;
+    $('glassNext').disabled = true;
+    $('glassNext').textContent = 'DEVAM';
+    $('glassStatus').textContent = 'VİTRAY HAZIRLANIYOR';
+    svg.removeAttribute('aria-busy');
+    PALETTE = puzzle.glass.palette.map(base => ({ name: colorName(base), base, dark: shade(base, -.24) }));
+    EMPTY = puzzle.glass.palette.some(c => luminance(c) > 0.7) ? PAPER_DARK : PAPER;
+    glassImage = new Image();
+    glassImage.src = puzzle.glass.image;
+    $('dock').classList.remove('art-finished');
+    $('dock').style.minHeight = '';
+    $('mapRule').textContent = 'KOMŞU BÖLGELER, FARKLI RENKLER';
+    S.puzzle = puzzle;
+    S.given = puzzle.given.slice();
+    S.fill = S.given.slice();
+    S.marks = new Array(puzzle.map.count).fill(0);
+    S.hints = S.level === 1 ? START_HINTS + 2 : START_HINTS;
+    S.done = false;
+    lastTap = null;
+    $('boardCard').classList.remove('won', 'stained');
+    $('zoomTools').hidden = false;
+    buildBoard();
+    render();
+    renderBar();
+  }
+
+  // ---------- zoom ----------
+  // Pinch (or the +/− buttons, or the mouse wheel) zooms the board up to 4×; one finger drags it
+  // while zoomed. A gesture never counts as a tap.
+  const MAX_ZOOM = 4;
+  const Z = { z: 1, x: 0, y: 0 };
+  const pointers = new Map();
+  let gesture = null, quietUntil = 0;
+
+  function setZoom(z, x, y) {
+    z = Math.max(1, Math.min(MAX_ZOOM, z));
+    const w = parseFloat(svg.style.width) || 0, h = parseFloat(svg.style.height) || 0;
+    const mx = w * (z - 1) / 2, my = h * (z - 1) / 2;
+    Z.z = z;
+    Z.x = Math.max(-mx, Math.min(mx, x));
+    Z.y = Math.max(-my, Math.min(my, y));
+    svg.style.transform = z === 1 ? '' : `translate(${Z.x}px, ${Z.y}px) scale(${z})`;
+    $('zoomOut').disabled = z <= 1;
+    $('zoomIn').disabled = z >= MAX_ZOOM;
+    $('stage').classList.toggle('zoomed', z > 1);
+    placeCoach();
+  }
+  // Zoom by factor k keeping the client point (px, py) where it is.
+  function zoomAt(k, px, py) {
+    const r = svg.getBoundingClientRect();
+    const cx = r.left + r.width / 2 - Z.x, cy = r.top + r.height / 2 - Z.y;
+    const z1 = Math.max(1, Math.min(MAX_ZOOM, Z.z * k)), f = z1 / Z.z;
+    setZoom(z1, (px - cx) - (px - cx - Z.x) * f, (py - cy) - (py - cy - Z.y) * f);
+  }
+  function zoomCentre(k) {
+    const r = svg.getBoundingClientRect();
+    zoomAt(k, r.left + r.width / 2, r.top + r.height / 2);
+  }
+  $('zoomIn').addEventListener('click', () => zoomCentre(1.6));
+  $('zoomOut').addEventListener('click', () => zoomCentre(1 / 1.6));
+
+  const stage = $('stage');
+  stage.addEventListener('pointerdown', e => {
+    if (e.target.closest('button')) return;
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      gesture = { kind: 'pinch', d: Math.hypot(a.x - b.x, a.y - b.y), z: Z.z, mx: (a.x + b.x) / 2, my: (a.y + b.y) / 2 };
+      downAt = null;
+    } else if (pointers.size === 1) {
+      gesture = { kind: 'maybe-pan', x: e.clientX, y: e.clientY, ox: Z.x, oy: Z.y };
     }
   });
-  svg.addEventListener('pointermove', e => {
-    if (downAt && Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y) > 14) clearTimeout(pressTimer);
+  stage.addEventListener('pointermove', e => {
+    if (!pointers.has(e.pointerId)) return;
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (!gesture) return;
+    if (gesture.kind === 'pinch' && pointers.size >= 2) {
+      const [a, b] = [...pointers.values()];
+      const d = Math.hypot(a.x - b.x, a.y - b.y), mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+      zoomAt(gesture.z * d / gesture.d / Z.z, gesture.mx, gesture.my);
+      setZoom(Z.z, Z.x + mx - gesture.mx, Z.y + my - gesture.my);
+      gesture.mx = mx; gesture.my = my;
+      quietUntil = performance.now() + 350;
+    } else if (gesture.kind !== 'pinch' && Z.z > 1) {
+      const dx = e.clientX - gesture.x, dy = e.clientY - gesture.y;
+      if (gesture.kind === 'maybe-pan' && Math.hypot(dx, dy) > 10) gesture.kind = 'pan';
+      if (gesture.kind === 'pan') {
+        setZoom(Z.z, gesture.ox + dx, gesture.oy + dy);
+        quietUntil = performance.now() + 250;
+      }
+    }
   });
-  const endPress = () => clearTimeout(pressTimer);
-  svg.addEventListener('pointerup', endPress);
-  svg.addEventListener('pointercancel', () => { endPress(); downAt = null; });
+  const lift = e => {
+    pointers.delete(e.pointerId);
+    if (!pointers.size) gesture = null;
+    else if (gesture && gesture.kind === 'pinch') {
+      const [a] = [...pointers.values()];
+      gesture = { kind: 'pan', x: a.x, y: a.y, ox: Z.x, oy: Z.y };
+    }
+  };
+  stage.addEventListener('pointerup', lift);
+  stage.addEventListener('pointercancel', lift);
+  stage.addEventListener('wheel', e => {
+    e.preventDefault();
+    zoomAt(Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0025)), e.clientX, e.clientY);
+  }, { passive: false });
+
+  // ---------- input ----------
+  let downAt = null;
+  svg.addEventListener('pointerdown', e => { downAt = pointers.size > 1 ? null : { x: e.clientX, y: e.clientY }; });
+  svg.addEventListener('pointercancel', () => { downAt = null; });
   svg.addEventListener('contextmenu', e => e.preventDefault());
   svg.addEventListener('click', e => {
     if (!downAt) return;
     const moved = Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y);
     downAt = null;
-    if (longPressed) { longPressed = false; return; }
-    if (moved > 14) return;
+    if (moved > 14 || performance.now() < quietUntil || pointers.size > 1) return;
     const g = e.target.closest && e.target.closest('.region');
     if (!g) return;
     const b = svg.getBoundingClientRect(), m = S.puzzle.map;
-    tapRegion(+g.dataset.r, { x: (e.clientX - b.left) / b.width * m.cols, y: (e.clientY - b.top) / b.height * m.rows }, { x: e.clientX, y: e.clientY });
+    tapRegion(+g.dataset.r, { x: (e.clientX - b.left) / b.width * m.cols, y: (e.clientY - b.top) / b.height * m.rows });
   });
   svg.addEventListener('dblclick', e => e.preventDefault());
   svg.addEventListener('keydown', e => {
     const region = e.target.closest('.region');
     if (region && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
-      const r = regionEls[+region.dataset.r].g.getBoundingClientRect();
-      tapRegion(+region.dataset.r, null, { x: r.left + r.width / 2, y: r.top + r.height / 2 });
+      tapRegion(+region.dataset.r, null);
     }
   });
 
-  function tapRegion(r, at, client) {
+  function tapRegion(r, at) {
     if (S.done) return;
-    if (bubble) { closeBubble(); return; }
-    if (controls === 'v3' && !armed) { openBubble(client.x, client.y); return; }
-    if (lockLeft(r) > 0) { nudgeLock(r); return; }
-    if (S.given[r] >= 0) { pulse(r, 'flash'); toast('Bu bölge haritada sabit'); return; }
-    tapV1(r, at);
-  }
-
-  function tapV1(r, at) {
+    if (S.given[r] >= 0) { pulse(r, 'flash'); toast('Çizgili bölgeler hazır gelir, rengi değişmez'); return; }
     const now = performance.now();
     if (lastTap && lastTap.r === r && now - lastTap.t < DOUBLE_MS) {
       if (lastTap.marked) S.marks[r] = lastTap.prev;
@@ -438,7 +529,7 @@
     (S.marks[r] & (1 << c) ? sfx.dot : sfx.undot)();
     const [x, y] = at ? [at.x, at.y] : S.puzzle.map.anchors[r];
     render({ r, x, y });
-    renderBar();
+    coachEvent('mark', r);
   }
 
   function pruneMarks(coloredRegions) {
@@ -450,113 +541,136 @@
 
   function paintRegion(r, c) {
     const next = S.fill[r] === c ? -1 : c;
-    if (livesOn && next >= 0 && S.puzzle.map.adj[r].some(j => S.fill[j] === next)) { reject(r, next); return; }
     S.fill[r] = next;
     S.marks[r] = 0;
     if (next >= 0) { pulse(r, 'paint'); sfx.paint(); buzz(8); } else sfx.erase();
     clearHint();
-    pruneMarks([...(next >= 0 ? [r] : []), ...openLocks()]);
+    if (next >= 0) pruneMarks([r]);
     render();
-    renderBar();
+    coachEvent('paint', r);
     checkWin();
   }
 
-  function chooseColor(c) {
-    if (S.done) return;
-    selectColor(c);
-  }
-
   function selectColor(c) {
-    if (S.color === c && (controls === 'v1' || armed)) return;
-    S.color = c;
-    lastTap = null;
-    sfx.select();
+    if (S.done) return;
+    if (S.color !== c) { S.color = c; lastTap = null; sfx.select(); }
     renderBar();
-  }
-
-  function reject(r, c) {
-    S.lives = Math.max(0, S.lives - 1);
-    sfx.bad(); buzz([30, 40, 30]); shakeBoard();
-    const lives = $('lives');
-    lives.classList.remove('hit'); void lives.offsetWidth; lives.classList.add('hit');
-    render();
-    // Flash the would-be clash on the borders for a moment.
-    layers.conflict.setAttribute('d', edgesPath(conflictEdges({ r, c })));
-    regionEls[r].path.setAttribute('fill', PALETTE[c].base);
-    regionEls[r].path.setAttribute('stroke', PALETTE[c].base);
-    toast('Komşu bölgeler aynı renk olamaz');
-    setTimeout(() => { render(); if (S.lives <= 0) showFail(); }, 650);
-    S.done = S.lives <= 0;
-    if (S.done) closeBubble();
+    coachEvent('color', c);
   }
 
   function checkWin() {
-    if (S.fill.some(c => c < 0)) return;
-    if (conflictEdges().length) {
-      if (!livesOn) toast('Yanlış çözüm');
+    if (S.done || S.fill.some(c => c < 0)) return;
+    const clashes = clashEdges();
+    if (clashes.length) {
+      const panes = new Set(clashes.flatMap(e => [e[4], e[5]])).size;
+      sfx.bad(); buzz([30, 40, 30]); shakeBoard();
+      toast(`Yanlış çözüm: kırmızı sınırlı ${panes} bölge komşusuyla aynı renk`, 2800);
       return;
     }
     S.done = true;
     sfx.win();
     $('toast').classList.remove('show');
     $('boardCard').classList.add('won');
-    if (!livesOn) {
-      store.set('level', S.level + 1);
-      closeBubble();
-      $('solvedTick').classList.add('show');
-      setTimeout(() => { if (S.done) startLevel(S.level + 1); }, 1400);
-      return;
-    }
-    const stars = Math.max(1, S.lives);
-    store.set('stars.' + S.level, Math.max(stars, store.get('stars.' + S.level, 0)));
-    store.set('level', S.level + 1);
-    setTimeout(() => showCard(`
-      <div class="stars">${[0, 1, 2].map(i => STAR.replace('<svg', `<svg class="${i < stars ? '' : 'off'}"`)).join('')}</div>
-      <h2>HARİTA TAMAM!</h2>
-      <p>Seviye ${S.level} çözüldü.</p>
-      <button class="btn-green" data-act="next">DEVAM</button>`), 700);
+    endCoach(true);
+    revealGlass();
   }
 
-  function showFail() {
-    showCard(`
-      <h2>CANIN BİTTİ</h2>
-      <p>Komşu iki bölgeyi aynı renge boyadın.<br>Haritayı baştan dene.</p>
-      <button class="btn-green" data-act="retry">TEKRAR DENE</button>`);
+  async function revealGlass() {
+    clearHint();
+    render();
+    const puzzle = S.puzzle, { map, glass } = puzzle;
+    $('glassNext').disabled = true;
+    $('glassNext').textContent = 'YÜKLENİYOR…';
+    $('glassStatus').textContent = 'VİTRAY HAZIRLANIYOR';
+    $('dock').style.minHeight = $('dock').offsetHeight + 'px';
+    $('dock').classList.add('art-finished');
+    $('glassName').textContent = glass.name;
+    $('glassComplete').hidden = false;
+    svg.setAttribute('aria-busy', 'true');
+    if (!glassImage) {
+      glassImage = new Image();
+      glassImage.src = glass.image;
+    }
+    try {
+      await glassImage.decode();
+    } catch {
+      if (S.puzzle !== puzzle || !S.done) return;
+      glassImage = null;
+      svg.removeAttribute('aria-busy');
+      $('glassStatus').textContent = 'GÖRSEL YÜKLENEMEDİ';
+      $('glassNext').textContent = 'TEKRAR YÜKLE';
+      $('glassNext').disabled = false;
+      return;
+    }
+    if (S.puzzle !== puzzle || !S.done) return;
+    const defs = svg.querySelector('defs');
+    el('image', { id: 'glassArtwork', href: glass.image, width: map.cols, height: map.rows, preserveAspectRatio: 'none' }, defs);
+    const art = el('g', { class: 'glass-art', 'pointer-events': 'none', role: 'img', 'aria-label': glass.name + ' — AI vitray görseli' }, layers.surface);
+    map.paths.forEach((d, r) => {
+      const clip = el('clipPath', { id: 'glassPane' + r }, defs);
+      el('path', { d }, clip);
+      const pane = el('use', { href: '#glassArtwork', 'clip-path': `url(#glassPane${r})`, class: 'glass-pane' }, art);
+      pane.style.animationDelay = Math.round((map.anchors[r][0] + map.anchors[r][1]) * 32) + 'ms';
+    });
+    regionEls.forEach(({ g }) => g.setAttribute('tabindex', '-1'));
+    setZoom(1, 0, 0);
+    $('zoomTools').hidden = true;
+    layers.fixed.innerHTML = '';
+    $('boardCard').classList.add('stained');
+    $('glassStatus').textContent = 'VİTRAY TAMAM!';
+    $('glassNext').textContent = 'DEVAM';
+    $('mapRule').textContent = 'DÖRT RENK, BİR VİTRAY';
+    svg.removeAttribute('aria-busy');
+    store.set('level', wrap(S.level + 1));
+    store.set('solved', [...new Set([...store.get('solved', []), glass.id])]);
+    glassTimer = setTimeout(() => {
+      if (S.puzzle !== puzzle || !S.done) return;
+      art.replaceChildren(el('use', { href: '#glassArtwork' }));
+      el('path', { d: map.shape, fill: 'none', stroke: '#344039', 'stroke-width': 5, 'vector-effect': 'non-scaling-stroke' }, art);
+      $('glassNext').disabled = false;
+    }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 2200);
+  }
+
+  function colorName(hex) {
+    const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255);
+    const max = Math.max(r, g, b), min = Math.min(r, g, b), d = max - min;
+    if (d < .08) return max > .7 ? 'Açık Gri' : 'Koyu Gri';
+    const h = (((max === r ? (g - b) / d : max === g ? (b - r) / d + 2 : (r - g) / d + 4) * 60) + 360) % 360;
+    return h < 15 || h >= 345 ? 'Kırmızı' : h < 45 ? 'Turuncu' : h < 65 ? 'Sarı' : h < 165 ? 'Yeşil' : h < 195 ? 'Turkuaz' : h < 255 ? 'Mavi' : h < 290 ? 'Mor' : 'Pembe';
+  }
+
+  function luminance(hex) {
+    const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255).map(v => (v > 0.04 ? ((v + 0.055) / 1.055) ** 2.4 : v / 12.92));
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  }
+
+  function shade(hex, amt) {
+    const n = parseInt(hex.slice(1), 16);
+    const ch = v => Math.max(0, Math.min(255, Math.round(v + (amt > 0 ? (255 - v) * amt : v * amt))));
+    return `rgb(${ch(n >> 16)}, ${ch((n >> 8) & 255)}, ${ch(n & 255)})`;
   }
 
   // ---------- hint ----------
   let hintTimer = 0;
-  // With clues the solution is unique. On an empty start, aim for a colouring that keeps as much
-  // of the player's paint as possible: drop one painted region (clashing ones first) if needed.
-  function hintSolution() {
-    if (startMode !== 'empty') return S.puzzle.solution;
-    const { adj } = S.puzzle.map, k = PALETTE.length;
-    const solve = fixed => E.countSolutions(adj, fixed, k, 1).solution;
-    const found = solve(S.fill);
-    if (found) return found;
-    const clashing = new Set(conflictEdges().flatMap(e => [e[4], e[5]]));
-    const painted = S.fill.map((c, r) => r).filter(r => S.fill[r] >= 0)
-      .sort((a, b) => clashing.has(b) - clashing.has(a));
-    for (const r of painted) {
-      const fixed = S.fill.slice(); fixed[r] = -1;
-      const sol = solve(fixed);
-      if (sol) return sol;
-    }
-    return solve(new Array(adj.length).fill(-1));
+  function clearHint() {
+    if (layers.hint) layers.hint.innerHTML = '';
+    const clip = $('hintClip');
+    if (clip) clip.remove();
+    const sheen = $('hintSheen');
+    if (sheen) sheen.remove();
+    $('hintBtn').classList.remove('hint-active');
+    clearTimeout(hintTimer);
   }
-  function clearHint() { layers.hint.innerHTML = ''; clearTimeout(hintTimer); }
 
   function useHint() {
     if (S.done) return;
-    closeBubble();
     if (S.hints <= 0) {
       S.hints += 3;
       toast('+3 ipucu (reklam yeri)');
       render();
       return;
     }
-    const { map } = S.puzzle, given = S.given;
-    const solution = hintSolution();
+    const { map } = S.puzzle, given = S.given, solution = S.puzzle.solution;
     let target = -1;
     for (let r = 0; r < map.count; r++) {
       if (given[r] < 0 && S.fill[r] >= 0 && S.fill[r] !== solution[r]) { target = r; break; }
@@ -575,205 +689,229 @@
     if (target < 0) return;
     // Wrong neighbours would block the correct colour; clear them first.
     for (const j of map.adj[target]) {
-      if (given[j] < 0 && S.fill[j] === solution[target]) {
-        S.fill[j] = -1;
-      }
+      if (given[j] < 0 && S.fill[j] === solution[target]) S.fill[j] = -1;
     }
+    const previousColor = S.fill[target];
     S.fill[target] = solution[target];
     S.marks[target] = 0;
     S.hints--;
     sfx.hint();
     clearHint();
-    pruneMarks([target, ...openLocks()]);
-    el('path', { d: regionPath(map, target), fill: 'rgba(255, 255, 255,.3)', class: 'hint-ring', 'pointer-events': 'none' }, layers.hint);
-    el('path', {
-      class: 'hint-ring', d: edgesPath(E.regionOutline(map, target)), fill: 'none', stroke: '#fff',
-      'stroke-width': 5, 'stroke-linecap': 'round', 'vector-effect': 'non-scaling-stroke', 'pointer-events': 'none',
-    }, layers.hint);
-    hintTimer = setTimeout(clearHint, 3600);
-    pulse(target, 'paint');
+    pruneMarks([target]);
     render();
+    hintFill(target, previousColor);
+    coachEvent('paint', target);
     checkWin();
   }
 
+  // The solution is committed immediately; a fading veil reveals it without changing state.
+  function hintFill(r, previousColor) {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const { map } = S.puzzle;
+    const { box: [x0, y0, x1, y1] } = regionGeom(r);
+    const width = x1 - x0, height = y1 - y0;
+    const defs = svg.querySelector('defs');
+    const clip = el('clipPath', { id: 'hintClip', clipPathUnits: 'userSpaceOnUse' }, defs);
+    el('path', { d: map.paths[r] }, clip);
+    const gradient = el('linearGradient', { id: 'hintSheen', x1: '0%', y1: '20%', x2: '100%', y2: '80%' }, defs);
+    [[0, 0], [.4, 0], [.5, .48], [.6, 0], [1, 0]].forEach(([offset, opacity]) => {
+      el('stop', { offset, 'stop-color': '#fff8d8', 'stop-opacity': opacity }, gradient);
+    });
+    const g = el('g', { 'clip-path': 'url(#hintClip)' }, layers.hint);
+    el('path', { d: map.paths[r], fill: panePaint(previousColor), class: 'hint-veil' }, g);
+    const sweep = el('rect', { x: x0 - width, y: y0, width: width * 3, height, fill: 'url(#hintSheen)', class: 'hint-sheen' }, g);
+    sweep.style.setProperty('--hint-travel', `${width * 1.6}px`);
+    el('path', { d: map.paths[r], fill: 'none', stroke: '#fff0b0', 'stroke-width': 5, 'vector-effect': 'non-scaling-stroke', class: 'hint-outline' }, g);
+    const button = $('hintBtn');
+    void button.offsetWidth;
+    button.classList.add('hint-active');
+    hintTimer = setTimeout(clearHint, 850);
+  }
+
+  // ---------- colour bar ----------
   const CHECK_SVG = '<svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-8" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  const colorButtons = PALETTE.map((p, c) => {
+  const colorButtons = [0, 1, 2, 3].map(c => {
     const button = document.createElement('button');
     button.className = 'color-choice';
     button.type = 'button';
-    button.setAttribute('aria-label', p.name);
-    button.style.setProperty('--swatch', p.base);
-    button.style.setProperty('--swatch-dark', p.dark);
     button.innerHTML = `<span class="color-check" aria-hidden="true">${CHECK_SVG}</span>`;
-    button.addEventListener('click', () => chooseColor(c));
+    button.addEventListener('click', () => selectColor(c));
     $('palette').appendChild(button);
-    return button;
-  });
-  const pickerButtons = PALETTE.map((p, c) => {
-    const button = document.createElement('button');
-    button.className = 'pick-choice';
-    button.type = 'button';
-    button.setAttribute('aria-label', p.name);
-    button.style.setProperty('--swatch', p.base);
-    button.style.setProperty('--swatch-dark', p.dark);
-    button.innerHTML = `<span class="pick-swatch" aria-hidden="true"><span class="pick-check">${CHECK_SVG}</span></span><span class="pick-name" aria-hidden="true">${p.name.toLocaleUpperCase('tr')}</span>`;
-    button.addEventListener('click', () => pickFromBubble(c));
-    $('pickerPalette').appendChild(button);
     return button;
   });
 
   function renderBar() {
-    const bar = $('colorBar');
-    bar.dataset.controls = controls;
-    bar.hidden = controls === 'v3';
-    colorButtons.forEach((button, c) => button.setAttribute('aria-pressed', String(c === S.color)));
-    pickerButtons.forEach((button, c) => button.setAttribute('aria-pressed', String(armed && c === S.color)));
-    const chip = $('colorChip');
-    chip.hidden = controls !== 'v3';
-    $('mapRule').hidden = controls === 'v3';
-    chip.classList.toggle('unset', !armed);
-    chip.style.setProperty('--swatch', PALETTE[S.color].base);
-    $('chipName').textContent = armed ? PALETTE[S.color].name.toLocaleUpperCase('tr') : 'RENK SEÇ';
+    colorButtons.forEach((button, c) => {
+      button.setAttribute('aria-pressed', String(c === S.color));
+      button.style.setProperty('--swatch', PALETTE[c].base);
+      button.style.setProperty('--swatch-dark', PALETTE[c].dark);
+      button.setAttribute('aria-label', PALETTE[c].name);
+    });
   }
 
-  // ---------- v3 colour bubble ----------
-  let bubble = null; // { x, y } in client coords
-  function openBubble(x, y) {
-    if (S.done) return;
-    bubble = { x, y };
-    renderBar();
-    const el = $('regionPicker');
-    el.style.visibility = 'hidden';
-    el.hidden = false;
-    placeBubble();
-    el.style.visibility = '';
-    sfx.select();
+  // ---------- first-level tutorial ----------
+  // Coach marks on level 1: pick the one colour that fits a pane, double tap to paint it,
+  // single tap another pane to leave a note, then play on.
+  let coach = null; // { step, r, c, r2 }
+  function startCoach() {
+    const { map } = S.puzzle, sol = S.puzzle.solution;
+    // a pane whose painted neighbours already use three colours: only one colour is left
+    const forced = [];
+    for (let r = 0; r < map.count; r++) {
+      if (S.fill[r] >= 0) continue;
+      const used = new Set(map.adj[r].map(j => S.fill[j]).filter(c => c >= 0));
+      if (used.size === 3) forced.push(r);
+    }
+    if (!forced.length) return;
+    const [cx, cy] = [map.cols / 2, map.rows / 2];
+    forced.sort((a, b) => Math.hypot(map.anchors[a][0] - cx, map.anchors[a][1] - cy) - Math.hypot(map.anchors[b][0] - cx, map.anchors[b][1] - cy));
+    const r = forced[0];
+    coach = { step: 'color', r, c: sol[r] };
+    if (S.color === coach.c) { S.color = (coach.c + 1) % 4; renderBar(); }
+    showCoach();
   }
 
-  // Sit just above the finger (below if there is no room), arrow pointing at the tap.
-  function placeBubble() {
-    const el = $('regionPicker');
-    const app = $('app').getBoundingClientRect();
-    const x = bubble.x - app.left, y = bubble.y - app.top;
-    const width = el.offsetWidth, height = el.offsetHeight, gap = 18;
-    const left = Math.max(8, Math.min(app.width - width - 8, x - width / 2));
-    let top = y - height - gap, side = 'top';
-    if (top < 8) { top = y + gap; side = 'bottom'; }
-    el.style.left = left + 'px';
-    el.style.top = Math.min(top, app.height - height - 8) + 'px';
-    el.style.setProperty('--pointer-x', Math.max(18, Math.min(width - 18, x - left)) + 'px');
-    el.dataset.side = side;
+  function showCoach() {
+    if (!coach) return;
+    const box = $('coach');
+    const name = PALETTE[coach.c].name.toLocaleLowerCase('tr');
+    const texts = {
+      color: `<b>Komşu bölgeler aynı renk olamaz.</b> Parlayan bölgenin komşularında üç renk var, geriye sadece <b>${name}</b> kalıyor. Aşağıdan <b>${name}</b> rengini seç.`,
+      paint: `Şimdi parlayan bölgeye <b>iki kez dokun</b>, ${name} renge boyansın.`,
+      mark: coach.step === 'mark' ? coachMarkText() : '',
+      done: 'Notlar küçük noktalar olarak kalır; aynı yere yine tek dokunursan silinir. <b>Çizgili bölgeler</b> hazır gelir, rengi değişmez. Bütün haritayı boya, vitray ortaya çıksın!',
+    };
+    box.innerHTML = `<p>${texts[coach.step]}</p>` + (coach.step === 'done' ? '<button class="btn-green" type="button" id="coachOk">BAŞLA</button>' : '<button class="coach-skip" type="button" id="coachSkip">Geç</button>');
+    box.hidden = false;
+    const ok = $('coachOk'), skip = $('coachSkip');
+    if (ok) ok.addEventListener('click', () => endCoach(true));
+    if (skip) skip.addEventListener('click', () => endCoach(true));
+    const pending = coach.step === 'mark' ? coach.options.filter(c => !(S.marks[coach.r2] & (1 << c))) : [];
+    colorButtons.forEach((b, c) => b.classList.toggle('coach-target', (coach.step === 'color' && c === coach.c) || (pending.includes(c) && S.color !== c)));
+    layers.coach.innerHTML = '';
+    const target = coach.step === 'mark' ? coach.r2 : coach.step === 'done' ? -1 : coach.r;
+    if (target >= 0) {
+      el('path', {
+        class: 'coach-ring', d: edgesPath(S.puzzle.map.outlines[target]), fill: 'none', stroke: '#fff7d6',
+        'stroke-width': 6, 'stroke-linecap': 'round', 'vector-effect': 'non-scaling-stroke',
+      }, layers.coach);
+    }
+    placeCoach();
   }
 
-  function closeBubble() {
-    bubble = null;
-    $('regionPicker').hidden = true;
+  // The note step points at a pane whose painted neighbours use two colours: two choices are
+  // left, so the player notes both instead of guessing.
+  function coachMarkText() {
+    const [a, b] = coach.options.map(c => PALETTE[c].name.toLocaleLowerCase('tr'));
+    const done = coach.options.filter(c => S.marks[coach.r2] & (1 << c));
+    if (done.length === 1) {
+      const rest = PALETTE[coach.options.find(c => !done.includes(c))].name.toLocaleLowerCase('tr');
+      return `Güzel, not düştü. Şimdi aşağıdan <b>${rest}</b> rengini seçip aynı bölgeye yine <b>bir kez</b> dokun.`;
+    }
+    return `Parlayan bölgenin komşularında iki renk var, geriye <b>${a}</b> ve <b>${b}</b> kalıyor. Emin değilsen <b>ikisini de not al</b>: rengi seç, bölgeye <b>bir kez</b> dokun.`;
   }
 
-  function pickFromBubble(c) {
-    const first = !armed;
-    armed = true;
-    S.color = c;
-    lastTap = null;
-    closeBubble();
-    sfx.select();
-    renderBar();
-    toast(first ? `${PALETTE[c].name}: bölgeye tek dokun not, çift dokun boya` : `${PALETTE[c].name} seçildi`, first ? 2200 : 1100);
+  // Sit on the half of the screen away from the glowing pane: over the header when the pane is
+  // low, just above the colour bar when it is high.
+  function placeCoach() {
+    const box = $('coach');
+    if (!coach || box.hidden) return;
+    const app = $('app').getBoundingClientRect(), board = svg.getBoundingClientRect(), dock = $('dock').getBoundingClientRect();
+    const { map } = S.puzzle;
+    const target = coach.step === 'mark' ? coach.r2 : coach.r;
+    const y = target >= 0 && coach.step !== 'done' ? board.top + map.anchors[target][1] / map.rows * board.height : board.bottom;
+    const low = y > board.top + board.height * 0.5;
+    box.style.top = (low ? 8 : Math.max(8, dock.top - app.top - box.offsetHeight - 8)) + 'px';
   }
 
-  $('pickerClose').addEventListener('click', () => closeBubble());
-  $('colorChip').addEventListener('click', () => {
-    const r = $('colorChip').getBoundingClientRect();
-    openBubble(r.left + r.width / 2, r.top);
-  });
-
-  function setControls(v) {
-    controls = v;
-    store.set('controls', v);
-    lastTap = null;
-    closeBubble();
-    renderBar();
+  function coachEvent(kind, v) {
+    if (!coach) return;
+    if (coach.step === 'color' && kind === 'color' && v === coach.c) coach.step = 'paint';
+    else if (coach.step === 'paint' && kind === 'color' && v !== coach.c) coach.step = 'color';
+    else if (coach.step === 'paint' && kind === 'paint' && v === coach.r) {
+      if (S.fill[coach.r] !== coach.c) { toast('Bu renk olmaz, komşusuyla aynı. Tekrar dene'); return; }
+      const { map } = S.puzzle;
+      const two = [];
+      for (let r = 0; r < map.count; r++) {
+        if (S.fill[r] >= 0 || S.marks[r]) continue;
+        const used = new Set(map.adj[r].map(j => S.fill[j]).filter(c => c >= 0));
+        if (used.size === 2) two.push(r);
+      }
+      const dist = r => Math.hypot(map.anchors[r][0] - map.anchors[coach.r][0], map.anchors[r][1] - map.anchors[coach.r][1]);
+      two.sort((a, b) => dist(a) - dist(b));
+      coach.r2 = two[0];
+      if (coach.r2 != null) {
+        const used = new Set(map.adj[coach.r2].map(j => S.fill[j]).filter(c => c >= 0));
+        coach.options = [0, 1, 2, 3].filter(c => !used.has(c));
+      }
+      coach.step = coach.r2 == null ? 'done' : 'mark';
+    } else if (coach.step === 'mark' && (kind === 'mark' || kind === 'color')) {
+      if (coach.options.every(c => S.marks[coach.r2] & (1 << c))) coach.step = 'done';
+    } else return;
+    showCoach();
   }
 
-  document.addEventListener('pointerdown', e => {
-    if (!bubble || $('regionPicker').contains(e.target) || $('colorChip').contains(e.target)) return;
-    if (svg.contains(e.target)) return;
-    closeBubble();
-  });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && bubble) { e.preventDefault(); closeBubble(); }
-  });
+  function endCoach(finished) {
+    if (finished && coach) store.set('tutorial', true);
+    coach = null;
+    $('coach').hidden = true;
+    colorButtons.forEach(b => b.classList.remove('coach-target'));
+    if (layers.coach) layers.coach.innerHTML = '';
+  }
 
   // ---------- popups ----------
   function showCard(html) {
-    closeBubble();
     $('card').innerHTML = html;
     $('overlay').classList.remove('hidden');
   }
   function hideCard() { $('overlay').classList.add('hidden'); }
 
-  const STAR = `<svg viewBox="0 0 48 48"><path d="M24 4.5l5.9 12 13.2 1.9-9.6 9.3 2.3 13.1L24 34.6l-11.8 6.2 2.3-13.1-9.6-9.3 13.2-1.9z" fill="#ffd23f" stroke="#c98a00" stroke-width="2.4" stroke-linejoin="round"/><path d="M17 19.5l4.6-.7 2.4-4.8" stroke="#fff6c8" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>`;
   const ICON_TAP = `<svg viewBox="0 0 48 48"><rect x="4" y="4" width="40" height="40" rx="10" fill="#fff"/><circle cx="19" cy="20" r="4.5" fill="#8ca473"/><circle cx="30" cy="20" r="4.5" fill="#d6bd6f"/><circle cx="24" cy="31" r="4.5" fill="#7f9bb8"/></svg>`;
   const ICON_PALETTE = `<svg viewBox="0 0 48 48"><rect x="2" y="9" width="44" height="30" rx="7" fill="#294f43"/><rect x="5" y="15" width="8" height="17" rx="2" fill="#8ca473" stroke="#faf3df" stroke-width="2"/><rect x="15" y="16" width="8" height="15" rx="2" fill="#d6bd6f"/><rect x="25" y="16" width="8" height="15" rx="2" fill="#bf8c70"/><rect x="35" y="16" width="8" height="15" rx="2" fill="#7f9bb8"/></svg>`;
-  const ICON_LOCK = `<svg viewBox="0 0 48 48"><rect x="4" y="4" width="40" height="40" rx="10" fill="#ddd6bd"/><rect x="7" y="15" width="34" height="18" rx="6" fill="#e7c77a" stroke="#6b4a1f" stroke-width="1.6"/><path d="${LOCK_ICON}" fill="#6b4a1f" transform="translate(11 18.5) scale(1.25)"/><text x="30" y="29.5" font-size="13" text-anchor="middle" fill="#6b4a1f" font-family="Rounded,sans-serif" font-weight="900">3</text></svg>`;
+  const ICON_FIXED = `<svg viewBox="0 0 48 48"><defs><pattern id="howStripes" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="1.6" height="5" fill="#ad3802"/></pattern></defs><rect x="4" y="4" width="40" height="40" rx="10" fill="#efeddc"/><path d="M9 9h17l-4 30H9z" fill="#d84602"/><path d="M9 9h17l-4 30H9z" fill="url(#howStripes)"/><path d="M26 9h13v30H22z" fill="#d84602"/><path d="M9 9h30v30H9zM26 9l-4 30" fill="none" stroke="#3a4234" stroke-width="2"/></svg>`;
   const ICON_RULE = `<svg viewBox="0 0 48 48"><rect x="4" y="4" width="40" height="40" rx="10" fill="#fff"/><path d="M8 10h14l4 14-4 14H8z" fill="#7f9bb8"/><path d="M26 24l-4 14h18V10H22z" fill="#7f9bb8"/><path d="M22 10l4 14-4 14" stroke="#e2343f" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`;
 
   function showHow() {
-    const steps = {
-      v1: `${ICON_PALETTE}<span><b>Renk seç:</b> alttaki dört renkten biri hep seçilidir, değiştirmek için dokun.</span>
-        ${ICON_TAP}<span><b>Tek dokun:</b> bölgeye seçili rengin notunu koy. <b>Çift dokun:</b> bölgeyi boya.</span>`,
-      v3: `${ICON_PALETTE}<span><b>Renk balonu:</b> haritaya dokununca balon açılır, rengi seç. Değiştirmek için haritaya basılı tut ya da alttaki renk düğmesine dokun.</span>
-        ${ICON_TAP}<span><b>Tek dokun:</b> bölgeye seçili rengin notunu koy. <b>Çift dokun:</b> bölgeyi boya.</span>`,
-    };
     showCard(`
       <button class="close" data-act="close" aria-label="Kapat"></button>
       <h2>NASIL OYNANIR</h2>
       <div class="how">
-        ${ICON_RULE}<span>Birbirine değen bölgeler aynı renk olamaz.</span>
-        ${steps[controls]}
-        ${ICON_LOCK}<span><b>Kilitli bölge:</b> üstündeki sayı kadar bölge boyayınca rengi açılır.</span>
+        ${ICON_RULE}<span>Birbirine değen bölgeler aynı renk olamaz. Harita dolunca yanlış yerler kırmızı yanar.</span>
+        ${ICON_PALETTE}<span><b>Renk seç:</b> alttaki dört renkten biri hep seçilidir, değiştirmek için dokun.</span>
+        ${ICON_TAP}<span><b>Tek dokun:</b> bölgeye seçili rengin notunu koy. <b>Çift dokun:</b> bölgeyi boya.</span>
+        ${ICON_FIXED}<span><b>Çizgili bölgeler</b> hazır gelir, rengi değişmez. Düz renkler senin boyadıkların.</span>
       </div>
-      <button class="btn-green" data-act="close">OYNA</button>`);
-  }
-
-  function segRow(label, act, options, current, desc) {
-    return `<div class="controls-setting">
-        <span class="setting-label">${label}</span>
-        <div class="seg" role="radiogroup" aria-label="${label}">
-          ${options.map(([v, name]) => `<button role="radio" aria-checked="${v === current}" data-act="${act}" data-v="${v}">${name}</button>`).join('')}
-        </div>
-        <p class="setting-desc">${desc}</p>
-      </div>`;
+      <button class="btn-green" data-act="tutorial">EĞİTİMİ OYNA</button>
+      <button class="btn-flat" data-act="close">KAPAT</button>`);
   }
 
   function showSettings() {
+    const solved = store.get('solved', []);
     showCard(`
       <button class="close" data-act="close" aria-label="Kapat"></button>
       <h2>AYARLAR</h2>
-      ${segRow('KONTROL', 'controls', Object.entries(CONTROLS).map(([v, c]) => [v, c.name]), controls, CONTROLS[controls].desc)}
-      ${segRow('CAN', 'lives', [['on', 'VAR'], ['off', 'YOK']], livesOn ? 'on' : 'off',
-        livesOn ? 'Komşuyla aynı renge boyamak bir can götürür.' : 'Serbestçe boya. Harita dolunca doğruysa sonraki bölüme geçilir, yanlışsa “Yanlış çözüm” yazar.')}
-      ${segRow('BAŞLANGIÇ', 'start', [['clues', 'İPUÇLU'], ['empty', 'BOŞ']], startMode,
-        (startMode === 'clues' ? 'Bölüm hazır boyalı bölgeler ve kilitlerle açılır.' : 'Bölüm hiç boyasız açılır; kurala uyan her boyama çözümdür.') + ' Değişince bölüm baştan başlar.')}
+      <div class="controls-setting appearance-setting">
+        <span class="setting-label" id="appearanceLabel">GÖRÜNÜM</span>
+        <div class="appearance-options" role="group" aria-labelledby="appearanceLabel">
+          <button class="appearance-option" data-act="appearance" data-look="classic" aria-pressed="${boardLook === 'classic'}"><i class="appearance-preview classic-preview" aria-hidden="true"></i><span>Klasik<small>Düz renkler</small></span></button>
+          <button class="appearance-option" data-act="appearance" data-look="3d" aria-pressed="${boardLook === '3d'}"><i class="appearance-preview depth-preview" aria-hidden="true"></i><span>3D<small>Varsayılan · kabartmalı</small></span></button>
+        </div>
+      </div>
       <button class="btn-flat" data-act="sound">SES: ${S.sound ? 'AÇIK' : 'KAPALI'}</button>
       <button class="btn-flat" data-act="how">NASIL OYNANIR</button>
       <button class="btn-flat" data-act="retry">YENİDEN BAŞLA</button>
-      <button class="btn-flat" data-act="skip">BÖLÜMÜ ATLA (TASLAK)</button>`);
+      <div class="controls-setting level-pick">
+        <span class="setting-label">BÖLÜMLER</span>
+        <div class="level-grid">${STAINED.map((L, i) => levelChip(L, i, solved)).join('')}</div>
+      </div>`);
   }
 
-  function setLives(on) {
-    if (livesOn === on) return;
-    livesOn = on;
-    store.set('lives', on);
-    if (on) S.lives = MAX_LIVES;
-    render();
-  }
-
-  function setStart(mode) {
-    if (startMode === mode) return;
-    startMode = mode;
-    store.set('start', mode);
-    startLevel(S.level);
+  // One chip per level: number, its four glass colours, a tick once its panel is finished.
+  function levelChip(L, i, solved) {
+    const done = solved.includes(L.id);
+    return `<button class="level-chip${i + 1 === S.level ? ' current' : ''}${done ? ' done' : ''}" data-act="glass" data-i="${i}"
+      aria-label="Seviye ${i + 1}: ${L.name}${done ? ', tamamlandı' : ''}"${i + 1 === S.level ? ' aria-current="true"' : ''}>
+      <b>${i + 1}</b><span class="chip-colors">${L.palette.map(c => `<i style="background:${c}"></i>`).join('')}</span></button>`;
   }
 
   $('card').addEventListener('click', e => {
@@ -781,16 +919,22 @@
     if (!b) return;
     const act = b.dataset.act;
     if (act === 'close') hideCard();
-    else if (act === 'next') { hideCard(); startLevel(S.level + 1); }
-    else if (act === 'retry') { hideCard(); startLevel(S.level); }
-    else if (act === 'skip') { hideCard(); startLevel(S.level + 1); }
+    else if (act === 'retry') { hideCard(); restartLevel(); }
+    else if (act === 'glass') { hideCard(); startLevel(+b.dataset.i + 1); }
     else if (act === 'how') showHow();
+    else if (act === 'tutorial') { hideCard(); store.set('tutorial', false); startLevel(1); }
     else if (act === 'sound') { S.sound = !S.sound; store.set('sound', S.sound); showSettings(); }
-    else if (act === 'controls') { setControls(b.dataset.v); showSettings(); }
-    else if (act === 'lives') { setLives(b.dataset.v === 'on'); showSettings(); }
-    else if (act === 'start') { setStart(b.dataset.v); showSettings(); }
+    else if (act === 'appearance') {
+      setBoardLook(b.dataset.look);
+      $('card').querySelectorAll('[data-act="appearance"]').forEach(button => button.setAttribute('aria-pressed', button.dataset.look === boardLook));
+    }
   });
 
+  $('glassNext').addEventListener('click', () => {
+    if (!S.done) return;
+    if (svg.querySelector('.glass-art')) nextLevel();
+    else revealGlass();
+  });
   $('hintBtn').addEventListener('click', useHint);
   $('settingsBtn').addEventListener('click', showSettings);
   new ResizeObserver(fitBoard).observe($('stage'));
@@ -802,12 +946,7 @@
   window.CartoGame = {
     S,
     tap: r => tapRegion(r),
-    choose: chooseColor,
-    pick: pickFromBubble,
-    bubble: openBubble,
-    controls: setControls,
-    lives: setLives,
-    start: setStart,
+    choose: selectColor,
     level: startLevel,
     solveAll() {
       S.puzzle.solution.forEach((c, r) => { S.fill[r] = c; });

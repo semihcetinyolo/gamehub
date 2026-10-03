@@ -1,0 +1,36 @@
+{
+  "id": "compass",
+  "model": "gpt-image-2",
+  "generatedAt": "2026-10-03T13:40:25.131212+00:00",
+  "prompt": "Generate a NEW, exquisite PHOTOGRAPHIC ARTWORK of a real artisan-made stained-glass panel depicting an ornate antique compass rose with an eight-pointed star, like on an old sea chart.\nImage 1 is the exact pane layout and colour plan. Image 2 is only a real-world material reference. The output must NOT look like image 1's flat vector drawing: turn every flat area into stunning, convincingly real, richly textured handmade translucent glass — organic ripples, hammered dimples, tiny trapped bubbles, light refracting inside the coloured glass, glowing sunlight transmitted from behind, delicate dark aged metal solder seams. A high-end Tiffany-style art object, photographed perfectly straight-on. Deep and jewel-like, not a cartoon, not paint, not paper.\nCRITICAL STRUCTURE: every flat-coloured area of image 1 is exactly ONE glass pane and every black line is a lead seam. Keep all seams exactly where they are — same positions, same curves, same silhouette and proportions — so the artwork aligns with image 1 when superimposed. Do not add, remove, subdivide, merge or move any pane or seam. Do not paint extra details (no eyes, veins, faces, stripes, text) onto the glass beyond what the panes already show. The flat light-grey area outside the panel's silhouette is not glass: render it as plain dark neutral grey.\nFOUR COLOURS ONLY, PANE BY PANE: the glass uses exactly these four colours: burgundy (#7d1d3f), antique gold (#d4a72c), ivory (#f3ead2), forest green (#2e6b4f). Every pane keeps the colour image 1 gives it. Make them rich, luminous, translucent versions of those same hues, with natural light and texture variation inside each hue, but no fifth glass colour. Neutral lead seams and specular highlights do not count as colours.\nCOMPOSITION: exactly 3:4 portrait, frontal/orthographic, the panel filling the frame as in image 1. No frame, no wall, no room, no hanging chain, no perspective, no mockup, no vignette, no border. NO TEXT, NO LETTERING, NO LOGOS. Deliver only the finished raster artwork.",
+  "guide": "27abbae97b302cff014435aa29a37f66ea200dae5ca63f4ba7ecfb4c1a110f4d",
+  "sha256": "6a615ad75bcce4bd7279729a940a34341cc339ec735b7c37e275c616185164e2",
+  "size": [
+    768,
+    1024
+  ],
+  "palette": [
+    "#69020f",
+    "#e1a312",
+    "#f8e2a3",
+    "#225528"
+  ],
+  "alignment": {
+    "affine": [
+      [
+        0.99589,
+        -0.00014,
+        1.27874
+      ],
+      [
+        0.00083,
+        0.99742,
+        1.54889
+      ]
+    ],
+    "seamCorrelation": [
+      0.833,
+      0.846
+    ]
+  }
+}

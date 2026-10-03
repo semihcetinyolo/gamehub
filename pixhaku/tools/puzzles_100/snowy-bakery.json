@@ -1,0 +1,135 @@
+{
+  "id": "snowy-bakery",
+  "tr": "Karlı Fırın",
+  "artName": "Snowy Bakery",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "snowy village roofs",
+      "snowy village roofs",
+      "#a9cce2"
+    ],
+    "B": [
+      "glowing bakery",
+      "glowing bakery",
+      "#b88c67"
+    ],
+    "C": [
+      "snow-laden fir",
+      "snow-laden fir",
+      "#759783"
+    ],
+    "D": [
+      "bread sled",
+      "bread sled",
+      "#d6b57c"
+    ],
+    "E": [
+      "snowy cobbled lane",
+      "snowy cobbled lane",
+      "#bdb5a2"
+    ],
+    "F": [
+      "warm window and lantern",
+      "warm window and lantern",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "snowy bakery",
+    "place": "snowy bakery",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: glowing bakery, connected naturally to snow-laden fir",
+      "foreground: bread sled, snowy cobbled lane, and warm window and lantern"
+    ],
+    "light": "a single coherent light source appropriate to snowy village roofs",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "snowy bakery"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 8,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 56,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBCDD",
+      "ABBCDD",
+      "ABBCDD",
+      "ABBCDD",
+      "AEFCDD",
+      "GEFCDD",
+      "GEFCHH",
+      "IIICHH"
+    ],
+    "clues": {
+      "A": [
+        4,
+        0
+      ],
+      "B": [
+        0,
+        2
+      ],
+      "C": [
+        7,
+        3
+      ],
+      "D": [
+        2,
+        5
+      ],
+      "E": [
+        6,
+        1
+      ],
+      "F": [
+        5,
+        2
+      ],
+      "G": [
+        5,
+        0
+      ],
+      "H": [
+        7,
+        4
+      ],
+      "I": [
+        7,
+        0
+      ]
+    },
+    "hidden": [
+      "C"
+    ],
+    "locks": {}
+  }
+}

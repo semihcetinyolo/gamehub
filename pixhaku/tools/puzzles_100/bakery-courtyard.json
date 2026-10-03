@@ -1,0 +1,122 @@
+{
+  "id": "bakery-courtyard",
+  "tr": "Fırın Avlusu",
+  "artName": "Bakery Courtyard",
+  "variety": "Mantığa alışma",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "warm rooftops",
+      "warm rooftops",
+      "#a9cce2"
+    ],
+    "B": [
+      "stone bread oven",
+      "stone bread oven",
+      "#b88c67"
+    ],
+    "C": [
+      "bakery window",
+      "bakery window",
+      "#759783"
+    ],
+    "D": [
+      "bread baskets",
+      "bread baskets",
+      "#d6b57c"
+    ],
+    "E": [
+      "cobbled courtyard",
+      "cobbled courtyard",
+      "#bdb5a2"
+    ],
+    "F": [
+      "flour cart",
+      "flour cart",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "bakery courtyard",
+    "place": "bakery courtyard",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: stone bread oven, connected naturally to bakery window",
+      "foreground: bread baskets, cobbled courtyard, and flour cart"
+    ],
+    "light": "a single coherent light source appropriate to warm rooftops",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "bakery courtyard"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 6,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 31,
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABC",
+      "AAAABC",
+      "DDDEBC",
+      "DDDEBC",
+      "FFFFBC",
+      "GGGGGG"
+    ],
+    "clues": {
+      "A": [
+        0,
+        3
+      ],
+      "B": [
+        1,
+        4
+      ],
+      "C": [
+        0,
+        5
+      ],
+      "D": [
+        3,
+        2
+      ],
+      "E": [
+        2,
+        3
+      ],
+      "F": [
+        4,
+        0
+      ],
+      "G": [
+        5,
+        2
+      ]
+    },
+    "hidden": [],
+    "locks": {}
+  }
+}

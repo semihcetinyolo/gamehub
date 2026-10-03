@@ -1,0 +1,153 @@
+{
+  "id": "coral-citadel",
+  "tr": "Mercan Hisarı",
+  "artName": "Coral Citadel",
+  "variety": "Uzak hücre ilişkileri · kesişim",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "deep blue ocean",
+      "deep blue ocean",
+      "#a9cce2"
+    ],
+    "B": [
+      "coral-covered fortress",
+      "coral-covered fortress",
+      "#b88c67"
+    ],
+    "C": [
+      "tall coral spires",
+      "tall coral spires",
+      "#759783"
+    ],
+    "D": [
+      "shell gardens",
+      "shell gardens",
+      "#d6b57c"
+    ],
+    "E": [
+      "arched seabed bridge",
+      "arched seabed bridge",
+      "#bdb5a2"
+    ],
+    "F": [
+      "glowing reef fish",
+      "glowing reef fish",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "coral citadel",
+    "place": "coral citadel",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: coral-covered fortress, connected naturally to tall coral spires",
+      "foreground: shell gardens, arched seabed bridge, and glowing reef fish"
+    ],
+    "light": "a single coherent light source appropriate to deep blue ocean",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "coral citadel"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 10,
+    "start": [
+      0,
+      0
+    ],
+    "maxTech": 4,
+    "effortTarget": 126,
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      14
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 2,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAABCD",
+      "EEFFFBCD",
+      "EEFFFBCD",
+      "EEFFFBCD",
+      "EEFFFGGD",
+      "EEFFFGGH",
+      "IIIJKGGH",
+      "IIIJKGGH",
+      "IIIJKGGH",
+      "IIIJKGGH"
+    ],
+    "clues": {
+      "A": [
+        0,
+        2
+      ],
+      "B": [
+        1,
+        5
+      ],
+      "C": [
+        1,
+        6
+      ],
+      "D": [
+        1,
+        7
+      ],
+      "E": [
+        3,
+        1
+      ],
+      "F": [
+        5,
+        4
+      ],
+      "G": [
+        7,
+        6
+      ],
+      "H": [
+        6,
+        7
+      ],
+      "I": [
+        7,
+        0
+      ],
+      "J": [
+        7,
+        3
+      ],
+      "K": [
+        6,
+        4
+      ]
+    },
+    "hidden": [
+      "G",
+      "J"
+    ],
+    "locks": {
+      "F": 5
+    }
+  }
+}

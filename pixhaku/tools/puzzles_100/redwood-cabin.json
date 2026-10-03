@@ -1,0 +1,143 @@
+{
+  "id": "redwood-cabin",
+  "tr": "Sekoya Kulübesi",
+  "artName": "Redwood Cabin",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "high redwood canopy",
+      "high redwood canopy",
+      "#a9cce2"
+    ],
+    "B": [
+      "tiny timber cabin",
+      "tiny timber cabin",
+      "#b88c67"
+    ],
+    "C": [
+      "giant redwood trunk",
+      "giant redwood trunk",
+      "#759783"
+    ],
+    "D": [
+      "mushroom garden",
+      "mushroom garden",
+      "#d6b57c"
+    ],
+    "E": [
+      "forest steps",
+      "forest steps",
+      "#bdb5a2"
+    ],
+    "F": [
+      "gentle brook",
+      "gentle brook",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "redwood cabin",
+    "place": "redwood cabin",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: tiny timber cabin, connected naturally to giant redwood trunk",
+      "foreground: mushroom garden, forest steps, and gentle brook"
+    ],
+    "light": "a single coherent light source appropriate to high redwood canopy",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "redwood cabin"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 8,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 79,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAA",
+      "BBBCCC",
+      "DEFCCC",
+      "DEFGGH",
+      "DEFIIH",
+      "DEFIIH",
+      "JJFIIH",
+      "JJFKKH"
+    ],
+    "clues": {
+      "A": [
+        0,
+        5
+      ],
+      "B": [
+        1,
+        2
+      ],
+      "C": [
+        1,
+        3
+      ],
+      "D": [
+        2,
+        0
+      ],
+      "E": [
+        2,
+        1
+      ],
+      "F": [
+        5,
+        2
+      ],
+      "G": [
+        3,
+        3
+      ],
+      "H": [
+        7,
+        5
+      ],
+      "I": [
+        5,
+        4
+      ],
+      "J": [
+        6,
+        1
+      ],
+      "K": [
+        7,
+        3
+      ]
+    },
+    "hidden": [
+      "C"
+    ],
+    "locks": {}
+  }
+}

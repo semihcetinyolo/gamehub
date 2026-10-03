@@ -1,0 +1,139 @@
+{
+  "id": "tropical-greenhouse",
+  "tr": "Tropik Sera",
+  "artName": "Tropical Greenhouse",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "glass greenhouse roof",
+      "glass greenhouse roof",
+      "#a9cce2"
+    ],
+    "B": [
+      "lush palms",
+      "lush palms",
+      "#b88c67"
+    ],
+    "C": [
+      "giant fern wall",
+      "giant fern wall",
+      "#759783"
+    ],
+    "D": [
+      "orchids",
+      "orchids",
+      "#d6b57c"
+    ],
+    "E": [
+      "curving tiled path",
+      "curving tiled path",
+      "#bdb5a2"
+    ],
+    "F": [
+      "small fish pool",
+      "small fish pool",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "tropical greenhouse",
+    "place": "tropical greenhouse",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: lush palms, connected naturally to giant fern wall",
+      "foreground: orchids, curving tiled path, and small fish pool"
+    ],
+    "light": "a single coherent light source appropriate to glass greenhouse roof",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "tropical greenhouse"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 8,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 74,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBCC",
+      "ABBBCC",
+      "ADDECC",
+      "ADDECC",
+      "FDDECC",
+      "FDDECC",
+      "FDDGGH",
+      "IIIJJH"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        0,
+        1
+      ],
+      "C": [
+        5,
+        5
+      ],
+      "D": [
+        5,
+        2
+      ],
+      "E": [
+        3,
+        3
+      ],
+      "F": [
+        6,
+        0
+      ],
+      "G": [
+        6,
+        3
+      ],
+      "H": [
+        6,
+        5
+      ],
+      "I": [
+        7,
+        0
+      ],
+      "J": [
+        7,
+        3
+      ]
+    },
+    "hidden": [
+      "C"
+    ],
+    "locks": {}
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "id": "cat-rooftops",
+  "tr": "Kedi Çatıları",
+  "artName": "Cat Rooftops",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "sunset city sky",
+      "sunset city sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "warm terracotta rooftops",
+      "warm terracotta rooftops",
+      "#b88c67"
+    ],
+    "C": [
+      "chimneys and ivy",
+      "chimneys and ivy",
+      "#759783"
+    ],
+    "D": [
+      "sleeping cats",
+      "sleeping cats",
+      "#d6b57c"
+    ],
+    "E": [
+      "roof ridge walkway",
+      "roof ridge walkway",
+      "#bdb5a2"
+    ],
+    "F": [
+      "roof garden",
+      "roof garden",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "cat rooftops",
+    "place": "cat rooftops",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: warm terracotta rooftops, connected naturally to chimneys and ivy",
+      "foreground: sleeping cats, roof ridge walkway, and roof garden"
+    ],
+    "light": "a single coherent light source appropriate to sunset city sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "cat rooftops"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 8,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 59,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABBCCC",
+      "AABBCCC",
+      "DDBBCCC",
+      "DDBBEEF",
+      "DDBBEEF",
+      "GGBBEEF",
+      "GGHHEEF",
+      "IIHHJJF"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        1,
+        2
+      ],
+      "C": [
+        0,
+        6
+      ],
+      "D": [
+        3,
+        0
+      ],
+      "E": [
+        3,
+        4
+      ],
+      "F": [
+        3,
+        6
+      ],
+      "G": [
+        6,
+        1
+      ],
+      "H": [
+        7,
+        3
+      ],
+      "I": [
+        7,
+        1
+      ],
+      "J": [
+        7,
+        5
+      ]
+    },
+    "hidden": [
+      "B"
+    ],
+    "locks": {}
+  }
+}

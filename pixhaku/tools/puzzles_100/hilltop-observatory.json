@@ -1,0 +1,139 @@
+{
+  "id": "hilltop-observatory",
+  "tr": "Tepe Gözlemevi",
+  "artName": "Hilltop Observatory",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "starry violet sky",
+      "starry violet sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "small domed observatory",
+      "small domed observatory",
+      "#b88c67"
+    ],
+    "C": [
+      "cypress-lined hill",
+      "cypress-lined hill",
+      "#759783"
+    ],
+    "D": [
+      "astronomy equipment",
+      "astronomy equipment",
+      "#d6b57c"
+    ],
+    "E": [
+      "moonlit steps",
+      "moonlit steps",
+      "#bdb5a2"
+    ],
+    "F": [
+      "roof telescope",
+      "roof telescope",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "hilltop observatory",
+    "place": "hilltop observatory",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: small domed observatory, connected naturally to cypress-lined hill",
+      "foreground: astronomy equipment, moonlit steps, and roof telescope"
+    ],
+    "light": "a single coherent light source appropriate to starry violet sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "hilltop observatory"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 8,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 73,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABCCCD",
+      "AABCCCD",
+      "AABCCCD",
+      "EEBCCCD",
+      "EEBFFFD",
+      "EEBFFFD",
+      "GHIFFFD",
+      "GHIJJJD"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        4,
+        2
+      ],
+      "C": [
+        3,
+        5
+      ],
+      "D": [
+        6,
+        6
+      ],
+      "E": [
+        4,
+        0
+      ],
+      "F": [
+        4,
+        4
+      ],
+      "G": [
+        7,
+        0
+      ],
+      "H": [
+        7,
+        1
+      ],
+      "I": [
+        7,
+        2
+      ],
+      "J": [
+        7,
+        5
+      ]
+    },
+    "hidden": [
+      "F"
+    ],
+    "locks": {}
+  }
+}

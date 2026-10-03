@@ -1,0 +1,36 @@
+{
+  "id": "flower",
+  "model": "gpt-image-2",
+  "generatedAt": "2026-10-02T20:40:22.269858+00:00",
+  "prompt": "Generate a NEW, exquisite PHOTOGRAPHIC ARTWORK of a real artisan-made stained-glass panel depicting a beautiful swirling ten-petal sunflower / botanical sun medallion.\nImage 1 is the exact pane layout and colour plan. Image 2 is only a real-world material reference. The output must NOT look like image 1's flat vector drawing: turn every flat area into stunning, convincingly real, richly textured handmade translucent glass — organic ripples, hammered dimples, tiny trapped bubbles, light refracting inside the coloured glass, glowing sunlight transmitted from behind, delicate dark aged metal solder seams. A high-end Tiffany-style art object, photographed perfectly straight-on. Deep and jewel-like, not a cartoon, not paint, not paper.\nCRITICAL STRUCTURE: every flat-coloured area of image 1 is exactly ONE glass pane and every black line is a lead seam. Keep all seams exactly where they are — same positions, same curves, same silhouette and proportions — so the artwork aligns with image 1 when superimposed. Do not add, remove, subdivide, merge or move any pane or seam. Do not paint extra details (no eyes, veins, faces, stripes, text) onto the glass beyond what the panes already show. The flat light-grey area outside the panel's silhouette is not glass: render it as plain dark neutral grey.\nFOUR COLOURS ONLY, PANE BY PANE: the glass uses exactly these four colours: leaf green (#3d8c11), sun yellow (#f9d20f), flame orange (#e04903), azure blue (#0d83d7). Every pane keeps the colour image 1 gives it. Make them rich, luminous, translucent versions of those same hues, with natural light and texture variation inside each hue, but no fifth glass colour. Neutral lead seams and specular highlights do not count as colours.\nCOMPOSITION: exactly 3:4 portrait, frontal/orthographic, the panel filling the frame as in image 1. No frame, no wall, no room, no hanging chain, no perspective, no mockup, no vignette, no border. NO TEXT, NO LETTERING, NO LOGOS. Deliver only the finished raster artwork.",
+  "guide": "07eb90c6e340d38e015f14f26590153675ae2cbe199aee9d965f6d0a21f127a6",
+  "sha256": "01251daf5a7b0dfb33adb23228395ab2c2a5d824b4e98b118172bdf1796f2975",
+  "size": [
+    768,
+    1024
+  ],
+  "palette": [
+    "#3f7703",
+    "#f8d108",
+    "#e44703",
+    "#0274d4"
+  ],
+  "alignment": {
+    "affine": [
+      [
+        1.00039,
+        0.00085,
+        -0.88011
+      ],
+      [
+        0.00159,
+        1.016,
+        -29.92398
+      ]
+    ],
+    "seamCorrelation": [
+      0.135,
+      0.753
+    ]
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "id": "dawn-worldtree",
+  "tr": "Şafak Dünya Ağacı",
+  "artName": "Dawn Worldtree",
+  "variety": "Uzak hücre ilişkileri · kesişim",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "golden dawn sky",
+      "golden dawn sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "vast ancient worldtree",
+      "vast ancient worldtree",
+      "#b88c67"
+    ],
+    "C": [
+      "floating root islands",
+      "floating root islands",
+      "#759783"
+    ],
+    "D": [
+      "flowering roots",
+      "flowering roots",
+      "#d6b57c"
+    ],
+    "E": [
+      "spiral root stairway",
+      "spiral root stairway",
+      "#bdb5a2"
+    ],
+    "F": [
+      "luminous waterfall",
+      "luminous waterfall",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "dawn worldtree",
+    "place": "dawn worldtree",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: vast ancient worldtree, connected naturally to floating root islands",
+      "foreground: flowering roots, spiral root stairway, and luminous waterfall"
+    ],
+    "light": "a single coherent light source appropriate to golden dawn sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "dawn worldtree"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 10,
+    "start": [
+      0,
+      0
+    ],
+    "maxTech": 4,
+    "effortTarget": 140,
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      14
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 2,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABCDEFF",
+      "ABCDEFF",
+      "ABCDEGH",
+      "ABCDEGH",
+      "ABCDEGH",
+      "AICDEGH",
+      "AIJDEGH",
+      "AIJDEGH",
+      "AIJDEGK",
+      "AILLLLK"
+    ],
+    "clues": {
+      "A": [
+        4,
+        0
+      ],
+      "B": [
+        2,
+        1
+      ],
+      "C": [
+        4,
+        2
+      ],
+      "D": [
+        3,
+        3
+      ],
+      "E": [
+        2,
+        4
+      ],
+      "F": [
+        0,
+        6
+      ],
+      "G": [
+        6,
+        5
+      ],
+      "H": [
+        6,
+        6
+      ],
+      "I": [
+        6,
+        1
+      ],
+      "J": [
+        7,
+        2
+      ],
+      "K": [
+        9,
+        6
+      ],
+      "L": [
+        9,
+        4
+      ]
+    },
+    "hidden": [
+      "D",
+      "L"
+    ],
+    "locks": {
+      "A": 2
+    }
+  }
+}

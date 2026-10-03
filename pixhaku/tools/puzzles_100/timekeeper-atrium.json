@@ -1,0 +1,157 @@
+{
+  "id": "timekeeper-atrium",
+  "tr": "Zaman Bekçisi Avlusu",
+  "artName": "Timekeeper Atrium",
+  "variety": "Uzak hücre ilişkileri · kesişim",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "glass skylight with stars",
+      "glass skylight with stars",
+      "#a9cce2"
+    ],
+    "B": [
+      "huge ornate clock mechanism",
+      "huge ornate clock mechanism",
+      "#b88c67"
+    ],
+    "C": [
+      "brass column gallery",
+      "brass column gallery",
+      "#759783"
+    ],
+    "D": [
+      "potted ferns",
+      "potted ferns",
+      "#d6b57c"
+    ],
+    "E": [
+      "marble atrium floor",
+      "marble atrium floor",
+      "#bdb5a2"
+    ],
+    "F": [
+      "reflective water basin",
+      "reflective water basin",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "timekeeper atrium",
+    "place": "timekeeper atrium",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: huge ornate clock mechanism, connected naturally to brass column gallery",
+      "foreground: potted ferns, marble atrium floor, and reflective water basin"
+    ],
+    "light": "a single coherent light source appropriate to glass skylight with stars",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "timekeeper atrium"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 10,
+    "start": [
+      0,
+      0
+    ],
+    "maxTech": 4,
+    "effortTarget": 135,
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      14
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 2,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABCCDE",
+      "AABCCDE",
+      "FFBCCDE",
+      "FFBGGDE",
+      "FFHGGDE",
+      "IIHGGDJ",
+      "IIHGGDJ",
+      "IIHGGDJ",
+      "KKHGGDJ",
+      "KKLLLLJ"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        2,
+        2
+      ],
+      "C": [
+        1,
+        4
+      ],
+      "D": [
+        7,
+        5
+      ],
+      "E": [
+        1,
+        6
+      ],
+      "F": [
+        3,
+        1
+      ],
+      "G": [
+        7,
+        3
+      ],
+      "H": [
+        6,
+        2
+      ],
+      "I": [
+        6,
+        1
+      ],
+      "J": [
+        6,
+        6
+      ],
+      "K": [
+        8,
+        1
+      ],
+      "L": [
+        9,
+        2
+      ]
+    },
+    "hidden": [
+      "C",
+      "J"
+    ],
+    "locks": {
+      "F": 4
+    }
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "id": "butterfly-meadow",
+  "tr": "Kelebek Çayırı",
+  "artName": "Butterfly Meadow",
+  "variety": "Mantığa alışma",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "pale summer sky",
+      "pale summer sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "flower meadow",
+      "flower meadow",
+      "#b88c67"
+    ],
+    "C": [
+      "birch grove",
+      "birch grove",
+      "#759783"
+    ],
+    "D": [
+      "butterflies on flowers",
+      "butterflies on flowers",
+      "#d6b57c"
+    ],
+    "E": [
+      "meadow trail",
+      "meadow trail",
+      "#bdb5a2"
+    ],
+    "F": [
+      "shallow stream",
+      "shallow stream",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "butterfly meadow",
+    "place": "butterfly meadow",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: flower meadow, connected naturally to birch grove",
+      "foreground: butterflies on flowers, meadow trail, and shallow stream"
+    ],
+    "light": "a single coherent light source appropriate to pale summer sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "butterfly meadow"
+  },
+  "spec": {
+    "cols": 5,
+    "rows": 6,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 34,
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBC",
+      "ABBBC",
+      "ADDDC",
+      "ADDDE",
+      "FDDDE",
+      "FGGGG"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        0,
+        3
+      ],
+      "C": [
+        0,
+        4
+      ],
+      "D": [
+        3,
+        2
+      ],
+      "E": [
+        3,
+        4
+      ],
+      "F": [
+        5,
+        0
+      ],
+      "G": [
+        5,
+        3
+      ]
+    },
+    "hidden": [],
+    "locks": {}
+  }
+}

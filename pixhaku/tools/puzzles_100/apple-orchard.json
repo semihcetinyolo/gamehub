@@ -1,0 +1,118 @@
+{
+  "id": "apple-orchard",
+  "tr": "Elma Bahçesi",
+  "artName": "Apple Orchard",
+  "variety": "Mantığa alışma",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "spring hills",
+      "spring hills",
+      "#a9cce2"
+    ],
+    "B": [
+      "apple trees",
+      "apple trees",
+      "#b88c67"
+    ],
+    "C": [
+      "red barn",
+      "red barn",
+      "#759783"
+    ],
+    "D": [
+      "fallen apples",
+      "fallen apples",
+      "#d6b57c"
+    ],
+    "E": [
+      "grass lane",
+      "grass lane",
+      "#bdb5a2"
+    ],
+    "F": [
+      "wooden cider press",
+      "wooden cider press",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "apple orchard",
+    "place": "apple orchard",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: apple trees, connected naturally to red barn",
+      "foreground: fallen apples, grass lane, and wooden cider press"
+    ],
+    "light": "a single coherent light source appropriate to spring hills",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "apple orchard"
+  },
+  "spec": {
+    "cols": 5,
+    "rows": 6,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 26,
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AABBB",
+      "AABBB",
+      "AABBB",
+      "CCCCD",
+      "CCCCD",
+      "EEEFF"
+    ],
+    "clues": {
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        2,
+        2
+      ],
+      "C": [
+        4,
+        0
+      ],
+      "D": [
+        4,
+        4
+      ],
+      "E": [
+        5,
+        2
+      ],
+      "F": [
+        5,
+        4
+      ]
+    },
+    "hidden": [],
+    "locks": {}
+  }
+}
