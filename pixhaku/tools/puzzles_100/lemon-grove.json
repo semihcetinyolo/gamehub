@@ -1,0 +1,131 @@
+{
+  "id": "lemon-grove",
+  "tr": "Limon Korusu",
+  "artName": "Lemon Grove",
+  "variety": "Mantığa alışma",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "bright coastal sky",
+      "bright coastal sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "lemon trees",
+      "lemon trees",
+      "#b88c67"
+    ],
+    "C": [
+      "yellow farmhouse",
+      "yellow farmhouse",
+      "#759783"
+    ],
+    "D": [
+      "lemon baskets",
+      "lemon baskets",
+      "#d6b57c"
+    ],
+    "E": [
+      "sunlit garden path",
+      "sunlit garden path",
+      "#bdb5a2"
+    ],
+    "F": [
+      "blue ceramic fountain",
+      "blue ceramic fountain",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "lemon grove",
+    "place": "lemon grove",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: lemon trees, connected naturally to yellow farmhouse",
+      "foreground: lemon baskets, sunlit garden path, and blue ceramic fountain"
+    ],
+    "light": "a single coherent light source appropriate to bright coastal sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "lemon grove"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 7,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 33,
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AABBBB",
+      "AABBBB",
+      "CDDDEF",
+      "CDDDEF",
+      "CDDDEF",
+      "GGGGGG",
+      "HHHHII"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        0,
+        5
+      ],
+      "C": [
+        4,
+        0
+      ],
+      "D": [
+        4,
+        1
+      ],
+      "E": [
+        4,
+        4
+      ],
+      "F": [
+        3,
+        5
+      ],
+      "G": [
+        5,
+        1
+      ],
+      "H": [
+        6,
+        3
+      ],
+      "I": [
+        6,
+        4
+      ]
+    },
+    "hidden": [],
+    "locks": {}
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "id": "sunken-courtyard",
+  "tr": "Batık Avlu",
+  "artName": "Sunken Courtyard",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "underwater blue rays",
+      "underwater blue rays",
+      "#a9cce2"
+    ],
+    "B": [
+      "ancient courtyard fountain",
+      "ancient courtyard fountain",
+      "#b88c67"
+    ],
+    "C": [
+      "broken marble pillars",
+      "broken marble pillars",
+      "#759783"
+    ],
+    "D": [
+      "sea anemones",
+      "sea anemones",
+      "#d6b57c"
+    ],
+    "E": [
+      "mosaic walkway",
+      "mosaic walkway",
+      "#bdb5a2"
+    ],
+    "F": [
+      "school of fish",
+      "school of fish",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "sunken courtyard",
+    "place": "sunken courtyard",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: ancient courtyard fountain, connected naturally to broken marble pillars",
+      "foreground: sea anemones, mosaic walkway, and school of fish"
+    ],
+    "light": "a single coherent light source appropriate to underwater blue rays",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "sunken courtyard"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 8,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 106,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAABBB",
+      "CCDEFBBB",
+      "CCDEFGGH",
+      "CCDEFGGH",
+      "IIDEFGGH",
+      "IIDEJGGH",
+      "IIDKJLLH",
+      "IIDKJLLH"
+    ],
+    "clues": {
+      "A": [
+        0,
+        2
+      ],
+      "B": [
+        1,
+        6
+      ],
+      "C": [
+        3,
+        1
+      ],
+      "D": [
+        6,
+        2
+      ],
+      "E": [
+        3,
+        3
+      ],
+      "F": [
+        1,
+        4
+      ],
+      "G": [
+        3,
+        5
+      ],
+      "H": [
+        3,
+        7
+      ],
+      "I": [
+        6,
+        0
+      ],
+      "J": [
+        6,
+        4
+      ],
+      "K": [
+        7,
+        3
+      ],
+      "L": [
+        6,
+        5
+      ]
+    },
+    "hidden": [
+      "I"
+    ],
+    "locks": {
+      "F": 6
+    }
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "id": "lotus-pavilion",
+  "tr": "Nilüfer Köşkü",
+  "artName": "Lotus Pavilion",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "golden lake haze",
+      "golden lake haze",
+      "#a9cce2"
+    ],
+    "B": [
+      "wooden pavilion",
+      "wooden pavilion",
+      "#b88c67"
+    ],
+    "C": [
+      "flowering willow",
+      "flowering willow",
+      "#759783"
+    ],
+    "D": [
+      "lotus blossoms",
+      "lotus blossoms",
+      "#d6b57c"
+    ],
+    "E": [
+      "curved garden bridge",
+      "curved garden bridge",
+      "#bdb5a2"
+    ],
+    "F": [
+      "koi water",
+      "koi water",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "lotus pavilion",
+    "place": "lotus pavilion",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: wooden pavilion, connected naturally to flowering willow",
+      "foreground: lotus blossoms, curved garden bridge, and koi water"
+    ],
+    "light": "a single coherent light source appropriate to golden lake haze",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "lotus pavilion"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 8,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 55,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBCCDE",
+      "ABBCCDE",
+      "ABBFFDE",
+      "ABBFFDE",
+      "ABBFFGE",
+      "AHHFFGE",
+      "IHHFFGE",
+      "IHHJJJE"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        3,
+        1
+      ],
+      "C": [
+        0,
+        3
+      ],
+      "D": [
+        1,
+        5
+      ],
+      "E": [
+        5,
+        6
+      ],
+      "F": [
+        5,
+        3
+      ],
+      "G": [
+        4,
+        5
+      ],
+      "H": [
+        7,
+        1
+      ],
+      "I": [
+        7,
+        0
+      ],
+      "J": [
+        7,
+        4
+      ]
+    },
+    "hidden": [
+      "B"
+    ],
+    "locks": {}
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "id": "tidal-temple",
+  "tr": "Gelgit Tapınağı",
+  "artName": "Tidal Temple",
+  "variety": "Uzak hücre ilişkileri · kesişim",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "warm sea horizon",
+      "warm sea horizon",
+      "#a9cce2"
+    ],
+    "B": [
+      "ancient coastal temple",
+      "ancient coastal temple",
+      "#b88c67"
+    ],
+    "C": [
+      "sea stacks",
+      "sea stacks",
+      "#759783"
+    ],
+    "D": [
+      "tidal shells",
+      "tidal shells",
+      "#d6b57c"
+    ],
+    "E": [
+      "submerged stepping stones",
+      "submerged stepping stones",
+      "#bdb5a2"
+    ],
+    "F": [
+      "turquoise tidal pool",
+      "turquoise tidal pool",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "tidal temple",
+    "place": "tidal temple",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: ancient coastal temple, connected naturally to sea stacks",
+      "foreground: tidal shells, submerged stepping stones, and turquoise tidal pool"
+    ],
+    "light": "a single coherent light source appropriate to warm sea horizon",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "tidal temple"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "start": [
+      0,
+      0
+    ],
+    "maxTech": 4,
+    "effortTarget": 118,
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      14
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 2,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAAAB",
+      "CCDDDDEB",
+      "CCDDDDEB",
+      "CCDDDDEB",
+      "CCFGGHEB",
+      "CCFGGHEB",
+      "CCFGGHII",
+      "JKFGGHII",
+      "JKFLLHII"
+    ],
+    "clues": {
+      "A": [
+        0,
+        2
+      ],
+      "B": [
+        3,
+        7
+      ],
+      "C": [
+        2,
+        1
+      ],
+      "D": [
+        1,
+        2
+      ],
+      "E": [
+        2,
+        6
+      ],
+      "F": [
+        7,
+        2
+      ],
+      "G": [
+        6,
+        4
+      ],
+      "H": [
+        7,
+        5
+      ],
+      "I": [
+        7,
+        6
+      ],
+      "J": [
+        7,
+        0
+      ],
+      "K": [
+        7,
+        1
+      ],
+      "L": [
+        8,
+        3
+      ]
+    },
+    "hidden": [
+      "A",
+      "F"
+    ],
+    "locks": {
+      "D": 2
+    }
+  }
+}

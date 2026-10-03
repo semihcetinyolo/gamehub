@@ -1,0 +1,139 @@
+{
+  "id": "mossy-ruins",
+  "tr": "Yosunlu Harabeler",
+  "artName": "Mossy Ruins",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "forest light shafts",
+      "forest light shafts",
+      "#a9cce2"
+    ],
+    "B": [
+      "ancient stone arch",
+      "ancient stone arch",
+      "#b88c67"
+    ],
+    "C": [
+      "vine-covered wall",
+      "vine-covered wall",
+      "#759783"
+    ],
+    "D": [
+      "ferns and mushrooms",
+      "ferns and mushrooms",
+      "#d6b57c"
+    ],
+    "E": [
+      "broken flagstone path",
+      "broken flagstone path",
+      "#bdb5a2"
+    ],
+    "F": [
+      "still pool",
+      "still pool",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "mossy ruins",
+    "place": "mossy ruins",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: ancient stone arch, connected naturally to vine-covered wall",
+      "foreground: ferns and mushrooms, broken flagstone path, and still pool"
+    ],
+    "light": "a single coherent light source appropriate to forest light shafts",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "mossy ruins"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 8,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 68,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAAB",
+      "AAAAAAB",
+      "CCCDEFB",
+      "CCCDEFB",
+      "GGGDEFB",
+      "GGGDEFB",
+      "GGGHEIB",
+      "JJJHEIB"
+    ],
+    "clues": {
+      "A": [
+        0,
+        4
+      ],
+      "B": [
+        3,
+        6
+      ],
+      "C": [
+        2,
+        1
+      ],
+      "D": [
+        4,
+        3
+      ],
+      "E": [
+        2,
+        4
+      ],
+      "F": [
+        5,
+        5
+      ],
+      "G": [
+        6,
+        0
+      ],
+      "H": [
+        7,
+        3
+      ],
+      "I": [
+        6,
+        5
+      ],
+      "J": [
+        7,
+        1
+      ]
+    },
+    "hidden": [
+      "E"
+    ],
+    "locks": {}
+  }
+}

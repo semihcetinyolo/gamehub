@@ -1,0 +1,135 @@
+{
+  "id": "mountain-railway",
+  "tr": "Dağ Treni",
+  "artName": "Mountain Railway",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "snowy distant peaks",
+      "snowy distant peaks",
+      "#a9cce2"
+    ],
+    "B": [
+      "small red locomotive",
+      "small red locomotive",
+      "#b88c67"
+    ],
+    "C": [
+      "pine mountain slope",
+      "pine mountain slope",
+      "#759783"
+    ],
+    "D": [
+      "station luggage",
+      "station luggage",
+      "#d6b57c"
+    ],
+    "E": [
+      "curving railway",
+      "curving railway",
+      "#bdb5a2"
+    ],
+    "F": [
+      "wildflowers beside tracks",
+      "wildflowers beside tracks",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "mountain railway",
+    "place": "mountain railway",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: small red locomotive, connected naturally to pine mountain slope",
+      "foreground: station luggage, curving railway, and wildflowers beside tracks"
+    ],
+    "light": "a single coherent light source appropriate to snowy distant peaks",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "mountain railway"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 8,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 52,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBCCC",
+      "ABBCCC",
+      "ABBDDD",
+      "ABBDDD",
+      "ABBDDD",
+      "AEEFFG",
+      "HEEFFG",
+      "HEEIII"
+    ],
+    "clues": {
+      "A": [
+        3,
+        0
+      ],
+      "B": [
+        1,
+        1
+      ],
+      "C": [
+        0,
+        4
+      ],
+      "D": [
+        3,
+        3
+      ],
+      "E": [
+        7,
+        1
+      ],
+      "F": [
+        5,
+        4
+      ],
+      "G": [
+        5,
+        5
+      ],
+      "H": [
+        7,
+        0
+      ],
+      "I": [
+        7,
+        3
+      ]
+    },
+    "hidden": [
+      "B"
+    ],
+    "locks": {}
+  }
+}

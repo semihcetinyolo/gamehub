@@ -1,0 +1,122 @@
+{
+  "id": "wool-workshop",
+  "tr": "Yün Atölyesi",
+  "artName": "Wool Workshop",
+  "variety": "Mantığa alışma",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "warm rafters",
+      "warm rafters",
+      "#a9cce2"
+    ],
+    "B": [
+      "wooden spinning wheel",
+      "wooden spinning wheel",
+      "#b88c67"
+    ],
+    "C": [
+      "shelves of yarn",
+      "shelves of yarn",
+      "#759783"
+    ],
+    "D": [
+      "wool baskets",
+      "wool baskets",
+      "#d6b57c"
+    ],
+    "E": [
+      "woven rug",
+      "woven rug",
+      "#bdb5a2"
+    ],
+    "F": [
+      "loom near window",
+      "loom near window",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "wool workshop",
+    "place": "wool workshop",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: wooden spinning wheel, connected naturally to shelves of yarn",
+      "foreground: wool baskets, woven rug, and loom near window"
+    ],
+    "light": "a single coherent light source appropriate to warm rafters",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "wool workshop"
+  },
+  "spec": {
+    "cols": 5,
+    "rows": 6,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 38,
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAB",
+      "CDDEB",
+      "CDDEB",
+      "CDDEB",
+      "CDDFF",
+      "GGGFF"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        1,
+        4
+      ],
+      "C": [
+        1,
+        0
+      ],
+      "D": [
+        4,
+        2
+      ],
+      "E": [
+        1,
+        3
+      ],
+      "F": [
+        4,
+        3
+      ],
+      "G": [
+        5,
+        0
+      ]
+    },
+    "hidden": [],
+    "locks": {}
+  }
+}

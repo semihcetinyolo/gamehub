@@ -1,0 +1,149 @@
+{
+  "id": "sakura-night-train",
+  "tr": "Gece Sakura Treni",
+  "artName": "Sakura Night Train",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "starry spring sky",
+      "starry spring sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "vintage night train",
+      "vintage night train",
+      "#b88c67"
+    ],
+    "C": [
+      "cherry blossom grove",
+      "cherry blossom grove",
+      "#759783"
+    ],
+    "D": [
+      "station lanterns",
+      "station lanterns",
+      "#d6b57c"
+    ],
+    "E": [
+      "railway platform",
+      "railway platform",
+      "#bdb5a2"
+    ],
+    "F": [
+      "river reflection",
+      "river reflection",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "sakura night train",
+    "place": "sakura night train",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: vintage night train, connected naturally to cherry blossom grove",
+      "foreground: station lanterns, railway platform, and river reflection"
+    ],
+    "light": "a single coherent light source appropriate to starry spring sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "sakura night train"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 104,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABBBBBC",
+      "AADDDDEC",
+      "AADDDDEC",
+      "AADDDDEC",
+      "AAFFGHEC",
+      "AAFFGHEC",
+      "AAFFGHIC",
+      "AAFFGJIC",
+      "KKFFGJIC"
+    ],
+    "clues": {
+      "A": [
+        6,
+        0
+      ],
+      "B": [
+        0,
+        3
+      ],
+      "C": [
+        1,
+        7
+      ],
+      "D": [
+        1,
+        3
+      ],
+      "E": [
+        2,
+        6
+      ],
+      "F": [
+        5,
+        2
+      ],
+      "G": [
+        7,
+        4
+      ],
+      "H": [
+        4,
+        5
+      ],
+      "I": [
+        7,
+        6
+      ],
+      "J": [
+        8,
+        5
+      ],
+      "K": [
+        8,
+        1
+      ]
+    },
+    "hidden": [
+      "E"
+    ],
+    "locks": {
+      "A": 3
+    }
+  }
+}

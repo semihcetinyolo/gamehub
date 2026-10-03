@@ -1,0 +1,135 @@
+{
+  "id": "canal-houseboats",
+  "tr": "Kanal Evleri",
+  "artName": "Canal Houseboats",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "pastel city skyline",
+      "pastel city skyline",
+      "#a9cce2"
+    ],
+    "B": [
+      "colorful houseboat",
+      "colorful houseboat",
+      "#b88c67"
+    ],
+    "C": [
+      "canal houses",
+      "canal houses",
+      "#759783"
+    ],
+    "D": [
+      "flower boxes",
+      "flower boxes",
+      "#d6b57c"
+    ],
+    "E": [
+      "canal towpath",
+      "canal towpath",
+      "#bdb5a2"
+    ],
+    "F": [
+      "arched bridge reflected in water",
+      "arched bridge reflected in water",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "canal houseboats",
+    "place": "canal houseboats",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: colorful houseboat, connected naturally to canal houses",
+      "foreground: flower boxes, canal towpath, and arched bridge reflected in water"
+    ],
+    "light": "a single coherent light source appropriate to pastel city skyline",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "canal houseboats"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 8,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 50,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABBBBC",
+      "AABBBBC",
+      "AABBBBC",
+      "AADDEFC",
+      "AADDEFG",
+      "AADDEFG",
+      "HHHHEFG",
+      "IIIIEFG"
+    ],
+    "clues": {
+      "A": [
+        3,
+        0
+      ],
+      "B": [
+        2,
+        3
+      ],
+      "C": [
+        2,
+        6
+      ],
+      "D": [
+        5,
+        3
+      ],
+      "E": [
+        4,
+        4
+      ],
+      "F": [
+        5,
+        5
+      ],
+      "G": [
+        5,
+        6
+      ],
+      "H": [
+        6,
+        0
+      ],
+      "I": [
+        7,
+        0
+      ]
+    },
+    "hidden": [
+      "H"
+    ],
+    "locks": {}
+  }
+}

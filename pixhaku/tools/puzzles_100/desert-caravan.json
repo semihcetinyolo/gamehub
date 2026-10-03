@@ -1,0 +1,138 @@
+{
+  "id": "desert-caravan",
+  "tr": "Çöl Kervanı",
+  "artName": "Desert Caravan",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "soft desert dunes",
+      "soft desert dunes",
+      "#a9cce2"
+    ],
+    "B": [
+      "resting camel caravan",
+      "resting camel caravan",
+      "#b88c67"
+    ],
+    "C": [
+      "date palms",
+      "date palms",
+      "#759783"
+    ],
+    "D": [
+      "woven market baskets",
+      "woven market baskets",
+      "#d6b57c"
+    ],
+    "E": [
+      "sand trail",
+      "sand trail",
+      "#bdb5a2"
+    ],
+    "F": [
+      "shaded water basin",
+      "shaded water basin",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "desert caravan",
+    "place": "desert caravan",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: resting camel caravan, connected naturally to date palms",
+      "foreground: woven market baskets, sand trail, and shaded water basin"
+    ],
+    "light": "a single coherent light source appropriate to soft desert dunes",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "desert caravan"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 7,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 76,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAABB",
+      "AAAAABB",
+      "CCCCDBB",
+      "EEEEDFF",
+      "GGHHDFF",
+      "GGIIDFF",
+      "GGIIJJJ"
+    ],
+    "clues": {
+      "A": [
+        0,
+        3
+      ],
+      "B": [
+        0,
+        5
+      ],
+      "C": [
+        2,
+        1
+      ],
+      "D": [
+        3,
+        4
+      ],
+      "E": [
+        3,
+        0
+      ],
+      "F": [
+        3,
+        5
+      ],
+      "G": [
+        6,
+        0
+      ],
+      "H": [
+        4,
+        3
+      ],
+      "I": [
+        5,
+        2
+      ],
+      "J": [
+        6,
+        4
+      ]
+    },
+    "hidden": [
+      "A"
+    ],
+    "locks": {}
+  }
+}

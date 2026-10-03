@@ -1,1 +1,1 @@
-{ "name": "Cartograph", "entry": "index.html" }
+{"name": "Cartograph", "entry": "index.html", "fugo": {"mode": "zip", "exclude": ["vitray example/*", "mozaic example/*", "art-levels.js", "assets/ui/*", "assets/glass/*.png"]}}

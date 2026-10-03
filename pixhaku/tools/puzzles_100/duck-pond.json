@@ -1,0 +1,122 @@
+{
+  "id": "duck-pond",
+  "tr": "Ördek Göleti",
+  "artName": "Duck Pond",
+  "variety": "Mantığa alışma",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "willow canopy",
+      "willow canopy",
+      "#a9cce2"
+    ],
+    "B": [
+      "duck pond",
+      "duck pond",
+      "#b88c67"
+    ],
+    "C": [
+      "reed beds",
+      "reed beds",
+      "#759783"
+    ],
+    "D": [
+      "ducklings on bank",
+      "ducklings on bank",
+      "#d6b57c"
+    ],
+    "E": [
+      "wooden footbridge",
+      "wooden footbridge",
+      "#bdb5a2"
+    ],
+    "F": [
+      "water lilies",
+      "water lilies",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "duck pond",
+    "place": "duck pond",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: duck pond, connected naturally to reed beds",
+      "foreground: ducklings on bank, wooden footbridge, and water lilies"
+    ],
+    "light": "a single coherent light source appropriate to willow canopy",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "duck pond"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 6,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 28,
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAB",
+      "AAAAAB",
+      "CCCCDB",
+      "CCCCDE",
+      "FFFGDE",
+      "FFFGDE"
+    ],
+    "clues": {
+      "A": [
+        1,
+        2
+      ],
+      "B": [
+        1,
+        5
+      ],
+      "C": [
+        3,
+        0
+      ],
+      "D": [
+        4,
+        4
+      ],
+      "E": [
+        5,
+        5
+      ],
+      "F": [
+        5,
+        1
+      ],
+      "G": [
+        5,
+        3
+      ]
+    },
+    "hidden": [],
+    "locks": {}
+  }
+}

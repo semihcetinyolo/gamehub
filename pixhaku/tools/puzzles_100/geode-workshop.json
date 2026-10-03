@@ -1,0 +1,146 @@
+{
+  "id": "geode-workshop",
+  "tr": "Jeot Atölyesi",
+  "artName": "Geode Workshop",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "rocky cavern roof",
+      "rocky cavern roof",
+      "#a9cce2"
+    ],
+    "B": [
+      "gem cutter bench",
+      "gem cutter bench",
+      "#b88c67"
+    ],
+    "C": [
+      "amethyst geodes",
+      "amethyst geodes",
+      "#759783"
+    ],
+    "D": [
+      "crystal trays",
+      "crystal trays",
+      "#d6b57c"
+    ],
+    "E": [
+      "stone walkway",
+      "stone walkway",
+      "#bdb5a2"
+    ],
+    "F": [
+      "underground pool",
+      "underground pool",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "geode workshop",
+    "place": "geode workshop",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: gem cutter bench, connected naturally to amethyst geodes",
+      "foreground: crystal trays, stone walkway, and underground pool"
+    ],
+    "light": "a single coherent light source appropriate to rocky cavern roof",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "geode workshop"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 10,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 86,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABBBBB",
+      "AACCDDE",
+      "AACCDDE",
+      "AACCDDE",
+      "FFCCGGE",
+      "FFCCGGE",
+      "HHHHGGI",
+      "HHHHGGI",
+      "HHHHGGI",
+      "JJJJGGI"
+    ],
+    "clues": {
+      "A": [
+        2,
+        0
+      ],
+      "B": [
+        0,
+        6
+      ],
+      "C": [
+        4,
+        3
+      ],
+      "D": [
+        2,
+        4
+      ],
+      "E": [
+        2,
+        6
+      ],
+      "F": [
+        5,
+        0
+      ],
+      "G": [
+        8,
+        5
+      ],
+      "H": [
+        6,
+        1
+      ],
+      "I": [
+        9,
+        6
+      ],
+      "J": [
+        9,
+        1
+      ]
+    },
+    "hidden": [
+      "G"
+    ],
+    "locks": {
+      "F": 3
+    }
+  }
+}

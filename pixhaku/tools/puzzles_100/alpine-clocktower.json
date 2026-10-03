@@ -1,0 +1,148 @@
+{
+  "id": "alpine-clocktower",
+  "tr": "Alp Saat Kulesi",
+  "artName": "Alpine Clocktower",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "snowy peaks",
+      "snowy peaks",
+      "#a9cce2"
+    ],
+    "B": [
+      "stone clocktower",
+      "stone clocktower",
+      "#b88c67"
+    ],
+    "C": [
+      "alpine chalets",
+      "alpine chalets",
+      "#759783"
+    ],
+    "D": [
+      "flower balcony",
+      "flower balcony",
+      "#d6b57c"
+    ],
+    "E": [
+      "village stairs",
+      "village stairs",
+      "#bdb5a2"
+    ],
+    "F": [
+      "mountain fountain",
+      "mountain fountain",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "alpine clocktower",
+    "place": "alpine clocktower",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: stone clocktower, connected naturally to alpine chalets",
+      "foreground: flower balcony, village stairs, and mountain fountain"
+    ],
+    "light": "a single coherent light source appropriate to snowy peaks",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "alpine clocktower"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 8,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 87,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABBBB",
+      "AAAABBBB",
+      "CDDDDDDE",
+      "CFFGGHIE",
+      "CFFGGHIE",
+      "CFFGGHIE",
+      "CFFJJHIE",
+      "CKKJJHIE"
+    ],
+    "clues": {
+      "A": [
+        1,
+        1
+      ],
+      "B": [
+        1,
+        5
+      ],
+      "C": [
+        3,
+        0
+      ],
+      "D": [
+        2,
+        4
+      ],
+      "E": [
+        7,
+        7
+      ],
+      "F": [
+        5,
+        1
+      ],
+      "G": [
+        4,
+        4
+      ],
+      "H": [
+        4,
+        5
+      ],
+      "I": [
+        6,
+        6
+      ],
+      "J": [
+        6,
+        4
+      ],
+      "K": [
+        7,
+        2
+      ]
+    },
+    "hidden": [
+      "F"
+    ],
+    "locks": {
+      "C": 6
+    }
+  }
+}

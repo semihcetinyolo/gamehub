@@ -1,0 +1,130 @@
+{
+  "id": "rose-conservatory",
+  "tr": "Gül Serası",
+  "artName": "Rose Conservatory",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "glass roof and sky",
+      "glass roof and sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "arched rose trellis",
+      "arched rose trellis",
+      "#b88c67"
+    ],
+    "C": [
+      "climbing roses",
+      "climbing roses",
+      "#759783"
+    ],
+    "D": [
+      "terracotta pots",
+      "terracotta pots",
+      "#d6b57c"
+    ],
+    "E": [
+      "greenhouse tiled path",
+      "greenhouse tiled path",
+      "#bdb5a2"
+    ],
+    "F": [
+      "marble basin",
+      "marble basin",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "rose conservatory",
+    "place": "rose conservatory",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: arched rose trellis, connected naturally to climbing roses",
+      "foreground: terracotta pots, greenhouse tiled path, and marble basin"
+    ],
+    "light": "a single coherent light source appropriate to glass roof and sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "rose conservatory"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 7,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 49,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAABBCC",
+      "AAABBCC",
+      "AAABBCC",
+      "DDDBBCC",
+      "DDDBBCC",
+      "EFFBBGG",
+      "EFFHHGG"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        1,
+        4
+      ],
+      "C": [
+        4,
+        6
+      ],
+      "D": [
+        4,
+        1
+      ],
+      "E": [
+        5,
+        0
+      ],
+      "F": [
+        6,
+        2
+      ],
+      "G": [
+        5,
+        6
+      ],
+      "H": [
+        6,
+        4
+      ]
+    },
+    "hidden": [
+      "C"
+    ],
+    "locks": {}
+  }
+}

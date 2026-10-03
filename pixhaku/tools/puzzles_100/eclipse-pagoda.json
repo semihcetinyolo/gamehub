@@ -1,0 +1,156 @@
+{
+  "id": "eclipse-pagoda",
+  "tr": "Tutulma Pagodası",
+  "artName": "Eclipse Pagoda",
+  "variety": "Uzak hücre ilişkileri · kesişim",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "soft eclipse sky",
+      "soft eclipse sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "mountaintop pagoda",
+      "mountaintop pagoda",
+      "#b88c67"
+    ],
+    "C": [
+      "ancient pines",
+      "ancient pines",
+      "#759783"
+    ],
+    "D": [
+      "stone lantern garden",
+      "stone lantern garden",
+      "#d6b57c"
+    ],
+    "E": [
+      "long stone stairs",
+      "long stone stairs",
+      "#bdb5a2"
+    ],
+    "F": [
+      "reflective mountain pool",
+      "reflective mountain pool",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "eclipse pagoda",
+    "place": "eclipse pagoda",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: mountaintop pagoda, connected naturally to ancient pines",
+      "foreground: stone lantern garden, long stone stairs, and reflective mountain pool"
+    ],
+    "light": "a single coherent light source appropriate to soft eclipse sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "eclipse pagoda"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "start": [
+      0,
+      0
+    ],
+    "maxTech": 4,
+    "effortTarget": 128,
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      14
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 2,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAAAB",
+      "CCCCCDDB",
+      "EEEEFDDB",
+      "GGHIFDDB",
+      "GGHIFDDB",
+      "GGHIFDDB",
+      "GGJIFKKB",
+      "GGJILKKB",
+      "GGJILKKB"
+    ],
+    "clues": {
+      "A": [
+        0,
+        2
+      ],
+      "B": [
+        6,
+        7
+      ],
+      "C": [
+        1,
+        2
+      ],
+      "D": [
+        2,
+        5
+      ],
+      "E": [
+        2,
+        1
+      ],
+      "F": [
+        4,
+        4
+      ],
+      "G": [
+        5,
+        1
+      ],
+      "H": [
+        4,
+        2
+      ],
+      "I": [
+        7,
+        3
+      ],
+      "J": [
+        7,
+        2
+      ],
+      "K": [
+        8,
+        6
+      ],
+      "L": [
+        7,
+        4
+      ]
+    },
+    "hidden": [
+      "B",
+      "K"
+    ],
+    "locks": {
+      "G": 5
+    }
+  }
+}

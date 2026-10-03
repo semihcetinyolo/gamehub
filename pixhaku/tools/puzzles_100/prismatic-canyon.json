@@ -1,0 +1,157 @@
+{
+  "id": "prismatic-canyon",
+  "tr": "Prizma Kanyonu",
+  "artName": "Prismatic Canyon",
+  "variety": "Uzak hücre ilişkileri · kesişim",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "warm sunset sky",
+      "warm sunset sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "rainbow mineral canyon",
+      "rainbow mineral canyon",
+      "#b88c67"
+    ],
+    "C": [
+      "quartz cliffs",
+      "quartz cliffs",
+      "#759783"
+    ],
+    "D": [
+      "crystal outcrops",
+      "crystal outcrops",
+      "#d6b57c"
+    ],
+    "E": [
+      "narrow canyon trail",
+      "narrow canyon trail",
+      "#bdb5a2"
+    ],
+    "F": [
+      "emerald river",
+      "emerald river",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "prismatic canyon",
+    "place": "prismatic canyon",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: rainbow mineral canyon, connected naturally to quartz cliffs",
+      "foreground: crystal outcrops, narrow canyon trail, and emerald river"
+    ],
+    "light": "a single coherent light source appropriate to warm sunset sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "prismatic canyon"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 10,
+    "start": [
+      0,
+      0
+    ],
+    "maxTech": 4,
+    "effortTarget": 137,
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      14
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 2,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABBCDDE",
+      "AABBCDDE",
+      "AABBCDDE",
+      "AABBCDDE",
+      "FFFFFGHE",
+      "FFFFFGHE",
+      "IIJJJGHE",
+      "IIJJJGHE",
+      "IIJJJGHK",
+      "IILLLGHK"
+    ],
+    "clues": {
+      "A": [
+        2,
+        1
+      ],
+      "B": [
+        2,
+        2
+      ],
+      "C": [
+        0,
+        4
+      ],
+      "D": [
+        2,
+        5
+      ],
+      "E": [
+        2,
+        7
+      ],
+      "F": [
+        5,
+        1
+      ],
+      "G": [
+        6,
+        5
+      ],
+      "H": [
+        6,
+        6
+      ],
+      "I": [
+        8,
+        0
+      ],
+      "J": [
+        7,
+        3
+      ],
+      "K": [
+        8,
+        7
+      ],
+      "L": [
+        9,
+        2
+      ]
+    },
+    "hidden": [
+      "A",
+      "F"
+    ],
+    "locks": {
+      "E": 3
+    }
+  }
+}

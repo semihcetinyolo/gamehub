@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 "use strict";
-// Builds the Pixhaku Level 4–23 pack from tools/pack_4-23.js:
-//   pixhaku_level_creation_4-23.html   embedded artwork, drafts, zones, solve path, prompts
-//   taslaklar/levelN-taslak.png        1024×1024 zone drafts for the image model (no numbers)
-//   levels_4-23.js                     level objects in Pixhaku_prototype.html's format
+// Builds the 100-level campaign from pack_4-23.js, puzzles_100/ and the three tutorials:
+//   pixhaku_level_creation_1-100.html  artwork, drafts, zones, solve path, prompts (also at the old 4-23 URL)
+//   taslaklar/<id>-taslak.png         zone drafts in the board's aspect ratio (no numbers)
+//   levels_4-100.js                   97 level objects in Pixhaku_prototype.html's format
+//   levels_manifest.json             all 100 levels, stable IDs, metrics and asset paths
 //   Pixhaku_prototype.html             the generated level block (pictures, or drafts until they exist)
 //   generator.js                       the solver + difficulty profiles for making levels in the game
 //   (Fugo upload: python3 fugo_export.py pixhaku from the repo root)
@@ -18,16 +19,18 @@ const fs = require("fs");
 const path = require("path");
 const zlib = require("zlib");
 const { analyse, parseLayout, placeOf, orient, checkSpec, generatePuzzle } = require("./shikaku");
-const PACK = require("./pack_4-23");
+const LEGACY_PACK = require("./pack_4-23");
+const THEMES = require("./themes_100");
+const PACK = [...LEGACY_PACK, ...THEMES.map((t) => require(`./puzzles_100/${t.id}.json`))];
 
 const ROOT = path.resolve(__dirname, "..");
 const DRAFT_DIR = "taslaklar";
-const PAGE = "pixhaku_level_creation_4-23.html";
-const DATA = "levels_4-23.js";
+const PAGE = "pixhaku_level_creation_1-100.html";
+const DATA = "levels_4-100.js";
 const ART_DIR = "assets/levels";
 
 // The picture has the board's proportions: 1024 wide, 1024 × rows / cols tall. Square
-// levels use assets/levels/level-N.jpg; the others expect level-N-<cols>x<rows>.jpg, so an
+// levels use assets/levels/<id>.jpg; the others expect <id>-<cols>x<rows>.jpg, so an
 // old square picture is never stretched onto a tall board.
 const artSize = (L) => [1024, Math.round((1024 * L.spec.rows) / L.spec.cols)];
 const isSquare = (L) => L.spec.cols === L.spec.rows;
@@ -39,6 +42,7 @@ function artPath(L) {
 }
 
 function embeddedArt(L) {
+  if (L.embedded) return L.embedded;
   const file = artPath(L);
   return file ? `data:image/jpeg;base64,${fs.readFileSync(path.join(ROOT, file)).toString("base64")}` : null;
 }
@@ -76,6 +80,8 @@ function buildLevel(L, { search }) {
     savePuzzle(L);
   }
   const layout = parseLayout(L.puzzle.grid);
+  if (layout.cols !== L.spec.cols || layout.rows !== L.spec.rows || layout.cols > 8 || layout.rows > 10)
+    throw new Error(`${L.id}: board must match its spec and fit within 8 columns × 10 rows`);
   const locks = L.puzzle.locks || {};
   const clues = layout.zones.map((z) => {
     const [r, c] = L.puzzle.clues[z.key] || [];
@@ -178,7 +184,9 @@ function reasonText(m, st) {
 function openingText(m) {
   const { a } = m;
   const opens = a.steps.slice(0, a.startOptions);
-  let html = opens.length === 1
+  let html = opens.length === 0
+    ? `<p><span class="k">Mantıkla açılış</span> Doğrudan belli parça yok. İlk hamle: ${TECH[a.steps[0].tech][0]}; ${reasonText(m, a.steps[0])}.</p>`
+    : opens.length === 1
     ? `<p><span class="k">Açılış</span> ${openingPiece(m, opens[0])}</p>`
     : `<p><span class="k">İki açılış</span> ${opens.map((st) => openingPiece(m, st)).join(" ")}${m.L.spec.twoFronts ? " İki uçtan başlayıp ortada buluşuyorsun." : " İstediğinden başlayabilirsin."}</p>`;
   const k = a.steps.findIndex((st) => st.tech >= 2 && st.orients.length >= 2);
@@ -245,11 +253,11 @@ function boardSVG(m) {
 }
 
 function chartSVG(models) {
-  const W = 860, left = 40, right = 850, top = 22, base = 200;
+  const W = Math.max(860, models.length * 30 + 50), left = 40, right = W - 10, top = 22, base = 200;
   const stepV = 20, max = 100;
   const band = (right - left) / models.length, bw = 22;
   const y = (v) => base - (v / max) * (base - top);
-  let s = `<svg class="chart" viewBox="0 0 ${W} 232" role="group" aria-label="Level başına zorluk skoru">`;
+  let s = `<svg class="chart" style="width:${W}px" width="${W}" height="232" viewBox="0 0 ${W} 232" role="group" aria-label="Level başına zorluk skoru">`;
   for (let t = 0; t < max; t += max > 100 ? 2 * stepV : stepV) {
     s += `<line x1="${left}" x2="${right}" y1="${y(t)}" y2="${y(t)}" class="${t ? "grid" : "base"}"/><text class="tick" x="${left - 8}" y="${y(t) + 4}" text-anchor="end">${t}</text>`;
   }
@@ -271,6 +279,7 @@ function chartSVG(models) {
 
 // ---------- prompt ----------
 function promptText(m) {
+  if (m.static) return `Existing tutorial art: ${esc(m.L.artName)}. Preserve this original image.`;
   const { L, art: layout } = m;
   const sc = L.scene, n = layout.zones.length, N = WORDS[n] || String(n);
   const lines = layout.zones.map((z, k) => {
@@ -305,6 +314,8 @@ function levelObject(m, indent = "  ") {
   return [
     `${indent}{`,
     `${i1}// Level ${L.no} — ${L.tr} · ${m.tag} (${m.difficulty}) · ${L.variety}`,
+    `${i1}id: ${JSON.stringify(L.id)},`,
+    `${i1}order: ${L.no},`,
     `${i1}rows: ${puzzle.rows},`,
     `${i1}cols: ${puzzle.cols},`,
     `${i1}clues: [`,
@@ -324,15 +335,15 @@ function levelObject(m, indent = "  ") {
 
 function writeData(models) {
   const body = models.map((m) => levelObject(m)).join(",\n");
-  const js = `// Pixhaku — Level 4–23. tools/build_pack.js üretir; elle değil, tools/pack_4-23.js üzerinden düzenle.
+  const js = `// Pixhaku — üç öğreticiye eklenen 97 level. tools/build_pack.js üretir; kaynak: tools/pack_4-23.js ve tools/puzzles_100/.
 // Pixhaku_prototype.html'deki levels dizisine eklenecek biçimde.
 //   solution  mantıksal çözüm sırasında: Hint her zaman sıradaki kesinleşen parçayı verir.
 //   artImage  üretilmiş görselin proje içindeki yolu; prototipte görsel dosyanın içine gömülür.
-const PIXHAKU_LEVELS_4_23 = [
+const PIXHAKU_LEVELS_4_100 = [
 ${body}
 ];
 
-if (typeof module !== "undefined") module.exports = PIXHAKU_LEVELS_4_23;
+if (typeof module !== "undefined") module.exports = PIXHAKU_LEVELS_4_100;
 `;
   fs.writeFileSync(path.join(ROOT, DATA), js);
 }
@@ -404,7 +415,7 @@ function levelSection(m) {
     </table>
   </div>
   <div class="row solve">
-    <figure>${boardSVG(m)}<figcaption>Oyuncunun gördüğü tahta. Yeşil çerçeve: ${a.startOptions === 2 ? "iki kesin açılış" : "kesin açılış parçası"}.</figcaption></figure>
+    <figure>${boardSVG(m)}<figcaption>Oyuncunun gördüğü tahta. Yeşil çerçeve: ${a.startOptions === 0 ? "doğrudan belli açılış yok" : `${a.startOptions} kesin açılış parçası`}.</figcaption></figure>
     <div class="path">
       ${openingText(m)}
       <p class="k">Çözüm sırası (Hint de bu sırayı izler) · çerçeveli: karar anı</p>
@@ -427,8 +438,8 @@ function writePage(models, order) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pixhaku Level 4–23</title>
-<!-- tools/build_pack.js üretir; içeriği tools/pack_4-23.js'ten düzenle. -->
+<title>Pixhaku · 100 Level Tasarımı</title>
+<!-- tools/build_pack.js üretir; kaynaklar tools/pack_4-23.js, tools/puzzles_100/ ve tools/themes_100.js. -->
 <style>
   :root{--ink:#2b3229;--paper:#e8e3cf;--card:#f8f4e3;--muted:#6a7468;--accent:#477a5b}
   *{box-sizing:border-box;margin:0;padding:0}
@@ -508,28 +519,28 @@ function writePage(models, order) {
 </head>
 <body>
 <div class="wrap">
-  <h1>Level 4–23 — Görseller ve Level Tasarımları</h1>
-  <p class="lead">Prototipteki ilk 3 level'dan sonra gelen 20 yeni level. Üretilmiş görseller, bölge şemaları, çözüm sıraları ve üretim prompt'ları aşağıda. Görseller bu HTML'in içine gömülüdür; sayfayı tek dosya olarak açabilirsin.</p>
-  <p><a class="play-link" href="Pixhaku_prototype.html#level-4">Yeni levelları oyna →</a></p>
+  <h1>Pixhaku — 100 Level Tasarımı</h1>
+  <p class="lead">100 level: ilk 23 bulmaca korunarak 77 özgün bulmaca eklendi. 20 easy · 30 medium · 30 hard · 20 expert. Boyutlar en × boy olarak gösterilir. Üretilmiş görseller, bölge şemaları, çözüm sıraları ve üretim prompt'ları aşağıda. Görseller bu HTML'in içine gömülüdür; sayfayı tek dosya olarak açabilirsin.</p>
+  <p><a class="play-link" href="Pixhaku_prototype.html#level-1">Kampanyayı oyna →</a></p>
   <div class="note">Kurallar: görsel tahtanın oranında, 1024 genişlik (kare level'lar 1024×1024; dikey level'lar örneğin 8×10 tahtada 1024×1280) · görselde yazı olmasın · bölgeler ayrı paneller değil, tek bir sürekli sahnenin altındaki kompozisyon alanları. Her bölgenin kendi renk kimliği olsun ama sınırlar doğal geçişlerle (yol, duvar, gölge, çatı çizgisi) ima edilsin. Prompt'lar Level 3'te doğrulanan "tek sürekli sahne" şablonunu kullanır. Taslak PNG'lerde bölge numarası yok, görsele yazı sızmasın diye. Numaralar yalnızca bu sayfadaki şemalarda. Bölge konuları öneri, değiştirebilirsin. Görsellerin bölge düzeni ile bulmacanın parçaları artık ayrı: bölge tabloları ve prompt'lar görselin nasıl üretildiğini belgeliyor, oyundaki bulmaca daha büyük tahtada kendi parçalarıyla kurulu.</div>
-  <div class="note rule"><b>Level tasarım kuralı:</b> açılış hep kesin, boş tahtada yeri belli olan 1 ya da 2 parça var. Sonrasında level karar anlarıyla ilerliyor: hiçbir parçanın hemen kesin olmadığı, bir sayının dik, yatay ya da kare çizilebilir göründüğü anlar. Bu anlar tahminle değil düşünerek çözülüyor, aşağıdaki dört adımdan biri her seferinde doğru seçeneği gösteriyor. Çözücü her level'ı yalnızca bu adımlarla bitiriyor ve çözümün tek olduğunu ayrıca doğruluyor.
+  <div class="note rule"><b>Level tasarım kuralı:</b> easy, medium ve hard gruplarında açık başlangıçlar bulunur. İleri expert level’larda ilk hamle de mantık gerektirir. Sonrasında level karar anlarıyla ilerliyor: hiçbir parçanın hemen kesin olmadığı, bir sayının dik, yatay ya da kare çizilebilir göründüğü anlar. Bu anlar tahminle değil düşünerek çözülüyor, aşağıdaki dört adımdan biri her seferinde doğru seçeneği gösteriyor. Çözücü her level'ı yalnızca bu adımlarla bitiriyor ve çözümün tek olduğunu ayrıca doğruluyor.
     <ul>
       <li><b>tek yer</b>: ${TECH[1][1]}</li>
       <li><b>tek sahip</b>: ${TECH[2][1]}</li>
       <li><b>kesişim</b>: ${TECH[3][1]}</li>
       <li><b>eleme</b>: ${TECH[4][1]}</li>
     </ul>
-    Tahtalar 6×6'dan başlıyor, en fazla 8 genişlik ve 10 yükseklik (8×8'e kadar kare, üstü 8×9, 7×10, 8×10 gibi dikey). Hamlelerin çoğu kendiliğinden belli değil: easy level'larda en fazla %45'i, hard level'larda yalnızca dörtte biri. Birçok level'da birden fazla gizli sayı (?) var. Kalan her hamle bir karar anı ve karar başına ortalama 3–4 seçenek tartılıyor. En zor level'lar, referans alınan 9×11'lik zor level'ın profiline yakın: hamlelerin yaklaşık %25'i belli, 12'den fazla karar anı. Açılıştan hemen sonraki hamle en fazla "tek sahip" gerektiriyor. Şekiller en×boy (hücre) olarak yazılı. <code>solution</code> dizisi çözüm sırasında olduğu için Hint butonu da her zaman sıradaki mantıklı parçayı verir.
+    Tahtalar 4×4'ten başlıyor, en fazla 8 genişlik ve 10 yükseklik (8×8'e kadar kare, üstü 8×9, 7×10, 8×10 gibi dikey). Başlangıç bulmacaları kuralları öğretir. Sonraki bulmacalarda belli hamleler azalır; büyük parçalar ve uzun şeritler uzak hücreleri birbirine bağlar. Birçok level'da birden fazla gizli sayı (?) var. Kalan her hamle bir karar anı ve karar başına ortalama 3–4 seçenek tartılıyor. Expert grubunda çoğu hamle başka parçaların seçeneklerini değerlendirmeyi gerektirir; gerçek karar ve eleme sayıları her level'ın altında gösterilir. Expert açılışları kesişim gerektirebilir. Gizli sayılar ve kilitler kademeli olarak devreye girer. Şekiller en×boy (hücre) olarak yazılı. <code>solution</code> dizisi çözüm sırasında olduğu için Hint butonu da her zaman sıradaki mantıklı parçayı verir.
   </div>
 
-  ${pendingNote}
+${pendingNote}
   <h3>Zorluk skoru ve sıra</h3>
   <div class="chartbox">
     <div class="legend">${legend}</div>
     <div class="chartscroll">${chartSVG(order)}</div>
     <div class="tip" id="tip"></div>
   </div>
-  <p class="caption">Zorluk puanı: her parça için gereken mantık adımının ağırlığı, o parçayı açık sayılar arasında bulmanın güçlüğü ve karar anında tartılan seçenek sayısı level boyunca toplanır. Skor bu toplamın 0–100'e ölçeklenmiş hali (140 = 100). Etiketler: easy < 30 ≤ medium < 58 ≤ hard < 82 ≤ expert. Level'lar oyunda skora göre sıralı. İlk üç level prototipte elle yazılmış olanlar, onlar da aynı ölçüyle skorlandı. Değerler aşağıdaki tabloda.</p>
+  <p class="caption">Zorluk puanı: her parça için gereken mantık adımının ağırlığı, o parçayı açık sayılar arasında bulmanın güçlüğü ve karar anında tartılan seçenek sayısı level boyunca toplanır. Skor bu toplamın 0–100'e ölçeklenmiş hali (140 = 100). Etiketler: easy < 30 ≤ medium < 58 ≤ hard < 82 ≤ expert. Level'lar oyunda skora göre sıralı. Bu skor çözücü temelli bir tasarım tahminidir; oyuncu testleriyle kalibre edilmelidir. Önceki üç öğretici bulmaca da aynı ölçüyle skorlandı. Değerler aşağıdaki tabloda.</p>
 
   <h3>Genel bakış</h3>
   <div class="scroll"><table class="overview">
@@ -571,6 +582,8 @@ ${models.map(levelSection).join("\n")}
 </html>
 `;
   fs.writeFileSync(path.join(ROOT, PAGE), html);
+  // Keep existing bookmarks useful. This alias also shows the full current campaign.
+  fs.writeFileSync(path.join(ROOT, "pixhaku_level_creation_4-23.html"), html);
 }
 
 // Keep the playable HTML self-contained, including all generated reward images.
@@ -578,6 +591,8 @@ function updatePrototype(models, statics) {
   const file = path.join(ROOT, "Pixhaku_prototype.html");
   let html = fs.readFileSync(file, "utf8");
   const levels = models.map((m) => ({
+    id: m.L.id,
+    order: m.L.no,
     rows: m.puzzle.rows,
     cols: m.puzzle.cols,
     clues: m.gameClues,
@@ -588,12 +603,12 @@ function updatePrototype(models, statics) {
     difficulty: m.difficulty,
     tag: m.tag,
   }));
-  const fixed = statics.map((st) => ({ difficulty: st.difficulty, tag: st.tag }));
+  const fixed = statics.map((st) => ({ id: st.L.id, order: st.L.no, difficulty: st.difficulty, tag: st.tag }));
   const marker = "    // BEGIN GENERATED LEVELS 4-23";
   const block = `${marker}\n    levels.push(...${JSON.stringify(levels)});\n` +
-    `    // difficulty score 0-100 and easy/medium/hard tag for the hand-made first levels, then play in score order\n` +
+    `    // Stable IDs and difficulty metadata for the tutorials; play all levels in campaign order.\n` +
     `    ${JSON.stringify(fixed)}.forEach((d, i) => Object.assign(levels[i], d));\n` +
-    `    levels.sort((a, b) => a.difficulty - b.difficulty);\n    // END GENERATED LEVELS 4-23\n\n`;
+    `    levels.sort((a, b) => a.order - b.order);\n    // END GENERATED LEVELS 4-23\n\n`;
   if (html.includes(marker)) {
     html = html.replace(/    \/\/ BEGIN GENERATED LEVELS 4-23[\s\S]*?    \/\/ END GENERATED LEVELS 4-23\n\n/, () => block);
   } else {
@@ -608,17 +623,29 @@ function updatePrototype(models, statics) {
 // The hand-made levels at the top of the prototype's levels array (read from its source,
 // which the build never reorders) are scored too, so the whole game plays in one order.
 function staticLevels() {
+  const vm = require("vm");
   const html = fs.readFileSync(path.join(ROOT, "Pixhaku_prototype.html"), "utf8");
+  const context = {};
+  for (const m of html.matchAll(/const (LEVEL\d_ART) = ("[^"]+");/g)) context[m[1]] = JSON.parse(m[2]);
   const src = html.slice(html.indexOf("const levels = ["), html.indexOf("// BEGIN GENERATED LEVELS"));
-  const out = [];
-  for (const m of src.matchAll(/rows: (\d+),\s*cols: (\d+),\s*clues: \[([\s\S]*?)\],[\s\S]*?artName: "([^"]+)"/g)) {
-    const clues = [...m[3].matchAll(/\{ r: (\d+), c: (\d+), n: (\d+)(, h: 1)? \}/g)].map((x) => ({ r: +x[1], c: +x[2], n: +x[3], ...(x[4] ? { h: 1 } : {}) }));
-    const a = analyse({ rows: +m[1], cols: +m[2], clues });
-    if (!a.unique || !a.solved) throw new Error(`prototype level "${m[4]}" is not uniquely solvable`);
-    const difficulty = difficultyOf(a.effort);
-    out.push({ static: true, L: { tr: m[4], artName: m[4] }, a, difficulty, tag: tagOf(difficulty) });
-  }
-  return out;
+  const originals = vm.runInNewContext(src + "; levels", context);
+  if (originals.length !== 3) throw new Error("Expected exactly three tutorial levels");
+  return originals.map((v) => {
+    const id = v.artName.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    const grid = Array.from({length:v.rows}, () => Array(v.cols).fill("."));
+    v.solution.forEach(([r0,c0,r1,c1],k) => { for(let r=r0;r<=r1;r++) for(let c=c0;c<=c1;c++) grid[r][c]=String.fromCharCode(65+k); });
+    const clues={},hidden=[];
+    for(const c of v.clues) {const k=grid[c.r][c.c]; clues[k]=[c.r,c.c]; if(c.h) hidden.push(k);}
+    const zones=Object.fromEntries(v.solution.map((_,k)=>[String.fromCharCode(65+k),[v.artName, v.artName, ["#a9cce2","#b88c67","#759783","#d6b57c","#bdb5a2","#739fba"][k%6]]]));
+    const L={id,tr:v.artName,artName:v.artName,embedded:v.artImage,artGrid:grid.map(r=>r.join("")),zones,
+      variety:"Başlangıç",spec:{cols:v.cols,rows:v.rows,start:[1,100],maxTech:4,calm:0},
+      puzzle:{grid:grid.map(r=>r.join("")),clues,hidden},scene:{what:v.artName}};
+    const file=path.join(ROOT,artFile(L));
+    if(!fs.existsSync(file)) fs.writeFileSync(file,Buffer.from(v.artImage.split(",")[1],"base64"));
+    const model=buildLevel(L,{search:false});
+    const difficulty=difficultyOf(model.a.effort);
+    return {...model,static:true,difficulty,tag:tagOf(difficulty)};
+  });
 }
 
 // ---------- in-game generator ----------
@@ -750,6 +777,20 @@ ${solver}
   fs.writeFileSync(path.join(ROOT, "generator.js"), js);
 }
 
+function writeCatalog(order) {
+  const unescape = s => s.replace(/<[^>]*>/g, "").replace(/&amp;/g,"&").replace(/&quot;/g,'"').replace(/&lt;/g,"<").replace(/&gt;/g,">");
+  const catalog = order.map(m => ({
+    order:m.L.no, id:m.L.id, name:m.L.artName, nameTr:m.L.tr, cols:m.layout.cols, rows:m.layout.rows,
+    difficulty:m.difficulty, tag:m.tag, effort:m.a.effort, pieces:m.layout.zones.length,
+    metrics:{decisions:m.a.decisions, certainShare:m.a.t1Frac, options:m.a.avgLive, deep:m.a.deep, cornerShare:m.a.cornerFrac, openingTechnique:m.a.startTech},
+    clues:m.gameClues,solution:m.solution,art:artFile(m.L),artReady:!!artPath(m.L),
+    draft:draftFile(m.L),prompt:unescape(promptText(m)),tutorial:!!m.static,
+  }));
+  fs.writeFileSync(path.join(ROOT,"levels_manifest.json"),JSON.stringify(catalog,null,2)+"\n");
+  fs.writeFileSync(path.join(ROOT,"assets/levels/prompts_100.json"),JSON.stringify(catalog.map(({order,id,cols,rows,art,artReady,prompt})=>({order,id,cols,rows,art,artReady,prompt})),null,2)+"\n");
+  if(catalog.length!==100) throw new Error(`Expected 100 levels, got ${catalog.length}`);
+}
+
 // ---------- main ----------
 function main() {
   const search = process.argv.includes("--search");
@@ -757,13 +798,14 @@ function main() {
   for (const m of models) { m.difficulty = difficultyOf(m.a.effort); m.tag = tagOf(m.difficulty); }
   const statics = staticLevels();
   // stable sort: equal scores keep the prototype first, then pack order
-  const order = [...statics, ...models].map((m, i) => ({ m, i })).sort((x, y) => x.m.difficulty - y.m.difficulty || x.i - y.i).map(({ m }) => m);
+  const order = [...statics, ...models].map((m, i) => ({ m, i })).sort((x, y) => x.m.difficulty - y.m.difficulty || x.m.a.effort - y.m.a.effort || x.i - y.i).map(({ m }) => m);
   order.forEach((m, i) => { m.L.no = i + 1; });
   const pack = order.filter((m) => !m.static);
   fs.mkdirSync(path.join(ROOT, DRAFT_DIR), { recursive: true });
-  for (const m of pack) writeDraftPNG(m, path.join(ROOT, draftFile(m.L)));
+  for (const m of order) writeDraftPNG(m, path.join(ROOT, draftFile(m.L)));
   writeData(pack);
-  writePage(pack, order);
+  writePage(order, order);
+  writeCatalog(order);
   updatePrototype(pack, statics);
   writeGenerator();
   for (const m of order) {
@@ -771,7 +813,8 @@ function main() {
     const where = m.static ? "prototipte sabit" : `${m.layout.cols}x${m.layout.rows} ${String(m.layout.zones.length).padStart(2)} parça`;
     console.log(`Level ${String(m.L.no).padStart(2)}  ${m.tag.padEnd(6)} ${String(m.difficulty).padStart(3)}  ${where.padEnd(17)} belli %${String(Math.round(m.a.t1Frac * 100)).padStart(3)}  karar ${String(m.a.decisions).padStart(2)}  T1-T4 ${t[1]}/${t[2]}/${t[3]}/${t[4]}  ${m.L.tr}`);
   }
-  console.log(`\n→ ${PAGE}, ${DATA}, ${DRAFT_DIR}/ (${pack.length} PNG)`);
+  console.log(`\n→ ${PAGE}, ${DATA}, ${DRAFT_DIR}/ (${order.length} PNG)`);
 }
 
-main();
+if (require.main === module) main();
+module.exports = { buildLevel, staticLevels, difficultyOf, tagOf, artFile, promptText };

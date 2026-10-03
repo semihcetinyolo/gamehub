@@ -1,0 +1,131 @@
+{
+  "id": "berry-picnic",
+  "tr": "Meyveli Piknik",
+  "artName": "Berry Picnic",
+  "variety": "Mantığa alışma",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "soft hills",
+      "soft hills",
+      "#a9cce2"
+    ],
+    "B": [
+      "picnic blanket under oak",
+      "picnic blanket under oak",
+      "#b88c67"
+    ],
+    "C": [
+      "berry bushes",
+      "berry bushes",
+      "#759783"
+    ],
+    "D": [
+      "fruit basket",
+      "fruit basket",
+      "#d6b57c"
+    ],
+    "E": [
+      "grass path",
+      "grass path",
+      "#bdb5a2"
+    ],
+    "F": [
+      "duck beside creek",
+      "duck beside creek",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "berry picnic",
+    "place": "berry picnic",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: picnic blanket under oak, connected naturally to berry bushes",
+      "foreground: fruit basket, grass path, and duck beside creek"
+    ],
+    "light": "a single coherent light source appropriate to soft hills",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "berry picnic"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 7,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 40,
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBBC",
+      "ADDEEC",
+      "ADDEEC",
+      "AFFEEC",
+      "GFFEEC",
+      "GHHHIC",
+      "GHHHIC"
+    ],
+    "clues": {
+      "A": [
+        2,
+        0
+      ],
+      "B": [
+        0,
+        2
+      ],
+      "C": [
+        3,
+        5
+      ],
+      "D": [
+        2,
+        1
+      ],
+      "E": [
+        2,
+        3
+      ],
+      "F": [
+        3,
+        1
+      ],
+      "G": [
+        5,
+        0
+      ],
+      "H": [
+        5,
+        2
+      ],
+      "I": [
+        6,
+        4
+      ]
+    },
+    "hidden": [],
+    "locks": {}
+  }
+}

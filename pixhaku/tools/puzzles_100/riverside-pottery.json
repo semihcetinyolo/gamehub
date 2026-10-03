@@ -1,0 +1,139 @@
+{
+  "id": "riverside-pottery",
+  "tr": "Nehir Kıyısı Çömlekçisi",
+  "artName": "Riverside Pottery",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "willow shade",
+      "willow shade",
+      "#a9cce2"
+    ],
+    "B": [
+      "pottery workshop",
+      "pottery workshop",
+      "#b88c67"
+    ],
+    "C": [
+      "kiln chimney",
+      "kiln chimney",
+      "#759783"
+    ],
+    "D": [
+      "clay pots",
+      "clay pots",
+      "#d6b57c"
+    ],
+    "E": [
+      "riverside stepping stones",
+      "riverside stepping stones",
+      "#bdb5a2"
+    ],
+    "F": [
+      "potter wheel by window",
+      "potter wheel by window",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "riverside pottery",
+    "place": "riverside pottery",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: pottery workshop, connected naturally to kiln chimney",
+      "foreground: clay pots, riverside stepping stones, and potter wheel by window"
+    ],
+    "light": "a single coherent light source appropriate to willow shade",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "riverside pottery"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 8,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 70,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABBCD",
+      "AABBCD",
+      "AABBCD",
+      "EEFGCD",
+      "EEFGCD",
+      "EEFGCD",
+      "HHFICJ",
+      "HHFICJ"
+    ],
+    "clues": {
+      "A": [
+        1,
+        1
+      ],
+      "B": [
+        0,
+        3
+      ],
+      "C": [
+        7,
+        4
+      ],
+      "D": [
+        3,
+        5
+      ],
+      "E": [
+        4,
+        1
+      ],
+      "F": [
+        6,
+        2
+      ],
+      "G": [
+        4,
+        3
+      ],
+      "H": [
+        6,
+        0
+      ],
+      "I": [
+        7,
+        3
+      ],
+      "J": [
+        7,
+        5
+      ]
+    },
+    "hidden": [
+      "B"
+    ],
+    "locks": {}
+  }
+}

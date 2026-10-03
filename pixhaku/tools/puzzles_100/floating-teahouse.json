@@ -1,0 +1,149 @@
+{
+  "id": "floating-teahouse",
+  "tr": "Yüzen Çay Evi",
+  "artName": "Floating Teahouse",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "sunset clouds",
+      "sunset clouds",
+      "#a9cce2"
+    ],
+    "B": [
+      "wooden teahouse on floating rock",
+      "wooden teahouse on floating rock",
+      "#b88c67"
+    ],
+    "C": [
+      "hanging gardens",
+      "hanging gardens",
+      "#759783"
+    ],
+    "D": [
+      "tea terrace",
+      "tea terrace",
+      "#d6b57c"
+    ],
+    "E": [
+      "suspended footbridge",
+      "suspended footbridge",
+      "#bdb5a2"
+    ],
+    "F": [
+      "falling stream",
+      "falling stream",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "floating teahouse",
+    "place": "floating teahouse",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: wooden teahouse on floating rock, connected naturally to hanging gardens",
+      "foreground: tea terrace, suspended footbridge, and falling stream"
+    ],
+    "light": "a single coherent light source appropriate to sunset clouds",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "floating teahouse"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 84,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABCCCCC",
+      "AABCCCCC",
+      "AABDDDEE",
+      "AABDDDEE",
+      "FFBGHHEE",
+      "FFBGHHEE",
+      "FFIGHHJJ",
+      "KKIGHHJJ",
+      "KKIGHHJJ"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        0,
+        2
+      ],
+      "C": [
+        0,
+        6
+      ],
+      "D": [
+        3,
+        4
+      ],
+      "E": [
+        4,
+        6
+      ],
+      "F": [
+        5,
+        0
+      ],
+      "G": [
+        5,
+        3
+      ],
+      "H": [
+        6,
+        4
+      ],
+      "I": [
+        7,
+        2
+      ],
+      "J": [
+        7,
+        6
+      ],
+      "K": [
+        7,
+        0
+      ]
+    },
+    "hidden": [
+      "H"
+    ],
+    "locks": {
+      "B": 5
+    }
+  }
+}

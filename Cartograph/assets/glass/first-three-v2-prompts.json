@@ -1,0 +1,56 @@
+{
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-02T12:34:40.805Z",
+  "assets": [
+    {
+      "level": 2,
+      "id": "turtle",
+      "file": "assets/glass/turtle-v2.png",
+      "prompt": "Use case: stylized-concept. Asset type: finished stained-glass artwork revealed on completion of a four-colour puzzle game, part of a cohesive three-level set. Image 1 is the EXACT layout and colour assignment to preserve. Image 2 is ONLY a reference for realistic glass material, not its composition or colours. Transform image 1 into exquisite photographic artisan stained glass: luminous translucent jewel-coloured glass, subtle organic ripples, tiny trapped bubbles, delicate hammered texture, realistic glass thickness and narrow dark aged lead seams. Warm light transmitted from behind, natural specular highlights, refined material richness with clearly readable large panes. CRITICAL: preserve every seam position, curve, pane boundary, four-colour assignment and outer silhouette EXACTLY from image 1; do not add, delete, merge, split, shift, or reinterpret any pane. Do not add decorative details, cracks, eyes, veins, extra lines or objects. Match Image 1 framing exactly on a portrait 3:4 canvas, preferably 768x1024 or 1536x2048. Strict orthographic front view, full panel with the same size and placement as the guide. Outside the silhouette keep a uniform neutral light grey background. No frame, wall, room, chains, perspective, cast shadows, vignette, typography, logos or watermark. Deliver one finished raster image.\nLevel 2: Deniz Kaplumbağası. A circular stained-glass medallion depicting a geometric sea turtle swimming with four flippers and a tessellated oval shell. Preserve the guide's EXACT round silhouette, head, shell, flippers and all background seams. Do not add eyes or anatomical details. Four glass hues ONLY: sea green #2a9d8f, sandy beige #f1dcb0, salmon coral #fa8072, deep sea blue #264b7a.",
+      "references": [
+        "tools/stained/guides/turtle.png",
+        "vitray example/vitray3.jpg"
+      ]
+    },
+    {
+      "level": 3,
+      "id": "peacock",
+      "file": "assets/glass/peacock-v2.png",
+      "prompt": "Use case: stylized-concept. Asset type: finished stained-glass artwork revealed on completion of a four-colour puzzle game, part of a cohesive three-level set. Image 1 is the EXACT layout and colour assignment to preserve. Image 2 is ONLY a reference for realistic glass material, not its composition or colours. Transform image 1 into exquisite photographic artisan stained glass: luminous translucent jewel-coloured glass, subtle organic ripples, tiny trapped bubbles, delicate hammered texture, realistic glass thickness and narrow dark aged lead seams. Warm light transmitted from behind, natural specular highlights, refined material richness with clearly readable large panes. CRITICAL: preserve every seam position, curve, pane boundary, four-colour assignment and outer silhouette EXACTLY from image 1; do not add, delete, merge, split, shift, or reinterpret any pane. Do not add decorative details, cracks, eyes, veins, extra lines or objects. Match Image 1 framing exactly on a portrait 3:4 canvas, preferably 768x1024 or 1536x2048. Strict orthographic front view, full panel with the same size and placement as the guide. Outside the silhouette keep a uniform neutral light grey background. No frame, wall, room, chains, perspective, cast shadows, vignette, typography, logos or watermark. Deliver one finished raster image.\nLevel 3: Tavus Tüyü. A teardrop-shaped stained-glass panel depicting one peacock feather, with concentric oval eye and geometric flowing barbs. Preserve the guide's EXACT pointed teardrop silhouette, concentric eye, stem and all pane positions. Four glass hues ONLY: sapphire blue #0f4c9c, peacock teal #00a59b, bright gold #f5c518, bronze brown #8a5a2b.",
+      "references": [
+        "tools/stained/guides/peacock.png",
+        "vitray example/vitray3.jpg"
+      ]
+    },
+    {
+      "level": 1,
+      "id": "flower",
+      "file": "assets/glass/flower-v2.png",
+      "prompt": "Use case: stylized-concept. Asset type: finished stained-glass artwork revealed on completion of a four-colour puzzle game, part of a cohesive three-level set. Image 1 is the EXACT layout and colour assignment to preserve. Image 2 is ONLY a reference for realistic glass material, not its composition or colours. Transform image 1 into exquisite photographic artisan stained glass: luminous translucent jewel-coloured glass, subtle organic ripples, tiny trapped bubbles, delicate hammered texture, realistic glass thickness and narrow dark aged lead seams. Warm light transmitted from behind, natural specular highlights, refined material richness with clearly readable large panes. CRITICAL: preserve every seam position, curve, pane boundary, four-colour assignment and outer silhouette EXACTLY from image 1; do not add, delete, merge, split, shift, or reinterpret any pane. Do not add decorative details, cracks, eyes, veins, extra lines or objects. Match Image 1 framing exactly on a portrait 3:4 canvas, preferably 768x1024 or 1536x2048. Strict orthographic front view, full panel with the same size and placement as the guide. Outside the silhouette keep a uniform neutral light grey background. No frame, wall, room, chains, perspective, cast shadows, vignette, typography, logos or watermark. Deliver one finished raster image.\nLevel 1: Güneş Çiçeği. A circular medallion containing a swirling ten-petal sunflower, a yellow central disc and alternating leaf-green, azure-blue and flame-orange petals. Preserve its exactly circular silhouette and empty grey space above and below. Only four glass hues: leaf green #3d8c11, sun yellow #f9d20f, flame orange #e04903, azure blue #0d83d7.",
+      "references": [
+        "tools/stained/guides/flower.png",
+        "vitray example/vitray3.jpg"
+      ]
+    },
+    {
+      "level": null,
+      "id": "valley",
+      "file": "assets/glass/valley-v2.png",
+      "prompt": "Use case: stylized-concept. Asset type: finished stained-glass artwork revealed on completion of a four-colour puzzle game, part of a cohesive three-level set. Image 1 is the EXACT layout and colour assignment to preserve. Image 2 is ONLY a reference for realistic glass material, not its composition or colours. Transform image 1 into exquisite photographic artisan stained glass: luminous translucent jewel-coloured glass, subtle organic ripples, tiny trapped bubbles, delicate hammered texture, realistic glass thickness and narrow dark aged lead seams. Warm light transmitted from behind, natural specular highlights, refined material richness with clearly readable large panes. CRITICAL: preserve every seam position, curve, pane boundary, four-colour assignment and outer silhouette EXACTLY from image 1; do not add, delete, merge, split, shift, or reinterpret any pane. Do not add decorative details, cracks, eyes, veins, extra lines or objects. Match Image 1 framing exactly on a portrait 3:4 canvas, preferably 768x1024 or 1536x2048. Strict orthographic front view, full panel with the same size and placement as the guide. Outside the silhouette keep a uniform neutral light grey background. No frame, wall, room, chains, perspective, cast shadows, vignette, typography, logos or watermark. Deliver one finished raster image.\nLevel 2: Güneşli Vadi. A tall hexagonal stained-glass panel depicting an abstract sunlit valley, a circular apricot sun above layered rolling hills and a winding river. Preserve the exact hexagonal silhouette and pane geometry in the guide. Only four glass hues: spring lime green #8cc63f, apricot #ffb37a, plum rose #b5446e, lagoon turquoise #1aa6b7.",
+      "references": [
+        "tools/stained/guides/valley.png",
+        "vitray example/vitray3.jpg"
+      ]
+    },
+    {
+      "level": null,
+      "id": "butterfly",
+      "file": "assets/glass/butterfly-v2.png",
+      "prompt": "Use case: stylized-concept. Asset type: finished stained-glass artwork revealed on completion of a four-colour puzzle game, part of a cohesive three-level set. Image 1 is the EXACT layout and colour assignment to preserve. Image 2 is ONLY a reference for realistic glass material, not its composition or colours. Transform image 1 into exquisite photographic artisan stained glass: luminous translucent jewel-coloured glass, subtle organic ripples, tiny trapped bubbles, delicate hammered texture, realistic glass thickness and narrow dark aged lead seams. Warm light transmitted from behind, natural specular highlights, refined material richness with clearly readable large panes. CRITICAL: preserve every seam position, curve, pane boundary, four-colour assignment and outer silhouette EXACTLY from image 1; do not add, delete, merge, split, shift, or reinterpret any pane. Do not add decorative details, cracks, eyes, veins, extra lines or objects. Match Image 1 framing exactly on a portrait 3:4 canvas, preferably 768x1024 or 1536x2048. Strict orthographic front view, full panel with the same size and placement as the guide. Outside the silhouette keep a uniform neutral light grey background. No frame, wall, room, chains, perspective, cast shadows, vignette, typography, logos or watermark. Deliver one finished raster image.\nLevel 3: Kelebek. A tall pentagonal stained-glass panel depicting an elegant stylized butterfly with broad jewel-like segmented wings and a slender central body. Preserve the exact pentagonal silhouette and pane geometry in the guide. Only four glass hues: magenta #d6246e, tangerine #ff9f1c, deep teal #0e6e75, lemon chiffon #fff1a8.",
+      "references": [
+        "tools/stained/guides/butterfly.png",
+        "vitray example/vitray3.jpg"
+      ]
+    }
+  ]
+}

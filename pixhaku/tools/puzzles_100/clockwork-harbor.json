@@ -1,0 +1,148 @@
+{
+  "id": "clockwork-harbor",
+  "tr": "Saat Mekanizmalı Liman",
+  "artName": "Clockwork Harbor",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "smoky pastel skyline",
+      "smoky pastel skyline",
+      "#a9cce2"
+    ],
+    "B": [
+      "brass steamship",
+      "brass steamship",
+      "#b88c67"
+    ],
+    "C": [
+      "harbor cranes",
+      "harbor cranes",
+      "#759783"
+    ],
+    "D": [
+      "copper tools",
+      "copper tools",
+      "#d6b57c"
+    ],
+    "E": [
+      "gear-lined dock",
+      "gear-lined dock",
+      "#bdb5a2"
+    ],
+    "F": [
+      "harbor reflections",
+      "harbor reflections",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "clockwork harbor",
+    "place": "clockwork harbor",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: brass steamship, connected naturally to harbor cranes",
+      "foreground: copper tools, gear-lined dock, and harbor reflections"
+    ],
+    "light": "a single coherent light source appropriate to smoky pastel skyline",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "clockwork harbor"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 8,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 99,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAABBC",
+      "DDEFGBBC",
+      "DDEFGBBC",
+      "DDEFGBBC",
+      "DDEFGBBC",
+      "DDHFGBBC",
+      "IIHJGBBK",
+      "IIHJGBBK"
+    ],
+    "clues": {
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        6,
+        6
+      ],
+      "C": [
+        3,
+        7
+      ],
+      "D": [
+        2,
+        0
+      ],
+      "E": [
+        2,
+        2
+      ],
+      "F": [
+        4,
+        3
+      ],
+      "G": [
+        3,
+        4
+      ],
+      "H": [
+        6,
+        2
+      ],
+      "I": [
+        6,
+        0
+      ],
+      "J": [
+        7,
+        3
+      ],
+      "K": [
+        7,
+        7
+      ]
+    },
+    "hidden": [
+      "G"
+    ],
+    "locks": {
+      "B": 4
+    }
+  }
+}

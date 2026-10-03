@@ -1,0 +1,150 @@
+{
+  "id": "aurora-village",
+  "tr": "Kutup Işığı Köyü",
+  "artName": "Aurora Village",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "green aurora sky",
+      "green aurora sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "snowy fishing village",
+      "snowy fishing village",
+      "#b88c67"
+    ],
+    "C": [
+      "icy mountain",
+      "icy mountain",
+      "#759783"
+    ],
+    "D": [
+      "warm cabin windows",
+      "warm cabin windows",
+      "#d6b57c"
+    ],
+    "E": [
+      "snowy harbor walkway",
+      "snowy harbor walkway",
+      "#bdb5a2"
+    ],
+    "F": [
+      "dark fjord reflections",
+      "dark fjord reflections",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "aurora village",
+    "place": "aurora village",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: snowy fishing village, connected naturally to icy mountain",
+      "foreground: warm cabin windows, snowy harbor walkway, and dark fjord reflections"
+    ],
+    "light": "a single coherent light source appropriate to green aurora sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "aurora village"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 10,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 109,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABCCCCD",
+      "ABCCCCD",
+      "ABEEEED",
+      "FBEEEED",
+      "FBEEEED",
+      "FBGGGHD",
+      "FBIIIHD",
+      "FBIIIHJ",
+      "KBIIIHJ",
+      "KBIIIHJ"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        7,
+        1
+      ],
+      "C": [
+        0,
+        2
+      ],
+      "D": [
+        2,
+        6
+      ],
+      "E": [
+        3,
+        4
+      ],
+      "F": [
+        6,
+        0
+      ],
+      "G": [
+        5,
+        3
+      ],
+      "H": [
+        6,
+        5
+      ],
+      "I": [
+        7,
+        3
+      ],
+      "J": [
+        8,
+        6
+      ],
+      "K": [
+        8,
+        0
+      ]
+    },
+    "hidden": [
+      "E"
+    ],
+    "locks": {
+      "D": 3
+    }
+  }
+}

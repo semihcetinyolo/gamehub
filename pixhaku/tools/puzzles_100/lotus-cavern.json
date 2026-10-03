@@ -1,0 +1,149 @@
+{
+  "id": "lotus-cavern",
+  "tr": "Nilüfer Mağarası",
+  "artName": "Lotus Cavern",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "cavern ceiling with light shaft",
+      "cavern ceiling with light shaft",
+      "#a9cce2"
+    ],
+    "B": [
+      "giant lotus on underground lake",
+      "giant lotus on underground lake",
+      "#b88c67"
+    ],
+    "C": [
+      "limestone columns",
+      "limestone columns",
+      "#759783"
+    ],
+    "D": [
+      "glowing flowers",
+      "glowing flowers",
+      "#d6b57c"
+    ],
+    "E": [
+      "mossy stepping stones",
+      "mossy stepping stones",
+      "#bdb5a2"
+    ],
+    "F": [
+      "cascading spring",
+      "cascading spring",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "lotus cavern",
+    "place": "lotus cavern",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: giant lotus on underground lake, connected naturally to limestone columns",
+      "foreground: glowing flowers, mossy stepping stones, and cascading spring"
+    ],
+    "light": "a single coherent light source appropriate to cavern ceiling with light shaft",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "lotus cavern"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 100,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABCCDDD",
+      "AABCCDDD",
+      "AABCCEEF",
+      "AABCCEEF",
+      "GHBIIEEF",
+      "GHBIIEEF",
+      "GHBIIEEF",
+      "GHJJJJJJ",
+      "GHKKKKKK"
+    ],
+    "clues": {
+      "A": [
+        2,
+        0
+      ],
+      "B": [
+        5,
+        2
+      ],
+      "C": [
+        1,
+        3
+      ],
+      "D": [
+        0,
+        5
+      ],
+      "E": [
+        5,
+        5
+      ],
+      "F": [
+        3,
+        7
+      ],
+      "G": [
+        6,
+        0
+      ],
+      "H": [
+        8,
+        1
+      ],
+      "I": [
+        5,
+        4
+      ],
+      "J": [
+        7,
+        4
+      ],
+      "K": [
+        8,
+        3
+      ]
+    },
+    "hidden": [
+      "D"
+    ],
+    "locks": {
+      "K": 2
+    }
+  }
+}

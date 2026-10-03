@@ -1,0 +1,127 @@
+{
+  "id": "bunny-garden",
+  "tr": "Tavşan Bahçesi",
+  "artName": "Bunny Garden",
+  "variety": "Mantığa alışma",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "soft garden hedges",
+      "soft garden hedges",
+      "#a9cce2"
+    ],
+    "B": [
+      "carrot beds",
+      "carrot beds",
+      "#b88c67"
+    ],
+    "C": [
+      "rabbit hutch",
+      "rabbit hutch",
+      "#759783"
+    ],
+    "D": [
+      "resting rabbits",
+      "resting rabbits",
+      "#d6b57c"
+    ],
+    "E": [
+      "garden stepping stones",
+      "garden stepping stones",
+      "#bdb5a2"
+    ],
+    "F": [
+      "watering can and flowers",
+      "watering can and flowers",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "bunny garden",
+    "place": "bunny garden",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: carrot beds, connected naturally to rabbit hutch",
+      "foreground: resting rabbits, garden stepping stones, and watering can and flowers"
+    ],
+    "light": "a single coherent light source appropriate to soft garden hedges",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "bunny garden"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 7,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 29,
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABB",
+      "AAAACC",
+      "DEEFCC",
+      "DEEFCC",
+      "DEEFCC",
+      "DGGFCC",
+      "DGGHHH"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        0,
+        4
+      ],
+      "C": [
+        5,
+        5
+      ],
+      "D": [
+        4,
+        0
+      ],
+      "E": [
+        3,
+        1
+      ],
+      "F": [
+        3,
+        3
+      ],
+      "G": [
+        6,
+        2
+      ],
+      "H": [
+        6,
+        5
+      ]
+    },
+    "hidden": [],
+    "locks": {}
+  }
+}

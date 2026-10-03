@@ -1,0 +1,156 @@
+{
+  "id": "sky-archive",
+  "tr": "Gökyüzü Arşivi",
+  "artName": "Sky Archive",
+  "variety": "Uzak hücre ilişkileri · kesişim",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "cloud-filled golden sky",
+      "cloud-filled golden sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "floating library tower",
+      "floating library tower",
+      "#b88c67"
+    ],
+    "C": [
+      "suspended bookshelves",
+      "suspended bookshelves",
+      "#759783"
+    ],
+    "D": [
+      "reading terrace",
+      "reading terrace",
+      "#d6b57c"
+    ],
+    "E": [
+      "stone bridge in clouds",
+      "stone bridge in clouds",
+      "#bdb5a2"
+    ],
+    "F": [
+      "cascading sky garden",
+      "cascading sky garden",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "sky archive",
+    "place": "sky archive",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: floating library tower, connected naturally to suspended bookshelves",
+      "foreground: reading terrace, stone bridge in clouds, and cascading sky garden"
+    ],
+    "light": "a single coherent light source appropriate to cloud-filled golden sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "sky archive"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "start": [
+      0,
+      0
+    ],
+    "maxTech": 4,
+    "effortTarget": 123,
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      14
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 2,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAABC",
+      "AAAAAABC",
+      "DDEEEEBC",
+      "DDEEEEBC",
+      "DDFFGHBC",
+      "DDFFGHBC",
+      "DDFFGHBI",
+      "JJFFGHBI",
+      "JJKKGLLI"
+    ],
+    "clues": {
+      "A": [
+        0,
+        4
+      ],
+      "B": [
+        4,
+        6
+      ],
+      "C": [
+        1,
+        7
+      ],
+      "D": [
+        4,
+        0
+      ],
+      "E": [
+        3,
+        3
+      ],
+      "F": [
+        5,
+        3
+      ],
+      "G": [
+        5,
+        4
+      ],
+      "H": [
+        5,
+        5
+      ],
+      "I": [
+        7,
+        7
+      ],
+      "J": [
+        8,
+        0
+      ],
+      "K": [
+        8,
+        2
+      ],
+      "L": [
+        8,
+        5
+      ]
+    },
+    "hidden": [
+      "A",
+      "F"
+    ],
+    "locks": {
+      "H": 5
+    }
+  }
+}

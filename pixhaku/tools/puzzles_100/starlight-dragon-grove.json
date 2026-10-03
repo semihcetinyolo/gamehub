@@ -1,0 +1,164 @@
+{
+  "id": "starlight-dragon-grove",
+  "tr": "Yıldızlı Ejderha Korusu",
+  "artName": "Starlight Dragon Grove",
+  "variety": "Uzak hücre ilişkileri · kesişim",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "starry forest canopy",
+      "starry forest canopy",
+      "#a9cce2"
+    ],
+    "B": [
+      "peaceful luminous dragon",
+      "peaceful luminous dragon",
+      "#b88c67"
+    ],
+    "C": [
+      "ancient giant trees",
+      "ancient giant trees",
+      "#759783"
+    ],
+    "D": [
+      "glowing mushrooms",
+      "glowing mushrooms",
+      "#d6b57c"
+    ],
+    "E": [
+      "fern-lined path",
+      "fern-lined path",
+      "#bdb5a2"
+    ],
+    "F": [
+      "quiet forest pool",
+      "quiet forest pool",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "starlight dragon grove",
+    "place": "starlight dragon grove",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: peaceful luminous dragon, connected naturally to ancient giant trees",
+      "foreground: glowing mushrooms, fern-lined path, and quiet forest pool"
+    ],
+    "light": "a single coherent light source appropriate to starry forest canopy",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "starlight dragon grove"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "start": [
+      0,
+      0
+    ],
+    "maxTech": 4,
+    "effortTarget": 138,
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      14
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 2,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBCDDD",
+      "ABBBCDDD",
+      "AEEECFFG",
+      "AEEECFFG",
+      "AHHHCFFG",
+      "IIIICJJG",
+      "IIIICJJK",
+      "LLMMMJJK",
+      "LLNNNJJK"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        0,
+        1
+      ],
+      "C": [
+        2,
+        4
+      ],
+      "D": [
+        0,
+        6
+      ],
+      "E": [
+        3,
+        2
+      ],
+      "F": [
+        3,
+        5
+      ],
+      "G": [
+        3,
+        7
+      ],
+      "H": [
+        4,
+        2
+      ],
+      "I": [
+        5,
+        1
+      ],
+      "J": [
+        7,
+        5
+      ],
+      "K": [
+        7,
+        7
+      ],
+      "L": [
+        8,
+        1
+      ],
+      "M": [
+        7,
+        2
+      ],
+      "N": [
+        8,
+        4
+      ]
+    },
+    "hidden": [
+      "D",
+      "F"
+    ],
+    "locks": {
+      "I": 5
+    }
+  }
+}

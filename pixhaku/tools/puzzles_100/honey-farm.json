@@ -1,0 +1,126 @@
+{
+  "id": "honey-farm",
+  "tr": "Bal Çiftliği",
+  "artName": "Honey Farm",
+  "variety": "Mantığa alışma",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "sunny hills",
+      "sunny hills",
+      "#a9cce2"
+    ],
+    "B": [
+      "colorful beehives",
+      "colorful beehives",
+      "#b88c67"
+    ],
+    "C": [
+      "blossoming trees",
+      "blossoming trees",
+      "#759783"
+    ],
+    "D": [
+      "honey jars",
+      "honey jars",
+      "#d6b57c"
+    ],
+    "E": [
+      "clover path",
+      "clover path",
+      "#bdb5a2"
+    ],
+    "F": [
+      "wooden beekeeper shed",
+      "wooden beekeeper shed",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "honey farm",
+    "place": "honey farm",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: colorful beehives, connected naturally to blossoming trees",
+      "foreground: honey jars, clover path, and wooden beekeeper shed"
+    ],
+    "light": "a single coherent light source appropriate to sunny hills",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "honey farm"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 6,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 35,
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABC",
+      "AAAABC",
+      "DDEFFC",
+      "DDEFFG",
+      "DDEFFG",
+      "HHEFFG"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        0,
+        4
+      ],
+      "C": [
+        1,
+        5
+      ],
+      "D": [
+        4,
+        0
+      ],
+      "E": [
+        2,
+        2
+      ],
+      "F": [
+        2,
+        3
+      ],
+      "G": [
+        4,
+        5
+      ],
+      "H": [
+        5,
+        0
+      ]
+    },
+    "hidden": [],
+    "locks": {}
+  }
+}

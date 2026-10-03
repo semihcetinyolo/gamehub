@@ -1,0 +1,146 @@
+{
+  "id": "frost-palace",
+  "tr": "Buz Sarayı",
+  "artName": "Frost Palace",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "aurora sky",
+      "aurora sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "ice palace gates",
+      "ice palace gates",
+      "#b88c67"
+    ],
+    "C": [
+      "crystalline towers",
+      "crystalline towers",
+      "#759783"
+    ],
+    "D": [
+      "snow sculptures",
+      "snow sculptures",
+      "#d6b57c"
+    ],
+    "E": [
+      "frozen bridge",
+      "frozen bridge",
+      "#bdb5a2"
+    ],
+    "F": [
+      "ice fountain",
+      "ice fountain",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "frost palace",
+    "place": "frost palace",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: ice palace gates, connected naturally to crystalline towers",
+      "foreground: snow sculptures, frozen bridge, and ice fountain"
+    ],
+    "light": "a single coherent light source appropriate to aurora sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "frost palace"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 10,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 97,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAAA",
+      "BCCCDEE",
+      "BCCCDEE",
+      "BCCCDFF",
+      "BGGHDFF",
+      "BGGHDFF",
+      "BGGHDFF",
+      "IGGHDFF",
+      "IGGHDFF",
+      "IGGJJFF"
+    ],
+    "clues": {
+      "A": [
+        0,
+        3
+      ],
+      "B": [
+        3,
+        0
+      ],
+      "C": [
+        1,
+        2
+      ],
+      "D": [
+        6,
+        4
+      ],
+      "E": [
+        1,
+        5
+      ],
+      "F": [
+        5,
+        5
+      ],
+      "G": [
+        5,
+        2
+      ],
+      "H": [
+        5,
+        3
+      ],
+      "I": [
+        8,
+        0
+      ],
+      "J": [
+        9,
+        3
+      ]
+    },
+    "hidden": [
+      "C"
+    ],
+    "locks": {
+      "F": 2
+    }
+  }
+}

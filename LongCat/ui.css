@@ -88,3 +88,8 @@ button,a,summary{touch-action:manipulation}button{font:inherit;cursor:pointer;co
 /* Two action buttons, with comfortable reach on phone screens. */
 .bottom{gap:32px}.bottom .booster{width:104px}
 @media(max-width:360px),(max-height:700px){.bottom{gap:28px}.bottom .booster{width:92px}}
+
+.bottom{gap:14px}.bottom .booster{width:92px}
+@keyframes unspin{0%{transform:rotate(0)}60%{transform:rotate(-380deg) scale(1.15)}100%{transform:rotate(-360deg)}}@keyframes bounce{0%,100%{transform:none}35%{transform:translateY(3px) scale(.95)}}
+#bUndo.spin{animation:bounce .45s ease-out}#bUndo.spin .ui-icon{animation:unspin .5s cubic-bezier(.3,.7,.3,1)}
+#rTime{margin:2px 0 0;font-size:15px;color:#9a6a42;letter-spacing:.4px}

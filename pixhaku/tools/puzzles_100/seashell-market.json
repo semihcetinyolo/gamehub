@@ -1,0 +1,142 @@
+{
+  "id": "seashell-market",
+  "tr": "Deniz Kabuğu Pazarı",
+  "artName": "Seashell Market",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "turquoise bay",
+      "turquoise bay",
+      "#a9cce2"
+    ],
+    "B": [
+      "striped market stalls",
+      "striped market stalls",
+      "#b88c67"
+    ],
+    "C": [
+      "palm grove",
+      "palm grove",
+      "#759783"
+    ],
+    "D": [
+      "shell baskets",
+      "shell baskets",
+      "#d6b57c"
+    ],
+    "E": [
+      "sandy market lane",
+      "sandy market lane",
+      "#bdb5a2"
+    ],
+    "F": [
+      "fishing boat",
+      "fishing boat",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "seashell market",
+    "place": "seashell market",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: striped market stalls, connected naturally to palm grove",
+      "foreground: shell baskets, sandy market lane, and fishing boat"
+    ],
+    "light": "a single coherent light source appropriate to turquoise bay",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "seashell market"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 7,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 67,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABCD",
+      "AAAABCD",
+      "EFGGBCD",
+      "EFGGBCD",
+      "EFHHBII",
+      "JFHHBII",
+      "JFHHKKK"
+    ],
+    "clues": {
+      "A": [
+        0,
+        2
+      ],
+      "B": [
+        3,
+        4
+      ],
+      "C": [
+        2,
+        5
+      ],
+      "D": [
+        3,
+        6
+      ],
+      "E": [
+        4,
+        0
+      ],
+      "F": [
+        4,
+        1
+      ],
+      "G": [
+        2,
+        3
+      ],
+      "H": [
+        4,
+        3
+      ],
+      "I": [
+        5,
+        5
+      ],
+      "J": [
+        5,
+        0
+      ],
+      "K": [
+        6,
+        4
+      ]
+    },
+    "hidden": [
+      "A"
+    ],
+    "locks": {}
+  }
+}

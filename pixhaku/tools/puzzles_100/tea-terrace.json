@@ -1,0 +1,118 @@
+{
+  "id": "tea-terrace",
+  "tr": "Çay Terası",
+  "artName": "Tea Terrace",
+  "variety": "Mantığa alışma",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "misty green hills",
+      "misty green hills",
+      "#a9cce2"
+    ],
+    "B": [
+      "tea pavilion",
+      "tea pavilion",
+      "#b88c67"
+    ],
+    "C": [
+      "terraced tea bushes",
+      "terraced tea bushes",
+      "#759783"
+    ],
+    "D": [
+      "tea basket",
+      "tea basket",
+      "#d6b57c"
+    ],
+    "E": [
+      "winding terrace steps",
+      "winding terrace steps",
+      "#bdb5a2"
+    ],
+    "F": [
+      "tea cups on low table",
+      "tea cups on low table",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "tea terrace",
+    "place": "tea terrace",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: tea pavilion, connected naturally to terraced tea bushes",
+      "foreground: tea basket, winding terrace steps, and tea cups on low table"
+    ],
+    "light": "a single coherent light source appropriate to misty green hills",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "tea terrace"
+  },
+  "spec": {
+    "cols": 5,
+    "rows": 6,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 30,
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAB",
+      "AAAAB",
+      "CCCDB",
+      "CCCDB",
+      "EEEDB",
+      "EEEFF"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        2,
+        4
+      ],
+      "C": [
+        3,
+        0
+      ],
+      "D": [
+        3,
+        3
+      ],
+      "E": [
+        5,
+        2
+      ],
+      "F": [
+        5,
+        3
+      ]
+    },
+    "hidden": [],
+    "locks": {}
+  }
+}

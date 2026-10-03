@@ -1,0 +1,153 @@
+{
+  "id": "dream-weaver-tower",
+  "tr": "Düş Dokuyucu Kulesi",
+  "artName": "Dream Weaver Tower",
+  "variety": "Uzak hücre ilişkileri · kesişim",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "violet starry sky",
+      "violet starry sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "spiraling dream tower",
+      "spiraling dream tower",
+      "#b88c67"
+    ],
+    "C": [
+      "floating fabric ribbons",
+      "floating fabric ribbons",
+      "#759783"
+    ],
+    "D": [
+      "thread garden",
+      "thread garden",
+      "#d6b57c"
+    ],
+    "E": [
+      "curving stone bridge",
+      "curving stone bridge",
+      "#bdb5a2"
+    ],
+    "F": [
+      "moonlit cloud well",
+      "moonlit cloud well",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "dream weaver tower",
+    "place": "dream weaver tower",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: spiraling dream tower, connected naturally to floating fabric ribbons",
+      "foreground: thread garden, curving stone bridge, and moonlit cloud well"
+    ],
+    "light": "a single coherent light source appropriate to violet starry sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "dream weaver tower"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 10,
+    "start": [
+      0,
+      0
+    ],
+    "maxTech": 4,
+    "effortTarget": 130,
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      14
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 2,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAABC",
+      "AAAAABC",
+      "AAAAABC",
+      "DEEEFBC",
+      "DEEEFBG",
+      "DEEEFHG",
+      "DEEEFHG",
+      "DIIIFHG",
+      "JIIIFHG",
+      "JIIIKKK"
+    ],
+    "clues": {
+      "A": [
+        2,
+        3
+      ],
+      "B": [
+        0,
+        5
+      ],
+      "C": [
+        2,
+        6
+      ],
+      "D": [
+        4,
+        0
+      ],
+      "E": [
+        5,
+        3
+      ],
+      "F": [
+        7,
+        4
+      ],
+      "G": [
+        7,
+        6
+      ],
+      "H": [
+        6,
+        5
+      ],
+      "I": [
+        8,
+        1
+      ],
+      "J": [
+        8,
+        0
+      ],
+      "K": [
+        9,
+        5
+      ]
+    },
+    "hidden": [
+      "G",
+      "H"
+    ],
+    "locks": {
+      "A": 2
+    }
+  }
+}

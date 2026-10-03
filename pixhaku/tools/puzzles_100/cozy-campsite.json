@@ -1,0 +1,123 @@
+{
+  "id": "cozy-campsite",
+  "tr": "Sıcak Kamp Alanı",
+  "artName": "Cozy Campsite",
+  "variety": "Mantığa alışma",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "pine forest canopy",
+      "pine forest canopy",
+      "#a9cce2"
+    ],
+    "B": [
+      "canvas tent",
+      "canvas tent",
+      "#b88c67"
+    ],
+    "C": [
+      "tall pines",
+      "tall pines",
+      "#759783"
+    ],
+    "D": [
+      "campfire and kettle",
+      "campfire and kettle",
+      "#d6b57c"
+    ],
+    "E": [
+      "forest trail",
+      "forest trail",
+      "#bdb5a2"
+    ],
+    "F": [
+      "camping chairs by creek",
+      "camping chairs by creek",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "cozy campsite",
+    "place": "cozy campsite",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: canvas tent, connected naturally to tall pines",
+      "foreground: campfire and kettle, forest trail, and camping chairs by creek"
+    ],
+    "light": "a single coherent light source appropriate to pine forest canopy",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "cozy campsite"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 7,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 36,
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AAABBC",
+      "AAABBC",
+      "AAABBC",
+      "AAABBC",
+      "DDEBBC",
+      "DDEBBC",
+      "DDFFGG"
+    ],
+    "clues": {
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        4,
+        3
+      ],
+      "C": [
+        5,
+        5
+      ],
+      "D": [
+        4,
+        0
+      ],
+      "E": [
+        5,
+        2
+      ],
+      "F": [
+        6,
+        3
+      ],
+      "G": [
+        6,
+        5
+      ]
+    },
+    "hidden": [],
+    "locks": {}
+  }
+}

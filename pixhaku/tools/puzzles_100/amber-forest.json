@@ -1,0 +1,145 @@
+{
+  "id": "amber-forest",
+  "tr": "Kehribar Ormanı",
+  "artName": "Amber Forest",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "golden forest canopy",
+      "golden forest canopy",
+      "#a9cce2"
+    ],
+    "B": [
+      "giant amber tree",
+      "giant amber tree",
+      "#b88c67"
+    ],
+    "C": [
+      "moss-covered roots",
+      "moss-covered roots",
+      "#759783"
+    ],
+    "D": [
+      "amber stones",
+      "amber stones",
+      "#d6b57c"
+    ],
+    "E": [
+      "winding fern path",
+      "winding fern path",
+      "#bdb5a2"
+    ],
+    "F": [
+      "golden woodland pool",
+      "golden woodland pool",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "amber forest",
+    "place": "amber forest",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: giant amber tree, connected naturally to moss-covered roots",
+      "foreground: amber stones, winding fern path, and golden woodland pool"
+    ],
+    "light": "a single coherent light source appropriate to golden forest canopy",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "amber forest"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 96,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAAAA",
+      "BBBCCDDD",
+      "BBBCCDDD",
+      "BBBCCEEF",
+      "GGGGHEEF",
+      "GGGGHEEF",
+      "IIIIHEEF",
+      "JJJJHEEF",
+      "JJJJHEEF"
+    ],
+    "clues": {
+      "A": [
+        0,
+        6
+      ],
+      "B": [
+        3,
+        1
+      ],
+      "C": [
+        2,
+        3
+      ],
+      "D": [
+        2,
+        6
+      ],
+      "E": [
+        5,
+        6
+      ],
+      "F": [
+        6,
+        7
+      ],
+      "G": [
+        4,
+        2
+      ],
+      "H": [
+        4,
+        4
+      ],
+      "I": [
+        6,
+        1
+      ],
+      "J": [
+        8,
+        2
+      ]
+    },
+    "hidden": [
+      "H"
+    ],
+    "locks": {
+      "E": 5
+    }
+  }
+}

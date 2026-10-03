@@ -1,0 +1,152 @@
+{
+  "id": "cloud-windmills",
+  "tr": "Bulut Değirmenleri",
+  "artName": "Cloud Windmills",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "peach cloud sea",
+      "peach cloud sea",
+      "#a9cce2"
+    ],
+    "B": [
+      "floating windmill",
+      "floating windmill",
+      "#b88c67"
+    ],
+    "C": [
+      "tall wind turbines",
+      "tall wind turbines",
+      "#759783"
+    ],
+    "D": [
+      "flower island",
+      "flower island",
+      "#d6b57c"
+    ],
+    "E": [
+      "rope bridge",
+      "rope bridge",
+      "#bdb5a2"
+    ],
+    "F": [
+      "waterfall into clouds",
+      "waterfall into clouds",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "cloud windmills",
+    "place": "cloud windmills",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: floating windmill, connected naturally to tall wind turbines",
+      "foreground: flower island, rope bridge, and waterfall into clouds"
+    ],
+    "light": "a single coherent light source appropriate to peach cloud sea",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "cloud windmills"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 8,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 95,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBBBCC",
+      "ABBBBBCC",
+      "ADDEFGCC",
+      "ADDEFGCC",
+      "ADDEFGHI",
+      "JDDEFGHI",
+      "JDDEFKHI",
+      "JDDLLKHI"
+    ],
+    "clues": {
+      "A": [
+        2,
+        0
+      ],
+      "B": [
+        1,
+        2
+      ],
+      "C": [
+        2,
+        6
+      ],
+      "D": [
+        5,
+        1
+      ],
+      "E": [
+        2,
+        3
+      ],
+      "F": [
+        3,
+        4
+      ],
+      "G": [
+        4,
+        5
+      ],
+      "H": [
+        5,
+        6
+      ],
+      "I": [
+        5,
+        7
+      ],
+      "J": [
+        5,
+        0
+      ],
+      "K": [
+        7,
+        5
+      ],
+      "L": [
+        7,
+        3
+      ]
+    },
+    "hidden": [
+      "D"
+    ],
+    "locks": {
+      "C": 4
+    }
+  }
+}

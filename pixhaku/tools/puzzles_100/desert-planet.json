@@ -1,0 +1,154 @@
+{
+  "id": "desert-planet",
+  "tr": "Çöl Gezegeni",
+  "artName": "Desert Planet",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "ringed planet sky",
+      "ringed planet sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "small desert outpost",
+      "small desert outpost",
+      "#b88c67"
+    ],
+    "C": [
+      "sandstone spires",
+      "sandstone spires",
+      "#759783"
+    ],
+    "D": [
+      "solar equipment",
+      "solar equipment",
+      "#d6b57c"
+    ],
+    "E": [
+      "dune path",
+      "dune path",
+      "#bdb5a2"
+    ],
+    "F": [
+      "glass greenhouse",
+      "glass greenhouse",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "desert planet",
+    "place": "desert planet",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: small desert outpost, connected naturally to sandstone spires",
+      "foreground: solar equipment, dune path, and glass greenhouse"
+    ],
+    "light": "a single coherent light source appropriate to ringed planet sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "desert planet"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 10,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 101,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAABC",
+      "DEFGHBC",
+      "DEFGHBC",
+      "DEFGHBC",
+      "DEFGHBI",
+      "DEFGHBI",
+      "DEFGHBI",
+      "DJJGHBI",
+      "KJJLLBI",
+      "KJJLLBI"
+    ],
+    "clues": {
+      "A": [
+        0,
+        4
+      ],
+      "B": [
+        0,
+        5
+      ],
+      "C": [
+        2,
+        6
+      ],
+      "D": [
+        4,
+        0
+      ],
+      "E": [
+        3,
+        1
+      ],
+      "F": [
+        3,
+        2
+      ],
+      "G": [
+        4,
+        3
+      ],
+      "H": [
+        6,
+        4
+      ],
+      "I": [
+        8,
+        6
+      ],
+      "J": [
+        8,
+        1
+      ],
+      "K": [
+        8,
+        0
+      ],
+      "L": [
+        9,
+        4
+      ]
+    },
+    "hidden": [
+      "D"
+    ],
+    "locks": {
+      "J": 4
+    }
+  }
+}

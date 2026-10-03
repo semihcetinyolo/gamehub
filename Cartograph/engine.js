@@ -285,6 +285,7 @@
 
   // Boundary segments of one region, including the outer frame.
   function regionOutline(map, r) {
+    if (map.outlines) return map.outlines[r];
     const { cols, rows, orient, atoms } = map;
     const segs = map.edges.filter(e => e[4] === r || e[5] === r).map(e => e.slice(0, 4));
     const owner = (x, y, side) => atoms[(y * cols + x) * 2 + sideAtom(orient[y * cols + x], side)];
@@ -549,35 +550,96 @@
   }
 
 
+  // Easiest logic: a region is settled only when its painted neighbours already use the other colours.
+  function propagationSolves(adj, given, k) {
+    const full = (1 << k) - 1;
+    const cand = given.map(c => (c >= 0 ? 1 << c : full));
+    const single = m => m && !(m & (m - 1));
+    for (let changed = true; changed;) {
+      changed = false;
+      for (let i = 0; i < adj.length; i++) {
+        if (!single(cand[i])) continue;
+        for (const j of adj[i]) if (cand[j] & cand[i] && !single(cand[j])) { cand[j] &= ~cand[i]; changed = true; }
+      }
+    }
+    return cand.every(single);
+  }
+
+  // Empty regions the player can paint straight away, before deducing anything.
+  function openings(adj, given, k) {
+    let n = 0;
+    for (let r = 0; r < adj.length; r++) {
+      if (given[r] >= 0) continue;
+      if (new Set(adj[r].map(j => given[j]).filter(c => c >= 0)).size === k - 1) n++;
+    }
+    return n;
+  }
+
+  // Colour a finished map and strip clues down to a unique, logic-solvable set.
+  // easy: every step must be a plain elimination and at least `easy` regions are paintable at once.
+  function cluesFor(map, k, probe, rand, easy) {
+    const base = countSolutions(map.adj, new Array(map.count).fill(-1), k, 1).solution;
+    if (!base) return null;
+    const solution = tighten(map.adj, base, k, rand);
+    const given = solution.slice();
+    for (const r of shuffle([...Array(map.count).keys()], rand)) {
+      const keep = given[r];
+      given[r] = -1;
+      const ok = (easy ? propagationSolves(map.adj, given, k) : logicSolve(map.adj, given, k, probe).solved)
+        && countSolutions(map.adj, given, k, 2).count === 1;
+      if (!ok) given[r] = keep;
+    }
+    // Give back the clues that open the most regions until the start isn't a wall.
+    while (easy && openings(map.adj, given, k) < easy) {
+      let best = -1, bestN = -1;
+      for (let r = 0; r < map.count; r++) {
+        if (given[r] >= 0) continue;
+        given[r] = solution[r];
+        const n = openings(map.adj, given, k);
+        given[r] = -1;
+        if (n > bestN) { bestN = n; best = r; }
+      }
+      if (best < 0) break;
+      given[best] = solution[best];
+    }
+    return { solution, given, stats: logicSolve(map.adj, given, k, probe).stats };
+  }
+
   function generateOnce(level, k, tier, offset) {
     const spec = DIFFICULTY[tier];
     for (let attempt = offset; attempt < offset + 50; attempt++) {
       const rand = rng(level * 7919 + attempt * 104729 + 17);
       const map = buildMap(spec.cols, spec.rows, spec.regions, rand);
       if (!map || !regionsConnected(map)) continue;
-      const base = countSolutions(map.adj, new Array(map.count).fill(-1), k, 1).solution;
-      if (!base) continue;
-      const solution = tighten(map.adj, base, k, rand);
-      const given = solution.slice();
-      const order = shuffle([...Array(map.count).keys()], rand);
-      for (const r of order) {
-        const keep = given[r];
-        given[r] = -1;
-        const ok = logicSolve(map.adj, given, k, spec.probe).solved
-          && countSolutions(map.adj, given, k, 2).count === 1;
-        if (!ok) given[r] = keep;
-      }
-      const res = logicSolve(map.adj, given, k, spec.probe);
+      const c = cluesFor(map, k, spec.probe, rand);
+      if (!c) continue;
       return {
-        level, seed: attempt, colors: k, map, solution, given,
-        clues: given.filter(c => c >= 0).length,
-        stats: res.stats,
+        level, seed: attempt, colors: k, map, solution: c.solution, given: c.given,
+        clues: c.given.filter(x => x >= 0).length,
+        stats: c.stats,
       };
     }
     throw new Error('generate failed for level ' + level);
   }
 
-  const api = { rng, generate, buildMap, findCornerTouch, progressWithout, countSolutions, logicSolve, triangle, regionOutline,regionsConnected, DIFFICULTY, tierFor };
+  // Hand-made (art) maps: repair point-only touches, then build a puzzle on that exact map.
+  function mapFromAtoms(cols, rows, count, orient, atoms) {
+    return removeCornerTouches(cols, rows, count, [...orient], [...atoms]);
+  }
+
+  function puzzleFromMap(map, seed, locks, easy) {
+    const k = 4, probe = !easy;
+    let best = null;
+    for (let t = 0; t < 6; t++) {
+      const c = cluesFor(map, k, probe, rng(seed * 7919 + t * 104729 + 17), easy);
+      if (c && (!best || c.given.filter(x => x >= 0).length < best.given.filter(x => x >= 0).length)) best = c;
+    }
+    const p = { level: seed, colors: k, map, solution: best.solution, given: best.given, stats: best.stats };
+    p.locks = addLocks(p, locks || 0, probe);
+    return p;
+  }
+
+  const api = { rng, generate, buildMap, mapFromAtoms, puzzleFromMap, finalize, openings, propagationSolves, findCornerTouch, progressWithout, countSolutions, logicSolve, tighten, triangle, regionOutline,regionsConnected, DIFFICULTY, tierFor };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.CartoEngine = api;
 })(typeof window !== 'undefined' ? window : globalThis);

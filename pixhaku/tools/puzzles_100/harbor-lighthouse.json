@@ -1,0 +1,131 @@
+{
+  "id": "harbor-lighthouse",
+  "tr": "Liman Feneri",
+  "artName": "Harbor Lighthouse",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "ocean horizon",
+      "ocean horizon",
+      "#a9cce2"
+    ],
+    "B": [
+      "white lighthouse",
+      "white lighthouse",
+      "#b88c67"
+    ],
+    "C": [
+      "rocky headland",
+      "rocky headland",
+      "#759783"
+    ],
+    "D": [
+      "fishing nets",
+      "fishing nets",
+      "#d6b57c"
+    ],
+    "E": [
+      "harbor steps",
+      "harbor steps",
+      "#bdb5a2"
+    ],
+    "F": [
+      "moored sailboat",
+      "moored sailboat",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "harbor lighthouse",
+    "place": "harbor lighthouse",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: white lighthouse, connected naturally to rocky headland",
+      "foreground: fishing nets, harbor steps, and moored sailboat"
+    ],
+    "light": "a single coherent light source appropriate to ocean horizon",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "harbor lighthouse"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 8,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 46,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAABB",
+      "AAAAABB",
+      "CCDDDEE",
+      "CCDDDEE",
+      "FFFGGEE",
+      "FFFGGHH",
+      "FFFGGHH",
+      "FFFGGHH"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        0,
+        6
+      ],
+      "C": [
+        2,
+        0
+      ],
+      "D": [
+        2,
+        4
+      ],
+      "E": [
+        3,
+        6
+      ],
+      "F": [
+        5,
+        1
+      ],
+      "G": [
+        7,
+        4
+      ],
+      "H": [
+        5,
+        6
+      ]
+    },
+    "hidden": [
+      "E"
+    ],
+    "locks": {}
+  }
+}

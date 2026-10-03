@@ -1,0 +1,157 @@
+{
+  "id": "obsidian-waterfall",
+  "tr": "Obsidyen Şelalesi",
+  "artName": "Obsidian Waterfall",
+  "variety": "Uzak hücre ilişkileri · kesişim",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "misty cavern opening",
+      "misty cavern opening",
+      "#a9cce2"
+    ],
+    "B": [
+      "bright waterfall",
+      "bright waterfall",
+      "#b88c67"
+    ],
+    "C": [
+      "black volcanic columns",
+      "black volcanic columns",
+      "#759783"
+    ],
+    "D": [
+      "emerald moss",
+      "emerald moss",
+      "#d6b57c"
+    ],
+    "E": [
+      "wet basalt steps",
+      "wet basalt steps",
+      "#bdb5a2"
+    ],
+    "F": [
+      "clear turquoise pool",
+      "clear turquoise pool",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "obsidian waterfall",
+    "place": "obsidian waterfall",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: bright waterfall, connected naturally to black volcanic columns",
+      "foreground: emerald moss, wet basalt steps, and clear turquoise pool"
+    ],
+    "light": "a single coherent light source appropriate to misty cavern opening",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "obsidian waterfall"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 10,
+    "start": [
+      0,
+      0
+    ],
+    "maxTech": 4,
+    "effortTarget": 131,
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      14
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 2,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABCCDDDE",
+      "ABCCDDDE",
+      "ABFFDDDE",
+      "ABFFGHHE",
+      "ABFFGHHE",
+      "ABFFGHHI",
+      "ABFFGHHI",
+      "ABFFGHHI",
+      "AJJJJHHK",
+      "AJJJJLLK"
+    ],
+    "clues": {
+      "A": [
+        5,
+        0
+      ],
+      "B": [
+        6,
+        1
+      ],
+      "C": [
+        1,
+        3
+      ],
+      "D": [
+        1,
+        4
+      ],
+      "E": [
+        1,
+        7
+      ],
+      "F": [
+        4,
+        2
+      ],
+      "G": [
+        5,
+        4
+      ],
+      "H": [
+        7,
+        5
+      ],
+      "I": [
+        6,
+        7
+      ],
+      "J": [
+        8,
+        2
+      ],
+      "K": [
+        8,
+        7
+      ],
+      "L": [
+        9,
+        6
+      ]
+    },
+    "hidden": [
+      "F",
+      "J"
+    ],
+    "locks": {
+      "I": 2
+    }
+  }
+}

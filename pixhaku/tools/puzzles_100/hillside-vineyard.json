@@ -1,0 +1,134 @@
+{
+  "id": "hillside-vineyard",
+  "tr": "Yamaç Bağı",
+  "artName": "Hillside Vineyard",
+  "variety": "Çok seçenekli kararlar",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "amber rolling hills",
+      "amber rolling hills",
+      "#a9cce2"
+    ],
+    "B": [
+      "vineyard farmhouse",
+      "vineyard farmhouse",
+      "#b88c67"
+    ],
+    "C": [
+      "grape terraces",
+      "grape terraces",
+      "#759783"
+    ],
+    "D": [
+      "harvest baskets",
+      "harvest baskets",
+      "#d6b57c"
+    ],
+    "E": [
+      "stone vineyard stairs",
+      "stone vineyard stairs",
+      "#bdb5a2"
+    ],
+    "F": [
+      "wine barrels",
+      "wine barrels",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "hillside vineyard",
+    "place": "hillside vineyard",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: vineyard farmhouse, connected naturally to grape terraces",
+      "foreground: harvest baskets, stone vineyard stairs, and wine barrels"
+    ],
+    "light": "a single coherent light source appropriate to amber rolling hills",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "hillside vineyard"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 7,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 58,
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABBC",
+      "AAAABBC",
+      "AAAABBC",
+      "DDDDBBE",
+      "FFFFGHE",
+      "FFFFGHE",
+      "IIIIGHE"
+    ],
+    "clues": {
+      "A": [
+        2,
+        3
+      ],
+      "B": [
+        0,
+        4
+      ],
+      "C": [
+        0,
+        6
+      ],
+      "D": [
+        3,
+        2
+      ],
+      "E": [
+        3,
+        6
+      ],
+      "F": [
+        4,
+        3
+      ],
+      "G": [
+        5,
+        4
+      ],
+      "H": [
+        4,
+        5
+      ],
+      "I": [
+        6,
+        3
+      ]
+    },
+    "hidden": [
+      "B"
+    ],
+    "locks": {}
+  }
+}

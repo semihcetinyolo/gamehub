@@ -1,0 +1,130 @@
+{
+  "id": "clover-stable",
+  "tr": "Yonca Ahırı",
+  "artName": "Clover Stable",
+  "variety": "Mantığa alışma",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "sunlit pasture",
+      "sunlit pasture",
+      "#a9cce2"
+    ],
+    "B": [
+      "timber stable",
+      "timber stable",
+      "#b88c67"
+    ],
+    "C": [
+      "hayloft",
+      "hayloft",
+      "#759783"
+    ],
+    "D": [
+      "pony by fence",
+      "pony by fence",
+      "#d6b57c"
+    ],
+    "E": [
+      "gravel stable path",
+      "gravel stable path",
+      "#bdb5a2"
+    ],
+    "F": [
+      "water trough",
+      "water trough",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "clover stable",
+    "place": "clover stable",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: timber stable, connected naturally to hayloft",
+      "foreground: pony by fence, gravel stable path, and water trough"
+    ],
+    "light": "a single coherent light source appropriate to sunlit pasture",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "clover stable"
+  },
+  "spec": {
+    "cols": 6,
+    "rows": 6,
+    "start": [
+      1,
+      2
+    ],
+    "maxTech": 4,
+    "effortTarget": 39,
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AABBBC",
+      "DEBBBC",
+      "DEBBBC",
+      "DFBBBG",
+      "DFHHIG",
+      "DFHHIG"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        3,
+        3
+      ],
+      "C": [
+        2,
+        5
+      ],
+      "D": [
+        1,
+        0
+      ],
+      "E": [
+        2,
+        1
+      ],
+      "F": [
+        4,
+        1
+      ],
+      "G": [
+        3,
+        5
+      ],
+      "H": [
+        5,
+        2
+      ],
+      "I": [
+        5,
+        4
+      ]
+    },
+    "hidden": [],
+    "locks": {}
+  }
+}

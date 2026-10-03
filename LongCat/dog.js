@@ -104,6 +104,10 @@
     const first = points.length > 1 ? direction(rear, points[1]) : [-td[0], -td[1]];
     const last = points.length > 1 ? direction(points.at(-2), head) : first;
     const width = c * .68;
+    // Safari skips pattern strokes whose path box is flat (a single straight run, i.e. the first
+    // move), which left the body as the dark outline colour. Tilt the end by half a pixel.
+    const flat = points.every(p => Math.abs(p.x - rear.x) < .01) || points.every(p => Math.abs(p.y - rear.y) < .01);
+    const tip = !flat ? head : { x: head.x + (Math.abs(head.x - rear.x) < .01 ? .5 : 0), y: head.y + (Math.abs(head.y - rear.y) < .01 ? .5 : 0) };
     const path = () => {
       g.beginPath(); g.moveTo(rear.x, rear.y);
       for (let i = 1; i < points.length - 1; i++) {
@@ -113,7 +117,7 @@
         g.lineTo(p.x - incoming[0] * radius, p.y - incoming[1] * radius);
         g.quadraticCurveTo(p.x, p.y, p.x + outgoing[0] * radius, p.y + outgoing[1] * radius);
       }
-      if (points.length > 1) g.lineTo(head.x, head.y);
+      if (points.length > 1) g.lineTo(tip.x, tip.y);
       // A tiny segment makes the rounded cap visible even before the first move.
       else g.lineTo(rear.x + first[0] * .01, rear.y + first[1] * .01);
     };
@@ -123,12 +127,13 @@
     }
     // A fine tapered tail grows from the rump, rather than a thick cord.
     const wag = Math.sin(time * (o.state === 'happy' ? 17 : o.state === 'slide' ? 9 : 3)) * (o.state === 'dead' ? .025 : .16);
-    g.save(); g.translate(rear.x, rear.y); g.rotate(Math.atan2(td[1], td[0]));
+    // o.cont: a stretch that comes out of a pit or portal — it has no rump (no tail, no hind legs)
+    if (!o.cont) { g.save(); g.translate(rear.x, rear.y); g.rotate(Math.atan2(td[1], td[0]));
     g.beginPath(); g.moveTo(c * .20, -c * .065);
     g.bezierCurveTo(c * .42, -c * .09, c * .48, c * (wag - .11), c * .66, c * wag);
     g.quadraticCurveTo(c * .49, c * (wag + .045), c * .23, c * .065);
     g.closePath(); g.fillStyle = '#a7542b'; g.strokeStyle = '#623218'; g.lineWidth = c * .028; g.fill(); g.stroke();
-    g.restore();
+    g.restore(); }
 
     // Short, visible dachshund legs. Paws face outwards and alternate while moving.
     const legs = (x, y, d, phase) => {
@@ -142,7 +147,7 @@
         g.restore();
       }
     };
-    legs(rear.x + first[0] * c * .04, rear.y + first[1] * c * .04, first, 0);
+    if (!o.cont) legs(rear.x + first[0] * c * .04, rear.y + first[1] * c * .04, first, 0);
     if (points.length > 1) {
       const length = Math.hypot(head.x - rear.x, head.y - rear.y);
       if (length > c * .9 || points.length > 2) legs(head.x - last[0] * c * .65, head.y - last[1] * c * .65, last, Math.PI);

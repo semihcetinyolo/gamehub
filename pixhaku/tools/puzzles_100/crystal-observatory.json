@@ -1,0 +1,153 @@
+{
+  "id": "crystal-observatory",
+  "tr": "Kristal Gözlemevi",
+  "artName": "Crystal Observatory",
+  "variety": "Uzak hücre ilişkileri · kesişim",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "star-filled indigo sky",
+      "star-filled indigo sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "crystal-domed observatory",
+      "crystal-domed observatory",
+      "#b88c67"
+    ],
+    "C": [
+      "amethyst spires",
+      "amethyst spires",
+      "#759783"
+    ],
+    "D": [
+      "astronomy instruments",
+      "astronomy instruments",
+      "#d6b57c"
+    ],
+    "E": [
+      "glass bridge",
+      "glass bridge",
+      "#bdb5a2"
+    ],
+    "F": [
+      "reflecting crystal basin",
+      "reflecting crystal basin",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "crystal observatory",
+    "place": "crystal observatory",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: crystal-domed observatory, connected naturally to amethyst spires",
+      "foreground: astronomy instruments, glass bridge, and reflecting crystal basin"
+    ],
+    "light": "a single coherent light source appropriate to star-filled indigo sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "crystal observatory"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 10,
+    "start": [
+      0,
+      0
+    ],
+    "maxTech": 4,
+    "effortTarget": 121,
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      14
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 2,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAABBB",
+      "AAAAABBB",
+      "CCCDDBBB",
+      "CCCDDEFG",
+      "CCCDDEFG",
+      "HHIDDEFG",
+      "HHIJJJJG",
+      "HHIJJJJG",
+      "HHIJJJJG",
+      "KKKJJJJG"
+    ],
+    "clues": {
+      "A": [
+        1,
+        3
+      ],
+      "B": [
+        0,
+        6
+      ],
+      "C": [
+        3,
+        1
+      ],
+      "D": [
+        3,
+        3
+      ],
+      "E": [
+        4,
+        5
+      ],
+      "F": [
+        4,
+        6
+      ],
+      "G": [
+        4,
+        7
+      ],
+      "H": [
+        6,
+        0
+      ],
+      "I": [
+        7,
+        2
+      ],
+      "J": [
+        7,
+        5
+      ],
+      "K": [
+        9,
+        0
+      ]
+    },
+    "hidden": [
+      "A",
+      "B"
+    ],
+    "locks": {
+      "D": 3
+    }
+  }
+}

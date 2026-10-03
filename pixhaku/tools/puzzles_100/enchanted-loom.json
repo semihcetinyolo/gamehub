@@ -1,0 +1,149 @@
+{
+  "id": "enchanted-loom",
+  "tr": "Büyülü Tezgâh",
+  "artName": "Enchanted Loom",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "attic beams and stars",
+      "attic beams and stars",
+      "#a9cce2"
+    ],
+    "B": [
+      "magical weaving loom",
+      "magical weaving loom",
+      "#b88c67"
+    ],
+    "C": [
+      "hanging colored threads",
+      "hanging colored threads",
+      "#759783"
+    ],
+    "D": [
+      "yarn baskets",
+      "yarn baskets",
+      "#d6b57c"
+    ],
+    "E": [
+      "woven carpet",
+      "woven carpet",
+      "#bdb5a2"
+    ],
+    "F": [
+      "lantern window",
+      "lantern window",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "enchanted loom",
+    "place": "enchanted loom",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: magical weaving loom, connected naturally to hanging colored threads",
+      "foreground: yarn baskets, woven carpet, and lantern window"
+    ],
+    "light": "a single coherent light source appropriate to attic beams and stars",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "enchanted loom"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 92,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBBBBC",
+      "ADDEEEFC",
+      "ADDEEEFC",
+      "ADDGGGFC",
+      "ADDGGGFC",
+      "AHHHHIFC",
+      "JHHHHIFC",
+      "JKKKKKFC",
+      "JKKKKKFC"
+    ],
+    "clues": {
+      "A": [
+        3,
+        0
+      ],
+      "B": [
+        0,
+        2
+      ],
+      "C": [
+        7,
+        7
+      ],
+      "D": [
+        2,
+        2
+      ],
+      "E": [
+        1,
+        4
+      ],
+      "F": [
+        6,
+        6
+      ],
+      "G": [
+        4,
+        4
+      ],
+      "H": [
+        5,
+        3
+      ],
+      "I": [
+        6,
+        5
+      ],
+      "J": [
+        7,
+        0
+      ],
+      "K": [
+        8,
+        3
+      ]
+    },
+    "hidden": [
+      "A"
+    ],
+    "locks": {
+      "H": 5
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "id": "moonlit-aquarium",
+  "tr": "Ay Işığı Akvaryumu",
+  "artName": "Moonlit Aquarium",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "moonlit glass ceiling",
+      "moonlit glass ceiling",
+      "#a9cce2"
+    ],
+    "B": [
+      "large aquarium tank",
+      "large aquarium tank",
+      "#b88c67"
+    ],
+    "C": [
+      "seaweed columns",
+      "seaweed columns",
+      "#759783"
+    ],
+    "D": [
+      "shell exhibits",
+      "shell exhibits",
+      "#d6b57c"
+    ],
+    "E": [
+      "tiled viewing path",
+      "tiled viewing path",
+      "#bdb5a2"
+    ],
+    "F": [
+      "jellyfish display",
+      "jellyfish display",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "moonlit aquarium",
+    "place": "moonlit aquarium",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: large aquarium tank, connected naturally to seaweed columns",
+      "foreground: shell exhibits, tiled viewing path, and jellyfish display"
+    ],
+    "light": "a single coherent light source appropriate to moonlit glass ceiling",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "moonlit aquarium"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 10,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 93,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBBBB",
+      "ABBBBBB",
+      "ACCCCCD",
+      "ACCCCCD",
+      "AEEEEFD",
+      "AEEEEFD",
+      "AEEEEFD",
+      "AEEEEFG",
+      "HHHHIJG",
+      "HHHHIJG"
+    ],
+    "clues": {
+      "A": [
+        6,
+        0
+      ],
+      "B": [
+        1,
+        2
+      ],
+      "C": [
+        3,
+        4
+      ],
+      "D": [
+        5,
+        6
+      ],
+      "E": [
+        4,
+        2
+      ],
+      "F": [
+        4,
+        5
+      ],
+      "G": [
+        8,
+        6
+      ],
+      "H": [
+        9,
+        3
+      ],
+      "I": [
+        9,
+        4
+      ],
+      "J": [
+        9,
+        5
+      ]
+    },
+    "hidden": [
+      "E"
+    ],
+    "locks": {
+      "A": 4
+    }
+  }
+}

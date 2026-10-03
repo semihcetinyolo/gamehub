@@ -1,0 +1,144 @@
+{
+  "id": "meteor-crater",
+  "tr": "Meteor Krateri",
+  "artName": "Meteor Crater",
+  "variety": "Uzun şeritler · eleme",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "violet twilight sky",
+      "violet twilight sky",
+      "#a9cce2"
+    ],
+    "B": [
+      "glowing meteor in crater",
+      "glowing meteor in crater",
+      "#b88c67"
+    ],
+    "C": [
+      "rock pinnacles",
+      "rock pinnacles",
+      "#759783"
+    ],
+    "D": [
+      "crystal fragments",
+      "crystal fragments",
+      "#d6b57c"
+    ],
+    "E": [
+      "crater rim path",
+      "crater rim path",
+      "#bdb5a2"
+    ],
+    "F": [
+      "shallow reflective pool",
+      "shallow reflective pool",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "meteor crater",
+    "place": "meteor crater",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: glowing meteor in crater, connected naturally to rock pinnacles",
+      "foreground: crystal fragments, crater rim path, and shallow reflective pool"
+    ],
+    "light": "a single coherent light source appropriate to violet twilight sky",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "meteor crater"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 8,
+    "start": [
+      1,
+      1
+    ],
+    "maxTech": 4,
+    "effortTarget": 91,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAABBBCC",
+      "AAABBBCC",
+      "AAADDECC",
+      "AAADDECC",
+      "FFFDDEGG",
+      "FFFDDEGG",
+      "FFFHHHII",
+      "JJJHHHII"
+    ],
+    "clues": {
+      "A": [
+        2,
+        1
+      ],
+      "B": [
+        0,
+        4
+      ],
+      "C": [
+        1,
+        6
+      ],
+      "D": [
+        3,
+        3
+      ],
+      "E": [
+        3,
+        5
+      ],
+      "F": [
+        5,
+        1
+      ],
+      "G": [
+        4,
+        6
+      ],
+      "H": [
+        7,
+        3
+      ],
+      "I": [
+        6,
+        6
+      ],
+      "J": [
+        7,
+        1
+      ]
+    },
+    "hidden": [
+      "F"
+    ],
+    "locks": {
+      "B": 2
+    }
+  }
+}

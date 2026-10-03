@@ -1,0 +1,152 @@
+{
+  "id": "lunar-botanical-dome",
+  "tr": "Ay Botanik Kubbesi",
+  "artName": "Lunar Botanical Dome",
+  "variety": "Uzak hücre ilişkileri · kesişim",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "Earth above lunar horizon",
+      "Earth above lunar horizon",
+      "#a9cce2"
+    ],
+    "B": [
+      "glass botanical dome",
+      "glass botanical dome",
+      "#b88c67"
+    ],
+    "C": [
+      "lunar rock ridge",
+      "lunar rock ridge",
+      "#759783"
+    ],
+    "D": [
+      "flower beds inside dome",
+      "flower beds inside dome",
+      "#d6b57c"
+    ],
+    "E": [
+      "glass corridor",
+      "glass corridor",
+      "#bdb5a2"
+    ],
+    "F": [
+      "small indoor pond",
+      "small indoor pond",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "lunar botanical dome",
+    "place": "lunar botanical dome",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: glass botanical dome, connected naturally to lunar rock ridge",
+      "foreground: flower beds inside dome, glass corridor, and small indoor pond"
+    ],
+    "light": "a single coherent light source appropriate to Earth above lunar horizon",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "lunar botanical dome"
+  },
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "start": [
+      0,
+      0
+    ],
+    "maxTech": 4,
+    "effortTarget": 133,
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      14
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 2,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABBBB",
+      "AAAABBBB",
+      "AAAABBBB",
+      "AAAABBBB",
+      "CCCDDDDD",
+      "CCCEEEEE",
+      "FFFGGGHI",
+      "FFFGGGHI",
+      "JJJJJKKI"
+    ],
+    "clues": {
+      "A": [
+        2,
+        3
+      ],
+      "B": [
+        3,
+        5
+      ],
+      "C": [
+        5,
+        1
+      ],
+      "D": [
+        4,
+        4
+      ],
+      "E": [
+        5,
+        5
+      ],
+      "F": [
+        7,
+        1
+      ],
+      "G": [
+        7,
+        4
+      ],
+      "H": [
+        6,
+        6
+      ],
+      "I": [
+        7,
+        7
+      ],
+      "J": [
+        8,
+        0
+      ],
+      "K": [
+        8,
+        5
+      ]
+    },
+    "hidden": [
+      "E",
+      "F"
+    ],
+    "locks": {
+      "B": 3
+    }
+  }
+}

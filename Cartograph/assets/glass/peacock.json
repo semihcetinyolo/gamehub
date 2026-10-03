@@ -1,0 +1,36 @@
+{
+  "id": "peacock",
+  "model": "gpt-image-2",
+  "generatedAt": "2026-10-03T13:42:16.594304+00:00",
+  "prompt": "Generate a NEW, exquisite PHOTOGRAPHIC ARTWORK of a real artisan-made stained-glass panel depicting a single shimmering peacock feather with its eye and flowing barbs.\nImage 1 is the exact pane layout and colour plan. Image 2 is only a real-world material reference. The output must NOT look like image 1's flat vector drawing: turn every flat area into stunning, convincingly real, richly textured handmade translucent glass — organic ripples, hammered dimples, tiny trapped bubbles, light refracting inside the coloured glass, glowing sunlight transmitted from behind, delicate dark aged metal solder seams. A high-end Tiffany-style art object, photographed perfectly straight-on. Deep and jewel-like, not a cartoon, not paint, not paper.\nCRITICAL STRUCTURE: every flat-coloured area of image 1 is exactly ONE glass pane and every black line is a lead seam. Keep all seams exactly where they are — same positions, same curves, same silhouette and proportions — so the artwork aligns with image 1 when superimposed. Do not add, remove, subdivide, merge or move any pane or seam. Do not paint extra details (no eyes, veins, faces, stripes, text) onto the glass beyond what the panes already show. The flat light-grey area outside the panel's silhouette is not glass: render it as plain dark neutral grey.\nFOUR COLOURS ONLY, PANE BY PANE: the glass uses exactly these four colours: sapphire blue (#0f4c9c), peacock teal (#00a59b), bright gold (#f5c518), bronze brown (#8a5a2b). Every pane keeps the colour image 1 gives it. Make them rich, luminous, translucent versions of those same hues, with natural light and texture variation inside each hue, but no fifth glass colour. Neutral lead seams and specular highlights do not count as colours.\nCOMPOSITION: exactly 3:4 portrait, frontal/orthographic, the panel filling the frame as in image 1. No frame, no wall, no room, no hanging chain, no perspective, no mockup, no vignette, no border. NO TEXT, NO LETTERING, NO LOGOS. Deliver only the finished raster artwork.",
+  "guide": "1ebed1d5c027623920c538de6804b3815f7e627ff6ec0dc6b905628eab2f4378",
+  "sha256": "48460f7f554f862d822324c8a70a8a7f7078375654b31c45fed58649ad4bdb1c",
+  "size": [
+    768,
+    1024
+  ],
+  "palette": [
+    "#0139b1",
+    "#04a396",
+    "#fcd408",
+    "#934707"
+  ],
+  "alignment": {
+    "affine": [
+      [
+        0.99468,
+        0.00232,
+        -0.5327
+      ],
+      [
+        -0.0009,
+        0.99686,
+        5.13616
+      ]
+    ],
+    "seamCorrelation": [
+      0.618,
+      0.682
+    ]
+  }
+}

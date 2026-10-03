@@ -1,0 +1,161 @@
+{
+  "id": "whale-sanctuary",
+  "tr": "Balina Sığınağı",
+  "artName": "Whale Sanctuary",
+  "variety": "Uzak hücre ilişkileri · kesişim",
+  "artGrid": [
+    "AAAAAA",
+    "BBBBCC",
+    "BBBBCC",
+    "DDEECC",
+    "DDEEFF",
+    "DDEEFF"
+  ],
+  "zones": {
+    "A": [
+      "underwater sunbeams",
+      "underwater sunbeams",
+      "#a9cce2"
+    ],
+    "B": [
+      "gentle whale near ruins",
+      "gentle whale near ruins",
+      "#b88c67"
+    ],
+    "C": [
+      "kelp forest",
+      "kelp forest",
+      "#759783"
+    ],
+    "D": [
+      "coral gardens",
+      "coral gardens",
+      "#d6b57c"
+    ],
+    "E": [
+      "ancient seabed avenue",
+      "ancient seabed avenue",
+      "#bdb5a2"
+    ],
+    "F": [
+      "small glowing fish",
+      "small glowing fish",
+      "#739fba"
+    ]
+  },
+  "scene": {
+    "what": "whale sanctuary",
+    "place": "whale sanctuary",
+    "structure": "connected environment",
+    "bullets": [
+      "main focus: gentle whale near ruins, connected naturally to kelp forest",
+      "foreground: coral gardens, ancient seabed avenue, and small glowing fish"
+    ],
+    "light": "a single coherent light source appropriate to underwater sunbeams",
+    "identity": "local materials, depth, vegetation and lighting",
+    "cross": "Paths, water, foliage and shadows connect foreground and background into one place.",
+    "bounds": "changes in terrain, depth and natural edges",
+    "style": "intricate hand-placed pixel clusters, no smooth vector surfaces",
+    "palette": "rich natural colors with soft cream highlights",
+    "readAs": "whale sanctuary"
+  },
+  "spec": {
+    "cols": 7,
+    "rows": 10,
+    "start": [
+      0,
+      0
+    ],
+    "maxTech": 4,
+    "effortTarget": 119,
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      14
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 2,
+    "lockCount": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABCD",
+      "AAAABCD",
+      "EEFGBCD",
+      "EEFGBCD",
+      "EEFGHCD",
+      "EEFGHCD",
+      "EEFIHCJ",
+      "EEFIHKJ",
+      "EEFILKJ",
+      "MMFILKJ"
+    ],
+    "clues": {
+      "A": [
+        0,
+        2
+      ],
+      "B": [
+        2,
+        4
+      ],
+      "C": [
+        5,
+        5
+      ],
+      "D": [
+        2,
+        6
+      ],
+      "E": [
+        5,
+        1
+      ],
+      "F": [
+        8,
+        2
+      ],
+      "G": [
+        4,
+        3
+      ],
+      "H": [
+        5,
+        4
+      ],
+      "I": [
+        6,
+        3
+      ],
+      "J": [
+        7,
+        6
+      ],
+      "K": [
+        8,
+        5
+      ],
+      "L": [
+        8,
+        4
+      ],
+      "M": [
+        9,
+        0
+      ]
+    },
+    "hidden": [
+      "C",
+      "G"
+    ],
+    "locks": {
+      "L": 6
+    }
+  }
+}
