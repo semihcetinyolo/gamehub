@@ -63,6 +63,7 @@ function startLevel(order) {
   document.body.dataset.theme = L.theme;
   const bg = A.themed('bg', L.theme);
   $('#bg').style.backgroundImage = bg ? `url("${bg}")` : '';
+  fillEmpties(true);
   buildBoard();
   buildCards();
   G.slots.forEach(fillSlot);
@@ -124,7 +125,8 @@ function tapBottle(id) {
   const b = bottle(id);
   if (G.selected !== null && busy(bottle(G.selected))) G.selected = null;
   if (b.gone) return;
-  if (busy(b)) return bad(id, b.phase === 'serving' ? 'Bu içecek servis ediliyor.' : 'Şişe yeniden doluyor.');
+  // a failed pour (red shake) also lets go of the bottle in hand
+  if (busy(b)) { G.selected = null; return bad(id, b.phase === 'serving' ? 'Bu içecek servis ediliyor.' : 'Şişe yeniden doluyor.'); }
   if (G.selected === null) {
     if (!b.layers.length) return bad(id, 'Bu şişe boş.');
     G.selected = id;
@@ -132,9 +134,11 @@ function tapBottle(id) {
     G.selected = null;
   } else {
     const src = bottle(G.selected);
-    if (b.layers.length >= G.L.bottleCapacity) return bad(id, b.mixer ? 'Kap dolu.' : 'Bu şişe dolu.');
-    if (!Core.canPour(src.layers, b.layers, G.L.bottleCapacity, b.mixer))
-      return bad(id, 'Şişelerde yalnızca aynı rengin üstüne dökülür. Karıştırmak için kabı kullan.');
+    if (!Core.canPour(src.layers, b.layers, G.L.bottleCapacity, b.mixer)) {
+      G.selected = null;
+      return bad(id, b.layers.length >= G.L.bottleCapacity ? (b.mixer ? 'Kap dolu.' : 'Bu şişe dolu.')
+        : 'Şişelerde yalnızca aynı rengin üstüne dökülür. Karıştırmak için kabı kullan.');
+    }
     pour(src, b);
     G.selected = null;
   }
@@ -150,16 +154,14 @@ function pour(src, dst) {
   const to = layerRect(dst.id, dst.layers.length - 1);
   flyLayer(color, from, to);
   G.pourInto = { id: dst.id, index: dst.layers.length - 1 };
-  // a normal bottle poured empty gets the next refill batch (taken now, in
-  // pour order, as tools/solver.js does); with no refills left it disappears,
-  // unless that leaves fewer normal bottles than colours still on the board
+  // a normal bottle poured empty: with no refills left it disappears, unless
+  // that leaves fewer normal bottles than colours still on the board;
+  // otherwise fillEmpties gives it the next refill batch
   if (!src.mixer && !src.layers.length) {
-    if (G.refillAt < G.L.refills.length) {
-      src.next = G.L.refills[G.refillAt++].slice();
-      src.phase = 'refilling'; src.t = REFILL_S;
-    } else if (mayVanish(src)) src.gone = true;
+    if (G.refillAt >= G.L.refills.length && mayVanish(src)) src.gone = true;
     if (G.selected === src.id) G.selected = null;
   }
+  fillEmpties(false);
   autoServe();
   checkStuck();
 }
@@ -212,6 +214,19 @@ function stepBottles(dt) {
     b.phase = null;
   }
   return changed;
+}
+
+// While refills are left, no normal bottle stays empty: each empty one takes
+// the next batch, in board order (tools/solver.js fillEmpties). At level start
+// this is instant, later it animates (refilling phase).
+function fillEmpties(instant) {
+  for (const b of G.bottles) {
+    if (G.refillAt >= G.L.refills.length) return;
+    if (b.mixer || b.gone || b.phase || b.layers.length) continue;
+    const next = G.L.refills[G.refillAt++].slice();
+    if (instant) b.layers = next;
+    else { b.next = next; b.phase = 'refilling'; b.t = REFILL_S; }
+  }
 }
 
 // Keep one normal bottle per colour still in play (tools/solver.js mayVanish),
@@ -325,9 +340,10 @@ function bottleMarkup(liquidClass = '', backUrl = A.themed('bottle', G && G.L.th
   const B = A.BOTTLE, q = B.liquidByAsset[backUrl && backUrl.split('/').pop()] || B.liquid;
   const svg = bottleSVG();
   const back = backUrl ? `<img class="glass back" src="${backUrl}" alt="">` : svg.back;
+  const reflection = backUrl && backUrl.endsWith('mixer_cocktail_gold.png') ? 'M80 240 L80 690' : 'M78 300 L78 760';
   // The default outline only fits the default bottle. Other vessels keep their own rim and shape.
   const front = backUrl === A.url('bottle') && A.url('bottleOverlay') ? `<img class="glass front" src="${A.url('bottleOverlay')}" alt="">`
-    : backUrl ? `<svg class="glass front" viewBox="0 0 ${B.w} ${B.h}"><path d="M78 300 L78 760" stroke="rgba(255,255,255,.45)" stroke-width="16" stroke-linecap="round"/></svg>`
+    : backUrl ? `<svg class="glass front" viewBox="0 0 ${B.w} ${B.h}"><path d="${reflection}" stroke="rgba(255,255,255,.45)" stroke-width="16" stroke-linecap="round"/></svg>`
     : svg.front;
   return back +
     `<div class="liquid ${liquidClass}" style="left:${q.x / B.w * 100}%;top:${q.y / B.h * 100}%;width:${q.w / B.w * 100}%;height:${q.h / B.h * 100}%;` +
@@ -621,29 +637,39 @@ function showImpression(item) {
 function layout() {
   const app = $('#app');
   const W = app.clientWidth, H = app.clientHeight;
-  const gutter = 16, gap = 10;
-  const cw = Math.min(150, Math.floor((W - 2 * gutter - 2 * gap) / 3));
+  const appStyle = getComputedStyle(app);
+  const contentW = W - parseFloat(appStyle.paddingLeft) - parseFloat(appStyle.paddingRight);
+  const gap = parseFloat(getComputedStyle($('#customers')).columnGap) || 0;
+  const cw = Math.min(150, Math.floor((contentW - 2 * gap) / 3));
   const fixed = 78;                                    // name + timer + paddings
   const ph = Math.max(66, Math.min(cw * 1.08, H * 0.33 - fixed));
   app.style.setProperty('--cw', cw + 'px');
   app.style.setProperty('--ph', ph + 'px');
 
-  const hud = $('#hud').offsetHeight, cust = $('#customers').offsetHeight, hint = $('#hint').offsetHeight;
-  const pad = 14;
-  const availW = W - 2 * gutter - 2 * pad;
-  const availH = H - hud - cust - hint - 4 * 10 - 2 * pad - 8;
+  // Flex layout already accounts for safe areas, responsive gaps, HUD, cards and hint.
+  // Fit the board to its actual remaining space, rather than subtracting estimates.
+  const wrap = $('#boardWrap'), panel = $('#boardPanel');
+  const wrapStyle = getComputedStyle(wrap), panelStyle = getComputedStyle(panel);
+  const availW = Math.max(1, wrap.clientWidth - parseFloat(wrapStyle.paddingLeft) - parseFloat(wrapStyle.paddingRight)
+    - parseFloat(panelStyle.paddingLeft) - parseFloat(panelStyle.paddingRight));
+  const availH = Math.max(1, wrap.clientHeight - parseFloat(wrapStyle.paddingTop) - parseFloat(wrapStyle.paddingBottom)
+    - parseFloat(panelStyle.paddingTop) - parseFloat(panelStyle.paddingBottom));
+  const titleH = board.querySelector('.mixer-tag')?.offsetHeight || 24;
+  const rowPadding = titleH + 22;
+  const heightFactor = 1.18 * 1.1; // Larger mixer plus its selection lift.
   const n = G.bottles.length, ratio = A.BOTTLE.h / A.BOTTLE.w;
   let best = null;
   for (let cols = 1; cols <= Math.max(1, n); cols += 2) {
     const rows = Math.ceil(n / cols);
     const slotW = availW / cols;
-    const bw = Math.min(118, slotW * 0.8, (availH / rows - 16) / (ratio * 1.08));
+    const bw = Math.min(118, slotW * 0.8, (availH / rows - rowPadding) / (ratio * heightFactor));
     if (!best || bw > best.bw + 0.5) best = { cols, rows, bw, slotW };
   }
-  const bw = Math.max(40, Math.floor(best.bw));
-  const bh = Math.round(bw * ratio);
+  // Extremely short viewports scroll inside the board, keeping cards and hint separate.
+  const bw = Math.max(Math.min(28, Math.floor(best.slotW * 0.8)), Math.floor(best.bw));
+  const bh = Math.floor(bw * ratio);
   const slotW = Math.floor(Math.min(best.slotW, bw * 1.45));
-  const slotH = Math.round(bh * 1.08 + 16);
+  const slotH = Math.ceil(bh * heightFactor + rowPadding);
   board.style.setProperty('--bw', bw + 'px');
   board.style.setProperty('--bh', bh + 'px');
   board.style.setProperty('--sw', slotW + 'px');
@@ -660,6 +686,7 @@ function layout() {
   }
 }
 window.addEventListener('resize', () => { if (G) layout(); });
+if (window.visualViewport) window.visualViewport.addEventListener('resize', () => { if (G) layout(); });
 if (document.fonts) document.fonts.ready.then(() => { if (G) layout(); });
 
 // ---------- panels ----------

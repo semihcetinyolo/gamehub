@@ -18,7 +18,7 @@
 </main>
 <script>
 function add(group,name){const f=document.createElement('figure'),a=document.createElement('a'),i=document.createElement('img'),c=document.createElement('figcaption');a.href='img/'+name+'.png';i.src=a.href;i.alt=name;i.loading='lazy';c.textContent=name+'.png';a.append(i);f.append(a,c);document.getElementById(group).append(f)}
-['bg_cafe','bottle','bottle_overlay','mixer_cocktail'].forEach(n=>add('scene',n));
+['bg_cafe','bottle','bottle_overlay','mixer_cocktail_gold'].forEach(n=>add('scene',n));
 ['bg_coffee','bottle_coffee','mixer_coffee'].forEach(n=>add('coffee',n));
 for(let n=1;n<=12;n++)for(const mood of ['','_happy','_sad'])add('customers','customer_'+String(n).padStart(2,'0')+mood);
 ['heart_full','heart_empty','clock','coin','check_badge','icon_pause'].forEach(n=>add('icons',n));

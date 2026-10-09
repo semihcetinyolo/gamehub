@@ -16,6 +16,7 @@
       'bottle_coffee.png': { x: 58, y: 262, w: 284, h: 546, r: 38 },
       'mixer.png': { x: 58, y: 262, w: 284, h: 546, r: 38 },
       'mixer_cocktail.png': { x: 62, y: 200, w: 276, h: 546, r: 38 },
+      'mixer_cocktail_gold.png': { x: 66, y: 190, w: 268, h: 530, r: 34 },
       'mixer_coffee.png': { x: 62, y: 200, w: 276, h: 546, r: 38 },
     },
   };
@@ -24,7 +25,7 @@
     bg: 'bg_cafe.png',
     bottle: 'bottle.png',
     bottleOverlay: 'bottle_overlay.png',
-    mixer: 'mixer_cocktail.png', // same tall glass proportions as the coffee serving glass
+    mixer: 'mixer_cocktail_gold.png', // gold-mounted preparation glass, also used in orders
     // coffee levels (fall back to the cocktail art when missing)
     bg_coffee: 'bg_coffee.png',
     bottle_coffee: 'bottle_coffee.png',

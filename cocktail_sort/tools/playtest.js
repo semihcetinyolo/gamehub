@@ -9,6 +9,7 @@ const sols = require('./solutions.json');
 const URL = 'file://' + path.join(__dirname, '..', 'index.html');
 const fails = [];
 let gone = 0;   // bottles that disappeared over all replays
+const emptyWithRefills = new Set();   // levels where a bottle sat empty while refills were left
 const check = (ok, msg) => { if (!ok) fails.push(msg); };
 
 async function open(browser, level, vp) {
@@ -34,6 +35,12 @@ async function playSolution(page, actions, stopBeforeServe) {
   for (const a of actions) {
     if (a.from === undefined) { if (stopBeforeServe) return served; served++; continue; }
     await idle(page, served);
+    // while refills are left, no normal bottle may sit empty (user bug report)
+    const bad = await page.evaluate(() => {
+      const st = CocktailGame.state(), L = window.COCKTAIL_LEVELS.find(l => l.levelOrder === st.levelOrder);
+      return st.refillAt < L.refills.length && st.bottles.some((b, i) => i !== st.mixer && !b.gone && !b.layers.length);
+    });
+    if (bad) emptyWithRefills.add(await page.evaluate(() => CocktailGame.state().levelOrder));
     await tapBottle(page, a.from); await tapBottle(page, a.to);
   }
   return served;
@@ -102,7 +109,7 @@ async function rules(browser) {
     await tapBottle(page, diff[0]); await tapBottle(page, diff[1]);
     st = await S(page);
     check(JSON.stringify(st.bottles) === snap, 'a normal bottle took a different colour');
-    await tapBottle(page, diff[0]);   // deselect
+    check(st.selected === null, 'a failed pour kept the bottle selected');
   }
   if (same) {
     const n = st.bottles[same[1]].layers.length;
@@ -296,6 +303,7 @@ async function layoutCheck(browser) {
   const levels = only.length ? only : Object.keys(sols).map(Number);
   for (const l of levels) await replay(browser, l);
   console.log(`replayed ${levels.length} levels, ${gone} bottles disappeared`);
+  check(!emptyWithRefills.size, `empty bottle while refills were left: levels ${[...emptyWithRefills].join(', ')}`);
   if (!only.length) check(gone > 0, 'no bottle ever disappeared after the refills ran out');
   if (!only.length) { await rules(browser); console.log('rules checked'); await layoutCheck(browser); console.log('layout checked'); }
   await browser.close();

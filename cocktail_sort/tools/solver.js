@@ -6,8 +6,8 @@
 // only takes a layer when it is empty or its top is the same colour. Only the
 // first `maxActiveCustomers` unserved orders are on screen; when the mixer
 // equals one of them it is served automatically and the mixer empties. A
-// normal bottle that a pour leaves empty is refilled with the next batch of
-// `refills` (the game shows a short animation first); once the refills are
+// normal bottle that is empty (from the start or after a pour) is refilled
+// with the next batch of `refills` (the game shows a short animation first); once the refills are
 // used up, such a bottle disappears for the rest of the level (GONE) unless
 // that would leave fewer normal bottles than colours still on the board.
 'use strict';
@@ -100,16 +100,22 @@ function mayVanish(b, i, E) {
   return left >= colours.size;
 }
 
-// pour i -> j in place; refills i (or removes it when no refills are left) if
-// that emptied a normal bottle. Returns the new refill count.
+// While refills are left no normal bottle stays empty: each empty one takes the
+// next batch, in board order (game.js fillEmpties). Returns the new refill count.
+function fillEmpties(b, r, E) {
+  for (let i = 0; i < b.length && r < E.refills.length; i++) {
+    if (i !== E.M && b[i] === '') b[i] = E.refills[r++];
+  }
+  return r;
+}
+
+// pour i -> j in place; a normal bottle poured empty is refilled (or removed
+// when no refills are left). Returns the new refill count.
 function apply(b, i, j, r, E) {
   b[j] += b[i][b[i].length - 1];
   b[i] = b[i].slice(0, -1);
-  if (!b[i] && i !== E.M) {
-    if (r < E.refills.length) b[i] = E.refills[r++];
-    else if (mayVanish(b, i, E)) b[i] = GONE;
-  }
-  return r;
+  if (!b[i] && i !== E.M && r >= E.refills.length && mayVanish(b, i, E)) b[i] = GONE;
+  return fillEmpties(b, r, E);
 }
 
 // Returns { moves, actions: [{from,to}|{serve,order}] } or null.
@@ -137,7 +143,8 @@ function solveTimed(level, opts = {}) {
 }
 
 function beam(E, W, maxDepth) {
-  const start = { b: E.bottles.slice(), rem: E.orders.map((_, i) => i), r: 0, parent: null, acts: [] };
+  const b0 = E.bottles.slice();
+  const start = { b: b0, rem: E.orders.map((_, i) => i), r: fillEmpties(b0, 0, E), parent: null, acts: [] };
   settle(start.b, start.rem, E, start.acts);
   if (!start.rem.length) return finish(start);
   const seen = new Set([key(start.b, start.rem, 0, E)]);
@@ -187,9 +194,9 @@ function finish(s) {
 function timing(level, actions) {
   const E = encode(level);
   const b = E.bottles.slice();
+  let r = fillEmpties(b, 0, E);
   const queue = E.orders.map((_, i) => i);
   const slots = [];
-  let r = 0;
   let t = T.firstLook;
   const open = at => { if (queue.length) slots.push({ o: queue.shift(), since: at }); };
   for (let k = 0; k < E.K; k++) open(T.arrive);

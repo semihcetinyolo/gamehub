@@ -46,19 +46,19 @@ function bandOf(order) {
 }
 
 // How the free space in the normal bottles is spread, cycled by levelOrder.
-// Bottle positions are shuffled too. The mixer always starts empty.
-const LAYOUTS = ['oneEmpty', 'gaps', 'mixed'];
+// Bottle positions are shuffled too. The mixer always starts empty. No normal
+// bottle starts empty: the game fills every empty one while refills are left.
+const LAYOUTS = ['gaps', 'mixed'];
 
 // Special levels: anything here replaces the computed value for that level.
-//   layout: one of LAYOUTS (+ 'twoEmpty' when freeUnits >= 8)
+//   layout: one of LAYOUTS
 //   wait:   see DIFFICULTY (lower = more patient customers)
 //   dup:    at least two customers want the same recipe
 //   name:   level name (shown in the pause menu)
 const OVERRIDES = {
-  0:  { layout: 'oneEmpty' },
   7:  { dup: true, name: 'İkiz sipariş' },
   12: { layout: 'gaps', name: 'Yarım şişeler' },
-  20: { freeUnits: 8, layout: 'twoEmpty', wait: 0.5, name: 'Sakin akşam' },
+  20: { freeUnits: 8, layout: 'mixed', wait: 0.5, name: 'Sakin akşam' },
   22: { dup: true },
   27: { wait: 0.75, name: 'Yoğun saat' },
   33: { maxActiveCustomers: 2, name: 'Tek tek' },
@@ -147,12 +147,10 @@ function specFor(order) {
 function layoutFill(spec, r) {
   const n = spec.bottleCount - 1, cap = spec.bottleCapacity;
   const fill = Array(n).fill(cap);
-  let free = spec.freeUnits, at = 0;
-  const empty = { twoEmpty: 2, oneEmpty: 1, gaps: 0, mixed: 0 }[spec.layout];
-  for (let i = 0; i < empty && free >= cap; i++) { fill[at++] = 0; free -= cap; }
-  // the rest as gaps: 'gaps' spreads one per bottle, 'mixed' makes them deep
+  let free = spec.freeUnits;
+  // 'gaps' spreads one empty slot per bottle, 'mixed' makes them two deep
   const deep = spec.layout === 'mixed' ? 2 : 1;
-  for (let i = at; free > 0; i = i + 1 < n ? i + 1 : at) {
+  for (let i = 0; free > 0; i = (i + 1) % n) {
     const take = Math.min(deep, free, fill[i] - 1);
     if (take > 0) { fill[i] -= take; free -= take; }
   }
