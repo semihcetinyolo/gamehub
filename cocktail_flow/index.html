@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#f2c79c">
+<title>Cocktail Flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="bg" class="asset" data-label="bg_cafe.png · 1080×1920"></div>
+<main id="app">
+  <header id="hud">
+    <div class="hud-left">
+      <div class="pill coin-pill" id="coins" aria-label="Coin"><span class="coin asset" data-label="coin"></span><b id="coinText">0</b></div>
+    </div>
+    <div class="pill pill-level" id="lvlText">Bölüm 1</div>
+    <div class="hud-right">
+      <button id="btnPause" class="round-btn asset" data-label="icon_pause" aria-label="Duraklat"></button>
+    </div>
+    <div class="hud-row">
+      <div class="pill" id="ordersText">Sipariş 0/0</div>
+      <div class="pill" id="hearts" aria-label="Kalan kalp"></div>
+    </div>
+  </header>
+  <section id="customers" aria-label="Müşteriler"></section>
+  <section id="boardWrap">
+    <div id="boardPanel">
+      <div id="counter" role="group" aria-label="Hazırlık bardakları">
+        <div class="prep-tag" id="prepTag">HAZIRLIK</div>
+        <div id="preps"></div>
+      </div>
+      <div id="lanes" role="group" aria-label="Şişeler"></div>
+    </div>
+  </section>
+  <div id="hint" class="pill" role="status" aria-live="polite"></div>
+</main>
+<div id="fx" aria-hidden="true"></div>
+<div id="serveFeedback" role="status" aria-live="polite" hidden><div class="impression-content"><span class="impression-word"></span><span class="impression-combo" hidden></span></div></div>
+<div id="overlay" class="hidden" role="dialog" aria-modal="true"><div class="panel" id="panel"></div></div>
+<script src="progression.js"></script>
+<script src="core.js"></script>
+<script src="assets.js"></script>
+<script src="levels.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
