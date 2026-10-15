@@ -75,7 +75,7 @@ async function rules(browser) {
     await tap(page, preps[0].id); await tap(page, other.id);
     st = await S(page);
     check(JSON.stringify(st.vessels) === snap2, 'a supply bottle took a different colour');
-    await tap(page, preps[0].id);
+    check(st.selected === null, 'a refused pour kept the bottle selected');
   }
   // emptying a front bottle brings the one behind forward
   await page.evaluate(() => FlowGame.start(15));
@@ -123,11 +123,12 @@ async function rules(browser) {
   await page.evaluate(r => FlowGame.setVessel(4, r), recipe);
   check((await S(page)).served === 1, 'the exact recipe in a glass was not served');
   // layout fits small and large screens without overlap
-  for (const vp of [{ width: 360, height: 640 }, { width: 430, height: 932 }, { width: 768, height: 1024 }]) {
+  for (const vp of [{ width: 360, height: 640 }, { width: 375, height: 553 }, { width: 393, height: 700 }, { width: 430, height: 932 }, { width: 768, height: 1024 }]) {
     const p = await open(browser, 38, vp);
     const r = await p.evaluate(() => {
       const b = document.querySelector('#boardPanel').getBoundingClientRect(), h = document.querySelector('#hint').getBoundingClientRect();
-      return { fits: b.bottom <= h.top + 1 && b.right <= innerWidth && b.left >= 0, w: b.width, h: b.height };
+      const c = document.querySelector('#customers').getBoundingClientRect();
+      return { fits: b.top >= c.bottom - 1 && b.bottom <= h.top + 1 && b.right <= innerWidth && b.left >= 0, w: b.width, h: b.height };
     });
     check(r.fits, `board does not fit ${vp.width}x${vp.height}`);
     if (process.env.SHOT) await p.screenshot({ path: path.join(__dirname, `shot_${vp.width}x${vp.height}.png`) });

@@ -1,0 +1,144 @@
+{
+  "id": "moon-base",
+  "band": "expert",
+  "art": [
+    8,
+    10
+  ],
+  "spec": {
+    "cols": 9,
+    "rows": 12,
+    "maxTech": 4,
+    "effortTarget": 133,
+    "start": [
+      0,
+      0
+    ],
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      13,
+      20
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 2,
+    "keyLocks": 1,
+    "links": 1,
+    "corners": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABCCDEEF",
+      "AABCCDEEF",
+      "AABGHDEEF",
+      "AABGHDEEF",
+      "AABGHDIIF",
+      "AABGHDIIF",
+      "AABGHDIIF",
+      "JJKGHDIIF",
+      "JJKGHDLLF",
+      "MMKGNDLLO",
+      "MMKGNDLLO",
+      "PPPPNDQQO"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        2,
+        2
+      ],
+      "C": [
+        1,
+        4
+      ],
+      "D": [
+        3,
+        5
+      ],
+      "E": [
+        1,
+        6
+      ],
+      "F": [
+        1,
+        8
+      ],
+      "G": [
+        9,
+        3
+      ],
+      "H": [
+        4,
+        4
+      ],
+      "I": [
+        5,
+        6
+      ],
+      "J": [
+        7,
+        1
+      ],
+      "K": [
+        10,
+        2
+      ],
+      "L": [
+        9,
+        7
+      ],
+      "M": [
+        9,
+        1
+      ],
+      "N": [
+        10,
+        4
+      ],
+      "O": [
+        10,
+        8
+      ],
+      "P": [
+        11,
+        1
+      ],
+      "Q": [
+        11,
+        7
+      ]
+    },
+    "hidden": [
+      "A"
+    ],
+    "links": {
+      "J": 1,
+      "M": 1
+    },
+    "parity": {},
+    "more": {},
+    "corners": {
+      "Q": "right"
+    },
+    "locks": {
+      "O": 6
+    },
+    "keys": {
+      "L": "G"
+    },
+    "shapes": {
+      "C": "square",
+      "K": "tall"
+    }
+  }
+}

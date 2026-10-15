@@ -1,0 +1,84 @@
+{
+  "id": "old-clock-shop",
+  "band": "medium",
+  "art": [
+    7,
+    7
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 7,
+    "maxTech": 4,
+    "effortTarget": 55,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      8,
+      12
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1,
+    "shapes": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABCCDD",
+      "AABCCDD",
+      "AABCCDD",
+      "AABCCDD",
+      "AABEEDD",
+      "FFBEEDD",
+      "GGGHHII"
+    ],
+    "clues": {
+      "A": [
+        4,
+        0
+      ],
+      "B": [
+        0,
+        2
+      ],
+      "C": [
+        0,
+        4
+      ],
+      "D": [
+        3,
+        6
+      ],
+      "E": [
+        4,
+        4
+      ],
+      "F": [
+        5,
+        1
+      ],
+      "G": [
+        6,
+        0
+      ],
+      "H": [
+        6,
+        4
+      ],
+      "I": [
+        6,
+        6
+      ]
+    },
+    "hidden": [
+      "C"
+    ],
+    "locks": {},
+    "shapes": {
+      "D": "tall"
+    }
+  }
+}

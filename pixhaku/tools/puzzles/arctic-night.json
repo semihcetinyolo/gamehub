@@ -1,0 +1,106 @@
+{
+  "id": "arctic-night",
+  "band": "medium",
+  "art": [
+    7,
+    7
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 64,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      10,
+      16
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1,
+    "shapes": 1,
+    "parity": 2
+  },
+  "puzzle": {
+    "grid": [
+      "ABBCCDDD",
+      "ABBCCEEE",
+      "ABBCCEEE",
+      "AFFCCGGH",
+      "AFFCCGGH",
+      "AIIIJGGH",
+      "AIIIJKKH",
+      "ALLLJKKH"
+    ],
+    "clues": {
+      "A": [
+        3,
+        0
+      ],
+      "B": [
+        0,
+        1
+      ],
+      "C": [
+        3,
+        4
+      ],
+      "D": [
+        0,
+        6
+      ],
+      "E": [
+        2,
+        7
+      ],
+      "F": [
+        4,
+        1
+      ],
+      "G": [
+        4,
+        5
+      ],
+      "H": [
+        7,
+        7
+      ],
+      "I": [
+        6,
+        2
+      ],
+      "J": [
+        7,
+        4
+      ],
+      "K": [
+        6,
+        5
+      ],
+      "L": [
+        7,
+        2
+      ]
+    },
+    "hidden": [
+      "F"
+    ],
+    "links": {},
+    "parity": {
+      "K": "even",
+      "L": "odd"
+    },
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "J": "tall"
+    }
+  }
+}

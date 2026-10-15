@@ -1,0 +1,74 @@
+{
+  "id": "duck-pond",
+  "band": "easy",
+  "art": [
+    6,
+    6
+  ],
+  "spec": {
+    "cols": 6,
+    "rows": 6,
+    "maxTech": 4,
+    "effortTarget": 27,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0,
+    "shapes": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AAABBC",
+      "AAABBC",
+      "DDDBBC",
+      "DDDBBC",
+      "EEFBBC",
+      "GGFHHH"
+    ],
+    "clues": {
+      "A": [
+        0,
+        2
+      ],
+      "B": [
+        2,
+        4
+      ],
+      "C": [
+        0,
+        5
+      ],
+      "D": [
+        3,
+        1
+      ],
+      "E": [
+        4,
+        1
+      ],
+      "F": [
+        4,
+        2
+      ],
+      "G": [
+        5,
+        1
+      ],
+      "H": [
+        5,
+        5
+      ]
+    },
+    "hidden": [],
+    "locks": {},
+    "shapes": {}
+  }
+}

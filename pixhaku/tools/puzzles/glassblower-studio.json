@@ -1,0 +1,111 @@
+{
+  "id": "glassblower-studio",
+  "band": "medium",
+  "art": [
+    6,
+    8
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 66,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      10,
+      16
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1,
+    "shapes": 1,
+    "parity": 2
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABCC",
+      "DDEEBCC",
+      "DDEEBFF",
+      "DDEEBFF",
+      "DDEEGFF",
+      "HHHHGII",
+      "JJJKGII",
+      "JJJKGII",
+      "LLLKGMM"
+    ],
+    "clues": {
+      "A": [
+        0,
+        3
+      ],
+      "B": [
+        3,
+        4
+      ],
+      "C": [
+        0,
+        5
+      ],
+      "D": [
+        1,
+        0
+      ],
+      "E": [
+        1,
+        3
+      ],
+      "F": [
+        3,
+        5
+      ],
+      "G": [
+        8,
+        4
+      ],
+      "H": [
+        5,
+        1
+      ],
+      "I": [
+        6,
+        5
+      ],
+      "J": [
+        6,
+        1
+      ],
+      "K": [
+        8,
+        3
+      ],
+      "L": [
+        8,
+        2
+      ],
+      "M": [
+        8,
+        5
+      ]
+    },
+    "hidden": [
+      "B"
+    ],
+    "links": {},
+    "parity": {
+      "D": "even",
+      "L": "odd"
+    },
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "J": "wide"
+    }
+  }
+}

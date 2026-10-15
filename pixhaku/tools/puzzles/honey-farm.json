@@ -1,0 +1,72 @@
+{
+  "id": "honey-farm",
+  "band": "easy",
+  "art": [
+    6,
+    6
+  ],
+  "spec": {
+    "cols": 6,
+    "rows": 6,
+    "maxTech": 4,
+    "effortTarget": 35,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0,
+    "shapes": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAABBB",
+      "AAABBB",
+      "CCCBBB",
+      "CCCDDD",
+      "EFFDDD",
+      "EGGGGG"
+    ],
+    "clues": {
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        1,
+        5
+      ],
+      "C": [
+        2,
+        0
+      ],
+      "D": [
+        4,
+        3
+      ],
+      "E": [
+        5,
+        0
+      ],
+      "F": [
+        4,
+        1
+      ],
+      "G": [
+        5,
+        1
+      ]
+    },
+    "hidden": [],
+    "locks": {},
+    "shapes": {
+      "B": "square"
+    }
+  }
+}

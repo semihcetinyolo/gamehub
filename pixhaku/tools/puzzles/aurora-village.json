@@ -1,0 +1,125 @@
+{
+  "id": "aurora-village",
+  "band": "hard",
+  "art": [
+    7,
+    10
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 11,
+    "maxTech": 4,
+    "effortTarget": 105,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      16
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 2,
+    "more": 1,
+    "parity": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABCDDDDD",
+      "ABCEEEEF",
+      "ABCEEEEF",
+      "ABCEEEEF",
+      "ABCGGGGF",
+      "ABCHHHIF",
+      "ABCHHHIF",
+      "JBCHHHIF",
+      "JBKHHHLF",
+      "JMKHHHLF",
+      "JMKNNNLF"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        7,
+        1
+      ],
+      "C": [
+        3,
+        2
+      ],
+      "D": [
+        0,
+        7
+      ],
+      "E": [
+        3,
+        4
+      ],
+      "F": [
+        2,
+        7
+      ],
+      "G": [
+        4,
+        6
+      ],
+      "H": [
+        7,
+        4
+      ],
+      "I": [
+        6,
+        6
+      ],
+      "J": [
+        9,
+        0
+      ],
+      "K": [
+        10,
+        2
+      ],
+      "L": [
+        9,
+        6
+      ],
+      "M": [
+        9,
+        1
+      ],
+      "N": [
+        10,
+        4
+      ]
+    },
+    "hidden": [
+      "I"
+    ],
+    "links": {},
+    "parity": {
+      "N": "odd"
+    },
+    "more": {
+      "E": 9
+    },
+    "corners": {},
+    "locks": {
+      "M": 3
+    },
+    "keys": {},
+    "shapes": {
+      "G": "wide",
+      "K": "tall"
+    }
+  }
+}

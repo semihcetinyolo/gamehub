@@ -41,9 +41,9 @@
   // has its own (assets.js), e.g. mixer_coffee.png.
   const THEMES = {
     cocktail: { palette: ['pink', 'orange', 'purple', 'lime'], prepTag: 'HAZIRLIK',
-      hint: 'Şişeden bardağa dök, tarifi alttan üste kur!' },
+      hint: 'Şişeleri karıştır, kaplarda tarifi kur!' },
     coffee:   { palette: ['espresso', 'milk', 'caramel', 'lavender'], prepTag: 'FİNCANLAR',
-      hint: 'Şişeden fincana dök, kahveyi alttan üste kur!' },
+      hint: 'Şişeleri karıştır, fincanlarda tarifi kur!' },
   };
 
   function tierFor(levelOrder) {

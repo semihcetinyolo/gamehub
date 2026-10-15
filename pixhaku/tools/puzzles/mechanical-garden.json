@@ -1,0 +1,122 @@
+{
+  "id": "mechanical-garden",
+  "band": "hard",
+  "art": [
+    7,
+    10
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 12,
+    "maxTech": 4,
+    "effortTarget": 108,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      11,
+      17
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 2,
+    "more": 1,
+    "parity": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAABC",
+      "DDDDEFBC",
+      "DDDDEFBC",
+      "DDDDEFBC",
+      "GHHHEFBC",
+      "GHHHEFBC",
+      "GHHHEFBC",
+      "IIIIIFBC",
+      "JJJJKFBC",
+      "JJJJKLBC",
+      "JJJJKLMC",
+      "JJJJKLMC"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        0,
+        6
+      ],
+      "C": [
+        0,
+        7
+      ],
+      "D": [
+        1,
+        0
+      ],
+      "E": [
+        3,
+        4
+      ],
+      "F": [
+        6,
+        5
+      ],
+      "G": [
+        5,
+        0
+      ],
+      "H": [
+        5,
+        1
+      ],
+      "I": [
+        7,
+        2
+      ],
+      "J": [
+        9,
+        2
+      ],
+      "K": [
+        10,
+        4
+      ],
+      "L": [
+        10,
+        5
+      ],
+      "M": [
+        10,
+        6
+      ]
+    },
+    "hidden": [
+      "D"
+    ],
+    "links": {},
+    "parity": {
+      "I": "odd"
+    },
+    "more": {
+      "F": 6
+    },
+    "corners": {},
+    "locks": {
+      "B": 2
+    },
+    "keys": {},
+    "shapes": {
+      "C": "tall",
+      "H": "square"
+    }
+  }
+}

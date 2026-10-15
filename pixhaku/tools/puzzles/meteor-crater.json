@@ -1,0 +1,106 @@
+{
+  "id": "meteor-crater",
+  "band": "hard",
+  "art": [
+    8,
+    8
+  ],
+  "spec": {
+    "cols": 9,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 92,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      15
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 1,
+    "more": 1,
+    "corners": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAABBCCCD",
+      "AAABBCCCD",
+      "AAABBCCCD",
+      "EEFFFFFFD",
+      "EEGGGGGGD",
+      "EEGGGGGGD",
+      "HHHHHHHID",
+      "JJJJJJJID",
+      "JJJJJJJID"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        1,
+        3
+      ],
+      "C": [
+        1,
+        6
+      ],
+      "D": [
+        1,
+        8
+      ],
+      "E": [
+        4,
+        0
+      ],
+      "F": [
+        3,
+        3
+      ],
+      "G": [
+        5,
+        2
+      ],
+      "H": [
+        6,
+        0
+      ],
+      "I": [
+        7,
+        7
+      ],
+      "J": [
+        7,
+        4
+      ]
+    },
+    "hidden": [
+      "C"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {
+      "E": 4
+    },
+    "corners": {
+      "G": "bl"
+    },
+    "locks": {
+      "D": 2
+    },
+    "keys": {},
+    "shapes": {
+      "J": "wide"
+    }
+  }
+}

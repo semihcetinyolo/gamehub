@@ -147,6 +147,7 @@ function tapBottle(id) {
 
 function pour(src, dst) {
   if (!Core.canPour(src.layers, dst.layers, G.L.bottleCapacity, dst.mixer)) return;
+  const before = snapshot();
   const color = src.layers[src.layers.length - 1];
   const from = layerRect(src.id, src.layers.length - 1);
   src.layers.pop();
@@ -163,7 +164,48 @@ function pour(src, dst) {
   }
   fillEmpties(false);
   autoServe();
+  if (G.status === 'play' && !G.noDeadCheck && deadEnd()) return stuckPenalty(before);
   checkStuck();
+}
+
+// ---------- dead ends ----------
+// After every pour: if no sequence of pours can finish the level any more
+// (tools/solver.js canFinish, patience ignored), the player loses a heart and
+// the pour is taken back.
+function deadEnd() {
+  const onScreenOrders = G.slots.filter(onScreen).map(s => s.order.layers);
+  return !window.CocktailSolver.canFinish({
+    cap: G.L.bottleCapacity, K: G.L.maxActiveCustomers, mixer: G.L.mixer,
+    bottles: G.bottles.map(b => b.gone ? null : b.phase === 'refilling' ? b.next : b.phase === 'serving' ? [] : b.layers),
+    orders: onScreenOrders.concat(G.queue.map(o => o.layers)),
+    refills: G.L.refills.slice(G.refillAt),
+  });
+}
+
+function snapshot() {
+  return {
+    bottles: G.bottles.map(b => ({ layers: b.layers.slice(), gone: !!b.gone, phase: b.phase, t: b.t,
+      next: b.next ? b.next.slice() : null, slot: b.slot })),
+    slots: G.slots.map(s => Object.assign({}, s)),
+    queue: G.queue.slice(),
+    refillAt: G.refillAt, served: G.served, coins: G.coins, combo: G.combo, status: G.status,
+  };
+}
+
+function stuckPenalty(snap) {
+  G.bottles.forEach((b, i) => Object.assign(b, snap.bottles[i]));
+  G.slots.forEach((s, i) => { for (const k of Object.keys(s)) delete s[k]; Object.assign(s, snap.slots[i]); });
+  G.queue = snap.queue;
+  Object.assign(G, { refillAt: snap.refillAt, served: snap.served, coins: snap.coins, status: snap.status });
+  G.selected = null;
+  G.pourInto = null;
+  G.hearts--;
+  G.combo = 0;
+  clearServeFeedback();
+  restartAnim($('#boardPanel'), 'bad');
+  flashHint('Takıldın! −1 kalp, son hamle geri alındı.', 'bad');
+  if (G.hearts <= 0) { G.lossMsg = 'Takıldın ve kalbin kalmadı.'; end('lost'); }
+  renderAll();
 }
 
 // The mixer is served by itself when it equals an on-screen order: after a
@@ -350,8 +392,11 @@ function bottleMarkup(liquidClass = '', backUrl = A.themed('bottle', G && G.L.th
     `border-radius:0 0 ${q.r / q.w * 100}% ${q.r / q.w * 100}% / 0 0 ${q.r / q.h * 100}% ${q.r / q.h * 100}%"></div>` + front;
 }
 
+const rowBreak = el('div', 'row-break');   // ends the mixer's row (layout)
+
 function buildBoard() {
   board.innerHTML = '';
+  board.appendChild(rowBreak);
   bottleEls = {};
   // normal bottles use the milk-bottle art in every theme (user's choice), else the theme's bottle
   const glass = bottleMarkup('', A.url('bottle_coffee') || A.themed('bottle', G.L.theme));
@@ -642,7 +687,10 @@ function layout() {
   const gap = parseFloat(getComputedStyle($('#customers')).columnGap) || 0;
   const cw = Math.min(150, Math.floor((contentW - 2 * gap) / 3));
   const fixed = 78;                                    // name + timer + paddings
-  const ph = Math.max(66, Math.min(cw * 1.08, H * 0.33 - fixed));
+  // more bottles -> the order cards give up a little height to the board
+  const n = G.bottles.length;
+  const share = n >= 10 ? 0.25 : n >= 8 ? 0.29 : 0.33;
+  const ph = Math.max(66, Math.min(cw * 1.08, H * share - fixed));
   app.style.setProperty('--cw', cw + 'px');
   app.style.setProperty('--ph', ph + 'px');
 
@@ -654,36 +702,44 @@ function layout() {
     - parseFloat(panelStyle.paddingLeft) - parseFloat(panelStyle.paddingRight));
   const availH = Math.max(1, wrap.clientHeight - parseFloat(wrapStyle.paddingTop) - parseFloat(wrapStyle.paddingBottom)
     - parseFloat(panelStyle.paddingTop) - parseFloat(panelStyle.paddingBottom));
-  const titleH = board.querySelector('.mixer-tag')?.offsetHeight || 24;
-  const rowPadding = titleH + 22;
-  const heightFactor = 1.18 * 1.1; // Larger mixer plus its selection lift.
-  const n = G.bottles.length, ratio = A.BOTTLE.h / A.BOTTLE.w;
+  // Only the first row (the mixer's) needs room for the KAP tag above the glass.
+  const tagRoom = (board.querySelector('.mixer-tag')?.offsetHeight || 24) + 12;
+  const rowPadding = 10;
+  const heightFactor = 1.18 * 1.1; // Larger mixer plus its selection lift (width: 0.82 x 1.18 keeps the mixer inside its slot).
+  const ratio = A.BOTTLE.h / A.BOTTLE.w;
   let best = null;
-  for (let cols = 1; cols <= Math.max(1, n); cols += 2) {
-    const rows = Math.ceil(n / cols);
+  // Odd column counts put the mixer in the middle of a full first row; with an
+  // even count the first row has one bottle fewer (normal, mixer, normal...).
+  for (let cols = 1; cols <= Math.max(1, n); cols++) {
+    const first = cols % 2 ? cols : cols - 1;
+    const rows = 1 + Math.ceil(Math.max(0, n - first) / cols);
     const slotW = availW / cols;
-    const bw = Math.min(118, slotW * 0.8, (availH / rows - rowPadding) / (ratio * heightFactor));
-    if (!best || bw > best.bw + 0.5) best = { cols, rows, bw, slotW };
+    const bw = Math.min(118, slotW * 0.82, (availH - tagRoom - rows * rowPadding) / (rows * ratio * heightFactor));
+    if (!best || bw > best.bw + 0.5) best = { cols, first, rows, bw, slotW };
   }
-  // Extremely short viewports scroll inside the board, keeping cards and hint separate.
-  const bw = Math.max(Math.min(28, Math.floor(best.slotW * 0.8)), Math.floor(best.bw));
+  // The board never scrolls: bottles shrink to whatever fits.
+  const bw = Math.max(1, Math.floor(best.bw));
   const bh = Math.floor(bw * ratio);
-  const slotW = Math.floor(Math.min(best.slotW, bw * 1.45));
+  const slotW = Math.floor(Math.min(best.slotW, bw * 1.4));
   const slotH = Math.ceil(bh * heightFactor + rowPadding);
   board.style.setProperty('--bw', bw + 'px');
   board.style.setProperty('--bh', bh + 'px');
   board.style.setProperty('--sw', slotW + 'px');
   board.style.setProperty('--sh', slotH + 'px');
+  board.style.setProperty('--tag', tagRoom + 'px');
   board.style.width = slotW * best.cols + 'px';
   board.dataset.cols = best.cols;
   const appRect = app.getBoundingClientRect(), panelRect = $('#boardPanel').getBoundingClientRect();
   Object.assign($('#serveFeedback').style, { left: appRect.left + 'px', width: appRect.width + 'px', top: (panelRect.top + 26) + 'px' });
-  const mid = Math.floor(Math.min(best.cols, n) / 2);
+  const first = Math.min(best.first, n), mid = Math.floor(first / 2);
   let pos = 0;
   for (const b of G.bottles) {
     if (pos === mid && !b.mixer) pos++;
-    bottleEls[b.id].slot.style.order = b.mixer ? mid : pos++;
+    const order = b.mixer ? mid : pos++;
+    bottleEls[b.id].slot.style.order = order < first ? order : order + 1;   // +1: after the row break
+    bottleEls[b.id].slot.classList.toggle('row0', order < first);
   }
+  rowBreak.style.order = first;
 }
 window.addEventListener('resize', () => { if (G) layout(); });
 if (window.visualViewport) window.visualViewport.addEventListener('resize', () => { if (G) layout(); });
@@ -745,7 +801,7 @@ function showEnd(status) {
       [['Claim x2<span class="x2">+' + G.coins * 2 + '</span>', () => claim(2), 'go x2-btn'], ['Claim', () => claim(1), 'claim-btn']], 'win');
   } else {
     const art = A.url('loseArt') ? `<img class="art" src="${A.url('loseArt')}" alt="">` : '<div class="art emoji">💔</div>';
-    const msg = status === 'stuck' ? 'Hiç hamle kalmadı.' : 'Üç müşteri beklemekten sıkılıp gitti.';
+    const msg = G.lossMsg || (status === 'stuck' ? 'Hiç hamle kalmadı.' : 'Üç müşteri beklemekten sıkılıp gitti.');
     showPanel(`${art}<div class="eyebrow">BÖLÜM ${L.levelOrder + 1}</div><h2>Bar kapandı</h2><p>${msg}</p>`,
       [['Yeniden dene', () => startLevel(L.levelOrder), 'go'], ['Bölümler', showLevels]], 'lose');
   }
@@ -754,12 +810,13 @@ function showEnd(status) {
 function showLevels() {
   // every level can be picked here (prototype: no locks)
   const cells = LEVELS.map(l => {
-    const L = Core.resolveLevel(l), open = true;
-    const cls = [G && l.levelOrder === G.L.levelOrder ? 'cur' : '', l.difficulty || ''].join(' ');
-    return `<button data-o="${l.levelOrder}" ${open ? '' : 'disabled'} class="${cls}">` +
-      `${l.levelOrder + 1}<small>${L.bottleCount}🍾</small></button>`;
+    const L = Core.resolveLevel(l), coffee = L.theme === 'coffee';
+    const cls = [G && l.levelOrder === G.L.levelOrder ? 'cur' : '', l.difficulty || '', coffee ? 'coffee' : ''].join(' ');
+    return `<button data-o="${l.levelOrder}" class="${cls}" aria-label="Bölüm ${l.levelOrder + 1}, ${coffee ? 'kahve' : 'kokteyl'}">` +
+      `${l.levelOrder + 1}<small>${L.bottleCount}${coffee ? '☕' : '🍾'}</small></button>`;
   }).join('');
-  showPanel(`<h2>Bölümler</h2><div class="lvl-grid">${cells}</div>`,
+  const legend = '<div class="lvl-legend"><span class="coffee">☕ Kahve</span><span class="hard">Zor</span><span class="veryHard">Çok zor</span></div>';
+  showPanel(`<h2>Bölümler</h2><div class="lvl-grid">${cells}</div>${legend}`,
     G && G.status === 'play' ? [['Geri', showPause]] : []);
   panel.querySelectorAll('.lvl-grid button').forEach(b =>
     b.addEventListener('click', () => { hidePanel(); startLevel(+b.dataset.o); }));
@@ -837,6 +894,8 @@ window.CocktailGame = {
   setBottle: (i, layers) => { G.bottles[i].layers = layers.slice(); autoServe(); checkStuck(); renderAll(); },
   setGone: i => { G.bottles[i].gone = true; G.bottles[i].layers = []; checkStuck(); renderAll(); },
   useUpRefills: () => { G.refillAt = G.L.refills.length; },
+  deadEnd: () => deadEnd(),
+  noDeadCheck: () => { G.noDeadCheck = true; },   // for tests that build impossible boards on purpose
 };
 
 A.load(1500).then(boot);

@@ -1,0 +1,111 @@
+{
+  "id": "hilltop-observatory",
+  "band": "medium",
+  "art": [
+    7,
+    8
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 72,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      11,
+      18
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1,
+    "shapes": 1,
+    "parity": 2
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAABCC",
+      "DEFGHBCC",
+      "DEFGHBCC",
+      "DEFGHBCC",
+      "DEFGHBCC",
+      "DEFGIBCC",
+      "DEFJIKKK",
+      "DEFJIKKK",
+      "LLFJIMMM"
+    ],
+    "clues": {
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        0,
+        5
+      ],
+      "C": [
+        0,
+        7
+      ],
+      "D": [
+        7,
+        0
+      ],
+      "E": [
+        1,
+        1
+      ],
+      "F": [
+        4,
+        2
+      ],
+      "G": [
+        2,
+        3
+      ],
+      "H": [
+        3,
+        4
+      ],
+      "I": [
+        5,
+        4
+      ],
+      "J": [
+        8,
+        3
+      ],
+      "K": [
+        7,
+        7
+      ],
+      "L": [
+        8,
+        1
+      ],
+      "M": [
+        8,
+        7
+      ]
+    },
+    "hidden": [
+      "D"
+    ],
+    "links": {},
+    "parity": {
+      "L": "even",
+      "M": "odd"
+    },
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "C": "tall"
+    }
+  }
+}

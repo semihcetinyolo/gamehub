@@ -1,0 +1,138 @@
+{
+  "id": "eclipse-pagoda",
+  "band": "expert",
+  "art": [
+    8,
+    9
+  ],
+  "spec": {
+    "cols": 10,
+    "rows": 11,
+    "maxTech": 4,
+    "effortTarget": 130,
+    "start": [
+      0,
+      0
+    ],
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      13,
+      20
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 2,
+    "links": 2,
+    "corners": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBCCCCCDE",
+      "ABBCCCCCDE",
+      "ABBFFGGHDE",
+      "ABBFFGGHDE",
+      "AIIFFGGHDE",
+      "JIIFFGGHKE",
+      "JIIFFGGHKL",
+      "JIIFFGGHKL",
+      "JIIFFGGHKL",
+      "MIINNNOHKL",
+      "MIINNNOPPL"
+    ],
+    "clues": {
+      "A": [
+        3,
+        0
+      ],
+      "B": [
+        2,
+        2
+      ],
+      "C": [
+        1,
+        4
+      ],
+      "D": [
+        2,
+        8
+      ],
+      "E": [
+        1,
+        9
+      ],
+      "F": [
+        3,
+        3
+      ],
+      "G": [
+        8,
+        5
+      ],
+      "H": [
+        4,
+        7
+      ],
+      "I": [
+        8,
+        1
+      ],
+      "J": [
+        7,
+        0
+      ],
+      "K": [
+        7,
+        8
+      ],
+      "L": [
+        9,
+        9
+      ],
+      "M": [
+        10,
+        0
+      ],
+      "N": [
+        10,
+        4
+      ],
+      "O": [
+        10,
+        6
+      ],
+      "P": [
+        10,
+        8
+      ]
+    },
+    "hidden": [
+      "J"
+    ],
+    "links": {
+      "A": 1,
+      "D": 2,
+      "K": 2,
+      "L": 1
+    },
+    "parity": {},
+    "more": {},
+    "corners": {
+      "G": "bl"
+    },
+    "locks": {
+      "C": 5
+    },
+    "keys": {},
+    "shapes": {
+      "B": "tall",
+      "N": "wide"
+    }
+  }
+}

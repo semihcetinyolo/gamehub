@@ -1,0 +1,118 @@
+{
+  "id": "celestial-garden",
+  "band": "hard",
+  "art": [
+    8,
+    9
+  ],
+  "spec": {
+    "cols": 9,
+    "rows": 10,
+    "maxTech": 4,
+    "effortTarget": 105,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      11,
+      16
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 0,
+    "shapes": 2,
+    "keyLocks": 1,
+    "corners": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBCCCDDD",
+      "ABBCCCDDD",
+      "ABBEEFDDD",
+      "ABBEEFGHI",
+      "ABBEEFGHI",
+      "ABBEEFGHI",
+      "JBBEEFGHI",
+      "JKKEEFGHI",
+      "JKKEEFGLL",
+      "JKKEEMMLL"
+    ],
+    "clues": {
+      "A": [
+        2,
+        0
+      ],
+      "B": [
+        0,
+        1
+      ],
+      "C": [
+        0,
+        4
+      ],
+      "D": [
+        0,
+        7
+      ],
+      "E": [
+        4,
+        3
+      ],
+      "F": [
+        3,
+        5
+      ],
+      "G": [
+        8,
+        6
+      ],
+      "H": [
+        5,
+        7
+      ],
+      "I": [
+        6,
+        8
+      ],
+      "J": [
+        9,
+        0
+      ],
+      "K": [
+        8,
+        1
+      ],
+      "L": [
+        8,
+        7
+      ],
+      "M": [
+        9,
+        6
+      ]
+    },
+    "hidden": [
+      "H"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {},
+    "corners": {
+      "J": "down"
+    },
+    "locks": {},
+    "keys": {
+      "L": "F"
+    },
+    "shapes": {
+      "C": "wide",
+      "G": "tall"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": "apple-orchard",
+  "band": "easy",
+  "art": [
+    5,
+    6
+  ],
+  "spec": {
+    "cols": 5,
+    "rows": 6,
+    "maxTech": 4,
+    "effortTarget": 26,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      5,
+      8
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0,
+    "shapes": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AABBC",
+      "AABBC",
+      "AABBC",
+      "DDDDC",
+      "EEFFF",
+      "EEFFF"
+    ],
+    "clues": {
+      "A": [
+        2,
+        0
+      ],
+      "B": [
+        2,
+        2
+      ],
+      "C": [
+        0,
+        4
+      ],
+      "D": [
+        3,
+        3
+      ],
+      "E": [
+        4,
+        0
+      ],
+      "F": [
+        5,
+        4
+      ]
+    },
+    "hidden": [],
+    "locks": {},
+    "shapes": {}
+  }
+}

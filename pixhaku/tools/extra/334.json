@@ -1,0 +1,152 @@
+{
+  "order": 334,
+  "section": "All Together",
+  "feature": "mix",
+  "features": [
+    "corner",
+    "hidden",
+    "more",
+    "keylock",
+    "square"
+  ],
+  "spec": {
+    "cols": 9,
+    "rows": 11,
+    "maxTech": 4,
+    "effortTarget": 120,
+    "hiddenCount": 1,
+    "lockCount": 0,
+    "shapes": 1,
+    "start": [
+      0,
+      0
+    ],
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      12,
+      18
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.45,
+    "corners": 2,
+    "more": 2,
+    "keyLocks": 1,
+    "shapeKinds": [
+      "square"
+    ]
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBBBBBB",
+      "ACDEEEEEF",
+      "ACDGHIIJF",
+      "ACDGHIIJF",
+      "AKDGHIIJF",
+      "AKLGHIIJF",
+      "AKLGHMNJF",
+      "AKLGOMNJF",
+      "AKLGOMNJF",
+      "AKLPOMNQQ",
+      "RRLPOMNQQ"
+    ],
+    "clues": {
+      "A": [
+        6,
+        0
+      ],
+      "B": [
+        0,
+        2
+      ],
+      "C": [
+        2,
+        1
+      ],
+      "D": [
+        4,
+        2
+      ],
+      "E": [
+        1,
+        5
+      ],
+      "F": [
+        4,
+        8
+      ],
+      "G": [
+        7,
+        3
+      ],
+      "H": [
+        3,
+        4
+      ],
+      "I": [
+        3,
+        5
+      ],
+      "J": [
+        6,
+        7
+      ],
+      "K": [
+        5,
+        1
+      ],
+      "L": [
+        10,
+        2
+      ],
+      "M": [
+        9,
+        5
+      ],
+      "N": [
+        6,
+        6
+      ],
+      "O": [
+        10,
+        4
+      ],
+      "P": [
+        9,
+        3
+      ],
+      "Q": [
+        10,
+        8
+      ],
+      "R": [
+        10,
+        0
+      ]
+    },
+    "hidden": [
+      "G"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {
+      "A": 9,
+      "B": 7
+    },
+    "corners": {
+      "D": "down",
+      "L": "down"
+    },
+    "locks": {},
+    "keys": {
+      "M": "H"
+    },
+    "shapes": {
+      "Q": "square"
+    }
+  }
+}

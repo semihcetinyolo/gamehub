@@ -1,0 +1,114 @@
+{
+  "id": "carnival-night",
+  "band": "medium",
+  "art": [
+    8,
+    8
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 76,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      10,
+      16
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1,
+    "shapes": 1,
+    "corners": 2
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABBCC",
+      "DDEFBBCC",
+      "DDEFBBCC",
+      "DDEFGHHI",
+      "DDEFGHHI",
+      "DDEJGHHI",
+      "KKKJGLLM",
+      "NNNJGLLM"
+    ],
+    "clues": {
+      "A": [
+        0,
+        2
+      ],
+      "B": [
+        0,
+        5
+      ],
+      "C": [
+        1,
+        6
+      ],
+      "D": [
+        1,
+        0
+      ],
+      "E": [
+        2,
+        2
+      ],
+      "F": [
+        4,
+        3
+      ],
+      "G": [
+        6,
+        4
+      ],
+      "H": [
+        3,
+        6
+      ],
+      "I": [
+        5,
+        7
+      ],
+      "J": [
+        6,
+        3
+      ],
+      "K": [
+        6,
+        1
+      ],
+      "L": [
+        7,
+        6
+      ],
+      "M": [
+        7,
+        7
+      ],
+      "N": [
+        7,
+        2
+      ]
+    },
+    "hidden": [
+      "E"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {},
+    "corners": {
+      "D": "tl",
+      "H": "tr"
+    },
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "C": "tall"
+    }
+  }
+}

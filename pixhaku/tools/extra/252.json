@@ -1,0 +1,96 @@
+{
+  "order": 252,
+  "section": "Corners",
+  "feature": "corner",
+  "spec": {
+    "cols": 7,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 62,
+    "hiddenCount": 0,
+    "lockCount": 0,
+    "shapes": 0,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      9,
+      14
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "corners": 3
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAAB",
+      "CCCDDEB",
+      "CCCDDEF",
+      "CCCDDEF",
+      "CCCGHEF",
+      "IIIGHEF",
+      "IIIGHEJ",
+      "IIIGKKJ"
+    ],
+    "clues": {
+      "A": [
+        0,
+        3
+      ],
+      "B": [
+        0,
+        6
+      ],
+      "C": [
+        3,
+        2
+      ],
+      "D": [
+        1,
+        4
+      ],
+      "E": [
+        5,
+        5
+      ],
+      "F": [
+        3,
+        6
+      ],
+      "G": [
+        7,
+        3
+      ],
+      "H": [
+        6,
+        4
+      ],
+      "I": [
+        7,
+        0
+      ],
+      "J": [
+        6,
+        6
+      ],
+      "K": [
+        7,
+        5
+      ]
+    },
+    "hidden": [],
+    "links": {},
+    "parity": {},
+    "more": {},
+    "corners": {
+      "B": "up",
+      "D": "tr",
+      "H": "down"
+    },
+    "locks": {},
+    "keys": {},
+    "shapes": {}
+  }
+}

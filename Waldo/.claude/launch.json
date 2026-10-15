@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "waldo",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["tools/serve.py", "8767"],
+      "port": 8767
+    }
+  ]
+}

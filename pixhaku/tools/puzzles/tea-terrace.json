@@ -1,0 +1,66 @@
+{
+  "id": "tea-terrace",
+  "band": "easy",
+  "art": [
+    5,
+    6
+  ],
+  "spec": {
+    "cols": 5,
+    "rows": 6,
+    "maxTech": 4,
+    "effortTarget": 29,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      5,
+      8
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0,
+    "shapes": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAA",
+      "AAAAA",
+      "BBBCD",
+      "BBBCD",
+      "EEEFD",
+      "EEEFD"
+    ],
+    "clues": {
+      "A": [
+        0,
+        4
+      ],
+      "B": [
+        3,
+        2
+      ],
+      "C": [
+        2,
+        3
+      ],
+      "D": [
+        3,
+        4
+      ],
+      "E": [
+        4,
+        0
+      ],
+      "F": [
+        4,
+        3
+      ]
+    },
+    "hidden": [],
+    "locks": {},
+    "shapes": {}
+  }
+}

@@ -216,6 +216,7 @@
 
   function resetProgress() {
     finishedLevels.clear();
+    seenFeatures.clear(); // the new-clue cards show again
     selectedLevel = levelIndex;
     saveProgress();
     if (activeScreen === "menu") refreshMenu();

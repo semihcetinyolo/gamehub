@@ -1,0 +1,102 @@
+{
+  "id": "autumn-bridge",
+  "band": "medium",
+  "art": [
+    7,
+    7
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 71,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      10,
+      16
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1,
+    "shapes": 1,
+    "more": 2
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAABBB",
+      "AAAAABBB",
+      "CDDEEBBB",
+      "CDDEEFGG",
+      "CDDEEFGG",
+      "CDDEEFGG",
+      "HDDIIJJJ",
+      "HDDIIKKK"
+    ],
+    "clues": {
+      "A": [
+        1,
+        2
+      ],
+      "B": [
+        0,
+        7
+      ],
+      "C": [
+        3,
+        0
+      ],
+      "D": [
+        4,
+        2
+      ],
+      "E": [
+        2,
+        4
+      ],
+      "F": [
+        4,
+        5
+      ],
+      "G": [
+        3,
+        6
+      ],
+      "H": [
+        6,
+        0
+      ],
+      "I": [
+        6,
+        4
+      ],
+      "J": [
+        6,
+        5
+      ],
+      "K": [
+        7,
+        6
+      ]
+    },
+    "hidden": [
+      "F"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {
+      "A": 8,
+      "D": 11
+    },
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "I": "square"
+    }
+  }
+}

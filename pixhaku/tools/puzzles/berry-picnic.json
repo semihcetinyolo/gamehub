@@ -1,0 +1,81 @@
+{
+  "id": "berry-picnic",
+  "band": "easy",
+  "art": [
+    6,
+    7
+  ],
+  "spec": {
+    "cols": 6,
+    "rows": 7,
+    "maxTech": 4,
+    "effortTarget": 40,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      7,
+      12
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0,
+    "shapes": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAABBB",
+      "AAABBB",
+      "CCDBBB",
+      "EFDGGG",
+      "EFDGGG",
+      "EFDHHH",
+      "EFIIII"
+    ],
+    "clues": {
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        0,
+        5
+      ],
+      "C": [
+        2,
+        0
+      ],
+      "D": [
+        5,
+        2
+      ],
+      "E": [
+        4,
+        0
+      ],
+      "F": [
+        3,
+        1
+      ],
+      "G": [
+        4,
+        5
+      ],
+      "H": [
+        5,
+        4
+      ],
+      "I": [
+        6,
+        4
+      ]
+    },
+    "hidden": [],
+    "locks": {},
+    "shapes": {
+      "C": "wide"
+    }
+  }
+}

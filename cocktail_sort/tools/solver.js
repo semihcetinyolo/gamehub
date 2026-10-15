@@ -10,6 +10,7 @@
 // with the next batch of `refills` (the game shows a short animation first); once the refills are
 // used up, such a bottle disappears for the rest of the level (GONE) unless
 // that would leave fewer normal bottles than colours still on the board.
+(function (root) {
 'use strict';
 
 // Timing model, mirrors game.js (ARRIVE_S, LEAVE_S) plus a human pace.
@@ -224,4 +225,50 @@ function patienceOf(level, i) {
   return level.orders[i].patience || level.customerPatienceSeconds;
 }
 
-module.exports = { solve, solveTimed, timing, T };
+// Can the level still be finished from a position in the game (customer
+// patience ignored)? Used by game.js after every pour to catch dead ends.
+// state: { cap, K, mixer, bottles: [layers | null when gone], orders: [layers]
+// still to serve (on-screen ones first), refills: [layers] still to come }.
+// A quick beam search answers almost every time; if it fails, a full search
+// with a node budget decides. Returns false only when no solution exists
+// (budget exhausted counts as "can finish", so the player is never punished
+// by a guess).
+function canFinish(state, budget = 60000) {
+  const ids = [];
+  const ch = c => { let i = ids.indexOf(c); if (i < 0) { ids.push(c); i = ids.length - 1; } return String.fromCharCode(97 + i); };
+  const E = {
+    cap: state.cap, K: Math.min(3, state.K), M: state.mixer,
+    bottles: state.bottles.map(b => b === null ? GONE : b.map(ch).join('')),
+    orders: state.orders.map(o => o.map(ch).join('')),
+    refills: state.refills.map(b => b.map(ch).join('')),
+  };
+  if (!E.orders.length || beam(E, 60, 120)) return true;
+  const seen = new Set();
+  let nodes = 0;
+  const dfs = (b, rem, r) => {
+    if (!rem.length) return true;
+    if (++nodes > budget) return true;
+    const k = key(b, rem, r, E);
+    if (seen.has(k)) return false;
+    seen.add(k);
+    for (let i = 0; i < b.length; i++) {
+      for (let j = 0; j < b.length; j++) {
+        if (!canPour(b, i, j, E)) continue;
+        const nb = b.slice(), nrem = rem.slice();
+        const nr = apply(nb, i, j, r, E);
+        settle(nb, nrem, E);
+        if (dfs(nb, nrem, nr)) return true;
+      }
+    }
+    return false;
+  };
+  const b0 = E.bottles.slice(), rem0 = E.orders.map((_, i) => i);
+  const r0 = fillEmpties(b0, 0, E);
+  settle(b0, rem0, E);
+  return dfs(b0, rem0, r0);
+}
+
+const api = { solve, solveTimed, timing, canFinish, T };
+if (typeof module !== 'undefined' && module.exports) module.exports = api;
+else root.CocktailSolver = api;
+})(this);

@@ -1,0 +1,70 @@
+{
+  "id": "cherry-blossom-shrine",
+  "band": "easy",
+  "art": [
+    6,
+    6
+  ],
+  "spec": {
+    "cols": 6,
+    "rows": 6,
+    "maxTech": 4,
+    "effortTarget": 30,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0,
+    "shapes": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AAABBC",
+      "AAABBC",
+      "DDEEEC",
+      "DDEEEC",
+      "DDEEEF",
+      "GGEEEF"
+    ],
+    "clues": {
+      "A": [
+        1,
+        1
+      ],
+      "B": [
+        0,
+        4
+      ],
+      "C": [
+        0,
+        5
+      ],
+      "D": [
+        3,
+        1
+      ],
+      "E": [
+        2,
+        4
+      ],
+      "F": [
+        4,
+        5
+      ],
+      "G": [
+        5,
+        0
+      ]
+    },
+    "hidden": [],
+    "locks": {},
+    "shapes": {}
+  }
+}

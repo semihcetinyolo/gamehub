@@ -1,0 +1,104 @@
+{
+  "id": "steampunk-sky-city",
+  "band": "medium",
+  "art": [
+    8,
+    8
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 78,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      10,
+      16
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1,
+    "shapes": 1,
+    "parity": 1,
+    "corners": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABBCDDE",
+      "AAFFCDDE",
+      "AAFFCDDE",
+      "AAFFCDDE",
+      "AAFFGDDE",
+      "AAFFGDDE",
+      "HHFFGIJE",
+      "HHKKKIJE"
+    ],
+    "clues": {
+      "A": [
+        4,
+        0
+      ],
+      "B": [
+        0,
+        3
+      ],
+      "C": [
+        1,
+        4
+      ],
+      "D": [
+        3,
+        6
+      ],
+      "E": [
+        6,
+        7
+      ],
+      "F": [
+        5,
+        2
+      ],
+      "G": [
+        4,
+        4
+      ],
+      "H": [
+        7,
+        1
+      ],
+      "I": [
+        7,
+        5
+      ],
+      "J": [
+        7,
+        6
+      ],
+      "K": [
+        7,
+        4
+      ]
+    },
+    "hidden": [
+      "C"
+    ],
+    "links": {},
+    "parity": {
+      "K": "odd"
+    },
+    "more": {},
+    "corners": {
+      "G": "up"
+    },
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "D": "tall"
+    }
+  }
+}

@@ -200,6 +200,35 @@ async function rules(browser) {
   check(JSON.stringify(t1) === JSON.stringify(t2), 'timers ran while paused');
   await page.close();
 
+  // dead end after a pour: -1 heart and the pour is taken back (user request)
+  page = await open(browser, 7);
+  {
+    st = await S(page);
+    const M7 = st.mixer, n = st.bottles.length;
+    const recipes = await page.evaluate(() => window.COCKTAIL_LEVELS.find(l => l.levelOrder === 7).orders.map(o => o.layers));
+    const colour = recipes[0][0];
+    await page.evaluate(() => CocktailGame.useUpRefills());
+    const normals = [...Array(n).keys()].filter(i => i !== M7);
+    const [A, B] = normals;
+    for (const i of normals.slice(2)) await page.evaluate(k => CocktailGame.setGone(k), i);
+    // only two single layers of one colour left: no order can ever be finished
+    await page.evaluate(([a, b, c]) => { CocktailGame.setBottle(a, [c]); CocktailGame.setBottle(b, [c]); }, [A, B, colour]);
+    await tapBottle(page, A); await tapBottle(page, B);
+    st = await S(page);
+    check(st.hearts === 2, `dead end: hearts ${st.hearts}`);
+    check(st.bottles[A].layers.length === 1 && st.bottles[B].layers.length === 1 && !st.bottles[A].gone, 'dead end: the pour was not taken back');
+    check(st.status === 'play', `dead end: status ${st.status}`);
+  }
+  await page.close();
+  // the check is quick enough to run after every pour (10-bottle level)
+  page = await open(browser, 39);
+  {
+    const ms = await page.evaluate(() => { const t = performance.now(); for (let k = 0; k < 5; k++) CocktailGame.deadEnd(); return (performance.now() - t) / 5; });
+    check(ms < 150, `dead-end check takes ${ms.toFixed(0)} ms`);
+    console.log(`dead-end check: ${ms.toFixed(0)} ms on a 10-bottle level`);
+  }
+  await page.close();
+
   // impressions (as in cocktail_flow): one word per serve the moment the mixer matches,
   // "COMBO ×N" from the second serve in a row; the win panel waits for them
   page = await open(browser, 0);
@@ -231,7 +260,7 @@ async function rules(browser) {
     const recipes = await page.evaluate(() => window.COCKTAIL_LEVELS.find(l => l.levelOrder === 7).orders.map(o => o.layers.join()));
     const [E, C] = await page.evaluate(() => window.COCKTAIL_LEVELS.find(l => l.levelOrder === 7).orders[0].layers.filter((c, i, a) => a.indexOf(c) === i));
     const wrong = [[E, C, E, E], [E, E, C, E], [C, E, E, E], [E, C, C, E]].find(w => !recipes.includes(w.join()));
-    await page.evaluate(() => CocktailGame.useUpRefills());
+    await page.evaluate(() => { CocktailGame.useUpRefills(); CocktailGame.noDeadCheck(); });
     const normals = [...Array(n).keys()].filter(i => i !== M7);
     const [A, B] = normals;
     for (const i of normals.slice(2)) await page.evaluate(k => CocktailGame.setGone(k), i);
@@ -273,8 +302,8 @@ async function rules(browser) {
 
 // No overlap between cards, timers, board and hint; every bottle fully on screen.
 async function layoutCheck(browser) {
-  for (const vp of [{ width: 360, height: 640 }, { width: 375, height: 667 }, { width: 390, height: 844 }, { width: 430, height: 932 }]) {
-    for (const level of [0, 5, 15, 19, 30]) {
+  for (const vp of [{ width: 320, height: 568 }, { width: 360, height: 640 }, { width: 375, height: 667 }, { width: 390, height: 844 }, { width: 430, height: 932 }]) {
+    for (const level of [0, 5, 15, 19, 30, 39]) {
       const page = await open(browser, level, vp);
       await page.waitForTimeout(400);
       const r = await page.evaluate(() => {
@@ -286,12 +315,15 @@ async function layoutCheck(browser) {
           overlap: cust.bottom > panel.top + 1 || panel.bottom > hint.top + 1 || hud.bottom > cust.top + 1,
           off: bottles.some(b => b.top < 0 || b.bottom > innerHeight || b.left < 0 || b.right > innerWidth),
           minW: Math.min(...bottles.map(b => b.width)),
+          scrolls: (w => w.scrollHeight > w.clientHeight + 1 || w.scrollWidth > w.clientWidth + 1)(document.querySelector('#boardWrap')),
         };
       });
       const tag = `${vp.width}x${vp.height} L${level}`;
       check(!r.overlap, `${tag}: areas overlap`);
       check(!r.off, `${tag}: bottle off screen`);
-      check(r.minW >= 40, `${tag}: bottles only ${r.minW.toFixed(0)}px wide`);
+      check(!r.scrolls, `${tag}: the bottle area would scroll`);
+      // 320x568 (smallest iPhone) is only checked for overlap / scrolling
+      if (vp.width >= 360) check(r.minW >= 40, `${tag}: bottles only ${r.minW.toFixed(0)}px wide`);
       await page.close();
     }
   }

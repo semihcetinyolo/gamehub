@@ -1,0 +1,90 @@
+{
+  "id": "maple-watermill",
+  "band": "medium",
+  "art": [
+    7,
+    7
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 63,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      10,
+      16
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1,
+    "shapes": 2
+  },
+  "puzzle": {
+    "grid": [
+      "AABBBCCC",
+      "AABBBCCC",
+      "AABBBCCC",
+      "AABBBCCC",
+      "DDDDDDEE",
+      "DDDDDDEE",
+      "FFFFFFGH",
+      "IIIJJJGH"
+    ],
+    "clues": {
+      "A": [
+        3,
+        0
+      ],
+      "B": [
+        1,
+        3
+      ],
+      "C": [
+        0,
+        7
+      ],
+      "D": [
+        4,
+        1
+      ],
+      "E": [
+        4,
+        6
+      ],
+      "F": [
+        6,
+        2
+      ],
+      "G": [
+        7,
+        6
+      ],
+      "H": [
+        7,
+        7
+      ],
+      "I": [
+        7,
+        1
+      ],
+      "J": [
+        7,
+        5
+      ]
+    },
+    "hidden": [
+      "G"
+    ],
+    "locks": {},
+    "shapes": {
+      "B": "tall",
+      "I": "wide"
+    }
+  }
+}

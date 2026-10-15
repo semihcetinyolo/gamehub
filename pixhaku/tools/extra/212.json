@@ -1,0 +1,90 @@
+{
+  "order": 212,
+  "section": "Tall & Wide",
+  "feature": "rect",
+  "spec": {
+    "cols": 7,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 62,
+    "hiddenCount": 0,
+    "lockCount": 0,
+    "shapes": 2,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      9,
+      14
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "shapeKinds": [
+      "tall",
+      "wide"
+    ]
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABBB",
+      "AAAACDD",
+      "EEEECDD",
+      "EEEECDD",
+      "FFFFCDD",
+      "FFFFCGG",
+      "HHHHCGG",
+      "IIIIIGG"
+    ],
+    "clues": {
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        0,
+        4
+      ],
+      "C": [
+        3,
+        4
+      ],
+      "D": [
+        4,
+        5
+      ],
+      "E": [
+        2,
+        2
+      ],
+      "F": [
+        4,
+        1
+      ],
+      "G": [
+        5,
+        5
+      ],
+      "H": [
+        6,
+        0
+      ],
+      "I": [
+        7,
+        0
+      ]
+    },
+    "hidden": [],
+    "links": {},
+    "parity": {},
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "C": "tall",
+      "E": "wide"
+    }
+  }
+}

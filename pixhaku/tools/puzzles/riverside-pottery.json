@@ -1,0 +1,99 @@
+{
+  "id": "riverside-pottery",
+  "band": "medium",
+  "art": [
+    6,
+    8
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 70,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      10,
+      16
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1,
+    "shapes": 1,
+    "parity": 2
+  },
+  "puzzle": {
+    "grid": [
+      "AABBCDE",
+      "AABBCDE",
+      "AABBCDE",
+      "AAFFFGE",
+      "AAFFFGE",
+      "AAFFFGE",
+      "HHHIIGE",
+      "HHHIIJE",
+      "HHHIIJE"
+    ],
+    "clues": {
+      "A": [
+        5,
+        1
+      ],
+      "B": [
+        0,
+        2
+      ],
+      "C": [
+        0,
+        4
+      ],
+      "D": [
+        0,
+        5
+      ],
+      "E": [
+        0,
+        6
+      ],
+      "F": [
+        4,
+        4
+      ],
+      "G": [
+        4,
+        5
+      ],
+      "H": [
+        7,
+        0
+      ],
+      "I": [
+        8,
+        3
+      ],
+      "J": [
+        8,
+        5
+      ]
+    },
+    "hidden": [
+      "I"
+    ],
+    "links": {},
+    "parity": {
+      "C": "odd",
+      "G": "even"
+    },
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "H": "square"
+    }
+  }
+}

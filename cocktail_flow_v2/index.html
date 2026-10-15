@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#f2c79c">
+<title>Cocktail Belt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="bg"></div>
+<main id="app">
+  <header id="hud">
+    <div class="hud-left">
+      <div class="pill coin-pill" id="coins" aria-label="Coin"><span class="coin"></span><b id="coinText">0</b></div>
+    </div>
+    <div class="pill pill-level" id="lvlText">Bölüm 1</div>
+    <div class="hud-right">
+      <button id="btnPause" class="round-btn" aria-label="Duraklat"></button>
+    </div>
+    <div class="hud-row">
+      <div class="pill" id="ordersText">Sipariş 0/0</div>
+      <div class="pill" id="hearts" aria-label="Kalan kalp"></div>
+    </div>
+  </header>
+  <section id="stage">
+    <svg id="belt" aria-hidden="true"></svg>
+    <div id="cap" aria-label="Bant kapasitesi"></div>
+    <div id="items" aria-hidden="true"></div>
+    <div id="seats" aria-label="Müşteriler"></div>
+    <div id="supply" role="group" aria-label="Malzemeler"></div>
+  </section>
+  <div id="hint" class="pill" role="status" aria-live="polite"></div>
+</main>
+<div id="fx" aria-hidden="true"></div>
+<div id="overlay" class="hidden" role="dialog" aria-modal="true"><div class="panel" id="panel"></div></div>
+<script src="progression.js"></script>
+<script src="core.js"></script>
+<script src="assets.js"></script>
+<script src="levels.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

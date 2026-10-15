@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pixhaku linked</title>
+<style>html,body{margin:0;height:100%;background:#2b2118}iframe{border:0;width:100%;height:100%;display:block}</style></head><body>
+<iframe id="g" src="Pixhaku_prototype.html"></iframe>
+<script>
+const LEVELS=[{"rows":10,"cols":9,"clues":[{"r":1,"c":3,"n":15},{"r":2,"c":6,"n":8,"h":1,"link":2},{"r":2,"c":7,"n":12},{"r":5,"c":0,"n":12},{"r":4,"c":3,"n":6},{"r":7,"c":4,"n":7},{"r":4,"c":5,"n":6,"h":1,"link":1},{"r":8,"c":3,"n":8,"h":1,"link":2},{"r":8,"c":8,"n":6},{"r":8,"c":5,"n":6,"h":1,"link":1},{"r":9,"c":1,"n":2},{"r":9,"c":8,"n":2}],"solution":[[9,7,9,8],[9,0,9,1],[0,7,5,8],[6,7,8,8],[3,4,9,4],[0,0,2,4],[3,0,8,1],[3,2,5,3],[6,2,9,3],[0,5,3,6],[4,5,6,6],[7,5,9,6]],"difficulty":71,"tag":"hard","custom":true,"artName":"linked test","artPrompt":""}];
+const f=document.getElementById("g");
+f.addEventListener("load",()=>{const w=f.contentWindow;const go=()=>{if(!w.PixhakuGen)return setTimeout(go,100);
+const n=Math.max(1,Math.min(LEVELS.length,parseInt(location.hash.slice(1))||1));
+w.__L=JSON.parse(JSON.stringify(LEVELS[n-1]));w.eval("__L.displayNo=BUILTIN_LEVELS+1;__L.artImage=PixhakuGen.mosaic(__L);levels[BUILTIN_LEVELS]=__L;startGame(BUILTIN_LEVELS,true);");};go();});
+addEventListener("hashchange",()=>location.reload());
+</script></body></html>

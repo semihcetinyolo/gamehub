@@ -1,0 +1,144 @@
+{
+  "id": "starlight-dragon-grove",
+  "band": "expert",
+  "art": [
+    8,
+    9
+  ],
+  "spec": {
+    "cols": 10,
+    "rows": 12,
+    "maxTech": 4,
+    "effortTarget": 145,
+    "start": [
+      0,
+      0
+    ],
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      14,
+      22
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 1,
+    "lockCount": 0,
+    "shapes": 3,
+    "keyLocks": 1,
+    "more": 2
+  },
+  "puzzle": {
+    "grid": [
+      "ABBCDDDEFG",
+      "ABBCDDDEFG",
+      "ABBCHIJEFG",
+      "ABBCHIJEFG",
+      "ABBCHIJEFG",
+      "AKLCHIJEFG",
+      "AKLCHIJEFG",
+      "AKLCHMJEFG",
+      "AKLCHMJEFG",
+      "ANLCOMPEFG",
+      "ANLQOMPRRG",
+      "ANLQOMPRRG"
+    ],
+    "clues": {
+      "A": [
+        3,
+        0
+      ],
+      "B": [
+        3,
+        1
+      ],
+      "C": [
+        2,
+        3
+      ],
+      "D": [
+        0,
+        5
+      ],
+      "E": [
+        9,
+        7
+      ],
+      "F": [
+        6,
+        8
+      ],
+      "G": [
+        5,
+        9
+      ],
+      "H": [
+        6,
+        4
+      ],
+      "I": [
+        5,
+        5
+      ],
+      "J": [
+        4,
+        6
+      ],
+      "K": [
+        6,
+        1
+      ],
+      "L": [
+        9,
+        2
+      ],
+      "M": [
+        10,
+        5
+      ],
+      "N": [
+        9,
+        1
+      ],
+      "O": [
+        10,
+        4
+      ],
+      "P": [
+        9,
+        6
+      ],
+      "Q": [
+        11,
+        3
+      ],
+      "R": [
+        11,
+        7
+      ]
+    },
+    "hidden": [
+      "N"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {
+      "A": 9,
+      "B": 9
+    },
+    "corners": {},
+    "locks": {},
+    "keys": {
+      "P": "E"
+    },
+    "shapes": {
+      "D": "wide",
+      "Q": "tall",
+      "R": "square"
+    }
+  }
+}

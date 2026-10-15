@@ -1,0 +1,128 @@
+{
+  "id": "frost-palace",
+  "band": "hard",
+  "art": [
+    7,
+    10
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 11,
+    "maxTech": 4,
+    "effortTarget": 94,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      16
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 1,
+    "more": 1,
+    "corners": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABCDDEFF",
+      "ABCDDEFF",
+      "ABCDDEFF",
+      "ABCDDEFF",
+      "ABCDDEGH",
+      "ABCDDIGH",
+      "AJCDDIGH",
+      "KJCLLIGH",
+      "KJMLLIGH",
+      "KJMLLIGN",
+      "KJMOOIGN"
+    ],
+    "clues": {
+      "A": [
+        5,
+        0
+      ],
+      "B": [
+        5,
+        1
+      ],
+      "C": [
+        0,
+        2
+      ],
+      "D": [
+        2,
+        4
+      ],
+      "E": [
+        1,
+        5
+      ],
+      "F": [
+        2,
+        6
+      ],
+      "G": [
+        6,
+        6
+      ],
+      "H": [
+        7,
+        7
+      ],
+      "I": [
+        9,
+        5
+      ],
+      "J": [
+        9,
+        1
+      ],
+      "K": [
+        9,
+        0
+      ],
+      "L": [
+        9,
+        4
+      ],
+      "M": [
+        8,
+        2
+      ],
+      "N": [
+        10,
+        7
+      ],
+      "O": [
+        10,
+        3
+      ]
+    },
+    "hidden": [
+      "A"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {
+      "C": 7
+    },
+    "corners": {
+      "M": "up"
+    },
+    "locks": {
+      "H": 3
+    },
+    "keys": {},
+    "shapes": {
+      "B": "tall"
+    }
+  }
+}

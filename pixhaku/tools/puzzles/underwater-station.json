@@ -1,0 +1,112 @@
+{
+  "id": "underwater-station",
+  "band": "hard",
+  "art": [
+    8,
+    9
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 91,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 1,
+    "links": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAABC",
+      "DDDEFFBC",
+      "DDDEFFBC",
+      "DDDEFFBC",
+      "DDDEGHBC",
+      "IIIEGHBJ",
+      "IIIEGHKJ",
+      "LLLEGHKJ",
+      "LLLEGHKJ"
+    ],
+    "clues": {
+      "A": [
+        0,
+        3
+      ],
+      "B": [
+        2,
+        6
+      ],
+      "C": [
+        1,
+        7
+      ],
+      "D": [
+        2,
+        2
+      ],
+      "E": [
+        3,
+        3
+      ],
+      "F": [
+        3,
+        4
+      ],
+      "G": [
+        7,
+        4
+      ],
+      "H": [
+        6,
+        5
+      ],
+      "I": [
+        5,
+        1
+      ],
+      "J": [
+        6,
+        7
+      ],
+      "K": [
+        7,
+        6
+      ],
+      "L": [
+        7,
+        1
+      ]
+    },
+    "hidden": [
+      "J"
+    ],
+    "links": {
+      "I": 1,
+      "L": 1
+    },
+    "parity": {},
+    "more": {},
+    "corners": {},
+    "locks": {
+      "B": 4
+    },
+    "keys": {},
+    "shapes": {
+      "F": "tall"
+    }
+  }
+}

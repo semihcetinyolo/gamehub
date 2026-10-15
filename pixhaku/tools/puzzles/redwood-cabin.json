@@ -1,0 +1,119 @@
+{
+  "id": "redwood-cabin",
+  "band": "medium",
+  "art": [
+    6,
+    8
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 77,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      10,
+      16
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1,
+    "shapes": 1,
+    "more": 2
+  },
+  "puzzle": {
+    "grid": [
+      "AAABCDE",
+      "AAABCDE",
+      "AAABCDE",
+      "FGHBCDE",
+      "FGHICDE",
+      "FGHICDE",
+      "FJJIKDL",
+      "MJJIKDL",
+      "MNNIOOL"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        2,
+        3
+      ],
+      "C": [
+        0,
+        4
+      ],
+      "D": [
+        0,
+        5
+      ],
+      "E": [
+        0,
+        6
+      ],
+      "F": [
+        4,
+        0
+      ],
+      "G": [
+        4,
+        1
+      ],
+      "H": [
+        4,
+        2
+      ],
+      "I": [
+        5,
+        3
+      ],
+      "J": [
+        6,
+        2
+      ],
+      "K": [
+        6,
+        4
+      ],
+      "L": [
+        6,
+        6
+      ],
+      "M": [
+        7,
+        0
+      ],
+      "N": [
+        8,
+        2
+      ],
+      "O": [
+        8,
+        5
+      ]
+    },
+    "hidden": [
+      "H"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {
+      "I": 2,
+      "J": 2
+    },
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "D": "tall"
+    }
+  }
+}

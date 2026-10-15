@@ -1,0 +1,105 @@
+{
+  "id": "penguin-cove",
+  "band": "medium",
+  "art": [
+    7,
+    8
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 75,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      11,
+      18
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1,
+    "shapes": 1,
+    "parity": 1,
+    "corners": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABBBBCD",
+      "AABBBBCD",
+      "AABBBBCD",
+      "EEFFGGCD",
+      "EEFFGGCD",
+      "EEFFGGHD",
+      "IIIJJKHD",
+      "IIIJJKHD",
+      "IIIJJKHD"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        2,
+        2
+      ],
+      "C": [
+        4,
+        6
+      ],
+      "D": [
+        0,
+        7
+      ],
+      "E": [
+        5,
+        0
+      ],
+      "F": [
+        5,
+        3
+      ],
+      "G": [
+        3,
+        4
+      ],
+      "H": [
+        6,
+        6
+      ],
+      "I": [
+        8,
+        0
+      ],
+      "J": [
+        6,
+        3
+      ],
+      "K": [
+        6,
+        5
+      ]
+    },
+    "hidden": [
+      "B"
+    ],
+    "links": {},
+    "parity": {
+      "K": "odd"
+    },
+    "more": {},
+    "corners": {
+      "G": "tl"
+    },
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "F": "tall"
+    }
+  }
+}

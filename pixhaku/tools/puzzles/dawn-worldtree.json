@@ -1,0 +1,130 @@
+{
+  "id": "dawn-worldtree",
+  "band": "expert",
+  "art": [
+    7,
+    10
+  ],
+  "spec": {
+    "cols": 9,
+    "rows": 12,
+    "maxTech": 4,
+    "effortTarget": 148,
+    "start": [
+      0,
+      0
+    ],
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      13,
+      20
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 3,
+    "parity": 2,
+    "more": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAAAAA",
+      "BCDDDDEEF",
+      "BCDDDDEEF",
+      "BCDDDDEEF",
+      "BCDDDDEEF",
+      "BCGGHIEEF",
+      "BCGGHIEEF",
+      "BCGGHIJKK",
+      "BCGGHLJKK",
+      "BCGGHLJKK",
+      "MMGGNLJKK",
+      "MMGGNLJKK"
+    ],
+    "clues": {
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        6,
+        0
+      ],
+      "C": [
+        5,
+        1
+      ],
+      "D": [
+        4,
+        4
+      ],
+      "E": [
+        5,
+        6
+      ],
+      "F": [
+        4,
+        8
+      ],
+      "G": [
+        9,
+        3
+      ],
+      "H": [
+        8,
+        4
+      ],
+      "I": [
+        7,
+        5
+      ],
+      "J": [
+        9,
+        6
+      ],
+      "K": [
+        10,
+        8
+      ],
+      "L": [
+        8,
+        5
+      ],
+      "M": [
+        11,
+        1
+      ],
+      "N": [
+        10,
+        4
+      ]
+    },
+    "hidden": [
+      "D"
+    ],
+    "links": {},
+    "parity": {
+      "B": "odd",
+      "N": "even"
+    },
+    "more": {
+      "L": 2
+    },
+    "corners": {},
+    "locks": {
+      "H": 5
+    },
+    "keys": {},
+    "shapes": {
+      "A": "wide",
+      "E": "tall",
+      "M": "square"
+    }
+  }
+}

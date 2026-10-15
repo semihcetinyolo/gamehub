@@ -1,0 +1,70 @@
+{
+  "id": "bakery-courtyard",
+  "band": "easy",
+  "art": [
+    6,
+    6
+  ],
+  "spec": {
+    "cols": 6,
+    "rows": 6,
+    "maxTech": 4,
+    "effortTarget": 31,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0,
+    "shapes": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AAABBB",
+      "CCDBBB",
+      "CCDBBB",
+      "EEDBBB",
+      "EEFFFF",
+      "GGFFFF"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        3,
+        4
+      ],
+      "C": [
+        2,
+        0
+      ],
+      "D": [
+        1,
+        2
+      ],
+      "E": [
+        3,
+        0
+      ],
+      "F": [
+        5,
+        2
+      ],
+      "G": [
+        5,
+        1
+      ]
+    },
+    "hidden": [],
+    "locks": {},
+    "shapes": {}
+  }
+}

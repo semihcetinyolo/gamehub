@@ -1,0 +1,96 @@
+{
+  "id": "hillside-vineyard",
+  "band": "medium",
+  "art": [
+    7,
+    7
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 7,
+    "maxTech": 4,
+    "effortTarget": 53,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      8,
+      12
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1,
+    "shapes": 0,
+    "parity": 3
+  },
+  "puzzle": {
+    "grid": [
+      "AABBCCC",
+      "AABBDDE",
+      "FFBBDDE",
+      "FFGGDDE",
+      "HHGGDDE",
+      "HHGGIIE",
+      "HHJJJJE"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        0,
+        3
+      ],
+      "C": [
+        0,
+        5
+      ],
+      "D": [
+        2,
+        4
+      ],
+      "E": [
+        6,
+        6
+      ],
+      "F": [
+        2,
+        0
+      ],
+      "G": [
+        5,
+        3
+      ],
+      "H": [
+        5,
+        1
+      ],
+      "I": [
+        5,
+        5
+      ],
+      "J": [
+        6,
+        4
+      ]
+    },
+    "hidden": [
+      "H"
+    ],
+    "links": {},
+    "parity": {
+      "C": "odd",
+      "D": "even",
+      "G": "even"
+    },
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {}
+  }
+}

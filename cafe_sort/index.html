@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#f2c79c">
+<title>Sip Sort</title>
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<!-- Main menu: V1 = Cocktail Sort (v1/), V2 = Cocktail Flow (v2/). Both folders
+     are copies made by build.py; a game is mounted into this page from its
+     v<N>/mount.js when ?v=1 / ?v=2 is in the URL. -->
+<style>
+html,body{margin:0;height:100%;overflow:hidden}
+body{font-family:Fredoka,ui-rounded,"Avenir Next",system-ui,sans-serif;color:#5b3a22;background:#e9b98b;user-select:none;-webkit-user-select:none}
+#menu{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;padding:24px 16px;
+  background:url("v1/assets/img/bg_cafe.png") center/cover,
+    radial-gradient(120% 55% at 50% 8%,#fff1d2 0,#ffd9a8 38%,transparent 62%),
+    linear-gradient(180deg,#f3c194 0,#e6a676 52%,#c98654 52.2%,#b9733f 100%)}
+#menu::before{content:"";position:absolute;inset:0;background:#3b23141f}
+#menu>*{position:relative}
+#menu h1{margin:0;padding:10px 30px;border-radius:24px;background:linear-gradient(#fffaf1,#f8ead2);border:3px solid #fff;
+  box-shadow:0 4px 0 #d9b88a,0 10px 24px #6b3d1a44;font-size:clamp(30px,9vw,44px);font-weight:700;letter-spacing:.5px}
+.menu-btns{display:flex;flex-direction:column;gap:16px;width:min(320px,100%)}
+.menu-btn{display:flex;align-items:center;gap:14px;width:100%;padding:14px 20px;border:3px solid #fff;border-radius:22px;cursor:pointer;
+  font:inherit;color:#fff;text-align:left;background:linear-gradient(#5fd56f,#34ad47);box-shadow:0 5px 0 #23853a,0 10px 18px #1d4a2240;
+  transition:transform .08s}
+.menu-btn:active{transform:translateY(3px);box-shadow:0 2px 0 #23853a,0 6px 12px #1d4a2240}
+.menu-btn.v2{background:linear-gradient(#a978ff,#7a3fe6);box-shadow:0 5px 0 #5a28b8,0 10px 18px #2d164f40}
+.menu-btn.v2:active{box-shadow:0 2px 0 #5a28b8,0 6px 12px #2d164f40}
+.menu-btn b{font-size:30px;line-height:1;text-shadow:0 2px 0 #0003}
+.menu-btn span{font-size:20px;font-weight:600;text-shadow:0 1px 0 #0003}
+</style>
+</head>
+<body>
+<div id="menu">
+  <h1>Sip Sort</h1>
+  <div class="menu-btns">
+    <button class="menu-btn v1" data-v="1"><b>V1</b><span>Cocktail Sort</span></button>
+    <button class="menu-btn v2" data-v="2"><b>V2</b><span>Cocktail Flow</span></button>
+  </div>
+</div>
+<script>
+(() => {
+  // Each game takes over the page (same element ids, its own globals and CSS),
+  // so switching game or going back to the menu reloads the page.
+  const v = new URLSearchParams(location.search).get('v');
+  const goto = q => { location.href = location.pathname + q; };
+  window.GAME_HOME = () => goto('');   // "Ana Menü" in the games' pause panel
+
+  if (v !== '1' && v !== '2') {
+    for (const b of document.querySelectorAll('.menu-btn')) b.addEventListener('click', () => goto('?v=' + b.dataset.v));
+    return;
+  }
+
+  const load = (src, then) => {
+    const s = document.createElement('script');
+    s.src = src;
+    s.async = false;   // keep the game's script order
+    if (then) s.onload = then;
+    document.body.appendChild(s);
+  };
+  load(`v${v}/mount.js`, () => {
+    const g = window.CAFE_GAMES['v' + v];
+    document.title = g.title;
+    // the games measure their layout on boot, so the CSS goes in first
+    Promise.all(g.styles.map(href => new Promise(res => {
+      const l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = href;
+      l.onload = l.onerror = res;
+      document.head.appendChild(l);
+    }))).then(() => {
+      document.getElementById('menu').remove();
+      document.body.insertAdjacentHTML('afterbegin', g.body);
+      for (const src of g.scripts) load(src);
+    });
+  });
+})();
+</script>
+</body>
+</html>

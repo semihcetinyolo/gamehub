@@ -1,0 +1,115 @@
+{
+  "id": "clockwork-harbor",
+  "band": "hard",
+  "art": [
+    8,
+    8
+  ],
+  "spec": {
+    "cols": 9,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 90,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      15
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 1,
+    "parity": 1,
+    "links": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAABCCC",
+      "AAAAABCCC",
+      "DDDDDBEEE",
+      "FFFFFBEEE",
+      "FFFFFBEEE",
+      "GGGGHBIII",
+      "GGGGHBIII",
+      "GGGGJJJKK",
+      "LLLLJJJKK"
+    ],
+    "clues": {
+      "A": [
+        0,
+        2
+      ],
+      "B": [
+        1,
+        5
+      ],
+      "C": [
+        0,
+        7
+      ],
+      "D": [
+        2,
+        2
+      ],
+      "E": [
+        3,
+        7
+      ],
+      "F": [
+        3,
+        3
+      ],
+      "G": [
+        5,
+        1
+      ],
+      "H": [
+        5,
+        4
+      ],
+      "I": [
+        5,
+        7
+      ],
+      "J": [
+        7,
+        5
+      ],
+      "K": [
+        7,
+        8
+      ],
+      "L": [
+        8,
+        2
+      ]
+    },
+    "hidden": [
+      "G"
+    ],
+    "links": {
+      "C": 1,
+      "I": 1
+    },
+    "parity": {
+      "B": "odd"
+    },
+    "more": {},
+    "corners": {},
+    "locks": {
+      "J": 4
+    },
+    "keys": {},
+    "shapes": {
+      "K": "square"
+    }
+  }
+}

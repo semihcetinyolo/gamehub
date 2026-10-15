@@ -3,9 +3,16 @@
 
   const E = window.CartoEngine;
   const NS = 'http://www.w3.org/2000/svg';
-  // Unpainted panes are pale paper; levels with white or cream glass get a darker paper so a
-  // painted light pane never looks empty.
-  const PAPER = '#efeddc', PAPER_DARK = '#c9c5ad';
+  // Pale palettes use a light, cool paper tone to separate warm cream panes without darkening the board.
+  const PAPER = '#efeddc', PAPER_COOL = '#e5e9e8';
+  const EMPTY_TONES = [
+    { id: 'auto', name: 'Otomatik', color: null },
+    { id: 'ivory', name: 'Fildişi', color: '#f6f3ea' },
+    { id: 'sand', name: 'Kum', color: '#d8cbb5' },
+    { id: 'stone', name: 'Taş grisi', color: '#b8bdbb' },
+    { id: 'mist', name: 'Buz mavisi', color: '#c4d3db' },
+    { id: 'slate', name: 'Arduvaz', color: '#667580' },
+  ];
   let EMPTY = PAPER;
   let PALETTE = [];
   const START_HINTS = 3;
@@ -17,6 +24,8 @@
     get(k, d) { try { const v = localStorage.getItem('carto.' + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
     set(k, v) { try { localStorage.setItem('carto.' + k, JSON.stringify(v)); } catch { /* private mode */ } },
   };
+  let emptyTone = store.get('emptyTone', 'auto');
+  if (!EMPTY_TONES.some(tone => tone.id === emptyTone)) emptyTone = 'auto';
   // 3D is the default look (user, 2026-10-03); a choice saved before that is reset once.
   if (store.get('boardLookVersion', 0) < 1) {
     try { localStorage.removeItem('carto.boardLook'); } catch { /* private mode */ }
@@ -130,9 +139,7 @@
     const defs = svg.querySelector('defs'), { map } = S.puzzle;
     [EMPTY, ...PALETTE.map(p => p.base)].forEach((color, i) => {
       const gradient = el('linearGradient', { id: 'tileColor' + i, x1: '0%', y1: '0%', x2: '75%', y2: '100%' }, defs);
-      [[0, shade(color, .22)], [.35, shade(color, .05)], [.7, color], [1, shade(color, -.18)]].forEach(([offset, value]) => {
-        el('stop', { offset, 'stop-color': value }, gradient);
-      });
+      setTileGradient(gradient, color);
     });
     const glaze = el('linearGradient', { id: 'tileGlaze', x1: '0%', y1: '0%', x2: '65%', y2: '100%' }, defs);
     [[0, .22], [.28, .04], [.48, .1], [.65, 0], [1, 0]].forEach(([offset, opacity]) => {
@@ -165,6 +172,29 @@
     return boardLook === '3d' ? `url(#tileColor${c + 1})` : c < 0 ? EMPTY : PALETTE[c].base;
   }
 
+  function setTileGradient(gradient, color) {
+    gradient.replaceChildren();
+    [[0, shade(color, .22)], [.35, shade(color, .05)], [.7, color], [1, shade(color, -.18)]].forEach(([offset, value]) => {
+      el('stop', { offset, 'stop-color': value }, gradient);
+    });
+  }
+
+  function emptyColor(id = emptyTone) {
+    const tone = EMPTY_TONES.find(option => option.id === id);
+    return tone && tone.color || (PALETTE.some(p => luminance(p.base) > 0.7) ? PAPER_COOL : PAPER);
+  }
+
+  function setEmptyTone(id) {
+    if (!EMPTY_TONES.some(tone => tone.id === id)) return;
+    emptyTone = id;
+    store.set('emptyTone', id);
+    EMPTY = emptyColor();
+    const gradient = svg.querySelector('#tileColor0');
+    if (gradient) setTileGradient(gradient, EMPTY);
+    clearHint();
+    render();
+  }
+
   function setBoardLook(value) {
     boardLook = value === '3d' ? '3d' : 'classic';
     store.set('boardLook', boardLook);
@@ -190,7 +220,8 @@
 
   // Pencil dots: each mark count gets its own layout over the whole region —
   // 1 colour: hex grid, 2: checkerboard square grid, 3 and 4: hex grid with an even colour cycle.
-  const HEX_STEP = 0.3, SQ_STEP = 0.28, DOT_R = 0.065, DOT_MARGIN = 0.1;
+  const HEX_STEP = 0.3, SQ_STEP = 0.28, DOT_R = 0.09, DOT_STROKE = 0.04;
+  const DOT_MARGIN = DOT_R + DOT_STROKE / 2 + 0.03;
   let dotCache = [];
 
   function regionGeom(r) {
@@ -264,14 +295,20 @@
     const missing = cols.filter(c => !out.some(d => d[2] === c));
     if (missing.length) {
       const [ax, ay] = S.puzzle.map.anchors[r];
-      out = cols.map((c, k) => [fmt(ax + (k - (n - 1) / 2) * 0.16), fmt(ay), c]);
+      // Keep the larger dots separate in a compact cluster around the safe anchor.
+      out = cols.map((c, k) => {
+        const angle = k * 2 * Math.PI / n - Math.PI / 2;
+        const radius = n > 1 ? 0.17 : 0;
+        return [fmt(ax + Math.cos(angle) * radius), fmt(ay + Math.sin(angle) * radius), c];
+      });
     }
     return out;
   }
 
   // ---------- render ----------
-  function render(pop) {
+  function render() {
     const { map } = S.puzzle;
+    renderFillBtn();
     for (let r = 0; r < map.count; r++) {
       const c = S.fill[r];
       const paint = panePaint(c);
@@ -279,13 +316,16 @@
       regionEls[r].path.setAttribute('stroke', paint);
     }
     layers.dots.innerHTML = '';
+    const dotOutlines = PALETTE.map(p => shade(p.base, -0.5));
     for (let r = 0; r < map.count; r++) {
       if (S.fill[r] >= 0 || !S.marks[r]) continue;
-      const fresh = pop && pop.r === r;
-      const g = el('g', fresh ? { class: 'dots-pop' } : {}, layers.dots);
+      const g = el('g', {}, layers.dots);
       for (const [x, y, c] of dotsFor(r, S.marks[r])) {
-        const dot = el('circle', { cx: x, cy: y, r: DOT_R, fill: PALETTE[c].base, stroke: PALETTE[c].dark, 'stroke-width': 0.02 }, g);
-        if (fresh) dot.style.animationDelay = Math.min(260, Math.hypot(x - pop.x, y - pop.y) * 70) + 'ms';
+        // Draw the outline behind the fill so pale colours retain a readable colour centre.
+        el('circle', {
+          cx: x, cy: y, r: DOT_R, fill: PALETTE[c].base,
+          stroke: dotOutlines[c], 'stroke-width': DOT_STROKE, 'paint-order': 'stroke fill',
+        }, g);
       }
     }
     showMistakes();
@@ -355,15 +395,17 @@
     return out;
   }
 
-  function startLevel(n) {
+  // quiet: set the board up behind the main menu without starting the tutorial yet.
+  function startLevel(n, quiet) {
     n = wrap(n);
     S.level = n;
     store.set('level', n);
     const glass = STAINED[n - 1];
     if (!glass.map.outlines) glass.map.outlines = outlinesOf(glass.map);
     setupPuzzle({ map: glass.map, given: glass.given, solution: glass.solution, glass });
-    if (n === 1 && !store.get('tutorial', false)) startCoach();
+    if (!quiet) maybeCoach();
   }
+  const maybeCoach = () => { if (S.level === 1 && !store.get('tutorial', false) && !S.done) startCoach(); };
 
   const restartLevel = () => startLevel(S.level);
   function nextLevel() {
@@ -382,7 +424,7 @@
     $('glassStatus').textContent = 'VİTRAY HAZIRLANIYOR';
     svg.removeAttribute('aria-busy');
     PALETTE = puzzle.glass.palette.map(base => ({ name: colorName(base), base, dark: shade(base, -.24) }));
-    EMPTY = puzzle.glass.palette.some(c => luminance(c) > 0.7) ? PAPER_DARK : PAPER;
+    EMPTY = emptyColor();
     glassImage = new Image();
     glassImage.src = puzzle.glass.image;
     $('dock').classList.remove('art-finished');
@@ -393,6 +435,7 @@
     S.fill = S.given.slice();
     S.marks = new Array(puzzle.map.count).fill(0);
     S.hints = S.level === 1 ? START_HINTS + 2 : START_HINTS;
+    S.hintsUsed = 0;
     S.done = false;
     lastTap = null;
     $('boardCard').classList.remove('won', 'stained');
@@ -496,19 +539,18 @@
     if (moved > 14 || performance.now() < quietUntil || pointers.size > 1) return;
     const g = e.target.closest && e.target.closest('.region');
     if (!g) return;
-    const b = svg.getBoundingClientRect(), m = S.puzzle.map;
-    tapRegion(+g.dataset.r, { x: (e.clientX - b.left) / b.width * m.cols, y: (e.clientY - b.top) / b.height * m.rows });
+    tapRegion(+g.dataset.r);
   });
   svg.addEventListener('dblclick', e => e.preventDefault());
   svg.addEventListener('keydown', e => {
     const region = e.target.closest('.region');
     if (region && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
-      tapRegion(+region.dataset.r, null);
+      tapRegion(+region.dataset.r);
     }
   });
 
-  function tapRegion(r, at) {
+  function tapRegion(r) {
     if (S.done) return;
     if (S.given[r] >= 0) { pulse(r, 'flash'); toast('Çizgili bölgeler hazır gelir, rengi değişmez'); return; }
     const now = performance.now();
@@ -520,15 +562,14 @@
     }
     lastTap = { r, t: now, marked: false, prev: S.marks[r] };
     if (S.fill[r] >= 0) { pulse(r, 'flash'); return; }
-    toggleMark(r, S.color, at);
+    toggleMark(r, S.color);
     lastTap.marked = true;
   }
 
-  function toggleMark(r, c, at) {
+  function toggleMark(r, c) {
     S.marks[r] ^= 1 << c;
     (S.marks[r] & (1 << c) ? sfx.dot : sfx.undot)();
-    const [x, y] = at ? [at.x, at.y] : S.puzzle.map.anchors[r];
-    render({ r, x, y });
+    render();
     coachEvent('mark', r);
   }
 
@@ -539,8 +580,39 @@
     }
   }
 
+  // "Notları boya" (Settings on/off): every empty pane whose notes name exactly one colour gets
+  // painted in that colour at once.
+  let fillNotesOn = store.get('fillNotes', true) !== false;
+  const singleNoted = () => S.fill.flatMap((c, r) => (c < 0 && S.given[r] < 0 && S.marks[r] && popcount(S.marks[r]) === 1 ? [r] : []));
+  function renderFillBtn() {
+    const btn = $('fillBtn');
+    btn.hidden = !fillNotesOn;
+    const n = S.puzzle && !S.done ? singleNoted().length : 0;
+    btn.disabled = !n;
+    $('fillBadge').textContent = n;
+    $('fillBadge').hidden = !n;
+  }
+  function fillNotes() {
+    if (S.done) return;
+    const todo = singleNoted();
+    if (!todo.length) { toast('Tek renk notlu bölge yok'); return; }
+    for (const r of todo) {
+      S.fill[r] = Math.log2(S.marks[r]);
+      S.marks[r] = 0;
+      pulse(r, 'paint');
+    }
+    store.set('stats.panes', store.get('stats.panes', 0) + todo.length);
+    sfx.paint(); buzz(12);
+    clearHint();
+    pruneMarks(todo);
+    render();
+    toast(`${todo.length} bölge boyandı`);
+    checkWin();
+  }
+
   function paintRegion(r, c) {
     const next = S.fill[r] === c ? -1 : c;
+    if (S.fill[r] < 0 && next >= 0) store.set('stats.panes', store.get('stats.panes', 0) + 1);
     S.fill[r] = next;
     S.marks[r] = 0;
     if (next >= 0) { pulse(r, 'paint'); sfx.paint(); buzz(8); } else sfx.erase();
@@ -623,6 +695,8 @@
     svg.removeAttribute('aria-busy');
     store.set('level', wrap(S.level + 1));
     store.set('solved', [...new Set([...store.get('solved', []), glass.id])]);
+    if (!S.hintsUsed) store.set('perfect', [...new Set([...store.get('perfect', []), glass.id])]);
+    window.dispatchEvent(new CustomEvent('carto:solved', { detail: { id: glass.id, level: S.level } }));
     glassTimer = setTimeout(() => {
       if (S.puzzle !== puzzle || !S.done) return;
       art.replaceChildren(el('use', { href: '#glassArtwork' }));
@@ -695,6 +769,8 @@
     S.fill[target] = solution[target];
     S.marks[target] = 0;
     S.hints--;
+    S.hintsUsed++;
+    store.set('stats.hints', store.get('stats.hints', 0) + 1);
     sfx.hint();
     clearHint();
     pruneMarks([target]);
@@ -897,7 +973,24 @@
           <button class="appearance-option" data-act="appearance" data-look="3d" aria-pressed="${boardLook === '3d'}"><i class="appearance-preview depth-preview" aria-hidden="true"></i><span>3D<small>Varsayılan · kabartmalı</small></span></button>
         </div>
       </div>
+      <div class="controls-setting empty-setting">
+        <span class="setting-label" id="emptyToneLabel">BOYANMAMIŞ ALANLAR</span>
+        <div class="empty-options" role="group" aria-labelledby="emptyToneLabel">
+          ${EMPTY_TONES.map(tone => {
+            const color = emptyColor(tone.id);
+            return `<button class="empty-option" data-act="empty-tone" data-tone="${tone.id}" aria-pressed="${emptyTone === tone.id}">
+              <span class="empty-preview" aria-hidden="true" style="--empty-base:${color};--empty-light:${shade(color, .22)};--empty-shade:${shade(color, -.18)}">
+                <svg viewBox="0 0 48 24">${PALETTE.map((p, i) => `<circle cx="${9 + i * 10}" cy="12" r="3.5" fill="${p.base}" stroke="${shade(p.base, -.5)}" stroke-width="1.4" paint-order="stroke fill"/>`).join('')}</svg>
+              </span>
+              <span>${tone.name}</span>
+            </button>`;
+          }).join('')}
+        </div>
+        <small class="setting-help">Noktaların görünümünü karşılaştır. Otomatik, zemini bölümün renklerine göre seçer.</small>
+      </div>
       <button class="btn-flat" data-act="sound">SES: ${S.sound ? 'AÇIK' : 'KAPALI'}</button>
+      <button class="btn-flat" data-act="fill-notes" aria-pressed="${fillNotesOn}">NOTLARI BOYA DÜĞMESİ: ${fillNotesOn ? 'AÇIK' : 'KAPALI'}</button>
+      <small class="setting-help fill-help">Açıkken oyunda bir düğme çıkar: sadece tek renk notu olan bütün bölgeleri o renge boyar.</small>
       <button class="btn-flat" data-act="how">NASIL OYNANIR</button>
       <button class="btn-flat" data-act="retry">YENİDEN BAŞLA</button>
       <div class="controls-setting level-pick">
@@ -924,9 +1017,14 @@
     else if (act === 'how') showHow();
     else if (act === 'tutorial') { hideCard(); store.set('tutorial', false); startLevel(1); }
     else if (act === 'sound') { S.sound = !S.sound; store.set('sound', S.sound); showSettings(); }
+    else if (act === 'fill-notes') { fillNotesOn = !fillNotesOn; store.set('fillNotes', fillNotesOn); renderFillBtn(); showSettings(); }
     else if (act === 'appearance') {
       setBoardLook(b.dataset.look);
       $('card').querySelectorAll('[data-act="appearance"]').forEach(button => button.setAttribute('aria-pressed', button.dataset.look === boardLook));
+    }
+    else if (act === 'empty-tone') {
+      setEmptyTone(b.dataset.tone);
+      $('card').querySelectorAll('[data-act="empty-tone"]').forEach(button => button.setAttribute('aria-pressed', button.dataset.tone === emptyTone));
     }
   });
 
@@ -935,12 +1033,19 @@
     if (svg.querySelector('.glass-art')) nextLevel();
     else revealGlass();
   });
+  $('glassHome').addEventListener('click', () => {
+    if (S.done && svg.querySelector('.glass-art')) startLevel(S.level + 1, true);
+    window.CartoMenu && window.CartoMenu.show();
+  });
+  $('homeBtn').addEventListener('click', () => { endCoach(false); window.CartoMenu && window.CartoMenu.show(); });
   $('hintBtn').addEventListener('click', useHint);
+  $('fillBtn').addEventListener('click', fillNotes);
   $('settingsBtn').addEventListener('click', showSettings);
   new ResizeObserver(fitBoard).observe($('stage'));
   document.addEventListener('gesturestart', e => e.preventDefault());
 
-  startLevel(Math.max(1, S.level | 0));
+  // The board is set up behind the main menu; the menu's play button calls CartoGame.play().
+  startLevel(Math.max(1, S.level | 0), !!document.getElementById('menu'));
   if (document.fonts) document.fonts.ready.then(fitBoard);
 
   window.CartoGame = {
@@ -948,6 +1053,14 @@
     tap: r => tapRegion(r),
     choose: selectColor,
     level: startLevel,
+    play(n) {
+      if (n && n !== S.level) startLevel(n, true);
+      if (S.done) startLevel(S.level, true);
+      fitBoard();
+      maybeCoach();
+    },
+    settings: showSettings,
+    store,
     solveAll() {
       S.puzzle.solution.forEach((c, r) => { S.fill[r] = c; });
       render(); checkWin();

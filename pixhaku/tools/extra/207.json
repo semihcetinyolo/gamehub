@@ -1,0 +1,116 @@
+{
+  "order": 207,
+  "section": "Mystery Numbers",
+  "feature": "hidden",
+  "spec": {
+    "cols": 9,
+    "rows": 10,
+    "maxTech": 4,
+    "effortTarget": 95,
+    "hiddenCount": 3,
+    "lockCount": 0,
+    "shapes": 0,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      11,
+      16
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.45
+  },
+  "puzzle": {
+    "grid": [
+      "AABCCCCCD",
+      "AABEEFGHD",
+      "AABEEFGHD",
+      "AABEEFGHD",
+      "AABEEFGHD",
+      "IJBEEFKHD",
+      "IJLLLFKHD",
+      "IJLLLMKHD",
+      "IJNNNMKHD",
+      "IJNNNMKOO"
+    ],
+    "clues": {
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        1,
+        2
+      ],
+      "C": [
+        0,
+        6
+      ],
+      "D": [
+        1,
+        8
+      ],
+      "E": [
+        2,
+        3
+      ],
+      "F": [
+        3,
+        5
+      ],
+      "G": [
+        2,
+        6
+      ],
+      "H": [
+        7,
+        7
+      ],
+      "I": [
+        6,
+        0
+      ],
+      "J": [
+        9,
+        1
+      ],
+      "K": [
+        7,
+        6
+      ],
+      "L": [
+        6,
+        3
+      ],
+      "M": [
+        8,
+        5
+      ],
+      "N": [
+        8,
+        3
+      ],
+      "O": [
+        9,
+        8
+      ]
+    },
+    "hidden": [
+      "A",
+      "K",
+      "N"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {}
+  }
+}

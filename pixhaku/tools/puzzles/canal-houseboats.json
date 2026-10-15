@@ -1,0 +1,89 @@
+{
+  "id": "canal-houseboats",
+  "band": "medium",
+  "art": [
+    7,
+    8
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 53,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      9,
+      14
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1,
+    "shapes": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABBBBC",
+      "AADDDDC",
+      "AAEEEEC",
+      "AAEEEEC",
+      "AAFGGHC",
+      "IIFGGHC",
+      "IIFGGHC",
+      "JJJJJHC"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        0,
+        3
+      ],
+      "C": [
+        7,
+        6
+      ],
+      "D": [
+        1,
+        3
+      ],
+      "E": [
+        3,
+        4
+      ],
+      "F": [
+        5,
+        2
+      ],
+      "G": [
+        5,
+        3
+      ],
+      "H": [
+        6,
+        5
+      ],
+      "I": [
+        5,
+        0
+      ],
+      "J": [
+        7,
+        1
+      ]
+    },
+    "hidden": [
+      "C"
+    ],
+    "locks": {},
+    "shapes": {
+      "H": "tall"
+    }
+  }
+}

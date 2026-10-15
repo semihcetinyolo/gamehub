@@ -1,0 +1,136 @@
+{
+  "id": "viking-fjord",
+  "band": "expert",
+  "art": [
+    8,
+    10
+  ],
+  "spec": {
+    "cols": 9,
+    "rows": 12,
+    "maxTech": 4,
+    "effortTarget": 137,
+    "start": [
+      0,
+      0
+    ],
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      13,
+      20
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 1,
+    "lockCount": 0,
+    "shapes": 3,
+    "keyLocks": 1,
+    "more": 2
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAABBC",
+      "DEEEEFBBC",
+      "DEEEEFBBC",
+      "DEEEEFBBC",
+      "DGHHIFBBC",
+      "DGHHIFJJC",
+      "DGHHIFJJC",
+      "DGHHIFJJK",
+      "DGHHIFJJK",
+      "LGHHMMMNK",
+      "LGOOMMMNK",
+      "LPPPMMMNK"
+    ],
+    "clues": {
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        3,
+        6
+      ],
+      "C": [
+        5,
+        8
+      ],
+      "D": [
+        7,
+        0
+      ],
+      "E": [
+        2,
+        1
+      ],
+      "F": [
+        7,
+        5
+      ],
+      "G": [
+        4,
+        1
+      ],
+      "H": [
+        9,
+        2
+      ],
+      "I": [
+        6,
+        4
+      ],
+      "J": [
+        6,
+        6
+      ],
+      "K": [
+        7,
+        8
+      ],
+      "L": [
+        10,
+        0
+      ],
+      "M": [
+        10,
+        6
+      ],
+      "N": [
+        9,
+        7
+      ],
+      "O": [
+        10,
+        2
+      ],
+      "P": [
+        11,
+        2
+      ]
+    },
+    "hidden": [
+      "G"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {
+      "F": 6,
+      "I": 3
+    },
+    "corners": {},
+    "locks": {},
+    "keys": {
+      "C": "B"
+    },
+    "shapes": {
+      "E": "wide",
+      "M": "square",
+      "N": "tall"
+    }
+  }
+}

@@ -23,6 +23,7 @@ const BACK_SHOW = 0.56;  // ...of which only the top shows (neck + top layer)
 const PREP_SCALE = 0.9;
 const SAVE_KEY = 'cocktail_flow_v1';
 const MARK_MODES = { v1: 'Hazırlık şişesi', v2: 'Sipariş şişesi', v3: 'İkisi de' };
+const BOARD_VIEWS = { v1: 'Klasik tezgâh', v2: 'Ortak tezgâh', v3: 'Müşteri bardakları' };
 const IMPRESSIONS = ['Nice', 'Wow', 'Amazing', 'Bingo', 'Great', 'Bravo', 'Yay'];
 const IMPRESSION_COLORS = ['#27866e', '#d57520', '#9750c5', '#c84767', '#287eb8', '#c85d34', '#438739'];
 const IMPRESSION_S = 1.05;
@@ -35,14 +36,17 @@ const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls)
 // ---------- save ----------
 function loadSave() {
   // marks: progress frames for matching layers (pause panel switch, off by default)
-  try { return Object.assign({ unlocked: 0, current: 0, coins: 0, marks: false, marksMode: 'v3' }, JSON.parse(localStorage.getItem(SAVE_KEY)) || {}); }
-  catch (e) { return { unlocked: 0, current: 0, coins: 0, marks: false, marksMode: 'v3' }; }
+  try { return Object.assign({ unlocked: 0, current: 0, coins: 0, marks: false, marksMode: 'v3', boardView: 'v1' }, JSON.parse(localStorage.getItem(SAVE_KEY)) || {}); }
+  catch (e) { return { unlocked: 0, current: 0, coins: 0, marks: false, marksMode: 'v3', boardView: 'v1' }; }
 }
 function writeSave() { try { localStorage.setItem(SAVE_KEY, JSON.stringify(save)); } catch (e) { /* private mode */ } }
 const save = loadSave();
 if (!Object.hasOwn(MARK_MODES, save.marksMode)) save.marksMode = 'v3';
+if (!Object.hasOwn(BOARD_VIEWS, save.boardView)) save.boardView = 'v1';
 // saves from before the default became "off" stored marks: true; reset them once
 if (save.marksDefault !== 'off') { save.marks = false; save.marksDefault = 'off'; writeSave(); }
+// the default board became the classic one (v1); move saves made under the old default once
+if (save.boardViewDefault !== 'v1') { save.boardView = 'v1'; save.boardViewDefault = 'v1'; writeSave(); }
 
 // ---------- state ----------
 let G = null;          // current run, rebuilt by startLevel()
@@ -87,7 +91,6 @@ function startLevel(order) {
   document.body.dataset.theme = L.theme;
   const bg = A.themed('bg', L.theme);
   $('#bg').style.backgroundImage = bg ? `url("${bg}")` : '';
-  $('#prepTag').textContent = P.THEMES[L.theme].prepTag;
   buildBoard();
   buildCards();
   G.slots.forEach(fillSlot);
@@ -138,14 +141,20 @@ function timeout(slot) {
 
 // ---------- moves ----------
 function vessel(id) { return G.vessels.find(b => b.id === id); }
-function busy(b) { return !!b.phase || !!b.gone; }   // being served / moving up / gone: can't be touched
+function busy(b) {
+  return !!b.phase || !!b.gone || (save.boardView === 'v3' && b.prep &&
+    G.slots[G.preps.indexOf(b)]?.state === 'leaving');
+}
 
 function tapVessel(id) {
   if (G.status !== 'play' || G.paused) return;
   const b = vessel(id);
   if (G.selected !== null && busy(vessel(G.selected))) G.selected = null;
   if (b.gone) return;
-  if (busy(b)) return bad(id, b.phase === 'serving' ? 'Bu içecek servis ediliyor.' : 'Arkadaki şişe öne geliyor.');
+  if (busy(b)) {
+    G.selected = null;   // a failed pour drops the bottle in hand
+    return bad(id, b.phase === 'serving' ? 'Bu içecek servis ediliyor.' : b.prep ? 'Yeni müşteri bekleniyor.' : 'Arkadaki şişe öne geliyor.');
+  }
   if (G.selected === null) {
     if (!b.layers.length) return bad(id, 'Bu bardak boş.');
     G.selected = id;
@@ -153,9 +162,12 @@ function tapVessel(id) {
     G.selected = null;
   } else {
     const src = vessel(G.selected);
-    if (b.layers.length >= G.L.bottleCapacity) return bad(id, b.prep ? 'Bardak dolu.' : 'Bu şişe dolu.');
-    if (!Core.canPour(src.layers, b.layers, G.L.bottleCapacity, b.prep))
+    // a pour that can't happen shakes the target and drops the bottle in hand
+    if (b.layers.length >= G.L.bottleCapacity) { G.selected = null; return bad(id, b.prep ? 'Bardak dolu.' : 'Bu şişe dolu.'); }
+    if (!Core.canPour(src.layers, b.layers, G.L.bottleCapacity, b.prep)) {
+      G.selected = null;
       return bad(id, 'Şişelere yalnızca aynı renk dökülür. Karıştırmak için hazırlık bardaklarını kullan.');
+    }
     pour(src, b);
     G.selected = null;
   }
@@ -164,6 +176,7 @@ function tapVessel(id) {
 
 function tapBack(i) {
   if (G.status !== 'play' || G.paused) return;
+  if (G.selected !== null) { G.selected = null; renderAll(); }
   restartAnim(laneEls[i].back, 'bad');
   flashHint('Yalnızca öndeki şişeler kullanılabilir.', 'bad');
 }
@@ -196,6 +209,7 @@ function autoServe() {
     if (busy(b) || !b.layers.length) continue;
     let best = -1;
     G.slots.forEach((s, i) => {
+      if (save.boardView === 'v3' && G.preps[i] !== b) return;
       if (!onScreen(s) || !Core.sameLayers(b.layers, s.order.layers)) return;
       if (best < 0 || timeLeft(s) < timeLeft(G.slots[best])) best = i;
     });
@@ -210,7 +224,8 @@ function serve(b, i) {
   const slot = G.slots[i];
   G.coins += slot.order.coins;
   floatCoins(i, slot.order.coins);
-  slot.state = 'leaving'; slot.mood = 'happy'; slot.t = LEAVE_S;
+  slot.state = 'leaving'; slot.mood = 'happy';
+  slot.t = save.boardView === 'v3' ? SERVE_S + 0.52 + 0.2 : LEAVE_S;
   G.served++;
   G.combo++;
   const impression = (G.served - 1) % IMPRESSIONS.length;
@@ -229,6 +244,7 @@ function matches() {
   G.preps.forEach((b, g) => {
     if (b.phase) return;
     G.slots.forEach((s, i) => {
+      if (save.boardView === 'v3' && i !== g) return;
       if (!onScreen(s)) return;
       let m = 0;
       while (m < b.layers.length && m < s.order.layers.length && b.layers[m] === s.order.layers[m]) m++;
@@ -325,7 +341,8 @@ function pause(on) {
   if (!G || G.status !== 'play') return;
   G.paused = on;
   pauseServeFeedback(on);
-  if (on) showPause(); else hidePanel();
+  if (on) showPause();
+  else { hidePanel(); autoServe(); renderAll(); }
 }
 
 document.addEventListener('visibilitychange', () => { if (document.hidden) pause(true); });
@@ -388,10 +405,14 @@ function buildBoard() {
     const node = el('div', 'bottle asset', glass);
     node.dataset.label = 'bottle';
     slot.appendChild(node);
+    const targetMark = el('span', 'transfer-mark', '+');
+    targetMark.setAttribute('aria-hidden', 'true');
+    targetMark.hidden = true;
+    slot.appendChild(targetMark);
     slot.addEventListener('pointerdown', e => { e.preventDefault(); tapVessel(b.id); });
     lane.append(slot, backSlot);   // the waiting bottle stands below the front one
     lanesEl.appendChild(lane);
-    vesselEls[b.id] = { slot, node, liquid: node.querySelector('.liquid') };
+    vesselEls[b.id] = { slot, node, targetMark, liquid: node.querySelector('.liquid') };
     laneEls[b.id] = laneEls[i] = { back, backLiquid: back.querySelector('.liquid'), more, key: null };
   });
   for (const b of G.preps) {
@@ -400,9 +421,13 @@ function buildBoard() {
     const node = el('div', 'bottle asset', prepMarkup('') + `<div class="badge">${check}</div>`);
     node.dataset.label = 'mixer';
     slot.appendChild(node);
+    const targetMark = el('span', 'transfer-mark', '+');
+    targetMark.setAttribute('aria-hidden', 'true');
+    targetMark.hidden = true;
+    slot.appendChild(targetMark);
     slot.addEventListener('pointerdown', e => { e.preventDefault(); tapVessel(b.id); });
     prepsEl.appendChild(slot);
-    vesselEls[b.id] = { slot, node, liquid: node.querySelector('.liquid') };
+    vesselEls[b.id] = { slot, node, targetMark, liquid: node.querySelector('.liquid') };
   }
 }
 
@@ -453,6 +478,13 @@ function renderMatchGuide(liq, matched, cap) {
 
 function renderVessel(b, matched) {
   const E = vesselEls[b.id];
+  const source = G.selected === null ? null : vessel(G.selected);
+  const selected = source === b && !busy(b);
+  const canReceive = G.status === 'play' && source && source !== b && !busy(source) && !busy(b) &&
+    Core.canPour(source.layers, b.layers, G.L.bottleCapacity, b.prep);
+  E.slot.classList.toggle('can-receive', !!canReceive);
+  E.targetMark.hidden = !selected && !canReceive;
+  E.targetMark.textContent = selected ? '●' : '+';
   const fillAt = G.pourInto && G.pourInto.id === b.id ? G.pourInto.index : -1;
   renderLiquid(E.liquid, b.layers, fillAt, matched);
   E.slot.classList.toggle('matching', matched > 0);
@@ -502,14 +534,21 @@ let cardEls = [];
 
 function buildCards() {
   cardsEl.innerHTML = '';
-  cardEls = G.slots.map(() => {
+  cardEls = G.slots.map((slot, i) => {
     const wrap = el('div', 'cust');
     const card = el('div', 'card');
     card.innerHTML =
       `<div class="portrait asset" data-label="customer_0X"><div class="face"></div><div class="price"></div>` +
       `<div class="mini" role="img" style="aspect-ratio:${A.BOTTLE.w}/${A.BOTTLE.h}">` +
       `<div class="order-glass" aria-hidden="true">${prepMarkup('order-layers')}</div></div></div>` +
-      `<div class="rname" lang="en"></div>`;
+      `<div class="rname" lang="en"></div>` +
+      `<div class="customer-station"><span class="recipe-title">TARİF</span>` +
+      `<div class="customer-recipe" aria-label="Tarif, alttan üste"></div><div class="customer-cup-dock"></div></div>`;
+    card.addEventListener('pointerdown', e => {
+      if (save.boardView === 'v3' && G.selected && G.preps[i] && !e.target.closest('.slot')) {
+        e.preventDefault(); tapVessel(G.preps[i].id);
+      }
+    });
     const timer = el('div', 'timer',
       `<span class="clock asset" data-label="clock">${A.url('clock') ? `<img src="${A.url('clock')}" alt="">` : clockSVG()}</span>` +
       `<div class="track"><i></i><b></b></div>`);
@@ -517,14 +556,28 @@ function buildCards() {
     cardsEl.appendChild(wrap);
     return { wrap, card, timer, face: card.querySelector('.face'), mini: card.querySelector('.mini'),
       name: card.querySelector('.rname'), price: card.querySelector('.price'), layers: card.querySelector('.order-layers'),
-      fill: timer.querySelector('i'), text: timer.querySelector('b'), key: '' };
+      fill: timer.querySelector('i'), text: timer.querySelector('b'),
+      dock: card.querySelector('.customer-cup-dock'), recipe: card.querySelector('.customer-recipe'), key: '' };
   });
+}
+
+// Reuse the actual preparation vessels when switching views, including their
+// current liquid and input handlers. Each V3 card owns the cup in its position.
+function placePreparationGlasses() {
+  G.preps.forEach((b, i) => {
+    const host = save.boardView === 'v3' && cardEls[i] ? cardEls[i].dock : prepsEl;
+    if (vesselEls[b.id].slot.parentElement !== host) host.appendChild(vesselEls[b.id].slot);
+  });
+  $('#counter').classList.toggle('no-preps', !prepsEl.children.length);
 }
 
 function renderCard(slot, i, matched) {
   const E = cardEls[i];
   const key = slot.state === 'empty' ? 'empty' : `${slot.order.uid}:${slot.char}:${slot.mood}`;
   E.wrap.className = 'cust ' + slot.state + (slot.mood ? ' ' + slot.mood : '') + (matched && onScreen(slot) ? ' matching' : '');
+  const cup = G.preps[i], source = G.selected === null ? null : vessel(G.selected);
+  E.wrap.classList.toggle('cup-target', save.boardView === 'v3' && cup && source && source !== cup &&
+    !busy(source) && !busy(cup) && Core.canPour(source.layers, cup.layers, G.L.bottleCapacity, true));
   if (E.key !== key) {
     E.key = key;
     if (slot.state !== 'empty') {
@@ -533,6 +586,13 @@ function renderCard(slot, i, matched) {
       E.name.textContent = slot.order.name;
       E.price.innerHTML = `<span class="coin">${coinIcon()}</span>${slot.order.coins}`;
       E.mini.setAttribute('aria-label', `${slot.order.name}, alttan üste: ${slot.order.layers.map(c => (P.COLORS[c] || {}).label || c).join(', ')}`);
+      E.recipe.innerHTML = slot.order.layers.map((c, step) => {
+        const color = P.COLORS[c];
+        return `<span class="recipe-step" data-c="${c}" style="--recipe-color:${color.hex}" aria-label="${step + 1}. katman: ${color.label}">${step + 1}</span>`;
+      }).join('');
+    } else {
+      E.recipe.innerHTML = '';
+      E.name.textContent = 'Yedek bardak';
     }
   }
   if (slot.state !== 'empty') renderLiquid(E.layers, slot.order.layers, -1, onScreen(slot) ? matched : 0);
@@ -555,7 +615,12 @@ function flyServe(id, i, feedback) {
   Object.assign(c.style, { left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px' });
   fx.appendChild(c);
   const dx = t.left + t.width * 0.7 - (r.left + r.width / 2), dy = t.top + t.height * 0.6 - (r.top + r.height / 2);
-  const anim = c.animate([
+  const personal = save.boardView === 'v3' && G.preps[i]?.id === id;
+  const anim = c.animate(personal ? [
+    { transform: 'translateY(0) scale(1)', opacity: 1 },
+    { transform: 'translateY(-12px) scale(1.04)', opacity: 1, offset: 0.35 },
+    { transform: 'translateY(-25px) scale(.8)', opacity: 0 },
+  ] : [
     { transform: 'translate(0,0) scale(1)', opacity: 1 },
     { transform: `translate(${dx * 0.5}px, ${dy * 0.5 - 30}px) scale(.8) rotate(-8deg)`, opacity: 1, offset: 0.5 },
     { transform: `translate(${dx}px, ${dy}px) scale(.35)`, opacity: 0 },
@@ -601,7 +666,12 @@ function renderHint() {
   if (performance.now() < hintUntil) return;
   const H = $('#hint');
   H.className = 'pill';
-  H.textContent = G.selected ? 'Dökmek için hedefe dokun.' : P.THEMES[G.L.theme].hint;
+  if (save.boardView === 'v3') {
+    H.textContent = G.selected ? 'Bardağa veya uygun şişeye dokun.' : 'Tarifi müşterinin kendi bardağında hazırla.';
+  } else if (save.boardView === 'v1') {
+    H.textContent = G.selected ? 'Dökmek için hedefe dokun.' : G.L.theme === 'coffee'
+      ? 'Şişeden fincana dök, kahveyi alttan üste kur!' : 'Şişeden bardağa dök, tarifi alttan üste kur!';
+  } else H.textContent = G.selected ? 'Uygun şişeye veya hazırlık kabına dokun.' : P.THEMES[G.L.theme].hint;
 }
 
 function flashHint(text, kind) {
@@ -620,6 +690,7 @@ function renderAll() {
   if (!save.marks || save.marksMode === 'v1') m.order.fill(0);
   G.lanes.forEach(b => renderVessel(b, 0));
   G.preps.forEach((b, g) => renderVessel(b, m.glass[g]));
+  $('#reserveLabel').hidden = !G.lanes.some(b => b.ptr + 1 < b.list.length);
   G.slots.forEach((s, i) => renderCard(s, i, m.order[i]));
   renderTimers();
   renderHint();
@@ -715,42 +786,70 @@ function flyLayer(color, a, b) {
 // ---------- layout ----------
 // Cards keep a third of the width each. The board is three rows: the
 // preparation glasses on the counter, the front bottles, the bottles waiting
-// behind them (smaller, below, only their tops). Bottle size = the biggest
+// behind them (smaller, fully visible in V3). Bottle size = the biggest
 // that fits the space left.
 function layout() {
+  const sharedWorktop = save.boardView === 'v2';
+  const personal = save.boardView === 'v3';
+  document.body.dataset.boardView = save.boardView;
+  placePreparationGlasses();
+  $('#prepTag').textContent = sharedWorktop ? 'KARIŞTIRMA TEZGÂHI' : P.THEMES[G.L.theme].prepTag;
   const app = $('#app');
   const W = app.clientWidth, H = app.clientHeight;
   const gutter = 16, gap = 10;
   const cw = Math.min(150, Math.floor((W - 2 * gutter - 2 * gap) / 3));
   const fixed = 74;                                    // name + timer + paddings
-  const ph = Math.max(60, Math.min(cw * 1.0, H * 0.27 - fixed));
+  const ph = personal ? Math.max(40, Math.min(80, H * 0.095)) : Math.max(60, Math.min(cw * 1.0, H * 0.27 - fixed));
   app.style.setProperty('--cw', cw + 'px');
   app.style.setProperty('--ph', ph + 'px');
+  const cupW = Math.max(28, Math.min(cw * 0.55, H * 0.072));
+  app.style.setProperty('--customer-cup-w', cupW + 'px');
+  app.style.setProperty('--customer-cup-h', Math.round(cupW * A.BOTTLE.h / A.BOTTLE.w) + 'px');
+  $('.work-caption').textContent = personal ? 'ŞİŞELER ARASINDA DA AKTAR' : 'SEÇ · AKTAR · HAZIRLA';
 
-  const hud = $('#hud').offsetHeight, cust = $('#customers').offsetHeight, hint = $('#hint').offsetHeight;
+  // the board gets whatever height the flex layout leaves it (measured, so
+  // phone browser bars, safe areas and fonts are already accounted for)
   const pad = 12;
   const cols = Math.max(G.lanes.length, G.preps.length);
   const availW = W - 2 * gutter - 2 * pad;
-  const availH = H - hud - cust - hint - 4 * 10 - 2 * pad - 8;
+  const wrapH = $('#boardWrap').clientHeight - (personal ? 8 : 0);
   const ratio = A.BOTTLE.h / A.BOTTLE.w;
-  const extra = 12 + 10 + 22 + 16 + 4;                 // front lift room + gap + counter tag + counter edge + back row gap
-  const rows = BACK_SCALE * BACK_SHOW + 1 + PREP_SCALE;
-  const bw = Math.max(36, Math.floor(Math.min(112, availW / cols * 0.74, (availH - extra) / rows / ratio)));
-  const bh = Math.round(bw * ratio);
-  const sw = Math.floor(Math.min(availW / cols, bw * 1.5));
-  const root = $('#boardPanel').style;
-  root.setProperty('--bw', bw + 'px');
-  root.setProperty('--bh', bh + 'px');
-  root.setProperty('--sw', sw + 'px');
+  const cupsOnCards = personal && !prepsEl.children.length;
+  const extra = (cupsOnCards ? 56 : sharedWorktop || personal ? 98 : 74) + (personal ? 12 : 0);
+  const backShow = personal ? 1 : BACK_SHOW;
+  const rows = BACK_SCALE * backShow + 1 + (cupsOnCards ? 0 : PREP_SCALE);
+  const panel = $('#boardPanel'), root = panel.style;
+  const apply = bw => {
+    const bh = Math.round(bw * ratio);
+    root.setProperty('--bw', bw + 'px');
+    root.setProperty('--bh', bh + 'px');
+    root.setProperty('--sw', Math.floor(Math.min(availW / cols, bw * 1.5)) + 'px');
+  };
   root.setProperty('--bs', BACK_SCALE);
-  root.setProperty('--bv', BACK_SHOW);
+  root.setProperty('--bv', backShow);
   root.setProperty('--ps', PREP_SCALE);
   root.setProperty('--cols', cols);
+  let bw = Math.max(30, Math.floor(Math.min(112, availW / cols * 0.74, (wrapH - extra) / rows / ratio)));
+  apply(bw);
+  // the estimate can be off by a few pixels: shrink until the panel really fits
+  for (let k = 0; k < 20 && panel.offsetHeight > wrapH && bw > 30; k++) apply(bw -= 2);
   const appRect = app.getBoundingClientRect(), counter = $('#counter').getBoundingClientRect();
   // A separate effect layer, aligned to the play area even on wide screens.
-  Object.assign($('#serveFeedback').style, { left: appRect.left + 'px', width: appRect.width + 'px', top: (counter.top + 26) + 'px' });
+  const feedbackTop = personal ? panel.getBoundingClientRect().top + 24 : counter.top + 26;
+  Object.assign($('#serveFeedback').style, { left: appRect.left + 'px', width: appRect.width + 'px', top: feedbackTop + 'px' });
 }
 window.addEventListener('resize', () => { if (G) layout(); });
+// Phone browsers / in-app web views can change the visible height without a
+// window resize (toolbars, late sizing), and late fonts or art can make the
+// header or the cards taller: whenever the board's space changes, lay out again.
+if (window.ResizeObserver) {
+  let last = '';
+  new ResizeObserver(() => {
+    const k = $('#app').clientWidth + 'x' + $('#boardWrap').clientHeight;
+    if (G && k !== last) { last = k; layout(); }
+  }).observe($('#boardWrap'));
+}
+if (window.visualViewport) visualViewport.addEventListener('resize', () => { if (G) layout(); });
 if (document.fonts) document.fonts.ready.then(() => { if (G) layout(); });
 
 // ---------- panels ----------
@@ -783,11 +882,16 @@ function levelFacts(L) {
 }
 
 function showPause() {
+  const views = Object.entries(BOARD_VIEWS).map(([view, label]) =>
+    `<button class="marks-mode" data-board-view="${view}" aria-pressed="${save.boardView === view}">` +
+    `<b>${view.toUpperCase()}</b><span>${label}</span></button>`).join('');
   const modes = Object.entries(MARK_MODES).map(([mode, label]) =>
     `<button class="marks-mode" data-marks-mode="${mode}" aria-pressed="${save.marksMode === mode}"${save.marks ? '' : ' disabled'}>` +
     `<b>${mode.toUpperCase()}</b><span>${label}</span></button>`).join('');
   showPanel(`<div class="eyebrow">DURAKLATILDI</div><h2>Bölüm ${G.L.levelOrder + 1}</h2>` +
     (G.L.name ? `<p>${G.L.name}</p>` : '') + levelFacts(G.L) +
+    `<div class="settings-label">TEZGÂH GÖRÜNÜMÜ</div>` +
+    `<div class="board-views" role="group" aria-label="Tezgâh görünümü">${views}</div>` +
     `<button class="switch${save.marks ? ' on' : ''}" id="marksSwitch" role="switch" aria-checked="${save.marks}">` +
     `<span>Eşleşen katmanları işaretle</span><i></i></button>` +
     `<div class="marks-modes" role="group" aria-label="Eşleşmelerin gösterileceği şişeler">${modes}</div>`, [
@@ -796,6 +900,14 @@ function showPause() {
     ['Bölümler', showLevels],
     ...(window.GAME_HOME ? [['Ana Menü', window.GAME_HOME]] : []),   // set by the combined page (../cafe_sort)
   ]);
+  panel.querySelectorAll('[data-board-view]').forEach(button => button.addEventListener('click', () => {
+    save.boardView = button.dataset.boardView;
+    writeSave();
+    layout();
+    renderAll();
+    panel.querySelectorAll('[data-board-view]').forEach(option =>
+      option.setAttribute('aria-pressed', String(option.dataset.boardView === save.boardView)));
+  }));
   $('#marksSwitch').addEventListener('click', () => {
     save.marks = !save.marks; writeSave();
     renderAll();
@@ -916,7 +1028,7 @@ window.FlowGame = {
     matches: matches(),
   })),
   start: o => { hidePanel(); startLevel(o); },
-  play: () => { hidePanel(); G.paused = false; pauseServeFeedback(false); renderAll(); },
+  play: () => { hidePanel(); G.paused = false; pauseServeFeedback(false); autoServe(); renderAll(); },
   step: dt => step(dt),
   // put layers straight into a vessel (to test recipe matching), then let auto-serve look
   setVessel: (i, layers) => { G.vessels[i].layers = layers.slice(); autoServe(); renderAll(); },

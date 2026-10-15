@@ -1,0 +1,111 @@
+{
+  "id": "desert-planet",
+  "band": "hard",
+  "art": [
+    7,
+    10
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 11,
+    "maxTech": 4,
+    "effortTarget": 102,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      16
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 0,
+    "shapes": 2,
+    "keyLocks": 1,
+    "corners": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABCCCCD",
+      "AABCCCCD",
+      "AABCCCCD",
+      "AABCCCCD",
+      "AAEEEEED",
+      "AAEEEEED",
+      "AAEEEEED",
+      "AAFFFFFF",
+      "GGFFFFFF",
+      "HHHHHHHI",
+      "JJJJJKKI"
+    ],
+    "clues": {
+      "A": [
+        2,
+        0
+      ],
+      "B": [
+        1,
+        2
+      ],
+      "C": [
+        0,
+        5
+      ],
+      "D": [
+        5,
+        7
+      ],
+      "E": [
+        6,
+        4
+      ],
+      "F": [
+        7,
+        7
+      ],
+      "G": [
+        8,
+        1
+      ],
+      "H": [
+        9,
+        3
+      ],
+      "I": [
+        10,
+        7
+      ],
+      "J": [
+        10,
+        1
+      ],
+      "K": [
+        10,
+        5
+      ]
+    },
+    "hidden": [
+      "D"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {},
+    "corners": {
+      "F": "tr"
+    },
+    "locks": {},
+    "keys": {
+      "K": "H"
+    },
+    "shapes": {
+      "G": "wide",
+      "I": "tall"
+    }
+  }
+}

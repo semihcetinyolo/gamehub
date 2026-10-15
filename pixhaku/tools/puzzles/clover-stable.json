@@ -1,0 +1,77 @@
+{
+  "id": "clover-stable",
+  "band": "easy",
+  "art": [
+    6,
+    6
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 7,
+    "maxTech": 4,
+    "effortTarget": 39,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      8,
+      14
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0,
+    "shapes": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAABB",
+      "AAAAABB",
+      "CCDDDBB",
+      "CCDDDBB",
+      "CCDDDEF",
+      "CCGGHEF",
+      "CCGGHEF"
+    ],
+    "clues": {
+      "A": [
+        1,
+        1
+      ],
+      "B": [
+        0,
+        5
+      ],
+      "C": [
+        2,
+        0
+      ],
+      "D": [
+        3,
+        2
+      ],
+      "E": [
+        6,
+        5
+      ],
+      "F": [
+        6,
+        6
+      ],
+      "G": [
+        6,
+        2
+      ],
+      "H": [
+        6,
+        4
+      ]
+    },
+    "hidden": [],
+    "locks": {},
+    "shapes": {
+      "C": "tall"
+    }
+  }
+}

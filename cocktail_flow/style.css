@@ -14,7 +14,6 @@ button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
   linear-gradient(180deg,#f3c194 0,#e6a676 52%,#c98654 52.2%,#b9733f 100%);
   background-size:cover;background-position:center}
 body[data-theme=coffee] #bg{background-color:#c79a72}
-body[data-theme=coffee] #counter{background:linear-gradient(180deg,#683f25 0,#7a4c2d calc(100% - 11px),#a0704a calc(100% - 10px),#8a5b38 100%);box-shadow:inset 0 -3px 0 #4f2f1a,0 4px 8px #3b231440}
 body[data-theme=coffee] #bg:not([style*=url]){background:
   radial-gradient(120% 55% at 50% 8%,#f6e2c6 0,#d9b08a 38%,transparent 62%),
   linear-gradient(180deg,#caa07a 0,#a8794f 52%,#7b5133 52.2%,#64402a 100%)}
@@ -91,33 +90,83 @@ body[data-theme=coffee] #bg:not([style*=url]){background:
 .cust.leaving.sad{animation:leaveSad .8s ease-in both}
 .cust.leaving.sad .card{border-color:#ffb3a8;box-shadow:0 0 0 3px #ff7a6b}
 .cust.leaving .timer{visibility:hidden}
+.customer-station{display:none}
+
+/* V3: portrait, recipe and the actual playable glass form one customer card. */
+body[data-board-view=v3] #customers{align-items:stretch}
+body[data-board-view=v3] .cust{gap:3px;padding:4px 0 7px;background:linear-gradient(#fff8ed,#f4e4c9);
+  border:2px solid #fff;border-radius:18px;box-shadow:0 3px 0 #c9a97b,0 5px 10px #69421d22;
+  transition:border-color .18s,box-shadow .18s}
+body[data-board-view=v3] .card{padding:0 4px;border:0;border-radius:14px;background:none;box-shadow:none;gap:3px}
+body[data-board-view=v3] .portrait{border-radius:12px 12px 7px 7px}
+body[data-board-view=v3] .face{inset:0}
+body[data-board-view=v3] .mini{display:none}
+body[data-board-view=v3] .price{font-size:calc(var(--cw)*.085);left:2px;top:2px}
+body[data-board-view=v3] .rname{font-size:calc(var(--cw)*.084);line-height:1.7;letter-spacing:0}
+body[data-board-view=v3] .timer{margin:0 5px;padding-right:3px;box-shadow:none;height:18px}
+body[data-board-view=v3] .clock{width:14px;height:14px}
+body[data-board-view=v3] .track b{font-size:9px}
+body[data-board-view=v3] .customer-station{display:block;position:relative;width:100%;margin-top:3px;
+  border-radius:10px;background:linear-gradient(#e8d6b540,#d9bc8866);border-top:1px solid #ddc7a4}
+.customer-cup-dock{position:relative}
+body[data-board-view=v3] .customer-cup-dock .slot.prep{width:100%;height:calc(var(--customer-cup-h) + 10px);padding-left:18px}
+body[data-board-view=v3] .customer-cup-dock .bottle{width:var(--customer-cup-w);height:var(--customer-cup-h);margin-bottom:4px}
+body[data-board-view=v3] .customer-cup-dock .slot::before{left:calc(50% + 9px);width:calc(var(--customer-cup-w) + 5px);height:8px;bottom:1px}
+body[data-board-view=v3] .customer-cup-dock .transfer-mark{right:1px;bottom:calc(var(--customer-cup-h) - 10px);width:16px;height:16px;font-size:12px}
+body[data-board-view=v3] .customer-cup-dock .slot.sel .transfer-mark{font-size:8px}
+.recipe-title{position:absolute;top:5px;left:2px;font-size:6px;letter-spacing:.5px;color:#937650;font-weight:700;pointer-events:none}
+.customer-recipe{position:absolute;left:3px;top:calc(6px + var(--customer-cup-h)*.23256);
+  height:calc(var(--customer-cup-h)*.63488);width:17px;display:flex;flex-direction:column-reverse;gap:2px;pointer-events:none}
+.recipe-step{flex:1;min-height:0;display:grid;place-items:center;background:var(--recipe-color);color:#fff;
+  border:1px solid #ffffffbb;border-radius:3px;font-size:8px;font-weight:700;text-shadow:0 1px 2px #412618b0;box-shadow:0 1px 1px #5b3a2226}
+.recipe-step[data-c=milk]{color:#687b89;border-color:#adbdc7;text-shadow:none}
+body[data-board-view=v3] .cust.cup-target{border-color:#a6c69a;box-shadow:0 0 0 2px #e8f5d8,0 3px 0 #96ab77;cursor:pointer}
+body[data-board-view=v3] .cust.leaving.happy{animation:none}
+body[data-board-view=v3] .cust.leaving.happy .card{box-shadow:none}
+body[data-board-view=v3] .cust.leaving.happy .customer-station{background:#dce8ca}
+body[data-board-view=v3] .cust.empty{visibility:visible;background:#ecdfc6}
+body[data-board-view=v3] .cust.empty .portrait,body[data-board-view=v3] .cust.empty .timer,
+body[data-board-view=v3] .cust.empty .recipe-title{visibility:hidden}
+body[data-board-view=v3] .cust.empty .rname{color:#a08a6a;background:none}
+body[data-board-view=v3] #counter.no-preps{display:none}
+body[data-board-view=v3] .work-caption{height:22px;line-height:22px;font-size:8px;letter-spacing:1px}
+body[data-board-view=v3] #boardWrap{align-items:flex-start;padding-top:8px}
+body[data-board-view=v3] #boardPanel{padding-bottom:22px}
+body[data-board-view=v3] .bottle.back-bottle{opacity:.78}
 
 /* ---------- board ---------- */
-/* three rows: the preparation glasses on the counter, the front bottles on a
-   shelf, the bottles waiting behind them below (smaller, only their tops show,
-   can't be tapped) */
+/* A shared worktop for all active vessels; reserves stay below it. */
 #boardWrap{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center}
-#boardPanel{padding:0 12px;border-radius:26px;overflow:hidden;background:linear-gradient(#fbf0dc,#f1dfc0);
-  box-shadow:inset 0 2px 0 #fffaf0,0 5px 0 #cfa775,0 14px 26px #5a32142e;display:flex;flex-direction:column;align-items:center}
+#boardPanel{position:relative;padding:0 12px 10px;border-radius:26px;overflow:hidden;background:linear-gradient(135deg,#edd8b7,#dfbc89);
+  box-shadow:inset 0 0 0 2px #fbebcf,0 5px 0 #b38450,0 14px 26px #5a321426;display:flex;flex-direction:column;align-items:center}
 #lanes{position:relative;display:flex;justify-content:center;width:calc(var(--sw)*var(--cols))}
-.slot.front::after{content:"";position:absolute;left:-4px;right:-4px;bottom:2px;height:9px;border-radius:5px;z-index:0;
-  background:linear-gradient(#e2bf8c,#c99a62);box-shadow:0 2px 0 #a97a45,0 4px 6px #5a321430}
-.slot.front::after{left:0;right:0;border-radius:0}
-.lane:first-child .slot.front::after{left:-4px;border-radius:5px 0 0 5px}
-.lane:last-child .slot.front::after{right:-4px;border-radius:0 5px 5px 0}
+#lanes::before{content:"";position:absolute;left:0;right:0;top:calc(var(--bh) + 20px);height:1px;background:#ba956a55;pointer-events:none}
+.lane:not(:last-child)::after{content:"↔";position:absolute;right:-9px;top:calc(var(--bh)*.45 + 14px);width:18px;
+  color:#ae8b58;text-align:center;font:18px/1 system-ui,sans-serif;pointer-events:none;z-index:2}
 .lane{width:var(--sw);display:flex;flex-direction:column;align-items:center;position:relative}
-/* only the top of a waiting bottle shows; the panel edge cuts the rest */
-.back-slot{position:relative;width:100%;height:calc(var(--bh)*var(--bs)*var(--bv));margin-top:4px;overflow:hidden;
+/* Waiting bottles stay smaller; --bv controls how much of them is visible. */
+.back-slot{position:relative;width:100%;height:calc(var(--bh)*var(--bs)*var(--bv));margin-top:10px;overflow:hidden;
   display:flex;align-items:flex-start;justify-content:center;z-index:0}
 .bottle.back-bottle{flex:none}
-.bottle.back-bottle{width:calc(var(--bw)*var(--bs));height:calc(var(--bh)*var(--bs));margin-bottom:0;filter:saturate(.85) brightness(.94)}
+.bottle.back-bottle{width:calc(var(--bw)*var(--bs));height:calc(var(--bh)*var(--bs));margin-bottom:0;opacity:.55;filter:saturate(.85)}
 .back-bottle::before{display:none}
 .back-bottle.none{visibility:hidden}
 .back-slot.bad .back-bottle{animation:shake .4s}
 .more{position:absolute;right:calc(50% - var(--bw)*var(--bs)/2 - 14px);top:8%;z-index:2;min-width:24px;padding:0 6px;border-radius:999px;
   background:linear-gradient(#fffaf1,#f3dfbf);border:2px solid #fff;box-shadow:0 2px 0 var(--edge);font-size:12px;font-weight:700;line-height:18px;text-align:center;color:var(--ink-soft)}
 .more.none{display:none}
-.slot{width:var(--sw);display:flex;align-items:flex-end;justify-content:center;position:relative;cursor:pointer}
+.slot{--pad-scale:1;width:var(--sw);display:flex;align-items:flex-end;justify-content:center;position:relative;cursor:pointer}
+.slot::before{content:"";position:absolute;bottom:1px;left:50%;transform:translateX(-50%);width:calc(var(--bw)*var(--pad-scale));height:11px;
+  border-radius:50%;background:#c09b6880;border:1px solid #f9eccd;box-shadow:0 1px 2px #91603126;transition:background .18s,box-shadow .18s;pointer-events:none}
+.slot.sel::before{background:#e9ba5c;border-color:#fff4bf;box-shadow:0 0 0 2px #fff3bf}
+.slot.can-receive::before{background:#95b19a;box-shadow:0 0 0 2px #e6f0d6}
+.slot.gone::before,.slot.emptied::before{visibility:hidden}
+.slot > .bottle::before{display:none}
+.transfer-mark{position:absolute;right:calc(50% - var(--bw)*var(--pad-scale)/2 - 9px);bottom:calc(var(--bh)*var(--pad-scale) - 8px);
+  z-index:3;display:grid;place-items:center;width:19px;height:19px;border:1.5px solid #719e7c;border-radius:50%;background:#edf7e9;
+  color:#426f50;font-size:14px;line-height:1;font-weight:700;box-shadow:0 2px 4px #0002;pointer-events:none}
+.transfer-mark[hidden]{display:none}
+.slot.sel .transfer-mark{background:#fff1b9;border-color:#b99948;color:#8a681d;font-size:10px}
 .slot.front{height:calc(var(--bh) + 14px);z-index:1}
 .slot.front .bottle{position:relative;z-index:1}
 .bottle{position:relative;width:var(--bw);height:var(--bh);margin-bottom:8px;transition:transform .14s ease-out,filter .14s;transform-origin:50% 100%}
@@ -137,14 +186,16 @@ body[data-theme=coffee] #bg:not([style*=url]){background:
 .badge{position:absolute;right:-6%;bottom:2%;width:38%;aspect-ratio:1;display:none;z-index:2}
 .badge img,.badge svg{width:100%;height:100%}
 
-#counter{position:relative;margin:0 -12px 10px;align-self:stretch;padding:24px 12px 12px;display:flex;justify-content:center;
-  background:linear-gradient(180deg,#a46a3a 0,#b57a45 calc(100% - 11px),#d9a36a calc(100% - 10px),#c48a52 100%);box-shadow:inset 0 -3px 0 #8d5a2e,0 4px 8px #5a321430}
+#counter{position:relative;margin:0 -12px 2px;align-self:stretch;padding:30px 12px 8px;display:flex;justify-content:center}
 .prep-tag{position:absolute;top:4px;left:50%;transform:translateX(-50%);z-index:3;padding:1px 10px;border-radius:999px;
-  background:linear-gradient(#ffd56a,#f0b323);border:2px solid #fff;box-shadow:0 2px 0 #b9800f;color:#6b4206;font-size:11px;font-weight:700;letter-spacing:1px;white-space:nowrap}
+  background:#f6e6c9;border:1px solid #fff1d6;color:#84613a;font-size:10px;font-weight:700;letter-spacing:1px;white-space:nowrap}
+.work-caption{height:14px;flex:none;text-align:center;font-size:8px;line-height:14px;letter-spacing:1.6px;font-weight:700;color:#9e7a4c;pointer-events:none}
+.reserve-label{position:absolute;bottom:3px;left:50%;transform:translateX(-50%);z-index:2;background:#ecdbc2e8;
+  border-radius:9px;padding:2px 8px;font-size:8px;letter-spacing:1px;color:#8b7459;white-space:nowrap;pointer-events:none}
+.reserve-label[hidden]{display:none}
 #preps{display:flex;justify-content:center}
-.slot.prep{height:calc(var(--bh)*var(--ps) + 10px)}
+.slot.prep{--pad-scale:var(--ps);height:calc(var(--bh)*var(--ps) + 10px)}
 .slot.prep .bottle{width:calc(var(--bw)*var(--ps));height:calc(var(--bh)*var(--ps));margin-bottom:4px}
-.slot.prep .bottle::before{left:-6%;right:-6%;bottom:-7px;height:14px;background:radial-gradient(#ffd56a,#e0a21a 60%,transparent 72%);filter:none;opacity:.85}
 
 .slot.emptied{pointer-events:none}
 .slot.emptied .bottle{animation:vanish .3s ease-in forwards}
@@ -152,9 +203,34 @@ body[data-theme=coffee] #bg:not([style*=url]){background:
 .slot.gone .bottle{animation:vanish .45s ease-in forwards}
 .slot.ready .badge{display:block;animation:pop .3s ease-out}
 .slot.ready .bottle{filter:drop-shadow(0 0 4px var(--green-glow)) drop-shadow(0 0 2px var(--green))}
-.slot.sel .bottle{transform:translateY(-10%);filter:drop-shadow(0 0 5px #fff) drop-shadow(0 0 4px #ffd34d)}
+.slot.sel .bottle{transform:translateY(-10%);filter:drop-shadow(0 0 3px #fff6c1)}
 .slot.sel.ready .bottle{filter:drop-shadow(0 0 6px #fff) drop-shadow(0 0 5px var(--green))}
 .slot.bad .bottle{animation:shake .4s;filter:drop-shadow(0 0 5px var(--red)) drop-shadow(0 0 2px var(--red))}
+
+/* V1 preserves the original preparation counter and supply shelf. */
+body[data-board-view=v1] #boardPanel{padding:0 12px;background:linear-gradient(#fbf0dc,#f1dfc0);
+  box-shadow:inset 0 2px 0 #fffaf0,0 5px 0 #cfa775,0 14px 26px #5a32142e}
+body[data-board-view=v1] .work-caption,body[data-board-view=v1] .reserve-label,
+body[data-board-view=v1] .transfer-mark,body[data-board-view=v1] #lanes::before,
+body[data-board-view=v1] .lane::after,body[data-board-view=v1] .slot::before{display:none}
+body[data-board-view=v1] .slot.front::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:9px;z-index:0;
+  background:linear-gradient(#e2bf8c,#c99a62);box-shadow:0 2px 0 #a97a45,0 4px 6px #5a321430}
+body[data-board-view=v1] .lane:first-child .slot.front::after{left:-4px;border-radius:5px 0 0 5px}
+body[data-board-view=v1] .lane:last-child .slot.front::after{right:-4px;border-radius:0 5px 5px 0}
+body[data-board-view=v1] .back-slot{margin-top:4px}
+body[data-board-view=v1] .bottle.back-bottle{opacity:1;filter:saturate(.85) brightness(.94)}
+body[data-board-view=v1] .slot > .bottle::before{display:block}
+body[data-board-view=v1] #counter{margin:0 -12px 10px;padding:24px 12px 12px;
+  background:linear-gradient(180deg,#a46a3a 0,#b57a45 calc(100% - 11px),#d9a36a calc(100% - 10px),#c48a52 100%);
+  box-shadow:inset 0 -3px 0 #8d5a2e,0 4px 8px #5a321430}
+body[data-board-view=v1][data-theme=coffee] #counter{background:linear-gradient(180deg,#683f25 0,#7a4c2d calc(100% - 11px),#a0704a calc(100% - 10px),#8a5b38 100%);
+  box-shadow:inset 0 -3px 0 #4f2f1a,0 4px 8px #3b231440}
+body[data-board-view=v1] .prep-tag{background:linear-gradient(#ffd56a,#f0b323);border:2px solid #fff;
+  box-shadow:0 2px 0 #b9800f;color:#6b4206;font-size:11px}
+body[data-board-view=v1] .slot.prep .bottle::before{left:-6%;right:-6%;bottom:-7px;height:14px;
+  background:radial-gradient(#ffd56a,#e0a21a 60%,transparent 72%);filter:none;opacity:.85}
+body[data-board-view=v1] .slot.sel .bottle{filter:drop-shadow(0 0 5px #fff) drop-shadow(0 0 4px #ffd34d)}
+body[data-board-view=v1] .slot.sel.ready .bottle{filter:drop-shadow(0 0 6px #fff) drop-shadow(0 0 5px var(--green))}
 
 /* ---------- hint ---------- */
 #hint{max-width:100%;overflow:hidden;text-overflow:ellipsis;font-size:14px;padding:5px 18px;flex:none}
@@ -210,6 +286,8 @@ body[data-theme=coffee] #bg:not([style*=url]){background:
 .switch.on i{background:#3cc152}
 .switch.on i::after{transform:translateX(18px)}
 .marks-modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:8px}
+.settings-label{margin-top:16px;font-size:10px;letter-spacing:1.5px;font-weight:700;color:#957552;text-align:left}
+.board-views{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:8px}
 .marks-mode{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
   min-height:62px;padding:8px 4px;border:1.5px solid #decbb0;border-radius:12px;background:#fffaf1;color:#826e59}
 .marks-mode b{font-size:14px;line-height:1.2}

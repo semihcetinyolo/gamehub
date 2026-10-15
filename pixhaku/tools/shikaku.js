@@ -7,7 +7,15 @@
 //   analyse(p)         both of the above plus the numbers the level specs check
 //   searchClues(...)   picks one clue cell per zone so a layout meets a level spec
 //
-// Puzzle: { rows, cols, clues: [{ r, c, n, h? }] }   h: hidden "?" clue.
+// Puzzle: { rows, cols, clues: [{ r, c, n, h?, s?, link? }] }   h: hidden "?" clue,
+//   s: shape clue ("square" | "tall" | "wide"), only the outline is shown, any size,
+//   link: "?" clues with the same link id (same colour) have identical pieces: same height and width,
+//     and the "?" in the same spot of each piece,
+//   par: "odd" | "even" (shown as I / II), only the parity of the piece's area is known,
+//   more: m (shown as m+), the piece has more than m cells,
+//   corner: which sides of the clue's cell are edges of its piece, exactly (no size shown):
+//     tl ┌ / tr ┐ / bl └ / br ┘ a corner of a piece at least 2×2,
+//     up ⊓ / down ⊔ / left ⊏ / right ⊐ an end of a 1-wide strip.
 // Reasoning steps (a level may need 1–4; 5 means "too deep, re-roll"):
 //   T1 tek yer    a clue has exactly one rectangle left that fits
 //   T2 tek sahip  an empty cell only one clue can still reach, so that clue must cover it
@@ -24,6 +32,15 @@ function rectCells(cols, r0, c0, r1, c1) {
   return out;
 }
 
+// corner clue: the sides of the clue's cell that are edges of the piece, as top/right/bottom/left
+const CORNER_SIDES = { tl: "1001", tr: "1100", bl: "0011", br: "0110", up: "1101", down: "0111", left: "1011", right: "1110" };
+const sidesAt = (r, c, r0, c0, r1, c1) => `${+(r === r0)}${+(c === c1)}${+(r === r1)}${+(c === c0)}`;
+const cornerAt = (r, c, q) => Object.keys(CORNER_SIDES).find((k) => CORNER_SIDES[k] === sidesAt(r, c, q.r0, q.c0, q.r1, q.c1)) || null;
+
+// shape clue: the piece's outline is shown, not its size (a square is at least 2×2)
+const shapeOf = (h, w) => (h === w ? "square" : h > w ? "tall" : "wide");
+const fitsShape = (s, h, w) => shapeOf(h, w) === s && !(s === "square" && h < 2);
+
 function prepare(p) {
   const N = p.rows * p.cols;
   const clueAt = new Int16Array(N).fill(-1);
@@ -33,9 +50,10 @@ function prepare(p) {
     const list = [];
     for (let h = 1; h <= p.rows; h++) {
       for (let w = 1; w <= p.cols; w++) {
-        if (!k.h && h * w !== k.n) continue;
+        if (k.s ? !fitsShape(k.s, h, w) : k.par ? (h * w) % 2 !== (k.par === "odd" ? 1 : 0) : k.more ? h * w <= k.more : !k.h && !k.corner && h * w !== k.n) continue;
         for (let r0 = Math.max(0, k.r - h + 1); r0 <= Math.min(k.r, p.rows - h); r0++) {
           for (let c0 = Math.max(0, k.c - w + 1); c0 <= Math.min(k.c, p.cols - w); c0++) {
+            if (k.corner && sidesAt(k.r, k.c, r0, c0, r0 + h - 1, c0 + w - 1) !== CORNER_SIDES[k.corner]) continue;
             const cells = rectCells(p.cols, r0, c0, r0 + h - 1, c0 + w - 1);
             if (cells.some((x) => clueAt[x] !== -1 && clueAt[x] !== i)) continue;
             list.push({ r0, c0, r1: r0 + h - 1, c1: c0 + w - 1, cells });
@@ -47,7 +65,7 @@ function prepare(p) {
   });
   // raw = how many rectangles fit ignoring the other clues (how open a clue looks at first)
   const raw = p.clues.map((k) => {
-    if (k.h) return Infinity;
+    if (k.h || k.s || k.par || k.more || k.corner) return Infinity;
     let n = 0;
     for (let h = 1; h <= p.rows; h++) {
       if (k.n % h) continue;
@@ -59,8 +77,14 @@ function prepare(p) {
     }
     return n;
   });
-  return { N, clueAt, all, raw };
+  // linked "?" clues: link id → the clues sharing it
+  const links = new Map();
+  p.clues.forEach((k, i) => { if (k.link) links.set(k.link, [...(links.get(k.link) || []), i]); });
+  return { N, clueAt, all, raw, links };
 }
+
+// twins are the same rectangle seen from their "?": same height and width, the "?" in the same spot
+const twinKey = (k, q) => `${q.r0 - k.r},${q.c0 - k.c},${q.r1 - q.r0},${q.c1 - q.c0}`;
 
 // The first uncovered cell in reading order is always the top-left corner of the
 // rectangle that covers it, so only those rectangles are tried there.
@@ -70,6 +94,7 @@ function countSolutions(p, limit = 2, prep = prepare(p)) {
   all.forEach((list, i) => list.forEach((rc) => byTL[rc.r0 * p.cols + rc.c0].push([i, rc])));
   const covered = new Uint8Array(N);
   const used = new Uint8Array(p.clues.length);
+  const linkDim = new Map(); // link id → [dimensions, members placed]
   let count = 0;
   (function rec(from) {
     let cell = from;
@@ -77,11 +102,17 @@ function countSolutions(p, limit = 2, prep = prepare(p)) {
     if (cell === N) { count++; return; }
     for (const [i, rc] of byTL[cell]) {
       if (used[i] || rc.cells.some((x) => covered[x])) continue;
+      const g = p.clues[i].link;
+      let d = g && linkDim.get(g);
+      const key = g && twinKey(p.clues[i], rc);
+      if (d && d[0] !== key) continue;
+      if (g) { if (d) d[1]++; else linkDim.set(g, (d = [key, 1])); }
       used[i] = 1;
       for (const x of rc.cells) covered[x] = 1;
       rec(cell + 1);
       for (const x of rc.cells) covered[x] = 0;
       used[i] = 0;
+      if (g && --d[1] === 0) linkDim.delete(g);
       if (count >= limit) return;
     }
   })(0);
@@ -95,8 +126,25 @@ function reasonStep(p, prep, covered, placed) {
   const n = p.clues.length;
   const open = [];
   for (let i = 0; i < n; i++) if (!placed[i]) open.push(i);
+  // linked "?" clues keep only the rectangles (as seen from their "?") every one of them, or the one already placed, can take
+  const linkPass = (cands) => {
+    for (const members of prep.links.values()) {
+      let dims = null;
+      for (const i of members) {
+        const own = new Set(placed[i] ? [twinKey(p.clues[i], placed[i])] : cands[i].map((q) => twinKey(p.clues[i], q)));
+        dims = dims ? new Set([...dims].filter((d) => own.has(d))) : own;
+      }
+      for (const i of members) {
+        if (placed[i]) continue;
+        cands[i] = cands[i].filter((q) => dims.has(twinKey(p.clues[i], q)));
+        if (!cands[i].length) return false;
+      }
+    }
+    return true;
+  };
+  const sameLink = (i, j) => p.clues[i].link && p.clues[i].link === p.clues[j].link;
   const live = prep.all.map((list, i) => (placed[i] ? null : list.filter((rc) => !overlaps(rc, covered))));
-  if (open.some((i) => live[i].length === 0)) return null;
+  if (open.some((i) => live[i].length === 0) || !linkPass(live)) return null;
   const copy = (c) => c.map((l) => (l ? l.slice() : null));
   const singles = (c) => open.filter((i) => c[i].length === 1);
   const result = (tech, c, why) => {
@@ -162,13 +210,13 @@ function reasonStep(p, prep, covered, placed) {
 
   const why2 = {};
   const c2 = copy(live);
-  if (!ownerPass(c2, why2)) return null;
+  if (!ownerPass(c2, why2) || !linkPass(c2)) return null;
   const t2 = result(2, c2, why2);
   if (t2) return t2;
 
   const why3 = {};
   const c3 = copy(c2);
-  if (!interPass(c3, why3) || !ownerPass(c3, why3)) return null;
+  if (!interPass(c3, why3) || !ownerPass(c3, why3) || !linkPass(c3)) return null;
   const t3 = result(3, c3, why3);
   if (t3) return t3;
 
@@ -183,7 +231,7 @@ function reasonStep(p, prep, covered, placed) {
         const reach = new Uint8Array(prep.N);
         for (const j of open) {
           if (j === i) continue;
-          const left = base[j].filter((q) => !overlaps(q, cov));
+          const left = base[j].filter((q) => !overlaps(q, cov) && (!sameLink(i, j) || twinKey(p.clues[j], q) === twinKey(p.clues[i], rc)));
           if (!left.length) { note(why, i, { rect: rc, by: j }); return false; }
           for (const q of left) for (const x of q.cells) reach[x] = 1;
         }
@@ -205,7 +253,7 @@ function reasonStep(p, prep, covered, placed) {
   for (let round = 0; round < 60; round++) {
     const a = ownerPass(c5, null);
     const b = a && interPass(c5, null);
-    if (!a || !b) return null;
+    if (!a || !b || !linkPass(c5)) return null;
     if (!a.changed && !b.changed) break;
   }
   const c5b = whatIf(c5, null);
@@ -214,12 +262,15 @@ function reasonStep(p, prep, covered, placed) {
 
 const orient = (q) => { const h = q.r1 - q.r0, w = q.c1 - q.c0; return h > w ? "dik" : w > h ? "yatay" : "kare"; };
 
-function humanSolve(p, prep = prepare(p)) {
+// twins: { clue: rect } of linked "?" pieces. The game places a twin by itself as soon as its
+// partner is placed, so with twins given the solve does the same: the twin comes free, as a
+// step marked auto (tech 0) right after its partner.
+function humanSolve(p, prep = prepare(p), twins = null) {
   const n = p.clues.length;
   const covered = new Uint8Array(prep.N);
   const placed = new Array(n).fill(null);
   const steps = [];
-  for (let s = 0; s < n; s++) {
+  for (let s = 0; steps.length < n; s++) {
     const res = reasonStep(p, prep, covered, placed);
     if (!res) return { solved: false, steps };
     // several certain pieces: take the most visible one (fewest options, fewest raw fits, reading order)
@@ -228,12 +279,20 @@ function humanSolve(p, prep = prepare(p)) {
       (p.clues[a[0]].r - p.clues[b[0]].r) || (p.clues[a[0]].c - p.clues[b[0]].c));
     const [i, rc] = forced[0];
     const live = res.live[i];
-    steps.push({ clue: i, rect: rc, tech: res.tech, options: res.forced.length, openBefore: n - s,
+    steps.push({ clue: i, rect: rc, tech: res.tech, options: res.forced.length, openBefore: n - steps.length,
       live: live.length, orients: [...new Set(live.map(orient))].sort(), orient: orient(rc),
       why: res.why ? res.why[i] || null : null,
       forcedAll: res.forced.map(([j, q]) => ({ clue: j, rect: q })) });
     placed[i] = rc;
     for (const x of rc.cells) covered[x] = 1;
+    if (!twins || !p.clues[i].link) continue;
+    for (const j of prep.links.get(p.clues[i].link)) {
+      if (placed[j]) continue;
+      const q = twins[j];
+      steps.push({ clue: j, rect: q, tech: 0, auto: true, options: 1, openBefore: n - steps.length, live: 1, orients: [orient(q)], orient: orient(q), why: null, forcedAll: [] });
+      placed[j] = q;
+      for (const x of q.cells) covered[x] = 1;
+    }
   }
   return { solved: true, steps };
 }
@@ -243,7 +302,17 @@ const TECH_WEIGHT = [0, 1, 2.6, 4, 6, 10];
 function analyse(p, { skipUnique = false } = {}) {
   const prep = prepare(p);
   const sols = skipUnique ? null : countSolutions(p, 2, prep);
-  const { solved, steps } = humanSolve(p, prep);
+  let { solved, steps: all } = humanSolve(p, prep);
+  if (solved && prep.links.size) {
+    // solve again the way the game plays it: placing one twin places the others
+    const twins = {};
+    all.forEach((st) => { if (p.clues[st.clue].link) twins[st.clue] = st.rect; });
+    const again = humanSolve(p, prep, twins);
+    if (again.solved) all = again.steps;
+  }
+  // `all` is the placing order (hint order, auto twins included); the numbers count only the
+  // pieces the player works out
+  const steps = all.filter((s) => !s.auto);
   const techCounts = [0, 0, 0, 0, 0, 0];
   steps.forEach((s) => techCounts[s.tech]++);
   const first = steps[0];
@@ -264,7 +333,7 @@ function analyse(p, { skipUnique = false } = {}) {
     t1Run = Math.max(t1Run, run);
   }
   return {
-    unique: sols === 1, sols, solved, steps, techCounts,
+    unique: sols === 1, sols, solved, steps: all, techCounts,
     maxTech: steps.reduce((m, s) => Math.max(m, s.tech), 0),
     startTech: first ? first.tech : 0,
     startOptions,
@@ -348,6 +417,13 @@ function placeOf(q, R, C) {
 //   start [0, 0] no plainly certain opening; the first piece may need up to openTech (default T3)
 //   pieces / pieceStyle  piece count range; "big" favours large pieces and long 1-wide strips
 //   lockCount    hidden clues shown as a lock that opens after N placed pieces
+//   keyLocks     hidden clues shown as a lock that opens once one particular piece (its key) is placed
+//   links        pairs of "?" clues sharing a colour, their pieces identical (same height and width)
+//   parity       clues that show only I (odd area) or II (even area)
+//   more         clues that show m+: more than m cells (m is 1 to 3 below the real size, at least 2)
+//   corners      clues that show only which corner (or strip end) of the piece they sit in
+//   shapes       how many clues show only the piece's outline (square / tall / wide); never all of them
+//   shapeKinds   only these outlines, e.g. ["square"] or ["tall", "wide"]
 //   effortTarget / dilemmaTarget  what the searches aim for
 // Returns null when the analysed puzzle meets the spec, else the first failed rule.
 function checkSpec(a, spec, layout) {
@@ -503,15 +579,15 @@ const KEYS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 // A whole level: many random tilings, clue cells sampled and then moved one at a time
 // towards the spec (hard rules must hold; effort, certain-share, decisions, options and
-// deep moves are scored). Returns { grid, clues, hidden } in pack format, or null.
+// deep moves are scored). Returns { grid, clues, hidden, locks, shapes } in pack format, or null.
 function generatePuzzle(cols, rows, spec, { seed = 1, tilings = 40, samples = 400, polish = 1500, deadline = Infinity } = {}) {
   const late = () => Date.now() > deadline; // optional time budget: stop searching, keep the best so far
   const rand = rng(seed);
   const pick = (list) => list[Math.floor(rand() * list.length)];
   const hard = { ...spec, dilemmas: null, minLookahead: 0, maxT1Run: null, t1Max: null, decMin: 0, liveMin: 0, deepMin: 0, cornerMax: null };
-  const lockCount = spec.lockCount || 0;
+  const lockCount = (spec.lockCount || 0) + (spec.keyLocks || 0); // both kinds of lock
   // a lock opens after N placed pieces, so its piece must come late enough in the solve
-  const lockable = (a, clues) => a.steps.map((s, idx) => ({ s, idx })).filter(({ s, idx }) => clues[s.clue].h && idx >= 2 && idx <= a.steps.length - 2);
+  const lockable = (a, clues) => a.steps.map((s, idx) => ({ s, idx })).filter(({ s, idx }) => clues[s.clue].h && !clues[s.clue].link && idx >= 2 && idx <= a.steps.length - 2);
   const scoreOf = (a) => {
     let sc = Math.abs(a.effort - (spec.effortTarget || a.effort)) + a.startRaw * 0.3;
     if (spec.t1Max != null) sc += Math.max(0, a.t1Frac - spec.t1Max) * 200;
@@ -521,34 +597,114 @@ function generatePuzzle(cols, rows, spec, { seed = 1, tilings = 40, samples = 40
     if (spec.cornerMax != null) sc += Math.max(0, a.cornerFrac - spec.cornerMax) * 120 + a.cornerFrac * 10;
     return sc;
   };
+  // shapes: how many clues show only their piece's outline (a level always keeps numbers too)
+  const shapeCount = spec.shapes || 0, linkCount = spec.links || 0, parityCount = spec.parity || 0, moreCount = spec.more || 0, cornerCount = spec.corners || 0;
   let best = null;
   for (let t = 0, guard = 0; t < tilings && guard < tilings * 50 && !late(); guard++) {
     const rects = randomTiling(rows, cols, rand, spec.pieceStyle);
     if (!rects || (spec.pieces && (rects.length < spec.pieces[0] || rects.length > spec.pieces[1]))) continue;
+    const kindOf = rects.map((q) => {
+      const h = q.r1 - q.r0 + 1, w = q.c1 - q.c0 + 1;
+      return fitsShape(shapeOf(h, w), h, w) ? shapeOf(h, w) : null;
+    });
+    if (kindOf.filter((kind) => kind && (!spec.shapeKinds || spec.shapeKinds.includes(kind))).length < shapeCount) continue;
+    // with room for one of each, every listed outline has to show up
+    const allKinds = spec.shapeKinds && shapeCount >= spec.shapeKinds.length ? spec.shapeKinds : [];
+    if (allKinds.some((kind) => !kindOf.includes(kind))) continue;
+    const dims = rects.map((q) => `${q.r1 - q.r0},${q.c1 - q.c0}`);
+    const twins = (taken) => [...new Set(dims)].map((d) => rects.map((_, k) => k).filter((k) => dims[k] === d && !taken.has(k))).filter((g) => g.length >= 2);
+    if (twins(new Set()).reduce((n, g) => n + Math.floor(g.length / 2), 0) < linkCount) continue;
     t++;
     const zones = rects.map((q, k) => ({ ...q, key: KEYS[k] }));
     const layout = { rows, cols, zones };
     const cells = rects.map((q) => { const o = []; for (let r = q.r0; r <= q.r1; r++) for (let c = q.c0; c <= q.c1; c++) o.push([r, c]); return o; });
+    const cornerCells = cells.map((list, k) => list.filter(([r, c]) => cornerAt(r, c, rects[k])));
+    const spot = (clue, k) => (clue.corner ? pick(cornerCells[k]) : pick(cells[k]));
     const evaluate = (clues) => {
       const p = { rows, cols, clues };
       if (countSolutions(p, 2) !== 1) return null;
       const a = analyse(p, { skipUnique: true });
-      if (checkSpec(a, hard, layout)) return null;
+      if (!a.solved || checkSpec(a, hard, layout)) return null;
       if (lockCount && lockable(a, clues).length < lockCount) return null;
       return { clues, a, sc: scoreOf(a), zones };
+    };
+    const shuffled = (list) => list.map((k) => [rand(), k]).sort((x, y) => x[0] - y[0]).map(([, k]) => k);
+    // linked "?" pairs: two identical pieces, bigger ones first
+    const pickLinks = (taken) => {
+      const out = new Map();
+      for (let id = 1; id <= linkCount; id++) {
+        const groups = twins(new Set([...taken, ...out.keys()]));
+        const big = groups.filter((g) => rects[g[0]].area >= 3);
+        const g = (big.length ? big : groups)[Math.floor(rand() * (big.length || groups.length))];
+        if (!g) return null;
+        shuffled(g).slice(0, 2).forEach((k) => out.set(k, id));
+      }
+      return out;
+    };
+    // parity clues: an odd and an even one first, then any
+    const pickParity = (taken) => {
+      const pool = shuffled(rects.map((_, k) => k).filter((k) => !taken.has(k)));
+      const odd = pool.find((k) => rects[k].area % 2), even = pool.find((k) => !(rects[k].area % 2));
+      const chosen = [odd, even].filter((k) => k !== undefined).slice(0, parityCount);
+      for (const k of pool) if (chosen.length < parityCount && !chosen.includes(k)) chosen.push(k);
+      return chosen.length === parityCount ? new Set(chosen) : null;
+    };
+    // shape clues: one of each outline first (square, tall, wide), then any
+    const pickShapes = (hid) => {
+      const pool = rects.map((_, k) => k).filter((k) => kindOf[k] && !hid.has(k) && (!spec.shapeKinds || spec.shapeKinds.includes(kindOf[k]))).map((k) => [rand(), k]).sort((x, y) => x[0] - y[0]).map(([, k]) => k);
+      const chosen = [], seen = new Set();
+      for (const k of pool) if (chosen.length < shapeCount && !seen.has(kindOf[k])) { chosen.push(k); seen.add(kindOf[k]); }
+      if (allKinds.some((kind) => !seen.has(kind))) return null;
+      for (const k of pool) if (chosen.length < shapeCount && !chosen.includes(k)) chosen.push(k);
+      return chosen.length === shapeCount ? new Set(chosen) : null;
     };
     let cur = null;
     for (let s = 0; s < samples && !late(); s++) {
       const hid = new Set();
       while (hid.size < (spec.hiddenCount || 0) + lockCount) hid.add(Math.floor(rand() * rects.length));
-      const e = evaluate(rects.map((q, k) => { const [r, c] = pick(cells[k]); return hid.has(k) ? { r, c, n: q.area, h: 1 } : { r, c, n: q.area }; }));
+      const linked = pickLinks(hid);
+      if (!linked) continue;
+      const taken = new Set([...hid, ...linked.keys()]);
+      const shaped = pickShapes(taken);
+      if (!shaped) continue;
+      shaped.forEach((k) => taken.add(k));
+      const odd = pickParity(taken);
+      if (!odd) continue;
+      odd.forEach((k) => taken.add(k));
+      const more = new Map(shuffled(rects.map((_, k) => k).filter((k) => !taken.has(k) && rects[k].area >= 3)).slice(0, moreCount)
+        .map((k) => [k, Math.max(2, rects[k].area - 1 - Math.floor(rand() * 3))]));
+      if (more.size < moreCount) continue;
+      more.forEach((_, k) => taken.add(k));
+      const cornered = new Set(shuffled(rects.map((_, k) => k).filter((k) => !taken.has(k) && cornerCells[k].length)).slice(0, cornerCount));
+      if (cornered.size < cornerCount) continue;
+      cornered.forEach((k) => taken.add(k));
+      if (taken.size >= rects.length) continue; // at least one clue keeps its number
+      const twinSpot = new Map(); // link id → the "?" offset inside the piece, shared by the twins
+      const e = evaluate(rects.map((q, k) => {
+        if (linked.has(k)) {
+          const id = linked.get(k);
+          if (!twinSpot.has(id)) { const [r, c] = pick(cells[k]); twinSpot.set(id, [r - q.r0, c - q.c0]); }
+          const [dr, dc] = twinSpot.get(id);
+          return { r: q.r0 + dr, c: q.c0 + dc, n: q.area, h: 1, link: id };
+        }
+        if (cornered.has(k)) { const [r, c] = pick(cornerCells[k]); return { r, c, n: q.area, corner: cornerAt(r, c, q) }; }
+        const [r, c] = pick(cells[k]);
+        if (hid.has(k)) return { r, c, n: q.area, h: 1 };
+        if (shaped.has(k)) return { r, c, n: q.area, s: kindOf[k] };
+        if (odd.has(k)) return { r, c, n: q.area, par: q.area % 2 ? "odd" : "even" };
+        if (more.has(k)) return { r, c, n: q.area, more: more.get(k) };
+        return { r, c, n: q.area };
+      }));
       if (e && (!cur || e.sc < cur.sc)) cur = e;
     }
     for (let it = 0; cur && it < polish && !late(); it++) {
       const k = Math.floor(rand() * rects.length);
-      const [r, c] = pick(cells[k]);
+      const [r, c] = spot(cur.clues[k], k);
       const clues = cur.clues.slice();
       clues[k] = { ...clues[k], r, c };
+      if (clues[k].corner) clues[k].corner = cornerAt(r, c, rects[k]);
+      // a twin "?" moves with its partner, so both stay in the same spot of their pieces
+      if (clues[k].link) clues.forEach((o, j) => { if (j !== k && o.link === clues[k].link) clues[j] = { ...o, r: rects[j].r0 + r - rects[k].r0, c: rects[j].c0 + c - rects[k].c0 }; });
       const e = evaluate(clues);
       if (e && e.sc <= cur.sc) cur = e;
     }
@@ -561,15 +717,59 @@ function generatePuzzle(cols, rows, spec, { seed = 1, tilings = 40, samples = 40
   // so the solve never needs a piece before its lock is open
   const locks = {};
   const pool = lockable(best.a, best.clues).map((x) => ({ ...x, key: rand() })).sort((x, y) => x.key - y.key);
-  pool.slice(0, lockCount).forEach(({ s, idx }) => {
+  pool.slice(0, spec.lockCount || 0).forEach(({ s, idx }) => {
     locks[best.zones[s.clue].key] = lockCounter(idx, rand);
+  });
+  // key locks: the key is a numbered piece (it shows the key beside its number) placed before the lock,
+  // from the second half of the way there so finding it takes some work
+  const keys = {}, used = new Set();
+  pool.slice(spec.lockCount || 0, lockCount).forEach(({ s, idx }) => {
+    const before = best.a.steps.map((st, j) => ({ st, j })).filter(({ st, j }) => j < idx && !best.clues[st.clue].h && !best.clues[st.clue].s && !best.clues[st.clue].par && !best.clues[st.clue].more && !best.clues[st.clue].corner && !used.has(st.clue));
+    const late = before.filter(({ j }) => j >= Math.max(1, Math.ceil(idx / 2)));
+    const pick = (late.length ? late : before)[Math.floor(rand() * (late.length || before.length))];
+    used.add(pick.st.clue);
+    keys[best.zones[s.clue].key] = best.zones[pick.st.clue].key;
   });
   return {
     grid: grid.map((row) => row.join("")),
     clues: Object.fromEntries(best.zones.map((z, k) => [z.key, [best.clues[k].r, best.clues[k].c]])),
-    hidden: best.zones.filter((z, k) => best.clues[k].h && !(z.key in locks)).map((z) => z.key),
+    hidden: best.zones.filter((z, k) => best.clues[k].h && !best.clues[k].link && !(z.key in locks) && !(z.key in keys)).map((z) => z.key),
+    links: Object.fromEntries(best.zones.flatMap((z, k) => (best.clues[k].link ? [[z.key, best.clues[k].link]] : []))),
+    parity: Object.fromEntries(best.zones.flatMap((z, k) => (best.clues[k].par ? [[z.key, best.clues[k].par]] : []))),
+    more: Object.fromEntries(best.zones.flatMap((z, k) => (best.clues[k].more ? [[z.key, best.clues[k].more]] : []))),
+    corners: Object.fromEntries(best.zones.flatMap((z, k) => (best.clues[k].corner ? [[z.key, best.clues[k].corner]] : []))),
     locks,
+    keys, // { lock piece: key piece }
+    shapes: Object.fromEntries(best.zones.flatMap((z, k) => (best.clues[k].s ? [[z.key, best.clues[k].s]] : []))),
   };
 }
 
-module.exports = { prepare, countSolutions, humanSolve, analyse, parseLayout, placeOf, orient, checkSpec, searchClues, generatePuzzle, lockCounter };
+// A pack puzzle { grid, clues, hidden, locks, keys, shapes, links, parity, more } as clue lists,
+// zones in reading order:
+//   solver  what analyse() takes: locked clues (count or key) are "?" since their size is unknown
+//   game    what Pixhaku_prototype.html takes: lock: n, keyLock: id, key: id, h (+ link), s, par, more, corner
+function puzzleClues(puzzle) {
+  const layout = parseLayout(puzzle.grid);
+  const locks = puzzle.locks || {}, shapes = puzzle.shapes || {}, links = puzzle.links || {}, parity = puzzle.parity || {}, more = puzzle.more || {}, corners = puzzle.corners || {};
+  const keyLock = new Map(Object.keys(puzzle.keys || {}).map((lock, i) => [lock, i + 1]));
+  const keyOf = new Map(Object.values(puzzle.keys || {}).map((key, i) => [key, i + 1]));
+  const solver = [], game = [];
+  for (const z of layout.zones) {
+    const [r, c] = puzzle.clues[z.key];
+    const base = { r, c, n: z.area };
+    const k = puzzle.hidden.includes(z.key) || z.key in locks || keyLock.has(z.key) ? { ...base, h: 1 }
+      : links[z.key] ? { ...base, h: 1, link: links[z.key] }
+      : shapes[z.key] ? { ...base, s: shapes[z.key] }
+      : parity[z.key] ? { ...base, par: parity[z.key] }
+      : more[z.key] ? { ...base, more: more[z.key] }
+      : corners[z.key] ? { ...base, corner: corners[z.key] }
+      : base;
+    solver.push(k);
+    const g = z.key in locks ? { ...base, lock: locks[z.key] } : keyLock.has(z.key) ? { ...base, keyLock: keyLock.get(z.key) } : { ...k };
+    if (keyOf.has(z.key)) g.key = keyOf.get(z.key);
+    game.push(g);
+  }
+  return { layout, solver, game };
+}
+
+module.exports = { prepare, countSolutions, humanSolve, analyse, parseLayout, placeOf, orient, checkSpec, searchClues, generatePuzzle, lockCounter, puzzleClues };

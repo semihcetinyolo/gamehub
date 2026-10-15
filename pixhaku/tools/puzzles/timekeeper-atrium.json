@@ -1,0 +1,142 @@
+{
+  "id": "timekeeper-atrium",
+  "band": "expert",
+  "art": [
+    7,
+    10
+  ],
+  "spec": {
+    "cols": 9,
+    "rows": 12,
+    "maxTech": 4,
+    "effortTarget": 140,
+    "start": [
+      0,
+      0
+    ],
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      13,
+      20
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 3,
+    "parity": 2,
+    "more": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBCCDEF",
+      "ABBBCCDEF",
+      "AGGGCCDEF",
+      "AGGGHIDEF",
+      "AGGGHIDEF",
+      "AJJJHIDEF",
+      "AJJJHIDEF",
+      "AJJJHIKKF",
+      "ALLLLMKKF",
+      "NLLLLMKKO",
+      "NPPPQMKKO",
+      "NPPPQMKKO"
+    ],
+    "clues": {
+      "A": [
+        2,
+        0
+      ],
+      "B": [
+        1,
+        2
+      ],
+      "C": [
+        1,
+        4
+      ],
+      "D": [
+        1,
+        6
+      ],
+      "E": [
+        1,
+        7
+      ],
+      "F": [
+        5,
+        8
+      ],
+      "G": [
+        3,
+        1
+      ],
+      "H": [
+        5,
+        4
+      ],
+      "I": [
+        5,
+        5
+      ],
+      "J": [
+        5,
+        1
+      ],
+      "K": [
+        10,
+        7
+      ],
+      "L": [
+        8,
+        4
+      ],
+      "M": [
+        10,
+        5
+      ],
+      "N": [
+        11,
+        0
+      ],
+      "O": [
+        10,
+        8
+      ],
+      "P": [
+        11,
+        2
+      ],
+      "Q": [
+        11,
+        4
+      ]
+    },
+    "hidden": [
+      "H"
+    ],
+    "links": {},
+    "parity": {
+      "L": "even",
+      "O": "odd"
+    },
+    "more": {
+      "N": 2
+    },
+    "corners": {},
+    "locks": {
+      "C": 3
+    },
+    "keys": {},
+    "shapes": {
+      "J": "square",
+      "P": "wide",
+      "Q": "tall"
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "id": "ancient-starport",
+  "band": "expert",
+  "art": [
+    7,
+    10
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 12,
+    "maxTech": 4,
+    "effortTarget": 123,
+    "start": [
+      0,
+      0
+    ],
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      11,
+      17
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 2,
+    "parity": 2,
+    "more": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAAAA",
+      "BBBBBCDD",
+      "BBBBBCDD",
+      "EEEEECDD",
+      "EEEEECDD",
+      "FFFGHCII",
+      "FFFGHCII",
+      "FFFGHCII",
+      "FFFGHJJK",
+      "LLLGHJJK",
+      "LLLGHJJK",
+      "LLLMMMMK"
+    ],
+    "clues": {
+      "A": [
+        0,
+        6
+      ],
+      "B": [
+        2,
+        3
+      ],
+      "C": [
+        2,
+        5
+      ],
+      "D": [
+        3,
+        6
+      ],
+      "E": [
+        3,
+        2
+      ],
+      "F": [
+        7,
+        2
+      ],
+      "G": [
+        9,
+        3
+      ],
+      "H": [
+        9,
+        4
+      ],
+      "I": [
+        5,
+        6
+      ],
+      "J": [
+        9,
+        6
+      ],
+      "K": [
+        8,
+        7
+      ],
+      "L": [
+        9,
+        1
+      ],
+      "M": [
+        11,
+        5
+      ]
+    },
+    "hidden": [
+      "H"
+    ],
+    "links": {},
+    "parity": {
+      "C": "odd",
+      "G": "even"
+    },
+    "more": {
+      "A": 6
+    },
+    "corners": {},
+    "locks": {
+      "I": 4
+    },
+    "keys": {},
+    "shapes": {
+      "B": "wide",
+      "L": "square"
+    }
+  }
+}

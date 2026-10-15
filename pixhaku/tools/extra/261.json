@@ -1,0 +1,89 @@
+{
+  "order": 261,
+  "section": "Locks",
+  "feature": "lock",
+  "spec": {
+    "cols": 7,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 55,
+    "hiddenCount": 0,
+    "lockCount": 1,
+    "shapes": 0,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      9,
+      14
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABBC",
+      "AAAABBC",
+      "DEEEFFG",
+      "DEEEFFG",
+      "DEEEFFG",
+      "DHHHFFI",
+      "DHHHFFI",
+      "DHHHJJI"
+    ],
+    "clues": {
+      "A": [
+        1,
+        2
+      ],
+      "B": [
+        0,
+        5
+      ],
+      "C": [
+        1,
+        6
+      ],
+      "D": [
+        5,
+        0
+      ],
+      "E": [
+        4,
+        2
+      ],
+      "F": [
+        2,
+        5
+      ],
+      "G": [
+        3,
+        6
+      ],
+      "H": [
+        7,
+        2
+      ],
+      "I": [
+        7,
+        6
+      ],
+      "J": [
+        7,
+        4
+      ]
+    },
+    "hidden": [],
+    "links": {},
+    "parity": {},
+    "more": {},
+    "corners": {},
+    "locks": {
+      "B": 4
+    },
+    "keys": {},
+    "shapes": {}
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "id": "paper-lantern-lane",
+  "band": "medium",
+  "art": [
+    6,
+    8
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 61,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      10,
+      16
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1,
+    "shapes": 0,
+    "parity": 2
+  },
+  "puzzle": {
+    "grid": [
+      "AABCCDE",
+      "AABCCDE",
+      "AABCCFE",
+      "AABCCFE",
+      "AAGGHFE",
+      "IJGGHFE",
+      "IJGGHFE",
+      "KJLMMFE",
+      "KJLNNNE"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        1,
+        2
+      ],
+      "C": [
+        1,
+        4
+      ],
+      "D": [
+        1,
+        5
+      ],
+      "E": [
+        0,
+        6
+      ],
+      "F": [
+        6,
+        5
+      ],
+      "G": [
+        4,
+        3
+      ],
+      "H": [
+        4,
+        4
+      ],
+      "I": [
+        5,
+        0
+      ],
+      "J": [
+        5,
+        1
+      ],
+      "K": [
+        8,
+        0
+      ],
+      "L": [
+        8,
+        2
+      ],
+      "M": [
+        7,
+        4
+      ],
+      "N": [
+        8,
+        3
+      ]
+    },
+    "hidden": [
+      "F"
+    ],
+    "links": {},
+    "parity": {
+      "A": "even",
+      "N": "odd"
+    },
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {}
+  }
+}

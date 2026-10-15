@@ -1,0 +1,149 @@
+{
+  "id": "sky-islands",
+  "band": "expert",
+  "art": [
+    8,
+    10
+  ],
+  "spec": {
+    "cols": 10,
+    "rows": 12,
+    "maxTech": 4,
+    "effortTarget": 142,
+    "start": [
+      0,
+      0
+    ],
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      14,
+      22
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 3,
+    "keyLocks": 1,
+    "links": 1,
+    "corners": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBCDEEFG",
+      "ABBBCDEEFG",
+      "AHIJCDEEFG",
+      "AHIJCDEEFG",
+      "AHIJCDKKFG",
+      "AHIJCLKKFG",
+      "AHIJCLKKFG",
+      "AMIJCLKKFN",
+      "AMIJCLOOFN",
+      "AMIJPLOOFN",
+      "AMQJPLOOFN",
+      "AMQJPRRRFN"
+    ],
+    "clues": {
+      "A": [
+        8,
+        0
+      ],
+      "B": [
+        1,
+        3
+      ],
+      "C": [
+        5,
+        4
+      ],
+      "D": [
+        1,
+        5
+      ],
+      "E": [
+        3,
+        6
+      ],
+      "F": [
+        7,
+        8
+      ],
+      "G": [
+        0,
+        9
+      ],
+      "H": [
+        4,
+        1
+      ],
+      "I": [
+        5,
+        2
+      ],
+      "J": [
+        9,
+        3
+      ],
+      "K": [
+        7,
+        6
+      ],
+      "L": [
+        10,
+        5
+      ],
+      "M": [
+        10,
+        1
+      ],
+      "N": [
+        10,
+        9
+      ],
+      "O": [
+        8,
+        6
+      ],
+      "P": [
+        10,
+        4
+      ],
+      "Q": [
+        10,
+        2
+      ],
+      "R": [
+        11,
+        6
+      ]
+    },
+    "hidden": [
+      "J"
+    ],
+    "links": {
+      "E": 1,
+      "K": 1
+    },
+    "parity": {},
+    "more": {},
+    "corners": {
+      "G": "up"
+    },
+    "locks": {
+      "I": 5
+    },
+    "keys": {
+      "L": "H"
+    },
+    "shapes": {
+      "B": "wide",
+      "O": "tall",
+      "P": "tall"
+    }
+  }
+}

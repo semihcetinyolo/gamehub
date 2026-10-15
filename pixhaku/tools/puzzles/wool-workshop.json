@@ -1,0 +1,77 @@
+{
+  "id": "wool-workshop",
+  "band": "easy",
+  "art": [
+    5,
+    6
+  ],
+  "spec": {
+    "cols": 6,
+    "rows": 7,
+    "maxTech": 4,
+    "effortTarget": 38,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      7,
+      12
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0,
+    "shapes": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAABBC",
+      "AAABBC",
+      "AAABBC",
+      "DDEBBC",
+      "DDEBBC",
+      "DDEBBF",
+      "GGEHHF"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        2,
+        4
+      ],
+      "C": [
+        1,
+        5
+      ],
+      "D": [
+        4,
+        0
+      ],
+      "E": [
+        3,
+        2
+      ],
+      "F": [
+        6,
+        5
+      ],
+      "G": [
+        6,
+        0
+      ],
+      "H": [
+        6,
+        3
+      ]
+    },
+    "hidden": [],
+    "locks": {},
+    "shapes": {
+      "G": "wide"
+    }
+  }
+}

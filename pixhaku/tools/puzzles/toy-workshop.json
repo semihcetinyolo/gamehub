@@ -1,0 +1,119 @@
+{
+  "id": "toy-workshop",
+  "band": "hard",
+  "art": [
+    8,
+    9
+  ],
+  "spec": {
+    "cols": 9,
+    "rows": 10,
+    "maxTech": 4,
+    "effortTarget": 111,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      11,
+      16
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 0,
+    "shapes": 2,
+    "keyLocks": 1,
+    "links": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBBBBBC",
+      "ADDDDDEFC",
+      "ADDDDDEFC",
+      "AGGHIJEFC",
+      "AGGHIJEFC",
+      "AGGHIJEFC",
+      "AGGHIJEFC",
+      "AGGHIJEKK",
+      "LGGHIJEKK",
+      "LGGMMJEKK"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        0,
+        5
+      ],
+      "C": [
+        0,
+        8
+      ],
+      "D": [
+        2,
+        3
+      ],
+      "E": [
+        2,
+        6
+      ],
+      "F": [
+        2,
+        7
+      ],
+      "G": [
+        6,
+        2
+      ],
+      "H": [
+        4,
+        3
+      ],
+      "I": [
+        4,
+        4
+      ],
+      "J": [
+        8,
+        5
+      ],
+      "K": [
+        8,
+        7
+      ],
+      "L": [
+        8,
+        0
+      ],
+      "M": [
+        9,
+        3
+      ]
+    },
+    "hidden": [
+      "B"
+    ],
+    "links": {
+      "F": 1,
+      "H": 1
+    },
+    "parity": {},
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {
+      "M": "G"
+    },
+    "shapes": {
+      "D": "wide",
+      "K": "tall"
+    }
+  }
+}
