@@ -48,6 +48,27 @@ for g in merges:
     C[g[0]]['box'] = [x0, y0, x1, y1]
     for i in g[1:]: del C[i]
 
+PATCH = {}
+
+
+def patch(eid):
+    if eid not in PATCH: PATCH[eid] = np.asarray(Image.open(f"{W}/patches/{eid}.png").convert('RGB')).astype(np.int16)
+    return PATCH[eid]
+
+
+def theirs(e, win, pt):
+    """Pixels of the window that show characters drawn by earlier edits (the patch keeps them as context)."""
+    wx0, wy0, wx1, wy1 = win; out = np.zeros(pt.shape[:2], bool)
+    for k in e['geometry'].get('depends_on') or []:
+        if k not in E: continue
+        a0, b0, a1, b1 = E[k]['geometry']['paste']; kx, ky = m.origin(E[k])
+        ix0, iy0, ix1, iy1 = max(wx0, a0), max(wy0, b0), min(wx1, a1), min(wy1, b1)
+        if ix0 >= ix1 or iy0 >= iy1: continue
+        pk = patch(k)[iy0 - ky:iy1 - ky, ix0 - kx:ix1 - kx]; sn = pt[iy0 - wy0:iy1 - wy0, ix0 - wx0:ix1 - wx0]
+        out[iy0 - wy0:iy1 - wy0, ix0 - wx0:ix1 - wx0] |= (np.abs(pk - BG[iy0:iy1, ix0:ix1]).max(2) > THR) & (np.abs(sn - pk).max(2) < 40)
+    return ndi.binary_dilation(out, iterations=2)
+
+
 NEW = {}
 for c in C.values():
     e = E[c['edit']]; px0, py0, px1, py1 = e['geometry']['paste']; ox, oy = m.origin(e)
@@ -55,6 +76,7 @@ for c in C.values():
     wx0, wy0, wx1, wy1 = max(px0, x0 - PAD), max(py0, y0 - PAD), min(px1, x1 + PAD), min(py1, y1 + PAD)
     pt = np.asarray(Image.open(f"{W}/patches/{c['edit']}.png").convert('RGB'))[wy0 - oy:wy1 - oy, wx0 - ox:wx1 - ox].astype(np.int16)
     d = cv2.GaussianBlur(np.abs(pt - BG[wy0:wy1, wx0:wx1]).max(2).astype(np.float32), (0, 0), 1.5) > THR
+    d &= ~theirs(e, (wx0, wy0, wx1, wy1), pt)  # don't grow into a neighbour that an earlier edit drew
     d = ndi.binary_closing(ndi.binary_opening(d, iterations=1), iterations=4)
     k = place(c, wx0, wy0, d.shape)
     lab, n = ndi.label(d | k)

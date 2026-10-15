@@ -20,8 +20,8 @@ python3 tools/serve.py   # from Waldo/: http://localhost:8767, phones on the sam
 
 ```bash
 python3 tools/extract.py ../output/beach_waldo.psb    # -> assets/beach/
-python3 tools/extract.py ../output/park_waldo.psb --icon=sunflower:0 --icon=redcap:7 --icon=tongue:8   # -> assets/park/ (frogs)
-python3 tools/extract.py ../output/livingroom_waldo.psb --icon=discodance:4   # -> assets/livingroom/ (auto icon had bar-stool legs in it)
+python3 tools/extract.py ../output/park_waldo.psb --icon=sunflower:0 --icon=redcap:7 --icon=tongue:8   # -> assets/park/ (frogs; stages tongue, sunflower, redcap)
+python3 tools/extract.py ../output/livingroom_waldo.psb   # -> assets/livingroom/ (red pandas)
 ```
 
 Layer conventions: `BG` (clean background), any number of groups of `H` layers

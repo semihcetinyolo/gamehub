@@ -114,6 +114,7 @@ def owner(i, win, patch):
 os.makedirs(f'{W}/H', exist_ok=True)
 pos = {}
 grow, feather = 26, 10
+EDGE_FADE = 24  # px
 for i, c in sel.items():
     e = E[c['edit']]; px0, py0, px1, py1 = e['geometry']['paste']; ox, oy = m.origin(e)
     patch = np.asarray(Image.open(f"{W}/patches/{c['edit']}.png").convert('RGB'))[py0 - oy:py1 - oy, px0 - ox:px1 - ox]
@@ -123,6 +124,14 @@ for i, c in sel.items():
     al = np.clip((cv2.GaussianBlur(mm.astype(np.float32), (0, 0), feather) - 0.02) / 0.5, 0, 1)
     al = np.minimum(al, cv2.GaussianBlur((owner(i, (px0, py0, px1, py1), patch) == i).astype(np.float32), (0, 0), 1.5))
     al[M] = 1.0
+    # fade out towards the edges of the paste window: the patch ends there, so anything still visible would end in a hard straight line
+    H_, W_ = al.shape; yy, xx = np.mgrid[:H_, :W_]
+    dist = np.full(al.shape, 1e9, np.float32)
+    if px0 > 0: dist = np.minimum(dist, xx)
+    if py0 > 0: dist = np.minimum(dist, yy)
+    if px1 < 4096: dist = np.minimum(dist, W_ - 1 - xx)
+    if py1 < 4096: dist = np.minimum(dist, H_ - 1 - yy)
+    al *= np.clip(dist / EDGE_FADE, 0, 1)
     ys, xs = np.nonzero(al > 0.004)
     t, b, l, r = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1
     Image.fromarray(np.dstack([patch[t:b, l:r], (al[t:b, l:r] * 255).round().astype(np.uint8)]), 'RGBA').save(f'{W}/H/{i:03d}.png')

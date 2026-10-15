@@ -3,7 +3,7 @@ Targets: S = holding a yellow sunflower (object), C = red cap (worn), T = long p
 Feature decoys (green look-alikes that borrow a feature, all go to D): s / c / t = chameleon or turtle with that feature."""
 
 NAME = 'park'
-GROUPS = [('S', 'Sunflower'), ('C', 'RedCap'), ('T', 'Tongue')]  # top of the layer panel first
+GROUPS = [('T', 'Tongue'), ('S', 'Sunflower'), ('C', 'RedCap')]  # top of the layer panel first = first stage
 TARGET = {'S': 10, 'C': 10, 'T': 10, 'D': 40, 's': 5, 'c': 7, 't': 8}
 D_KINDS = 'Dsct'
 CHAR_H = 170
@@ -79,6 +79,8 @@ REGIONS = [
     ((512, 1232, 832, 1552), [('D', 'sitting among the tree leaves')]),
     ((2848, 592, 3168, 912), [('S', 'sitting on the grass in front of the wooden fence')]),
     ((320, 2448, 640, 2768), [('D', 'hiding in the green bush, only head showing')]),
+    # fourth round: replace two glitchy frogs (floating planter, blurry bush)
+    ((1560, 2580, 1900, 2900), [('D', 'peeking out of the green bush, only head and hands showing')]),
 ]
 
 FEATURE = {

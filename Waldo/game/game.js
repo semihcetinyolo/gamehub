@@ -12,7 +12,7 @@ const STAGE_GAP_MS = 750;   // pause after the last find of a stage before the n
    per stage (GreenMayo, SwimmingArmband, ...) + a decoy group "D". Each level lives
    in assets/<slug>/ (bg.jpg = clean BG + decoys, one PNG per target, manifest.json).
    A found target's PNG is removed, revealing the clean background. Add more here. */
-const ASSET_V = 8;          // bump when assets are re-extracted (phones cache them hard)
+const ASSET_V = 10;          // bump when assets are re-extracted (phones cache them hard)
 const LEVELS = [
   'assets/beach/manifest.json',
   'assets/park/manifest.json',
