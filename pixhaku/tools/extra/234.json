@@ -1,0 +1,105 @@
+{
+  "order": 234,
+  "section": "Odd or Even",
+  "feature": "parity",
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 75,
+    "hiddenCount": 0,
+    "lockCount": 0,
+    "shapes": 0,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      11,
+      18
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "parity": 3
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABCCD",
+      "AAAABCCD",
+      "AAAABCCD",
+      "EEEEBFGD",
+      "EEEEBFGD",
+      "EEEEBFGD",
+      "HHHIIFJD",
+      "KKKIIFJD",
+      "LLLMMFJD"
+    ],
+    "clues": {
+      "A": [
+        0,
+        3
+      ],
+      "B": [
+        5,
+        4
+      ],
+      "C": [
+        0,
+        6
+      ],
+      "D": [
+        0,
+        7
+      ],
+      "E": [
+        5,
+        3
+      ],
+      "F": [
+        3,
+        5
+      ],
+      "G": [
+        4,
+        6
+      ],
+      "H": [
+        6,
+        1
+      ],
+      "I": [
+        6,
+        4
+      ],
+      "J": [
+        6,
+        6
+      ],
+      "K": [
+        7,
+        0
+      ],
+      "L": [
+        8,
+        1
+      ],
+      "M": [
+        8,
+        4
+      ]
+    },
+    "hidden": [],
+    "links": {},
+    "parity": {
+      "B": "even",
+      "I": "even",
+      "L": "odd"
+    },
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {}
+  }
+}

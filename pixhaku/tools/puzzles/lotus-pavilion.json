@@ -1,0 +1,100 @@
+{
+  "id": "lotus-pavilion",
+  "band": "medium",
+  "art": [
+    7,
+    8
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 57,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      9,
+      14
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1,
+    "shapes": 0,
+    "parity": 2
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABCC",
+      "AAAABCC",
+      "DDDEBCC",
+      "DDDEBFF",
+      "DDDEBFF",
+      "GGHEBFF",
+      "GGHEIIJ",
+      "KKKEIIJ"
+    ],
+    "clues": {
+      "A": [
+        0,
+        2
+      ],
+      "B": [
+        3,
+        4
+      ],
+      "C": [
+        2,
+        5
+      ],
+      "D": [
+        3,
+        0
+      ],
+      "E": [
+        2,
+        3
+      ],
+      "F": [
+        3,
+        5
+      ],
+      "G": [
+        5,
+        0
+      ],
+      "H": [
+        6,
+        2
+      ],
+      "I": [
+        7,
+        5
+      ],
+      "J": [
+        7,
+        6
+      ],
+      "K": [
+        7,
+        0
+      ]
+    },
+    "hidden": [
+      "B"
+    ],
+    "links": {},
+    "parity": {
+      "F": "even",
+      "K": "odd"
+    },
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {}
+  }
+}

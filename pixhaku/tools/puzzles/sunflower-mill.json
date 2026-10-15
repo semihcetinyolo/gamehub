@@ -1,0 +1,70 @@
+{
+  "id": "sunflower-mill",
+  "band": "easy",
+  "art": [
+    6,
+    6
+  ],
+  "spec": {
+    "cols": 6,
+    "rows": 6,
+    "maxTech": 4,
+    "effortTarget": 24,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0,
+    "shapes": 0
+  },
+  "puzzle": {
+    "grid": [
+      "AABBCC",
+      "AABBCC",
+      "AABBCC",
+      "DEBBFF",
+      "DEGGFF",
+      "DEGGFF"
+    ],
+    "clues": {
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        0,
+        3
+      ],
+      "C": [
+        1,
+        5
+      ],
+      "D": [
+        3,
+        0
+      ],
+      "E": [
+        5,
+        1
+      ],
+      "F": [
+        3,
+        5
+      ],
+      "G": [
+        5,
+        2
+      ]
+    },
+    "hidden": [],
+    "locks": {},
+    "shapes": {}
+  }
+}

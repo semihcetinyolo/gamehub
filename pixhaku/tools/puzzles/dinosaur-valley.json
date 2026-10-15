@@ -1,0 +1,118 @@
+{
+  "id": "dinosaur-valley",
+  "band": "hard",
+  "art": [
+    8,
+    8
+  ],
+  "spec": {
+    "cols": 9,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 89,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      15
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 0,
+    "lockCount": 0,
+    "shapes": 1,
+    "links": 2
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABCDEF",
+      "AAAABCDEF",
+      "AAAABCDEF",
+      "AAAABCDEF",
+      "GHHIBCDEF",
+      "GHHIBCJEF",
+      "GHHIBCJKL",
+      "GMMIBNJKL",
+      "GMMIBNJKL"
+    ],
+    "clues": {
+      "A": [
+        1,
+        2
+      ],
+      "B": [
+        3,
+        4
+      ],
+      "C": [
+        4,
+        5
+      ],
+      "D": [
+        1,
+        6
+      ],
+      "E": [
+        1,
+        7
+      ],
+      "F": [
+        1,
+        8
+      ],
+      "G": [
+        5,
+        0
+      ],
+      "H": [
+        5,
+        2
+      ],
+      "I": [
+        5,
+        3
+      ],
+      "J": [
+        8,
+        6
+      ],
+      "K": [
+        8,
+        7
+      ],
+      "L": [
+        7,
+        8
+      ],
+      "M": [
+        8,
+        2
+      ],
+      "N": [
+        7,
+        5
+      ]
+    },
+    "hidden": [],
+    "links": {
+      "E": 2,
+      "F": 2,
+      "G": 1,
+      "I": 1
+    },
+    "parity": {},
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "A": "square"
+    }
+  }
+}

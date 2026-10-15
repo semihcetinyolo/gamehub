@@ -1,0 +1,110 @@
+{
+  "id": "seashell-market",
+  "band": "medium",
+  "art": [
+    7,
+    7
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 68,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      10,
+      16
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1,
+    "shapes": 1,
+    "parity": 2
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABBBB",
+      "AAAACCCD",
+      "EEEECCCD",
+      "EEEECCCD",
+      "FFGGGGGD",
+      "FFHHIIJD",
+      "KKLLIIJD",
+      "KKLLMMJD"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        0,
+        6
+      ],
+      "C": [
+        3,
+        6
+      ],
+      "D": [
+        7,
+        7
+      ],
+      "E": [
+        3,
+        1
+      ],
+      "F": [
+        4,
+        1
+      ],
+      "G": [
+        4,
+        4
+      ],
+      "H": [
+        5,
+        3
+      ],
+      "I": [
+        6,
+        4
+      ],
+      "J": [
+        7,
+        6
+      ],
+      "K": [
+        6,
+        1
+      ],
+      "L": [
+        6,
+        3
+      ],
+      "M": [
+        7,
+        5
+      ]
+    },
+    "hidden": [
+      "L"
+    ],
+    "links": {},
+    "parity": {
+      "B": "even",
+      "C": "odd"
+    },
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "G": "wide"
+    }
+  }
+}

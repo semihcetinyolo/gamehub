@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pixhaku Key Lock</title>
+<style>html,body{margin:0;height:100%;background:#2b2118}iframe{border:0;width:100%;height:100%;display:block}</style></head><body>
+<iframe id="g" src="Pixhaku_prototype.html"></iframe>
+<script>
+const LEVELS=[{"rows":10,"cols":9,"clues":[{"r":0,"c":1,"n":14},{"r":5,"c":7,"n":7,"key":1},{"r":8,"c":8,"n":10},{"r":2,"c":3,"n":12,"keyLock":1},{"r":3,"c":4,"n":6},{"r":6,"c":6,"n":6,"s":"tall"},{"r":5,"c":4,"n":15,"s":"wide"},{"r":8,"c":5,"n":5},{"r":8,"c":7,"n":3,"h":1},{"r":9,"c":2,"n":10},{"r":8,"c":6,"n":2}],"solution":[[0,8,9,8],[8,6,9,6],[5,5,9,5],[8,0,9,4],[0,7,6,7],[7,7,9,7],[0,0,1,6],[5,0,7,4],[2,0,4,3],[2,4,4,5],[2,6,7,6]],"difficulty":72,"tag":"hard","custom":true,"artName":"Key Lock Test","artPrompt":""}];
+const f=document.getElementById("g");
+f.addEventListener("load",()=>{const w=f.contentWindow;const go=()=>{if(!w.PixhakuGen)return setTimeout(go,100);
+const n=Math.max(1,Math.min(LEVELS.length,parseInt(location.hash.slice(1))||1));
+w.__L=JSON.parse(JSON.stringify(LEVELS[n-1]));w.eval("__L.displayNo=BUILTIN_LEVELS+1;__L.artImage=PixhakuGen.mosaic(__L);levels[BUILTIN_LEVELS]=__L;startGame(BUILTIN_LEVELS,true);");};go();});
+addEventListener("hashchange",()=>location.reload());
+</script></body></html>

@@ -1,0 +1,107 @@
+{
+  "id": "firefly-marsh",
+  "band": "medium",
+  "art": [
+    7,
+    8
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 65,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      9,
+      14
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1,
+    "shapes": 1,
+    "more": 3
+  },
+  "puzzle": {
+    "grid": [
+      "AABCCDE",
+      "AABCCDE",
+      "AABCCDE",
+      "AABCCDF",
+      "AABCCDF",
+      "AABGGDF",
+      "HHIGGJJ",
+      "KKILLJJ"
+    ],
+    "clues": {
+      "A": [
+        4,
+        0
+      ],
+      "B": [
+        2,
+        2
+      ],
+      "C": [
+        2,
+        3
+      ],
+      "D": [
+        4,
+        5
+      ],
+      "E": [
+        2,
+        6
+      ],
+      "F": [
+        4,
+        6
+      ],
+      "G": [
+        6,
+        3
+      ],
+      "H": [
+        6,
+        0
+      ],
+      "I": [
+        6,
+        2
+      ],
+      "J": [
+        6,
+        6
+      ],
+      "K": [
+        7,
+        0
+      ],
+      "L": [
+        7,
+        4
+      ]
+    },
+    "hidden": [
+      "B"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {
+      "A": 9,
+      "G": 3,
+      "J": 2
+    },
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "D": "tall"
+    }
+  }
+}

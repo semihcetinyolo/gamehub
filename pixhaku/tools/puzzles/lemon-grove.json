@@ -1,0 +1,81 @@
+{
+  "id": "lemon-grove",
+  "band": "easy",
+  "art": [
+    6,
+    7
+  ],
+  "spec": {
+    "cols": 6,
+    "rows": 7,
+    "maxTech": 4,
+    "effortTarget": 33,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      7,
+      12
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0,
+    "shapes": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAABBC",
+      "AAABBC",
+      "AAABBC",
+      "DDEBBC",
+      "DDEFFG",
+      "HHEFFG",
+      "HHEIII"
+    ],
+    "clues": {
+      "A": [
+        2,
+        2
+      ],
+      "B": [
+        2,
+        3
+      ],
+      "C": [
+        2,
+        5
+      ],
+      "D": [
+        3,
+        0
+      ],
+      "E": [
+        5,
+        2
+      ],
+      "F": [
+        5,
+        4
+      ],
+      "G": [
+        4,
+        5
+      ],
+      "H": [
+        6,
+        0
+      ],
+      "I": [
+        6,
+        5
+      ]
+    },
+    "hidden": [],
+    "locks": {},
+    "shapes": {
+      "C": "tall"
+    }
+  }
+}

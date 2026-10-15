@@ -1,7 +1,23 @@
 [
   {
+    "name": "Café Sort",
+    "path": "4_color_sort/index.html"
+  },
+  {
     "name": "Cartograph",
     "path": "Cartograph/index.html"
+  },
+  {
+    "name": "Cocktail Belt",
+    "path": "cocktail_flow_v2/index.html"
+  },
+  {
+    "name": "Cocktail Flow",
+    "path": "cocktail_flow/index.html"
+  },
+  {
+    "name": "Cocktail Sort",
+    "path": "cocktail_sort/index.html"
   },
   {
     "name": "Find The Cat",
@@ -60,6 +76,10 @@
     "path": "LongCat/index.html"
   },
   {
+    "name": "Sip Sort",
+    "path": "cafe_sort/index.html"
+  },
+  {
     "name": "Sortscapes",
     "path": "Sort/index.html"
   },
@@ -74,5 +94,9 @@
   {
     "name": "Tidy Up",
     "path": "Tidy Up/game/index.html"
+  },
+  {
+    "name": "Waldo",
+    "path": "Waldo/game/index.html"
   }
 ]

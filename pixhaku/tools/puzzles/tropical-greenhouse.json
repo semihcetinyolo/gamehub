@@ -1,0 +1,112 @@
+{
+  "id": "tropical-greenhouse",
+  "band": "medium",
+  "art": [
+    6,
+    8
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 74,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      10,
+      16
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1,
+    "shapes": 1,
+    "corners": 3
+  },
+  "puzzle": {
+    "grid": [
+      "ABCDDDD",
+      "ABCEEFG",
+      "ABCEEFG",
+      "ABCEEFG",
+      "ABCEEFG",
+      "ABCHIFG",
+      "JJCHIKG",
+      "JJCHIKL",
+      "JJMMIKL"
+    ],
+    "clues": {
+      "A": [
+        5,
+        0
+      ],
+      "B": [
+        0,
+        1
+      ],
+      "C": [
+        0,
+        2
+      ],
+      "D": [
+        0,
+        6
+      ],
+      "E": [
+        2,
+        3
+      ],
+      "F": [
+        1,
+        5
+      ],
+      "G": [
+        5,
+        6
+      ],
+      "H": [
+        6,
+        3
+      ],
+      "I": [
+        5,
+        4
+      ],
+      "J": [
+        6,
+        0
+      ],
+      "K": [
+        8,
+        5
+      ],
+      "L": [
+        8,
+        6
+      ],
+      "M": [
+        8,
+        2
+      ]
+    },
+    "hidden": [
+      "H"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {},
+    "corners": {
+      "A": "down",
+      "F": "up",
+      "M": "left"
+    },
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "J": "tall"
+    }
+  }
+}

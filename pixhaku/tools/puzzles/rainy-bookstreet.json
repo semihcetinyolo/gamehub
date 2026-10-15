@@ -1,0 +1,80 @@
+{
+  "id": "rainy-bookstreet",
+  "band": "medium",
+  "art": [
+    7,
+    7
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 7,
+    "maxTech": 4,
+    "effortTarget": 46,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      8,
+      12
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1,
+    "shapes": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAAB",
+      "CCCDDEB",
+      "CCCDDEB",
+      "CCCDDEB",
+      "CCCDDEB",
+      "FFGDDEB",
+      "FFGDDHH"
+    ],
+    "clues": {
+      "A": [
+        0,
+        3
+      ],
+      "B": [
+        5,
+        6
+      ],
+      "C": [
+        3,
+        0
+      ],
+      "D": [
+        4,
+        3
+      ],
+      "E": [
+        3,
+        5
+      ],
+      "F": [
+        6,
+        1
+      ],
+      "G": [
+        6,
+        2
+      ],
+      "H": [
+        6,
+        6
+      ]
+    },
+    "hidden": [
+      "F"
+    ],
+    "locks": {},
+    "shapes": {
+      "B": "tall"
+    }
+  }
+}

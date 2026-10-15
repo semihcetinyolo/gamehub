@@ -1,0 +1,73 @@
+{
+  "id": "butterfly-meadow",
+  "band": "easy",
+  "art": [
+    5,
+    6
+  ],
+  "spec": {
+    "cols": 6,
+    "rows": 7,
+    "maxTech": 4,
+    "effortTarget": 34,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      7,
+      12
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0,
+    "shapes": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABBBC",
+      "AABBBC",
+      "AABBBC",
+      "AADDEC",
+      "AADDEC",
+      "AADDEF",
+      "GGDDEF"
+    ],
+    "clues": {
+      "A": [
+        2,
+        0
+      ],
+      "B": [
+        2,
+        2
+      ],
+      "C": [
+        2,
+        5
+      ],
+      "D": [
+        4,
+        3
+      ],
+      "E": [
+        6,
+        4
+      ],
+      "F": [
+        6,
+        5
+      ],
+      "G": [
+        6,
+        0
+      ]
+    },
+    "hidden": [],
+    "locks": {},
+    "shapes": {
+      "A": "tall"
+    }
+  }
+}

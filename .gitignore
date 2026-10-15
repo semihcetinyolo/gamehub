@@ -66,3 +66,6 @@ Hidden Pairs/levels/
 
 # Pixhaku — original generated level PNGs (kept on disk; tools/build_pack.js embeds the JPG copies)
 pixhaku/assets/levels/**/*.png
+
+# ---- Cocktail Sort: full-size Astra originals (fitted copies live in assets/img) ----
+cocktail_sort/assets/raw/

@@ -1,0 +1,121 @@
+{
+  "id": "sakura-night-train",
+  "band": "hard",
+  "art": [
+    8,
+    9
+  ],
+  "spec": {
+    "cols": 9,
+    "rows": 10,
+    "maxTech": 4,
+    "effortTarget": 103,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      11,
+      16
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 2,
+    "links": 1,
+    "corners": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAABCCC",
+      "AAAAABCCC",
+      "DDDDEBCCC",
+      "DDDDEBCCC",
+      "DDDDEBFFF",
+      "GGGHEBFFF",
+      "GGGHEBIIJ",
+      "KKKHEBIIJ",
+      "KKKHELLLJ",
+      "KKKHMMMMM"
+    ],
+    "clues": {
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        5,
+        5
+      ],
+      "C": [
+        1,
+        8
+      ],
+      "D": [
+        4,
+        1
+      ],
+      "E": [
+        5,
+        4
+      ],
+      "F": [
+        5,
+        7
+      ],
+      "G": [
+        6,
+        1
+      ],
+      "H": [
+        9,
+        3
+      ],
+      "I": [
+        6,
+        6
+      ],
+      "J": [
+        6,
+        8
+      ],
+      "K": [
+        8,
+        0
+      ],
+      "L": [
+        8,
+        5
+      ],
+      "M": [
+        9,
+        7
+      ]
+    },
+    "hidden": [
+      "B"
+    ],
+    "links": {
+      "F": 1,
+      "G": 1
+    },
+    "parity": {},
+    "more": {},
+    "corners": {
+      "J": "up"
+    },
+    "locks": {
+      "H": 2
+    },
+    "keys": {},
+    "shapes": {
+      "E": "tall",
+      "I": "square"
+    }
+  }
+}

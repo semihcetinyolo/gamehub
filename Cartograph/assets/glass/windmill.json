@@ -1,0 +1,22 @@
+{
+  "id": "windmill",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-03T14:56:32.316587+00:00",
+  "prompt": "Use case: stylized-concept. Generate a NEW, exquisite PHOTOGRAPHIC ARTWORK of a real artisan-made stained-glass panel depicting a windmill with four broad sails and a warm tower.\nImage 1 is the exact pane layout and colour plan. Image 2 is only a real-world material reference. The output must NOT look like image 1's flat vector drawing: turn every flat area into stunning, convincingly real, richly textured handmade translucent glass — organic ripples, hammered dimples, tiny trapped bubbles, light refracting inside the coloured glass, glowing sunlight transmitted from behind, delicate dark aged metal solder seams. A high-end Tiffany-style art object, photographed perfectly straight-on. Deep and jewel-like, not a cartoon, not paint, not paper.\nCRITICAL STRUCTURE: every flat-coloured area of image 1 is exactly ONE glass pane and every black line is a lead seam. Keep all seams exactly where they are — same positions, same curves, same silhouette and proportions — so the artwork aligns with image 1 when superimposed. Do not add, remove, subdivide, merge or move any pane or seam. Do not paint extra details (no eyes, veins, faces, stripes, text) onto the glass beyond what the panes already show. The flat light-grey area outside the panel's silhouette is not glass: render it as plain dark neutral grey.\nFOUR COLOURS ONLY, PANE BY PANE: the glass uses exactly these four colours: #b15a42, #f5dfa2, #568c67, #3d7fa6. Every pane keeps the colour image 1 gives it. Make them rich, luminous, translucent versions of those same hues, with natural light and texture variation inside each hue, but no fifth glass colour. Neutral lead seams and specular highlights do not count as colours.\nCOMPOSITION: exactly 3:4 portrait, frontal/orthographic, the panel filling the frame as in image 1. No frame, no wall, no room, no hanging chain, no perspective, no mockup, no vignette, no border. NO TEXT, NO LETTERING, NO LOGOS. Deliver only the finished raster artwork. Preserve the simplified geometric character of the guide: do not invent anatomy or restore details absent from it. Keep the neutral background outside its outline. All large and small panes must remain the same hue as Image 1. Use restrained small-scale glass ripples with soft backlighting, no extra black cracks.",
+  "references": [
+    "tools/stained/guides/windmill.png",
+    "vitray example/vitray3.jpg"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "49f918968008a95d8f505417af435ac5fd6bf5672e9bd42e5633a26c58fb2f0b",
+  "sha256": "4c65045360ece5484914704fce925a81eb13ed4ba5c390147ce4db702d12e486",
+  "palette": [
+    "#bf3d11",
+    "#fce784",
+    "#427a43",
+    "#1572a6"
+  ]
+}

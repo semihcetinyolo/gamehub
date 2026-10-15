@@ -1,0 +1,103 @@
+{
+  "id": "mossy-ruins",
+  "band": "medium",
+  "art": [
+    7,
+    8
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 69,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      11,
+      18
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 1,
+    "hiddenCount": 1,
+    "shapes": 1,
+    "more": 2
+  },
+  "puzzle": {
+    "grid": [
+      "ABBCDDEF",
+      "ABBCDDEF",
+      "AGGCDDEF",
+      "AGGCDDEF",
+      "AGGCDDEH",
+      "AIICJJEH",
+      "AIICJJEH",
+      "AIICJJEH",
+      "AIICKKKK"
+    ],
+    "clues": {
+      "A": [
+        8,
+        0
+      ],
+      "B": [
+        1,
+        1
+      ],
+      "C": [
+        5,
+        3
+      ],
+      "D": [
+        1,
+        5
+      ],
+      "E": [
+        6,
+        6
+      ],
+      "F": [
+        2,
+        7
+      ],
+      "G": [
+        3,
+        1
+      ],
+      "H": [
+        7,
+        7
+      ],
+      "I": [
+        6,
+        2
+      ],
+      "J": [
+        6,
+        5
+      ],
+      "K": [
+        8,
+        7
+      ]
+    },
+    "hidden": [
+      "E"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {
+      "H": 2,
+      "J": 3
+    },
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "B": "square"
+    }
+  }
+}

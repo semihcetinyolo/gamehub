@@ -1,0 +1,104 @@
+{
+  "id": "geode-workshop",
+  "band": "hard",
+  "art": [
+    7,
+    10
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 10,
+    "maxTech": 4,
+    "effortTarget": 88,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      8,
+      13
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 1,
+    "parity": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABCDEFF",
+      "ABCDEFF",
+      "ABCDEFF",
+      "ABCDEFF",
+      "ABCDEFF",
+      "GGHHEFF",
+      "GGHHEFF",
+      "GGHHEFF",
+      "GGIIIII",
+      "JJIIIII"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        2,
+        1
+      ],
+      "C": [
+        1,
+        2
+      ],
+      "D": [
+        3,
+        3
+      ],
+      "E": [
+        3,
+        4
+      ],
+      "F": [
+        5,
+        6
+      ],
+      "G": [
+        7,
+        1
+      ],
+      "H": [
+        6,
+        2
+      ],
+      "I": [
+        9,
+        6
+      ],
+      "J": [
+        9,
+        0
+      ]
+    },
+    "hidden": [
+      "G"
+    ],
+    "links": {},
+    "parity": {
+      "B": "odd"
+    },
+    "more": {},
+    "corners": {},
+    "locks": {
+      "F": 3
+    },
+    "keys": {},
+    "shapes": {
+      "H": "tall"
+    }
+  }
+}

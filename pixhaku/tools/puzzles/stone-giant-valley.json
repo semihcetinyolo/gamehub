@@ -1,0 +1,126 @@
+{
+  "id": "stone-giant-valley",
+  "band": "hard",
+  "art": [
+    8,
+    8
+  ],
+  "spec": {
+    "cols": 10,
+    "rows": 10,
+    "maxTech": 4,
+    "effortTarget": 109,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      12,
+      18
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 0,
+    "shapes": 2,
+    "keyLocks": 1,
+    "corners": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABCCCCC",
+      "AAAABDEFGH",
+      "AAAABDEFGH",
+      "AAAABDEFGH",
+      "IJJJBDEFGH",
+      "IJJJBDEFGH",
+      "IJJJBDKFGH",
+      "ILLLBDKMMN",
+      "ILLLBDKMMN",
+      "ILLLOOKMMN"
+    ],
+    "clues": {
+      "A": [
+        2,
+        0
+      ],
+      "B": [
+        6,
+        4
+      ],
+      "C": [
+        0,
+        7
+      ],
+      "D": [
+        5,
+        5
+      ],
+      "E": [
+        5,
+        6
+      ],
+      "F": [
+        4,
+        7
+      ],
+      "G": [
+        6,
+        8
+      ],
+      "H": [
+        6,
+        9
+      ],
+      "I": [
+        6,
+        0
+      ],
+      "J": [
+        5,
+        1
+      ],
+      "K": [
+        9,
+        6
+      ],
+      "L": [
+        8,
+        2
+      ],
+      "M": [
+        8,
+        7
+      ],
+      "N": [
+        8,
+        9
+      ],
+      "O": [
+        9,
+        5
+      ]
+    },
+    "hidden": [
+      "J"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {},
+    "corners": {
+      "E": "down"
+    },
+    "locks": {},
+    "keys": {
+      "D": "O"
+    },
+    "shapes": {
+      "G": "tall",
+      "L": "square"
+    }
+  }
+}

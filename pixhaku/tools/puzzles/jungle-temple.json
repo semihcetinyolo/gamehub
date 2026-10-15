@@ -1,0 +1,153 @@
+{
+  "id": "jungle-temple",
+  "band": "expert",
+  "art": [
+    8,
+    10
+  ],
+  "spec": {
+    "cols": 10,
+    "rows": 12,
+    "maxTech": 4,
+    "effortTarget": 150,
+    "start": [
+      0,
+      0
+    ],
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      14,
+      22
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 3,
+    "keyLocks": 1,
+    "links": 1,
+    "corners": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABCCCDEFFF",
+      "ABCCCDEFFF",
+      "ABCCCDEFFF",
+      "ABGHIDEFFF",
+      "JBGHIDEKKL",
+      "JBGHIDEKKL",
+      "JBGHIDEMNL",
+      "JBGHIDEMNL",
+      "JBGHIDEMNL",
+      "OPGHIDEMNL",
+      "OPQQIRRMNL",
+      "OPQQISSSNL"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        7,
+        1
+      ],
+      "C": [
+        2,
+        3
+      ],
+      "D": [
+        6,
+        5
+      ],
+      "E": [
+        6,
+        6
+      ],
+      "F": [
+        3,
+        7
+      ],
+      "G": [
+        7,
+        2
+      ],
+      "H": [
+        5,
+        3
+      ],
+      "I": [
+        10,
+        4
+      ],
+      "J": [
+        6,
+        0
+      ],
+      "K": [
+        5,
+        7
+      ],
+      "L": [
+        8,
+        9
+      ],
+      "M": [
+        8,
+        7
+      ],
+      "N": [
+        8,
+        8
+      ],
+      "O": [
+        10,
+        0
+      ],
+      "P": [
+        9,
+        1
+      ],
+      "Q": [
+        11,
+        2
+      ],
+      "R": [
+        10,
+        5
+      ],
+      "S": [
+        11,
+        5
+      ]
+    },
+    "hidden": [
+      "C"
+    ],
+    "links": {
+      "B": 1,
+      "I": 1
+    },
+    "parity": {},
+    "more": {},
+    "corners": {
+      "P": "up"
+    },
+    "locks": {
+      "S": 4
+    },
+    "keys": {
+      "R": "F"
+    },
+    "shapes": {
+      "J": "tall",
+      "L": "tall",
+      "Q": "square"
+    }
+  }
+}

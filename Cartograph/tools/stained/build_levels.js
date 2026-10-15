@@ -19,6 +19,11 @@ const ORDER = [
   'cat', 'cactus', 'lotus', 'heart', 'fox', 'fish', 'flower', 'moon', 'mushroom', 'owl',
   'turtle', 'peacock', 'balloon', 'bird', 'rosewindow', 'sailboat', 'mountain', 'bee', 'lighthouse',
   'snowflake', 'tulip', 'kaleido', 'tree', 'medallion', 'compass',
+  'butterflygarden', 'dragonfly', 'snail', 'seashell', 'jellyfish',
+  'whale', 'penguin', 'rabbit', 'bear', 'cherries',
+  'pear', 'strawberry', 'pumpkin', 'maple', 'acorn',
+  'rose', 'iris', 'teapot', 'lantern', 'windmill',
+  'castle', 'bridge', 'waterfall', 'planet', 'hourglass',
 ];
 // First levels: only plain eliminations and several regions paintable at once.
 const EASY_UNTIL = 8;

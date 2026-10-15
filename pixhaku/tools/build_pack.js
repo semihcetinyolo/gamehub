@@ -11,6 +11,9 @@
 // Every level is checked first: unique solution, solvable without guessing, and its
 // spec's opening rules; the build stops on the first level that fails.
 //
+// tools/puzzles/<id>.json (made by tools/generate_levels.js) replaces a level's spec and puzzle:
+// boards up to 10×12 with shape clues, the picture centre-cropped to the board by tools/fit_art.py.
+//
 //   node tools/build_pack.js            verify + write everything
 //   node tools/build_pack.js --search   first pick clue cells for levels whose `clues` is empty
 //                                       and save them into pack_4-23.js
@@ -18,10 +21,22 @@
 const fs = require("fs");
 const path = require("path");
 const zlib = require("zlib");
-const { analyse, parseLayout, placeOf, orient, checkSpec, generatePuzzle } = require("./shikaku");
+const { analyse, parseLayout, placeOf, orient, checkSpec, generatePuzzle, puzzleClues } = require("./shikaku");
 const LEGACY_PACK = require("./pack_4-23");
 const THEMES = require("./themes_100");
-const PACK = [...LEGACY_PACK, ...THEMES.map((t) => require(`./puzzles_100/${t.id}.json`))];
+const OVERRIDE = (id) => path.join(__dirname, "puzzles", `${id}.json`);
+const PACK = [...LEGACY_PACK, ...THEMES.map((t) => require(`./puzzles_100/${t.id}.json`))].map((L) => {
+  if (!fs.existsSync(OVERRIDE(L.id))) return L;
+  const { spec, puzzle } = JSON.parse(fs.readFileSync(OVERRIDE(L.id), "utf8"));
+  return { ...L, spec, puzzle };
+});
+const MAX_COLS = 10, MAX_ROWS = 12;
+// levels 101+ (tools/generate_extra.js): no picture, the game draws a mosaic of the solution
+const EXTRA_DIR = path.join(__dirname, "extra");
+const EXTRA = fs.existsSync(EXTRA_DIR)
+  ? fs.readdirSync(EXTRA_DIR).filter((f) => f.endsWith(".json")).map((f) => JSON.parse(fs.readFileSync(path.join(EXTRA_DIR, f), "utf8"))).sort((x, y) => x.order - y.order)
+  : [];
+const NEWER = ["s", "par", "more", "corner", "link", "lock", "keyLock"];
 
 const ROOT = path.resolve(__dirname, "..");
 const DRAFT_DIR = "taslaklar";
@@ -60,7 +75,8 @@ const difficultyOf = (effort) => Math.min(100, Math.round(effort / 1.4));
 const tagOf = (d) => (d < 30 ? "easy" : d < 58 ? "medium" : d < 82 ? "hard" : "expert");
 const TAG_TR = { easy: "easy (kolay)", medium: "medium (orta)", hard: "hard (zor)", expert: "expert (uzman)" };
 const seedOf = (id) => [...id].reduce((h, ch) => (Math.imul(h, 31) + ch.charCodeAt(0)) >>> 0, 7);
-const TECH = { 1: ["tek yer", "Sayının sığabileceği tek dikdörtgen kaldı."],
+const TECH = { 0: ["ikiz", "Bağlı ?'nin eşi yerleşince oyun bu parçayı kendisi yerleştirir."],
+  1: ["tek yer", "Sayının sığabileceği tek dikdörtgen kaldı."],
   2: ["tek sahip", "Boş bir hücreye yalnızca bir sayı uzanabiliyor; o sayının dikdörtgeni o hücreyi kapsamak zorunda."],
   3: ["kesişim", "Bir sayının bütün seçenekleri aynı hücrelerden geçiyor; o hücreler komşu sayılara kapanıyor."],
   4: ["eleme", "Seçeneklerden birini çizseydin başka bir sayıya yer kalmazdı ya da bir hücre boşta kalırdı; o seçenek elenir."] };
@@ -80,18 +96,17 @@ function buildLevel(L, { search }) {
     savePuzzle(L);
   }
   const layout = parseLayout(L.puzzle.grid);
-  if (layout.cols !== L.spec.cols || layout.rows !== L.spec.rows || layout.cols > 8 || layout.rows > 10)
-    throw new Error(`${L.id}: board must match its spec and fit within 8 columns × 10 rows`);
+  if (layout.cols !== L.spec.cols || layout.rows !== L.spec.rows || layout.cols > MAX_COLS || layout.rows > MAX_ROWS)
+    throw new Error(`${L.id}: board must match its spec and fit within ${MAX_COLS} columns × ${MAX_ROWS} rows`);
   const locks = L.puzzle.locks || {};
-  const clues = layout.zones.map((z) => {
+  layout.zones.forEach((z) => {
     const [r, c] = L.puzzle.clues[z.key] || [];
     if (r === undefined || r < z.r0 || r > z.r1 || c < z.c0 || c > z.c1) throw new Error(`${L.id}: clue of piece ${z.key} is outside it`);
-    // the solver treats a locked clue as "?": the player can't see its size until it opens
-    return L.puzzle.hidden.includes(z.key) || z.key in locks ? { r, c, n: z.area, h: 1 } : { r, c, n: z.area };
   });
-  // what the game gets: "?" clues keep h, locked clues carry the piece count that opens them
-  const gameClues = layout.zones.map((z, k) => (z.key in locks ? { r: clues[k].r, c: clues[k].c, n: clues[k].n, lock: locks[z.key] } : clues[k]));
+  // the solver treats a locked clue (count or key) as "?": the player can't see its size until it opens
+  const { solver: clues, game: gameClues } = puzzleClues(L.puzzle);
   const puzzle = { rows: layout.rows, cols: layout.cols, clues };
+  if (!clues.some((k) => !k.s && !k.h && !k.par && !k.more && !k.corner)) throw new Error(`${L.id}: every level needs at least one number`);
   const a = analyse(puzzle);
   if (!a.unique) throw new Error(`${L.id}: ${a.sols === 0 ? "no" : "more than one"} solution`);
   const why = checkSpec(a, L.spec, layout);
@@ -101,9 +116,32 @@ function buildLevel(L, { search }) {
     const at = a.steps.findIndex((st) => st.clue === k);
     if (at < locks[z.key]) throw new Error(`${L.id}: lock on ${z.key} opens after ${locks[z.key]} pieces but the solve needs it as piece ${at + 1}`);
   });
+  const zoneAt = (key) => a.steps.findIndex((st) => layout.zones[st.clue].key === key);
+  for (const [lock, key] of Object.entries(L.puzzle.keys || {}))
+    if (zoneAt(key) > zoneAt(lock)) throw new Error(`${L.id}: key lock ${lock} is needed before its key ${key} is placed`);
   // solve order = hint order: the game hands out the first unplaced rect of `solution`
   const solution = a.steps.map((s) => [s.rect.r0, s.rect.c0, s.rect.r1, s.rect.c1]);
   return { L, art, layout, puzzle, gameClues, a, solution };
+}
+
+function buildExtra(x) {
+  const { layout, solver, game } = puzzleClues(x.puzzle);
+  const id = `mosaic-${x.order}`;
+  if (layout.cols > MAX_COLS || layout.rows > MAX_ROWS) throw new Error(`${id}: board bigger than ${MAX_COLS}×${MAX_ROWS}`);
+  if (!solver.some((k) => !k.s && !k.h && !k.par && !k.more && !k.corner)) throw new Error(`${id}: every level needs at least one number`);
+  if (!x.feature && game.some((k) => k.h || NEWER.some((f) => k[f]))) throw new Error(`${id}: a Classic level has only plain numbers`);
+  const a = analyse({ rows: layout.rows, cols: layout.cols, clues: solver });
+  if (!a.unique || !a.solved) throw new Error(`${id}: ${a.unique ? "needs guessing" : "not unique"}`);
+  const zoneAt = (key) => a.steps.findIndex((st) => layout.zones[st.clue].key === key);
+  for (const [lock, key] of Object.entries(x.puzzle.keys || {}))
+    if (zoneAt(key) > zoneAt(lock)) throw new Error(`${id}: key lock ${lock} is needed before its key ${key} is placed`);
+  layout.zones.forEach((z, k) => {
+    const n = (x.puzzle.locks || {})[z.key];
+    if (n && a.steps.findIndex((st) => st.clue === k) < n) throw new Error(`${id}: lock on ${z.key} opens too late`);
+  });
+  const difficulty = difficultyOf(a.effort);
+  return { id, order: x.order, section: x.section, feature: x.feature, ...(x.features ? { features: x.features } : {}), rows: layout.rows, cols: layout.cols, clues: game, a,
+    solution: a.steps.map((s) => [s.rect.r0, s.rect.c0, s.rect.r1, s.rect.c1]), difficulty, tag: tagOf(difficulty) };
 }
 
 function savePuzzle(L) {
@@ -147,7 +185,10 @@ function where(q, R, C) {
 }
 const shape = (q) => `${q.c1 - q.c0 + 1}×${q.r1 - q.r0 + 1}`;
 const clueCell = (m, i) => { const k = m.puzzle.clues[i]; return `${k.r + 1}. satır ${k.c + 1}. sütun`; };
-const clueLabel = (m, i) => (m.gameClues[i].lock ? `🔒${m.gameClues[i].lock}` : m.puzzle.clues[i].h ? "?" : String(m.puzzle.clues[i].n));
+const SHAPE_GLYPH = { square: "■", tall: "▮", wide: "▬" };
+const labelOf = (k) => (k.lock ? `🔒${k.lock}` : k.keyLock ? "🔒🔑" : k.link ? `?${"ᵃᵇᶜ"[k.link - 1] || k.link}` : k.h ? "?" : k.s ? SHAPE_GLYPH[k.s]
+  : k.par ? (k.par === "odd" ? "I" : "II") : k.more ? `${k.more}+` : k.corner ? { tl: "┌", tr: "┐", bl: "└", br: "┘", up: "⊓", down: "⊔", left: "⊏", right: "⊐" }[k.corner] : `${k.n}${k.key ? "🔑" : ""}`);
+const clueLabel = (m, i) => labelOf(m.gameClues[i]);
 
 function openingPiece(m, st) {
   const { a, layout } = m;
@@ -244,7 +285,13 @@ function boardSVG(m) {
   const b = Math.min(24, cell * 0.62);
   for (const k of m.gameClues) {
     const x = cx(k.c) + cell / 2, y = cy(k.r) + cell / 2;
-    const label = k.lock ? `🔒${k.lock}` : k.h ? "?" : String(k.n);
+    if (k.s) {
+      // shape clues as in the game: a coloured block of the piece's outline
+      const [sw, sh, fill] = { square: [0.6, 0.6, "#f0913f"], tall: [0.42, 0.82, "#7dbb48"], wide: [0.82, 0.42, "#5aa3d8"] }[k.s];
+      s += `<rect x="${(x - (cell * sw) / 2).toFixed(1)}" y="${(y - (cell * sh) / 2).toFixed(1)}" width="${(cell * sw).toFixed(1)}" height="${(cell * sh).toFixed(1)}" fill="${fill}" stroke="#2b3229" stroke-width="1.5"/>`;
+      continue;
+    }
+    const label = labelOf(k);
     const w = label.length > 1 ? b * 1.3 : b;
     s += `<rect x="${(x - w / 2).toFixed(1)}" y="${(y - b / 2).toFixed(1)}" width="${w.toFixed(1)}" height="${b.toFixed(1)}" fill="${k.h ? "#f5e7c4" : "#fffdf0"}" stroke="#2b3229" stroke-width="1.5"/>`;
     s += `<text class="clue" x="${x.toFixed(1)}" y="${(y + b * 0.24).toFixed(1)}" text-anchor="middle" style="font-size:${(b * 0.62).toFixed(1)}px${k.h ? ";fill:#7a5c16" : ""}">${label}</text>`;
@@ -310,7 +357,7 @@ function promptText(m) {
 function levelObject(m, indent = "  ") {
   const { L, puzzle, solution } = m;
   const i1 = indent + "  ", i2 = i1 + "  ";
-  const clue = (k) => `{ r: ${k.r}, c: ${k.c}, n: ${k.n}${k.h ? ", h: 1" : ""}${k.lock ? `, lock: ${k.lock}` : ""} }`;
+  const clue = (k) => JSON.stringify(k).replace(/"(\w+)":/g, "$1: ").replace(/,/g, ", ").replace(/^\{/, "{ ").replace(/\}$/, " }");
   return [
     `${indent}{`,
     `${i1}// Level ${L.no} — ${L.tr} · ${m.tag} (${m.difficulty}) · ${L.variety}`,
@@ -587,7 +634,7 @@ ${models.map(levelSection).join("\n")}
 }
 
 // Keep the playable HTML self-contained, including all generated reward images.
-function updatePrototype(models, statics) {
+function updatePrototype(models, statics, extras) {
   const file = path.join(ROOT, "Pixhaku_prototype.html");
   let html = fs.readFileSync(file, "utf8");
   const levels = models.map((m) => ({
@@ -603,6 +650,10 @@ function updatePrototype(models, statics) {
     difficulty: m.difficulty,
     tag: m.tag,
   }));
+  // a section title rides on the first level of each section (the levels menu shows it)
+  extras.forEach((x, i) => levels.push({ id: x.id, order: x.order, rows: x.rows, cols: x.cols, clues: x.clues, solution: x.solution,
+    artName: `Mosaic ${x.order}`, mosaic: 1, difficulty: x.difficulty, tag: x.tag,
+    ...(i === 0 || extras[i - 1].section !== x.section ? { section: x.section, ...(x.feature ? { feature: x.feature } : {}) } : {}) }));
   const fixed = statics.map((st) => ({ id: st.L.id, order: st.L.no, difficulty: st.difficulty, tag: st.tag }));
   const marker = "    // BEGIN GENERATED LEVELS 4-23";
   const block = `${marker}\n    levels.push(...${JSON.stringify(levels)});\n` +
@@ -653,10 +704,10 @@ function staticLevels() {
 // once the built-in ones are done. Each profile mirrors its tag's band in the pack; a
 // result that lands in another band is retried with a new seed.
 const INGAME = {
-  easy:   { sizes: [[6, 6], [6, 7]], spec: { start: [1, 2], maxTech: 4, pieces: [7, 10], effortTarget: 32, t1Max: 0.5, decMin: 3, liveMin: 2.3, hiddenCount: 0 } },
-  medium: { sizes: [[7, 7], [7, 8]], spec: { start: [1, 2], maxTech: 4, pieces: [9, 12], effortTarget: 62, t1Max: 0.38, decMin: 6, liveMin: 2.8, deepMin: 1, hiddenCount: 1 } },
-  hard:   { sizes: [[8, 8], [8, 9], [7, 10]], spec: { start: [1, 1], maxTech: 4, pieceStyle: "big", pieces: [10, 13], effortTarget: 96, t1Max: 0.3, decMin: 8, liveMin: 3, deepMin: 2, cornerMax: 0.35, hiddenCount: 1, lockCount: 1 } },
-  expert: { sizes: [[8, 10]], spec: { start: [0, 0], openTech: 3, calm: 0, maxTech: 4, pieceStyle: "big", pieces: [11, 14], effortTarget: 128, t1Max: 0.25, decMin: 10, liveMin: 3, deepMin: 3, cornerMax: 0.35, hiddenCount: 2, lockCount: 1 } },
+  easy:   { sizes: [[6, 6], [6, 7]], spec: { start: [1, 2], maxTech: 4, pieces: [7, 10], effortTarget: 32, t1Max: 0.5, decMin: 3, liveMin: 2.3, hiddenCount: 0, shapes: 1 } },
+  medium: { sizes: [[7, 7], [7, 8], [8, 8]], spec: { start: [1, 2], maxTech: 4, pieces: [9, 14], effortTarget: 62, t1Max: 0.38, decMin: 6, liveMin: 2.8, deepMin: 1, hiddenCount: 1, shapes: 1, parity: 1 } },
+  hard:   { sizes: [[8, 9], [9, 9], [9, 10]], spec: { start: [1, 1], maxTech: 4, pieceStyle: "big", pieces: [10, 16], effortTarget: 96, t1Max: 0.3, decMin: 8, liveMin: 3, deepMin: 2, cornerMax: 0.35, hiddenCount: 1, lockCount: 1, shapes: 1, links: 1, more: 1, corners: 1 } },
+  expert: { sizes: [[9, 10], [9, 11], [10, 12]], spec: { start: [0, 0], openTech: 3, calm: 0, maxTech: 4, pieceStyle: "big", pieces: [12, 20], effortTarget: 128, t1Max: 0.25, decMin: 10, liveMin: 3, deepMin: 3, cornerMax: 0.35, hiddenCount: 1, lockCount: 0, keyLocks: 1, shapes: 2, links: 1, parity: 1 } },
 };
 
 function writeGenerator() {
@@ -685,18 +736,13 @@ ${solver}
         const effortTarget = Math.round(prof.spec.effortTarget * (0.82 + ((s % 997) / 997) * 0.36));
         const p = generatePuzzle(cols, rows, { ...prof.spec, effortTarget, cols, rows }, { seed: s, tilings: 6, samples: 150, polish: 400, deadline: Date.now() + 3000 });
         if (!p) continue;
-        const layout = parseLayout(p.grid);
-        const locks = p.locks || {};
-        const clues = layout.zones.map((z) => {
-          const [r, c] = p.clues[z.key];
-          return p.hidden.includes(z.key) || z.key in locks ? { r, c, n: z.area, h: 1 } : { r, c, n: z.area };
-        });
+        const { solver: clues, game } = puzzleClues(p);
         const a = analyse({ rows, cols, clues });
         if (!a.unique || !a.solved) continue;
         const difficulty = difficultyOf(a.effort);
         const level = {
           rows, cols,
-          clues: layout.zones.map((z, k) => (z.key in locks ? { r: clues[k].r, c: clues[k].c, n: clues[k].n, lock: locks[z.key] } : clues[k])),
+          clues: game,
           solution: a.steps.map((st) => [st.rect.r0, st.rect.c0, st.rect.r1, st.rect.c1]),
           difficulty, tag: tagOf(difficulty),
         };
@@ -806,14 +852,17 @@ function main() {
   writeData(pack);
   writePage(order, order);
   writeCatalog(order);
-  updatePrototype(pack, statics);
+  const extras = EXTRA.map(buildExtra);
+  updatePrototype(pack, statics, extras);
+  fs.writeFileSync(path.join(ROOT, "levels_extra.json"), JSON.stringify(extras.map(({ a, ...x }) => ({ ...x, effort: a.effort, pieces: a.steps.length })), null, 1) + "\n");
   writeGenerator();
   for (const m of order) {
     const t = m.a.techCounts;
     const where = m.static ? "prototipte sabit" : `${m.layout.cols}x${m.layout.rows} ${String(m.layout.zones.length).padStart(2)} parça`;
     console.log(`Level ${String(m.L.no).padStart(2)}  ${m.tag.padEnd(6)} ${String(m.difficulty).padStart(3)}  ${where.padEnd(17)} belli %${String(Math.round(m.a.t1Frac * 100)).padStart(3)}  karar ${String(m.a.decisions).padStart(2)}  T1-T4 ${t[1]}/${t[2]}/${t[3]}/${t[4]}  ${m.L.tr}`);
   }
-  console.log(`\n→ ${PAGE}, ${DATA}, ${DRAFT_DIR}/ (${order.length} PNG)`);
+  for (const x of extras) if (x.order % 10 === 1 || x.order === 101) console.log(`Level ${x.order}  ${x.section}`);
+  console.log(`\n→ ${PAGE}, ${DATA}, ${DRAFT_DIR}/ (${order.length} PNG), levels_extra.json (${extras.length} mosaic levels)`);
 }
 
 if (require.main === module) main();

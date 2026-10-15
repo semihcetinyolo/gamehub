@@ -1,0 +1,88 @@
+{
+  "id": "harvest-farm",
+  "band": "medium",
+  "art": [
+    7,
+    7
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 7,
+    "maxTech": 4,
+    "effortTarget": 50,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      8,
+      12
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1,
+    "shapes": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBBCD",
+      "ABBBBCD",
+      "AEEEECF",
+      "AEEEECF",
+      "AGGGGCF",
+      "HGGGGCI",
+      "HJJJJJI"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        0,
+        2
+      ],
+      "C": [
+        2,
+        5
+      ],
+      "D": [
+        1,
+        6
+      ],
+      "E": [
+        3,
+        2
+      ],
+      "F": [
+        4,
+        6
+      ],
+      "G": [
+        4,
+        2
+      ],
+      "H": [
+        6,
+        0
+      ],
+      "I": [
+        5,
+        6
+      ],
+      "J": [
+        6,
+        4
+      ]
+    },
+    "hidden": [
+      "E"
+    ],
+    "locks": {},
+    "shapes": {
+      "C": "tall"
+    }
+  }
+}

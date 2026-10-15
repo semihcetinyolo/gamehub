@@ -1,0 +1,88 @@
+{
+  "id": "bookshop-cafe",
+  "band": "medium",
+  "art": [
+    7,
+    7
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 7,
+    "maxTech": 4,
+    "effortTarget": 52,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      8,
+      12
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1,
+    "shapes": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAABCDE",
+      "AAABCDE",
+      "AAABFDE",
+      "AAABFDE",
+      "GGGBFHH",
+      "GGGIIHH",
+      "GGGJJHH"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        3,
+        3
+      ],
+      "C": [
+        1,
+        4
+      ],
+      "D": [
+        3,
+        5
+      ],
+      "E": [
+        2,
+        6
+      ],
+      "F": [
+        2,
+        4
+      ],
+      "G": [
+        6,
+        0
+      ],
+      "H": [
+        5,
+        5
+      ],
+      "I": [
+        5,
+        3
+      ],
+      "J": [
+        6,
+        3
+      ]
+    },
+    "hidden": [
+      "B"
+    ],
+    "locks": {},
+    "shapes": {
+      "H": "tall"
+    }
+  }
+}

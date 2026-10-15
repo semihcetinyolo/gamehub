@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pixhaku parity</title>
+<style>html,body{margin:0;height:100%;background:#2b2118}iframe{border:0;width:100%;height:100%;display:block}</style></head><body>
+<iframe id="g" src="Pixhaku_prototype.html"></iframe>
+<script>
+const LEVELS=[{"rows":10,"cols":9,"clues":[{"r":3,"c":0,"n":5,"par":"odd"},{"r":2,"c":1,"n":12},{"r":1,"c":4,"n":7},{"r":1,"c":5,"n":10},{"r":5,"c":6,"n":14},{"r":3,"c":8,"n":7},{"r":5,"c":1,"n":6},{"r":5,"c":3,"n":5,"par":"odd"},{"r":8,"c":0,"n":5},{"r":9,"c":1,"n":6,"par":"even"},{"r":7,"c":4,"n":2},{"r":8,"c":8,"n":9,"par":"odd"},{"r":9,"c":3,"n":2}],"solution":[[0,4,6,4],[0,8,6,8],[9,3,9,4],[0,6,6,7],[0,5,9,5],[7,6,9,8],[5,0,9,0],[7,4,8,4],[0,1,3,3],[4,1,6,2],[0,0,4,0],[4,3,8,3],[7,1,9,2]],"difficulty":72,"tag":"hard","custom":true,"artName":"parity test","artPrompt":""}];
+const f=document.getElementById("g");
+f.addEventListener("load",()=>{const w=f.contentWindow;const go=()=>{if(!w.PixhakuGen)return setTimeout(go,100);
+const n=Math.max(1,Math.min(LEVELS.length,parseInt(location.hash.slice(1))||1));
+w.__L=JSON.parse(JSON.stringify(LEVELS[n-1]));w.eval("__L.displayNo=BUILTIN_LEVELS+1;__L.artImage=PixhakuGen.mosaic(__L);levels[BUILTIN_LEVELS]=__L;startGame(BUILTIN_LEVELS,true);");};go();});
+addEventListener("hashchange",()=>location.reload());
+</script></body></html>

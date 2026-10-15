@@ -1,0 +1,85 @@
+{
+  "id": "snowy-bakery",
+  "band": "medium",
+  "art": [
+    6,
+    8
+  ],
+  "spec": {
+    "cols": 6,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 57,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      7,
+      12
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1,
+    "shapes": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBCC",
+      "ADDDCC",
+      "ADDDCC",
+      "AEEFCC",
+      "AEEFGG",
+      "AEEFGG",
+      "HEEFGG",
+      "HEEIII"
+    ],
+    "clues": {
+      "A": [
+        5,
+        0
+      ],
+      "B": [
+        0,
+        1
+      ],
+      "C": [
+        3,
+        5
+      ],
+      "D": [
+        1,
+        1
+      ],
+      "E": [
+        7,
+        1
+      ],
+      "F": [
+        6,
+        3
+      ],
+      "G": [
+        4,
+        5
+      ],
+      "H": [
+        7,
+        0
+      ],
+      "I": [
+        7,
+        5
+      ]
+    },
+    "hidden": [
+      "E"
+    ],
+    "locks": {},
+    "shapes": {
+      "I": "wide"
+    }
+  }
+}

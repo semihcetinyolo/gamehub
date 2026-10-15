@@ -18,8 +18,12 @@ const FIRST = ['cat', 'cactus', 'lotus', 'heart', 'fox', 'fish', 'flower', 'moon
     page.on('pageerror', e => errors.push(e.message));
     page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
     await page.goto(URL);
+    // the game opens on the main menu
+    await page.locator('#menu').waitFor();
+    assert(await page.locator('#menuProfile').isVisible());
+    await page.locator('#menuPlay').click();
     const total = await page.evaluate(() => window.CARTO_STAINED.length);
-    assert(total >= 25, `only ${total} levels`);
+    assert.equal(total, 50, `expected 50 levels, got ${total}`);
     assert.deepEqual(await page.evaluate(n => window.CARTO_STAINED.slice(0, n).map(l => l.id), FIRST.length), FIRST);
     // only the default way to play is left
     assert.equal(await page.locator('#lives, #colorChip, #regionPicker').count(), 0);
@@ -130,12 +134,31 @@ const FIRST = ['cat', 'cactus', 'lotus', 'heart', 'fox', 'fish', 'flower', 'moon
     assert.equal(await page.evaluate(() => CartoGame.S.level), 5);
     await page.reload();
     assert.equal(await page.evaluate(() => CartoGame.S.level), 5);
+    // menu: profile edit, collection, home button
+    await page.locator('#menuProfile').click();
+    await page.locator('.av-pick').nth(2).click();
+    await page.locator('#profName').fill('Test');
+    await page.locator('#profSave').click();
+    assert.match(await page.locator('#menuProfile').textContent(), /Test/);
+    assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('carto.profile')).avatar), 2);
+    await page.locator('#menuGallery').click();
+    assert.equal(await page.locator('.gal-tile').count(), total);
+    assert.equal(await page.locator('.gal-tile.done').count(), total);
+    await page.locator('.gal-tile').nth(6).click();
+    await page.locator('[data-play]').click();
+    assert(await page.locator('#menu').isHidden());
+    assert.equal(await page.evaluate(() => CartoGame.S.level), 7);
+    await page.locator('#homeBtn').click();
+    assert(await page.locator('#menu').isVisible());
+    await page.locator('#menuPlay').click();
 
     for (const viewport of [{ width: 320, height: 568 }, { width: 1440, height: 900 }]) {
       const ctx = await browser.newContext({ viewport, isMobile: viewport.width < 600, hasTouch: viewport.width < 600, reducedMotion: 'reduce' });
       const p = await ctx.newPage();
       p.on('pageerror', e => errors.push(e.message));
       await p.goto(URL);
+      assert(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+      await p.locator('#menuPlay').click();
       await p.locator('#coach').waitFor();
       assert(await p.evaluate(() => { const c = document.querySelector('#coach').getBoundingClientRect(); return c.top >= 0 && c.right <= innerWidth; }));
       for (const n of [1, 15, total]) {

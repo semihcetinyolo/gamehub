@@ -1,0 +1,132 @@
+{
+  "id": "dragon-nursery",
+  "band": "hard",
+  "art": [
+    7,
+    10
+  ],
+  "spec": {
+    "cols": 8,
+    "rows": 11,
+    "maxTech": 4,
+    "effortTarget": 94,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      16
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 1,
+    "more": 1,
+    "corners": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBBBBB",
+      "ACCCCCCC",
+      "ADDDDDDE",
+      "AFGGHIJE",
+      "AFGGHIJE",
+      "AFGGHIJE",
+      "KFGGHLJM",
+      "KFGGHLJM",
+      "KFNNNLJM",
+      "KONNNLPM",
+      "KONNNLPM"
+    ],
+    "clues": {
+      "A": [
+        4,
+        0
+      ],
+      "B": [
+        0,
+        1
+      ],
+      "C": [
+        1,
+        6
+      ],
+      "D": [
+        2,
+        6
+      ],
+      "E": [
+        2,
+        7
+      ],
+      "F": [
+        4,
+        1
+      ],
+      "G": [
+        4,
+        2
+      ],
+      "H": [
+        5,
+        4
+      ],
+      "I": [
+        4,
+        5
+      ],
+      "J": [
+        3,
+        6
+      ],
+      "K": [
+        7,
+        0
+      ],
+      "L": [
+        8,
+        5
+      ],
+      "M": [
+        8,
+        7
+      ],
+      "N": [
+        9,
+        2
+      ],
+      "O": [
+        9,
+        1
+      ],
+      "P": [
+        9,
+        6
+      ]
+    },
+    "hidden": [
+      "N"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {
+      "B": 4
+    },
+    "corners": {
+      "E": "up"
+    },
+    "locks": {
+      "J": 2
+    },
+    "keys": {},
+    "shapes": {
+      "O": "tall"
+    }
+  }
+}

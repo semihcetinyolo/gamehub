@@ -1,0 +1,84 @@
+{
+  "id": "rose-conservatory",
+  "band": "medium",
+  "art": [
+    7,
+    7
+  ],
+  "spec": {
+    "cols": 7,
+    "rows": 7,
+    "maxTech": 4,
+    "effortTarget": 49,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      8,
+      12
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1,
+    "shapes": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAABBCC",
+      "AAABBCC",
+      "DEEBBCC",
+      "DEEBBCC",
+      "DEEFGCC",
+      "HEEFGCC",
+      "HEEFGII"
+    ],
+    "clues": {
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        0,
+        3
+      ],
+      "C": [
+        2,
+        5
+      ],
+      "D": [
+        4,
+        0
+      ],
+      "E": [
+        6,
+        1
+      ],
+      "F": [
+        4,
+        3
+      ],
+      "G": [
+        5,
+        4
+      ],
+      "H": [
+        6,
+        0
+      ],
+      "I": [
+        6,
+        5
+      ]
+    },
+    "hidden": [
+      "C"
+    ],
+    "locks": {},
+    "shapes": {
+      "D": "tall"
+    }
+  }
+}

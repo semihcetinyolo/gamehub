@@ -1,0 +1,17 @@
+{
+  "_comment": "Stage text per level and group: the card says 'Find The <label>'. Always name the character AND its feature, plural.",
+  "beach": {
+    "GreenMayo": "Kids In Green Swimsuits",
+    "SwimmingArmband": "Kids With Armbands"
+  },
+  "park": {
+    "Sunflower": "Frogs With Sunflowers",
+    "RedCap": "Frogs In Red Caps",
+    "Tongue": "Frogs Catching Flies"
+  },
+  "livingroom": {
+    "BlueGuitar": "Koalas With Blue Guitars",
+    "GreenSweater": "Koalas In Green Sweaters",
+    "DiscoDance": "Disco Dancing Koalas"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "bamboo-onsen",
+  "band": "medium",
+  "art": [
+    6,
+    8
+  ],
+  "spec": {
+    "cols": 6,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 48,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      7,
+      12
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "deepMin": 0,
+    "hiddenCount": 1,
+    "shapes": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AABBCC",
+      "AABBCC",
+      "AABBDD",
+      "AABBDD",
+      "AABBDD",
+      "EEBBDD",
+      "EEFFGG",
+      "HHFFGG"
+    ],
+    "clues": {
+      "A": [
+        4,
+        0
+      ],
+      "B": [
+        0,
+        2
+      ],
+      "C": [
+        1,
+        4
+      ],
+      "D": [
+        5,
+        5
+      ],
+      "E": [
+        6,
+        0
+      ],
+      "F": [
+        7,
+        3
+      ],
+      "G": [
+        7,
+        5
+      ],
+      "H": [
+        7,
+        0
+      ]
+    },
+    "hidden": [
+      "H"
+    ],
+    "locks": {},
+    "shapes": {
+      "A": "tall"
+    }
+  }
+}

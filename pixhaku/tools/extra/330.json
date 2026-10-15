@@ -1,0 +1,142 @@
+{
+  "order": 330,
+  "section": "All Together",
+  "feature": "mix",
+  "features": [
+    "lock",
+    "rect",
+    "corner",
+    "twins"
+  ],
+  "spec": {
+    "cols": 9,
+    "rows": 11,
+    "maxTech": 4,
+    "effortTarget": 125,
+    "hiddenCount": 0,
+    "lockCount": 1,
+    "shapes": 2,
+    "start": [
+      0,
+      0
+    ],
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      12,
+      18
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.45,
+    "corners": 2,
+    "links": 1,
+    "shapeKinds": [
+      "tall",
+      "wide"
+    ]
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAAAAA",
+      "BCCDDDDDE",
+      "BCCDDDDDE",
+      "BCCDDDDDE",
+      "BCCFGHIJE",
+      "BCCFGHIJE",
+      "BCCFGHIJE",
+      "KCCFGHIJE",
+      "KLMFGNIJO",
+      "KLMFPNIJO",
+      "KLMFPNIJO"
+    ],
+    "clues": {
+      "A": [
+        0,
+        5
+      ],
+      "B": [
+        5,
+        0
+      ],
+      "C": [
+        6,
+        2
+      ],
+      "D": [
+        1,
+        4
+      ],
+      "E": [
+        5,
+        8
+      ],
+      "F": [
+        7,
+        3
+      ],
+      "G": [
+        8,
+        4
+      ],
+      "H": [
+        4,
+        5
+      ],
+      "I": [
+        7,
+        6
+      ],
+      "J": [
+        8,
+        7
+      ],
+      "K": [
+        9,
+        0
+      ],
+      "L": [
+        8,
+        1
+      ],
+      "M": [
+        9,
+        2
+      ],
+      "N": [
+        9,
+        5
+      ],
+      "O": [
+        8,
+        8
+      ],
+      "P": [
+        9,
+        4
+      ]
+    },
+    "hidden": [],
+    "links": {
+      "F": 1,
+      "I": 1
+    },
+    "parity": {},
+    "more": {},
+    "corners": {
+      "G": "down",
+      "H": "up"
+    },
+    "locks": {
+      "O": 4
+    },
+    "keys": {},
+    "shapes": {
+      "D": "wide",
+      "L": "tall"
+    }
+  }
+}

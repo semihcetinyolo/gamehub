@@ -1,0 +1,119 @@
+{
+  "id": "treehouse-village",
+  "band": "hard",
+  "art": [
+    8,
+    8
+  ],
+  "spec": {
+    "cols": 9,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 100,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      15
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 2,
+    "more": 1,
+    "corners": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBBBBCC",
+      "ABBBBBBCC",
+      "ADDDEEEEE",
+      "ADDDFFFFF",
+      "ADDDGGGHI",
+      "ADDDGGGHI",
+      "ADDDGGGHI",
+      "JJJKKKLHI",
+      "MMMKKKLHI"
+    ],
+    "clues": {
+      "A": [
+        6,
+        0
+      ],
+      "B": [
+        0,
+        4
+      ],
+      "C": [
+        1,
+        7
+      ],
+      "D": [
+        4,
+        3
+      ],
+      "E": [
+        2,
+        7
+      ],
+      "F": [
+        3,
+        7
+      ],
+      "G": [
+        5,
+        5
+      ],
+      "H": [
+        6,
+        7
+      ],
+      "I": [
+        7,
+        8
+      ],
+      "J": [
+        7,
+        1
+      ],
+      "K": [
+        7,
+        5
+      ],
+      "L": [
+        7,
+        6
+      ],
+      "M": [
+        8,
+        0
+      ]
+    },
+    "hidden": [
+      "B"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {
+      "G": 6
+    },
+    "corners": {
+      "K": "tr"
+    },
+    "locks": {
+      "J": 6
+    },
+    "keys": {},
+    "shapes": {
+      "C": "square",
+      "I": "tall"
+    }
+  }
+}

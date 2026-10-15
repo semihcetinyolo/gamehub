@@ -1,0 +1,128 @@
+{
+  "id": "savanna-sunset",
+  "band": "expert",
+  "art": [
+    8,
+    10
+  ],
+  "spec": {
+    "cols": 9,
+    "rows": 11,
+    "maxTech": 4,
+    "effortTarget": 118,
+    "start": [
+      0,
+      0
+    ],
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      12,
+      18
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 2,
+    "links": 1,
+    "parity": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAABBBC",
+      "DEEEEBBBC",
+      "DEEEEBBBC",
+      "DEEEEFGGC",
+      "DEEEEFGGC",
+      "DHHHIFGGC",
+      "JHHHIFGGK",
+      "JHHHIFLMK",
+      "JHHHIFLMK",
+      "JHHHIFLMK",
+      "JNNNNNLMK"
+    ],
+    "clues": {
+      "A": [
+        0,
+        3
+      ],
+      "B": [
+        1,
+        5
+      ],
+      "C": [
+        1,
+        8
+      ],
+      "D": [
+        1,
+        0
+      ],
+      "E": [
+        4,
+        2
+      ],
+      "F": [
+        5,
+        5
+      ],
+      "G": [
+        4,
+        7
+      ],
+      "H": [
+        9,
+        2
+      ],
+      "I": [
+        9,
+        4
+      ],
+      "J": [
+        7,
+        0
+      ],
+      "K": [
+        7,
+        8
+      ],
+      "L": [
+        8,
+        6
+      ],
+      "M": [
+        8,
+        7
+      ],
+      "N": [
+        10,
+        4
+      ]
+    },
+    "hidden": [
+      "H"
+    ],
+    "links": {
+      "A": 1,
+      "N": 1
+    },
+    "parity": {
+      "D": "odd"
+    },
+    "more": {},
+    "corners": {},
+    "locks": {
+      "K": 5
+    },
+    "keys": {},
+    "shapes": {
+      "E": "square",
+      "L": "tall"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "order": 133,
+  "section": "Classic",
+  "feature": null,
+  "spec": {
+    "cols": 9,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 86,
+    "hiddenCount": 0,
+    "lockCount": 0,
+    "shapes": 0,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      10,
+      15
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.45
+  },
+  "puzzle": {
+    "grid": [
+      "AABBCCCDE",
+      "AABBCCCDE",
+      "AABBFFGDE",
+      "AABBFFGHE",
+      "IJBBFFGHE",
+      "IJKKFFGHE",
+      "IJKKFFGHE",
+      "IJKKLLGHE",
+      "IJKKLLGMM"
+    ],
+    "clues": {
+      "A": [
+        1,
+        1
+      ],
+      "B": [
+        3,
+        3
+      ],
+      "C": [
+        1,
+        5
+      ],
+      "D": [
+        2,
+        7
+      ],
+      "E": [
+        1,
+        8
+      ],
+      "F": [
+        6,
+        4
+      ],
+      "G": [
+        7,
+        6
+      ],
+      "H": [
+        4,
+        7
+      ],
+      "I": [
+        6,
+        0
+      ],
+      "J": [
+        7,
+        1
+      ],
+      "K": [
+        6,
+        2
+      ],
+      "L": [
+        8,
+        4
+      ],
+      "M": [
+        8,
+        8
+      ]
+    },
+    "hidden": [],
+    "links": {},
+    "parity": {},
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {}
+  }
+}

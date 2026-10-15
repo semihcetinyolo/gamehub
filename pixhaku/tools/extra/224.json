@@ -1,0 +1,101 @@
+{
+  "order": 224,
+  "section": "Squares",
+  "feature": "square",
+  "spec": {
+    "cols": 8,
+    "rows": 9,
+    "maxTech": 4,
+    "effortTarget": 75,
+    "hiddenCount": 0,
+    "lockCount": 0,
+    "shapes": 1,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      11,
+      18
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "shapeKinds": [
+      "square"
+    ]
+  },
+  "puzzle": {
+    "grid": [
+      "AAABBBCD",
+      "AAABBBCD",
+      "AAAEEECD",
+      "AAAEEECD",
+      "FFGEEECD",
+      "FFGHHIID",
+      "FFGHHIIJ",
+      "FFGHHKKJ",
+      "LLGHHKKJ"
+    ],
+    "clues": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        1,
+        4
+      ],
+      "C": [
+        2,
+        6
+      ],
+      "D": [
+        1,
+        7
+      ],
+      "E": [
+        4,
+        4
+      ],
+      "F": [
+        4,
+        1
+      ],
+      "G": [
+        6,
+        2
+      ],
+      "H": [
+        5,
+        3
+      ],
+      "I": [
+        5,
+        5
+      ],
+      "J": [
+        8,
+        7
+      ],
+      "K": [
+        8,
+        5
+      ],
+      "L": [
+        8,
+        0
+      ]
+    },
+    "hidden": [],
+    "links": {},
+    "parity": {},
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {
+      "E": "square"
+    }
+  }
+}

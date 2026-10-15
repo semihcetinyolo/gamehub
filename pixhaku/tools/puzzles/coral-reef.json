@@ -1,0 +1,68 @@
+{
+  "id": "coral-reef",
+  "band": "easy",
+  "art": [
+    6,
+    6
+  ],
+  "spec": {
+    "cols": 6,
+    "rows": 6,
+    "maxTech": 4,
+    "effortTarget": 37,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      6,
+      10
+    ],
+    "t1Max": 0.6,
+    "decMin": 3,
+    "liveMin": 2,
+    "hiddenCount": 0,
+    "shapes": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAABB",
+      "CCCCBB",
+      "CCCCBB",
+      "CCCCBB",
+      "DDDDDE",
+      "FFFFFE"
+    ],
+    "clues": {
+      "A": [
+        0,
+        2
+      ],
+      "B": [
+        0,
+        5
+      ],
+      "C": [
+        1,
+        1
+      ],
+      "D": [
+        4,
+        4
+      ],
+      "E": [
+        5,
+        5
+      ],
+      "F": [
+        5,
+        0
+      ]
+    },
+    "hidden": [],
+    "locks": {},
+    "shapes": {
+      "F": "wide"
+    }
+  }
+}

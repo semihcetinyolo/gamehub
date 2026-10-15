@@ -1,0 +1,98 @@
+{
+  "order": 202,
+  "section": "Mystery Numbers",
+  "feature": "hidden",
+  "spec": {
+    "cols": 7,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 62,
+    "hiddenCount": 2,
+    "lockCount": 0,
+    "shapes": 0,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      9,
+      14
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAABC",
+      "DEEFGBC",
+      "DHHFGBC",
+      "DHHFGBC",
+      "DHHFGIC",
+      "DHHFGIC",
+      "DHHFJIC",
+      "KKLLJIC"
+    ],
+    "clues": {
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        2,
+        5
+      ],
+      "C": [
+        6,
+        6
+      ],
+      "D": [
+        6,
+        0
+      ],
+      "E": [
+        1,
+        2
+      ],
+      "F": [
+        1,
+        3
+      ],
+      "G": [
+        5,
+        4
+      ],
+      "H": [
+        6,
+        2
+      ],
+      "I": [
+        7,
+        5
+      ],
+      "J": [
+        7,
+        4
+      ],
+      "K": [
+        7,
+        1
+      ],
+      "L": [
+        7,
+        3
+      ]
+    },
+    "hidden": [
+      "C",
+      "G"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {}
+  }
+}

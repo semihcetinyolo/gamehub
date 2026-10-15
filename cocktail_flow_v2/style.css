@@ -1,0 +1,199 @@
+:root{
+  --ink:#5b3a22; --ink-soft:#8a6545; --edge:#d9b88a;
+  --green:#3cc152; --green-glow:#62e271; --red:#f0473f; --purple:#7a3fe6; --gold:#ffc531;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow:hidden}
+body{font-family:Fredoka,ui-rounded,"Avenir Next",system-ui,sans-serif;color:var(--ink);background:#e9b98b;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
+
+/* ---------- scene ---------- */
+#bg{position:fixed;inset:0;background:
+  radial-gradient(120% 55% at 50% 8%,#fff1d2 0,#ffd9a8 38%,transparent 62%),
+  linear-gradient(180deg,#f3c194 0,#e6a676 52%,#c98654 52.2%,#b9733f 100%);
+  background-size:cover;background-position:center}
+#app{position:relative;height:100vh;height:100dvh;max-width:520px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;
+  padding:max(10px,env(safe-area-inset-top)) 16px max(10px,env(safe-area-inset-bottom))}
+
+/* ---------- HUD ---------- */
+#hud{width:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px 8px;flex:none}
+.hud-left{justify-self:start}
+.hud-right{justify-self:end}
+.hud-row{grid-column:1/-1;justify-self:center;display:flex;gap:8px}
+.coin-pill{display:flex;align-items:center;gap:5px;padding:3px 12px 3px 4px;font-size:16px}
+.coin{width:24px;height:24px;flex:none;display:grid;place-items:center}
+.coin img,.coin svg{width:100%;height:100%;object-fit:contain}
+.coin-pill.bump{animation:pop .35s ease-out}
+.pill{background:linear-gradient(#fffaf1,#f8ead2);border:2px solid #fff;border-radius:999px;box-shadow:0 2px 0 var(--edge),0 4px 8px #6b3d1a22;padding:3px 14px;font-weight:600;font-size:15px;line-height:1.3;white-space:nowrap}
+.pill-level{font-size:22px;font-weight:700;padding:3px 30px;display:flex;align-items:center;gap:6px}
+.pill-level .diff{font-size:12px;letter-spacing:.6px;color:#fff;border-radius:999px;padding:2px 8px;line-height:1.3;background:#e5483b}
+.pill-level.hard{background:linear-gradient(#ffe3dc,#ffc9bd);box-shadow:0 2px 0 #d9826e,0 4px 8px #6b3d1a22}
+#hearts{display:flex;gap:4px;align-items:center;padding:3px 10px}
+.heart{width:22px;height:20px;display:grid;place-items:center}
+.heart img,.heart svg{width:100%;height:100%;object-fit:contain}
+.heart svg path{fill:#ec3b52;stroke:#b8203a;stroke-width:1}
+.heart.off svg path{fill:#d6cbc3;stroke:#b5a79c}
+.round-btn{position:relative;width:48px;height:48px;border-radius:50%;border:3px solid #fff;padding:0;display:grid;place-items:center;
+  background:radial-gradient(circle at 35% 30%,#a873ff,#6d2fe0 70%);box-shadow:0 3px 0 #4a1ca6,0 6px 10px #3d1a6a44}
+.round-btn svg{width:22px;height:22px;fill:#fff}
+.round-btn img{width:100%;height:100%;object-fit:contain}
+.round-btn:active{transform:translateY(2px)}
+
+/* ---------- stage: the belt loop, seats around it, fruit lanes under it ---------- */
+#stage{position:relative;flex:1;min-height:0;width:100%}
+#belt{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+#items{position:absolute;inset:0;pointer-events:none;z-index:3}
+.item{position:absolute;left:0;top:0;width:var(--tok);height:var(--tok);will-change:transform}
+.item .tok{width:100%;height:100%;filter:drop-shadow(0 2px 1.5px #0007)}
+.fruit{width:100%;height:100%;display:block;overflow:visible}
+.fly-fruit{position:absolute;pointer-events:none}
+
+/* belt capacity, inside the loop above the bottom run */
+#cap{position:absolute;z-index:2;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:2px 10px;border-radius:999px;
+  background:#fffaf1ee;box-shadow:0 2px 0 var(--edge);white-space:nowrap}
+#cap span{font-size:11px;font-weight:700;letter-spacing:.6px;color:var(--ink-soft)}
+#cap b{display:flex;gap:3px}
+#cap i{width:9px;height:9px;border-radius:50%;background:#e6d5bb;box-shadow:inset 0 1px 1px #0002}
+#cap i.on{background:#5b5b62;box-shadow:inset 0 -1px 0 #0005}
+#cap.full i.on{background:#e5483b}
+#cap.full span{color:#c4271f}
+#cap.bad{animation:shake .4s}
+
+/* fruit lanes: front fruit on top (next to the belt), the queue below it */
+#supply{position:absolute;inset:0;pointer-events:none;z-index:4}
+.lane{position:absolute;pointer-events:auto;border:0;padding:6px 0 0;border-radius:18px;background:linear-gradient(#fff8ec,#f3dfbf);
+  box-shadow:inset 0 2px 0 #fff,0 3px 0 var(--edge),0 6px 10px #6b3d1a22;display:flex;flex-direction:column;align-items:center}
+.stok{position:relative;flex:none;width:var(--f);height:var(--f);transition:transform .12s}
+.stok.back{margin-top:calc(var(--f)*-.12)}
+.stok:nth-child(2){width:calc(var(--f)*.74);height:calc(var(--f)*.74);opacity:.85}
+.stok:nth-child(3){width:calc(var(--f)*.58);height:calc(var(--f)*.58);opacity:.7}
+.stok.none{visibility:hidden}
+.lane:active .stok.front{transform:scale(.9)}
+.lane.bad .stok.front{animation:shake .4s}
+.lane.done{opacity:.45;pointer-events:none}
+.lane .more{position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);min-width:24px;padding:0 6px;border-radius:999px;background:#fff;
+  border:2px solid #fff;box-shadow:0 2px 0 var(--edge);font-size:11px;font-weight:700;line-height:15px;text-align:center;color:var(--ink-soft)}
+.lane .more.none{display:none}
+
+/* seats */
+#seats{position:absolute;inset:0;pointer-events:none;z-index:2}
+.seat{position:absolute;width:var(--cw);display:flex;flex-direction:column;gap:4px}
+.card{background:linear-gradient(#fffaf2,#fbefdc);border:3px solid #fff;border-radius:14px;padding:3px 3px 4px;
+  box-shadow:0 3px 0 var(--edge),0 7px 12px #6b3d1a26;display:flex;flex-direction:column;gap:3px}
+.portrait{position:relative;width:100%;height:var(--ph);border-radius:10px;overflow:hidden;background:radial-gradient(90% 80% at 50% 30%,#fff3df,#f3d4ac)}
+.face{position:absolute;inset:0 26% 0 -12%}
+.face img,.face svg{width:100%;height:100%;object-fit:contain;object-position:50% 100%;display:block}
+.order{position:absolute;right:3%;bottom:4%;height:90%;filter:drop-shadow(0 3px 3px #6b3d1a38)}
+.glass-art{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:1}
+.liquid{position:absolute;overflow:hidden;z-index:0}
+.layer{position:absolute;left:0;right:0;box-shadow:inset 0 2px 0 #ffffff66,inset 0 -1px 0 #00000026}
+.layer.fill-in{animation:fillIn .3s ease-out both;transform-origin:50% 100%}
+/* the order: fruits left -> right in the order they must come */
+.recipe-status{height:16px;display:flex;align-items:center;justify-content:space-between;padding:0 4px;border-radius:5px;
+  background:#ffe29a;color:#684000;font-size:10px;font-weight:700;line-height:1;white-space:nowrap}
+.recipe-status.complete{background:#d7f3dc;color:#17682b}
+.recipe{display:flex;justify-content:center;gap:3px;height:calc(var(--cw)*.24 + 6px);margin-top:6px}
+.ic{position:relative;flex:0 1 calc(var(--cw)*.24);min-width:0;height:100%;padding:6px 1px 1px;border:1px solid #d9b88a;border-radius:5px;background:#fffaf2}
+.ic .fruit{object-fit:contain}
+.step-number{position:absolute;top:-7px;left:50%;transform:translateX(-50%);min-width:13px;height:13px;padding:0 2px;display:grid;place-items:center;
+  border:1px solid #d9b88a;border-radius:4px;background:#fffaf2;color:#684729;font-size:10px;font-weight:700;line-height:1}
+.ic.next{background:#fff0b8;border-color:#bc7800;box-shadow:0 0 0 2px #ffc531}
+.ic.next .step-number{background:#ffc531;border-color:#bc7800;color:#503000}
+.ic.got{background:#e2f5df;border-color:#429450}
+.ic.got .step-number{background:#27843b;border-color:#27843b;color:#fff}
+.compact .card{border-width:2px;padding:2px;gap:2px}
+.compact .recipe-status{height:12px;font-size:9px;padding:0 2px}
+.compact .recipe{gap:2px;margin-top:5px}
+.compact .step-number{min-width:11px;height:11px;top:-6px;font-size:9px}
+.price{position:absolute;left:3px;top:3px;z-index:2;display:flex;align-items:center;gap:2px;padding:1px 6px 1px 2px;border-radius:999px;
+  background:#fffaf0ee;box-shadow:0 1px 0 var(--edge);font-weight:700;font-size:calc(var(--cw)*.1);color:#a8690a;line-height:1.2}
+.price .coin{width:calc(var(--cw)*.13);height:calc(var(--cw)*.13)}
+.timer{display:flex;align-items:center;height:16px;padding:2px 4px 2px 2px;gap:3px;border-radius:999px;background:#fff6e8;box-shadow:0 2px 0 var(--edge)}
+.clock{width:14px;height:14px;flex:none;display:grid;place-items:center}
+.clock img,.clock svg{width:100%;height:100%;object-fit:contain}
+.track{position:relative;flex:1;height:11px;border-radius:999px;background:#5a3a26;overflow:hidden;box-shadow:inset 0 2px 2px #00000040}
+.track i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:linear-gradient(#7de86f,#33b83c)}
+.timer[data-level=warn] .track i{background:linear-gradient(#ffe06a,#f2b51b)}
+.timer[data-level=low] .track i{background:linear-gradient(#ff8070,#e5352b)}
+.track b{position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:9.5px;font-weight:700;text-shadow:0 1px 2px #0008}
+.seat.empty{visibility:hidden}
+.seat.arriving{animation:arrive .5s ease-out both}
+.seat.leaving.happy{animation:leaveHappy .8s ease-in both}
+.seat.leaving.happy .card{border-color:#b9f3a9;box-shadow:0 0 0 3px var(--green-glow),0 0 18px #62e271}
+.seat.leaving .timer{visibility:hidden}
+.seat.sad .card{border-color:#ffb3a8;box-shadow:0 0 0 3px #ff7a6b}
+.seat.shake{animation:shake .4s}
+/* pickup mark on the rim where the seat takes from: the fruit it wants next */
+.pick{position:absolute;z-index:3;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;padding:2px;background:#fff;
+  box-shadow:0 0 0 2px #ffc531,0 2px 4px #0005;pointer-events:none}
+.pick.none{display:none}
+
+/* patience off (pause panel switch): no timers, no hearts */
+body.no-patience .timer,body.no-patience #hearts{display:none}
+
+/* ---------- hint ---------- */
+#hint{max-width:100%;overflow:hidden;text-overflow:ellipsis;font-size:14px;padding:5px 18px;flex:none}
+#hint.bad{color:#c4271f}
+#hint.info{color:#6b3fd0}
+
+/* ---------- fx ---------- */
+#fx{position:fixed;inset:0;pointer-events:none;z-index:50}
+.coin-float{position:absolute;display:flex;align-items:center;gap:3px;font-weight:700;font-size:18px;color:#fff;
+  text-shadow:0 2px 0 #b07a12,0 0 6px #0005;pointer-events:none;white-space:nowrap}
+.coin-float .coin{width:20px;height:20px}
+
+/* ---------- panels ---------- */
+#overlay{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:#3b231499;backdrop-filter:blur(5px)}
+#overlay.hidden{display:none}
+.panel{width:100%;max-width:360px;max-height:92vh;overflow:auto;text-align:center;padding:22px 20px 18px;border-radius:26px;
+  background:linear-gradient(#fffaf2,#f8e8cd);border:4px solid #fff;box-shadow:0 6px 0 var(--edge),0 20px 50px #3b231466;animation:arrive .25s ease-out}
+.panel h2{margin:4px 0 10px;font-size:25px;line-height:1.15}
+.panel p{margin:6px 0 10px;color:var(--ink-soft);font-size:15px}
+.panel .err{color:#c4271f;font-size:13px;text-align:left}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:1.6px;color:#b08355}
+.how{text-align:left;font-size:14px;line-height:1.45;color:var(--ink-soft);padding-left:20px;margin:8px 0 12px}
+.how li{margin:5px 0}
+.how b{color:var(--ink)}
+.facts{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:10px 0 4px}
+.facts span{font-size:13px;background:#fff;border-radius:10px;padding:4px 9px;box-shadow:inset 0 0 0 1px #f0dcc0}
+.reward{display:inline-flex;align-items:center;gap:8px;margin:4px 0 6px;padding:8px 20px;border-radius:999px;background:#fff;
+  box-shadow:inset 0 0 0 2px #f2d9a6;font-size:28px;font-weight:700;color:#b5770c}
+.reward .coin{width:34px;height:34px}
+.art{display:block;margin:0 auto 4px;max-width:70%;max-height:150px}
+.art.emoji{font-size:58px;line-height:1.1}
+.btns{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.btn{border:3px solid #fff;border-radius:16px;padding:11px;font-size:18px;font-weight:700;color:#fff;
+  background:linear-gradient(#a06cff,#7438e3);box-shadow:0 4px 0 #4f22a8}
+.btn.go{background:linear-gradient(#6fdc63,#35b23d);box-shadow:0 4px 0 #23802b}
+.btn:active{transform:translateY(3px)}
+.btn:disabled{opacity:.6}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;margin-top:12px;padding:8px 12px;
+  border:2px solid #fff;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px #f0dcc0;font-size:15px;font-weight:600;text-align:left}
+.switch span{display:flex;flex-direction:column}
+.switch small{font-size:11px;font-weight:500;color:var(--ink-soft)}
+.switch i{position:relative;flex:none;width:44px;height:26px;border-radius:999px;background:#d6cbc3;transition:background .2s}
+.switch i::after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px #0004;transition:transform .2s}
+.switch.on i{background:#3cc152}
+.switch.on i::after{transform:translateX(18px)}
+.btn .x2{display:inline-block;margin-left:6px;padding:0 8px;border-radius:8px;background:#fff3;font-size:16px}
+.lvl-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-height:55vh;overflow:auto;padding:4px}
+.lvl-grid button{border:2px solid #fff;border-radius:12px;padding:8px 0 4px;background:#f3dfbd;box-shadow:0 3px 0 var(--edge);font-size:17px;font-weight:700;display:flex;flex-direction:column;align-items:center}
+.lvl-grid button small{font-size:10px;font-weight:500;opacity:.75}
+.lvl-grid button.hard{background:#ffc9bd;color:#b23a2c}
+.lvl-grid button.cur{background:#79d36d;color:#fff}
+
+/* ---------- animations ---------- */
+@keyframes arrive{from{opacity:0;transform:translateY(-14px) scale(.92)}to{opacity:1;transform:none}}
+@keyframes leaveHappy{0%{transform:none}35%{transform:translateY(-4px) scale(1.04)}100%{opacity:0;transform:translateY(-22px) scale(.9)}}
+@keyframes shake{0%,100%{translate:0}20%{translate:-6px}40%{translate:6px}60%{translate:-4px}80%{translate:3px}}
+@keyframes fillIn{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes pop{from{transform:scale(.3)}70%{transform:scale(1.15)}to{transform:scale(1)}}
+@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-12%)}}
+
+@media (max-height:700px){
+  #app{gap:6px}
+  .pill{font-size:13px;padding:2px 12px}
+  .pill-level{font-size:19px}
+  .round-btn{width:42px;height:42px}
+  #hint{font-size:12px;padding:4px 14px}
+}

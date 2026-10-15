@@ -1,0 +1,110 @@
+{
+  "order": 278,
+  "section": "Twin Mysteries",
+  "feature": "twins",
+  "spec": {
+    "cols": 9,
+    "rows": 10,
+    "maxTech": 4,
+    "effortTarget": 102,
+    "hiddenCount": 0,
+    "lockCount": 0,
+    "shapes": 0,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      11,
+      16
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.45,
+    "links": 2
+  },
+  "puzzle": {
+    "grid": [
+      "AABBCDEEF",
+      "AABBCDEEF",
+      "AABBCDGGF",
+      "AABBCDGGF",
+      "AABBCDGGF",
+      "AAHICDGGF",
+      "JJHIKKKKF",
+      "JJHIKKKKL",
+      "JJHIKKKKL",
+      "JJHIMMMML"
+    ],
+    "clues": {
+      "A": [
+        2,
+        0
+      ],
+      "B": [
+        3,
+        2
+      ],
+      "C": [
+        2,
+        4
+      ],
+      "D": [
+        2,
+        5
+      ],
+      "E": [
+        0,
+        7
+      ],
+      "F": [
+        2,
+        8
+      ],
+      "G": [
+        3,
+        7
+      ],
+      "H": [
+        8,
+        2
+      ],
+      "I": [
+        8,
+        3
+      ],
+      "J": [
+        8,
+        0
+      ],
+      "K": [
+        7,
+        5
+      ],
+      "L": [
+        7,
+        8
+      ],
+      "M": [
+        9,
+        5
+      ]
+    },
+    "hidden": [],
+    "links": {
+      "C": 1,
+      "D": 1,
+      "H": 2,
+      "I": 2
+    },
+    "parity": {},
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {}
+  }
+}

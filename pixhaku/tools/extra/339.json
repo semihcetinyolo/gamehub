@@ -1,0 +1,153 @@
+{
+  "order": 339,
+  "section": "All Together",
+  "feature": "mix",
+  "features": [
+    "lock",
+    "rect",
+    "corner",
+    "hidden",
+    "more"
+  ],
+  "spec": {
+    "cols": 9,
+    "rows": 11,
+    "maxTech": 4,
+    "effortTarget": 145,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 2,
+    "start": [
+      0,
+      0
+    ],
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      12,
+      18
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.45,
+    "corners": 2,
+    "more": 2,
+    "shapeKinds": [
+      "tall",
+      "wide"
+    ]
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBCCDDE",
+      "ABBBCCDDE",
+      "AFGHCCDDE",
+      "AFGHCCIJE",
+      "AFGHCCIJE",
+      "AFGHCCIJE",
+      "AFGHKLIJM",
+      "AFGHKLNJM",
+      "OOGHKLNJM",
+      "PPGQKLNJM",
+      "PPGQKLRRM"
+    ],
+    "clues": {
+      "A": [
+        2,
+        0
+      ],
+      "B": [
+        1,
+        1
+      ],
+      "C": [
+        2,
+        5
+      ],
+      "D": [
+        1,
+        6
+      ],
+      "E": [
+        0,
+        8
+      ],
+      "F": [
+        3,
+        1
+      ],
+      "G": [
+        3,
+        2
+      ],
+      "H": [
+        7,
+        3
+      ],
+      "I": [
+        4,
+        6
+      ],
+      "J": [
+        7,
+        7
+      ],
+      "K": [
+        6,
+        4
+      ],
+      "L": [
+        9,
+        5
+      ],
+      "M": [
+        7,
+        8
+      ],
+      "N": [
+        9,
+        6
+      ],
+      "O": [
+        8,
+        1
+      ],
+      "P": [
+        9,
+        0
+      ],
+      "Q": [
+        9,
+        3
+      ],
+      "R": [
+        10,
+        6
+      ]
+    },
+    "hidden": [
+      "B"
+    ],
+    "links": {},
+    "parity": {},
+    "more": {
+      "C": 9,
+      "F": 4
+    },
+    "corners": {
+      "E": "up",
+      "K": "up"
+    },
+    "locks": {
+      "L": 5
+    },
+    "keys": {},
+    "shapes": {
+      "I": "tall",
+      "O": "wide"
+    }
+  }
+}

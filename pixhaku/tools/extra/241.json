@@ -1,0 +1,92 @@
+{
+  "order": 241,
+  "section": "More Than",
+  "feature": "more",
+  "spec": {
+    "cols": 7,
+    "rows": 8,
+    "maxTech": 4,
+    "effortTarget": 55,
+    "hiddenCount": 0,
+    "lockCount": 0,
+    "shapes": 0,
+    "start": [
+      1,
+      2
+    ],
+    "pieces": [
+      9,
+      14
+    ],
+    "t1Max": 0.42,
+    "decMin": 5,
+    "liveMin": 2.6,
+    "more": 3
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAAA",
+      "BBBBBBC",
+      "DDDDDEC",
+      "DDDDDEC",
+      "FFFGHEC",
+      "FFFGHIC",
+      "FFFGJIC",
+      "FFFGJIC"
+    ],
+    "clues": {
+      "A": [
+        0,
+        4
+      ],
+      "B": [
+        1,
+        1
+      ],
+      "C": [
+        5,
+        6
+      ],
+      "D": [
+        3,
+        2
+      ],
+      "E": [
+        4,
+        5
+      ],
+      "F": [
+        4,
+        0
+      ],
+      "G": [
+        6,
+        3
+      ],
+      "H": [
+        4,
+        4
+      ],
+      "I": [
+        5,
+        5
+      ],
+      "J": [
+        6,
+        4
+      ]
+    },
+    "hidden": [],
+    "links": {},
+    "parity": {},
+    "more": {
+      "D": 7,
+      "F": 9,
+      "I": 2
+    },
+    "corners": {},
+    "locks": {},
+    "keys": {},
+    "shapes": {}
+  }
+}

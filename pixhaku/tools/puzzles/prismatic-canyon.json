@@ -1,0 +1,152 @@
+{
+  "id": "prismatic-canyon",
+  "band": "expert",
+  "art": [
+    8,
+    10
+  ],
+  "spec": {
+    "cols": 10,
+    "rows": 12,
+    "maxTech": 4,
+    "effortTarget": 147,
+    "start": [
+      0,
+      0
+    ],
+    "openTech": 3,
+    "calm": 0,
+    "pieceStyle": "big",
+    "pieces": [
+      14,
+      22
+    ],
+    "t1Max": 0.28,
+    "decMin": 9,
+    "liveMin": 3,
+    "deepMin": 3,
+    "cornerMax": 0.35,
+    "hiddenCount": 1,
+    "lockCount": 1,
+    "shapes": 3,
+    "links": 2,
+    "corners": 1
+  },
+  "puzzle": {
+    "grid": [
+      "ABBBBBBBBC",
+      "ADDEEEEEEC",
+      "ADDEEEEEEC",
+      "ADDFFFFFGC",
+      "ADDHIIIJGC",
+      "ADDHIIIJGC",
+      "AKLHIIIJGC",
+      "MKLHNNOJGP",
+      "MKLHNNOJQP",
+      "MKLHNNOJQP",
+      "MKLHNNORQP",
+      "MKLSSSSRQP"
+    ],
+    "clues": {
+      "A": [
+        5,
+        0
+      ],
+      "B": [
+        0,
+        7
+      ],
+      "C": [
+        5,
+        9
+      ],
+      "D": [
+        3,
+        1
+      ],
+      "E": [
+        2,
+        8
+      ],
+      "F": [
+        3,
+        4
+      ],
+      "G": [
+        5,
+        8
+      ],
+      "H": [
+        9,
+        3
+      ],
+      "I": [
+        5,
+        4
+      ],
+      "J": [
+        7,
+        7
+      ],
+      "K": [
+        8,
+        1
+      ],
+      "L": [
+        8,
+        2
+      ],
+      "M": [
+        7,
+        0
+      ],
+      "N": [
+        8,
+        4
+      ],
+      "O": [
+        9,
+        6
+      ],
+      "P": [
+        10,
+        9
+      ],
+      "Q": [
+        10,
+        8
+      ],
+      "R": [
+        10,
+        7
+      ],
+      "S": [
+        11,
+        4
+      ]
+    },
+    "hidden": [
+      "J"
+    ],
+    "links": {
+      "A": 1,
+      "H": 1,
+      "O": 2,
+      "Q": 2
+    },
+    "parity": {},
+    "more": {},
+    "corners": {
+      "M": "up"
+    },
+    "locks": {
+      "G": 6
+    },
+    "keys": {},
+    "shapes": {
+      "E": "wide",
+      "I": "square",
+      "N": "tall"
+    }
+  }
+}

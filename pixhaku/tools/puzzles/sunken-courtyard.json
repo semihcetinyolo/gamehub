@@ -1,0 +1,123 @@
+{
+  "id": "sunken-courtyard",
+  "band": "hard",
+  "art": [
+    8,
+    8
+  ],
+  "spec": {
+    "cols": 10,
+    "rows": 10,
+    "maxTech": 4,
+    "effortTarget": 104,
+    "start": [
+      1,
+      1
+    ],
+    "pieceStyle": "big",
+    "pieces": [
+      12,
+      18
+    ],
+    "t1Max": 0.34,
+    "decMin": 8,
+    "liveMin": 3,
+    "deepMin": 2,
+    "cornerMax": 0.4,
+    "hiddenCount": 1,
+    "lockCount": 0,
+    "shapes": 2,
+    "keyLocks": 1,
+    "links": 1
+  },
+  "puzzle": {
+    "grid": [
+      "AAAAAAABBB",
+      "CCCCCDEBBB",
+      "FFFGHDEIIJ",
+      "FFFGHDEIIJ",
+      "FFFGHDEIIJ",
+      "FFFGHDEIIJ",
+      "KKKGHDEIIJ",
+      "KKKGHDELLL",
+      "MMMGHDELLL",
+      "MMMGHNNLLL"
+    ],
+    "clues": {
+      "A": [
+        0,
+        1
+      ],
+      "B": [
+        0,
+        8
+      ],
+      "C": [
+        1,
+        1
+      ],
+      "D": [
+        2,
+        5
+      ],
+      "E": [
+        3,
+        6
+      ],
+      "F": [
+        4,
+        0
+      ],
+      "G": [
+        3,
+        3
+      ],
+      "H": [
+        3,
+        4
+      ],
+      "I": [
+        3,
+        7
+      ],
+      "J": [
+        4,
+        9
+      ],
+      "K": [
+        6,
+        1
+      ],
+      "L": [
+        9,
+        9
+      ],
+      "M": [
+        9,
+        0
+      ],
+      "N": [
+        9,
+        5
+      ]
+    },
+    "hidden": [
+      "A"
+    ],
+    "links": {
+      "B": 1,
+      "K": 1
+    },
+    "parity": {},
+    "more": {},
+    "corners": {},
+    "locks": {},
+    "keys": {
+      "J": "I"
+    },
+    "shapes": {
+      "C": "wide",
+      "G": "tall"
+    }
+  }
+}
