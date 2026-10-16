@@ -29,9 +29,29 @@ For each target group, also place **feature decoys**. These are other characters
 
 Pick decoy species that look like the main character at a glance, such as black-and-white animals for a panda. The player then has to check both *who* has the feature and *whether* it has the feature.
 
+### Near-miss decoys (user, 2026-10-16)
+
+Also add decoys that carry a **slightly different version of the feature**. The player then has to check *which exact* feature it is, not only that one is there. Mix two directions:
+
+- **the main character with a near-miss feature**, e.g. in a red-balloon stage a panda holding a blue balloon;
+- **a decoy species with a near-miss feature**, e.g. a zebra holding a yellow balloon.
+
+These are only examples; do not copy them. Invent the variation that fits each feature. A near-miss changes one property of the feature and keeps the rest:
+
+- colour (red vs blue, striped vs plain)
+- shape or type (round vs heart-shaped, a beanie vs a cap)
+- count or size (one vs two, big vs small)
+- direction or side (hanging by the tail vs by the paws, left arm vs right arm)
+- a related item from the same family (a vinyl record vs a cassette)
+
+The difference must still read clearly at play zoom; a near-miss the player cannot tell apart is unfair. Near-miss decoys go in `D` and are marked by eye on the detection sheet like the other decoys.
+
+### Decoy counts
+
 Plan these numbers up front and tell the user:
 
-- 5–8 feature decoys per target group, using 1–2 decoy species.
+- Per target group, 4–10 decoys in total, split between exact-feature decoys (other species) and near-miss decoys (main character and/or other species). Vary the split per group: one group may lean on near-misses, another on look-alike species.
+- Use 1–2 decoy species per group.
 - They go in `D` together with the plain main-character distractors.
 - They are extra, on top of the counts the user asked for (e.g. 10+10+10+40). Ask for more only if the user wants it harder.
 
@@ -47,7 +67,7 @@ The level should feel like a hidden-objects level, not a crowd standing in plain
   - a snowy bg: polar bear, white rabbit
 - Pick the feature decoys from the same palette.
 - Counter-examples: the grey koalas in the orange living room and the black-and-white pandas on the green park stood out too much.
-- The target **feature** still has to be readable once the player looks closely. The character body blends; the feature (object, worn item, pose) is what gets checked. The feature may use a colour that fits the scene too, as long as it is distinct on the character.
+- The target **feature** still has to be readable once the player looks closely. The character body blends; the feature is what gets checked. The feature may use a colour that fits the scene too, as long as it is distinct on the character.
 
 **Hide both H and D characters, often.**
 - About half of all characters (targets and D alike) should be partly hidden:
@@ -68,8 +88,8 @@ The level should feel like a hidden-objects level, not a crowd standing in plain
 
 ## Design rule: vary the structure between levels (user, 2026-10-15)
 
-- **Stage order changes per level.** Never always end on the action stage. The first entry in `GROUPS` is the first stage. Rotate which kind (object / worn / action) comes first and last, and check the previous levels before choosing. Current: park = action, object, worn; living room = worn, action, object.
-- **Decoy counts change per feature and per level.** Never 6/6/6. Pick different numbers per group (e.g. 4 / 6 / 8), with 1–2 species, and set them in `TARGET`.
+- **Stage mix and order change per level.** The first entry in `GROUPS` is the first stage. Check the previous levels before choosing, and do not reuse the same mix of feature types or the same order. Never always end on a pose stage. Past levels: park = tongue out, sunflower, red cap; living room = white beanie, upside down, vinyl record.
+- **Decoy counts change per feature and per level.** Never 6/6/6. Pick different numbers per group (e.g. 4 / 6 / 9), vary the exact-vs-near-miss split, and set them in `TARGET`.
 
 ## Design rule: no visual glitches (user, 2026-10-15)
 
@@ -88,9 +108,27 @@ Other design rules:
 - Placement is natural and mixed, with no hints, labels or text.
 - Every feature stays clearly visible at play zoom.
 - Pick features that read at ~200 px: a strong colour (red, yellow) or a distinct silhouette (upside down). Avoid tiny accessories.
-- Each level gets a NEW reference character, chosen by you unless the user names one. It does not have to be human. Its colours must fit the bg palette (see above). You also choose the distinguishing object, worn item and action. Make one group of each kind when there are three groups.
+- Each level gets a NEW reference character, chosen by you unless the user names one. It does not have to be human. Its colours must fit the bg palette (see above).
+
+## Choosing features: be creative (user, 2026-10-16)
+
+There is no fixed recipe of "one object, one worn item, one action". That was only an example from the user. Choose any features that make a fun, readable search, and fit them to the level's theme and background. Any mix is allowed, including two of a similar type in one level. Ideas, not a checklist:
+
+- something held or carried (an umbrella, a fishing rod, an ice cream)
+- something worn (a scarf, sunglasses, a crown, a cape)
+- a pose or activity (sleeping, waving, reading, juggling, on one leg)
+- a body marking or colour variant (a spotted one, a white-tailed one)
+- a companion (riding a duck, with a tiny bird on its head)
+- a state or expression (wet, sneezing, wearing a bandage)
+- a situation that fits the scene (in a teacup at a café, on a surfboard at the beach)
+
+Each feature still needs a clear near-miss variant for decoys (see above), must read at play zoom, and must be something the image model can draw reliably.
 
 ## Pipeline (cheap: one Marla call per region, not per character)
+
+**Edit cost is what matters (user, 2026-10-16).** Every Marla edit call costs; my own token use does not matter here. Goal: about 20–25 calls per level instead of 44, with the same quality.
+- Bigger regions with more characters per call.
+- Exactly one combined fill round, never a string of 1–2 character fill regions.
 
 Tools are in `Waldo/tools/regions/`; `README.md` there has the commands. The API token is at `~/.config/marla/token`.
 
@@ -101,13 +139,16 @@ Tools are in `Waldo/tools/regions/`; `README.md` there has the commands. The API
    - Make one rect edit on empty ground: "exactly ONE <character>, front view, fills ~85% of the region".
    - Crop the changed pixels to `ref_char.png`, copy it to `output/<bg>_character_ref.png`, then delete that edit from the doc.
 3. **Plan** in `plan_<bg>.py`.
-   - Use about 24 non-overlapping rects of ~600–900 px. Each holds 2–5 characters described by scene landmarks.
+   - Use about 15–18 non-overlapping rects of **~1000–1300 px**. Each holds **5–7 characters** described by scene landmarks. Leave at least ~200 px between characters inside a region so the model does not merge them.
+   - Leave **one or two ~1200 px spots empty** in round one as reserve for the fill round.
    - Mix the kinds across regions, including the feature decoys (give them their own kind letters, e.g. `Z` = zebra with balloon).
    - About half of the items in every region use a hiding spot (behind/inside/under scenery, partly covered), with the target feature still showing. See "blend in and hide" above.
-   - **Ask for ~15% more of every kind than needed.** Extras are dropped for free, because BG stays clean.
+   - **Ask for ~15% more of every kind than needed.** Extras are dropped for free, because BG stays clean. Do not ask for more than that; living room v2 asked for 131 characters to use 88, which wasted many calls.
    - Keep characters away from region edges. Do not put two regions' characters near the same spot.
    - Render a layout preview with the rects to check the landmarks.
-4. **Test.** Run `gen.py` on 2 regions first and look at the result. Then submit the rest in one job.
+4. **Test.** Run `gen.py` on 2 regions first and look at the result.
+   - Check that each big region delivered all 5–7 characters, with one feature each and none merged. If it falls short, shrink the regions to ~900–1000 px with 4–5 characters and re-plan; do not keep going with a size that misses.
+   - Then submit the rest in batches of about 4 regions.
    - The job is sequential, about 1 min per region; poll the queue.
 5. **Detect.** Run `detect.py`, then look at `sheet.jpg` once.
    - Colour checks cover red/yellow features. Handstands and **species (main character vs decoy)** have to be marked by eye on the sheet; panda, zebra and dalmatian are all black-and-white.
@@ -118,7 +159,8 @@ Tools are in `Waldo/tools/regions/`; `README.md` there has the commands. The API
    - For each kept H, the owner map only competes with kept characters, same-edit characters and copies present in that patch.
 7. **Check.** Look at the composite in 4 quadrants and zoom on dense spots.
    - Typical faults: flat-cut heads, ghost limbs, rectangular patch edges.
-   - For shortfalls, run a small extra round in empty spots (bushes, behind fences, open ground) rather than redoing regions.
+   - **Shortfalls: one combined fill round.** Collect every missing kind across all groups first, then put them all into the reserved spots, 5–7 characters per region, in a single batch. If there is no reserve left, `freespots.py WORK [N] [W] [H]` finds the largest empty rects (no character within 120 px) and draws them on `freespots.jpg`. Never send a fill region with only 1–2 characters.
+   - If after that only a few plain `D` characters are missing, accept the shortfall (e.g. 37 instead of 40) rather than paying for another round. Target groups must still reach their full count.
 8. **Verify the PSB.** Re-open it and check:
    - version 2, size 4096²
    - group counts, every layer named `H`
@@ -138,7 +180,7 @@ Marla call counts so far:
 - living room v2 (red pandas, blend + hide): 44 plus one failed 32-region job, for 88 characters including 18 decoys
 
 Notes from living room v2 (red pandas in the orange 70s room, 2026-10-15):
-- **Submit in batches of about 4 regions** (`gen.py WORK PLAN 1 3 4 5`, one batch after another). When one region fails ("the image model drew an unrelated picture 3 times"), the whole job fails and nothing is kept; a 32-region job was lost that way.
+- **Submit in batches of about 4 regions** (still true with bigger regions) (`gen.py WORK PLAN 1 3 4 5`, one batch after another). When one region fails ("the image model drew an unrelated picture 3 times"), the whole job fails and nothing is kept; a 32-region job was lost that way.
 - **Later batches see earlier characters.** Each patch keeps the characters of earlier edits as context. `regrow.py` now subtracts them (via `depends_on`); without that, cores swallowed neighbours and `build.py` reported false overlaps.
 - **Overlap pairs:** open both crops (`patches/<edit>.png` around the box). If the later patch no longer shows the earlier character, the spot was redrawn: drop one (keep the kind that is short). If both show up side by side, pass `--pairs`.
 - **Manual fixes:** `fixcore.py WORK add|carve|keep ...` adds a missed head, carves a second character out of a blob, or cuts off a neighbour's tail. Keep the merge/split/fix commands in a small redo script, since re-running `detect.py` resets them. For a fill round, detect, then append only the new region's characters (renumbered) to the fixed `found.json` and regrow just those.

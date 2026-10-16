@@ -2,11 +2,12 @@
 
 One Marla generation draws several characters at once inside a region, instead of one call per character.
 
-1. `plan_<level>.py`: regions that do not overlap, the characters in each one (kind + landmark), the group names and the target counts. Ask for a few more characters than needed; extras are simply left out.
+1. `plan_<level>.py`: regions that do not overlap (~1000–1300 px, 5–7 characters each, to keep Marla edit calls low), the characters in each one (kind + landmark), the group names and the target counts. Ask for a few more characters than needed; extras are simply left out.
 2. Set up the work directory with `state.json` (`{"project": ...}`), `bg.png` and `ref_char.png`. The `marla_api` helpers create the project and upload the background.
 3. `python3 gen.py WORK plan_<level> [region numbers]` submits regions, all in one job.
 4. `python3 detect.py WORK plan_<level>` finds every character (shift-tolerant diff, so redraw drift is ignored). It colour-checks red balloon / yellow raincoat / handstand (black fur on top), flags `big` / `multi` / `clipped` / `outside`, and writes `WORK/sheet.jpg`.
    - `split.py WORK ID LEFT RIGHT` splits a blob that holds two characters side by side.
+   - `freespots.py WORK [N] [W] [H] [PAD]` finds the largest empty rects for one combined fill round (every missing kind in 1–2 big regions) and draws them on `WORK/freespots.jpg`.
 5. `python3 build.py WORK plan_<level> OUT.psb --drop ... --kind id=K,... --allow ... --pairs a-b` resolves overlaps between edits, picks the counts, cuts the H layers and writes the PSB (BG + groups of H).
 
 Park level (2026-10-14) was built with:
