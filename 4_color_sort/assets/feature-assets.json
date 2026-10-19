@@ -1,0 +1,146 @@
+{
+  "generator": "built-in image_gen.imagegen (transparent_background=true)",
+  "date": "2026-10-18",
+  "wireframe": "FEATURE-WIREFRAMES.md",
+  "common_prompt_spec": "Use case: stylized-concept. Premium tabletop marble puzzle asset, cream marble / polished brass / dark green felt art direction. Isolated top-down view, warm upper-left window light, soft contact shadows. Genuinely transparent alpha background. No text, labels, logos or watermarks.",
+  "source_directory": "/Users/semihcetin/.config/claiface/codex/generated_images/01a14692-b7b8-75b1-8dc5-d6357013c261",
+  "export": "Crop transparent padding using alpha > 64 for content bounds, preserve RGBA alpha, resize to wireframe dimensions. Pack ice fragments separately into four equal 60x44 cells.",
+  "assets": [
+    {
+      "file": "clay-liner-3.png",
+      "size": [
+        248,
+        680
+      ],
+      "source": "exec-f57e39e4-ae17-4381-bd9d-b7d65b4c4b1d.png",
+      "prompt_spec": "Vertical U-shaped smooth terracotta clay channel liner, 124 by 340 game units, open top, rounded semicircle bottom, subtle hand-pressed fingerprints, darker raised edges and softly shaded inner wall. No arrows or marbles."
+    },
+    {
+      "file": "clay-liner-4.png",
+      "size": [
+        248,
+        900
+      ],
+      "source": "exec-2c849916-b2d3-4f7d-850f-9080cd4b279c.png",
+      "prompt_spec": "Four-row vertical U-shaped smooth terracotta clay channel liner, 124 by 450 game units, open top, rounded semicircle bottom, subtle fingerprints, darker raised edges. No arrows or marbles."
+    },
+    {
+      "file": "clay-funnel.png",
+      "size": [
+        280,
+        88
+      ],
+      "source": "exec-1627333d-af90-4235-a852-a9f90ce8185d.png",
+      "prompt_spec": "Small terracotta funnel lip seen from above, trapezoid narrowing downward, three embossed downward chevrons made of lighter clay, rounded outer shoulders, subtle fired-clay texture."
+    },
+    {
+      "file": "stopper-door-l.png",
+      "size": [
+        144,
+        92
+      ],
+      "source": "exec-d40cdfab-2ba8-4710-9203-42f1f53de352.png",
+      "prompt_spec": "Left half of a polished brass sliding gate, horizontal bar, rounded outer left end, flat inner right end joining the mirrored half, engraved grip lines, warm gold highlights, subtle dark edge."
+    },
+    {
+      "file": "stopper-chip-open.png",
+      "size": [
+        100,
+        100
+      ],
+      "source": "exec-833c3664-2a88-4e7b-9dd0-84b49dfe0c16.png",
+      "prompt_spec": "Round open-state enamel badge, polished brass rim, deep emerald green enamel center, clean raised ivory check mark, subtle bevel and glossy highlights."
+    },
+    {
+      "file": "stopper-chip-shut.png",
+      "size": [
+        100,
+        100
+      ],
+      "source": "exec-75817f50-a170-4af3-a386-64e956516d20.png",
+      "prompt_spec": "Round closed-state enamel badge, polished brass rim, rich red enamel center, clean raised ivory cross mark, subtle bevel and glossy highlights."
+    },
+    {
+      "file": "ice-cube.png",
+      "size": [
+        224,
+        224
+      ],
+      "source": "exec-346d8084-7ba8-48c1-8986-d8204313a474.png",
+      "prompt_spec": "Rounded square ice cube frame with frosty white beveled edges and 24px game-unit corners. Genuinely transparent center so the colored marble remains visible; thin rim cracks, cold blue rim light. No marble or snowflake badge."
+    },
+    {
+      "file": "ice-chip.png",
+      "size": [
+        84,
+        84
+      ],
+      "source": "exec-24ee353b-b4c8-4043-a449-7d224474e1c3.png",
+      "prompt_spec": "Round blue enamel frozen-state badge, frosty white rim, crisp white six-point snowflake, subtly beveled glass, cool blue highlights with warm tabletop edge."
+    },
+    {
+      "file": "ice-shards.png",
+      "size": [
+        240,
+        44
+      ],
+      "source": "exec-83a2151d-e576-4624-afec-c2cebff69743.png",
+      "prompt_spec": "Exactly four distinct blue-white ice fragments in a horizontal row, clear glass-like ice, sharp polygonal edges, internal refraction, no overlap; one fragment per equal cell."
+    },
+    {
+      "file": "clay-intro.png",
+      "size": [
+        480,
+        400
+      ],
+      "source": "exec-8fd26d78-f031-4b86-a797-934ff10673e9.png",
+      "prompt_spec": "Two-part tutorial illustration: left glossy marble entering terracotta U-channel with bold green down arrow; right same marble blocked from exiting upward with red cross. Balanced readable small-size composition, symbols only."
+    },
+    {
+      "file": "stopper-intro.png",
+      "size": [
+        480,
+        400
+      ],
+      "source": "exec-33cb707b-5c12-4b80-928f-ebeb9fb18b54.png",
+      "prompt_spec": "Tutorial illustration of the same felt slot side by side: left brass gate halves pulled outward, green check; right gate halves joined at center, red cross. Subtle two-way arrow between states."
+    },
+    {
+      "file": "ice-intro.png",
+      "size": [
+        480,
+        260
+      ],
+      "source": "exec-fb43bea5-5ec0-47ec-848b-45f117443522.png",
+      "prompt_spec": "Horizontal tutorial sequence: frozen glossy marble inside ice frame with blue snowflake; green check and a single completed slot cue; same free marble with eight flying ice shards. Connect stages with subtle arrows. Symbols only."
+    },
+    {
+      "file": "stopper-door-r.png",
+      "size": [
+        144,
+        92
+      ],
+      "derived_from": "stopper-door-l.png",
+      "operation": "horizontal mirror"
+    },
+    {
+      "file": "clay-mouth-v2.png",
+      "size": [
+        2172,
+        724
+      ],
+      "source": "exec-cee6864f-9788-41af-9188-aaeaef4b0532.png",
+      "date": "2026-10-19",
+      "generator": "built-in image_gen.imagegen (transparent_background=true)",
+      "wireframe": "wireframes/clay-mouth-v2.svg",
+      "prompt_file": "clay-mouth-v2.prompt.txt",
+      "render_size": [
+        128,
+        40
+      ],
+      "render_position": "cx - 64, y0 + 34",
+      "animation": false,
+      "export": "Original RGBA image copied without modifications; aspect ratio preserved with object-fit: contain."
+    }
+  ]
+}

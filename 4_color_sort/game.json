@@ -1,4 +1,15 @@
 {
-  "name": "Café Sort",
-  "entry": "index.html"
+  "name": "4 Color Sort",
+  "entry": "index.html",
+  "fugo": {
+    "mode": "zip",
+    "exclude": [
+      "archive/*",
+      "example/*",
+      "output/*",
+      "assets/marble-*.png",
+      "assets/features-sprite.png",
+      "assets/recipe-tray.png"
+    ]
+  }
 }

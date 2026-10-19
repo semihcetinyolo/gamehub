@@ -1,596 +1,507 @@
 (() => {
 'use strict';
 
-// Four vertical tiffins and two temporary tables. Products move directly between stations.
-// Only a product with nothing above it can be picked. Only the move that completes a tiffin
-// can serve it, so a tiffin is never sent by itself: an order keeps its ingredients but its
-// layer sequence is chosen when it opens (the designed one, else the first arrangement no
-// full tiffin shows); if no queued order can open that way the customer waits until the
-// tiffins change, and refills take the first arrangement no open order shows.
-// tools/gen.js runs the same rules, so every level stays solvable.
+// Four-colour sliding board, like the wooden toy:
+//   x = 1..cols are the vertical slots (rows y = 1..cap, y = cap is the bottom),
+//   y = 0 is the top channel, x = 0..cols+1, with one free pocket past each outer slot.
+// The board stands upright: a disc dropped into a slot falls to the lowest free cell. Nothing
+// floats: in the channel a disc only rests in a pocket or above a full / closed slot; above
+// an open slot with room it falls in (also later, as soon as that slot opens). Discs only travel through empty cells, so a disc in the
+// channel blocks the way past it. A slot that shows exactly its card column is complete: it
+// gets a lid and is locked. Solved when every slot is complete.
+// Level features (Magic Sort style blockers, level.features):
+//   hidden  "?" disc, colour shown once it is the top of its slot
+//   clay    slot only takes discs, nothing can be taken out
+//   box     boxed slot (no in/out, hidden) until the slot holding the key disc is complete
+//   ice     frozen disc can't leave while on top; thaws when any slot completes
+//   plaster sealed slot until a neighbour slot completes
+//   stopper slot mouth opens/closes after every move
+//   bag     sealed slot until n slots are complete
+//   tag     end pocket where only one colour may stop (others pass through)
+// tools/gen.js uses exactly these rules.
 
 const $ = (s) => document.querySelector(s);
-const boardEl = $('#board'), overlayEl = $('#overlay'), cardEl = $('#card');
-const hintEl = $('#hint'), orderEl = $('#orderPanel');
-const levelTimers = new Set();
-function schedule(fn, ms) {
-  const id = window.setTimeout(() => { levelTimers.delete(id); fn(); }, ms);
-  levelTimers.add(id);
-  return id;
-}
-
-const LS = { level: 'tray_level', boosters: 'ps_boosters', won: 'tray_won', seen: 'ps_seen', coins: 'ps_coins', muted: 'ps_muted' };
+const boardEl = $('#board'), frameEl = $('#frame'), overlayEl = $('#overlay'), popEl = $('#pop');
+const LS = { level: 'fcs_level', stars: 'fcs_stars', seen: 'fcs_seen', pockets: 'fcs_pockets' };
 const load = (k, d) => { try { const v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } };
 const save = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+let pocketsEnabled = load(LS.pockets, true) !== false;
 
-const FREEZE_MS = 10000;
-const COIN_PER_LAYER = 10;
-const HEARTS = 3;
-const FIRST_WAVE = 1.5;   // the opening customers wait longer, the board starts mixed up
-const INGREDIENT_NAMES = FOOD_ITEMS.map(item => item.name);
-function ingredientIcon(c) {
-  return `<img class="product-sprite" src="assets/items/${FOOD_ITEMS[c].asset}.svg" alt="" aria-hidden="true" draggable="false">`;
-}
-const FEATURES = {
-  frozen: { title: 'Donmuş malzeme', text: 'Buzlu malzeme yerinden oynamaz. Üzerindeki sayı kadar hamle yapınca buz çözülür.' },
-  hidden: { title: 'Gizli malzeme', text: 'Ne olduğu görünmez. Üstündekileri kaldırıp en üste çıkınca açılır.' },
-  chained: { title: 'Zincirli malzeme', text: 'Zincir kırılmadan alınamaz. Her servis ettiğin içecekte zincir 1 azalır.' },
-};
+// design units = pixels of the board artwork (assets/board-panel.png, 1024 × 1536), cropped by
+// OX / OY crop the artwork. Columns stay evenly spaced; stacked discs almost touch.
+const GRID_LEFT = 154, GRID_RIGHT = 875;
+const COLUMN_PITCH = (GRID_RIGHT - GRID_LEFT) / 5;
+const D = 104, U = D + 2, OX = 16, OY = 55;
+const ART_W = 1024, ART_H = 1536, ART_BOTTOM = 1420;   // board edge + shadow in the artwork
+const CH_Y = 585;                                       // channel centre in the artwork
+const ART_LAST = 1220;                                  // lowest disc centre the artwork's slots allow
+const SEAM = 760, FADE = 40;                            // where the art is cut to shorten the slots
 
-let boosters = load(LS.boosters, { space: 3, freeze: 3, swap: 3 });
-let won = load(LS.won, {});
+let stars = load(LS.stars, {});
 let seen = load(LS.seen, {});
-let coins = load(LS.coins, 0);
-let muted = load(LS.muted, false);
+const FEATURES = window.FEATURE_INFO;   // features.js
 let levelIdx = Math.min(load(LS.level, 0), LEVELS.length - 1);
-
-let st = null;          // level state
-let G = null;           // geometry
-let sel = null;         // selected piece
-let drag = null;        // pointer interaction
-let mode = 'play';      // 'play' | 'swap'
-let swapFirst = null;   // first piece picked in swap mode
-let nextId = 1;
+// ?level=N (1-based) jumps straight to a level
+const askedLevel = parseInt(new URLSearchParams(location.search).get('level'), 10);
+if (askedLevel >= 1 && askedLevel <= LEVELS.length) levelIdx = askedLevel - 1;
+let st = null, G = null, sel = null, drag = null, nextId = 1;
 
 // ---------------------------------------------------------------- level setup
 function startLevel(i) {
-  levelTimers.forEach(id => clearTimeout(id));
-  levelTimers.clear();
   levelIdx = i;
   save(LS.level, i);
   const L = LEVELS[i];
-  st = {
-    L, T: L.cols + 2, h: L.h, lanes: L.lanes.slice(), extra: 0,
-    queue: L.recipes.map((_, o) => o), slots: [], slotRec: [], waiting: [], wait: [], sup: 0, served: 0, earned: 0,
-    hearts: HEARTS, started: false, over: false, freezeUntil: 0, moves: 0, continued: false,
-  };
-  buildGraph();
+  const T = L.cols + 2;
+  const cells = [], idx = new Map(), adj = [];
+  const add = (x, y, kind) => { idx.set(x + ',' + y, cells.length); cells.push({ x, y, kind }); adj.push([]); };
+  const link = (a, b) => { adj[a].push(b); adj[b].push(a); };
+  for (let x = 0; x < T; x++) add(x, 0, 'ch');
+  for (let x = 1; x <= L.cols; x++) for (let y = 1; y <= L.cap; y++) add(x, y, 'col');
+  for (let x = 0; x + 1 < T; x++) link(idx.get(x + ',0'), idx.get(x + 1 + ',0'));
+  for (let x = 1; x <= L.cols; x++) for (let y = 0; y < L.cap; y++) link(idx.get(x + ',' + y), idx.get(x + ',' + (y + 1)));
+  const F = L.features || {};
+  st = { L, T, F, cells, idx, adj, at: new Array(cells.length).fill(null), moves: 0, history: [], over: false,
+    done: 0, boxOpen: false, thaw: false };
   L.start.forEach((col, c) => col.forEach((color, k) => {
-    const p = newPiece(color);
-    p.cell = trackCell(c + 1, k);
+    const p = { id: nextId++, color, cell: slotCell(c + 1, k), hidden: false, key: false, ice: false };
     st.at[p.cell] = p;
   }));
-  for (let k = 0; k < L.open; k++) openSlot(k, FIRST_WAVE + k * 0.3);   // staggered, not all at once
-  for (const s of L.specials) {
-    const p = st.at[trackCell(s.c + 1, s.i)];
-    if (s.type === 'frozen') p.frozen = s.n;
-    if (s.type === 'chained') p.chain = s.n;
-    if (s.type === 'hidden') p.hidden = true;
-  }
-  sel = null; mode = 'play'; swapFirst = null; drag = null;
-  revealTops();
+  (L.startCh || []).forEach((color, x) => {   // discs resting in the channel at the start
+    if (color < 0) return;
+    const p = { id: nextId++, color, cell: idx.get(x + ',0'), hidden: false, key: false, ice: false };
+    st.at[p.cell] = p;
+  });
+  const discAt = (c, k) => st.at[slotCell(c + 1, k)];
+  (F.hidden || []).forEach(([c, k]) => { discAt(c, k).hidden = true; });
+  if (F.box) discAt(F.box.key[0], F.box.key[1]).key = true;
+  if (F.ice) discAt(F.ice.c, F.ice.k).ice = true;
+  sel = null; drag = null;
+  afterMove();   // the same settling the generator applies to the start
   buildBoard();
   render();
-  updateClocks();
-  $('#lvlNum').textContent = 'Bölüm ' + (i + 1);
+  $('#lvlNum').textContent = i + 1;
   $('#lvlTag').textContent = L.hard ? 'ZOR' : '';
-  setHint('En üstteki ürünü al, siparişle aynı katları hazırla.');
-
-  const types = [...new Set(L.specials.map(s => s.type))].filter(t => !seen[t]);
-  if (types.length) showFeature(types);
-  else hideOverlay();
+  $('#par').textContent = '/ ' + L.par + ' hamle';
+  setHint('Taşları kaydır, karttaki deseni oluştur', false, true);
+  hideOverlay();
+  const fresh = Object.keys(F).filter(f => FEATURES[f] && !seen[f]);
+  if (fresh.length) showFeature(fresh);
 }
-const sameSeq = (a, b) => a.length === b.length && a.every((v, k) => v === b[k]);
-const fullTiffins = () => Array.from({ length: st.L.cols }, (_, c) => trayCups(c + 1).map(p => p.color)).filter(g => g.length === st.h);
-// unique arrangements of a recipe, the designed one first
-function perms(rec) {
-  const out = [], seen = new Set();
-  const go = (rest, cur) => {
-    if (!rest.length) { const k = cur.join(); if (!seen.has(k)) { seen.add(k); out.push(cur); } return; }
-    rest.forEach((v, i) => go(rest.slice(0, i).concat(rest.slice(i + 1)), cur.concat(v)));
-  };
-  go(rec, []);
+
+// ---------------------------------------------------------------- features (slot c = x - 1)
+const bit = c => 1 << c;
+const popcount = m => { let n = 0; while (m) { n += m & 1; m >>= 1; } return n; };
+function covered(c) {          // sealed and hidden
+  const F = st.F;
+  if (F.box && F.box.c === c && !st.boxOpen) return 'box';
+  if (F.plaster === c && !(st.done & bit(c - 1)) && !(st.done & bit(c + 1))) return 'plaster';
+  if (F.bag && F.bag.c === c && popcount(st.done) < F.bag.n) return 'bag';
+  return null;
+}
+const stopperClosed = (c) => !!st.F.stopper && st.F.stopper.c === c && ((st.moves % 2 === 0) !== st.F.stopper.open);
+function blocked(c) { return !!(st.done & bit(c)) || !!covered(c) || stopperClosed(c); }
+// why the top disc of slot c can't be taken (null = it can)
+function takeBlock(c) {
+  if (st.done & bit(c)) return 'Bu yuva tamamlandı';
+  if (covered(c) === 'box') return 'Kilitli kutu: anahtarlı taşın olduğu yuvayı tamamla';
+  if (covered(c)) return 'Bu yuva kapalı';
+  if (stopperClosed(c)) return 'Kapak kapalı, bir hamle sonra açılır';
+  if (st.F.clay === c) return 'Kil yuva tek yönlü: giren taş geri çıkmaz';
+  const top = slotTop(c + 1);
+  if (top && top.ice && !st.thaw) return 'Buzlu taş donmuş: herhangi bir yuvayı tamamlayınca buz kırılır';
+  return null;
+}
+const chOk = (x, color) => !st.F.tag || st.F.tag.x !== x || st.F.tag.color === color;
+// after a move: box, completions, ice, then channel discs above open slots fall in (repeat);
+// returns what changed
+function afterMove() {
+  const F = st.F, out = { done: [], thaw: false, box: false, falls: [] };
+  for (let moved = true; moved;) {
+    moved = false;
+    for (let again = true; again;) {
+      again = false;
+      st.L.card.forEach((col, c) => {
+        if (st.done & bit(c) || covered(c)) return;
+        const have = slotDiscs(c + 1);
+        if (have.length === col.length && have.every((p, i) => p.color === col[i])) {
+          st.done |= bit(c); out.done.push(c); again = true;
+          have.forEach(p => { p.hidden = false; });
+        }
+      });
+      // the box opens once the slot holding the key disc is complete
+      if (F.box && !st.boxOpen && st.L.card.some((_, c) => st.done & bit(c) && slotDiscs(c + 1).some(p => p.key))) {
+        st.boxOpen = out.box = true; again = true;
+      }
+    }
+    if (st.done && !st.thaw) st.thaw = out.thaw = !!F.ice;
+    for (let x = 1; x <= st.L.cols; x++) {
+      const from = st.idx.get(x + ',0'), p = st.at[from], to = landing(x);
+      if (!p || blocked(x - 1) || to == null) continue;
+      st.at[from] = null; st.at[to] = p; p.cell = to;
+      out.falls.push({ p, from, to });
+      moved = true;
+    }
+  }
   return out;
 }
-// next customer takes the slot: the first queued order with an arrangement no full tiffin
-// shows; if there is none the slot waits (waiting[slot] keeps the patience multiplier).
-// wait = [seconds left, seconds total]
-function openSlot(slot, mult = 1) {
-  const full = fullTiffins();
-  let pick = null;
-  for (let i = 0; i < st.queue.length && !pick; i++) {
-    const r = perms(st.L.recipes[st.queue[i]]).find(r => !full.some(g => sameSeq(g, r)));
-    if (r) pick = [i, r];
-  }
-  st.slots[slot] = pick ? st.queue.splice(pick[0], 1)[0] : null;
-  st.slotRec[slot] = pick ? pick[1] : null;
-  st.waiting[slot] = !pick && st.queue.length ? mult : 0;
-  st.wait[slot] = [st.L.patience * mult, st.L.patience * mult];
-  return st.slots[slot];
+// may a disc stop in channel cell x? pockets yes; above a slot only when the slot is full or
+// closed (`leaving` = slot the disc itself comes out of)
+function canRest(x, leaving) {
+  if (x === 0 || x === st.T - 1 || blocked(x - 1)) return true;
+  return slotCount(x) - (leaving === x ? 1 : 0) >= st.L.cap;
 }
-// let waiting customers in once the tiffins allow it (skip: a slot whose ticket is animating)
-function fillWaiting(skip = -1) {
-  st.waiting.forEach((mult, k) => {
-    if (!mult || openSlot(k, mult) == null || k === skip) return;
-    const t = orderEl.querySelectorAll('.ticket')[k];
-    if (!t) return;
-    const holder = document.createElement('div');
-    holder.innerHTML = ticketHTML(k);
-    t.replaceWith(holder.firstChild);
-    orderEl.querySelectorAll('.ticket')[k].classList.add('in');
-  });
-}
-// pending = a refill cup that has not arrived on its tray yet (no element, can't move)
-function newPiece(color) { return { id: nextId++, color, frozen: 0, chain: 0, hidden: false, pending: false, cell: -1 }; }
-
-// Preserve station membership when capacity changes.
-function buildGraph() {
-  const keep = [];
-  if (st.at) forEachPiece(p => keep.push([p, st.cells[p.cell].x, st.stacks[st.cells[p.cell].x].indexOf(p.cell)]));
-  st.cells = []; st.stacks = [];
-  for (let x = 0; x < st.T; x++) {
-    const capacity = x === 0 ? st.lanes[0] : x === st.T - 1 ? st.lanes[1] : st.h;
-    st.stacks[x] = Array.from({ length: capacity }, (_, k) => {
-      const id = st.cells.length; st.cells.push({ x, y: k }); return id;
-    });
+function revealTops() {
+  for (let x = 1; x <= st.L.cols; x++) {
+    const p = slotTop(x);
+    if (p && p.hidden && !covered(x - 1)) p.hidden = false;
   }
-  st.at = Array(st.cells.length).fill(null);
-  keep.forEach(([p, x, k]) => { p.cell = st.stacks[x][k]; st.at[p.cell] = p; });
 }
 
 // ---------------------------------------------------------------- geometry
-const trackCell = (x, k) => st.stacks[x][k];          // k = 0 is the bottom compartment
-function trackCount(x) { return st.stacks[x].filter(c => st.at[c]).length; }
-function trackTop(x) { const n = trackCount(x); return n ? st.at[trackCell(x, n - 1)] : null; }
-function landing(x) { const n = trackCount(x); return n < st.stacks[x].length ? trackCell(x, n) : null; }
-const trayCups = (x) => st.stacks[x].map(c => st.at[c]).filter(Boolean);
+const slotCell = (x, k) => st.idx.get(x + ',' + (st.L.cap - k));     // k = 0 is the bottom
+function slotCount(x) { let n = 0; for (let k = 0; k < st.L.cap; k++) if (st.at[slotCell(x, k)]) n++; return n; }
+function slotTop(x) { const n = slotCount(x); return n ? st.at[slotCell(x, n - 1)] : null; }
+function landing(x) { const n = slotCount(x); return n < st.L.cap ? slotCell(x, n) : null; }
+function slotDiscs(x) { const out = []; for (let k = 0; k < st.L.cap; k++) { const p = st.at[slotCell(x, k)]; if (p) out.push(p); } return out; }
 
-// Six separate objects: two tables, four vertical tiffins. Coordinates stay in board space.
-function layout() {
-  const app = $('#app'), css = getComputedStyle(app);
-  const width = app.clientWidth - parseFloat(css.paddingLeft) - parseFloat(css.paddingRight);
-  const others = [...app.children].filter(el => el.id !== 'stage' && getComputedStyle(el).display !== 'none');
-  const used = others.reduce((sum, el) => sum + el.getBoundingClientRect().height, 0);
-  const available = window.innerHeight - used - others.length * parseFloat(css.rowGap) - parseFloat(css.paddingTop) - parseFloat(css.paddingBottom) - 20;
-  const H = tiffinBase() + 66;
-  const scale = Math.min(width / 360, Math.max(180, available) / H, 1.4);
-  G = { W: 360, H, scale, d: 54, lh: 54, u: 60, screenW: 360 * scale, screenH: H * scale };
+function geometry() {
+  const L = st.L;
+  // the artwork's slots are deeper than any level needs: cut a band out of their straight part
+  // so the lowest disc sits in the rounded end (no spare room above the discs)
+  const shift = ART_LAST - (CH_Y + L.cap * U);
+  const W = ART_W - 2 * OX, H = ART_BOTTOM - shift - OY;
+  const stage = $('#stage');
+  const availW = Math.max(260, stage.clientWidth - 20);
+  const availH = Math.max(300, stage.clientHeight - 10);
+  const scale = Math.min(availW / W, availH / H, 0.9);
+  return { W, H, scale, shift, y0: CH_Y - OY };
 }
-// board units: tiffins are 84 wide with 60 per tier, tables 172 wide with 56 per place,
-// big enough to drag comfortably on a phone
-const TIER = 60;
-const tiffinBase = () => 222 + (st.h - 1) * TIER;   // y of the bottom tier, just under the tables
-function objectCenter(x) {
-  if (isTable(x)) return [x === 0 ? 90 : 270, 64];
-  return [45 + (x - 1) * 90, tiffinBase()];
-}
-function cellXY(c) {
-  const cell = st.cells[c], stack = st.stacks[cell.x];
-  const k = Math.max(0, stack.indexOf(c)), n = stack.length;
-  const [x, y] = objectCenter(cell.x);
-  if (!isTable(cell.x)) return [x, y - k * TIER];
-  if (n <= 3) return [x + (k - (n - 1) / 2) * 56, y - 4];
-  return [x + (k % 2 ? 30 : -30), y - 26 + Math.floor(k / 2) * 46];
-}
-const cx = x => objectCenter(x)[0];
-const cy = () => 150;
-const toXY = ([x, y]) => `translate(${x - G.d / 2}px, ${y - G.lh / 2}px)`;
+// Source slot centres are only used to lay out the background artwork.
+// Pieces, pockets, targets, feature overlays and pointer input share this regular grid.
+const ART_SLOT_X = [258, 427.5, 599.5, 770.5];
+const cx = (x) => GRID_LEFT + x * COLUMN_PITCH - OX;
+const cy = (y) => G.y0 + y * U;
+const cellXY = (c) => [cx(st.cells[c].x), cy(st.cells[c].y)];
+const toXY = ([x, y]) => `translate(${x - D / 2}px, ${y - D / 2}px)`;
+const FEAT_ART = (f) => (ART.features && ART.features[f]) || `assets/feat-${f}.png`;
 
 // ---------------------------------------------------------------- render
-function layerHTML(p) {
-  if (p.hidden) return `<div class="disc cx hidden"><span class="q">?</span></div>`;
-  let extra = '', cls = '';
-  if (p.frozen > 0) { cls += ' frozen'; extra += `<span class="ice"></span><b class="badge">${p.frozen}</b>`; }
-  if (p.chain > 0) { cls += ' chained'; extra += chainSVG() + `<b class="badge">${p.chain}</b>`; }
-  return `<div class="disc product c${p.color}${cls}">${ingredientIcon(p.color)}${extra}</div>`;
+function discHTML(p) {
+  if (p.hidden) return `<div class="disc hidden"><span class="q">?</span></div>`;
+  const art = ART.discs[p.color];
+  const extra = (p.key ? KEY_ICON : '') + (p.ice && !st.thaw ? ICE : '');
+  return `<div class="disc c${p.color}"${art ? ` style="background-image:url('${art}')"` : ''}>${extra}</div>`;
 }
-function chainSVG() {
-  const link = (x, y, r) => `<rect x="${x - 7}" y="${y - 4.5}" width="14" height="9" rx="4.5" transform="rotate(${r} ${x} ${y})" fill="none" stroke="#5d5a6e" stroke-width="3.2"/>` +
-    `<rect x="${x - 7}" y="${y - 4.5}" width="14" height="9" rx="4.5" transform="rotate(${r} ${x} ${y})" fill="none" stroke="#c9c6d6" stroke-width="1.2"/>`;
-  let s = '';
-  for (let k = 0; k < 5; k++) { s += link(10 + k * 10, 10 + k * 10, 45 + (k % 2) * 90); s += link(10 + k * 10, 50 - k * 10, -45 + (k % 2) * 90); }
-  return `<svg class="chain" viewBox="0 0 60 60" preserveAspectRatio="none">${s}</svg>`;
-}
-function ticketHTML(slot) {
-  const o = st.slots[slot];
-  if (o == null) return st.waiting[slot]
-    ? `<div class="ticket empty waiting"><span>…</span><small>Müşteri geliyor</small></div>`
-    : `<div class="ticket empty"><span>✓</span><small>Servis edildi</small></div>`;
-  const recipe = st.slotRec[slot];
-  const menu = MEAL_MENUS[st.L.menuIds[o]];
-  const tiers = recipe.map((c, k) => ({ c, k })).reverse().map(({ c, k }) =>
-    `<div class="recipe-place" data-tier="${k}" aria-label="${k === 0 ? 'Alt' : k === recipe.length - 1 ? 'Üst' : 'Orta'} kat: ${INGREDIENT_NAMES[c]}">
-      <span class="order-product">${ingredientIcon(c)}</span>
-    </div>`).join('');
-  return `<div class="ticket tone-${menu.tone}" aria-label="${menu.name}. Sefer tasında alttan üste: ${recipe.map((c, k) => `${k === 0 ? 'Alt' : k === recipe.length - 1 ? 'Üst' : 'Orta'} kat: ${INGREDIENT_NAMES[c]}`).join(', ')}">
-    <span class="menu-seal" aria-hidden="true">${menu.tone === 'sage' ? '❧' : menu.tone === 'berry' ? '✿' : '✦'}</span><b class="t-head">${menu.name}</b><span class="t-face">Bekliyor</span>
-    <div class="recipe-tiffin"><span class="tiffin-mini-handle" aria-hidden="true"></span>${tiers}<svg class="stack-direction" viewBox="0 0 12 72" aria-hidden="true"><path d="M6 68V5m-4 5 4-5 4 5"/></svg></div>
-    <div class="t-bar"><i></i></div></div>`;
-}
+const KEY_ICON = `<span class="key-ico"><svg viewBox="0 0 24 24"><g transform="translate(-1 0)"><circle cx="8" cy="12" r="4.2"/><path d="M12 12h9M18 12v3.5M15.5 12v2.5"/></g></svg></span>`;
+// ice block around a frozen disc: frost cube, two cracks, snowflake chip
+const ICE = `<span class="ice"><img class="ice-cube" src="${ART.features?.iceCube || 'assets/ice-cube.png'}" alt=""><img class="ice-chip" src="${ART.features?.iceChip || 'assets/ice-chip.png'}" alt=""></span>`;
+const discSig = (p) => `${p.hidden}|${p.color}|${p.key}|${p.ice && !st.thaw}`;
 
 function buildBoard() {
-  orderEl.querySelector('.tickets').innerHTML = st.slots.map((_, k) => ticketHTML(k)).join('');
-  layout();
-  const { W, H, scale } = G;
-  const root = document.documentElement.style;
-  root.setProperty('--d', G.d + 'px'); root.setProperty('--lh', G.lh + 'px');
-  boardEl.style.width = W + 'px'; boardEl.style.height = H + 'px';
-  $('#boardFrame').style.width = G.screenW + 'px'; $('#boardFrame').style.height = G.screenH + 'px';
+  // Cancel old movement sounds before replacing the board (restart, resize, level change).
+  boardEl.querySelectorAll('.piece').forEach(el => el.getAnimations().forEach(a => a.cancel()));
+  stopMarbleRolls();
+  G = geometry();
+  const { W, H, scale, shift } = G;
+  const L = st.L;
+  boardEl.style.width = W + 'px';
+  boardEl.style.height = H + 'px';
   boardEl.style.transform = `scale(${scale})`;
-  let objects = '';
-  for (const x of [0, st.T - 1, 1, 2, 3, 4]) {
-    const [px, py] = objectCenter(x), table = isTable(x);
-    if (table) {
-      const slots = st.stacks[x].map(c => {
-        const [sx, sy] = cellXY(c);
-        return `<ellipse class="place-mark" cx="${sx}" cy="${sy + 16}" rx="25" ry="12"/>`;
-      }).join('');
-      objects += `<g class="station table" data-x="${x}">
-        <ellipse class="station-shadow" cx="${px}" cy="${py + 60}" rx="80" ry="14"/>
-        <path class="table-leg" d="M${px-62} ${py+26}v32m124-32v32"/>
-        <rect class="table-edge" x="${px-86}" y="${py-38}" width="172" height="100" rx="30"/>
-        <rect class="table-top" x="${px-86}" y="${py-50}" width="172" height="100" rx="30"/>
-        <path class="wood-grain" d="M${px-70} ${py-28}h140m-144 44h146"/>${slots}
-        <text class="station-label" x="${px}" y="${py+80}">MASA ${x === 0 ? 1 : 2}</text>
-        <text class="table-kind" x="${px}" y="${py+95}"></text></g>`;
-      continue;
-    }
-    const top = py - (st.h - 1) * TIER;
-    let tiers = '';
-    for (let k = 0; k < st.h; k++) {
-      const y = py - k * TIER;
-      tiers += `<g class="tiffin-compartment" data-tier="${k}">
-        <rect class="tiffin-tier-edge" x="${px-42}" y="${y-19}" width="84" height="50" rx="12"/>
-        <rect style="fill:url(#enamel${x})" class="tiffin-tier" x="${px-42}" y="${y-26}" width="84" height="50" rx="12"/>
-        <path class="tiffin-rim" d="M${px-37} ${y-20}Q${px} ${y-28} ${px+37} ${y-20}"/>
-        <path class="tiffin-reflection" d="M${px-33} ${y-12}v18"/>
-      </g>`;
-    }
-    objects += `<g class="station tray tiffin enamel-${x}" data-x="${x}">
-      <ellipse class="station-shadow" cx="${px}" cy="${py+36}" rx="44" ry="11"/>
-      <path class="tiffin-carry-frame" d="M${px-45} ${py+22}V${top-24}Q${px-45} ${top-36} ${px-32} ${top-36}H${px+32}Q${px+45} ${top-36} ${px+45} ${top-24}V${py+22}"/>
-      ${tiers}
-      <rect class="tiffin-lid-edge" x="${px-44}" y="${top-33}" width="88" height="10" rx="5"/>
-      <ellipse class="tiffin-lid" cx="${px}" cy="${top-34}" rx="44" ry="8"/>
-      <path class="tiffin-handle" d="M${px-16} ${top-38}v-9q16-11 32 0v9"/>
-      <path class="tiffin-clasp" d="M${px+43} ${top-14}v24m0 32v24"/>
-      <text class="station-label tiffin-label" x="${px}" y="${py+56}">SEFER TASI</text>
-    </g>`;
+  frameEl.style.width = W * scale + 'px';
+  frameEl.style.height = H * scale + 'px';
+  if (ART.table) {
+    document.body.style.backgroundImage = `url('${ART.table}')`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
   }
-  boardEl.innerHTML = `<svg class="grooves" width="${W}" height="${H}" aria-hidden="true"><defs>
-    ${[['#cf7360','#fff0d5','#f1b4a0','#d98470'],['#5e9c90','#eaf8df','#aad5bd','#6eab9d'],['#cd9c45','#fff4c9','#edcc80','#d1a252'],['#9d87b3','#f6e9f2','#d7c2de','#ac91bb']].map((colors,i)=>`<linearGradient id="enamel${i+1}">${colors.map((c,k)=>`<stop offset="${[0,.22,.65,1][k]}" stop-color="${c}"/>`).join('')}</linearGradient>`).join('')}
-    <linearGradient id="tableWood" x2="0" y2="1"><stop stop-color="#f6cf91"/><stop offset="1" stop-color="#dfb270"/></linearGradient>
-    <linearGradient id="tiffinMetal"><stop stop-color="#93b6a9"/><stop offset=".16" stop-color="#f1f5e5"/><stop offset=".55" stop-color="#e3edde"/><stop offset="1" stop-color="#aac5b7"/></linearGradient>
-    <linearGradient id="tiffinLid" x2="0" y2="1"><stop stop-color="#f7fae9"/><stop offset="1" stop-color="#b7cec0"/></linearGradient>
-  </defs>${objects}</svg><div class="spots"></div>`;
-  st.pieceEls = new Map();
-  forEachPiece(p => { if (!p.pending) addPieceEl(p); });
-  updateClocks();
+
+  // board artwork in two pieces: the top down to the seam, then the bottom moved up by `shift`
+  // (cross-faded over FADE px, the slots are straight there so only the marble veins blend)
+  const cut = SEAM - OY;
+  // Keep each felt slot at its original width; resize the spaces between slots.
+  // This also moves the painted grooves when pocket visibility is turned off.
+  const anchors = [[OX, OX], [GRID_LEFT, GRID_LEFT]];
+  ART_SLOT_X.forEach((source, i) => {
+    const target = GRID_LEFT + (i + 1) * COLUMN_PITCH;
+    anchors.push([source - 62, target - 62], [source + 62, target + 62]);
+  });
+  anchors.push([GRID_RIGHT, GRID_RIGHT], [ART_W - OX, ART_W - OX]);
+  const piece = (top, h, srcY, cls, remap) => {
+    const edges = remap ? anchors : [[OX, OX], [ART_W - OX, ART_W - OX]];
+    return edges.slice(0, -1).map(([srcLeft, left], i) => {
+      const [srcRight, right] = edges[i + 1];
+      const scaleX = (right - left) / (srcRight - srcLeft);
+      // Keep one screen pixel of overlap even at small mobile scales.
+      const overlap = i < edges.length - 2 ? 1 / scale : 0;
+      return `<div class="board-art ${cls}" style="left:${left - OX}px;top:${top}px;width:${right - left + overlap}px;height:${h + 1 / scale}px;` +
+        `background-image:url('${ART.wood}');background-size:${ART_W * scaleX}px ${ART_H}px;background-position:${-srcLeft * scaleX}px ${-srcY}px"></div>`;
+    }).join('');
+  };
+  const playTop = 500 - OY;
+  const art = piece(0, playTop, OY, 'art-top', false) +
+    piece(playTop, cut + FADE / 2 - playTop, 500, 'art-top', true) +
+    piece(cut - FADE / 2, H - cut + FADE / 2, SEAM - FADE / 2 + shift, 'art-bottom', true);
+
+  // target card: dot columns line up with the slots, rows centred in the card frame
+  const CARD_Y = 290 - OY, DOT = 80, ROW = 86;
+  let dots = '';
+  for (let c = 0; c < L.cols; c++) for (let r = 0; r < L.rows; r++) {
+    const k = L.rows - 1 - r, color = L.card[c][k];
+    const x = cx(c + 1), y = CARD_Y + (r - (L.rows - 1) / 2) * ROW;
+    dots += ART.discs[color]
+      ? `<image class="dot target-marble" data-c="${c}" data-k="${k}" href="${ART.discs[color]}" x="${x - DOT / 2}" y="${y - DOT / 2}" width="${DOT}" height="${DOT}"/>`
+      : `<circle class="dot" data-c="${c}" data-k="${k}" cx="${x}" cy="${y}" r="${DOT / 2 - 2}" fill="${DISC_COLORS[color].face}"/>`;
+  }
+  let separators = '';
+  for (let c = 1; c < L.cols; c++) {
+    const sx = (cx(c) + cx(c + 1)) / 2;
+    separators += `<path class="recipe-sep" d="M${sx} ${CARD_Y - 160}V${CARD_Y + 160}"/>`;
+  }
+  // Neutral cups are visual guides only; the coloured pocket stays a separate feature.
+  const pockets = st.cells.map((cell, c) => {
+    if (st.F.tag && cell.y === 0 && cell.x === st.F.tag.x) return '';
+    return `<img class="cell-pocket" data-c="${c}" src="${FEAT_ART('tag')}" alt="" draggable="false" style="transform:${toXY(cellXY(c))}">`;
+  }).join('');
+  boardEl.innerHTML = `${art}<svg class="art" width="${W}" height="${H}">${separators}${dots}</svg>
+    <div class="feats"></div><div class="pockets" aria-hidden="true"${pocketsEnabled ? '' : ' hidden'}>${pockets}</div><div class="spots"></div>`;
+  st.els = new Map();
+  st.feats = new Map();
+  forEachPiece(p => {
+    const el = document.createElement('div');
+    el.className = 'piece';
+    boardEl.appendChild(el);
+    st.els.set(p.id, el);
+  });
 }
-function addPieceEl(p) {
-  const el = document.createElement('div');
-  el.className = 'piece';
-  boardEl.appendChild(el);
-  st.pieceEls.set(p.id, el);
-  return el;
+
+// slot covers, lids, clay, stopper and channel tag; elements are kept by id so they can animate out
+function featureMarks() {
+  const F = st.F, L = st.L, marks = [];
+  const art = (f) => `<img src="${FEAT_ART(f)}" alt="">`;
+  // a covered slot: from just under the channel down to the rounded end of the slot
+  const slotBox = (x) => ({ left: cx(x) - 62, top: G.y0 + 50, width: 124, height: L.cap * U + 10 });
+  const mouth = (x) => ({ left: cx(x) - 66, top: G.y0 + 38, width: 132, height: 28 });
+  // badge on the marble under the slot, says what kind of slot it is
+  for (let c = 0; c < L.cols; c++) {
+    const x = c + 1, cov = covered(c), done = !!(st.done & bit(c));
+    if (cov === 'box') marks.push(['box' + c, 'cover box', slotBox(x), art('box')]);
+    if (cov === 'plaster') marks.push(['pl' + c, 'cover plaster', slotBox(x), art('plaster') + '<i class="arrows"><span>‹</span><span>›</span></i>']);
+    if (cov === 'bag') marks.push(['bag' + c, 'cover bag', slotBox(x), `<span class="bag-art">${art('bag')}<b>${F.bag.n - popcount(st.done)}</b></span>`]);
+    if (F.clay === c && !done) {
+      // One-way slot: the generated ceramic collar joins the lining at the mouth.
+      const liner = L.cap <= 3 ? ART.features?.clayLiner3 : ART.features?.clayLiner4;
+      marks.push(['clayl' + c, 'clay-liner', slotBox(x), `<img src="${liner || 'assets/clay-liner-4.png'}" alt="">`]);
+      marks.push(['clay' + c, 'clay', { left: cx(x) - 64, top: G.y0 + 34, width: 128, height: 40 },
+        `<img src="${ART.features?.clayMouth || 'assets/clay-mouth-v2.png'}" alt="">`]);
+    }
+    if (F.stopper && F.stopper.c === c && !done) {
+      // two brass doors over the mouth: shut (slot dimmed, ✕) / slid apart (✓), swap every move
+      const shut = stopperClosed(c);
+      marks.push(['stopdim' + c, 'stop-dim' + (shut ? ' on' : ''), slotBox(x), '']);
+      marks.push(['stop' + c, 'stopper' + (shut ? ' closed' : ''), { left: cx(x) - 72, top: G.y0 + 30, width: 144, height: 46 },
+        `<img class="door-img l" src="${ART.features?.stopperDoorL || 'assets/stopper-door-l.png'}" alt=""><img class="door-img r" src="${ART.features?.stopperDoorR || 'assets/stopper-door-r.png'}" alt=""><img class="status-chip chip-open" src="${ART.features.stopperChipOpen}" alt=""><img class="status-chip chip-shut" src="${ART.features.stopperChipShut}" alt="">`]);
+    }
+    if (done) marks.push(['lid' + c, 'lid', mouth(x), '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>']);
+  }
+  if (F.tag) {
+    const [tx, ty] = [cx(F.tag.x), cy(0)], s = D + 16;
+    marks.push(['tag', 'ctag c' + F.tag.color, { left: tx - s / 2, top: ty - s / 2, width: s, height: s }, art('tag')]);
+  }
+  return marks;
+}
+function renderFeatures() {
+  const box = boardEl.querySelector('.feats');
+  const want = new Set();
+  for (const [id, cls, r, html] of featureMarks()) {
+    want.add(id);
+    let el = st.feats.get(id);
+    if (!el) { el = document.createElement('div'); box.appendChild(el); st.feats.set(id, el); el.dataset.html = ''; }
+    el.className = 'feat ' + cls;
+    Object.assign(el.style, { left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px' });
+    if (el.dataset.html !== html) { el.innerHTML = html; el.dataset.html = html; }
+  }
+  for (const [id, el] of st.feats) {
+    if (want.has(id)) continue;
+    st.feats.delete(id);
+    el.classList.add('gone');
+    setTimeout(() => el.remove(), 450);
+  }
 }
 
 function forEachPiece(fn) { st.at.forEach(p => p && fn(p)); }
-function place(p) { st.pieceEls.get(p.id).style.transform = toXY(cellXY(p.cell)); }
+function place(p) { st.els.get(p.id).style.transform = toXY(cellXY(p.cell)); }
 
-function render(opt = {}) {
+function render() {
   forEachPiece(p => {
-    const el = st.pieceEls.get(p.id);
-    if (!el) return;
-    const sig = `${p.color}|${p.hidden}|${p.frozen}|${p.chain}`;
-    if (el.dataset.sig !== sig) { el.innerHTML = layerHTML(p); el.dataset.sig = sig; el.setAttribute('aria-label', p.hidden ? 'Gizli ürün' : INGREDIENT_NAMES[p.color]); el.title = p.hidden ? 'Gizli ürün' : INGREDIENT_NAMES[p.color]; }
-    const disc = el.firstChild;
-    disc.classList.toggle('sel', p === sel || p === swapFirst);
-    if (opt.pop && opt.pop.includes(p.id)) { disc.classList.remove('pop'); void disc.offsetWidth; disc.classList.add('pop'); }
-    if (opt.thaw && opt.thaw.includes(p.id)) disc.classList.add('thaw');
+    const el = st.els.get(p.id), sig = discSig(p);
+    if (el.dataset.sig !== sig) {
+      const wasIce = /\|true$/.test(el.dataset.sig || '');
+      el.innerHTML = discHTML(p); el.dataset.sig = sig;
+      if (wasIce && !/\|true$/.test(sig)) shatter(el);   // the ice just broke
+    }
+    el.firstChild.classList.toggle('sel', p === sel);
     if (!(drag && drag.moved && drag.p === p)) place(p);
   });
-  // a tray glows green while its cups match the start of an open order
-  boardEl.querySelectorAll('.tray').forEach(g => {
-    const layers = trayCups(+g.dataset.x);
-    g.classList.toggle('fit', layers.length > 0 && !layers.some(p => p.hidden || p.pending) && st.slotRec.some(r => r &&
-      layers.every((p, k) => r[k] === p.color)));
+  renderFeatures();
+  // dots on the card light up once their disc is in place (never for hidden or sealed discs)
+  boardEl.querySelectorAll('.dot').forEach(d => {
+    const c = +d.dataset.c, p = st.at[slotCell(c + 1, +d.dataset.k)];
+    d.classList.toggle('ok', !!p && !p.hidden && !covered(c) && p.color === st.L.card[c][+d.dataset.k]);
   });
-  boardEl.querySelectorAll('.table').forEach(g => {
-    const cups = trayCups(+g.dataset.x);
-    g.querySelector('.table-kind').textContent = cups.length
-      ? `Yalnızca ${INGREDIENT_NAMES[cups[0].color].toLocaleLowerCase('tr-TR')} · ${cups.length}/${st.stacks[+g.dataset.x].length}`
-      : 'Boş · tek tür ürün';
-  });
-  renderHearts();
-  $('#served').textContent = `${st.served} / ${st.L.recipes.length} hazır`;
-  $('#earned').textContent = coins.toLocaleString('tr-TR');
-  $('#orderProgress').style.width = `${st.served / st.L.recipes.length * 100}%`;
-  showSpots(sel && mode === 'play' ? dests(sel).cells : []);
-  renderBoosters();
+  showSpots(sel ? dests(sel).cells : []);
+  $('#moves').textContent = st.moves;
+  $('#btnUndo').disabled = !st.history.length || st.over;
 }
-
+// ice breaking: shards fly off the disc
+function shatter(el) {
+  const box = document.createElement('div');
+  box.className = 'shards';
+  box.style.setProperty('--shard-art', `url('${ART.features.iceShards}')`);
+  for (let i = 0; i < 8; i++) {
+    const a = i / 8 * Math.PI * 2 + Math.random() * .4, d = 70 + Math.random() * 40;
+    const sh = document.createElement('i');
+    sh.style.setProperty('--dx', Math.cos(a) * d + 'px');
+    sh.style.setProperty('--dy', Math.sin(a) * d + 'px');
+    sh.style.setProperty('--r', (Math.random() * 300 - 150) + 'deg');
+    sh.style.setProperty('--sprite', (i % 4) * -30 + 'px');
+    box.appendChild(sh);
+  }
+  el.appendChild(box);
+  setTimeout(() => box.remove(), 700);
+}
 function showSpots(cells) {
-  boardEl.querySelector('.spots').innerHTML = cells.map(c =>
-    `<i data-c="${c}" style="transform:${toXY(cellXY(c))}"></i>`).join('');
-}
-
-function renderBoosters() {
-  document.querySelectorAll('.booster').forEach(btn => {
-    const b = btn.dataset.b;
-    btn.querySelector('.cnt').textContent = boosters[b];
-    let off = boosters[b] <= 0 || st.over;
-    if (b === 'space' && st.extra >= 2) off = true;
-    btn.disabled = off && !(b === 'swap' && mode === 'swap');
-    btn.classList.toggle('active', b === 'swap' && mode === 'swap');
+  boardEl.querySelector('.spots').innerHTML = cells.map(c => `<i data-c="${c}" style="transform:${toXY(cellXY(c))}"></i>`).join('');
+  const available = new Set(cells);
+  boardEl.querySelectorAll('.cell-pocket').forEach(el => {
+    el.classList.toggle('available', available.has(+el.dataset.c));
   });
 }
-
-function setHint(text, cls) { hintEl.textContent = text || ''; hintEl.className = cls || ''; }
+function setPocketsEnabled(enabled) {
+  pocketsEnabled = !!enabled;
+  save(LS.pockets, pocketsEnabled);
+  const pockets = boardEl.querySelector('.pockets');
+  if (pockets) pockets.hidden = !pocketsEnabled;
+}
+// short toast over the board (rule messages, completions); the start text stays silent
+let hintTimer = 0;
+function setHint(text, bad, quiet) {
+  const h = $('#hint');
+  h.textContent = text; h.classList.toggle('bad', !!bad);
+  clearTimeout(hintTimer);
+  h.classList.toggle('show', !quiet);
+  if (!quiet) hintTimer = setTimeout(() => h.classList.remove('show'), bad ? 2200 : 1400);
+}
 
 // ---------------------------------------------------------------- rules
-// tiffins give only their top product; a table holds one kind, so any product on it can go
-const isTop = p => isTable(st.cells[p.cell].x) || p === trackTop(st.cells[p.cell].x);
-function movable(p) { return p && !p.hidden && !p.pending && p.frozen <= 0 && p.chain <= 0 && isTop(p); }
-
+// empty cells reachable from `from`, with BFS parents for the slide path
+function reach(from) {
+  const par = new Map([[from, -1]]);
+  const q = [from];
+  while (q.length) {
+    const a = q.shift();
+    for (const b of st.adj[a]) {
+      if (par.has(b) || st.at[b]) continue;
+      par.set(b, a);
+      q.push(b);
+    }
+  }
+  return par;
+}
 function dests(p) {
-  if (!movable(p)) return { cells: [], par: new Map() };
-  const own = st.cells[p.cell].x, cells = [], par = new Map([[p.cell, -1]]);
-  for (let x = 0; x < st.T; x++) {
-    if (x === own || !tableTakes(x, p)) continue;
-    const target = landing(x);
-    if (target != null) { cells.push(target); par.set(target, p.cell); }
+  const own = st.cells[p.cell];
+  if (own.kind === 'col' && (takeBlock(own.x - 1) || slotTop(own.x) !== p)) return { cells: [], par: new Map() };
+  const par = reach(p.cell);
+  const cells = [];
+  const leaving = own.kind === 'col' ? own.x : -1;
+  for (const c of par.keys()) {
+    const cell = st.cells[c];
+    if (c !== p.cell && cell.kind === 'ch' && chOk(cell.x, p.color) && canRest(cell.x, leaving)) cells.push(c);
+  }
+  for (let x = 1; x <= st.L.cols; x++) {
+    if (own.kind === 'col' && own.x === x) continue;
+    if (blocked(x - 1)) continue;
+    const l = landing(x);
+    if (l != null && par.has(l)) cells.push(l);
   }
   return { cells, par };
 }
-const isTable = x => x === 0 || x === st.T - 1;
-function tableTakes(x, p) {
-  return !isTable(x) || trayCups(x).every(cup => cup.color === p.color);
+// the cell under the finger -> where the disc really ends up (a slot drops it to the bottom)
+// (a channel cell above an open slot with room means that slot: the disc would fall in)
+function resolve(c, p) {
+  if (c == null) return null;
+  const cell = st.cells[c];
+  if (cell.kind === 'col') return landing(cell.x);
+  const own = p ? st.cells[p.cell] : null;
+  if (cell.x >= 1 && cell.x <= st.L.cols && !canRest(cell.x, own && own.kind === 'col' ? own.x : -1)) return landing(cell.x);
+  return c;
 }
-function rejectTableDrop(p, c) {
-  if (c == null) return false;
-  const x = st.cells[c].x;
-  if (!isTable(x) || tableTakes(x, p)) return false;
-  const color = trayCups(x)[0].color;
-  setHint(`Bu masaya yalnızca ${INGREDIENT_NAMES[color].toLocaleLowerCase('tr-TR')} bırakabilirsin.`, 'swap');
-  const table = boardEl.querySelector(`.table[data-x="${x}"]`);
-  table?.classList.add('reject');
-  schedule(() => table?.classList.remove('reject'), 400);
-  sfx('nope'); vibrate(20);
-  return true;
+// a press on a slot takes its top disc, in the channel the disc under the finger
+function grabAt(c) {
+  if (c == null) return null;
+  const cell = st.cells[c];
+  if (cell.kind === 'col') return covered(cell.x - 1) ? null : slotTop(cell.x);
+  return st.at[c];
 }
-// a station tap resolves to its next available place
-function resolve(c) {
-  return c == null ? null : landing(st.cells[c].x);
-}
-
-function revealTops() {
-  const shown = [];
-  for (let x = 0; x < st.T; x++) {
-    const p = trackTop(x);
-    if (p && p.hidden) { p.hidden = false; shown.push(p.id); }
-  }
-  return shown;
-}
+const solved = () => st.done === (1 << st.L.cols) - 1;
+const snapshot = () => ({ done: st.done, boxOpen: st.boxOpen, thaw: st.thaw,
+  hidden: [...st.at].filter(p => p && p.hidden).map(p => p.id),
+  pos: [...st.at].filter(Boolean).map(p => [p, p.cell]) });
 
 function doMove(p, to, fromXY) {
   const { cells, par } = dests(p);
   if (!cells.includes(to)) return false;
   const route = [];
   for (let c = to; c !== -1; c = par.get(c)) route.unshift(c);
-  const source = st.cells[p.cell].x;
+  st.history.push({ id: p.id, from: p.cell, to, snap: snapshot() });
   st.at[p.cell] = null;
-  if (isTable(source)) {   // close the gap left on the table
-    const rest = trayCups(source);
-    st.stacks[source].forEach(c => { st.at[c] = null; });
-    rest.forEach((q, k) => { q.cell = trackCell(source, k); st.at[q.cell] = q; });
-  }
   st.at[to] = p;
   p.cell = to;
   st.moves++;
-  const thaw = [];
-  forEachPiece(q => { if (q.frozen > 0) { q.frozen--; if (!q.frozen) thaw.push(q.id); } });
-  thaw.push(...revealTops());
-
   sel = null;
-  setHint('En üstteki ürünü al, siparişle aynı katları hazırla.');
-  render({ thaw });
-  slide(p, fromXY ? [fromXY, cellXY(to)] : route.map(cellXY));
-  sfx('drop');
-  if (thaw.length) schedule(() => sfx('crack'), 120);
-  serveReady(fromXY ? 200 : Math.min(560, route.length * 60), [st.cells[to].x]);
-  fillWaiting();
+  const dest = st.cells[to];
+  const ch = afterMove();
+  revealTops();
+  render();
+  if (!ch.falls.some(f => f.p === p)) slide(p, fromXY ? [fromXY, cellXY(to)] : route.map(cellXY));
+  // a disc that came to rest above a slot, or waited there for it to open, drops in
+  ch.falls.forEach(f => {
+    const pts = f.p === p ? (fromXY ? [fromXY, cellXY(f.from), cellXY(f.to)] : route.map(cellXY).concat([cellXY(f.to)])) : [cellXY(f.from), cellXY(f.to)];
+    slide(f.p, pts);
+  });
+  if (ch.done.length) { setTimeout(() => sfx('lock'), 250); setHint(ch.box ? 'Anahtarlı yuva tamamlandı, kutu açıldı!' : ch.thaw ? 'Yuva tamamlandı, buz kırıldı!' : ch.done.length > 1 ? 'Yuvalar tamamlandı!' : 'Yuva tamamlandı!'); }
+  else if (ch.box) setHint('Kutu açıldı!');
+  else if (ch.thaw) setHint('Buz kırıldı!');
+  if (ch.box || ch.thaw) setTimeout(() => sfx('crack'), 200);
+  if (solved()) win();
   return true;
 }
-
-// open order slot a full tiffin matches, or -1
-function matchSlot(x) {
-  if (isTable(x)) return -1;
-  const layers = trayCups(x);
-  if (layers.length !== st.h || layers.some(p => p.pending)) return -1;
-  const colors = layers.map(p => p.color);
-  return st.slotRec.findIndex(r => r && sameSeq(r, colors));
-}
-// serve the tiffins the player just completed (never any other one)
-function serveReady(delay, xs) {
-  let wait = delay;
-  for (const x of xs) {
-    const slot = matchSlot(x);
-    if (slot < 0) continue;
-    serve(x, slot, trayCups(x), wait);
-    wait += 700;
-  }
+function undo() {
+  const h = st.history.pop();
+  if (!h || st.over) return;
+  // put every disc back where it was (a move can also drop other discs into slots)
+  const was = new Map(st.at.filter(Boolean).map(q => [q, q.cell]));
+  st.at.fill(null);
+  h.snap.pos.forEach(([q, c]) => { q.cell = c; st.at[c] = q; });
+  st.moves--;
+  st.done = h.snap.done; st.boxOpen = h.snap.boxOpen; st.thaw = h.snap.thaw;
+  const hid = new Set(h.snap.hidden);
+  forEachPiece(q => { q.hidden = hid.has(q.id); });
+  sel = null;
   render();
-  if (wait > delay && st.served === st.L.recipes.length) win(wait);
+  was.forEach((c, q) => { if (c !== q.cell) slide(q, [cellXY(c), cellXY(q.cell)]); });
 }
 
-function serve(x, slot, layers, delay) {
-  const reward = st.h * COIN_PER_LAYER;
-  layers.forEach(p => { st.at[p.cell] = null; });
-  const oldEls = layers.map(p => { const el = st.pieceEls.get(p.id); st.pieceEls.delete(p.id); return el; });
-  st.slots[slot] = st.slotRec[slot] = null;
-  openSlot(slot);
-  // refill with the first arrangement of the next batch that matches no open order
-  const next = st.sup < st.L.batches.length ? st.L.batches[st.sup] : [];
-  const batch = perms(next).find(r => !st.slotRec.some(o => o && sameSeq(o, r))) || next;
-  const fresh = batch.map((color, k) => {
-    const p = newPiece(color);
-    p.pending = true;
-    p.cell = trackCell(x, k);
-    st.at[p.cell] = p;
-    return p;
-  });
-  st.sup++;
-  fillWaiting(slot);
-  st.served++;
-  st.earned += reward;
-  coins += reward;
-  save(LS.coins, coins);
-  const unchained = [];
-  forEachPiece(q => { if (q.chain > 0) { q.chain--; if (!q.chain) unchained.push(q.id); } });
-  revealTops();
-
-  // animation: cups lift to the ticket, the ticket changes and the tray refills
-  const ticket = () => orderEl.querySelectorAll('.ticket')[slot];
-  schedule(() => {
-    const t = ticket();
-    if (!t) return;
-    const tr = t.getBoundingClientRect();
-    const [tx, ty] = boardXY({ clientX: tr.left + tr.width / 2, clientY: tr.top + tr.height / 2 });
-    oldEls.forEach((el, k) => {
-      if (!el) return;
-      el.style.zIndex = 6;
-      const from = cellXY(trackCell(x, k));
-      el.animate([{ transform: toXY(from), opacity: 1 },
-        { transform: toXY([from[0], from[1] - G.u * 0.4]), opacity: 1, offset: 0.3 },
-        { transform: toXY([tx, ty]) + ' scale(.3)', opacity: 0 }],
-      { duration: 520, easing: 'cubic-bezier(.5,0,.6,1)', fill: 'forwards' }).onfinish = () => el.remove();
-    });
-    sfx('col');
-    schedule(() => {
-      t.classList.add('done');
-      celebrate(tx, ty);
-      floatText(`+${reward} ✦`, tx, ty);
-      sfx('good');
-    }, 420);
-    schedule(() => {
-      const holder = document.createElement('div');
-      holder.innerHTML = ticketHTML(slot);
-      ticket().replaceWith(holder.firstChild);
-      ticket().classList.add('in');
-      fresh.forEach((p, k) => {
-        if (!p.pending || st.at[p.cell] !== p) return;   // already served again by a chain
-        p.pending = false;
-        const el = addPieceEl(p);
-        el.innerHTML = layerHTML(p);
-        el.dataset.sig = `${p.color}|${p.hidden}|${p.frozen}|${p.chain}`;
-        place(p);
-        el.animate([{ transform: toXY([cx(x), cy(0)]), opacity: 0 }, { transform: toXY(cellXY(p.cell)), opacity: 1 }],
-          { duration: 260, delay: k * 70, easing: 'cubic-bezier(.3,1.3,.5,1)', fill: 'backwards' });
-      });
-      render({ thaw: unchained });
-    }, 660);
-  }, delay);
+// Only a marble directly underneath makes glass contact; side neighbours do not.
+function landingSound(p) {
+  const cell = st.cells[p.cell];
+  if (cell.y === 0 && (cell.x === 0 || cell.x === st.T - 1 || blocked(cell.x - 1))) return 'marbleSeat';
+  const below = st.idx.get(cell.x + ',' + (cell.y + 1));
+  return below != null && st.at[below] ? 'marbleHit' : 'marbleSeat';
 }
 
-function celebrate(x, y) {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  for (let i = 0; i < 10; i++) {
-    const spark = document.createElement('span');
-    spark.className = 'reward-spark'; spark.textContent = i % 2 ? '✦' : '♥';
-    spark.style.left = x + 'px'; spark.style.top = y + 'px';
-    spark.style.color = ['#ffd267', '#fff4d7', '#ed8f80'][i % 3];
-    boardEl.appendChild(spark);
-    const angle = Math.PI * 2 * i / 10;
-    spark.animate([{ transform: 'translate(-50%,-50%) scale(.3)', opacity: 1 },
-      { transform: `translate(${Math.cos(angle)*65}px,${Math.sin(angle)*65}px) rotate(${i*37}deg)`, opacity: 0 }],
-      { duration: 750, easing: 'ease-out' }).onfinish = () => spark.remove();
-  }
-}
-
-function floatText(text, x, y) {
-  const el = document.createElement('div');
-  el.className = 'float';
-  el.textContent = text;
-  el.style.left = x + 'px'; el.style.top = y + 'px';
-  boardEl.appendChild(el);
-  el.animate([{ transform: 'translate(-50%, -50%)', opacity: 1 }, { transform: 'translate(-50%, -160%)', opacity: 0 }],
-    { duration: 900, easing: 'ease-out' }).onfinish = () => el.remove();
-}
-
-function win(delay) {
-  st.over = true;
-  const stars = st.continued ? 1 : st.hearts;
-  won[levelIdx] = Math.max(won[levelIdx] || 0, stars);
-  save(LS.won, won);
-  const keys = ['space', 'freeze', 'swap'];
-  const gift = keys[Math.floor(Math.random() * 3)];
-  boosters[gift]++;
-  save(LS.boosters, boosters);
-  const names = { space: 'Masa Genişlet', freeze: 'Süre Dondur', swap: 'Yer Değiştir' };
-  schedule(() => {
-    sfx('win');
-    const last = levelIdx >= LEVELS.length - 1;
-    showCard(`
-      <h2>Tüm siparişler hazır!</h2>
-      <div class="stars">${[0, 1, 2].map(k => `<span class="${k < stars ? '' : 'off'}">★</span>`).join('')}</div>
-      <div class="stats"><span><b class="result-heart">♥</b> ${st.hearts}/${HEARTS}</span><span><b class="coin-icon">✦</b> +${st.earned}</span></div>
-      <p>Hediye: +1 ${names[gift]}</p>
-      <button class="btn" data-act="${last ? 'menu' : 'next'}">${last ? 'Bölümler' : 'Sonraki Bölüm'}</button>
-      <button class="btn ghost" data-act="retry">Tekrar Oyna</button>`);
-  }, delay + 500);
-}
-
-// a customer ran out of patience: lose a heart, the order goes to the back of the queue
-function customerLeaves(slot) {
-  const o = st.slots[slot];
-  st.queue.push(o);
-  openSlot(slot);
-  st.hearts--;
-  renderHearts(true);
-  sfx('nope');
-  vibrate(30);
-  const t = orderEl.querySelectorAll('.ticket')[slot];
-  if (t) {
-    t.classList.add('angry');
-    schedule(() => {
-      const holder = document.createElement('div');
-      holder.innerHTML = ticketHTML(slot);
-      const fresh = holder.firstChild;
-      t.replaceWith(fresh);
-      fresh.classList.add('in');
-      render();
-    }, 650);
-  }
-  setHint('Müşteri beklemekten sıkılıp gitti!', 'swap');
-  if (st.hearts <= 0) {
-    st.over = true; sel = null; mode = 'play'; swapFirst = null;
-    cancelDrag();
-    schedule(() => {
-      sfx('lose');
-      showCard(`
-        <h2>Müşteriler kaçtı!</h2>
-        <p>${st.L.recipes.length} siparişten ${st.served} tanesi servis edildi.</p>
-        ${st.continued ? '' : '<button class="btn alt" data-act="continue">+1 Can ile Devam Et</button>'}
-        <button class="btn" data-act="retry">Tekrar Dene</button>`);
-    }, 700);
-  }
-}
-
-// slide a layer through the corners of its route, ending where place() put it
+// slide a disc through the corners of its route, ending where place() put it
 function slide(p, pts) {
-  const el = st.pieceEls.get(p.id);
-  if (!el || pts.length < 2) return;
+  if (pts.length < 2) return;
   const keep = [pts[0]];
   for (let i = 1; i < pts.length - 1; i++) {
     const [a, b, c] = [pts[i - 1], pts[i], pts[i + 1]];
@@ -601,106 +512,85 @@ function slide(p, pts) {
   const len = seg.reduce((a, b) => a + b, 0);
   let acc = 0;
   const frames = keep.map((q, i) => { acc += seg[i]; return { transform: toXY(q), offset: len ? acc / len : 1 }; });
+  const el = st.els.get(p.id);
+  el.getAnimations().forEach(a => a.cancel());
   el.style.zIndex = 5;
-  el.animate(frames, { duration: Math.min(560, Math.max(140, len / G.u * 70)), easing: 'cubic-bezier(.35,.1,.25,1)' })
-    .onfinish = () => { el.style.zIndex = ''; };
+  const duration = Math.min(520, Math.max(140, len / U * 75));
+  // Capture the landing surface now so a later move cannot change this sound.
+  const impact = landingSound(p);
+  const stopRoll = marbleRoll(duration / 1000);
+  const animation = el.animate(frames, { duration, easing: 'cubic-bezier(.35,.1,.25,1)' });
+  animation.oncancel = () => { stopRoll(); el.style.zIndex = ''; };
+  animation.onfinish = () => {
+    stopRoll();
+    el.style.zIndex = '';
+    if (el.isConnected && st.els.get(p.id) === el) sfx(impact);
+  };
 }
 
-// ---------------------------------------------------------------- timer
-let lastTs = 0;
-function tick(ts) {
-  const dt = lastTs ? Math.min(0.1, (ts - lastTs) / 1000) : 0;
-  lastTs = ts;
-  if (st && st.started && !st.over && overlayEl.classList.contains('hidden') && !document.hidden) {
-    if (performance.now() >= st.freezeUntil) {
-      st.slots.forEach((o, k) => {
-        if (o == null || st.over) return;
-        st.wait[k][0] = Math.max(0, st.wait[k][0] - dt);
-        if (st.wait[k][0] <= 0) customerLeaves(k);
-      });
-    }
-    updateClocks();
-  }
-  requestAnimationFrame(tick);
+function win() {
+  st.over = true;
+  const L = st.L;
+  const got = st.moves <= L.par ? 3 : st.moves <= L.par + Math.ceil(L.par / 2) ? 2 : 1;
+  stars[levelIdx] = Math.max(stars[levelIdx] || 0, got);
+  save(LS.stars, stars);
+  setTimeout(() => {
+    sfx('win');
+    const last = levelIdx >= LEVELS.length - 1;
+    showPop(`<h2>Harika!</h2>
+      <div class="stars">${[0, 1, 2].map(k => `<span class="${k < got ? '' : 'off'}">★</span>`).join('')}</div>
+      <p>${st.moves} hamlede bitirdin · hedef ${L.par}</p>
+      <button class="btn" data-act="${last ? 'menu' : 'next'}">${last ? 'Bölümler' : 'Sonraki Bölüm'}</button>
+      <button class="btn ghost" data-act="retry">Tekrar Oyna</button>`);
+  }, 650);
 }
-// patience bars and faces on the tickets, freeze tag in the header
-function updateClocks() {
-  const frozen = performance.now() < st.freezeUntil;
-  orderEl.querySelectorAll('.ticket').forEach((t, k) => {
-    const w = st.wait[k];
-    if (!w || st.slots[k] == null || t.classList.contains('done') || t.classList.contains('angry')) return;
-    const r = w[0] / w[1];
-    const bar = t.querySelector('.t-bar i');
-    if (bar) bar.style.width = (r * 100) + '%';
-    t.classList.toggle('low', r < 0.3 && !frozen);
-    t.classList.toggle('frozen', frozen);
-    const face = t.querySelector('.t-face');
-    if (face) face.textContent = frozen ? 'Dondu' : r > 0.6 ? 'Bekliyor' : r > 0.3 ? 'Acele et' : 'Son anlar';
-  });
-  $('#freezeTag').textContent = frozen ? '❄ ' + Math.ceil((st.freezeUntil - performance.now()) / 1000) : '';
-}
-function renderHearts(lost) {
-  const el = $('#hearts');
-  el.setAttribute('aria-label', `${st.hearts} can kaldı`);
-  el.innerHTML = Array.from({ length: HEARTS }, (_, k) => `<span class="${k < st.hearts ? '' : 'off'}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C8 18 2 13 2 7a5 5 0 0 1 10-1A5 5 0 0 1 22 7c0 6-6 11-10 14Z"/></svg></span>`).join('');
-  if (lost) { el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake'); }
-}
-function startClock() { st.started = true; }
 
 // ---------------------------------------------------------------- input
 function boardXY(e) {
-  const r = $('#boardFrame').getBoundingClientRect();
+  const r = frameEl.getBoundingClientRect();
   return [(e.clientX - r.left) / G.scale, (e.clientY - r.top) / G.scale];
 }
 function nearestCell(x, y, maxDist) {
-  let best = null, distance = maxDist;
-  st.cells.forEach((cell, c) => {
-    if (!st.stacks[cell.x].includes(c)) return;
-    const [px, py] = cellXY(c), d = Math.hypot(px - x, py - y);
-    if (d < distance) { best = c; distance = d; }
+  let best = null, bd = maxDist;
+  st.cells.forEach((c, i) => {
+    const d = Math.hypot(cx(c.x) - x, cy(c.y) - y);
+    if (d < bd) { bd = d; best = i; }
   });
-  if (best != null) return best;
-  for (let station = 0; station < st.T; station++) {
-    const [px, py] = objectCenter(station);
-    const inside = isTable(station)
-      ? Math.abs(x - px) < 88 && Math.abs(y - py) < 56
-      : Math.abs(x - px) < 46 && y > py - (st.h - 1) * TIER - 34 && y < py + 32;
-    if (inside) return st.stacks[station][0];
-  }
-  return null;
-}
-// pick the cup directly under the pointer
-function grabAt(c) {
-  return c == null ? null : st.at[c];
+  return best;
 }
 
 function onDown(e) {
   if (!st || st.over || !overlayEl.classList.contains('hidden')) return;
   if (!e.target.closest('#board')) { if (sel) { sel = null; render(); } return; }
+  audioContext(); // Unlock audio from the pointer gesture, including on mobile Safari.
   const [x, y] = boardXY(e);
-  const c = nearestCell(x, y, G.u * 0.75);
-  if (mode === 'swap') return onSwapTap(c);
+  const c = nearestCell(x, y, U * 0.75);
   drag = { c, p: grabAt(c), x0: e.clientX, y0: e.clientY, moved: false, pid: e.pointerId };
 }
 function onMove(e) {
   if (!drag || e.pointerId !== drag.pid) return;
   if (!drag.moved && Math.hypot(e.clientX - drag.x0, e.clientY - drag.y0) > 7) {
-    if (!drag.p || drag.p.pending) { drag = null; return; }
-    if (!movable(drag.p)) { nope(drag.p); drag = null; return; }
-    drag.moved = true;
+    if (!drag.p) { drag = null; return; }
     drag.d = dests(drag.p);
+    if (!drag.d.cells.length) { nope(drag.p); drag = null; return; }
+    drag.moved = true;
     sel = null;
     render();
     showSpots(drag.d.cells);
-    st.pieceEls.get(drag.p.id).classList.add('dragging');
-    startClock();
-    vibrate(8);
+    st.els.get(drag.p.id).classList.add('dragging');
     sfx('pick');
   }
   if (drag.moved) {
     const [x, y] = boardXY(e);
-    st.pieceEls.get(drag.p.id).style.transform = toXY([x, y - 12]);
-    const to = resolve(nearestCell(x, y - 12, G.u * 1.1));
+    const now = performance.now();
+    if ((!drag.rollAt || now - drag.rollAt >= 90) &&
+        (!drag.rollXY || Math.hypot(x - drag.rollXY[0], y - drag.rollXY[1]) > 3)) {
+      marbleRoll(.12, .65);
+      drag.rollAt = now;
+      drag.rollXY = [x, y];
+    }
+    st.els.get(drag.p.id).style.transform = toXY([x, y - 20]);
+    const to = resolve(nearestCell(x, y - 20, U * 0.9), drag.p);
     boardEl.querySelectorAll('.spots i').forEach(s => s.classList.toggle('over', +s.dataset.c === to));
   }
 }
@@ -709,153 +599,68 @@ function onUp(e) {
   const d = drag; drag = null;
   if (d.moved) {
     const [x, y] = boardXY(e);
-    st.pieceEls.get(d.p.id).classList.remove('dragging');
-    const to = resolve(nearestCell(x, y - 12, G.u * 1.1));
-    const from = [x, y - 12];
+    st.els.get(d.p.id).classList.remove('dragging');
+    const from = [x, y - 20];
+    const to = resolve(nearestCell(x, y - 20, U * 0.9), d.p);
     if (to == null || !d.d.cells.includes(to) || !doMove(d.p, to, from)) {
       render();
       slide(d.p, [from, cellXY(d.p.cell)]);
-      const targetCell = nearestCell(x, y - 12, G.u * 1.1);
-      if (!rejectTableDrop(d.p, targetCell) && to != null && to !== d.p.cell) sfx('nope');
+      if (to != null && to !== d.p.cell) { setHint(dropBlock(to) || 'Oraya giden yol kapalı', true); sfx('nope'); }
     }
     return;
   }
-  // tap: a selected cup moves to the next free place on the target station
-  const p = d.p && !d.p.pending ? d.p : null;
+  // tap: pick a disc, then tap where it should go
   if (sel) {
-    if (rejectTableDrop(sel, d.c)) return;
-    const to = resolve(d.c);
-    if (to != null && dests(sel).cells.includes(to)) { startClock(); doMove(sel, to); return; }
-    if (p === sel || !p) { sel = null; render(); return; }
+    const to = resolve(d.c, sel);
+    if (to != null && dests(sel).cells.includes(to)) { doMove(sel, to); return; }
+    if (d.p === sel || !d.p) { sel = null; render(); return; }
   }
-  if (p && movable(p)) { sel = p; startClock(); sfx('pick'); render(); }
-  else if (p) nope(p);
+  if (d.p) {
+    if (!dests(d.p).cells.length) { nope(d.p); return; }
+    sel = d.p; sfx('pick'); render();
+  }
 }
-function cancelDrag() {
-  if (drag && drag.moved) {
-    const el = st.pieceEls.get(drag.p.id);
-    if (el) { el.classList.remove('dragging'); place(drag.p); }
-  }
-  drag = null;
+// why a disc can't be dropped on cell `to` (null = no special reason)
+function dropBlock(to) {
+  const cell = st.cells[to];
+  if (cell.kind !== 'col') return null;
+  const c = cell.x - 1;
+  if (stopperClosed(c)) return 'Kapak kapalı, bir hamle sonra açılır';
+  if (covered(c) === 'box') return 'Kilitli kutu: anahtarlı taşın olduğu yuvayı tamamla';
+  return null;
 }
 function nope(p) {
-  const el = st.pieceEls.get(p.id);
-  if (el) { const disc = el.firstChild; disc.classList.remove('shake'); void disc.offsetWidth; disc.classList.add('shake'); }
-  if (!p.hidden && !isTop(p)) setHint('Önce üstündeki ürünü almalısın', 'swap');
-  else if (p.frozen > 0) setHint(`Buz ${p.frozen} hamle sonra çözülecek`);
-  else if (p.chain > 0) setHint(`Zincir ${p.chain} servis sonra kırılacak`);
-  else if (!dests(p).cells.length) setHint('Boş yer yok');
+  const el = st.els.get(p.id).firstChild;
+  el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake');
+  const cell = st.cells[p.cell];
+  setHint((cell.kind === 'col' && takeBlock(cell.x - 1)) || 'Bu taşın gidebileceği boş yol yok', true);
   sfx('nope');
 }
-
-// swap booster: tap any two layers (buried ones too)
-function onSwapTap(c) {
-  const p = c == null ? null : st.at[c];
-  if (!p || p.pending) return;
-  if (p.frozen > 0 || p.chain > 0) { nope(p); return; }
-  if (isTable(st.cells[c].x)) { setHint('Masadaki malzemeler değiştirilemez', 'swap'); sfx('nope'); return; }
-  if (!swapFirst) { swapFirst = p; sfx('pick'); render(); setHint('Şimdi değiştirmek istediğin ikinci malzemeye dokun', 'swap'); return; }
-  if (swapFirst === p) { swapFirst = null; render(); setHint('Yer değiştirmek için iki malzemeye dokun', 'swap'); return; }
-  const a = swapFirst, b = p;
-  const ca = a.cell, cb = b.cell;
-  st.at[ca] = b; st.at[cb] = a; a.cell = cb; b.cell = ca;
-  a.hidden = b.hidden = false;
-  boosters.swap--; save(LS.boosters, boosters);
-  mode = 'play'; swapFirst = null;
-  startClock();
-  render({ pop: [a.id, b.id] });
-  slide(a, [cellXY(ca), cellXY(cb)]);
-  slide(b, [cellXY(cb), cellXY(ca)]);
-  setHint('');
-  sfx('good');
-  serveReady(300, [st.cells[a.cell].x, st.cells[b.cell].x]);
-  fillWaiting();
-}
-
 document.addEventListener('pointerdown', onDown);
 document.addEventListener('pointermove', onMove);
 document.addEventListener('pointerup', onUp);
-document.addEventListener('pointercancel', () => { if (drag && drag.moved) { cancelDrag(); render(); } drag = null; });
+document.addEventListener('pointercancel', () => {
+  if (drag && drag.moved) { st.els.get(drag.p.id).classList.remove('dragging'); drag = null; render(); }
+  drag = null;
+});
+document.addEventListener('animationend', (e) => e.target.classList?.remove('shake'));
 
-// ---------------------------------------------------------------- boosters
-document.querySelectorAll('.booster').forEach(btn => btn.addEventListener('click', () => {
-  if (!st || st.over) return;
-  const b = btn.dataset.b;
-  if (b === 'swap' && mode === 'swap') { mode = 'play'; swapFirst = null; setHint(''); render(); return; }
-  if (boosters[b] <= 0) return;
-  sel = null;
-  if (b === 'space') {
-    if (st.extra >= 2) return;
-    st.lanes[st.lanes[0] <= st.lanes[1] ? 0 : 1]++;   // the shorter shelf grows one cell
-    st.extra++;
-    boosters.space--;
-    const before = new Map();
-    forEachPiece(q => before.set(q.id, cellXY(q.cell)));
-    buildGraph();
-    buildBoard();
-    render();
-    forEachPiece(q => { const a = before.get(q.id), b = cellXY(q.cell); if (a[0] !== b[0] || a[1] !== b[1]) slide(q, [a, b]); });
-    setHint('Masaya bir yer eklendi');
-    sfx('good');
-  } else if (b === 'freeze') {
-    st.freezeUntil = Math.max(performance.now(), st.freezeUntil) + FREEZE_MS;
-    boosters.freeze--;
-    startClock();
-    render();
-    setHint('Müşteriler 10 saniye sabırla bekleyecek');
-    sfx('crack');
-  } else if (b === 'swap') {
-    mode = 'swap'; swapFirst = null;
-    render();
-    setHint('Yer değiştirmek için iki malzemeye dokun', 'swap');
-  }
-  save(LS.boosters, boosters);
-}));
-
-// ---------------------------------------------------------------- overlay
-let previousFocus = null;
-function showCard(html) {
-  cancelDrag();
-  if (overlayEl.classList.contains('hidden')) previousFocus = document.activeElement;
-  cardEl.innerHTML = html; overlayEl.classList.remove('hidden');
-  cardEl.querySelector('button')?.focus({ preventScroll: true });
+// ---------------------------------------------------------------- overlay & buttons
+function showPop(html) { popEl.innerHTML = html; overlayEl.classList.remove('hidden'); }
+function hideOverlay() { overlayEl.classList.add('hidden'); }
+function showFeature(list) {
+  const f = list[0], [title, text] = FEATURES[f];
+  const intro = ART.features && ART.features[f + 'Intro'];
+  const demo = intro ? `<img class="feature-intro" src="${intro}" alt="">` : `<div class="feat-demo demo-${f}"></div>`;
+  showPop(`<div class="new">YENİ!</div><h2>${title}</h2>${demo}<p>${text}</p>
+    <button class="btn" data-act="feature" data-f="${f}" data-rest="${list.slice(1).join(',')}">Anladım</button>`);
 }
-function hideOverlay() {
-  overlayEl.classList.add('hidden');
-  if (previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });
-}
-function showHelp() {
-  showCard(`<div class="eyebrow">KÜÇÜK BİR KAHVE MOLASI</div><h2>Birlikte hazırlayalım.</h2>
-    <ol class="help-steps"><li>Sefer tasındaki bir yiyeceğe veya içeceğe dokunarak seç.</li><li>İki masadan birine bırak. İstersen sürükleyerek taşı.</li><li>Ürünlerin alttan üste dizilişini siparişteki sefer tasıyla eşleştir. Tamamlanan sefer tası otomatik servis edilir.</li></ol>
-    <p>Her masa yalnızca tek tür ürün alır. Boş masaya istediğin türle başlayabilirsin.</p>
-    <button class="btn" data-act="close">Hazırlamaya başla</button>`);
-}
-
-function showFeature(types) {
-  const t = types[0];
-  const f = FEATURES[t];
-  const demo = { color: 2, frozen: t === 'frozen' ? 5 : 0, chain: t === 'chained' ? 2 : 0, hidden: t === 'hidden' };
-  showCard(`
-    <div class="eyebrow">YENİ BİR SÜRPRİZ</div>
-    <h2>${f.title}</h2>
-    <div class="demo">${layerHTML(demo)}</div>
-    <p>${f.text}</p>
-    <button class="btn" data-act="feature" data-t="${t}" data-rest="${types.slice(1).join(',')}">Anladım</button>`);
-}
-
 function showMenu() {
-  let g = '';
-  LEVELS.forEach((L, i) => {
-    g += `<button data-act="go" data-i="${i}" class="${L.hard ? 'hard' : ''} ${i === levelIdx ? 'cur' : ''} ${won[i] ? 'won' : ''}">${i + 1}</button>`;
-  });
-  showCard(`
-    <div class="eyebrow">HER KATTA YENİ BİR LEZZET</div><h2>Lezzet yolculuğun</h2><p>Bir bölüm seç, tezgâhın başına geç.</p>
-    <div class="lvl-grid">${g}</div>
-    <button class="btn ghost" data-act="close">Kapat</button>
-    <button class="small-link" data-act="help">Nasıl oynanır?</button>`);
+  const grid = LEVELS.map((L, i) => `<button data-act="go" data-i="${i}" class="${i === levelIdx ? 'cur' : ''} ${L.hard ? 'hard' : ''}">${i + 1}
+    <small>${'★'.repeat(stars[i] || 0)}</small></button>`).join('');
+  showPop(`<h2>Bölümler</h2><div class="lvl-grid">${grid}</div><button class="btn ghost" data-act="close">Kapat</button>`);
 }
-
-cardEl.addEventListener('click', (e) => {
+popEl.addEventListener('click', (e) => {
   const b = e.target.closest('[data-act]');
   if (!b) return;
   const act = b.dataset.act;
@@ -864,69 +669,160 @@ cardEl.addEventListener('click', (e) => {
   else if (act === 'menu') showMenu();
   else if (act === 'go') startLevel(+b.dataset.i);
   else if (act === 'close') hideOverlay();
-  else if (act === 'help') showHelp();
-  else if (act === 'continue') {
-    st.continued = true; st.over = false; st.hearts = 1;
-    st.wait.forEach(w => { w[0] = w[1]; });
-    hideOverlay(); render(); updateClocks();
-  } else if (act === 'feature') {
-    seen[b.dataset.t] = true; save(LS.seen, seen);
+  else if (act === 'feature') {
+    seen[b.dataset.f] = true; save(LS.seen, seen);
     const rest = b.dataset.rest ? b.dataset.rest.split(',') : [];
     if (rest.length) showFeature(rest); else hideOverlay();
   }
 });
 $('#btnLevels').addEventListener('click', showMenu);
-$('#btnRestart').addEventListener('click', () => {
-  if (!st.started || st.over) { startLevel(levelIdx); return; }
-  showCard('<div class="eyebrow">TAZE BİR BAŞLANGIÇ</div><h2>Yeniden hazırlayalım mı?</h2><p>Bu bölümdeki hamlelerin sıfırlanacak.</p><button class="btn" data-act="retry">Yeniden başla</button><button class="btn ghost" data-act="close">Oyuna dön</button>');
-});
-function renderSound() {
-  $('#btnSound').setAttribute('aria-pressed', String(muted));
-  $('#btnSound').setAttribute('aria-label', muted ? 'Sesi aç' : 'Sesi kapat');
-}
-$('#btnSound').addEventListener('click', () => { muted = !muted; save(LS.muted, muted); renderSound(); });
-renderSound();
-document.addEventListener('keydown', e => {
-  if (overlayEl.classList.contains('hidden')) return;
-  if (e.key === 'Escape' && cardEl.querySelector('[data-act="close"]')) hideOverlay();
-  if (e.key === 'Tab') {
-    const buttons = [...cardEl.querySelectorAll('button')];
-    const first = buttons[0], last = buttons[buttons.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
-  }
-});
-window.addEventListener('resize', () => { if (st) { cancelDrag(); buildBoard(); render(); } });
+$('#btnSettings').addEventListener('click', () => openAdmin({
+  current: levelIdx, jump: startLevel,
+  getPockets: () => pocketsEnabled, setPockets: setPocketsEnabled
+}));
+$('#btnRestart').addEventListener('click', () => startLevel(levelIdx));
+$('#btnUndo').addEventListener('click', undo);
+window.addEventListener('resize', () => { if (st) { buildBoard(); render(); } });
 
 // ---------------------------------------------------------------- sound
 let ac = null;
-function sfx(kind) {
-  if (muted) return;
+let rollBuffer = null;
+const marbleRolls = new Set();
+function audioContext() {
   try {
     ac = ac || new (window.AudioContext || window.webkitAudioContext)();
-    const notes = {
-      pick: [[520, .05]], drop: [[330, .07]], good: [[660, .07], [880, .09]],
-      col: [[660, .08], [880, .08], [1100, .14]], nope: [[180, .1]], crack: [[1400, .04], [900, .05]],
-      win: [[523, .1], [659, .1], [784, .1], [1046, .25]], lose: [[392, .15], [330, .15], [262, .3]],
-    }[kind];
-    let t = ac.currentTime;
-    for (const [f, d] of notes) {
+    if (ac.state === 'suspended') ac.resume().catch(() => {});
+    return ac;
+  } catch (_) { return null; }
+}
+function stopMarbleRolls() {
+  [...marbleRolls].forEach(stop => stop());
+}
+// Soft, unpitched contact taps: no ringing tones, pitch sweeps or continuous hiss.
+function marbleRoll(duration, volume = 1) {
+  const ctx = audioContext();
+  if (!ctx) return () => {};
+  try {
+    if (!rollBuffer) {
+      rollBuffer = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * 1.2), ctx.sampleRate);
+      const data = rollBuffer.getChannelData(0);
+      let nextTick = 0, age = 1, strength = .8, softNoise = 0;
+      const smoothing = 1 - Math.exp(-2 * Math.PI * 1400 / ctx.sampleRate);
+      for (let i = 0; i < data.length; i++) {
+        if (i >= nextTick) {
+          age = 0;
+          strength = .7 + Math.random() * .25;
+          nextTick = i + Math.round(ctx.sampleRate * (.065 + Math.random() * .035));
+        }
+        // A rounded 28 ms tap followed by silence avoids the previous buzzing cadence.
+        const envelope = age < .028 ? Math.sin(Math.PI * age / .028) ** 2 : 0;
+        softNoise += smoothing * (Math.random() * 2 - 1 - softNoise);
+        const edge = Math.min(1, i / (ctx.sampleRate * .005), (data.length - 1 - i) / (ctx.sampleRate * .005));
+        data[i] = softNoise * envelope * strength * edge;
+        age += 1 / ctx.sampleRate;
+      }
+    }
+    const t = ctx.currentTime, end = t + Math.max(.06, duration);
+    const src = ctx.createBufferSource(), low = ctx.createBiquadFilter();
+    const high = ctx.createBiquadFilter(), gain = ctx.createGain();
+    src.buffer = rollBuffer; src.loop = true;
+    src.playbackRate.value = 1;
+    low.type = 'lowpass'; low.Q.value = .5; low.frequency.value = 1600;
+    high.type = 'highpass'; high.frequency.value = 420; high.Q.value = .5;
+    gain.gain.setValueAtTime(.0001, t);
+    gain.gain.exponentialRampToValueAtTime(.16 * volume, t + .018);
+    gain.gain.exponentialRampToValueAtTime(.065 * volume, Math.max(t + .02, end - .035));
+    gain.gain.exponentialRampToValueAtTime(.0001, end);
+    src.connect(low).connect(high).connect(gain).connect(ctx.destination);
+    let stopped = false;
+    const stop = () => {
+      if (stopped) return;
+      stopped = true;
+      marbleRolls.delete(stop);
+      const at = ctx.currentTime;
+      gain.gain.cancelScheduledValues(at);
+      gain.gain.setTargetAtTime(.0001, at, .006);
+      src.stop(at + .025);
+    };
+    marbleRolls.add(stop);
+    src.onended = () => {
+      stopped = true; marbleRolls.delete(stop);
+      src.disconnect(); low.disconnect(); high.disconnect(); gain.disconnect();
+    };
+    src.start(t, Math.random() * .5);
+    src.stop(end + .015);
+    return stop;
+  } catch (_) { return () => {}; }
+}
+function sfx(kind) {
+  try {
+    if (!audioContext()) return;
+    const t = ac.currentTime;
+    if (kind === 'marbleSeat') {
+      // Empty felt pocket / slot floor: a quiet, rounded tap with no glass ringing.
+      const buf = ac.createBuffer(1, Math.ceil(ac.sampleRate * .055), ac.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let i = 0; i < data.length; i++) {
+        const age = i / ac.sampleRate;
+        data[i] = (Math.random() * 2 - 1) * (1 - Math.exp(-age * 650)) *
+          Math.exp(-age * 95) * (1 - i / data.length);
+      }
+      const src = ac.createBufferSource(), low = ac.createBiquadFilter();
+      const high = ac.createBiquadFilter(), gain = ac.createGain();
+      src.buffer = buf;
+      low.type = 'lowpass'; low.frequency.value = 1300; low.Q.value = .5;
+      high.type = 'highpass'; high.frequency.value = 280; high.Q.value = .5;
+      gain.gain.value = .22;
+      src.connect(low).connect(high).connect(gain).connect(ac.destination);
+      src.onended = () => { src.disconnect(); low.disconnect(); high.disconnect(); gain.disconnect(); };
+      src.start(t);
+      return;
+    }
+    if (kind === 'marbleHit') {
+      // A dry glass clink: short resonant modes plus a sharp contact transient.
+      const pitch = .94 + Math.random() * .12;
+      for (const [frequency, level, decay] of [[1050, .12, .07], [2380, .075, .045], [3920, .035, .025]]) {
+        const ping = ac.createOscillator(), gain = ac.createGain();
+        ping.type = 'sine'; ping.frequency.value = frequency * pitch;
+        gain.gain.setValueAtTime(.0001, t);
+        gain.gain.exponentialRampToValueAtTime(level, t + .0015);
+        gain.gain.exponentialRampToValueAtTime(.0001, t + decay);
+        ping.connect(gain).connect(ac.destination);
+        ping.onended = () => { ping.disconnect(); gain.disconnect(); };
+        ping.start(t); ping.stop(t + decay + .01);
+      }
+      const buf = ac.createBuffer(1, Math.ceil(ac.sampleRate * .018), ac.sampleRate), data = buf.getChannelData(0);
+      for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / data.length, 4);
+      const src = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain();
+      src.buffer = buf; f.type = 'bandpass'; f.frequency.value = 2900; f.Q.value = 1.2; g.gain.value = .3;
+      src.connect(f).connect(g).connect(ac.destination);
+      src.onended = () => { src.disconnect(); f.disconnect(); g.disconnect(); };
+      src.start(t);
+      return;
+    }
+    if (kind === 'clack' || kind === 'pick') {
+      // short wooden knock: filtered noise burst
+      const len = kind === 'pick' ? 0.03 : 0.06;
+      const buf = ac.createBuffer(1, ac.sampleRate * len, ac.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / data.length, 3);
+      const src = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain();
+      src.buffer = buf; f.type = 'bandpass'; f.frequency.value = kind === 'pick' ? 1800 : 900; g.gain.value = 0.5;
+      src.connect(f).connect(g).connect(ac.destination); src.start(t);
+      return;
+    }
+    const notes = { nope: [[180, .1]], lock: [[660, .07], [990, .12]], crack: [[1400, .04], [900, .05]],
+      win: [[523, .1], [659, .1], [784, .1], [1046, .25]] }[kind];
+    let at = t;
+    for (const [fq, d] of notes) {
       const o = ac.createOscillator(), g = ac.createGain();
-      o.type = kind === 'nope' ? 'square' : 'triangle';
-      o.frequency.value = f;
-      g.gain.setValueAtTime(0.0001, t);
-      g.gain.exponentialRampToValueAtTime(0.12, t + 0.01);
-      g.gain.exponentialRampToValueAtTime(0.0001, t + d);
-      o.connect(g).connect(ac.destination);
-      o.start(t); o.stop(t + d + 0.02);
-      t += d * 0.8;
+      o.type = kind === 'nope' || kind === 'crack' ? 'square' : 'triangle'; o.frequency.value = fq;
+      g.gain.setValueAtTime(0.0001, at); g.gain.exponentialRampToValueAtTime(0.1, at + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, at + d);
+      o.connect(g).connect(ac.destination); o.start(at); o.stop(at + d + 0.02);
+      at += d * 0.8;
     }
   } catch (_) {}
 }
-function vibrate(ms) { try { navigator.vibrate && navigator.vibrate(ms); } catch (_) {} }
-
-document.addEventListener('animationend', (e) => e.target.classList?.remove('shake'));
 
 startLevel(levelIdx);
-requestAnimationFrame(tick);
 })();

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640">
+  <rect width="960" height="640" fill="#f6f0e3"/>
+  <g font-family="system-ui,sans-serif" fill="#394339">
+    <text x="48" y="54" font-size="26" font-weight="700">Kil yuva · sabit seramik ağız</text>
+    <text x="48" y="84" font-size="15">Oyun ölçüsü 128 × 40 · merkez y0 + 54 · açık boğaz · hareket yok</text>
+  </g>
+  <rect x="72" y="140" width="450" height="120" rx="45" fill="#254137"/>
+  <path d="M180 250V478Q180 558 260 558Q340 558 340 478V250" fill="#bd7850" stroke="#a56f39" stroke-width="7"/>
+  <circle cx="260" cy="198" r="65" fill="none" stroke="#adc3b2" stroke-width="2" stroke-dasharray="6 5"/>
+  <circle cx="260" cy="330.5" r="65" fill="none" stroke="#ead0b4" stroke-width="2" stroke-dasharray="6 5"/>
+  <g transform="translate(180 240.5) scale(1.25)">
+    <path d="M0 18Q0 3 16 3H112Q128 3 128 18V38H116V20Q116 15 110 15H18Q12 15 12 20V38H0Z" fill="#ce8a5e" stroke="#b08b4b" stroke-width="2"/>
+    <path d="M59 7l5 4 5-4" fill="none" stroke="#825336" stroke-width="1.8"/>
+  </g>
+  <path d="M260 115V575" stroke="#a59880" stroke-dasharray="4 6" fill="none"/>
+  <g stroke="#82765f" fill="none" stroke-width="1.4">
+    <path d="M180 220H340M180 214V226M340 214V226"/>
+    <path d="M346 252H548M330 278L548 327M270 251L548 399M186 400L548 471"/>
+  </g>
+  <g font-family="system-ui,sans-serif" fill="#394339" font-size="17">
+    <text x="231" y="212">128 px</text>
+    <text x="565" y="249">Yumuşak seramik kenar</text>
+    <text x="565" y="274" font-size="14">Kil kaplamanın malzemesiyle birleşir.</text>
+    <text x="565" y="324">Ortası saydam, aşağısı açık</text>
+    <text x="565" y="349" font-size="14">Bilyenin giriş alanını çerçeveler.</text>
+    <text x="565" y="396">Tek, küçük oyma yön işareti</text>
+    <text x="565" y="421" font-size="14">Seramiğin üzerinde; ayrı rozet yok.</text>
+    <text x="565" y="468">Mevcut kil kaplama</text>
+    <text x="565" y="493" font-size="14">Merkezler ve dar bilye aralığı korunur.</text>
+    <text x="48" y="612" font-size="14">Wireframe: biçim ve yerleşim referansı. Son görsel imagegen ile şeffaf PNG olarak üretilecek.</text>
+  </g>
+</svg>

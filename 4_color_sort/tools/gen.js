@@ -1,19 +1,38 @@
 #!/usr/bin/env node
-// Level generator for the café drink game.
+// Level generator for the four-colour sliding board.
 //   node tools/gen.js            -> writes levels.js + tools/solutions.json
-//   ONLY=3,10 node tools/gen.js  -> dry run of a few levels
-// Every column is a tiffin; the move that completes a tiffin equal (bottom -> top) to an
-// open order serves it, the tiffin is refilled with the next ingredient batch and the next
-// order opens. Nothing is ever served without that move (see fillSlots). A shelf (lane) only takes a layer onto an empty shelf or onto the same
-// ingredient. Each level is checked with a beam-search solver of exactly these rules;
-// the solver's move count drives candidate choice (difficulty) and customer patience.
+//   ONLY=1,10 node tools/gen.js  -> dry run of a few levels
+//
+// Board (like the wooden toy): `cols` vertical slots of `cap` = rows cells (no spare row), and a top
+// channel of cols + 2 cells (one free pocket beyond each outer slot). Slot c hangs under
+// channel cell c + 1. The board stands upright, so a disc dropped into a slot falls to the
+// lowest free cell. Nothing floats: a disc in the channel only stays in a pocket or above a
+// slot that is full or closed; above an open slot with room it falls in (also later, when
+// that slot opens). A disc only travels through empty cells, so a disc in the channel
+// blocks the way past it.
+// A slot that shows exactly its card column is complete: it gets a lid and is locked.
+// The level is won when every slot is complete.
+//
+// Level features (adapted from Magic Sort's blockers, see game.js for the player view):
+//   hidden   [[c,k]]      "?" disc, colour shown once it is the top of its slot
+//   clay     c            slot only takes discs, nothing can be taken out of it
+//   box      {c,key:[a,k]} slot c is boxed (no in/out, hidden) until the slot holding the key
+//                          disc (starts at slot a, height k) is complete
+//   ice      {c,k}        frozen disc: can't leave while on top; thaws when any slot completes
+//   plaster  c            slot sealed (no in/out, hidden) until a neighbour slot completes
+//   stopper  {c,open}     slot mouth opens/closes after every move
+//   bag      {c,n}        slot sealed (no in/out, hidden) until n slots are complete
+//   tag      {x,color}    end pocket where only that colour may stop
+//
+// A level is a random target card plus a start made by walking random legal moves back
+// from the solved board, then features are placed and a beam solver of all the rules above
+// checks it; its move count is the level's par (stars) and picks the difficulty.
 'use strict';
 const fs = require('fs');
 const path = require('path');
-const FOOD_ITEMS = require('../items.js');
-const MEAL_MENUS = require('../menus.js');
 
 const COUNT = 50;
+const COLORS = 4;
 
 function rng(seed) {
   return function () {
@@ -31,256 +50,282 @@ function shuffle(a, r) {
   return a;
 }
 
-// Level curve. hard = saw-tooth peak (every 5th level): harder candidate, tighter clock.
-// k = ingredient kinds, orders = drinks to serve, open = orders shown side by side.
-function params(n) {
-  return {
-    cols: 4, h: 3, open: 2, lanes: [3, 3],
-    // Introduce familiar meal families gradually; every order comes from a curated menu.
-    menuPool: n <= 5 ? [0, 7] : n <= 10 ? [0, 7, 2] : n <= 15 ? [1, 5] : n <= 20 ? [3, 4] : n <= 30 ? [0, 7, 2, 5] : n <= 40 ? [1, 3, 4, 5] : MEAL_MENUS.map((_, i) => i),
-    // at least cols + 1 orders, so every level refills a tiffin at least once
-    orders: n <= 5 ? 5 : n <= 15 ? 6 : n <= 25 ? 7 : n <= 35 ? 8 : n <= 42 ? 9 : 10,
-    frozen: 0, hidden: 0, chained: 0, hard: n % 5 === 0,
-  };
+// ---------- level curve ----------
+// each feature is introduced alone, then mixed in; every 5th level is a harder peak
+const PLAN = {
+  1: [], 2: [], 3: ['hidden'], 4: ['hidden'], 5: ['hidden'],
+  6: ['clay'], 7: ['clay', 'hidden'], 8: ['box'], 9: ['box', 'hidden'], 10: ['box', 'clay'],
+  11: ['ice'], 12: ['ice', 'hidden'], 13: [], 14: ['hidden'], 15: ['ice', 'box'],
+  16: ['plaster'], 17: ['plaster', 'hidden'], 18: ['clay', 'ice'], 19: ['stopper'], 20: ['stopper', 'plaster'],
+  21: ['tag'], 22: ['tag', 'hidden'], 23: ['bag'], 24: ['bag', 'ice'], 25: ['box', 'stopper', 'hidden'],
+};
+// level that introduces each feature
+const FIRST = {};
+for (const n of Object.keys(PLAN).map(Number).sort((a, b) => a - b)) for (const f of PLAN[n]) if (!(f in FIRST)) FIRST[f] = n;
+const MIX = ['hidden', 'clay', 'box', 'ice', 'plaster', 'stopper', 'bag', 'tag'];
+function params(n, r) {
+  const rows = n <= 12 ? 3 : 4;
+  const hard = n % 5 === 0;
+  let features = PLAN[n];
+  if (!features) {
+    const k = hard ? 3 : 2;
+    features = shuffle(MIX.slice(), r).slice(0, k);
+  }
+  return { n, cols: 4, rows, cap: rows, hard, features };
 }
 
-// ---------- solver ----------
-// stacks: 0 = left lane, 1..cols = glasses, cols+1 = right lane (deep end first).
-// State: t stacks, act open order ids, q queued order ids, sup next refill batch,
-// served count, gone = bitmask of locks whose disc was served away.
-function prefix(col, t) {
-  let p = 0;
-  while (p < col.length && col[p] === t[p]) p++;
-  return p;
-}
-const same = (a, b) => a.length === b.length && a.every((v, i) => v === b[i]);
-
-// Nothing may ever be served without the move that completes it, so a newly opened order
-// must not match a full tiffin and a refill must not match an open order. An order keeps
-// its ingredients but its layer sequence is chosen when it opens: the designed sequence,
-// else the first other arrangement no full tiffin shows. If no queued order can open that
-// way, the slot waits ("customer on the way") until the tiffins change. Refills use the
-// first arrangement that matches no open order. The game does exactly the same.
-function perms(rec) {
-  const out = [], seen = new Set();
-  const go = (rest, cur) => {
-    if (!rest.length) { const k = cur.join(); if (!seen.has(k)) { seen.add(k); out.push(cur); } return; }
-    rest.forEach((v, i) => go(rest.slice(0, i).concat(rest.slice(i + 1)), cur.concat(v)));
-  };
-  go(rec, []);
-  return out;   // the designed sequence comes first
-}
-const fullTiffins = (s, L) => s.t.slice(1, L.cols + 1).filter(g => g.length === L.h);
-// open orders while slots are free and some queued order has an arrangement no full tiffin shows
-function fillSlots(s, L) {
-  while (s.act.length < L.open && s.q.length) {
-    const full = fullTiffins(s, L);
-    let pick = null;
-    for (let i = 0; i < s.q.length && !pick; i++) {
-      const r = perms(L.recipes[s.q[i]]).find(r => !full.some(g => same(g, r)));
-      if (r) pick = [i, r];
-    }
-    if (!pick) return;
-    s.q = s.q.slice();
-    const [o] = s.q.splice(pick[0], 1);
-    s.act.push({ o, r: pick[1] });
-  }
-}
-function refillBatch(batch, s) {
-  return perms(batch).find(r => !s.act.some(a => same(a.r, r))) || batch.slice();
-}
-const matchOf = (s, L, c) => s.t[c].length === L.h ? s.act.findIndex(a => same(a.r, s.t[c])) : -1;
-// serve tiffin c (it matches open order s.act[i])
-function serve(s, L, c, i) {
-  s.t[c] = [];
-  s.act.splice(i, 1);
-  fillSlots(s, L);
-  s.t[c] = s.sup < L.batches.length ? refillBatch(L.batches[s.sup], s) : [];
-  s.sup++;
-  s.served++;
-  fillSlots(s, L);
-  L.locks.forEach((lk, j) => { if (lk.c + 1 === c) s.gone |= 1 << j; });
-}
-function lockedTop(s, a, L) {
-  for (let j = 0; j < L.locks.length; j++) {
-    const lk = L.locks[j];
-    if (s.gone & (1 << j) || lk.c + 1 !== a || s.t[a].length !== lk.i + 1) continue;
-    if (lk.type === 'frozen' ? s.d < lk.n : s.served < lk.n) return true;
-  }
+// ---------- model ----------
+// state: t = slot stacks (bottom first), ch = channel (-1 empty); a disc is its colour, the key
+// disc is colour + KEY (so it is tracked wherever it goes); done = bitmask of complete
+// slots, box = box opened, thaw = ice gone, d = moves made (stopper phase)
+const KEY = 4, colour = v => v & 3;
+const bit = c => 1 << c;
+const popcount = m => { let n = 0; while (m) { n += m & 1; m >>= 1; } return n; };
+function covered(s, c, F) {          // sealed and hidden
+  if (F.box && F.box.c === c && !s.box) return true;
+  if (F.plaster === c && !(s.done & bit(c - 1)) && !(s.done & bit(c + 1))) return true;
+  if (F.bag && F.bag.c === c && popcount(s.done) < F.bag.n) return true;
   return false;
 }
-function score(s, L) {
-  let sc = s.served * 60;
-  const avail = new Set();
-  for (const lane of [0, L.cols + 1]) {
-    const t = s.t[lane];
-    if (t.length) avail.add(t[t.length - 1]);
-    sc -= t.length * 0.4;
-  }
-  const best = [];
-  for (let c = 1; c <= L.cols; c++) {
-    const col = s.t[c];
-    let bp = 0, bo = null;
-    for (const a of s.act) { const p = prefix(col, a.r); if (p > bp) { bp = p; bo = a.r; } }
-    best[c] = [bp, bo];
-    if (bp < col.length) avail.add(col[col.length - 1]);
-    sc += bp * 6 - (col.length - bp) * 2;
-  }
-  for (let c = 1; c <= L.cols; c++) {
-    const [bp, bo] = best[c];
-    if (bo && bp === s.t[c].length && bp < L.h && avail.has(bo[bp])) sc += 2;
-  }
-  return sc;
+function blocked(s, c, F) {
+  if (s.done & bit(c) || covered(s, c, F)) return true;
+  return !!F.stopper && F.stopper.c === c && ((s.d % 2 === 0) !== F.stopper.open);
 }
-function key(s) {
-  return s.t.map(c => c.join(',')).join('|') + '#' + s.act.map(a => a.o + ':' + a.r.join(',')).join(',') + '#' + s.q.join(',') + '#' + s.gone;
+function canTake(s, c, F) {
+  if (blocked(s, c, F) || F.clay === c) return false;
+  return !(F.ice && F.ice.c === c && !s.thaw && s.t[c].length === F.ice.k + 1);
 }
-function expand(s, L) {
-  const out = [];
-  const T = s.t.length;
-  for (let a = 0; a < T; a++) {
+const chOk = (x, v, F) => !F.tag || F.tag.x !== x || F.tag.color === colour(v);
+// after a move: box, completions, ice, then discs above open slots fall in (repeat)
+function after(s, F, card, cap) {
+  for (let again = true; again;) {
+    again = false;
+    update(s, F, card);
+    for (let c = 0; c < card.length; c++) {
+      const v = s.ch[c + 1];
+      if (v < 0 || blocked(s, c, F) || s.t[c].length >= cap) continue;
+      s.t = s.t.slice(); s.t[c] = s.t[c].concat(v);
+      s.ch = s.ch.slice(); s.ch[c + 1] = -1;
+      again = true;
+    }
+  }
+}
+// a channel cell where a disc may come to rest (pocket, or above a full / closed slot)
+const canRest = (s, t, x, F, cap) => x === 0 || x === t.length + 1 || blocked(s, x - 1, F) || t[x - 1].length >= cap;
+function update(s, F, card) {
+  for (let again = true; again;) {
+    again = false;
+    for (let c = 0; c < card.length; c++) {
+      if (s.done & bit(c) || covered(s, c, F)) continue;
+      const col = s.t[c];
+      if (col.length === card[c].length && col.every((v, i) => colour(v) === card[c][i])) { s.done |= bit(c); again = true; }
+    }
+    // the box opens once the slot holding the key disc is complete
+    if (F.box && !s.box && s.t.some((col, c) => s.done & bit(c) && col.some(v => v >= KEY))) { s.box = true; again = true; }
+  }
+  if (s.done) s.thaw = true;
+}
+const key = (s, F) => s.t.map(c => c.join('')).join('|') + '#' + s.ch.map(v => v < 0 ? '.' : v).join('') +
+  '#' + s.done + (s.box ? 'b' : '') + (s.thaw ? 'i' : '') + (F.stopper ? s.d % 2 : '');
+function emptyRun(ch, x) {
+  let l = x, r = x;
+  while (l > 0 && ch[l - 1] < 0) l--;
+  while (r < ch.length - 1 && ch[r + 1] < 0) r++;
+  return [l, r];
+}
+// every legal move from s: [state, move]; move = [from, to] with 'tC' slot / 'hX' channel
+function moves(s, cap, F, card) {
+  const out = [], n = s.t.length;
+  const next = (t, ch, mv) => {
+    const ns = { t, ch, done: s.done, box: s.box, thaw: s.thaw, d: s.d + 1 };
+    after(ns, F, card, cap);
+    out.push([ns, mv]);
+  };
+  for (let a = 0; a < n; a++) {
     const src = s.t[a];
-    if (!src.length || lockedTop(s, a, L)) continue;
+    if (!src.length || s.ch[a + 1] >= 0 || !canTake(s, a, F)) continue;
     const v = src[src.length - 1];
-    for (let b = 0; b < T; b++) {
-      if (b === a || s.t[b].length >= L.cap[b]) continue;
-      // shelves hold one ingredient kind only
-      if ((b === 0 || b === T - 1) && s.t[b].length && s.t[b][s.t[b].length - 1] !== v) continue;
-      const t = s.t.slice();
-      t[a] = src.slice(0, -1);
-      t[b] = s.t[b].concat(v);
-      const n = { t, act: s.act.slice(), q: s.q, sup: s.sup, served: s.served, gone: s.gone, d: s.d + 1, par: s, mv: ['t' + a, 't' + b] };
-      if (b >= 1 && b <= L.cols && matchOf(n, L, b) >= 0) serve(n, L, b, matchOf(n, L, b));
-      else fillSlots(n, L);   // a waiting customer may be able to come now
-      out.push(n);
+    const [l, r] = emptyRun(s.ch, a + 1);
+    for (let b = 0; b < n; b++) {
+      if (b === a || b + 1 < l || b + 1 > r || s.t[b].length >= cap || blocked(s, b, F)) continue;
+      const t = s.t.slice(); t[a] = src.slice(0, -1); t[b] = s.t[b].concat(v);
+      next(t, s.ch, ['t' + a, 't' + b]);
+    }
+    for (let x = l; x <= r; x++) {
+      const t = s.t.slice(); t[a] = src.slice(0, -1);
+      if (!chOk(x, v, F) || !canRest(s, t, x, F, cap)) continue;
+      const ch = s.ch.slice(); ch[x] = v;
+      next(t, ch, ['t' + a, 'h' + x]);
+    }
+  }
+  for (let x = 0; x < s.ch.length; x++) {
+    const v = s.ch[x];
+    if (v < 0) continue;
+    const [l, r] = emptyRun(s.ch, x);
+    for (let b = 0; b < n; b++) {
+      if (b + 1 < l || b + 1 > r || s.t[b].length >= cap || blocked(s, b, F)) continue;
+      const t = s.t.slice(); t[b] = s.t[b].concat(v);
+      const ch = s.ch.slice(); ch[x] = -1;
+      next(t, ch, ['h' + x, 't' + b]);
+    }
+    for (let y = l; y <= r; y++) {
+      if (y === x || !chOk(y, v, F) || !canRest(s, s.t, y, F, cap)) continue;
+      const ch = s.ch.slice(); ch[x] = -1; ch[y] = v;
+      next(s.t, ch, ['h' + x, 'h' + y]);
     }
   }
   return out;
 }
-function solve(L, W) {
-  const s0 = { t: [[]].concat(L.start.map(c => c.slice()), [[]]), act: [], q: L.recipes.map((_, o) => o), sup: 0, served: 0, gone: 0, d: 0 };
-  fillSlots(s0, L);
+
+// ---------- solver ----------
+function prefix(col, t) { let p = 0; while (p < col.length && colour(col[p]) === t[p]) p++; return p; }
+function score(s, card) {
+  let sc = popcount(s.done) * 30;
+  const avail = new Set();
+  s.ch.forEach(v => { if (v >= 0) { avail.add(colour(v)); sc -= 1.2; } });
+  s.t.forEach((col, c) => {
+    if (s.done & bit(c)) return;
+    const p = prefix(col, card[c]);
+    if (p < col.length) avail.add(colour(col[col.length - 1]));
+    sc += p * 6 - (col.length - p) * 2;
+  });
+  s.t.forEach((col, c) => {
+    const p = prefix(col, card[c]);
+    if (p === col.length && p < card[c].length && avail.has(card[c][p])) sc += 2;
+  });
+  if (s.box) sc += 4;
+  if (s.thaw) sc += 3;
+  return sc;
+}
+function solve(start, card, cap, F, W) {
+  const all = (1 << card.length) - 1;
+  const t0 = start.t.map(c => c.slice());
+  if (F.box) t0[F.box.key[0]][F.box.key[1]] += KEY;
+  const s0 = { t: t0, ch: start.ch, done: 0, box: false, thaw: false, d: 0, par: null, mv: null };
+  after(s0, F, card, cap);
+  if (s0.done) return null;            // nothing may start complete
   let frontier = [s0];
-  const visited = new Set([key(s0)]);
-  for (let depth = 0; depth < 500; depth++) {
+  const seen = new Set([key(s0, F)]);
+  for (let depth = 0; depth < 300; depth++) {
     const next = [];
     for (const s of frontier) {
-      for (const t of expand(s, L)) {
-        if (t.served === L.recipes.length) return t;
-        const k = key(t);
-        if (visited.has(k)) continue;
-        visited.add(k);
-        t.sc = score(t, L);
+      for (const [t, mv] of moves(s, cap, F, card)) {
+        const k = key(t, F);
+        if (seen.has(k)) continue;
+        seen.add(k);
+        t.par = s; t.mv = mv;
+        if (t.done === all) return t;
+        t.sc = score(t, card);
         next.push(t);
       }
     }
     if (!next.length) return null;
-    next.sort((x, y) => y.sc - x.sc);
+    next.sort((a, b) => b.sc - a.sc);
     frontier = next.slice(0, W);
   }
   return null;
 }
 
 // ---------- level build ----------
-function makeCandidate(p, r) {
-  const menuIds = Array.from({ length: p.orders }, () => p.menuPool[Math.floor(r() * p.menuPool.length)]);
-  // Two distinct, familiar meals make the opening goal easy to read.
-  if (p.menuPool.length > 1 && menuIds[0] === menuIds[1]) menuIds[1] = p.menuPool[(p.menuPool.indexOf(menuIds[0]) + 1) % p.menuPool.length];
-  const recipes = menuIds.map(id => MEAL_MENUS[id].items.slice());
-  // the glasses start with the first `cols` drinks' ingredients, all mixed up;
-  // every later refill batch is one later drink, shuffled
-  let start;
-  for (let tries = 0; tries < 50; tries++) {
-    const pool = shuffle([].concat(...recipes.slice(0, p.cols)), r);
-    start = [];
-    for (let c = 0; c < p.cols; c++) start.push(pool.slice(c * p.h, (c + 1) * p.h));
-    if (!start.some(col => recipes.slice(0, p.open).some(rec => same(rec, col)))) break;
+function makeCard(p, r) {
+  // no column already sorted into one colour, so every column needs work
+  for (;;) {
+    const bag = shuffle(Array.from({ length: p.cols * p.rows }, (_, i) => i % COLORS), r);
+    const card = Array.from({ length: p.cols }, (_, c) => bag.slice(c * p.rows, (c + 1) * p.rows));
+    if (!card.some(col => col.every(v => v === col[0]))) return card;
   }
-  const batches = recipes.slice(p.cols).map(rec => shuffle(rec.slice(), r));
-  return { recipes, menuIds, start, batches };
 }
-
-function placeSpecials(p, r) {
-  const specials = [];
-  const used = new Set();
-  const pick = (ok) => {
-    for (let t = 0; t < 200; t++) {
-      const c = Math.floor(r() * p.cols), i = Math.floor(r() * p.h);
-      const k = c + ':' + i;
-      if (used.has(k) || !ok(c, i)) continue;
-      used.add(k);
-      return [c, i];
+// featureless moves for the scramble walk
+function plainMoves(s, cap) {
+  return moves({ ...s, done: 0, box: true, thaw: true, d: 0 }, cap, {}, []).map(([t, mv]) => [{ t: t.t, ch: t.ch }, mv]);
+}
+function scramble(card, p, r, steps) {
+  let s = { t: card.map(c => c.slice()), ch: new Array(p.cols + 2).fill(-1) };
+  let last = null;
+  // slots have no spare row, so the start may keep some discs resting in the channel
+  for (let i = 0; i < steps; i++) {
+    const opts = plainMoves(s, p.cap).filter(([t]) => key({ ...t, done: 0 }, {}) !== last);
+    last = key({ ...s, done: 0 }, {});
+    s = opts[Math.floor(r() * opts.length)][0];
+  }
+  return s;
+}
+// place the level's features on a scrambled start; null if the start doesn't allow it
+function placeFeatures(p, start, card, r) {
+  const F = {};
+  const free = shuffle([0, 1, 2, 3], r);     // one slot feature per slot
+  const take = (ok) => { const i = free.findIndex(ok); return i < 0 ? -1 : free.splice(i, 1)[0]; };
+  const isPrefix = c => start.t[c].length < card[c].length && start.t[c].every((v, i) => v === card[c][i]);
+  for (const f of p.features) {
+    if (f === 'clay') { const c = take(isPrefix); if (c < 0) return null; F.clay = c; }
+    if (f === 'box') {
+      const keySlot = take(c => start.t[c].length >= 2);
+      const c = take(() => true);
+      if (keySlot < 0 || c < 0) return null;
+      F.box = { c, key: [keySlot, Math.floor(r() * (start.t[keySlot].length - 1))] };
     }
-    return null;
-  };
-  // frozen / chained: never the very top piece, never two locks in one glass
-  const lockedCols = new Set();
-  const lockOk = (c, i) => i < p.h - 1 && i > 0 && !lockedCols.has(c);
-  for (let j = 0; j < p.frozen; j++) {
-    const at = pick(lockOk);
-    if (!at) break;
-    lockedCols.add(at[0]);
-    specials.push({ c: at[0], i: at[1], type: 'frozen', n: 4 + Math.floor(r() * 4) + (p.hard ? 2 : 0) });
+    if (f === 'ice') {
+      const c = take(c => start.t[c].length >= 1);
+      if (c < 0) return null;
+      F.ice = { c, k: Math.min(p.cap - 2, Math.floor(r() * start.t[c].length)) };
+      if (F.ice.k >= start.t[c].length) return null;
+    }
+    if (f === 'plaster') {
+      // the intro level puts it in a middle slot, so it has a neighbour on both sides
+      const c = take(c => p.n !== FIRST.plaster || (c > 0 && c < p.cols - 1));
+      if (c < 0) return null;
+      F.plaster = c;
+    }
+    if (f === 'stopper') { const c = take(() => true); if (c < 0) return null; F.stopper = { c, open: r() < 0.5 }; }
+    if (f === 'bag') { const c = take(() => true); if (c < 0) return null; F.bag = { c, n: 1 + Math.floor(r() * 2) }; }
+    if (f === 'tag') {
+      // only in the end pockets, never under a start disc of another colour (it couldn't rest there)
+      const color = Math.floor(r() * COLORS);
+      const xs = [0, p.cols + 1].filter(x => start.ch[x] < 0 || start.ch[x] === color);
+      if (!xs.length) return null;
+      F.tag = { x: xs[Math.floor(r() * xs.length)], color };
+    }
+    if (f === 'hidden') {
+      const spots = [];
+      start.t.forEach((col, c) => col.forEach((_, k) => { if (k < col.length - 1) spots.push([c, k]); }));
+      F.hidden = shuffle(spots, r).slice(0, p.rows === 3 ? 3 + Math.floor(r() * 2) : 4 + Math.floor(r() * 3));
+    }
   }
-  for (let j = 0; j < p.chained; j++) {
-    const at = pick(lockOk);
-    if (!at) break;
-    lockedCols.add(at[0]);
-    specials.push({ c: at[0], i: at[1], type: 'chained', n: 1 + Math.floor(r() * 2) });
-  }
-  for (let j = 0; j < p.hidden; j++) {
-    const at = pick((c, i) => i < p.h - 1);
-    if (!at) break;
-    specials.push({ c: at[0], i: at[1], type: 'hidden' });
-  }
-  return specials;
+  return F;
 }
-
 function build(n) {
-  const p = params(n);
-  const r = rng(2000 + n * 7919);
-  const cands = [];
-  for (let k = 0; k < 6; k++) {
-    const cand = makeCandidate(p, r);
-    cand.specials = placeSpecials(p, r);
-    const L = {
-      cols: p.cols, h: p.h, open: p.open, recipes: cand.recipes, batches: cand.batches, start: cand.start,
-      cap: [p.lanes[0]].concat(cand.start.map(() => p.h), [p.lanes[1]]),
-      locks: cand.specials.filter(x => x.type !== 'hidden'),
-    };
-    const end = solve(L, +(process.env.W || 300)) || solve(L, 1500);
-    if (!end) continue;
-    const path = [];
-    for (let s = end; s.par; s = s.par) path.unshift(s.mv);
-    cands.push(Object.assign(cand, { moves: end.d, path }));
+  const r = rng(5000 + n * 7919);
+  const p = params(n, r);
+  const want = p.rows === 3 ? 6 + n * 0.8 : 12 + (n - 12) * 0.35;
+  let best = null;
+  for (let tries = 0; tries < 80; tries++) {
+    const card = makeCard(p, r);
+    const start = scramble(card, p, r, 120 + Math.floor(r() * 40));
+    const F = placeFeatures(p, start, card, r);
+    if (!F) continue;
+    const end = solve(start, card, p.cap, F, 400) || solve(start, card, p.cap, F, 2000);
+    if (!end || end.d < 4) continue;
+    const pathMv = [];
+    for (let s = end; s.par; s = s.par) pathMv.unshift(s.mv);
+    const cand = { card, start: start.t, startCh: start.ch, features: F, par: end.d, path: pathMv };
+    const target = want * (p.hard ? 1.25 : 1);
+    if (!best || Math.abs(cand.par - target) < Math.abs(best.par - target)) best = cand;
+    if (tries >= 6 && Math.abs(best.par - target) <= 2) break;
   }
-  if (!cands.length) throw new Error('no solvable candidate for level ' + n);
-  cands.sort((a, b) => a.moves - b.moves);
-  // easy early levels take the shortest, peaks take the longest, rest the median
-  const c = cands[p.hard ? cands.length - 1 : n <= 4 ? 0 : Math.floor(cands.length / 2)];
-  // seconds per move: generous early, tighter later; hard peaks a bit tighter again
-  let spm = n <= 5 ? 4 : n <= 15 ? 3.2 : n <= 30 ? 2.8 : 2.5;
-  if (p.hard) spm *= 0.88;
-  // patience of one customer: time for the open orders ahead of it plus slack
-  // (the first wave gets 1.5x in the game, the board starts mixed up)
-  const perServe = (c.moves * spm + p.hidden * 1.5) / p.orders;
-  const patience = Math.ceil((perServe * (p.open + 0.5) + 8) / 5) * 5;
-  return {
-    n, cols: p.cols, h: p.h, lanes: p.lanes, open: p.open, hard: p.hard, patience, moves: c.moves,
-    recipes: c.recipes, menuIds: c.menuIds, start: c.start, batches: c.batches, specials: c.specials, path: c.path,
-  };
+  if (!best) throw new Error('no level ' + n);
+  return { n, cols: p.cols, rows: p.rows, cap: p.cap, hard: p.hard, par: best.par,
+    card: best.card, start: best.start, startCh: best.startCh, features: best.features, path: best.path };
 }
 
 const ONLY = process.env.ONLY ? process.env.ONLY.split(',').map(Number) : null;
-const levels = [];
-const solutions = [];
+const levels = [], solutions = [];
 for (let n = 1; n <= COUNT; n++) {
   if (ONLY && !ONLY.includes(n)) continue;
   const L = build(n);
   solutions.push(L.path);
   delete L.path;
   levels.push(L);
-  process.stdout.write(`L${n}: ${L.cols}x${L.h} orders ${L.recipes.length} moves ${L.moves} patience ${L.patience}s${L.hard ? ' HARD' : ''}\n`);
+  process.stdout.write(`L${n}: ${L.cols}x${L.rows} par ${L.par}${L.hard ? ' HARD' : ''} ${Object.keys(L.features).join(',')}\n`);
 }
 if (ONLY) process.exit(0);
 fs.writeFileSync(path.join(__dirname, '..', 'levels.js'),
