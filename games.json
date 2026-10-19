@@ -1,9 +1,5 @@
 [
   {
-    "name": "Café Sort",
-    "path": "4_color_sort/index.html"
-  },
-  {
     "name": "Cartograph",
     "path": "Cartograph/index.html"
   },
@@ -18,6 +14,10 @@
   {
     "name": "Cocktail Sort",
     "path": "cocktail_sort/index.html"
+  },
+  {
+    "name": "Crowd Detective",
+    "path": "Waldo/game/index.html"
   },
   {
     "name": "Find The Cat",
@@ -60,6 +60,10 @@
     "path": "Jigsolitaire/index.html"
   },
   {
+    "name": "Marble Stack",
+    "path": "4_color_sort/index.html"
+  },
+  {
     "name": "Match3 Pair",
     "path": "Match3 Pair/index.html"
   },
@@ -94,9 +98,5 @@
   {
     "name": "Tidy Up",
     "path": "Tidy Up/game/index.html"
-  },
-  {
-    "name": "Waldo",
-    "path": "Waldo/game/index.html"
   }
 ]
