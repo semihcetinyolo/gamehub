@@ -1,0 +1,53 @@
+{
+  "id": "bird",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:17:37.914906+00:00",
+  "source": "assets/glass/bird-junctions.webp",
+  "sourceSha256": "4fa064c014eaabf05453ce506e7ba354c33c12bff277659fdaf38cdc9debd2cb",
+  "sourceGeometrySha256": "979e0ca64a10118e7f88a73fba17d29a754dc79a150a030c447d7270f620ce9f",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 75,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.3813723568842397
+    },
+    {
+      "patchSize": 80,
+      "donorPatches": 87,
+      "colour": 1,
+      "preservedFraction": 0.38636976419744606
+    },
+    {
+      "patchSize": 75,
+      "donorPatches": 24,
+      "colour": 2,
+      "preservedFraction": 0.2423821154530986
+    },
+    {
+      "patchSize": 37,
+      "donorPatches": 32,
+      "colour": 3,
+      "preservedFraction": 0.012083363863881964
+    }
+  ],
+  "size": [
+    1613,
+    2150
+  ],
+  "guide": "6913088ba10a45182fbfb6ac30cafeeff70934b3648ba1288337fba7dd59a2d4",
+  "sha256": "2ae8a4734c918554e9d42c79778a4bb8e1c5af939f101711f1931a50b9c5377e",
+  "palette": [
+    "#f78306",
+    "#f25984",
+    "#2ca6e7",
+    "#468c0d"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 34,
+    "total": 34,
+    "mismatches": []
+  }
+}

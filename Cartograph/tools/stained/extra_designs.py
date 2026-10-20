@@ -194,7 +194,7 @@ def rose():
 def iris():
     petals = [(petal_poly((6, 8.5), a, length, width), c) for a, length, width, c in
               [(-90, 5.7, 1.5, 0), (-140, 4.5, 1.3, 1), (-40, 4.5, 1.3, 1), (145, 3.4, 1.4, 0), (35, 3.4, 1.4, 0)]]
-    return compose([(oval(6, 8.2, .8, 1.1), 1), *petals,
+    return compose([(oval(6, 8.2, .8, 1.3), 1), *petals,
                     (poly([(5.6, 9), (6.4, 9), (6.4, 16), (5.6, 16)]), 2),
                     (petal_poly((6, 15.8), -120, 4.8, .85), 2), (petal_poly((6, 15.8), -60, 4.8, .85), 2)], 17)
 

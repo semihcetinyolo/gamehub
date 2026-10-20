@@ -1,0 +1,27 @@
+{
+  "id": "motif_chameleon",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:00:15.206096+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Bukalemun. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_chameleon.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "db6d89e72538bdf4c2e0555df67991136a1a08c80c143b0b755be9f4faea3853",
+  "sha256": "0e567a93289740203279ab1b3ce4b0fdd485f431a08f5cb24e6ee0d462ec945e",
+  "palette": [
+    "#d3487d",
+    "#fee644",
+    "#1ca2ad",
+    "#092b6a"
+  ],
+  "paneColorCheck": {
+    "matched": 33,
+    "total": 33,
+    "valid": true,
+    "mismatches": []
+  }
+}

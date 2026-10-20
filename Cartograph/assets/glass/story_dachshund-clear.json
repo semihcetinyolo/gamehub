@@ -1,0 +1,27 @@
+{
+  "id": "story_dachshund",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:17:02.108675+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Parkta Gezinti. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_dachshund.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "7ab5245af49eefd1256f54ecf746a4b9858510ecb32f14b158198d37c111c769",
+  "sha256": "6a123e81908c14fc688bbf0266bb4b43da0df66743688ec4f1228e857f4ac4c1",
+  "palette": [
+    "#e85719",
+    "#fef4a1",
+    "#70a616",
+    "#025185"
+  ],
+  "paneColorCheck": {
+    "matched": 37,
+    "total": 37,
+    "valid": true,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "turtle",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:18:27.995878+00:00",
+  "source": "assets/glass/turtle.webp",
+  "sourceSha256": "edd365b7e81acdd4a7981077a994296352b76b8fade5bbe6ad9e1f12f65a6e46",
+  "sourceGeometrySha256": "bdb825ccd76bbb0d0cbd4188170eca0bec3fee13615ae3345312ced264ec1a7d",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 74,
+      "donorPatches": 24,
+      "colour": 0,
+      "preservedFraction": 0.32378732705099295
+    },
+    {
+      "patchSize": 93,
+      "donorPatches": 52,
+      "colour": 1,
+      "preservedFraction": 0.13000247291102404
+    },
+    {
+      "patchSize": 56,
+      "donorPatches": 28,
+      "colour": 2,
+      "preservedFraction": 0.21963243737044066
+    },
+    {
+      "patchSize": 60,
+      "donorPatches": 23,
+      "colour": 3,
+      "preservedFraction": 0.07805211682804569
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "601974573d763b764dce7c9be8c3d10f74baf7064635c93dfdab323274807926",
+  "sha256": "4b94ab5af8f08c2e53d87f1a17b1ea939c70be4a3490b8cc86d2d82f6537f32c",
+  "palette": [
+    "#11a889",
+    "#e7c27e",
+    "#fa8059",
+    "#033b79"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 38,
+    "total": 38,
+    "mismatches": []
+  }
+}

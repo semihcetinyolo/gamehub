@@ -1,0 +1,27 @@
+{
+  "id": "story_boots",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-19T12:20:07.262809+00:00",
+  "prompt": "Use case: style-transfer. Subject: Su Birikintisi. Transform this exact geometric colour guide into a luminous photographic artisan stained-glass panel. Preserve every pane, boundary, silhouette, margin and all four existing hues exactly. Add gentle handmade translucent glass ripples, tiny bubbles, subtle backlighting and thin dark metallic lead on existing seams. No extra lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the 3:4 portrait reference pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue. Use clean seam junctions without round tabs or decorative bumps. Output resolution 768x1024.",
+  "references": [
+    "tools/stained/guides/story_boots.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "607a366ec40ed309720ca6c3b5140b48bb4c037b0c3607d480ff711987008c41",
+  "sha256": "92df34ea51f8703068265b86cac98cbaaff79e3d6ec08659ed005d090a368f8a",
+  "palette": [
+    "#ef5b03",
+    "#fcce27",
+    "#158464",
+    "#032d6c"
+  ],
+  "paneColorCheck": {
+    "matched": 23,
+    "total": 23,
+    "valid": true,
+    "mismatches": []
+  }
+}

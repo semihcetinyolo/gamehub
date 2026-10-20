@@ -1,0 +1,27 @@
+{
+  "id": "chapter_153",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-19T08:52:09.121551+00:00",
+  "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+  "references": [
+    "tools/stained/guides/chapter_153.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "b9925040145832863ac02730ad281267958fb4e6400c38963b9cdce86a7eacda",
+  "sha256": "2761f3b28449c12a275daecc0c8c10165253d0c4e02961f4a7d961a285b11150",
+  "palette": [
+    "#28b217",
+    "#1b7eee",
+    "#970d8d",
+    "#cf7807"
+  ],
+  "paneColorCheck": {
+    "matched": 26,
+    "total": 26,
+    "valid": true,
+    "mismatches": []
+  }
+}

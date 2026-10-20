@@ -1,0 +1,53 @@
+{
+  "id": "story_puffin",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:22:11.490322+00:00",
+  "source": "assets/glass/story_puffin-junctions.webp",
+  "sourceSha256": "c74a5420d5ed03b37934d11c47f2ac4b821487385322b8552b097cf8f56b9dd7",
+  "sourceGeometrySha256": "b44bb28462fe8766a393c5a0861b946595fa8c62da79b9ab847326eff9611c37",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 94,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.4498139510095909
+    },
+    {
+      "patchSize": 114,
+      "donorPatches": 83,
+      "colour": 1,
+      "preservedFraction": 0.5746244117648246
+    },
+    {
+      "patchSize": 134,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6379991188545271
+    },
+    {
+      "patchSize": 64,
+      "donorPatches": 23,
+      "colour": 3,
+      "preservedFraction": 0.34283820376418594
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "fa3f3679b0913c463517996d4f1f55e2755ab2e83b08dc73299ff635dda3557a",
+  "sha256": "0ff5dbd210c8fe9ce5c5b026b0b31a95dc1da68478e23affbf596f87d39ebdbc",
+  "palette": [
+    "#e85b15",
+    "#faeea9",
+    "#8aab26",
+    "#09559e"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 29,
+    "total": 29,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "fish",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:13:10.938013+00:00",
+  "source": "assets/glass/fish-junction-pilot.webp",
+  "sourceSha256": "4f7c8628745c2886b82b4897d382e995111c3677ed53a9adffa0873715e0c4a1",
+  "sourceGeometrySha256": "9b592bde06f34cb377d4afaed4a021fb325159e68418136d043633187980bb6e",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 106,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.47330392125408266
+    },
+    {
+      "patchSize": 100,
+      "donorPatches": 66,
+      "colour": 1,
+      "preservedFraction": 0.5502984810068456
+    },
+    {
+      "patchSize": 112,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5013059261173604
+    },
+    {
+      "patchSize": 65,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.4718315279044305
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "03812a0b53e54b54b0e63f8fcaaedef08f60f5820f8bffe585e79f169888e6a3",
+  "sha256": "fcefac2f5fd88aa991acb5185cf70f8f9ad3822eaa2275d082705c740b62762b",
+  "palette": [
+    "#f95505",
+    "#43eff4",
+    "#021f89",
+    "#f3cd32"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 17,
+    "total": 17,
+    "mismatches": []
+  }
+}

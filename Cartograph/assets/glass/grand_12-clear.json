@@ -1,0 +1,27 @@
+{
+  "id": "grand_12",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T06:54:26.725223+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Sonbahar Kulübesi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/grand_12.png"
+  ],
+  "size": [
+    1728,
+    2304
+  ],
+  "guide": "041e3d468ab0fa403449bd760a480965506b7b4eb7f78e91220b6952ed0cf52d",
+  "sha256": "fc814de7067a7c6497d10ecb03540f7122f726efa013698a30d6890f1e373772",
+  "palette": [
+    "#d84e67",
+    "#feee4f",
+    "#1b8fb2",
+    "#17265a"
+  ],
+  "paneColorCheck": {
+    "matched": 77,
+    "total": 77,
+    "valid": true,
+    "mismatches": []
+  }
+}

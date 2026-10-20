@@ -306,7 +306,10 @@ def tree():
         if y > 13.6:
             return (0, 2)
         return (3, 2)
-    return lines, prefer, tree_p
+    # Layer complete crown circles over the trunk. Overlap lenses are not
+    # separate panes; neither crown nor trunk needs to be pinched at a contact.
+    from extra_designs import compose
+    return compose([*[(b, (0, 2)) for b in reversed(blobs)], (trunk, 1)], 6)
 
 
 # ---------------------------------------------------------------- peacock feather
@@ -370,7 +373,11 @@ def bird():
         if within(sun, x, y):
             return (0,)
         return (2, 3) if y > 12 else (2, 1)
-    return lines, prefer, unary_union(sub)
+    from extra_designs import compose
+    inset_wing=affinity.scale(wing,.90,.90,origin='centroid')
+    return compose([(P(circle(3.4,6,.35)),3),(inset_wing,1),
+                    *[(b,1) for b in blossoms],(sun,0),(body,0),(beak,1),
+                    (tail,0),*[(leaf,3) for leaf in leaves],(branch,3)], 7)
 
 
 # ---------------------------------------------------------------- snowflake
@@ -408,7 +415,16 @@ def lotus():
     petals = [petal_poly(base, a, l, w) for a, l, w in spec]
     flower = unary_union(petals)
     pad = P(ellipse(6, 11.9, 4.2, 0.95))
-    lines = [p.exterior for p in petals] + [pad.exterior, ellipse(6, 13.0, 2.8, 0.6)]
+    # Visible symmetric layers avoid intersection slivers at the petal bases.
+    occupied = Polygon()
+    lines = []
+    for petal in petals:
+        visible = petal.difference(occupied)
+        for part in getattr(visible, 'geoms', [visible]):
+            if part.geom_type == 'Polygon':
+                lines.extend([part.exterior, *part.interiors])
+        occupied = unary_union([occupied, petal])
+    lines += [pad.exterior, ellipse(6, 13.0, 2.8, 0.6)]
     lines += clipout(burst(base, 10, [5.0], -180, 0, 9), flower, pad)
     lines += clipout([seg((-1, 11.9), (13, 11.9))], pad)
 
@@ -507,7 +523,7 @@ def mushroom():
 # ---------------------------------------------------------------- cat
 @design('cat', 'Ay Işığında Kedi', 'a ginger orange cat sitting on a dark tiled rooftop, gazing at a full yellow moon in a teal night sky',
         [('ginger orange', '#f28a1e'), ('lemon yellow', '#f9e04b'), ('charcoal grey', '#3b3f45'), ('teal', '#16808a')],
-        o_round_arch(6), max_area=6.0)
+        o_round_arch(6), max_area=35.0, min_r=.5)
 def cat():
     body = P(spline([(4.2, 13.0), (3.8, 10.4), (4.6, 8.2), (5.6, 7.6), (7.2, 8.4), (7.8, 10.8), (7.6, 13.0), (4.2, 13.0)]))
     head = P(circle(5.9, 6.6, 1.6))
@@ -515,21 +531,21 @@ def cat():
     tail = poly_of(spline([(7.6, 12.6), (9.4, 12.4), (9.8, 10.4)]), seg((9.8, 10.4), (10.6, 10.4)), spline([(10.6, 10.4), (10.0, 13.1), (7.6, 13.0)]))
     catp = unary_union([body, head, *ears, tail])
     moon = P(circle(6.4, 4.6, 3.6))
-    roof = [seg((-1, 13.0), (13, 13.0)), seg((-1, 14.5), (13, 14.5)), *[seg((x, 13.0), (x, 14.5)) for x in (1.6, 4.4, 7.4, 10.4)],
-            *[seg((x, 14.5), (x, 16.2)) for x in (3.0, 6.0, 9.0)]]
-    chimney = Polygon([(0.8, 13.0), (0.8, 10.2), (2.4, 10.2), (2.4, 13.0)])
-    sky = clipout([moon.exterior, *burst((6.4, 4.6), 12, [5.4], 0, 3.6)], catp, chimney)
-    lines = [catp.exterior, seg((4.2, 9.0), (4.6, 8.2)), *roof, chimney.exterior, *sky]
+    # Broad, tappable panes for the first lesson: the cat stays a single silhouette.
+    roof = [seg((-1, 13.0), (13, 13.0)), seg((3, 13), (3, 17)), seg((8.6, 13), (8.6, 17))]
+    sky = clipout([moon.exterior, *rays((6.4, 4.6), 6, 10, 3.6, 16)], catp,
+                  Polygon([(-1, 13), (13, 13), (13, 17), (-1, 17)]))
+    lines = [catp.exterior, *roof, *sky]
 
     def prefer(x, y):
         if within(catp, x, y):
             return (0,)
-        if y > 13.0 or within(chimney, x, y):
+        if y > 13.0:
             return (2, 3)
         if math.dist((x, y), (6.4, 4.6)) < 3.6:
             return (1,)
-        return (3, 1)
-    return lines, prefer, unary_union([catp, chimney])
+        return (3, 2)
+    return lines, prefer, catp
 
 
 # ---------------------------------------------------------------- rose window
@@ -542,10 +558,10 @@ def rosewindow():
     lancets = []
     for i in range(8):
         a = -90 + i * 45
-        lancets.append(petal_poly((6 + 1.1 * math.cos(math.radians(a)), 8 + 1.1 * math.sin(math.radians(a))), a, 2.1, 0.7))
+        lancets.append(petal_poly((6 + 1.42 * math.cos(math.radians(a)), 8 + 1.42 * math.sin(math.radians(a))), a, 1.45, 0.66))
     lines += [l.exterior for l in lancets]
     lines += clipout(rays(c, 8, -67.5, 1.1, 3.2), *lancets)
-    rounds = [P(circle(6 + 4.1 * math.cos(math.radians(-90 + i * 30)), 8 + 4.1 * math.sin(math.radians(-90 + i * 30)), 0.7)) for i in range(12)]
+    rounds = [P(circle(6 + 4.1 * math.cos(math.radians(-90 + i * 30)), 8 + 4.1 * math.sin(math.radians(-90 + i * 30)), 0.55)) for i in range(12)]
     lines += [r.exterior for r in rounds]
     lines += clipout(rays(c, 12, -75, 3.2, 7), *rounds)
 
@@ -801,7 +817,13 @@ def fox():
         if any(within(f, x, y) for f in ferns):
             return (2,)
         return (3, 2)
-    return lines, prefer, face
+    # Keep the entire face and decorative leaves clear of the diamond rim.
+    # Simplify tiny ear insets; keep the complete pointed outer ears.
+    from extra_designs import compose
+    muzzle=Polygon([(-1,11),(13,11),(13,17),(-1,17)]).intersection(face)
+    parts=[*[(e,3) for e in eyes],(muzzle,3),*[(c,1) for c in cheeks],(face,0)]
+    parts=[(affinity.scale(p,.90,.90,origin=(6,8)),c) for p,c in parts]
+    return compose(parts,8)
 
 
 from extra_designs import register as register_extra

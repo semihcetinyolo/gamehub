@@ -1,0 +1,27 @@
+{
+  "id": "spiral_02",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T08:01:21.256741+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Dik Açılı Girdap. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/spiral_02.png"
+  ],
+  "size": [
+    768,
+    768
+  ],
+  "guide": "bcaa4ff8903f4329088c4c5a7e3345040dca265952cffcb79fadda196896b009",
+  "sha256": "fe3e9722d1a1be7294431e719ebee20ca84671fda9437e63b5c2b2b09d1a4bd0",
+  "palette": [
+    "#9145a6",
+    "#fdd324",
+    "#269f81",
+    "#1d64b5"
+  ],
+  "paneColorCheck": {
+    "matched": 22,
+    "total": 22,
+    "valid": true,
+    "mismatches": []
+  }
+}

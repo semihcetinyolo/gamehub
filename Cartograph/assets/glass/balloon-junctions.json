@@ -1,0 +1,53 @@
+{
+  "id": "balloon",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:24:26.569371+00:00",
+  "source": "assets/glass/balloon-restored.webp",
+  "sourceSha256": "41c7b1e59bd254e0acf49f7313465c04350e962fbe07eaa3a0300403ac44dd3b",
+  "sourceGeometrySha256": "f49e9712ce290bfd3cd87fc0887f3b192bae7e5d3f244cde6c025c07e8410107",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 99,
+      "donorPatches": 59,
+      "colour": 0,
+      "preservedFraction": 0.4014497276674263
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5543629567681564
+    },
+    {
+      "patchSize": 106,
+      "donorPatches": 91,
+      "colour": 2,
+      "preservedFraction": 0.20840985890126779
+    },
+    {
+      "patchSize": 88,
+      "donorPatches": 52,
+      "colour": 3,
+      "preservedFraction": 0.4142265706116461
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "fe602724cdd317817042e0feaa6a5851729f1fb1a61b45406534e1e339439fb5",
+  "sha256": "03db52fd5e08392b7550d3d12606521b634c3e645465696e242be9d8cb6a5cd3",
+  "palette": [
+    "#d1050e",
+    "#f6d626",
+    "#10b3af",
+    "#f0e7d4"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 30,
+    "total": 30,
+    "mismatches": []
+  }
+}

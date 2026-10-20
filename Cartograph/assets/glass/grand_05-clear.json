@@ -1,0 +1,27 @@
+{
+  "id": "grand_05",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T06:50:17.917427+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Göl Kenarı Pagoda. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/grand_05.png"
+  ],
+  "size": [
+    1728,
+    2304
+  ],
+  "guide": "c39f48b2214f45fd1e3efa94fa088ebbe30f7e8e3d15b84fd2c2fa426df09217",
+  "sha256": "a4cd5a6d2c0261165c49cf1df267a7db0df1e42ac0332cc3a55c1e0284359928",
+  "palette": [
+    "#ec4929",
+    "#fdf684",
+    "#25a89a",
+    "#032887"
+  ],
+  "paneColorCheck": {
+    "matched": 83,
+    "total": 83,
+    "valid": true,
+    "mismatches": []
+  }
+}

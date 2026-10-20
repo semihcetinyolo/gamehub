@@ -1,0 +1,27 @@
+{
+  "id": "atlas_19",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:58:15.815656+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Yedi Tepe. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/atlas_19.png"
+  ],
+  "size": [
+    768,
+    883
+  ],
+  "guide": "39a4a147c54b124ea44ff8f3a46967436574fdedadd6cdf10ee0a522e438a1e2",
+  "sha256": "879911f73353721dd7166a43733f449765b8f240d56a9f04d3549eb7eac78f67",
+  "palette": [
+    "#f77803",
+    "#fdf533",
+    "#004cc4",
+    "#029379"
+  ],
+  "paneColorCheck": {
+    "matched": 28,
+    "total": 28,
+    "valid": true,
+    "mismatches": []
+  }
+}

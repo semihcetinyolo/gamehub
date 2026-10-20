@@ -1,0 +1,53 @@
+{
+  "id": "fish",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:18:25.699016+00:00",
+  "source": "assets/glass/fish-clear.webp",
+  "sourceSha256": "ad8e39f16efedcdab23234cdb8b84fcdbe9ded8a85eda63b19764aaa606f3edb",
+  "sourceGeometrySha256": "4a6c65403d4f3a79a0ca30f9f329821da1708d99920920790822efca49b05722",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 65,
+      "donorPatches": 22,
+      "colour": 0,
+      "preservedFraction": 0.012329175659601021
+    },
+    {
+      "patchSize": 78,
+      "donorPatches": 20,
+      "colour": 1,
+      "preservedFraction": 0.20857766006445486
+    },
+    {
+      "patchSize": 106,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.2333530972360464
+    },
+    {
+      "patchSize": 86,
+      "donorPatches": 63,
+      "colour": 3,
+      "preservedFraction": 0.33818510588418527
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "25726ce90bc81aca9e65323ec10470c2964e2d2a51938145d7e0cc3caa1e83c7",
+  "sha256": "2fa1fb10a3a12046c540f7d7cb08daceb4494b1032911d9f26aa9e3ccf4d06ac",
+  "palette": [
+    "#fa5505",
+    "#43f0f5",
+    "#02208b",
+    "#f5cd30"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 19,
+    "total": 19,
+    "mismatches": []
+  }
+}

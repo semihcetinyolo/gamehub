@@ -1,0 +1,27 @@
+{
+  "id": "motif_telescope",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:11:15.058551+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Teleskop. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_telescope.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "0eebd9402e29a2e6a1dfbb94f9382fa54c6a90da2994382b4240de2fd4398df5",
+  "sha256": "f81f63c63b4baf4c10f308e8e5b04375bcf71e9cabe1768cd299ff5190fd97d2",
+  "palette": [
+    "#e55d78",
+    "#fef05f",
+    "#2ea7b9",
+    "#152960"
+  ],
+  "paneColorCheck": {
+    "matched": 35,
+    "total": 35,
+    "valid": true,
+    "mismatches": []
+  }
+}

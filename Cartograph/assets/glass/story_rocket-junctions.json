@@ -1,0 +1,53 @@
+{
+  "id": "story_rocket",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:25:18.705195+00:00",
+  "source": "assets/glass/story_rocket-restored.webp",
+  "sourceSha256": "7701ec453c81f817465e606fc78e7a238cb252a6b430358cdcee0f12dda5464b",
+  "sourceGeometrySha256": "c2771fcdbf8a82b6e923ba9249ab6c04c7226fd953307f27c9a0ba4124592f7a",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 105,
+      "donorPatches": 88,
+      "colour": 0,
+      "preservedFraction": 0.5174472914307585
+    },
+    {
+      "patchSize": 110,
+      "donorPatches": 47,
+      "colour": 1,
+      "preservedFraction": 0.4450535096784712
+    },
+    {
+      "patchSize": 120,
+      "donorPatches": 90,
+      "colour": 2,
+      "preservedFraction": 0.5001662544282015
+    },
+    {
+      "patchSize": 105,
+      "donorPatches": 86,
+      "colour": 3,
+      "preservedFraction": 0.39281112715577143
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "6277d5daf1d7d40f0fea7b5430098a5c8d403fbae2d0acb28901babcec499acd",
+  "sha256": "50c2058d1d6ebf7c53c1aa70247e7d30e7d5d6a0782f7a28453166b4e680e0ff",
+  "palette": [
+    "#ee7514",
+    "#fcf7a3",
+    "#7aa41b",
+    "#033564"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 24,
+    "total": 24,
+    "mismatches": []
+  }
+}

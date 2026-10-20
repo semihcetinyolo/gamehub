@@ -1,9 +1,9 @@
 """Stained-glass map geometry: design linework → polygonized panes → game map JSON.
 
-Every design lives in a 12×16 frame (y down). Lines are cut against the outline with
+Standard designs use a 12×16 frame (y down); Build also accepts explicit cols/rows.
+Lines are cut against the outline with
 shapely.polygonize; tiny panes are merged away and any spot where two panes meet only at a
-point gets a small round lead knot so they share a real border (players read a point touch as
-adjacency). Final panes are unions of polygonize atoms, so shared borders stay bit-identical.
+point is repaired with a flat bevel so its neighbours are visually clear. Final panes are unions of polygonize atoms, so shared borders stay bit-identical.
 """
 import math
 import random
@@ -264,8 +264,14 @@ def _snap(g):
     return shapely.set_precision(g, GRID)
 
 
-def _atoms(outline, lines, knots):
-    work = [outline.exterior] + [l for l in lines] + [circle(x, y, r, 20) for x, y, r, _ in knots]
+def _atoms(outline, lines, knots, *, exact=False, node_sides=20):
+    work = [outline.exterior] + [l for l in lines] + [circle(x, y, r, node_sides) for x, y, r, _ in knots]
+    if exact:
+        # Simplifying separate arcs can open closed eye/window rings. Node the
+        # authored linework together and retain its shared vertices.
+        noded = unary_union(shapely.unary_union(work, grid_size=GRID))
+        return [p for p in polygonize(noded) if p.area > 1e-7 and p.is_valid
+                and p.intersection(outline).area > 0.5 * p.area]
     noded = unary_union([_snap(l) for l in work])
     noded = linemerge(noded) if noded.geom_type == 'MultiLineString' else noded
     parts = list(noded.geoms) if hasattr(noded, 'geoms') else [noded]
@@ -750,7 +756,9 @@ def thin_cuts(polys, width=0.44, min_area=0.1, min_len=0.9):
             body = unary_union([g for g in body.geoms if g.geom_type in ('Polygon', 'MultiPolygon')])
         if body.is_empty:
             continue
-        rest = poly.difference(body.buffer(1e-6))
+        # Offset roundoff can join two ordinary corners along a flat rim.
+        # Ignore sub-grid residuals before measuring strip length.
+        rest = poly.difference(body.buffer(GRID))
         for piece in (rest.geoms if hasattr(rest, 'geoms') else [rest]):
             if piece.is_empty or piece.geom_type != 'Polygon':
                 continue
@@ -802,7 +810,9 @@ def _clearance(poly):
 
 
 class Build:
-    def __init__(self, outline, lines, min_r=0.36, min_area=0.9, max_area=None, seed=1, protect=None, mirror_x=None):
+    def __init__(self, outline, lines, min_r=0.36, min_area=0.9, max_area=None, seed=1, protect=None, mirror_x=None, cols=12, rows=16):
+        self.cols, self.rows = cols, rows
+        self.mirror_x = mirror_x
         self.outline = _snap(outline)
         lines = close_dangles(self.outline, lines)
         self.lines = subdivide(self.outline, lines, max_area, seed, protect, mirror_x) if max_area else lines
@@ -810,11 +820,21 @@ class Build:
         self.min_r = min_r
         self.min_area = min_area
 
-    def run(self):
-        """Polygonize and merge tiny panes, tidy every joint (tidy_joints), then give any
-        remaining point touch a small round lead knot."""
+    def run(self, *, exact=True, bevel=True):
+        """Preserve authored contours; repair only measured contact ambiguity."""
+        from contact_policy import finish_builder
+        return finish_builder(self)
+
+    def run_legacy(self, *, exact=True, bevel=True):
+        """Build readable T junctions and flat tips, retaining closed authored rings.
+
+        Remaining ambiguous contacts use straight bevels rather than round tabs.
+        The legacy options remain available for reproducing historical maps.
+        """
         from contacts import problems
-        atoms = _atoms(self.outline, self.lines, [])
+        node_sides = 4 if bevel else 20
+        atomize = lambda outline, lines, knots: _atoms(outline, lines, knots, exact=exact, node_sides=node_sides)
+        atoms = atomize(self.outline, self.lines, [])
         groups = self._group(atoms, [])
         for _round in range(6):
             lead = [LineString([p, q]) for (p, q), o in self.seg_owner.items() if len(o) == 2 and groups[o[0]] != groups[o[1]]]
@@ -823,7 +843,7 @@ class Build:
                 lines, _ = steepen(self.outline, lines)
             knots = []
             for _ in range(12):
-                atoms = _atoms(self.outline, lines, knots)
+                atoms = atomize(self.outline, lines, knots)
                 groups = self._group(atoms, knots)
                 bad = [p for p in self._corner_points(atoms, groups) if all(math.dist(p, k[:2]) > 0.05 for k in knots)]
                 knots += [(p[0], p[1], 0.45, None) for p in bad]
@@ -859,7 +879,7 @@ class Build:
                 break
             if cuts:  # pinched-off bits join a neighbour; the next round tidies the new joints
                 n_before = max(groups) + 1
-                cand_atoms = _atoms(self.outline, [*lines, *[circle(x, y, r, 20) for x, y, r, _ in knots], *cuts], [])
+                cand_atoms = atomize(self.outline, [*lines, *[circle(x, y, r, node_sides) for x, y, r, _ in knots], *cuts], [])
                 cand_groups = self._group(cand_atoms, [])
                 if max(cand_groups) + 1 >= n_before - 1:  # only if nothing else got swallowed
                     atoms, groups = cand_atoms, cand_groups
@@ -1010,7 +1030,13 @@ class Build:
             worst, score = None, 1e9
             for root, poly in polys.items():
                 c = _clearance(poly)
-                s = min(c / self.min_r, poly.area / self.min_area)
+                # Small closed eyes/windows in an authored protected motif are
+                # legitimate accents; only unusable slivers should disappear.
+                accent = (getattr(self, 'preserve_authored', False) and self.protect is not None
+                          and self.protect.covers(poly.representative_point()))
+                radius_limit = min(self.min_r, .10) if accent else self.min_r
+                area_limit = min(self.min_area, .12) if accent else self.min_area
+                s = min(c / radius_limit, poly.area / area_limit)
                 if s < 1 and s < score:
                     worst, score = root, s
             if worst is None:
@@ -1094,7 +1120,7 @@ class Build:
         total = sum(p.area for p in polys)
         assert abs(total - whole.area) < 1e-3 and abs(total - self.outline.area) < 0.6, (total, whole.area, self.outline.area)
         return {
-            'cols': W, 'rows': H, 'count': n, 'shape': shape, 'paths': paths, 'anchors': anchors,
+            'cols': self.cols, 'rows': self.rows, 'count': n, 'shape': shape, 'paths': paths, 'anchors': anchors,
             'adj': [sorted(a) for a in adj], 'edges': edges, 'rim': rim, 'edgePath': edge_path,
             'preferred': preferred,
             'clearance': [round(_clearance(p), 3) for p in polys],

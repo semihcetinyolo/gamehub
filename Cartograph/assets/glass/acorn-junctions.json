@@ -1,0 +1,53 @@
+{
+  "id": "acorn",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:24:42.868767+00:00",
+  "source": "assets/glass/acorn-restored.webp",
+  "sourceSha256": "b710765b3b00570e7277ee03904dd3bd650e0b3274101843f90d0811abb2f31f",
+  "sourceGeometrySha256": "6eef489a8c6dd9658fdf9cd9594b47bd3a32cc67b56820e4df17abb1d48e599e",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6891030364798005
+    },
+    {
+      "patchSize": 85,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.48560221334916337
+    },
+    {
+      "patchSize": 66,
+      "donorPatches": 19,
+      "colour": 2,
+      "preservedFraction": 0.3968934787543839
+    },
+    {
+      "patchSize": 86,
+      "donorPatches": 87,
+      "colour": 3,
+      "preservedFraction": 0.4598227766003141
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "fca094f5a49be615845d742ae0c90bbd9060fcceb3f6d1b65e1fac00dddc11c4",
+  "sha256": "2ea26373212a76f52d86b5b22e1ca424f608b09b1cc115fb88462f2dd1094a0c",
+  "palette": [
+    "#d77107",
+    "#f7d46d",
+    "#456c1b",
+    "#5a2b0c"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 33,
+    "total": 33,
+    "mismatches": []
+  }
+}

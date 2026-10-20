@@ -1,0 +1,53 @@
+{
+  "id": "mushroom",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:18:26.011755+00:00",
+  "source": "assets/glass/mushroom.webp",
+  "sourceSha256": "3352bf727f84f8bd9c99399dd9928f48476b74af125a4d88a3388e5114a65807",
+  "sourceGeometrySha256": "62bbdbf08ca02facfd8ab5c8d0d4c2bc158018e50aac588c136fc763f918e377",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 91,
+      "donorPatches": 44,
+      "colour": 0,
+      "preservedFraction": 0.4370259222735086
+    },
+    {
+      "patchSize": 90,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.4427933065331546
+    },
+    {
+      "patchSize": 52,
+      "donorPatches": 26,
+      "colour": 2,
+      "preservedFraction": 0.11858062877946023
+    },
+    {
+      "patchSize": 101,
+      "donorPatches": 78,
+      "colour": 3,
+      "preservedFraction": 0.23886780513638503
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "9e88771d08ca3573c1ba188da9f580f7bf37a475d625371fa754591eaf8461d1",
+  "sha256": "edb84323773f143aae91a28e745de31e83a1022cd53d8df578c3bc0ee0eda45a",
+  "palette": [
+    "#c50505",
+    "#f9e7b0",
+    "#81a12c",
+    "#1c4c8e"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 27,
+    "total": 27,
+    "mismatches": []
+  }
+}

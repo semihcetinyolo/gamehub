@@ -1,0 +1,53 @@
+{
+  "id": "butterflygarden",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:24:34.156921+00:00",
+  "source": "assets/glass/butterflygarden-restored.webp",
+  "sourceSha256": "6e774d9227b345fbf1a76686b2e85a44620bc63c13e6481434df3acbbafa5df2",
+  "sourceGeometrySha256": "df7a72ac7261d9b8346e2d0a22d20a08075f8d3194a77466330c8383b57642f8",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 56,
+      "donorPatches": 31,
+      "colour": 0,
+      "preservedFraction": 0.4583462122002557
+    },
+    {
+      "patchSize": 110,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.4728352935953144
+    },
+    {
+      "patchSize": 110,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.48797149421578734
+    },
+    {
+      "patchSize": 93,
+      "donorPatches": 36,
+      "colour": 3,
+      "preservedFraction": 0.43684764812618754
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "649031aa69d25379bb60087858aaf08c846bcdccbf705b11c0f1847fb3ef706e",
+  "sha256": "575660e290733569a213e2f055cee87bd5ccaa506ee4c8bcb33ba0fb6a590174",
+  "palette": [
+    "#c81856",
+    "#f7c416",
+    "#361867",
+    "#15b494"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 29,
+    "total": 29,
+    "mismatches": []
+  }
+}

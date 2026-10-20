@@ -1,0 +1,27 @@
+{
+  "id": "story_submarine",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:25:47.328759+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Batık Keşfi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_submarine.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "113b053426fb36e87159180b19d4955c01f88e3b1bc49243cf30785540389f72",
+  "sha256": "155996b5222a972f6379b9534bb27de7eaa7afa1dada643b3608e34d67eaeb4c",
+  "palette": [
+    "#eb443d",
+    "#fef17e",
+    "#40a688",
+    "#033885"
+  ],
+  "paneColorCheck": {
+    "matched": 32,
+    "total": 32,
+    "valid": true,
+    "mismatches": []
+  }
+}

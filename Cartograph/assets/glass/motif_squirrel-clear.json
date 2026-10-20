@@ -1,0 +1,27 @@
+{
+  "id": "motif_squirrel",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:09:58.761360+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Sincap. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_squirrel.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "b9ceb686d36757f977b3465d0c491d3957c885f8bef6c49c4262a314c82c0e52",
+  "sha256": "7b46d03e3afc976f5251fbdd2441fcbb27797f4fa692d11b69e2a88bec027590",
+  "palette": [
+    "#f16d08",
+    "#fdee8e",
+    "#719825",
+    "#0d5173"
+  ],
+  "paneColorCheck": {
+    "matched": 31,
+    "total": 31,
+    "valid": true,
+    "mismatches": []
+  }
+}

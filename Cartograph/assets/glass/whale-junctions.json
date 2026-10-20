@@ -1,0 +1,53 @@
+{
+  "id": "whale",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:24:37.824969+00:00",
+  "source": "assets/glass/whale-restored.webp",
+  "sourceSha256": "5d83037daee13fb4a8bfdd1a1cc14699377819b50ab3890ba5170157a806edab",
+  "sourceGeometrySha256": "63f3347a951ba385e4b75eced77d7f4c54d15f6117152150c16aff74e3cf08f3",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 137,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.644159982323306
+    },
+    {
+      "patchSize": 71,
+      "donorPatches": 33,
+      "colour": 1,
+      "preservedFraction": 0.5080235834643548
+    },
+    {
+      "patchSize": 82,
+      "donorPatches": 44,
+      "colour": 2,
+      "preservedFraction": 0.4179293526065653
+    },
+    {
+      "patchSize": 88,
+      "donorPatches": 45,
+      "colour": 3,
+      "preservedFraction": 0.43158351597860795
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "cf4d7fafc63fae90c25335533ef997f9433d4aa8141e842f8702e8ed52247582",
+  "sha256": "6268ad7c77bd427be29aaf0ef3b2adab314f74c95f249188f60099259809b2a1",
+  "palette": [
+    "#1385aa",
+    "#f7deac",
+    "#9468d8",
+    "#062658"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 29,
+    "total": 29,
+    "mismatches": []
+  }
+}

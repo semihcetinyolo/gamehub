@@ -1,0 +1,53 @@
+{
+  "id": "motif_stingray",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:20:13.365278+00:00",
+  "source": "assets/glass/motif_stingray-clear.webp",
+  "sourceSha256": "23a589f671c7a9219fee7817955c3297c4276aadef854648590962d16efaa6a6",
+  "sourceGeometrySha256": "8434598b7cc308591782ed96b13133077f72bc132fa92129a0be981894c934ff",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 117,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6512206122526476
+    },
+    {
+      "patchSize": 106,
+      "donorPatches": 68,
+      "colour": 1,
+      "preservedFraction": 0.14930810762490596
+    },
+    {
+      "patchSize": 75,
+      "donorPatches": 79,
+      "colour": 2,
+      "preservedFraction": 0.3106578756502641
+    },
+    {
+      "patchSize": 74,
+      "donorPatches": 85,
+      "colour": 3,
+      "preservedFraction": 0.3016186800920533
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "55778f72f9445cc5e37dd6fdc3a42aaa883f9726f1c900dfd2711a9c10f52674",
+  "sha256": "f81ac5fe434a695de58f98cb49e245204553400bc1db23a0a58586d9a24713cc",
+  "palette": [
+    "#d4670e",
+    "#faef7c",
+    "#5e971f",
+    "#094885"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 22,
+    "total": 22,
+    "mismatches": []
+  }
+}

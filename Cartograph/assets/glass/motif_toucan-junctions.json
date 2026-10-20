@@ -1,0 +1,53 @@
+{
+  "id": "motif_toucan",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:26:50.609002+00:00",
+  "source": "assets/glass/motif_toucan-restored.webp",
+  "sourceSha256": "c6ae1f89c61659a8ec1fbbc4e8ec5469a48c0b7e78a57c2d21e60f939425d5c8",
+  "sourceGeometrySha256": "f3b5a3103d4e032a9a200bc813c34ee2b8888ea24a3c8f3dfe2ac4cad1cecc35",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 55,
+      "donorPatches": 14,
+      "colour": 0,
+      "preservedFraction": 0.24956015650631297
+    },
+    {
+      "patchSize": 97,
+      "donorPatches": 61,
+      "colour": 1,
+      "preservedFraction": 0.43631404710698735
+    },
+    {
+      "patchSize": 105,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5624697253653694
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6188394998656099
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "0fcc4f80fa4046f5b2b2ca2345de8aea1ed39c648c32f1bc6ab6ea61ad524700",
+  "sha256": "2c216c69325c9864c8dbd61087dd562960abb01013a4ac865f003299e5670a77",
+  "palette": [
+    "#d46c07",
+    "#fced62",
+    "#4694e0",
+    "#03175a"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 28,
+    "total": 28,
+    "mismatches": []
+  }
+}

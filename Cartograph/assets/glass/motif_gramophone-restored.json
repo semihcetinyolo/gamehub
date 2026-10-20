@@ -1,0 +1,53 @@
+{
+  "id": "motif_gramophone",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:20:22.138495+00:00",
+  "source": "assets/glass/motif_gramophone-clear.webp",
+  "sourceSha256": "30e3ffa8a5d98c354e1b8d0222646d042cd4fb0cd7e0bef5917a8e7451884508",
+  "sourceGeometrySha256": "118ee26e880ac8f9b689962ffab830d425e8324ea667cb11e59ba86268086455",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 106,
+      "donorPatches": 71,
+      "colour": 0,
+      "preservedFraction": 0.4931141406637688
+    },
+    {
+      "patchSize": 67,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.18836446801772586
+    },
+    {
+      "patchSize": 87,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.09137489075440133
+    },
+    {
+      "patchSize": 97,
+      "donorPatches": 64,
+      "colour": 3,
+      "preservedFraction": 0.2559702717876407
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "70e5ba39645692dac7cddc67da06f342ea98b6d0cec8a1f9df57174cfbe1352a",
+  "sha256": "c5c0f91af93e39580f5957325882af7eb0c47f9c398f99bcaacf7175730c9c0f",
+  "palette": [
+    "#e55f03",
+    "#efc919",
+    "#188e75",
+    "#05277a"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 20,
+    "total": 20,
+    "mismatches": []
+  }
+}

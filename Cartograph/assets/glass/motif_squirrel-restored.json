@@ -1,0 +1,53 @@
+{
+  "id": "motif_squirrel",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:19:16.227756+00:00",
+  "source": "assets/glass/motif_squirrel-clear.webp",
+  "sourceSha256": "7b46d03e3afc976f5251fbdd2441fcbb27797f4fa692d11b69e2a88bec027590",
+  "sourceGeometrySha256": "1b8a95cf711a8b34a1ba4e1ae6599937b597eef68fe57dd69a9304059f0e7066",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 55,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.28647801161914405
+    },
+    {
+      "patchSize": 94,
+      "donorPatches": 49,
+      "colour": 1,
+      "preservedFraction": 0.39804803308027115
+    },
+    {
+      "patchSize": 73,
+      "donorPatches": 51,
+      "colour": 2,
+      "preservedFraction": 0.16605469488329233
+    },
+    {
+      "patchSize": 81,
+      "donorPatches": 58,
+      "colour": 3,
+      "preservedFraction": 0.11187712054991289
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "831abcfe891785cb94e63d3f9a6576fc650e71614d6874cac7310b07c915a7d0",
+  "sha256": "de115c0c9b6781b330b61614016be95d9bde95856f439f9ccf428349ee7f981b",
+  "palette": [
+    "#e66907",
+    "#f8e98f",
+    "#759d25",
+    "#033d59"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 25,
+    "total": 25,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "story_otter",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:20:09.390183+00:00",
+  "source": "assets/glass/story_otter-clear.webp",
+  "sourceSha256": "6d34af44bd1086e4b75e6718a1dddde127696d98fc5f33c2413ab97a6f5c56c3",
+  "sourceGeometrySha256": "dcc8a5e9b6fc1cdbb406277bffe61249e1142ea40676f428b0d4169a7de263c9",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 67,
+      "donorPatches": 24,
+      "colour": 0,
+      "preservedFraction": 0.1697910065814135
+    },
+    {
+      "patchSize": 70,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.21459755035129496
+    },
+    {
+      "patchSize": 76,
+      "donorPatches": 88,
+      "colour": 2,
+      "preservedFraction": 0.20922108931391645
+    },
+    {
+      "patchSize": 89,
+      "donorPatches": 40,
+      "colour": 3,
+      "preservedFraction": 0.1922014403069938
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "4cf3ee15f8303e7b4739f7f641a497b4d072a6c2f58a61f8fc442b0f611de067",
+  "sha256": "7f4fc95446b5a4568094e5e620eb91b4a6cca96effd8f16110601e782759dbd1",
+  "palette": [
+    "#e9780a",
+    "#fdf996",
+    "#3799de",
+    "#08205f"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 26,
+    "total": 26,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "atlas_16",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T08:04:04.343490+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Büyük Burun. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 1016:751 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/atlas_16.png"
+  ],
+  "size": [
+    1016,
+    751
+  ],
+  "guide": "f9424714b8f5eb7ebe975aeeb8117b4a2bbf6d0e0c0488ee944f7b57c8013a58",
+  "sha256": "24cd1d7eb8a43c6c70c333eb53d264f314f09b8a53f2deb3087331494661a041",
+  "palette": [
+    "#25b4f0",
+    "#f52031",
+    "#fde13e",
+    "#469322"
+  ],
+  "paneColorCheck": {
+    "matched": 34,
+    "total": 34,
+    "valid": true,
+    "mismatches": []
+  }
+}

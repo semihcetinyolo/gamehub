@@ -1,0 +1,27 @@
+{
+  "id": "grand_13",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-19T12:34:34.821196+00:00",
+  "prompt": "Use case: style-transfer. Subject: Yörünge İstasyonu. Transform this exact geometric colour guide into a luminous photographic artisan stained-glass panel. Preserve every pane, boundary, silhouette, margin and all four existing hues exactly. Add gentle handmade translucent glass ripples, tiny bubbles, subtle backlighting and thin dark metallic lead on existing seams. No extra lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the 3:4 portrait reference pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue. Use clean seam junctions without round tabs or decorative bumps. Output resolution 1728x2304.",
+  "references": [
+    "tools/stained/guides/grand_13.png"
+  ],
+  "size": [
+    1728,
+    2304
+  ],
+  "guide": "d9275469dd3218ecb761b8b09deda64c62b00627f106c6efe96da3604cbfe6dd",
+  "sha256": "f08fc7b25f4c22bbc5465c5f52d4b3eb90fe09dd8541704758ca36106861b20b",
+  "palette": [
+    "#e26b03",
+    "#fefa98",
+    "#4c9d1e",
+    "#012d7b"
+  ],
+  "paneColorCheck": {
+    "matched": 86,
+    "total": 86,
+    "valid": true,
+    "mismatches": []
+  }
+}

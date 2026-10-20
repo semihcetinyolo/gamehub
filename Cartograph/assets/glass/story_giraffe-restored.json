@@ -1,0 +1,53 @@
+{
+  "id": "story_giraffe",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:20:12.245657+00:00",
+  "source": "assets/glass/story_giraffe-clear.webp",
+  "sourceSha256": "a6afc6c62ef83a42e9a368ec978b452bf39bbcbc39f811c8725b16dfbca71912",
+  "sourceGeometrySha256": "e998debdd60e1e40bf152d467618ab8e00c2a975df5961de2c15b917680ed523",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 77,
+      "donorPatches": 61,
+      "colour": 0,
+      "preservedFraction": 0.13019742529926448
+    },
+    {
+      "patchSize": 101,
+      "donorPatches": 43,
+      "colour": 1,
+      "preservedFraction": 0.2895669212667201
+    },
+    {
+      "patchSize": 74,
+      "donorPatches": 34,
+      "colour": 2,
+      "preservedFraction": 0.24432450251406904
+    },
+    {
+      "patchSize": 76,
+      "donorPatches": 72,
+      "colour": 3,
+      "preservedFraction": 0.32267957927880114
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "20c2f9bc01f424bed172876391265f6fecc3bcee0184b675731db43b7739a002",
+  "sha256": "7bb98b28d508e42854c7352b7610f80f69a0bf2dab307899fab382f98a0fd3c6",
+  "palette": [
+    "#f3800a",
+    "#fce851",
+    "#1da876",
+    "#042a70"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 33,
+    "total": 33,
+    "mismatches": []
+  }
+}

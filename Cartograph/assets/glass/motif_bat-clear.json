@@ -1,0 +1,27 @@
+{
+  "id": "motif_bat",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T06:57:41.372049+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Yarasa. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_bat.png"
+  ],
+  "size": [
+    883,
+    1178
+  ],
+  "guide": "8522868a7aa41054f52549dc06e384f1719fd90eaf921cab780bebcf619a0c76",
+  "sha256": "40cb3985e3913e85f2e9ec8cdd09c80771ca86c1b513eb03c3b4462181c4c11a",
+  "palette": [
+    "#d95370",
+    "#fef24e",
+    "#1998ad",
+    "#0a2056"
+  ],
+  "paneColorCheck": {
+    "matched": 28,
+    "total": 28,
+    "valid": true,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "castle",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:24:46.915333+00:00",
+  "source": "assets/glass/castle-restored.webp",
+  "sourceSha256": "0e835c55366c7e6488b5e086a3c13d7393d289659bd64aad4def01f7a7da2202",
+  "sourceGeometrySha256": "cb558e3ef6747b49002b25ad8756231c4743ad7e83c3fe42375262601e29d6d2",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 76,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.46870668941147664
+    },
+    {
+      "patchSize": 105,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.4357306622032216
+    },
+    {
+      "patchSize": 79,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.45494435602926436
+    },
+    {
+      "patchSize": 106,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5128971355653713
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "d06cde6e73d8412ccfafb94dd67b8aeef00663679e61b12517dc3c6f9588f3ba",
+  "sha256": "cd6f7849475e191500f5e3b8db2a5c77570293664d656c3a41839aea7e468ca9",
+  "palette": [
+    "#ab78b7",
+    "#faea9a",
+    "#d23c4f",
+    "#0e4f7e"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 35,
+    "total": 35,
+    "mismatches": []
+  }
+}

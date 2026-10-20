@@ -1,0 +1,26 @@
+{
+  "id": "brain",
+  "tool": "native vector geometry",
+  "palette": [
+    "#f23e31",
+    "#eee044",
+    "#128ce2",
+    "#16bb4d"
+  ],
+  "size": [
+    794,
+    794
+  ],
+  "guide": "b8bd9a72e9b2f26b91b09807741948ee11d9eafea50689da36ebc8fdd2efad7e",
+  "sha256": "f91741c13efae48333cd37792170ca8b0b931f1faf874e767960f96d93e767d3",
+  "references": [
+    "tools/stained/references/brain.png"
+  ],
+  "description": "Brain silhouette with broad, straight-sided four-colour regions and a brainstem.",
+  "paneColorCheck": {
+    "matched": 12,
+    "total": 12,
+    "valid": true,
+    "mismatches": []
+  }
+}

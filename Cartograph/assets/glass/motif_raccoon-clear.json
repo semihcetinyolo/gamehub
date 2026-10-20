@@ -1,0 +1,27 @@
+{
+  "id": "motif_raccoon",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:09:58.742298+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Rakun. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_raccoon.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "133ae9e4d5b91667ffb43567f8221942e65966f034726c78c731a8a03a996434",
+  "sha256": "d1464a32a2625ad9ec723ed947cf613dc7057218b661efcc7e053d1055f828a8",
+  "palette": [
+    "#e98a0d",
+    "#fdf25f",
+    "#4f8fbf",
+    "#122154"
+  ],
+  "paneColorCheck": {
+    "matched": 31,
+    "total": 31,
+    "valid": true,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "story_telescope",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:27:25.480635+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Yıldız Gözlemi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_telescope.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "380d78f283e0f584c0fe884d00935f9647a4bf5fd73e3ec65cd14bcff8f329d9",
+  "sha256": "eeedf1220f75ae95795c0a98f14b960b5b92484d455d2fdc7b7f1037947e1d86",
+  "palette": [
+    "#d85268",
+    "#feec56",
+    "#1ba2b4",
+    "#02206a"
+  ],
+  "paneColorCheck": {
+    "matched": 39,
+    "total": 39,
+    "valid": true,
+    "mismatches": []
+  }
+}

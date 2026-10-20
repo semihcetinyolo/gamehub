@@ -1,0 +1,27 @@
+{
+  "id": "motif_stingray",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:08:59.252980+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Vatoz. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_stingray.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "18ef022766e2ff159ec73ffada53cec5cbd58a1cbf35ada54d6d958f881e6814",
+  "sha256": "23a589f671c7a9219fee7817955c3297c4276aadef854648590962d16efaa6a6",
+  "palette": [
+    "#de6e13",
+    "#fdf280",
+    "#5b9a20",
+    "#064785"
+  ],
+  "paneColorCheck": {
+    "matched": 28,
+    "total": 28,
+    "valid": true,
+    "mismatches": []
+  }
+}

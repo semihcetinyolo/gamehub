@@ -1,0 +1,27 @@
+{
+  "id": "spiral_17",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:58:19.397798+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Dönen Odalar. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/spiral_17.png"
+  ],
+  "size": [
+    768,
+    768
+  ],
+  "guide": "89c6c593d61841f8ded5ce1ccecafc61406433be5034136d2138a164dce63b1a",
+  "sha256": "babdaf3104cf9d4c14bb22fee9f74d960386f98533a9571e9b58ae240886410b",
+  "palette": [
+    "#a052a7",
+    "#fdd72d",
+    "#38a88d",
+    "#1d5bbc"
+  ],
+  "paneColorCheck": {
+    "matched": 28,
+    "total": 28,
+    "valid": true,
+    "mismatches": []
+  }
+}

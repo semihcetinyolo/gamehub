@@ -1,0 +1,53 @@
+{
+  "id": "grand_06",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:22:11.813075+00:00",
+  "source": "assets/glass/grand_06-junction-pilot.webp",
+  "sourceSha256": "5b8fe34953488672c8d8d6df3db32434a77f8aa01f42e7b07c86663007248706",
+  "sourceGeometrySha256": "7288e7e5ff82d121af3eaeb905fde8074ba676952c753d041775f4648237e804",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 140,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5705830544282764
+    },
+    {
+      "patchSize": 138,
+      "donorPatches": 75,
+      "colour": 1,
+      "preservedFraction": 0.6077842184464306
+    },
+    {
+      "patchSize": 141,
+      "donorPatches": 85,
+      "colour": 2,
+      "preservedFraction": 0.5813701630520359
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.601750681878202
+    }
+  ],
+  "size": [
+    1728,
+    2304
+  ],
+  "guide": "817111869f9058214769b01186814791503c951c75abf5e2d334a5b95f55e9b1",
+  "sha256": "0cdf6f1b8e36f7549ad8d0e8ac84fc2c350ade4c765e7a9a6c9bfc09421b6258",
+  "palette": [
+    "#ed7303",
+    "#f8e53f",
+    "#0c958b",
+    "#01136a"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 83,
+    "total": 83,
+    "mismatches": []
+  }
+}

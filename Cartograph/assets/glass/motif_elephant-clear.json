@@ -1,0 +1,27 @@
+{
+  "id": "motif_elephant",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:00:15.184966+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Fil. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_elephant.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "6c589be7640eebbb7047185c388b0069d7bab080560887128a0468cf20076fec",
+  "sha256": "e2f6b796b4990381216ce3de3f400f87b4634b7a95db583696fbd36dc3847ac1",
+  "palette": [
+    "#f5473e",
+    "#fef187",
+    "#36a980",
+    "#03378d"
+  ],
+  "paneColorCheck": {
+    "matched": 30,
+    "total": 30,
+    "valid": true,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,2745 @@
+{
+  "tool": "local existing glass texture reuse",
+  "assets": [
+    {
+      "level": 2,
+      "id": "cactus",
+      "source": "assets/glass/cactus.webp",
+      "sourceSha256": "a8a236eff59f5ee833de587ae2f7f4503711ae2ec81e3f85a971d0b5a07d4abd",
+      "file": "assets/glass/cactus-restored.webp",
+      "metadata": "assets/glass/cactus-restored.json",
+      "guide": "tools/stained/guides/cactus.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 3,
+      "id": "lotus",
+      "source": "assets/glass/lotus.webp",
+      "sourceSha256": "868fddf5ae4102ed7222decc2a5b5591aacd9afee3d416cab00635c55fe89004",
+      "file": "assets/glass/lotus-restored.webp",
+      "metadata": "assets/glass/lotus-restored.json",
+      "guide": "tools/stained/guides/lotus.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 4,
+      "id": "heart",
+      "source": "assets/glass/heart.webp",
+      "sourceSha256": "82f5dd16c7a9d35287bd6186806fe64d45411ca0a1f118fb5fff824e901eee27",
+      "file": "assets/glass/heart-restored.webp",
+      "metadata": "assets/glass/heart-restored.json",
+      "guide": "tools/stained/guides/heart.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 5,
+      "id": "fox",
+      "source": "assets/glass/fox-clear.webp",
+      "sourceSha256": "98513edf9c3cba71380f618cee8fc635233350dd6cd8705db4d003d2dfb760bc",
+      "file": "assets/glass/fox-restored.webp",
+      "metadata": "assets/glass/fox-restored.json",
+      "guide": "tools/stained/guides/fox.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 6,
+      "id": "fish",
+      "source": "assets/glass/fish-clear.webp",
+      "sourceSha256": "ad8e39f16efedcdab23234cdb8b84fcdbe9ded8a85eda63b19764aaa606f3edb",
+      "file": "assets/glass/fish-restored.webp",
+      "metadata": "assets/glass/fish-restored.json",
+      "guide": "tools/stained/guides/fish.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 7,
+      "id": "flower",
+      "source": "assets/glass/flower.webp",
+      "sourceSha256": "01251daf5a7b0dfb33adb23228395ab2c2a5d824b4e98b118172bdf1796f2975",
+      "file": "assets/glass/flower-restored.webp",
+      "metadata": "assets/glass/flower-restored.json",
+      "guide": "tools/stained/guides/flower.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 8,
+      "id": "moon",
+      "source": "assets/glass/moon.webp",
+      "sourceSha256": "6d00df0caecaf8c114d039c1656529ac4fd1e4d85f442e39d43ae9205710ee47",
+      "file": "assets/glass/moon-restored.webp",
+      "metadata": "assets/glass/moon-restored.json",
+      "guide": "tools/stained/guides/moon.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 9,
+      "id": "mushroom",
+      "source": "assets/glass/mushroom.webp",
+      "sourceSha256": "3352bf727f84f8bd9c99399dd9928f48476b74af125a4d88a3388e5114a65807",
+      "file": "assets/glass/mushroom-restored.webp",
+      "metadata": "assets/glass/mushroom-restored.json",
+      "guide": "tools/stained/guides/mushroom.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 10,
+      "id": "motif_lobster",
+      "source": "assets/glass/motif_lobster-clear.webp",
+      "sourceSha256": "d5868c6166c707d4c64ab732743a5334c6c7e8cdbdbdb1aedcdd47634d9befee",
+      "file": "assets/glass/motif_lobster-restored.webp",
+      "metadata": "assets/glass/motif_lobster-restored.json",
+      "guide": "tools/stained/guides/motif_lobster.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 11,
+      "id": "owl",
+      "source": "assets/glass/owl.webp",
+      "sourceSha256": "4f20452677513193f443938e010f29baf7f5858db57ce2a0cf094847f0f15c7d",
+      "file": "assets/glass/owl-restored.webp",
+      "metadata": "assets/glass/owl-restored.json",
+      "guide": "tools/stained/guides/owl.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 12,
+      "id": "rings_07",
+      "source": "assets/glass/rings_07-vitray.webp",
+      "sourceSha256": "3ec8bd0af7abad8129051887c27bb60eb163ef7d48253f729970286a7de3190e",
+      "file": "assets/glass/rings_07-restored.webp",
+      "metadata": "assets/glass/rings_07-restored.json",
+      "guide": "tools/stained/guides/rings_07.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 13,
+      "id": "turtle",
+      "source": "assets/glass/turtle.webp",
+      "sourceSha256": "edd365b7e81acdd4a7981077a994296352b76b8fade5bbe6ad9e1f12f65a6e46",
+      "file": "assets/glass/turtle-restored.webp",
+      "metadata": "assets/glass/turtle-restored.json",
+      "guide": "tools/stained/guides/turtle.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 14,
+      "id": "peacock",
+      "source": "assets/glass/peacock.webp",
+      "sourceSha256": "48460f7f554f862d822324c8a70a8a7f7078375654b31c45fed58649ad4bdb1c",
+      "file": "assets/glass/peacock-restored.webp",
+      "metadata": "assets/glass/peacock-restored.json",
+      "guide": "tools/stained/guides/peacock.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 15,
+      "id": "rings_08",
+      "source": "assets/glass/rings_08-vitray.webp",
+      "sourceSha256": "7d3787120fc3241d6b5e94ddf6b8ecd68bef32cb4752b699f699023d44a7c52e",
+      "file": "assets/glass/rings_08-restored.webp",
+      "metadata": "assets/glass/rings_08-restored.json",
+      "guide": "tools/stained/guides/rings_08.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 16,
+      "id": "balloon",
+      "source": "assets/glass/balloon.webp",
+      "sourceSha256": "9c75e8fb34fc1ff89e189f927c0b634bad2676298fc6ffcf6c1839d13a9d76cb",
+      "file": "assets/glass/balloon-restored.webp",
+      "metadata": "assets/glass/balloon-restored.json",
+      "guide": "tools/stained/guides/balloon.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 17,
+      "id": "bird",
+      "source": "assets/glass/bird.webp",
+      "sourceSha256": "02845593c2866cc45e8df5060ad57ebdbaa5fdd018b3d4ad1ad75f12f4796aae",
+      "file": "assets/glass/bird-restored.webp",
+      "metadata": "assets/glass/bird-restored.json",
+      "guide": "tools/stained/guides/bird.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 18,
+      "id": "rosewindow",
+      "source": "assets/glass/rosewindow.webp",
+      "sourceSha256": "11a1442e52a24f32be88651410a672080d9ee51e9c8880f3924b3a8a3246b7e1",
+      "file": "assets/glass/rosewindow-restored.webp",
+      "metadata": "assets/glass/rosewindow-restored.json",
+      "guide": "tools/stained/guides/rosewindow.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 19,
+      "id": "spiral_24",
+      "source": "assets/glass/spiral_24-vitray.webp",
+      "sourceSha256": "aceeb8f9a47cc29076eeba8d8e55b84b6978d4380873b2302f461fcd23d16729",
+      "file": "assets/glass/spiral_24-restored.webp",
+      "metadata": "assets/glass/spiral_24-restored.json",
+      "guide": "tools/stained/guides/spiral_24.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 20,
+      "id": "motif_rooster",
+      "source": "assets/glass/motif_rooster-clear.webp",
+      "sourceSha256": "7c8cfeca584580056a734d0c8a8b7bf01253862c0a37c10e3a2494f6151daba4",
+      "file": "assets/glass/motif_rooster-restored.webp",
+      "metadata": "assets/glass/motif_rooster-restored.json",
+      "guide": "tools/stained/guides/motif_rooster.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 21,
+      "id": "sailboat",
+      "source": "assets/glass/sailboat-clear.webp",
+      "sourceSha256": "2db84b262f6ddfa53b4a9dbf1d267ca8fb251453fad3fe8db59349e4af99ac4c",
+      "file": "assets/glass/sailboat-restored.webp",
+      "metadata": "assets/glass/sailboat-restored.json",
+      "guide": "tools/stained/guides/sailboat.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 22,
+      "id": "mountain",
+      "source": "assets/glass/mountain.webp",
+      "sourceSha256": "e99c910d43b9532e08b3583e5f4ea8d5e4c9acbf404cdf89035bebdb72a9e82f",
+      "file": "assets/glass/mountain-restored.webp",
+      "metadata": "assets/glass/mountain-restored.json",
+      "guide": "tools/stained/guides/mountain.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 23,
+      "id": "rings_06",
+      "source": "assets/glass/rings_06-vitray.webp",
+      "sourceSha256": "5d6a65b90dd6159141b405bddb842679ea79dcf5d3c28ba6ea5032ffddf1f544",
+      "file": "assets/glass/rings_06-restored.webp",
+      "metadata": "assets/glass/rings_06-restored.json",
+      "guide": "tools/stained/guides/rings_06.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 24,
+      "id": "bee",
+      "source": "assets/glass/bee.webp",
+      "sourceSha256": "2bae16e8f2ee8a68863f89e1564e68308bc0b959264d884ffb21d863568360f0",
+      "file": "assets/glass/bee-restored.webp",
+      "metadata": "assets/glass/bee-restored.json",
+      "guide": "tools/stained/guides/bee.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 25,
+      "id": "lighthouse",
+      "source": "assets/glass/lighthouse.webp",
+      "sourceSha256": "8a0ddf292a292a64c68e6e261c14856868a5a80a612a80b6b412dbac3306d51a",
+      "file": "assets/glass/lighthouse-restored.webp",
+      "metadata": "assets/glass/lighthouse-restored.json",
+      "guide": "tools/stained/guides/lighthouse.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 26,
+      "id": "snowflake",
+      "source": "assets/glass/snowflake.webp",
+      "sourceSha256": "372d200a14d22005918da458c0b732c0192001c0b4d7c7b847e3b0c483f63ea4",
+      "file": "assets/glass/snowflake-restored.webp",
+      "metadata": "assets/glass/snowflake-restored.json",
+      "guide": "tools/stained/guides/snowflake.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 27,
+      "id": "rings_19",
+      "source": "assets/glass/rings_19-vitray.webp",
+      "sourceSha256": "0b68802938be6e05133a6c61d4b06dc2f6b6fef59c72c7be8157871ee3fa3bbb",
+      "file": "assets/glass/rings_19-restored.webp",
+      "metadata": "assets/glass/rings_19-restored.json",
+      "guide": "tools/stained/guides/rings_19.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 28,
+      "id": "tulip",
+      "source": "assets/glass/tulip.webp",
+      "sourceSha256": "c3fb7bdc9818c10399d0cafaa865f00b3e91f15902038c2b3e1bc5516fde8c0c",
+      "file": "assets/glass/tulip-restored.webp",
+      "metadata": "assets/glass/tulip-restored.json",
+      "guide": "tools/stained/guides/tulip.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 29,
+      "id": "kaleido",
+      "source": "assets/glass/kaleido.webp",
+      "sourceSha256": "5c7452aafd5139782f420c9eed51df9ea7897efc6fb3d59bd9dc8b8c67d9b230",
+      "file": "assets/glass/kaleido-restored.webp",
+      "metadata": "assets/glass/kaleido-restored.json",
+      "guide": "tools/stained/guides/kaleido.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 30,
+      "id": "grand_02",
+      "source": "assets/glass/grand_02-clear.webp",
+      "sourceSha256": "dd900572b5a1e54b32792dd7809522ac7c7b6b463f65654c4b7c018717e127e3",
+      "file": "assets/glass/grand_02-restored.webp",
+      "metadata": "assets/glass/grand_02-restored.json",
+      "guide": "tools/stained/guides/grand_02.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 31,
+      "id": "spiral_10",
+      "source": "assets/glass/spiral_10-vitray.webp",
+      "sourceSha256": "f1735b50943bb587dcafb7a5855f9678d9996666ce8db52dc39cfdc4ab1c3ebd",
+      "file": "assets/glass/spiral_10-restored.webp",
+      "metadata": "assets/glass/spiral_10-restored.json",
+      "guide": "tools/stained/guides/spiral_10.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 32,
+      "id": "tree",
+      "source": "assets/glass/tree-clear.webp",
+      "sourceSha256": "6e755056587c8eb50771b0f84539224090e35267525c6346ec33bc7c2e450c0c",
+      "file": "assets/glass/tree-restored.webp",
+      "metadata": "assets/glass/tree-restored.json",
+      "guide": "tools/stained/guides/tree.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 33,
+      "id": "medallion",
+      "source": "assets/glass/medallion.webp",
+      "sourceSha256": "9ff60f6e26f7461596fc90fca178da4eadc71e8fff3f58d62bc9a14113081bbf",
+      "file": "assets/glass/medallion-restored.webp",
+      "metadata": "assets/glass/medallion-restored.json",
+      "guide": "tools/stained/guides/medallion.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 34,
+      "id": "compass",
+      "source": "assets/glass/compass.webp",
+      "sourceSha256": "6a615ad75bcce4bd7279729a940a34341cc339ec735b7c37e275c616185164e2",
+      "file": "assets/glass/compass-restored.webp",
+      "metadata": "assets/glass/compass-restored.json",
+      "guide": "tools/stained/guides/compass.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 35,
+      "id": "spiral_25",
+      "source": "assets/glass/spiral_25-vitray.webp",
+      "sourceSha256": "dd98b51f283625bf2e21b956633826b75576cc1752bc241f0dcd79c380472fc1",
+      "file": "assets/glass/spiral_25-restored.webp",
+      "metadata": "assets/glass/spiral_25-restored.json",
+      "guide": "tools/stained/guides/spiral_25.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 36,
+      "id": "butterflygarden",
+      "source": "assets/glass/butterflygarden.webp",
+      "sourceSha256": "ad2faafb7dcbd063f9ed91a5247245084814b500a8ab086454d6aeb54c698efb",
+      "file": "assets/glass/butterflygarden-restored.webp",
+      "metadata": "assets/glass/butterflygarden-restored.json",
+      "guide": "tools/stained/guides/butterflygarden.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 37,
+      "id": "dragonfly",
+      "source": "assets/glass/dragonfly.webp",
+      "sourceSha256": "733379072374db844a14fbbe132fd63e2010770c3a90805b8f096cc938cfc668",
+      "file": "assets/glass/dragonfly-restored.webp",
+      "metadata": "assets/glass/dragonfly-restored.json",
+      "guide": "tools/stained/guides/dragonfly.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 38,
+      "id": "atlas_08",
+      "source": "assets/glass/atlas_08-vitray.webp",
+      "sourceSha256": "4a4025c00a306b630c12fc321bf3807a9a2169bcb669d30773fded4c33bb3673",
+      "file": "assets/glass/atlas_08-restored.webp",
+      "metadata": "assets/glass/atlas_08-restored.json",
+      "guide": "tools/stained/guides/atlas_08.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 39,
+      "id": "snail",
+      "source": "assets/glass/snail.webp",
+      "sourceSha256": "d71ad3760e758036416b6bafb6c9289099d99102c650a794976f7d1e326d6f6e",
+      "file": "assets/glass/snail-restored.webp",
+      "metadata": "assets/glass/snail-restored.json",
+      "guide": "tools/stained/guides/snail.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 40,
+      "id": "grand_06",
+      "source": "assets/glass/grand_06-clear.webp",
+      "sourceSha256": "a4a8372fe4bfd16996c77b7af141acbfc401291d8acfabea3c6a1bc717d1a0a7",
+      "file": "assets/glass/grand_06-restored.webp",
+      "metadata": "assets/glass/grand_06-restored.json",
+      "guide": "tools/stained/guides/grand_06.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 41,
+      "id": "seashell",
+      "source": "assets/glass/seashell.webp",
+      "sourceSha256": "09359644b1d35f7758b8c1439a4ca85a885270de92ca4a4469f0b1a0fa98fea3",
+      "file": "assets/glass/seashell-restored.webp",
+      "metadata": "assets/glass/seashell-restored.json",
+      "guide": "tools/stained/guides/seashell.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 42,
+      "id": "jellyfish",
+      "source": "assets/glass/jellyfish.webp",
+      "sourceSha256": "7bb10b390325f32ebb5f37390a74c8f2c88cab0e9a993b530fcc1400bb110bb5",
+      "file": "assets/glass/jellyfish-restored.webp",
+      "metadata": "assets/glass/jellyfish-restored.json",
+      "guide": "tools/stained/guides/jellyfish.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 43,
+      "id": "atlas_15",
+      "source": "assets/glass/atlas_15-vitray.webp",
+      "sourceSha256": "1e1a2259a1fd48ad6f380fd913f725721f564cfc9e343a20669f869df212e8ef",
+      "file": "assets/glass/atlas_15-restored.webp",
+      "metadata": "assets/glass/atlas_15-restored.json",
+      "guide": "tools/stained/guides/atlas_15.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 44,
+      "id": "whale",
+      "source": "assets/glass/whale.webp",
+      "sourceSha256": "0a93e5c469a395bd990aeddf4d7e4e9a7f72de9d57abfcce31cbee34c57fc4b3",
+      "file": "assets/glass/whale-restored.webp",
+      "metadata": "assets/glass/whale-restored.json",
+      "guide": "tools/stained/guides/whale.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 45,
+      "id": "penguin",
+      "source": "assets/glass/penguin.webp",
+      "sourceSha256": "992eb130a99752ad3183f11964c846e22356c2d052d8d5fbf7bd4672bffbb343",
+      "file": "assets/glass/penguin-restored.webp",
+      "metadata": "assets/glass/penguin-restored.json",
+      "guide": "tools/stained/guides/penguin.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 46,
+      "id": "rabbit",
+      "source": "assets/glass/rabbit.webp",
+      "sourceSha256": "ce0a8f2f48977eed2c1bb26828bf266a8411e03d8a68f4586712576faaa5ad8c",
+      "file": "assets/glass/rabbit-restored.webp",
+      "metadata": "assets/glass/rabbit-restored.json",
+      "guide": "tools/stained/guides/rabbit.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 47,
+      "id": "atlas_13",
+      "source": "assets/glass/atlas_13-vitray.webp",
+      "sourceSha256": "e79671dac5a772591fa125defd0bbca54274550e8c874733fa6c216a07590301",
+      "file": "assets/glass/atlas_13-restored.webp",
+      "metadata": "assets/glass/atlas_13-restored.json",
+      "guide": "tools/stained/guides/atlas_13.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 48,
+      "id": "bear",
+      "source": "assets/glass/bear.webp",
+      "sourceSha256": "4430acf38753a5144aee0864372af202b42f09e115946f04ea0f37397aec9faf",
+      "file": "assets/glass/bear-restored.webp",
+      "metadata": "assets/glass/bear-restored.json",
+      "guide": "tools/stained/guides/bear.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 49,
+      "id": "cherries",
+      "source": "assets/glass/cherries.webp",
+      "sourceSha256": "4f8a34463f6f7650a2280fbfef5bc25329ba39c03a350f863b20c370e7ec2815",
+      "file": "assets/glass/cherries-restored.webp",
+      "metadata": "assets/glass/cherries-restored.json",
+      "guide": "tools/stained/guides/cherries.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 50,
+      "id": "grand_21",
+      "source": "assets/glass/grand_21-clear.webp",
+      "sourceSha256": "6242410cb0c92de167c533f038c2e5b3ea69d8270433475a44cea72239b659f2",
+      "file": "assets/glass/grand_21-restored.webp",
+      "metadata": "assets/glass/grand_21-restored.json",
+      "guide": "tools/stained/guides/grand_21.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 51,
+      "id": "pear",
+      "source": "assets/glass/pear.webp",
+      "sourceSha256": "df45762ee7e33d97e3a2e0ff19f9ad67134633b61a012a48cec59600c2af6f22",
+      "file": "assets/glass/pear-restored.webp",
+      "metadata": "assets/glass/pear-restored.json",
+      "guide": "tools/stained/guides/pear.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 52,
+      "id": "strawberry",
+      "source": "assets/glass/strawberry.webp",
+      "sourceSha256": "50f2d4c322331e1a00ff534b5e5d168b618dfed2c3298fc8da307500f31a09e1",
+      "file": "assets/glass/strawberry-restored.webp",
+      "metadata": "assets/glass/strawberry-restored.json",
+      "guide": "tools/stained/guides/strawberry.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 53,
+      "id": "pumpkin",
+      "source": "assets/glass/pumpkin.webp",
+      "sourceSha256": "bea9194e4c35c716f36dcfdd436f941eaddaf7d36cb746e4c1181cd729ea3283",
+      "file": "assets/glass/pumpkin-restored.webp",
+      "metadata": "assets/glass/pumpkin-restored.json",
+      "guide": "tools/stained/guides/pumpkin.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 54,
+      "id": "maple",
+      "source": "assets/glass/maple.webp",
+      "sourceSha256": "a96ab80c432f9d5ceed64c72efbe7acb4014b102721f432a9f67078a6451c5d1",
+      "file": "assets/glass/maple-restored.webp",
+      "metadata": "assets/glass/maple-restored.json",
+      "guide": "tools/stained/guides/maple.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 55,
+      "id": "acorn",
+      "source": "assets/glass/acorn.webp",
+      "sourceSha256": "35d46ffc87ee044c7abe6c278af43332b3fdc83a038f31c1e1029777838701ff",
+      "file": "assets/glass/acorn-restored.webp",
+      "metadata": "assets/glass/acorn-restored.json",
+      "guide": "tools/stained/guides/acorn.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 56,
+      "id": "rose",
+      "source": "assets/glass/rose.webp",
+      "sourceSha256": "6e0b42a4c560486416c3975ac56c870bcb5a4ddd027d1c3c34c8b7a4c8422b79",
+      "file": "assets/glass/rose-restored.webp",
+      "metadata": "assets/glass/rose-restored.json",
+      "guide": "tools/stained/guides/rose.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 57,
+      "id": "iris",
+      "source": "assets/glass/iris.webp",
+      "sourceSha256": "9b0e176743a7cbfff7b04bf19239f15f4321febf35d211cd3a5cf1effa3bbdd5",
+      "file": "assets/glass/iris-restored.webp",
+      "metadata": "assets/glass/iris-restored.json",
+      "guide": "tools/stained/guides/iris.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 58,
+      "id": "teapot",
+      "source": "assets/glass/teapot.webp",
+      "sourceSha256": "6bfa43921e07fa2b295f28f47666286002173968abd74f66c36d003b8fc2eaf6",
+      "file": "assets/glass/teapot-restored.webp",
+      "metadata": "assets/glass/teapot-restored.json",
+      "guide": "tools/stained/guides/teapot.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 59,
+      "id": "lantern",
+      "source": "assets/glass/lantern.webp",
+      "sourceSha256": "3d845ccefa33e7340195024c0f23fc9e93b5bc4b120da9816b930d9954602437",
+      "file": "assets/glass/lantern-restored.webp",
+      "metadata": "assets/glass/lantern-restored.json",
+      "guide": "tools/stained/guides/lantern.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 60,
+      "id": "grand_18",
+      "source": "assets/glass/grand_18-clear.webp",
+      "sourceSha256": "57d142e878676ac1a0c3847148b40b5ad689e053642ebe65b535d229d4b43e0a",
+      "file": "assets/glass/grand_18-restored.webp",
+      "metadata": "assets/glass/grand_18-restored.json",
+      "guide": "tools/stained/guides/grand_18.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 61,
+      "id": "windmill",
+      "source": "assets/glass/windmill.webp",
+      "sourceSha256": "4c65045360ece5484914704fce925a81eb13ed4ba5c390147ce4db702d12e486",
+      "file": "assets/glass/windmill-restored.webp",
+      "metadata": "assets/glass/windmill-restored.json",
+      "guide": "tools/stained/guides/windmill.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 62,
+      "id": "castle",
+      "source": "assets/glass/castle.webp",
+      "sourceSha256": "61019e18c4e224e552bf24dac3a1e87371c29aa9d56ed8050fc41fa4b018d57a",
+      "file": "assets/glass/castle-restored.webp",
+      "metadata": "assets/glass/castle-restored.json",
+      "guide": "tools/stained/guides/castle.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 63,
+      "id": "bridge",
+      "source": "assets/glass/bridge-clear.webp",
+      "sourceSha256": "248fcc9f2e09a0151235aba3969957e6231a38ba3c45c1deb413431072a65258",
+      "file": "assets/glass/bridge-restored.webp",
+      "metadata": "assets/glass/bridge-restored.json",
+      "guide": "tools/stained/guides/bridge.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 64,
+      "id": "waterfall",
+      "source": "assets/glass/waterfall.webp",
+      "sourceSha256": "d323bcde17a0c0d149364252cf6bc87863641de1cae8b4ca4a9d265c0b64c70d",
+      "file": "assets/glass/waterfall-restored.webp",
+      "metadata": "assets/glass/waterfall-restored.json",
+      "guide": "tools/stained/guides/waterfall.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 65,
+      "id": "planet",
+      "source": "assets/glass/planet.webp",
+      "sourceSha256": "b071e2e7950b95d25fc4dc8f4c71f6a0f2ca8db088b3f63b84a1be8b0d86f67e",
+      "file": "assets/glass/planet-restored.webp",
+      "metadata": "assets/glass/planet-restored.json",
+      "guide": "tools/stained/guides/planet.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 66,
+      "id": "hourglass",
+      "source": "assets/glass/hourglass.webp",
+      "sourceSha256": "3b9b5a412909c310f4afa0f40e22548f2c5dd16ddccf2dced8626c2413f33854",
+      "file": "assets/glass/hourglass-restored.webp",
+      "metadata": "assets/glass/hourglass-restored.json",
+      "guide": "tools/stained/guides/hourglass.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 67,
+      "id": "motif_raccoon",
+      "source": "assets/glass/motif_raccoon-clear.webp",
+      "sourceSha256": "d1464a32a2625ad9ec723ed947cf613dc7057218b661efcc7e053d1055f828a8",
+      "file": "assets/glass/motif_raccoon-restored.webp",
+      "metadata": "assets/glass/motif_raccoon-restored.json",
+      "guide": "tools/stained/guides/motif_raccoon.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 68,
+      "id": "rings_01",
+      "source": "assets/glass/rings_01-vitray.webp",
+      "sourceSha256": "1554106bbb4bde2cf6b7adb96b2595d460d587949b83260a1a66c85b8b4f0b34",
+      "file": "assets/glass/rings_01-restored.webp",
+      "metadata": "assets/glass/rings_01-restored.json",
+      "guide": "tools/stained/guides/rings_01.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 69,
+      "id": "story_guitar",
+      "source": "assets/glass/story_guitar-clear.webp",
+      "sourceSha256": "ea976e3d7d7bf387f5abbb812046bca794a18dba8e4d4ee5905252b9a05e2401",
+      "file": "assets/glass/story_guitar-restored.webp",
+      "metadata": "assets/glass/story_guitar-restored.json",
+      "guide": "tools/stained/guides/story_guitar.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 70,
+      "id": "grand_15",
+      "source": "assets/glass/grand_15-clear.webp",
+      "sourceSha256": "bd5f737bc9ceb8bffa853e5f2a007bb401baa6b99a891e44530ec354729af8be",
+      "file": "assets/glass/grand_15-restored.webp",
+      "metadata": "assets/glass/grand_15-restored.json",
+      "guide": "tools/stained/guides/grand_15.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 71,
+      "id": "motif_rocket",
+      "source": "assets/glass/motif_rocket-clear.webp",
+      "sourceSha256": "9d20801f5c581e39598aee0b64bad63740cc308838ed4d0224153b3f33cd8088",
+      "file": "assets/glass/motif_rocket-restored.webp",
+      "metadata": "assets/glass/motif_rocket-restored.json",
+      "guide": "tools/stained/guides/motif_rocket.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 72,
+      "id": "spiral_13",
+      "source": "assets/glass/spiral_13-vitray.webp",
+      "sourceSha256": "05e477b6b889c1756ccc655b5567ce99c72852e7eda75f4cffec6befabf16ad5",
+      "file": "assets/glass/spiral_13-restored.webp",
+      "metadata": "assets/glass/spiral_13-restored.json",
+      "guide": "tools/stained/guides/spiral_13.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 73,
+      "id": "story_raccoon",
+      "source": "assets/glass/story_raccoon-clear.webp",
+      "sourceSha256": "44bba27eeebb7d60433ca6c9f77a1cca4aefdafb8c00cb75b57a69f63f4f29c4",
+      "file": "assets/glass/story_raccoon-restored.webp",
+      "metadata": "assets/glass/story_raccoon-restored.json",
+      "guide": "tools/stained/guides/story_raccoon.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 74,
+      "id": "atlas_07",
+      "source": "assets/glass/atlas_07-vitray.webp",
+      "sourceSha256": "321779f831f50f2fbb0c6104d7f25534ce0852acfabc37c9ad15911bf33a8d68",
+      "file": "assets/glass/atlas_07-restored.webp",
+      "metadata": "assets/glass/atlas_07-restored.json",
+      "guide": "tools/stained/guides/atlas_07.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 75,
+      "id": "motif_treasure",
+      "source": "assets/glass/motif_treasure-clear.webp",
+      "sourceSha256": "6f95c3029d0e1968eca27bc81a26a16b66d5d75cbaa9592308ae91ea5a5cfd80",
+      "file": "assets/glass/motif_treasure-restored.webp",
+      "metadata": "assets/glass/motif_treasure-restored.json",
+      "guide": "tools/stained/guides/motif_treasure.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 76,
+      "id": "spiral_02",
+      "source": "assets/glass/spiral_02-vitray.webp",
+      "sourceSha256": "fe3e9722d1a1be7294431e719ebee20ca84671fda9437e63b5c2b2b09d1a4bd0",
+      "file": "assets/glass/spiral_02-restored.webp",
+      "metadata": "assets/glass/spiral_02-restored.json",
+      "guide": "tools/stained/guides/spiral_02.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 77,
+      "id": "story_seal",
+      "source": "assets/glass/story_seal-clear.webp",
+      "sourceSha256": "3ddd53ffbfe61baa844448826ca3ba5de592a093e077f472acee34fc60533fd8",
+      "file": "assets/glass/story_seal-restored.webp",
+      "metadata": "assets/glass/story_seal-restored.json",
+      "guide": "tools/stained/guides/story_seal.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 78,
+      "id": "atlas_10",
+      "source": "assets/glass/atlas_10-vitray.webp",
+      "sourceSha256": "136de17f1317a525bf55152bbeb2ee3e32f26e66f6a4c2cbefc2d842233c6786",
+      "file": "assets/glass/atlas_10-restored.webp",
+      "metadata": "assets/glass/atlas_10-restored.json",
+      "guide": "tools/stained/guides/atlas_10.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 79,
+      "id": "story_flamingo",
+      "source": "assets/glass/story_flamingo-clear.webp",
+      "sourceSha256": "478f8bcb717f6e78cd8b45bf1737e498ed0105b30aace66c7f5fe21c4f9aa01f",
+      "file": "assets/glass/story_flamingo-restored.webp",
+      "metadata": "assets/glass/story_flamingo-restored.json",
+      "guide": "tools/stained/guides/story_flamingo.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 80,
+      "id": "grand_23",
+      "source": "assets/glass/grand_23-clear.webp",
+      "sourceSha256": "e648e175d31df829fc00ff84877813c184d8e20ea2f3880bfea259fd2db9a696",
+      "file": "assets/glass/grand_23-restored.webp",
+      "metadata": "assets/glass/grand_23-restored.json",
+      "guide": "tools/stained/guides/grand_23.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 81,
+      "id": "motif_koala",
+      "source": "assets/glass/motif_koala-clear.webp",
+      "sourceSha256": "4e88e2c7e8a9d7bab01308192f99cc6202454f51759657d9d9a07aa36959c0d9",
+      "file": "assets/glass/motif_koala-restored.webp",
+      "metadata": "assets/glass/motif_koala-restored.json",
+      "guide": "tools/stained/guides/motif_koala.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 82,
+      "id": "rings_14",
+      "source": "assets/glass/rings_14-vitray.webp",
+      "sourceSha256": "6cd0b675fe3060d0cb7488fed647d435ae8d8c5ff7a1d3afe213737b5e416d53",
+      "file": "assets/glass/rings_14-restored.webp",
+      "metadata": "assets/glass/rings_14-restored.json",
+      "guide": "tools/stained/guides/rings_14.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 83,
+      "id": "story_crab",
+      "source": "assets/glass/story_crab-clear.webp",
+      "sourceSha256": "f4061123e695fd409bafe5c49572647525cefd2770c979032e71b463aed788ce",
+      "file": "assets/glass/story_crab-restored.webp",
+      "metadata": "assets/glass/story_crab-restored.json",
+      "guide": "tools/stained/guides/story_crab.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 84,
+      "id": "spiral_07",
+      "source": "assets/glass/spiral_07-vitray.webp",
+      "sourceSha256": "d281c92bb0f918cbea94623352e0397e0d382916c66e12ee6d704da46a9eb660",
+      "file": "assets/glass/spiral_07-restored.webp",
+      "metadata": "assets/glass/spiral_07-restored.json",
+      "guide": "tools/stained/guides/spiral_07.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 85,
+      "id": "story_boots",
+      "source": "assets/glass/story_boots-clear.webp",
+      "sourceSha256": "0930da9b504b15de7edbe70bf5ef7076ad576e019dfc39debdf60e07ea587775",
+      "file": "assets/glass/story_boots-restored.webp",
+      "metadata": "assets/glass/story_boots-restored.json",
+      "guide": "tools/stained/guides/story_boots.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 86,
+      "id": "spiral_20",
+      "source": "assets/glass/spiral_20-vitray.webp",
+      "sourceSha256": "e01fe065ef5d9b49f55b91e2a46431dd8866229157f3eea76b1ce7347a16cdd7",
+      "file": "assets/glass/spiral_20-restored.webp",
+      "metadata": "assets/glass/spiral_20-restored.json",
+      "guide": "tools/stained/guides/spiral_20.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 87,
+      "id": "story_panda",
+      "source": "assets/glass/story_panda-clear.webp",
+      "sourceSha256": "88440915cb556fb5becb8354d9dc70bddac0a076b3e9577555daeb3bacf49855",
+      "file": "assets/glass/story_panda-restored.webp",
+      "metadata": "assets/glass/story_panda-restored.json",
+      "guide": "tools/stained/guides/story_panda.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 88,
+      "id": "rings_11",
+      "source": "assets/glass/rings_11-vitray.webp",
+      "sourceSha256": "ffe9e4d7277377750956f01852f77f46b95cdca8ff5ffab2a4b04210118f06b6",
+      "file": "assets/glass/rings_11-restored.webp",
+      "metadata": "assets/glass/rings_11-restored.json",
+      "guide": "tools/stained/guides/rings_11.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 89,
+      "id": "story_kite",
+      "source": "assets/glass/story_kite-clear.webp",
+      "sourceSha256": "709442bf9bfb85d210461404642a9dd872f8ead7baaeb202a43d12f5448c601b",
+      "file": "assets/glass/story_kite-restored.webp",
+      "metadata": "assets/glass/story_kite-restored.json",
+      "guide": "tools/stained/guides/story_kite.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 90,
+      "id": "grand_09",
+      "source": "assets/glass/grand_09-clear.webp",
+      "sourceSha256": "41dec743ab6f8e9bb0bd29bd9163392b41e5d626ad266024da0af697c12e842c",
+      "file": "assets/glass/grand_09-restored.webp",
+      "metadata": "assets/glass/grand_09-restored.json",
+      "guide": "tools/stained/guides/grand_09.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 91,
+      "id": "story_bicycle",
+      "source": "assets/glass/story_bicycle-clear.webp",
+      "sourceSha256": "40d4b5affb99b64c95bed8b6e030236f3664dabd1cc2219e8b092bb5c6ccc458",
+      "file": "assets/glass/story_bicycle-restored.webp",
+      "metadata": "assets/glass/story_bicycle-restored.json",
+      "guide": "tools/stained/guides/story_bicycle.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 92,
+      "id": "atlas_24",
+      "source": "assets/glass/atlas_24-vitray.webp",
+      "sourceSha256": "d50a6531587ff23e9b04e84329a5a36e552647d9ff6bd0f837f595ace4c46772",
+      "file": "assets/glass/atlas_24-restored.webp",
+      "metadata": "assets/glass/atlas_24-restored.json",
+      "guide": "tools/stained/guides/atlas_24.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 93,
+      "id": "motif_astronaut",
+      "source": "assets/glass/motif_astronaut-clear.webp",
+      "sourceSha256": "27aca47658d55cd63757c0637fc01ac4da8b8528963be86905c0e3ec46af9c4e",
+      "file": "assets/glass/motif_astronaut-restored.webp",
+      "metadata": "assets/glass/motif_astronaut-restored.json",
+      "guide": "tools/stained/guides/motif_astronaut.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 94,
+      "id": "atlas_03",
+      "source": "assets/glass/atlas_03-vitray.webp",
+      "sourceSha256": "1bca009bf776ddb8bbb0543922c06a4583042e87e8d9f0b6a5f24cad63b5c3ba",
+      "file": "assets/glass/atlas_03-restored.webp",
+      "metadata": "assets/glass/atlas_03-restored.json",
+      "guide": "tools/stained/guides/atlas_03.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 95,
+      "id": "story_sloth",
+      "source": "assets/glass/story_sloth-clear.webp",
+      "sourceSha256": "c0269df20f0273d0b4ec459ddd537fcd3b5887ee60f762cd0c573e45ee7ae8d8",
+      "file": "assets/glass/story_sloth-restored.webp",
+      "metadata": "assets/glass/story_sloth-restored.json",
+      "guide": "tools/stained/guides/story_sloth.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 96,
+      "id": "rings_15",
+      "source": "assets/glass/rings_15-vitray.webp",
+      "sourceSha256": "5a210144800b35481bbda1bf4b9f591fb48c1ece931730731a739ba80352a9b8",
+      "file": "assets/glass/rings_15-restored.webp",
+      "metadata": "assets/glass/rings_15-restored.json",
+      "guide": "tools/stained/guides/rings_15.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 97,
+      "id": "story_typewriter",
+      "source": "assets/glass/story_typewriter-clear.webp",
+      "sourceSha256": "e55cea9ed069e3319abaa5b9f1b371093476f62b0325edc24e4f2c3263430a92",
+      "file": "assets/glass/story_typewriter-restored.webp",
+      "metadata": "assets/glass/story_typewriter-restored.json",
+      "guide": "tools/stained/guides/story_typewriter.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 98,
+      "id": "atlas_21",
+      "source": "assets/glass/atlas_21-vitray.webp",
+      "sourceSha256": "46a0ab0ba38ea515297584118e590c7275953699193300fa60053c3b0d9de4f0",
+      "file": "assets/glass/atlas_21-restored.webp",
+      "metadata": "assets/glass/atlas_21-restored.json",
+      "guide": "tools/stained/guides/atlas_21.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 99,
+      "id": "motif_bicycle",
+      "source": "assets/glass/motif_bicycle-clear.webp",
+      "sourceSha256": "32ec519e16a3d7cf08a7aebd7090051faf66da319e0d4e363900c3cc7691d3b4",
+      "file": "assets/glass/motif_bicycle-restored.webp",
+      "metadata": "assets/glass/motif_bicycle-restored.json",
+      "guide": "tools/stained/guides/motif_bicycle.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 100,
+      "id": "grand_10",
+      "source": "assets/glass/grand_10-clear.webp",
+      "sourceSha256": "74ed032a084582e45fb6596ff44131f29ebc6b8a9f70c91e3822146039228ff5",
+      "file": "assets/glass/grand_10-restored.webp",
+      "metadata": "assets/glass/grand_10-restored.json",
+      "guide": "tools/stained/guides/grand_10.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 101,
+      "id": "motif_giraffe",
+      "source": "assets/glass/motif_giraffe-clear.webp",
+      "sourceSha256": "83727edbdb334f75ececf2755ec413b9cfd4d194696d3bfb1da68c70795e2dbe",
+      "file": "assets/glass/motif_giraffe-restored.webp",
+      "metadata": "assets/glass/motif_giraffe-restored.json",
+      "guide": "tools/stained/guides/motif_giraffe.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 102,
+      "id": "atlas_20",
+      "source": "assets/glass/atlas_20-vitray.webp",
+      "sourceSha256": "673272a354de5ded28ed82224a8d9b9b701fb6dbc3614ee8ea7287efee8be5e4",
+      "file": "assets/glass/atlas_20-restored.webp",
+      "metadata": "assets/glass/atlas_20-restored.json",
+      "guide": "tools/stained/guides/atlas_20.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 103,
+      "id": "story_toucan",
+      "source": "assets/glass/story_toucan-clear.webp",
+      "sourceSha256": "73042bbaca1e822826bdc109dbf865c5139c375fab58c0ed2ee0f2b43bf64f6e",
+      "file": "assets/glass/story_toucan-restored.webp",
+      "metadata": "assets/glass/story_toucan-restored.json",
+      "guide": "tools/stained/guides/story_toucan.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 104,
+      "id": "rings_23",
+      "source": "assets/glass/rings_23-vitray.webp",
+      "sourceSha256": "f087c693e99c7ab5988274f96dd32b0c87fde062cd396ba4e4198827b907b9e4",
+      "file": "assets/glass/rings_23-restored.webp",
+      "metadata": "assets/glass/rings_23-restored.json",
+      "guide": "tools/stained/guides/rings_23.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 105,
+      "id": "motif_squirrel",
+      "source": "assets/glass/motif_squirrel-clear.webp",
+      "sourceSha256": "7b46d03e3afc976f5251fbdd2441fcbb27797f4fa692d11b69e2a88bec027590",
+      "file": "assets/glass/motif_squirrel-restored.webp",
+      "metadata": "assets/glass/motif_squirrel-restored.json",
+      "guide": "tools/stained/guides/motif_squirrel.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 106,
+      "id": "spiral_23",
+      "source": "assets/glass/spiral_23-vitray.webp",
+      "sourceSha256": "ad6b0980679247cb224180c93af8464daed93f401de3afeff60889588895e78a",
+      "file": "assets/glass/spiral_23-restored.webp",
+      "metadata": "assets/glass/spiral_23-restored.json",
+      "guide": "tools/stained/guides/spiral_23.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 107,
+      "id": "motif_telescope",
+      "source": "assets/glass/motif_telescope-clear.webp",
+      "sourceSha256": "f81f63c63b4baf4c10f308e8e5b04375bcf71e9cabe1768cd299ff5190fd97d2",
+      "file": "assets/glass/motif_telescope-restored.webp",
+      "metadata": "assets/glass/motif_telescope-restored.json",
+      "guide": "tools/stained/guides/motif_telescope.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 108,
+      "id": "atlas_17",
+      "source": "assets/glass/atlas_17-vitray.webp",
+      "sourceSha256": "7d3fe7fec96d8c185495cd8d6618e1b269607022c51bf013e28539d4cbfe249a",
+      "file": "assets/glass/atlas_17-restored.webp",
+      "metadata": "assets/glass/atlas_17-restored.json",
+      "guide": "tools/stained/guides/atlas_17.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 109,
+      "id": "motif_umbrella",
+      "source": "assets/glass/motif_umbrella-clear.webp",
+      "sourceSha256": "4591b9d22efa6bce2516f03e79c96850b0659f51edfb148e07fd668c3d95b03f",
+      "file": "assets/glass/motif_umbrella-restored.webp",
+      "metadata": "assets/glass/motif_umbrella-restored.json",
+      "guide": "tools/stained/guides/motif_umbrella.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 110,
+      "id": "grand_24",
+      "source": "assets/glass/grand_24-clear.webp",
+      "sourceSha256": "eebbef6853908eef2b778000b60d2afd200c9660b110f70cd0fc27d1c6f5b74f",
+      "file": "assets/glass/grand_24-restored.webp",
+      "metadata": "assets/glass/grand_24-restored.json",
+      "guide": "tools/stained/guides/grand_24.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 111,
+      "id": "motif_moka",
+      "source": "assets/glass/motif_moka-clear.webp",
+      "sourceSha256": "a861b0896ef08c0492ac9a5f3d515081f5522618f50363abe5fa58277683d82d",
+      "file": "assets/glass/motif_moka-restored.webp",
+      "metadata": "assets/glass/motif_moka-restored.json",
+      "guide": "tools/stained/guides/motif_moka.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 112,
+      "id": "rings_09",
+      "source": "assets/glass/rings_09-vitray.webp",
+      "sourceSha256": "8b901c4083eb37f33204707b12b7f1976897255980685167b8fb78dd2728e33d",
+      "file": "assets/glass/rings_09-restored.webp",
+      "metadata": "assets/glass/rings_09-restored.json",
+      "guide": "tools/stained/guides/rings_09.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 113,
+      "id": "story_rocket",
+      "source": "assets/glass/story_rocket-clear.webp",
+      "sourceSha256": "16dfc89755d0ca225436210b002f8c692ba558d33a100248812944a4207cc087",
+      "file": "assets/glass/story_rocket-restored.webp",
+      "metadata": "assets/glass/story_rocket-restored.json",
+      "guide": "tools/stained/guides/story_rocket.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 114,
+      "id": "spiral_19",
+      "source": "assets/glass/spiral_19-vitray.webp",
+      "sourceSha256": "33e5cc2cc87c830115f10402374262d1e66a5c94df8a5b22c3c21355cad1f56d",
+      "file": "assets/glass/spiral_19-restored.webp",
+      "metadata": "assets/glass/spiral_19-restored.json",
+      "guide": "tools/stained/guides/spiral_19.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 115,
+      "id": "motif_otter",
+      "source": "assets/glass/motif_otter-clear.webp",
+      "sourceSha256": "ee44a1eb8bd3a37a1af1e9cb06c7d83a9e8bd56fc9653109446470c1a2bec74a",
+      "file": "assets/glass/motif_otter-restored.webp",
+      "metadata": "assets/glass/motif_otter-restored.json",
+      "guide": "tools/stained/guides/motif_otter.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 116,
+      "id": "spiral_12",
+      "source": "assets/glass/spiral_12-vitray.webp",
+      "sourceSha256": "82047ac74a701359e0f40705437216e11904ec8d834e3b57093b01959b56c17a",
+      "file": "assets/glass/spiral_12-restored.webp",
+      "metadata": "assets/glass/spiral_12-restored.json",
+      "guide": "tools/stained/guides/spiral_12.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 117,
+      "id": "story_astronaut",
+      "source": "assets/glass/story_astronaut-clear.webp",
+      "sourceSha256": "72a30c019bd2193c318014790c0c798721336b282bc874899370db402cbb79bd",
+      "file": "assets/glass/story_astronaut-restored.webp",
+      "metadata": "assets/glass/story_astronaut-restored.json",
+      "guide": "tools/stained/guides/story_astronaut.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 118,
+      "id": "rings_18",
+      "source": "assets/glass/rings_18-vitray.webp",
+      "sourceSha256": "45c923ba2dbd7762fb634ea50212c623c8c5df80173b012b3ddd9d6b261ef2a3",
+      "file": "assets/glass/rings_18-restored.webp",
+      "metadata": "assets/glass/rings_18-restored.json",
+      "guide": "tools/stained/guides/rings_18.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 119,
+      "id": "story_saxophone",
+      "source": "assets/glass/story_saxophone-clear.webp",
+      "sourceSha256": "e6d1e320ed69ad86c51554301c03744e231c6768fd06b9a310c158d56a4f4937",
+      "file": "assets/glass/story_saxophone-restored.webp",
+      "metadata": "assets/glass/story_saxophone-restored.json",
+      "guide": "tools/stained/guides/story_saxophone.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 120,
+      "id": "grand_12",
+      "source": "assets/glass/grand_12-clear.webp",
+      "sourceSha256": "fc814de7067a7c6497d10ecb03540f7122f726efa013698a30d6890f1e373772",
+      "file": "assets/glass/grand_12-restored.webp",
+      "metadata": "assets/glass/grand_12-restored.json",
+      "guide": "tools/stained/guides/grand_12.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 121,
+      "id": "motif_duck",
+      "source": "assets/glass/motif_duck-clear.webp",
+      "sourceSha256": "bd9c2055274aa9efdc6a84efad31afaf1ba945e5c99e303f687116a94367aed1",
+      "file": "assets/glass/motif_duck-restored.webp",
+      "metadata": "assets/glass/motif_duck-restored.json",
+      "guide": "tools/stained/guides/motif_duck.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 122,
+      "id": "spiral_04",
+      "source": "assets/glass/spiral_04-vitray.webp",
+      "sourceSha256": "3d73c4851e2d074b1c0f0b43515730367f84791831c2292a723a13b0bca6aeb4",
+      "file": "assets/glass/spiral_04-restored.webp",
+      "metadata": "assets/glass/spiral_04-restored.json",
+      "guide": "tools/stained/guides/spiral_04.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 123,
+      "id": "story_octopus",
+      "source": "assets/glass/story_octopus-clear.webp",
+      "sourceSha256": "08fe74350b492a5163ba6c53e7bb36119b7b16dfc574dfacff53f097c183422d",
+      "file": "assets/glass/story_octopus-restored.webp",
+      "metadata": "assets/glass/story_octopus-restored.json",
+      "guide": "tools/stained/guides/story_octopus.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 124,
+      "id": "spiral_11",
+      "source": "assets/glass/spiral_11-vitray.webp",
+      "sourceSha256": "980d46a065e5282e5293571f7796adaf1708b9c3430e0605b8bf03f695c538ad",
+      "file": "assets/glass/spiral_11-restored.webp",
+      "metadata": "assets/glass/spiral_11-restored.json",
+      "guide": "tools/stained/guides/spiral_11.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 125,
+      "id": "motif_guitar",
+      "source": "assets/glass/motif_guitar-clear.webp",
+      "sourceSha256": "7cb2b818ca64386fd850192d5cb5c4f51c3721a30c9e861219201d5ccac7b6c7",
+      "file": "assets/glass/motif_guitar-restored.webp",
+      "metadata": "assets/glass/motif_guitar-restored.json",
+      "guide": "tools/stained/guides/motif_guitar.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 126,
+      "id": "atlas_25",
+      "source": "assets/glass/atlas_25-vitray.webp",
+      "sourceSha256": "953ba886409cd4c06e455ba1df992866e270a7342073ee84ed5223f396c1e858",
+      "file": "assets/glass/atlas_25-restored.webp",
+      "metadata": "assets/glass/atlas_25-restored.json",
+      "guide": "tools/stained/guides/atlas_25.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 127,
+      "id": "story_gramophone",
+      "source": "assets/glass/story_gramophone-clear.webp",
+      "sourceSha256": "f7555b3af85db78adc8a254c49ff58ec9fc3ad08a5b38f9691f6a61381637fad",
+      "file": "assets/glass/story_gramophone-restored.webp",
+      "metadata": "assets/glass/story_gramophone-restored.json",
+      "guide": "tools/stained/guides/story_gramophone.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 128,
+      "id": "rings_22",
+      "source": "assets/glass/rings_22-vitray.webp",
+      "sourceSha256": "12344b9af5ac2e90a3c4ebb53557869807b04e13875599ced0fb67f65cb1eb0b",
+      "file": "assets/glass/rings_22-restored.webp",
+      "metadata": "assets/glass/rings_22-restored.json",
+      "guide": "tools/stained/guides/rings_22.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 129,
+      "id": "story_squirrel",
+      "source": "assets/glass/story_squirrel-clear.webp",
+      "sourceSha256": "aea584091a74a660be33ad0696cb20c96e6e1c502a358cb92b9e3e921a62b909",
+      "file": "assets/glass/story_squirrel-restored.webp",
+      "metadata": "assets/glass/story_squirrel-restored.json",
+      "guide": "tools/stained/guides/story_squirrel.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 130,
+      "id": "grand_16",
+      "source": "assets/glass/grand_16-clear.webp",
+      "sourceSha256": "18fa1d6c8a5c4e8995bf01a4d5ca7c3ccfa819e3e110b3b6ffc2241a17e4efa9",
+      "file": "assets/glass/grand_16-restored.webp",
+      "metadata": "assets/glass/grand_16-restored.json",
+      "guide": "tools/stained/guides/grand_16.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 131,
+      "id": "motif_frog",
+      "source": "assets/glass/motif_frog-clear.webp",
+      "sourceSha256": "4181bac78f6f6f37cbc6e0a22650306e952423d9c79a9b7b53fb2a83bb294f85",
+      "file": "assets/glass/motif_frog-restored.webp",
+      "metadata": "assets/glass/motif_frog-restored.json",
+      "guide": "tools/stained/guides/motif_frog.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 132,
+      "id": "atlas_06",
+      "source": "assets/glass/atlas_06-vitray.webp",
+      "sourceSha256": "a767723cda7a5eeb76627aa24b0d21ddce4ce64d49ebde97dca3627e55f8460f",
+      "file": "assets/glass/atlas_06-restored.webp",
+      "metadata": "assets/glass/atlas_06-restored.json",
+      "guide": "tools/stained/guides/atlas_06.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 133,
+      "id": "story_elephant",
+      "source": "assets/glass/story_elephant-clear.webp",
+      "sourceSha256": "b3cbeeed88c3e3098960347fcc10ddf11081e2f71a54c0d5820fe17566511437",
+      "file": "assets/glass/story_elephant-restored.webp",
+      "metadata": "assets/glass/story_elephant-restored.json",
+      "guide": "tools/stained/guides/story_elephant.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 134,
+      "id": "spiral_08",
+      "source": "assets/glass/spiral_08-vitray.webp",
+      "sourceSha256": "73c18f9b0371dd619f6b75d3077ade67a06806ec4cad1ec9c31f985c3b931106",
+      "file": "assets/glass/spiral_08-restored.webp",
+      "metadata": "assets/glass/spiral_08-restored.json",
+      "guide": "tools/stained/guides/spiral_08.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 135,
+      "id": "motif_octopus",
+      "source": "assets/glass/motif_octopus-clear.webp",
+      "sourceSha256": "f0c9d4e0523ce05ef1bde2e47569e5c155aeae4016fd8858b082267733dc7a9b",
+      "file": "assets/glass/motif_octopus-restored.webp",
+      "metadata": "assets/glass/motif_octopus-restored.json",
+      "guide": "tools/stained/guides/motif_octopus.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 136,
+      "id": "spiral_05",
+      "source": "assets/glass/spiral_05-vitray.webp",
+      "sourceSha256": "ad7901d340813138dc2ce58bdefd37f4d88fdf93bb51eb709a5a53cb4c9d55f3",
+      "file": "assets/glass/spiral_05-restored.webp",
+      "metadata": "assets/glass/spiral_05-restored.json",
+      "guide": "tools/stained/guides/spiral_05.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 137,
+      "id": "motif_puffin",
+      "source": "assets/glass/motif_puffin-clear.webp",
+      "sourceSha256": "b459414339b605987146ee4632f3bbf44f47a82e6d3f6d71d4f8d54dd73f785f",
+      "file": "assets/glass/motif_puffin-restored.webp",
+      "metadata": "assets/glass/motif_puffin-restored.json",
+      "guide": "tools/stained/guides/motif_puffin.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 138,
+      "id": "rings_04",
+      "source": "assets/glass/rings_04-vitray.webp",
+      "sourceSha256": "0f56fba0eb1aa0e25b8724ec36f77ae73c33d12f95b14451a8f13e7f6266093a",
+      "file": "assets/glass/rings_04-restored.webp",
+      "metadata": "assets/glass/rings_04-restored.json",
+      "guide": "tools/stained/guides/rings_04.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 139,
+      "id": "story_umbrella",
+      "source": "assets/glass/story_umbrella-clear.webp",
+      "sourceSha256": "2e01b8e6e0f5ed64575e2c25db81b4f0a08fbfd4d075dc8a3808488599c4bfe2",
+      "file": "assets/glass/story_umbrella-restored.webp",
+      "metadata": "assets/glass/story_umbrella-restored.json",
+      "guide": "tools/stained/guides/story_umbrella.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 140,
+      "id": "grand_01",
+      "source": "assets/glass/grand_01-clear.webp",
+      "sourceSha256": "f65cb0f3d0a4da86528fefa21a76d466faa600999a21e0ea77ee6a9416c06aa7",
+      "file": "assets/glass/grand_01-restored.webp",
+      "metadata": "assets/glass/grand_01-restored.json",
+      "guide": "tools/stained/guides/grand_01.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 141,
+      "id": "story_telescope",
+      "source": "assets/glass/story_telescope-clear.webp",
+      "sourceSha256": "eeedf1220f75ae95795c0a98f14b960b5b92484d455d2fdc7b7f1037947e1d86",
+      "file": "assets/glass/story_telescope-restored.webp",
+      "metadata": "assets/glass/story_telescope-restored.json",
+      "guide": "tools/stained/guides/story_telescope.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 142,
+      "id": "rings_20",
+      "source": "assets/glass/rings_20-vitray.webp",
+      "sourceSha256": "01caabe73531eca03f1b386855ba3b185a81f88926f99142771acb65bde689d4",
+      "file": "assets/glass/rings_20-restored.webp",
+      "metadata": "assets/glass/rings_20-restored.json",
+      "guide": "tools/stained/guides/rings_20.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 143,
+      "id": "motif_saxophone",
+      "source": "assets/glass/motif_saxophone-clear.webp",
+      "sourceSha256": "1b7cdf02c6b1890d07ba29f9ededcff7ab2ce73251b8af992921615848a71ec2",
+      "file": "assets/glass/motif_saxophone-restored.webp",
+      "metadata": "assets/glass/motif_saxophone-restored.json",
+      "guide": "tools/stained/guides/motif_saxophone.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 144,
+      "id": "rings_05",
+      "source": "assets/glass/rings_05-vitray.webp",
+      "sourceSha256": "a6f0999547549f00d7f576eba74d8372b3fbc934816cd47d441c5345bf05abcf",
+      "file": "assets/glass/rings_05-restored.webp",
+      "metadata": "assets/glass/rings_05-restored.json",
+      "guide": "tools/stained/guides/rings_05.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 145,
+      "id": "story_violin",
+      "source": "assets/glass/story_violin-clear.webp",
+      "sourceSha256": "fc05a237a4d4c9b44e998a078efb7052992087768680590660040bfcd25a1754",
+      "file": "assets/glass/story_violin-restored.webp",
+      "metadata": "assets/glass/story_violin-restored.json",
+      "guide": "tools/stained/guides/story_violin.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 146,
+      "id": "rings_17",
+      "source": "assets/glass/rings_17-vitray.webp",
+      "sourceSha256": "59350e4f2e9fe7a8280ebe41f14e37a5064066cb962a62bc839e7fe76c48d6ed",
+      "file": "assets/glass/rings_17-restored.webp",
+      "metadata": "assets/glass/rings_17-restored.json",
+      "guide": "tools/stained/guides/rings_17.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 147,
+      "id": "motif_seal",
+      "source": "assets/glass/motif_seal-clear.webp",
+      "sourceSha256": "161fa027be111416bd004665fd16e8de5d31fa31bd14e7b11730a3a1c78404ce",
+      "file": "assets/glass/motif_seal-restored.webp",
+      "metadata": "assets/glass/motif_seal-restored.json",
+      "guide": "tools/stained/guides/motif_seal.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 148,
+      "id": "atlas_04",
+      "source": "assets/glass/atlas_04-vitray.webp",
+      "sourceSha256": "0c9e245e51008c3215924642e648beb3534adedea5227ca59deec77b0adbc2bc",
+      "file": "assets/glass/atlas_04-restored.webp",
+      "metadata": "assets/glass/atlas_04-restored.json",
+      "guide": "tools/stained/guides/atlas_04.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 149,
+      "id": "motif_chameleon",
+      "source": "assets/glass/motif_chameleon-clear.webp",
+      "sourceSha256": "0e567a93289740203279ab1b3ce4b0fdd485f431a08f5cb24e6ee0d462ec945e",
+      "file": "assets/glass/motif_chameleon-restored.webp",
+      "metadata": "assets/glass/motif_chameleon-restored.json",
+      "guide": "tools/stained/guides/motif_chameleon.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 150,
+      "id": "grand_03",
+      "source": "assets/glass/grand_03-clear.webp",
+      "sourceSha256": "4085f3320a247b334c1262178ee584019e673de90afa900aa76cfc9432ebd0f4",
+      "file": "assets/glass/grand_03-restored.webp",
+      "metadata": "assets/glass/grand_03-restored.json",
+      "guide": "tools/stained/guides/grand_03.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 151,
+      "id": "motif_alpaca",
+      "source": "assets/glass/motif_alpaca-clear.webp",
+      "sourceSha256": "7419528271184b5f5224c07d7fcdb9528512b9b1f9e07d251c5df5f8cd004e8a",
+      "file": "assets/glass/motif_alpaca-restored.webp",
+      "metadata": "assets/glass/motif_alpaca-restored.json",
+      "guide": "tools/stained/guides/motif_alpaca.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 152,
+      "id": "rings_25",
+      "source": "assets/glass/rings_25-vitray.webp",
+      "sourceSha256": "ff7038fb739bbca1e7ddb495d17fc3b818055868bba8648f3430b0967192753d",
+      "file": "assets/glass/rings_25-restored.webp",
+      "metadata": "assets/glass/rings_25-restored.json",
+      "guide": "tools/stained/guides/rings_25.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 153,
+      "id": "story_bat",
+      "source": "assets/glass/story_bat-clear.webp",
+      "sourceSha256": "dad15a048dfb92ae790b198467f9d63cb298e10bed54b498b25ac0f65f42dea7",
+      "file": "assets/glass/story_bat-restored.webp",
+      "metadata": "assets/glass/story_bat-restored.json",
+      "guide": "tools/stained/guides/story_bat.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 154,
+      "id": "rings_02",
+      "source": "assets/glass/rings_02-vitray.webp",
+      "sourceSha256": "d622f77a4ba7d8c5a7794aca7207f0d6f0e4a42793807914475f7179d8aa3608",
+      "file": "assets/glass/rings_02-restored.webp",
+      "metadata": "assets/glass/rings_02-restored.json",
+      "guide": "tools/stained/guides/rings_02.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 155,
+      "id": "story_koala",
+      "source": "assets/glass/story_koala-clear.webp",
+      "sourceSha256": "d14613e7085001d4f3bb00aa3b71dbf8924ee42b78ade1e73421b4f28e7c8c78",
+      "file": "assets/glass/story_koala-restored.webp",
+      "metadata": "assets/glass/story_koala-restored.json",
+      "guide": "tools/stained/guides/story_koala.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 156,
+      "id": "spiral_16",
+      "source": "assets/glass/spiral_16-vitray.webp",
+      "sourceSha256": "4e5508035691da94d810cb53e208a2e9c939524d8f02ab130a611190eabb3182",
+      "file": "assets/glass/spiral_16-restored.webp",
+      "metadata": "assets/glass/spiral_16-restored.json",
+      "guide": "tools/stained/guides/spiral_16.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 157,
+      "id": "story_submarine",
+      "source": "assets/glass/story_submarine-clear.webp",
+      "sourceSha256": "155996b5222a972f6379b9534bb27de7eaa7afa1dada643b3608e34d67eaeb4c",
+      "file": "assets/glass/story_submarine-restored.webp",
+      "metadata": "assets/glass/story_submarine-restored.json",
+      "guide": "tools/stained/guides/story_submarine.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 158,
+      "id": "spiral_15",
+      "source": "assets/glass/spiral_15-vitray.webp",
+      "sourceSha256": "7c2a802484e8746dd5317f277f4f99b79f740c64113aa402bdd351e71644c853",
+      "file": "assets/glass/spiral_15-restored.webp",
+      "metadata": "assets/glass/spiral_15-restored.json",
+      "guide": "tools/stained/guides/spiral_15.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 159,
+      "id": "story_carouselhorse",
+      "source": "assets/glass/story_carouselhorse-clear.webp",
+      "sourceSha256": "5a53a13e5b2ee73a10e018053f6662e64b030667446eb031665c9d1d594fe68e",
+      "file": "assets/glass/story_carouselhorse-restored.webp",
+      "metadata": "assets/glass/story_carouselhorse-restored.json",
+      "guide": "tools/stained/guides/story_carouselhorse.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 160,
+      "id": "grand_05",
+      "source": "assets/glass/grand_05-clear.webp",
+      "sourceSha256": "a4cd5a6d2c0261165c49cf1df267a7db0df1e42ac0332cc3a55c1e0284359928",
+      "file": "assets/glass/grand_05-restored.webp",
+      "metadata": "assets/glass/grand_05-restored.json",
+      "guide": "tools/stained/guides/grand_05.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 161,
+      "id": "story_airship",
+      "source": "assets/glass/story_airship-clear.webp",
+      "sourceSha256": "a9e09a41789eeceee2b08666a58578342974f9258d8c9c5567c5e0ce252fea96",
+      "file": "assets/glass/story_airship-restored.webp",
+      "metadata": "assets/glass/story_airship-restored.json",
+      "guide": "tools/stained/guides/story_airship.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 162,
+      "id": "spiral_14",
+      "source": "assets/glass/spiral_14-vitray.webp",
+      "sourceSha256": "67f9cd93b5f672b22a761f4c5f9f8807cff2919f4f9221ea388a3cae9c89bfd7",
+      "file": "assets/glass/spiral_14-restored.webp",
+      "metadata": "assets/glass/spiral_14-restored.json",
+      "guide": "tools/stained/guides/spiral_14.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 163,
+      "id": "story_treasure",
+      "source": "assets/glass/story_treasure-clear.webp",
+      "sourceSha256": "72fcfa164ef93e394b22176b08ff07b4445d96ecefbb1e42db551bb4fb72f3fa",
+      "file": "assets/glass/story_treasure-restored.webp",
+      "metadata": "assets/glass/story_treasure-restored.json",
+      "guide": "tools/stained/guides/story_treasure.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 164,
+      "id": "atlas_14",
+      "source": "assets/glass/atlas_14-vitray.webp",
+      "sourceSha256": "8ba5d2082323fff2e76551308c51a6403496df0e1530403dd41776eb19737c40",
+      "file": "assets/glass/atlas_14-restored.webp",
+      "metadata": "assets/glass/atlas_14-restored.json",
+      "guide": "tools/stained/guides/atlas_14.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 165,
+      "id": "story_iguana",
+      "source": "assets/glass/story_iguana-clear.webp",
+      "sourceSha256": "abfd0f4c1c778717b0cd883e26d33139dff4ddbaa4400b3471441022bfa543d5",
+      "file": "assets/glass/story_iguana-restored.webp",
+      "metadata": "assets/glass/story_iguana-restored.json",
+      "guide": "tools/stained/guides/story_iguana.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 166,
+      "id": "spiral_22",
+      "source": "assets/glass/spiral_22-vitray.webp",
+      "sourceSha256": "bd4a9bf91a6bb3f1a9bb3d624f6a9d367c76360d13344cc9ecb72eb44c417d66",
+      "file": "assets/glass/spiral_22-restored.webp",
+      "metadata": "assets/glass/spiral_22-restored.json",
+      "guide": "tools/stained/guides/spiral_22.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 167,
+      "id": "motif_crab",
+      "source": "assets/glass/motif_crab-clear.webp",
+      "sourceSha256": "6c62db9fdaf30668245053848dce11a22cfed628f6c54e5a6c77dff17d59c97e",
+      "file": "assets/glass/motif_crab-restored.webp",
+      "metadata": "assets/glass/motif_crab-restored.json",
+      "guide": "tools/stained/guides/motif_crab.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 168,
+      "id": "chapter_067",
+      "source": "assets/glass/chapter_067.webp",
+      "sourceSha256": "b1949800eb89c239fe059ec77ae58373be7a1db3208a9cccfc8cc54a923916f8",
+      "file": "assets/glass/chapter_067-restored.webp",
+      "metadata": "assets/glass/chapter_067-restored.json",
+      "guide": "tools/stained/guides/chapter_067.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 169,
+      "id": "motif_locomotive",
+      "source": "assets/glass/motif_locomotive-clear.webp",
+      "sourceSha256": "78f9661d0cec62c08072f00177c1e75466e3417d6cf20d5a14790761e2b3b28f",
+      "file": "assets/glass/motif_locomotive-restored.webp",
+      "metadata": "assets/glass/motif_locomotive-restored.json",
+      "guide": "tools/stained/guides/motif_locomotive.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 170,
+      "id": "grand_11",
+      "source": "assets/glass/grand_11-clear.webp",
+      "sourceSha256": "213bd3fa50b3ee24221af4f491524d9c06b07198c5ec89aacc2b1e3ae68c7f0a",
+      "file": "assets/glass/grand_11-restored.webp",
+      "metadata": "assets/glass/grand_11-restored.json",
+      "guide": "tools/stained/guides/grand_11.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 171,
+      "id": "motif_bat",
+      "source": "assets/glass/motif_bat-clear.webp",
+      "sourceSha256": "40cb3985e3913e85f2e9ec8cdd09c80771ca86c1b513eb03c3b4462181c4c11a",
+      "file": "assets/glass/motif_bat-restored.webp",
+      "metadata": "assets/glass/motif_bat-restored.json",
+      "guide": "tools/stained/guides/motif_bat.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 172,
+      "id": "atlas_01",
+      "source": "assets/glass/atlas_01-vitray.webp",
+      "sourceSha256": "ad31cd21370a80faa3589a93f2b4a45daaa2367e98add1744d8dbf7ceecd1ddc",
+      "file": "assets/glass/atlas_01-restored.webp",
+      "metadata": "assets/glass/atlas_01-restored.json",
+      "guide": "tools/stained/guides/atlas_01.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 173,
+      "id": "motif_deer",
+      "source": "assets/glass/motif_deer-clear.webp",
+      "sourceSha256": "d760724e2c73ca6171b2d577aa88a0984d4f9de83b5efecc91f46093e5700f4d",
+      "file": "assets/glass/motif_deer-restored.webp",
+      "metadata": "assets/glass/motif_deer-restored.json",
+      "guide": "tools/stained/guides/motif_deer.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 174,
+      "id": "chapter_161",
+      "source": "assets/glass/chapter_161.webp",
+      "sourceSha256": "118fd82bf9015a5500e21b8f7d793efef8d99189dac438247edf765614c1990f",
+      "file": "assets/glass/chapter_161-restored.webp",
+      "metadata": "assets/glass/chapter_161-restored.json",
+      "guide": "tools/stained/guides/chapter_161.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 175,
+      "id": "motif_violin",
+      "source": "assets/glass/motif_violin-clear.webp",
+      "sourceSha256": "6419fcd7ac9e978568fdc0f48c2093e87c9808d4f815ab2ead4f276f2f90b98d",
+      "file": "assets/glass/motif_violin-restored.webp",
+      "metadata": "assets/glass/motif_violin-restored.json",
+      "guide": "tools/stained/guides/motif_violin.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 176,
+      "id": "spiral_06",
+      "source": "assets/glass/spiral_06-vitray.webp",
+      "sourceSha256": "260cc35d24400c1afba8804b8005d52c070eca6b7efe53b6183e274c33f9cc18",
+      "file": "assets/glass/spiral_06-restored.webp",
+      "metadata": "assets/glass/spiral_06-restored.json",
+      "guide": "tools/stained/guides/spiral_06.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 177,
+      "id": "story_alpaca",
+      "source": "assets/glass/story_alpaca-clear.webp",
+      "sourceSha256": "dbe90275b6cc2bb5b141bcb815a1d852b46d7f8d6513fb741716a4c3291746a4",
+      "file": "assets/glass/story_alpaca-restored.webp",
+      "metadata": "assets/glass/story_alpaca-restored.json",
+      "guide": "tools/stained/guides/story_alpaca.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 178,
+      "id": "chapter_168",
+      "source": "assets/glass/chapter_168.webp",
+      "sourceSha256": "f22548348c6d92b46efbe2f23ec628401730bd8b188dc8ae5a3f9225416009d8",
+      "file": "assets/glass/chapter_168-restored.webp",
+      "metadata": "assets/glass/chapter_168-restored.json",
+      "guide": "tools/stained/guides/chapter_168.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 179,
+      "id": "story_seahorse",
+      "source": "assets/glass/story_seahorse-clear.webp",
+      "sourceSha256": "e46ecfb653b6327fe9f2c1a8e5490fa1cdf1cd6bba6c56fba9a480295e6393b0",
+      "file": "assets/glass/story_seahorse-restored.webp",
+      "metadata": "assets/glass/story_seahorse-restored.json",
+      "guide": "tools/stained/guides/story_seahorse.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 180,
+      "id": "grand_17",
+      "source": "assets/glass/grand_17-clear.webp",
+      "sourceSha256": "2cf9dad462d7b1aa39ba9f1c905cf61a61ef7c6ad7851dfbae97cf78a1e548c4",
+      "file": "assets/glass/grand_17-restored.webp",
+      "metadata": "assets/glass/grand_17-restored.json",
+      "guide": "tools/stained/guides/grand_17.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 181,
+      "id": "story_camera",
+      "source": "assets/glass/story_camera-clear.webp",
+      "sourceSha256": "24f097a1b9590ce60dbbb4548e4fd2034542000cb52f7da2994c3d8d378c5401",
+      "file": "assets/glass/story_camera-restored.webp",
+      "metadata": "assets/glass/story_camera-restored.json",
+      "guide": "tools/stained/guides/story_camera.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 182,
+      "id": "atlas_23",
+      "source": "assets/glass/atlas_23-vitray.webp",
+      "sourceSha256": "bc8a9ed5ada818a60a648a77e85d1189d500eda5435814a7649bccbb89159cc9",
+      "file": "assets/glass/atlas_23-restored.webp",
+      "metadata": "assets/glass/atlas_23-restored.json",
+      "guide": "tools/stained/guides/atlas_23.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 183,
+      "id": "story_chameleon",
+      "source": "assets/glass/story_chameleon-clear.webp",
+      "sourceSha256": "ce7d919f3814c36f3317f878374c70127f423586a76b5de9b482438ebbb3e924",
+      "file": "assets/glass/story_chameleon-restored.webp",
+      "metadata": "assets/glass/story_chameleon-restored.json",
+      "guide": "tools/stained/guides/story_chameleon.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 184,
+      "id": "chapter_121",
+      "source": "assets/glass/chapter_121.webp",
+      "sourceSha256": "e216ec0afa5e74b656c633a27f98c3d7308e29a96c1b6a7c2299b251eacf92c2",
+      "file": "assets/glass/chapter_121-restored.webp",
+      "metadata": "assets/glass/chapter_121-restored.json",
+      "guide": "tools/stained/guides/chapter_121.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 185,
+      "id": "story_lobster",
+      "source": "assets/glass/story_lobster-clear.webp",
+      "sourceSha256": "8f8231435e0d06436974f6406c8f2cd6ff3cc795da59ad16d4e482fd1d89fa45",
+      "file": "assets/glass/story_lobster-restored.webp",
+      "metadata": "assets/glass/story_lobster-restored.json",
+      "guide": "tools/stained/guides/story_lobster.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 186,
+      "id": "rings_21",
+      "source": "assets/glass/rings_21-vitray.webp",
+      "sourceSha256": "50318286f3c3e1a1e118d70805771af34276075c530ffd35fafb83f2622f418c",
+      "file": "assets/glass/rings_21-restored.webp",
+      "metadata": "assets/glass/rings_21-restored.json",
+      "guide": "tools/stained/guides/rings_21.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 187,
+      "id": "story_frog",
+      "source": "assets/glass/story_frog-clear.webp",
+      "sourceSha256": "29cedb4e8c716bd36bfbd5a3c354802f4467badc0a69a40e5854e72b1c042310",
+      "file": "assets/glass/story_frog-restored.webp",
+      "metadata": "assets/glass/story_frog-restored.json",
+      "guide": "tools/stained/guides/story_frog.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 188,
+      "id": "chapter_095",
+      "source": "assets/glass/chapter_095.webp",
+      "sourceSha256": "899f80d823c8199018167d00195a76254299b840ea2061ad281d714dcd47fe23",
+      "file": "assets/glass/chapter_095-restored.webp",
+      "metadata": "assets/glass/chapter_095-restored.json",
+      "guide": "tools/stained/guides/chapter_095.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 189,
+      "id": "story_deer",
+      "source": "assets/glass/story_deer-clear.webp",
+      "sourceSha256": "2282523f9253e8acc7f22b29de1f276e7abcb60b9b68f906ac1d4840bae8de6e",
+      "file": "assets/glass/story_deer-restored.webp",
+      "metadata": "assets/glass/story_deer-restored.json",
+      "guide": "tools/stained/guides/story_deer.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 190,
+      "id": "grand_07",
+      "source": "assets/glass/grand_07-clear.webp",
+      "sourceSha256": "3fa07f0008b1356546f343b02f373c874e4b415618e3320894c401671fd32dea",
+      "file": "assets/glass/grand_07-restored.webp",
+      "metadata": "assets/glass/grand_07-restored.json",
+      "guide": "tools/stained/guides/grand_07.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 191,
+      "id": "story_rooster",
+      "source": "assets/glass/story_rooster-clear.webp",
+      "sourceSha256": "31a5e481d98f36cb1e03f194d1ae500ca9a280a834ebb245a3b6024da94e79b8",
+      "file": "assets/glass/story_rooster-restored.webp",
+      "metadata": "assets/glass/story_rooster-restored.json",
+      "guide": "tools/stained/guides/story_rooster.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 192,
+      "id": "atlas_16",
+      "source": "assets/glass/atlas_16-vitray.webp",
+      "sourceSha256": "24cd1d7eb8a43c6c70c333eb53d264f314f09b8a53f2deb3087331494661a041",
+      "file": "assets/glass/atlas_16-restored.webp",
+      "metadata": "assets/glass/atlas_16-restored.json",
+      "guide": "tools/stained/guides/atlas_16.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 193,
+      "id": "motif_camera",
+      "source": "assets/glass/motif_camera-clear.webp",
+      "sourceSha256": "a3d52b1e0ef05976ffcbb2d98ff4a63b3928fa28e6fba50ffb5864214cc2e104",
+      "file": "assets/glass/motif_camera-restored.webp",
+      "metadata": "assets/glass/motif_camera-restored.json",
+      "guide": "tools/stained/guides/motif_camera.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 194,
+      "id": "chapter_099",
+      "source": "assets/glass/chapter_099.webp",
+      "sourceSha256": "4841187ff692f528fd8507dd28aeaf56439cf923b1b5073e5092aab7b0c2c812",
+      "file": "assets/glass/chapter_099-restored.webp",
+      "metadata": "assets/glass/chapter_099-restored.json",
+      "guide": "tools/stained/guides/chapter_099.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 195,
+      "id": "motif_cupcake",
+      "source": "assets/glass/motif_cupcake-clear.webp",
+      "sourceSha256": "77e40d17bf34fce69d9cc66d028fd9e018964c61b94ac184f127b3d3917eccf6",
+      "file": "assets/glass/motif_cupcake-restored.webp",
+      "metadata": "assets/glass/motif_cupcake-restored.json",
+      "guide": "tools/stained/guides/motif_cupcake.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 196,
+      "id": "spiral_01",
+      "source": "assets/glass/spiral_01-vitray.webp",
+      "sourceSha256": "efbf1ed2862406570dead5b85fef02c726cdd6dac5474dda35b434ce4cfced19",
+      "file": "assets/glass/spiral_01-restored.webp",
+      "metadata": "assets/glass/spiral_01-restored.json",
+      "guide": "tools/stained/guides/spiral_01.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 197,
+      "id": "motif_panda",
+      "source": "assets/glass/motif_panda-clear.webp",
+      "sourceSha256": "149e9528adb6fa8cc05328e13a680e47b3a2d0b970805acd47afbf9eab69394e",
+      "file": "assets/glass/motif_panda-restored.webp",
+      "metadata": "assets/glass/motif_panda-restored.json",
+      "guide": "tools/stained/guides/motif_panda.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 198,
+      "id": "chapter_079",
+      "source": "assets/glass/chapter_079.webp",
+      "sourceSha256": "299d32de1c0a2aa7c5140ceb79b08629bdad773e38d40fd4bdae0ef818b4995b",
+      "file": "assets/glass/chapter_079-restored.webp",
+      "metadata": "assets/glass/chapter_079-restored.json",
+      "guide": "tools/stained/guides/chapter_079.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 199,
+      "id": "story_otter",
+      "source": "assets/glass/story_otter-clear.webp",
+      "sourceSha256": "6d34af44bd1086e4b75e6718a1dddde127696d98fc5f33c2413ab97a6f5c56c3",
+      "file": "assets/glass/story_otter-restored.webp",
+      "metadata": "assets/glass/story_otter-restored.json",
+      "guide": "tools/stained/guides/story_otter.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 200,
+      "id": "grand_13",
+      "source": "assets/glass/grand_13-clear.webp",
+      "sourceSha256": "9fd3c13e7b7572e7bde3c8d0c220304a0a07a548c727a98b5c3163c931f5a148",
+      "file": "assets/glass/grand_13-restored.webp",
+      "metadata": "assets/glass/grand_13-restored.json",
+      "guide": "tools/stained/guides/grand_13.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 201,
+      "id": "motif_typewriter",
+      "source": "assets/glass/motif_typewriter-clear.webp",
+      "sourceSha256": "6e83e3b4ce533394357117a6bb83d52f300c039e3d005a9666e352695129c2b9",
+      "file": "assets/glass/motif_typewriter-restored.webp",
+      "metadata": "assets/glass/motif_typewriter-restored.json",
+      "guide": "tools/stained/guides/motif_typewriter.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 202,
+      "id": "atlas_05",
+      "source": "assets/glass/atlas_05-vitray.webp",
+      "sourceSha256": "2b02bb303e2911a1ab32a5c2533989cc46e812f6b3aa891302dfd68a30fb7c02",
+      "file": "assets/glass/atlas_05-restored.webp",
+      "metadata": "assets/glass/atlas_05-restored.json",
+      "guide": "tools/stained/guides/atlas_05.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 203,
+      "id": "story_giraffe",
+      "source": "assets/glass/story_giraffe-clear.webp",
+      "sourceSha256": "a6afc6c62ef83a42e9a368ec978b452bf39bbcbc39f811c8725b16dfbca71912",
+      "file": "assets/glass/story_giraffe-restored.webp",
+      "metadata": "assets/glass/story_giraffe-restored.json",
+      "guide": "tools/stained/guides/story_giraffe.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 204,
+      "id": "chapter_153",
+      "source": "assets/glass/chapter_153.webp",
+      "sourceSha256": "2761f3b28449c12a275daecc0c8c10165253d0c4e02961f4a7d961a285b11150",
+      "file": "assets/glass/chapter_153-restored.webp",
+      "metadata": "assets/glass/chapter_153-restored.json",
+      "guide": "tools/stained/guides/chapter_153.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 205,
+      "id": "motif_stingray",
+      "source": "assets/glass/motif_stingray-clear.webp",
+      "sourceSha256": "23a589f671c7a9219fee7817955c3297c4276aadef854648590962d16efaa6a6",
+      "file": "assets/glass/motif_stingray-restored.webp",
+      "metadata": "assets/glass/motif_stingray-restored.json",
+      "guide": "tools/stained/guides/motif_stingray.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 206,
+      "id": "spiral_03",
+      "source": "assets/glass/spiral_03-vitray.webp",
+      "sourceSha256": "5ee7e9fc048849f40e1d30d38415dfb24e35b390d694bd1743d0e3383256ba21",
+      "file": "assets/glass/spiral_03-restored.webp",
+      "metadata": "assets/glass/spiral_03-restored.json",
+      "guide": "tools/stained/guides/spiral_03.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 207,
+      "id": "story_hedgehog",
+      "source": "assets/glass/story_hedgehog-clear.webp",
+      "sourceSha256": "fc46aed5f1043c01b40f21da82897b5447eb34e98d8a52133f7658d1c98830ed",
+      "file": "assets/glass/story_hedgehog-restored.webp",
+      "metadata": "assets/glass/story_hedgehog-restored.json",
+      "guide": "tools/stained/guides/story_hedgehog.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 208,
+      "id": "chapter_128",
+      "source": "assets/glass/chapter_128.webp",
+      "sourceSha256": "cd411b5da1b889ea98fb875906e83a69e6cec1efce6a36ef97a4612ea467a70e",
+      "file": "assets/glass/chapter_128-restored.webp",
+      "metadata": "assets/glass/chapter_128-restored.json",
+      "guide": "tools/stained/guides/chapter_128.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 209,
+      "id": "story_pinwheel",
+      "source": "assets/glass/story_pinwheel-clear.webp",
+      "sourceSha256": "6b93ba93a60854a3935f2588f4c54660dd6e5b8a030a03073894e785e92c547e",
+      "file": "assets/glass/story_pinwheel-restored.webp",
+      "metadata": "assets/glass/story_pinwheel-restored.json",
+      "guide": "tools/stained/guides/story_pinwheel.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 210,
+      "id": "grand_25",
+      "source": "assets/glass/grand_25-clear.webp",
+      "sourceSha256": "6842f298e571c5fbf36cc6ae0e3f11618644aaa40c72e72529a9a0d3c221eb53",
+      "file": "assets/glass/grand_25-restored.webp",
+      "metadata": "assets/glass/grand_25-restored.json",
+      "guide": "tools/stained/guides/grand_25.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 211,
+      "id": "story_narwhal",
+      "source": "assets/glass/story_narwhal-clear.webp",
+      "sourceSha256": "6f9821e437e4fbf84c46fc73a6f6e8f87da7a289f5a4033b6d202a5d26a57063",
+      "file": "assets/glass/story_narwhal-restored.webp",
+      "metadata": "assets/glass/story_narwhal-restored.json",
+      "guide": "tools/stained/guides/story_narwhal.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 212,
+      "id": "rings_16",
+      "source": "assets/glass/rings_16-vitray.webp",
+      "sourceSha256": "eb0e138d7629992b4110ef2e42765257f4f75318e76c38ddb84ec556a30bfab2",
+      "file": "assets/glass/rings_16-restored.webp",
+      "metadata": "assets/glass/rings_16-restored.json",
+      "guide": "tools/stained/guides/rings_16.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 213,
+      "id": "motif_narwhal",
+      "source": "assets/glass/motif_narwhal-clear.webp",
+      "sourceSha256": "2290789434c2ab3d2fef1ff8bc82f7fc780aeb2a4e468b9cff4e7b753f1faa97",
+      "file": "assets/glass/motif_narwhal-restored.webp",
+      "metadata": "assets/glass/motif_narwhal-restored.json",
+      "guide": "tools/stained/guides/motif_narwhal.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 214,
+      "id": "chapter_075",
+      "source": "assets/glass/chapter_075.webp",
+      "sourceSha256": "27c9dfdf50899b0e1730a0dd9f48ad890a41181ebca59058950fcf2b29d9b58c",
+      "file": "assets/glass/chapter_075-restored.webp",
+      "metadata": "assets/glass/chapter_075-restored.json",
+      "guide": "tools/stained/guides/chapter_075.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 215,
+      "id": "motif_airship",
+      "source": "assets/glass/motif_airship-clear.webp",
+      "sourceSha256": "71031cbd463535e2c0a2b4ea5024f901e63cb273c685562e91ee6c37c5a52658",
+      "file": "assets/glass/motif_airship-restored.webp",
+      "metadata": "assets/glass/motif_airship-restored.json",
+      "guide": "tools/stained/guides/motif_airship.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 216,
+      "id": "atlas_22",
+      "source": "assets/glass/atlas_22-vitray.webp",
+      "sourceSha256": "8d3429ea01de87bb8a616331db90da69f6e3fe271626f887f70f0590c13f29a1",
+      "file": "assets/glass/atlas_22-restored.webp",
+      "metadata": "assets/glass/atlas_22-restored.json",
+      "guide": "tools/stained/guides/atlas_22.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 217,
+      "id": "story_duck",
+      "source": "assets/glass/story_duck-clear.webp",
+      "sourceSha256": "1731997e1e57d2f052420503d86e3a2fdafbedcce829974182acf0079535b228",
+      "file": "assets/glass/story_duck-restored.webp",
+      "metadata": "assets/glass/story_duck-restored.json",
+      "guide": "tools/stained/guides/story_duck.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 218,
+      "id": "chapter_083",
+      "source": "assets/glass/chapter_083.webp",
+      "sourceSha256": "5b827985ca262210b6ba86b80a2bc8d874ed1ebf8ab9ff362a65c856b8eebaca",
+      "file": "assets/glass/chapter_083-restored.webp",
+      "metadata": "assets/glass/chapter_083-restored.json",
+      "guide": "tools/stained/guides/chapter_083.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 219,
+      "id": "story_cupcake",
+      "source": "assets/glass/story_cupcake-clear.webp",
+      "sourceSha256": "dd54f1c3cf2c3ba0211334fca65a863188ca4c9490e10fae2e06625b0f88f34f",
+      "file": "assets/glass/story_cupcake-restored.webp",
+      "metadata": "assets/glass/story_cupcake-restored.json",
+      "guide": "tools/stained/guides/story_cupcake.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 220,
+      "id": "grand_08",
+      "source": "assets/glass/grand_08-clear.webp",
+      "sourceSha256": "81cc6ebcca711aaaf84ba0a8e6da65df7fd349f3f897b3c50a935bc72d2ec83b",
+      "file": "assets/glass/grand_08-restored.webp",
+      "metadata": "assets/glass/grand_08-restored.json",
+      "guide": "tools/stained/guides/grand_08.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 221,
+      "id": "motif_gramophone",
+      "source": "assets/glass/motif_gramophone-clear.webp",
+      "sourceSha256": "30e3ffa8a5d98c354e1b8d0222646d042cd4fb0cd7e0bef5917a8e7451884508",
+      "file": "assets/glass/motif_gramophone-restored.webp",
+      "metadata": "assets/glass/motif_gramophone-restored.json",
+      "guide": "tools/stained/guides/motif_gramophone.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 222,
+      "id": "rings_10",
+      "source": "assets/glass/rings_10-vitray.webp",
+      "sourceSha256": "c023f963ea8eb10bdd88dc89e2a53f3fd8d3204a56eadb065190b51f8801cffd",
+      "file": "assets/glass/rings_10-restored.webp",
+      "metadata": "assets/glass/rings_10-restored.json",
+      "guide": "tools/stained/guides/rings_10.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 223,
+      "id": "story_puffin",
+      "source": "assets/glass/story_puffin-clear.webp",
+      "sourceSha256": "6be09c790dafd42415f002470f46eb998ccf21ba68799b08dd09d955b56c419a",
+      "file": "assets/glass/story_puffin-restored.webp",
+      "metadata": "assets/glass/story_puffin-restored.json",
+      "guide": "tools/stained/guides/story_puffin.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 224,
+      "id": "chapter_059",
+      "source": "assets/glass/chapter_059.webp",
+      "sourceSha256": "c9a28d23964b6e5151a32548d0beb72415d5e134b0f27a4c99b52eb959390cc4",
+      "file": "assets/glass/chapter_059-restored.webp",
+      "metadata": "assets/glass/chapter_059-restored.json",
+      "guide": "tools/stained/guides/chapter_059.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 225,
+      "id": "motif_dachshund",
+      "source": "assets/glass/motif_dachshund-clear.webp",
+      "sourceSha256": "2f696cb765407eca1b55cf39ac23996575fb58ebb62d72781d9ee1d23952e4e3",
+      "file": "assets/glass/motif_dachshund-restored.webp",
+      "metadata": "assets/glass/motif_dachshund-restored.json",
+      "guide": "tools/stained/guides/motif_dachshund.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 226,
+      "id": "rings_13",
+      "source": "assets/glass/rings_13-vitray.webp",
+      "sourceSha256": "e79aed651403bcdb72f74a1f52efc62a1371055668dd56deae6cbcf282e3b7c2",
+      "file": "assets/glass/rings_13-restored.webp",
+      "metadata": "assets/glass/rings_13-restored.json",
+      "guide": "tools/stained/guides/rings_13.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 227,
+      "id": "motif_carouselhorse",
+      "source": "assets/glass/motif_carouselhorse-clear.webp",
+      "sourceSha256": "6f722c756e10c202204228c480432ff34ec73d9e5d33b951cae25f1ed8cf8d66",
+      "file": "assets/glass/motif_carouselhorse-restored.webp",
+      "metadata": "assets/glass/motif_carouselhorse-restored.json",
+      "guide": "tools/stained/guides/motif_carouselhorse.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 228,
+      "id": "chapter_184",
+      "source": "assets/glass/chapter_184.webp",
+      "sourceSha256": "63ceb7fbcfc957f3fa14d8a6f9b9749554481f0eecd0d3c32a03b0c929425830",
+      "file": "assets/glass/chapter_184-restored.webp",
+      "metadata": "assets/glass/chapter_184-restored.json",
+      "guide": "tools/stained/guides/chapter_184.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 229,
+      "id": "story_dachshund",
+      "source": "assets/glass/story_dachshund-clear.webp",
+      "sourceSha256": "6a123e81908c14fc688bbf0266bb4b43da0df66743688ec4f1228e857f4ac4c1",
+      "file": "assets/glass/story_dachshund-restored.webp",
+      "metadata": "assets/glass/story_dachshund-restored.json",
+      "guide": "tools/stained/guides/story_dachshund.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 230,
+      "id": "grand_19",
+      "source": "assets/glass/grand_19-clear.webp",
+      "sourceSha256": "0dbe24066ecb6bb3ac207de1d2e483188dba2ecd9db1c7b93d76048c74a1df9c",
+      "file": "assets/glass/grand_19-restored.webp",
+      "metadata": "assets/glass/grand_19-restored.json",
+      "guide": "tools/stained/guides/grand_19.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 231,
+      "id": "motif_iguana",
+      "source": "assets/glass/motif_iguana-clear.webp",
+      "sourceSha256": "53addc85eadeba4c00c121bbaeaa0d74a1287115eeaf47b713e86135e0b49092",
+      "file": "assets/glass/motif_iguana-restored.webp",
+      "metadata": "assets/glass/motif_iguana-restored.json",
+      "guide": "tools/stained/guides/motif_iguana.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 232,
+      "id": "atlas_19",
+      "source": "assets/glass/atlas_19-vitray.webp",
+      "sourceSha256": "879911f73353721dd7166a43733f449765b8f240d56a9f04d3549eb7eac78f67",
+      "file": "assets/glass/atlas_19-restored.webp",
+      "metadata": "assets/glass/atlas_19-restored.json",
+      "guide": "tools/stained/guides/atlas_19.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 233,
+      "id": "story_moka",
+      "source": "assets/glass/story_moka-clear.webp",
+      "sourceSha256": "e99f0f81c4fcf25e0c366a2e52daee6b894a6a8e8ec6ee0c07e3eeaa3831f792",
+      "file": "assets/glass/story_moka-restored.webp",
+      "metadata": "assets/glass/story_moka-restored.json",
+      "guide": "tools/stained/guides/story_moka.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 234,
+      "id": "chapter_091",
+      "source": "assets/glass/chapter_091.webp",
+      "sourceSha256": "a179254c66cc98bc1618fc4da3d57913862f58439b721fb0f237fb5889fd079c",
+      "file": "assets/glass/chapter_091-restored.webp",
+      "metadata": "assets/glass/chapter_091-restored.json",
+      "guide": "tools/stained/guides/chapter_091.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 235,
+      "id": "story_locomotive",
+      "source": "assets/glass/story_locomotive-clear.webp",
+      "sourceSha256": "693637d55b4edb0643877dfa4065cd6f3dfc5d5ec586a253b2b710fc174ff186",
+      "file": "assets/glass/story_locomotive-restored.webp",
+      "metadata": "assets/glass/story_locomotive-restored.json",
+      "guide": "tools/stained/guides/story_locomotive.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 236,
+      "id": "atlas_09",
+      "source": "assets/glass/atlas_09-vitray.webp",
+      "sourceSha256": "95040a761ea29815e0e765a6765d8c329b78a8f609d7d1d38cd326379fdd99bf",
+      "file": "assets/glass/atlas_09-restored.webp",
+      "metadata": "assets/glass/atlas_09-restored.json",
+      "guide": "tools/stained/guides/atlas_09.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 237,
+      "id": "motif_swan",
+      "source": "assets/glass/motif_swan-clear.webp",
+      "sourceSha256": "e5af194d3498cd93f47a682c6cf62e5270447a6de92dd5abc7848ef5fed2e563",
+      "file": "assets/glass/motif_swan-restored.webp",
+      "metadata": "assets/glass/motif_swan-restored.json",
+      "guide": "tools/stained/guides/motif_swan.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 238,
+      "id": "chapter_193",
+      "source": "assets/glass/chapter_193.webp",
+      "sourceSha256": "66f2a2527ff2fdd44a8f5904c6c3dbe1172f9c4522f610baed265a7df627c50b",
+      "file": "assets/glass/chapter_193-restored.webp",
+      "metadata": "assets/glass/chapter_193-restored.json",
+      "guide": "tools/stained/guides/chapter_193.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 239,
+      "id": "story_stingray",
+      "source": "assets/glass/story_stingray-clear.webp",
+      "sourceSha256": "27168c3abb86d49e8f80b10d4a24f1c544248f85f80a0ad9d0550565996d8ffe",
+      "file": "assets/glass/story_stingray-restored.webp",
+      "metadata": "assets/glass/story_stingray-restored.json",
+      "guide": "tools/stained/guides/story_stingray.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 240,
+      "id": "grand_20",
+      "source": "assets/glass/grand_20-clear.webp",
+      "sourceSha256": "6da42414ee602cde59dc94e19ee7650d6ec09bd939ab2b352216b9a8f3a9f5c1",
+      "file": "assets/glass/grand_20-restored.webp",
+      "metadata": "assets/glass/grand_20-restored.json",
+      "guide": "tools/stained/guides/grand_20.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 241,
+      "id": "atlas_11",
+      "source": "assets/glass/atlas_11-vitray.webp",
+      "sourceSha256": "8b67b5ce1da31ac318f32f0409da50b0080cce521ad2e6fee830614487790ac3",
+      "file": "assets/glass/atlas_11-restored.webp",
+      "metadata": "assets/glass/atlas_11-restored.json",
+      "guide": "tools/stained/guides/atlas_11.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 242,
+      "id": "motif_sloth",
+      "source": "assets/glass/motif_sloth-clear.webp",
+      "sourceSha256": "d1adc30ac6d498041b1b06f48eba3d5d46289c0ff230403a66cbf34c83d97e6c",
+      "file": "assets/glass/motif_sloth-restored.webp",
+      "metadata": "assets/glass/motif_sloth-restored.json",
+      "guide": "tools/stained/guides/motif_sloth.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 243,
+      "id": "chapter_087",
+      "source": "assets/glass/chapter_087.webp",
+      "sourceSha256": "f429fbfd264a4be02adf1e515735d939a13ecf4cfde2bf76b35a41e0e896e498",
+      "file": "assets/glass/chapter_087-restored.webp",
+      "metadata": "assets/glass/chapter_087-restored.json",
+      "guide": "tools/stained/guides/chapter_087.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 244,
+      "id": "spiral_18",
+      "source": "assets/glass/spiral_18-vitray.webp",
+      "sourceSha256": "55b927017aa670f9befcec743fa05fd4dc785fcf15aecc5ac0e69cc6e1004483",
+      "file": "assets/glass/spiral_18-restored.webp",
+      "metadata": "assets/glass/spiral_18-restored.json",
+      "guide": "tools/stained/guides/spiral_18.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 245,
+      "id": "motif_kite",
+      "source": "assets/glass/motif_kite-clear.webp",
+      "sourceSha256": "fae02abfee133a3acab92efe0127fee56f63251a22a89f1102b7a6c7750432e7",
+      "file": "assets/glass/motif_kite-restored.webp",
+      "metadata": "assets/glass/motif_kite-restored.json",
+      "guide": "tools/stained/guides/motif_kite.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 246,
+      "id": "chapter_063",
+      "source": "assets/glass/chapter_063.webp",
+      "sourceSha256": "9cef721738147da7da6dfbb4318fb1512b3a2205960ea656e6b6b3c27ae7c7ef",
+      "file": "assets/glass/chapter_063-restored.webp",
+      "metadata": "assets/glass/chapter_063-restored.json",
+      "guide": "tools/stained/guides/chapter_063.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 247,
+      "id": "atlas_18",
+      "source": "assets/glass/atlas_18-vitray.webp",
+      "sourceSha256": "8b79308c381650678555e6cad903a96596323c65ebafcfc832400cd73de11199",
+      "file": "assets/glass/atlas_18-restored.webp",
+      "metadata": "assets/glass/atlas_18-restored.json",
+      "guide": "tools/stained/guides/atlas_18.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 248,
+      "id": "motif_pinwheel",
+      "source": "assets/glass/motif_pinwheel-clear.webp",
+      "sourceSha256": "388482e1146e09d29ae59df6e767929533ffd1b95a5f041aa355450174bcde34",
+      "file": "assets/glass/motif_pinwheel-restored.webp",
+      "metadata": "assets/glass/motif_pinwheel-restored.json",
+      "guide": "tools/stained/guides/motif_pinwheel.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 249,
+      "id": "chapter_177",
+      "source": "assets/glass/chapter_177.webp",
+      "sourceSha256": "92aeae633232d7095ca9b8803a7fa628508c5799a0609caed96281a744cd861d",
+      "file": "assets/glass/chapter_177-restored.webp",
+      "metadata": "assets/glass/chapter_177-restored.json",
+      "guide": "tools/stained/guides/chapter_177.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 250,
+      "id": "grand_14",
+      "source": "assets/glass/grand_14-clear.webp",
+      "sourceSha256": "d6cc757caa4e8156c8d0cae8dabff55994e27b1d1e48cea0397e81d8b944a5dd",
+      "file": "assets/glass/grand_14-restored.webp",
+      "metadata": "assets/glass/grand_14-restored.json",
+      "guide": "tools/stained/guides/grand_14.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 251,
+      "id": "spiral_09",
+      "source": "assets/glass/spiral_09-vitray.webp",
+      "sourceSha256": "c6eac7218a55cc2722cc646d5d56cb1ed95d84bd38c647f3803ac9df4ae4a910",
+      "file": "assets/glass/spiral_09-restored.webp",
+      "metadata": "assets/glass/spiral_09-restored.json",
+      "guide": "tools/stained/guides/spiral_09.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 252,
+      "id": "story_swan",
+      "source": "assets/glass/story_swan-clear.webp",
+      "sourceSha256": "0c8937f11b9f1a9f259dab515c56b6781740a00f00f983f2645edead44d95aea",
+      "file": "assets/glass/story_swan-restored.webp",
+      "metadata": "assets/glass/story_swan-restored.json",
+      "guide": "tools/stained/guides/story_swan.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 253,
+      "id": "chapter_051",
+      "source": "assets/glass/chapter_051.webp",
+      "sourceSha256": "6fead31219d35786ae22841ea9e5228730aad49df6801e2ef7df7b6cfed88bb7",
+      "file": "assets/glass/chapter_051-restored.webp",
+      "metadata": "assets/glass/chapter_051-restored.json",
+      "guide": "tools/stained/guides/chapter_051.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 254,
+      "id": "spiral_17",
+      "source": "assets/glass/spiral_17-vitray.webp",
+      "sourceSha256": "babdaf3104cf9d4c14bb22fee9f74d960386f98533a9571e9b58ae240886410b",
+      "file": "assets/glass/spiral_17-restored.webp",
+      "metadata": "assets/glass/spiral_17-restored.json",
+      "guide": "tools/stained/guides/spiral_17.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 255,
+      "id": "motif_seahorse",
+      "source": "assets/glass/motif_seahorse-clear.webp",
+      "sourceSha256": "9290012757c8cab7b974842123c2514b41d90bdbad63979c90affd1bd8875015",
+      "file": "assets/glass/motif_seahorse-restored.webp",
+      "metadata": "assets/glass/motif_seahorse-restored.json",
+      "guide": "tools/stained/guides/motif_seahorse.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 256,
+      "id": "chapter_137",
+      "source": "assets/glass/chapter_137.webp",
+      "sourceSha256": "8ac6d3778914de3dfbb125a69ea3eb0ae016f992096ae3526befa9ce9472625d",
+      "file": "assets/glass/chapter_137-restored.webp",
+      "metadata": "assets/glass/chapter_137-restored.json",
+      "guide": "tools/stained/guides/chapter_137.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 257,
+      "id": "rings_03",
+      "source": "assets/glass/rings_03-vitray.webp",
+      "sourceSha256": "6cc0feae859b33e79f15539d5a74da3e39917c57dbac804f3bcf4954dcadf2b6",
+      "file": "assets/glass/rings_03-restored.webp",
+      "metadata": "assets/glass/rings_03-restored.json",
+      "guide": "tools/stained/guides/rings_03.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 258,
+      "id": "motif_flamingo",
+      "source": "assets/glass/motif_flamingo-clear.webp",
+      "sourceSha256": "96d8b51ced7309dee8c84da4cf88f430c308574327c9f340e22083a1ddefeef8",
+      "file": "assets/glass/motif_flamingo-restored.webp",
+      "metadata": "assets/glass/motif_flamingo-restored.json",
+      "guide": "tools/stained/guides/motif_flamingo.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 259,
+      "id": "chapter_071",
+      "source": "assets/glass/chapter_071.webp",
+      "sourceSha256": "2c67a4d99e73e467dc2ecca0f4df622422accc469f3e5e7a2f4efa6c8bd421b4",
+      "file": "assets/glass/chapter_071-restored.webp",
+      "metadata": "assets/glass/chapter_071-restored.json",
+      "guide": "tools/stained/guides/chapter_071.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 260,
+      "id": "grand_04",
+      "source": "assets/glass/grand_04-clear.webp",
+      "sourceSha256": "877fa5f8d9b79d0046eab6b30671b759f01026ffba3ef5be77d172b605ff54c6",
+      "file": "assets/glass/grand_04-restored.webp",
+      "metadata": "assets/glass/grand_04-restored.json",
+      "guide": "tools/stained/guides/grand_04.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 261,
+      "id": "rings_24",
+      "source": "assets/glass/rings_24-vitray.webp",
+      "sourceSha256": "9235a6f3f1c77d8de65ea6c5c278feb2e822ae970368164e8523cd65671a583d",
+      "file": "assets/glass/rings_24-restored.webp",
+      "metadata": "assets/glass/rings_24-restored.json",
+      "guide": "tools/stained/guides/rings_24.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 262,
+      "id": "motif_elephant",
+      "source": "assets/glass/motif_elephant-clear.webp",
+      "sourceSha256": "e2f6b796b4990381216ce3de3f400f87b4634b7a95db583696fbd36dc3847ac1",
+      "file": "assets/glass/motif_elephant-restored.webp",
+      "metadata": "assets/glass/motif_elephant-restored.json",
+      "guide": "tools/stained/guides/motif_elephant.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 263,
+      "id": "chapter_104",
+      "source": "assets/glass/chapter_104.webp",
+      "sourceSha256": "b02a8af1996f648added03b43b3e19bca41b73a470156e9acefb51c264b4ca00",
+      "file": "assets/glass/chapter_104-restored.webp",
+      "metadata": "assets/glass/chapter_104-restored.json",
+      "guide": "tools/stained/guides/chapter_104.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 264,
+      "id": "atlas_02",
+      "source": "assets/glass/atlas_02-vitray.webp",
+      "sourceSha256": "ba81bb279761a8a4bfcd228ec1e090bfbe1ff478fe5e6259106f4f9237b339b7",
+      "file": "assets/glass/atlas_02-restored.webp",
+      "metadata": "assets/glass/atlas_02-restored.json",
+      "guide": "tools/stained/guides/atlas_02.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 265,
+      "id": "motif_submarine",
+      "source": "assets/glass/motif_submarine-clear.webp",
+      "sourceSha256": "8cb210211f56e5e1c31a65358cc123ab1e82fe8144903b66bcd17da0b6b38c04",
+      "file": "assets/glass/motif_submarine-restored.webp",
+      "metadata": "assets/glass/motif_submarine-restored.json",
+      "guide": "tools/stained/guides/motif_submarine.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 266,
+      "id": "chapter_113",
+      "source": "assets/glass/chapter_113.webp",
+      "sourceSha256": "2c9295440aa31306daae93a1dd668eb32bb4851d9170a19d40c5e9ce4969957c",
+      "file": "assets/glass/chapter_113-restored.webp",
+      "metadata": "assets/glass/chapter_113-restored.json",
+      "guide": "tools/stained/guides/chapter_113.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 267,
+      "id": "motif_toucan",
+      "source": "assets/glass/motif_toucan-clear.webp",
+      "sourceSha256": "030970f59607811c4c166b7fad2266a81bae15f656feb8188b799097ad565751",
+      "file": "assets/glass/motif_toucan-restored.webp",
+      "metadata": "assets/glass/motif_toucan-restored.json",
+      "guide": "tools/stained/guides/motif_toucan.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 268,
+      "id": "atlas_12",
+      "source": "assets/glass/atlas_12-vitray.webp",
+      "sourceSha256": "a44af377c2359eff2e2b63994984fa2c86b160d7fd3df580354fb65aedcb8d49",
+      "file": "assets/glass/atlas_12-restored.webp",
+      "metadata": "assets/glass/atlas_12-restored.json",
+      "guide": "tools/stained/guides/atlas_12.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 269,
+      "id": "chapter_144",
+      "source": "assets/glass/chapter_144.webp",
+      "sourceSha256": "2968c5235bcfbb4565cb6a1bfd9278ba5af2c061ccacc19de36e398ee57602c6",
+      "file": "assets/glass/chapter_144-restored.webp",
+      "metadata": "assets/glass/chapter_144-restored.json",
+      "guide": "tools/stained/guides/chapter_144.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 270,
+      "id": "grand_22",
+      "source": "assets/glass/grand_22-clear.webp",
+      "sourceSha256": "a226887ffdb216f16a2d59a8615d1642826c615f7f10f97f4773a174593c601e",
+      "file": "assets/glass/grand_22-restored.webp",
+      "metadata": "assets/glass/grand_22-restored.json",
+      "guide": "tools/stained/guides/grand_22.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 271,
+      "id": "motif_boots",
+      "source": "assets/glass/motif_boots-clear.webp",
+      "sourceSha256": "d777deda152482ddde79356dfe287f4536e362c1c3090f8d2818c272450a563e",
+      "file": "assets/glass/motif_boots-restored.webp",
+      "metadata": "assets/glass/motif_boots-restored.json",
+      "guide": "tools/stained/guides/motif_boots.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 272,
+      "id": "spiral_21",
+      "source": "assets/glass/spiral_21-vitray.webp",
+      "sourceSha256": "d756c718660223ccd64ab6ec668afa26d8ca3f05675db62eab14ada406355bce",
+      "file": "assets/glass/spiral_21-restored.webp",
+      "metadata": "assets/glass/spiral_21-restored.json",
+      "guide": "tools/stained/guides/spiral_21.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 273,
+      "id": "chapter_055",
+      "source": "assets/glass/chapter_055.webp",
+      "sourceSha256": "115a3b5df33ef65763d36028ae71f8cf76c1f84775bdd4d188cc17fb23070728",
+      "file": "assets/glass/chapter_055-restored.webp",
+      "metadata": "assets/glass/chapter_055-restored.json",
+      "guide": "tools/stained/guides/chapter_055.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 274,
+      "id": "motif_hedgehog",
+      "source": "assets/glass/motif_hedgehog-clear.webp",
+      "sourceSha256": "add4df2200712eaa6c07607f215a85f59639943b50c9529568e608adffc3fc8b",
+      "file": "assets/glass/motif_hedgehog-restored.webp",
+      "metadata": "assets/glass/motif_hedgehog-restored.json",
+      "guide": "tools/stained/guides/motif_hedgehog.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    },
+    {
+      "level": 275,
+      "id": "rings_12",
+      "source": "assets/glass/rings_12-vitray.webp",
+      "sourceSha256": "6815ca17bacd65b9aae9d22e9c40444628ce21c2326b53948f0721f4aa855a5d",
+      "file": "assets/glass/rings_12-restored.webp",
+      "metadata": "assets/glass/rings_12-restored.json",
+      "guide": "tools/stained/guides/rings_12.png",
+      "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead"
+    }
+  ]
+}

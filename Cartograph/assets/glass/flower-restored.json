@@ -1,0 +1,53 @@
+{
+  "id": "flower",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:18:25.805222+00:00",
+  "source": "assets/glass/flower.webp",
+  "sourceSha256": "01251daf5a7b0dfb33adb23228395ab2c2a5d824b4e98b118172bdf1796f2975",
+  "sourceGeometrySha256": "2bc881a21e48ba837f2647f06f37efefe729c72053e6b1f1d72824a33ad61a24",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 79,
+      "donorPatches": 49,
+      "colour": 0,
+      "preservedFraction": 0.5278374924939802
+    },
+    {
+      "patchSize": 96,
+      "donorPatches": 44,
+      "colour": 1,
+      "preservedFraction": 0.1266243378325149
+    },
+    {
+      "patchSize": 80,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5752890395585831
+    },
+    {
+      "patchSize": 38,
+      "donorPatches": 38,
+      "colour": 3,
+      "preservedFraction": 0.0
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "de8bd171d9b8439754ca1e68b7596f3963b22cd789fc39d4daf9262910abc622",
+  "sha256": "8ffa78a6eb197113acfc6e344c1d30168c14edec3067cc54bd020c7f88996b19",
+  "palette": [
+    "#447c05",
+    "#f3ca09",
+    "#de4503",
+    "#0580df"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 21,
+    "total": 21,
+    "mismatches": []
+  }
+}

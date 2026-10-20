@@ -1,0 +1,53 @@
+{
+  "id": "hourglass",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:18:53.849585+00:00",
+  "source": "assets/glass/hourglass.webp",
+  "sourceSha256": "3b9b5a412909c310f4afa0f40e22548f2c5dd16ddccf2dced8626c2413f33854",
+  "sourceGeometrySha256": "64271810238075fa948fc63523a1d69971137be937c4311681486865d41e06c1",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 31,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.1891065017128708
+    },
+    {
+      "patchSize": 100,
+      "donorPatches": 74,
+      "colour": 1,
+      "preservedFraction": 0.35457077483661303
+    },
+    {
+      "patchSize": 64,
+      "donorPatches": 55,
+      "colour": 2,
+      "preservedFraction": 0.28668729522838055
+    },
+    {
+      "patchSize": 63,
+      "donorPatches": 73,
+      "colour": 3,
+      "preservedFraction": 0.14585645302273154
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "73996f324e810b330cfe935dc40ede5c55d6c83876935fc9dd1b5852ab00fced",
+  "sha256": "902a8ea7680583b1cbdb8a53f502ef680d5b83addd2fa5569aa1c94640af8f47",
+  "palette": [
+    "#a1420c",
+    "#f9d13a",
+    "#48adab",
+    "#4b2767"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 32,
+    "total": 32,
+    "mismatches": []
+  }
+}

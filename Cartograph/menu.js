@@ -19,11 +19,12 @@
     P.name = 'Kâşif ' + (1000 + Math.floor(Math.random() * 9000));
     store.set('profile', P);
   }
-  const solved = () => store.get('solved', []);
+  const activeIds = new Set(STAINED.map(L => L.id));
+  const solved = () => store.get('solved', []).filter(id => activeIds.has(id));
   const stats = () => ({
     panels: new Set(solved()).size,
     panes: store.get('stats.panes', 0),
-    perfect: new Set(store.get('perfect', [])).size,
+    perfect: new Set(store.get('perfect', []).filter(id => activeIds.has(id))).size,
     hints: store.get('stats.hints', 0),
   });
 
@@ -131,7 +132,7 @@
         <span class="mp-glass">${panelSVG(L, done)}</span>
       </button>
       <div class="menu-actions">
-        <button class="btn-green menu-play" id="menuPlay" type="button"><span>OYNA</span><small>SEVİYE ${level}</small></button>
+        <button class="btn-green menu-play" id="menuPlay" type="button"><span>OYNA</span><small${L.difficulty?.tier === 'hard' ? ' class="difficulty-holder"' : ''}>SEVİYE ${level}${L.difficulty?.tier === 'hard' ? ' · ZOR' : ''}</small></button>
         <button class="btn-flat menu-gallery" id="menuGallery" type="button">${ICON_GALLERY}<span>KOLEKSİYON</span><b>${s.panels}/${STAINED.length}</b></button>
       </div>`;
     $('menuProfile').addEventListener('click', openProfile);
@@ -221,6 +222,7 @@
           return `<button type="button" class="gal-tile${done ? ' done' : ''}" data-i="${i}" aria-label="${i + 1}. ${esc(L.name)}${done ? '' : ', tamamlanmadı'}">
             <span class="gal-art">${panelSVG(L, done, true)}</span>
             <span class="gal-name">${done ? esc(L.name) : (i + 1) + '. bölüm'}</span>
+            ${L.difficulty?.tier === 'hard' ? `<span class="gal-difficulty">${L.canvasSize === 'large' ? 'BÜYÜK · ' : ''}ZOR</span>` : ''}
             ${perfect.has(L.id) ? '<i class="gal-star" title="İpucusuz">★</i>' : ''}
           </button>`;
         }).join('')}
@@ -233,6 +235,7 @@
         <h2>${esc(L.name.toLocaleUpperCase('tr'))}</h2>
         <div class="gal-big">${panelSVG(L, true)}</div>
         <p class="gal-sub">${i + 1}. bölüm${perfect.has(L.id) ? ' · ipucusuz' : ''}</p>
+        ${L.difficulty?.tier === 'hard' ? `<p><span class="gal-difficulty">${L.canvasSize === 'large' ? 'BÜYÜK · ' : ''}ZOR</span></p>` : ''}
         <button class="btn-green" type="button" data-play="${i + 1}">TEKRAR OYNA</button>
         <button class="btn-flat" type="button" data-menu="gallery">KOLEKSİYONA DÖN</button>`, 'gallery-card');
     }));

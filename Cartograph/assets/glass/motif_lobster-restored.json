@@ -1,0 +1,53 @@
+{
+  "id": "motif_lobster",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:18:26.845811+00:00",
+  "source": "assets/glass/motif_lobster-clear.webp",
+  "sourceSha256": "d5868c6166c707d4c64ab732743a5334c6c7e8cdbdbdb1aedcdd47634d9befee",
+  "sourceGeometrySha256": "b5d88596383bfaad913fd85062a90c55f8e11d3ffbda0cc878d8ccbab3bca405",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 88,
+      "donorPatches": 76,
+      "colour": 0,
+      "preservedFraction": 0.0
+    },
+    {
+      "patchSize": 101,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.08710011347018251
+    },
+    {
+      "patchSize": 91,
+      "donorPatches": 69,
+      "colour": 2,
+      "preservedFraction": 0.12792199639479646
+    },
+    {
+      "patchSize": 94,
+      "donorPatches": 51,
+      "colour": 3,
+      "preservedFraction": 0.03955231805944373
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "1e58cb70e2f22d5122c07114448e47e97d4896f095204c710b8f1f9afeb351bb",
+  "sha256": "3e6bcb2083e07751596ecd1cd01da38612c381f9bcb81efcd4b8cfcdbf588211",
+  "palette": [
+    "#dd880d",
+    "#f4d73a",
+    "#3f7abc",
+    "#061656"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 33,
+    "total": 33,
+    "mismatches": []
+  }
+}

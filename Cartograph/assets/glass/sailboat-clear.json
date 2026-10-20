@@ -1,0 +1,27 @@
+{
+  "id": "sailboat",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:17:01.947622+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of a sailboat with two white sails on a sunny blue sea, the sun shining behind. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/sailboat.png"
+  ],
+  "size": [
+    883,
+    1178
+  ],
+  "guide": "3d1e0601dff83b23a9414c2ff7328f0203d75e4dea85619204af4df72fdc4b71",
+  "sha256": "2db84b262f6ddfa53b4a9dbf1d267ca8fb251453fad3fe8db59349e4af99ac4c",
+  "palette": [
+    "#0166e0",
+    "#f5f2ec",
+    "#e50b0f",
+    "#fede12"
+  ],
+  "paneColorCheck": {
+    "matched": 28,
+    "total": 28,
+    "valid": true,
+    "mismatches": []
+  }
+}

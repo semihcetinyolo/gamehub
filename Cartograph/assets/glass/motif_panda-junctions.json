@@ -1,0 +1,53 @@
+{
+  "id": "motif_panda",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:26:07.955865+00:00",
+  "source": "assets/glass/motif_panda-restored.webp",
+  "sourceSha256": "49fcccb1be8ec970ff7efd20a4519c0ed2aa672babadb13892c2fc1c085711c8",
+  "sourceGeometrySha256": "cadef612c2de8836a96e35b0945675c832766782149692c977a96c19e875d05d",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 88,
+      "donorPatches": 70,
+      "colour": 0,
+      "preservedFraction": 0.4641992737778516
+    },
+    {
+      "patchSize": 136,
+      "donorPatches": 64,
+      "colour": 1,
+      "preservedFraction": 0.5170442779783375
+    },
+    {
+      "patchSize": 141,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5609383130691257
+    },
+    {
+      "patchSize": 111,
+      "donorPatches": 75,
+      "colour": 3,
+      "preservedFraction": 0.466214246428613
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "67808acd5711818a6513b784faf69ea069396d9dd2b75caaa5d8844d7d018894",
+  "sha256": "b30a2eae800e0dd29c19cb6b478d9f3e3751115b9d71d0f3b2320f7c6879047c",
+  "palette": [
+    "#db566e",
+    "#fad73d",
+    "#1595a2",
+    "#0f2660"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 30,
+    "total": 30,
+    "mismatches": []
+  }
+}

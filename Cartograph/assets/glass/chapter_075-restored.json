@@ -1,0 +1,53 @@
+{
+  "id": "chapter_075",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:20:18.203704+00:00",
+  "source": "assets/glass/chapter_075.webp",
+  "sourceSha256": "27c9dfdf50899b0e1730a0dd9f48ad890a41181ebca59058950fcf2b29d9b58c",
+  "sourceGeometrySha256": "8c842343ee01aa703d77167a46c58eae194ff287e1a3278e4c79ed2c1da60676",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 98,
+      "donorPatches": 45,
+      "colour": 0,
+      "preservedFraction": 0.28812610517852616
+    },
+    {
+      "patchSize": 34,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.11256736260929927
+    },
+    {
+      "patchSize": 71,
+      "donorPatches": 42,
+      "colour": 2,
+      "preservedFraction": 0.10073312391885939
+    },
+    {
+      "patchSize": 61,
+      "donorPatches": 18,
+      "colour": 3,
+      "preservedFraction": 0.10666481420004034
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "69063ff123d10ce89fd1940568e20b09145949601618aba758f07af8cb07a972",
+  "sha256": "efad429254716f76925aeb1f9a7252a7aff65e4d2f95a8c9bc4337397e1d0911",
+  "palette": [
+    "#af25da",
+    "#f0981f",
+    "#4cb41e",
+    "#1477b8"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 35,
+    "total": 35,
+    "mismatches": []
+  }
+}

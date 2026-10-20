@@ -1,0 +1,27 @@
+{
+  "id": "motif_giraffe",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:02:04.909255+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Zürafa. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_giraffe.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "a9597d06a77a9e2808a3a8bd6cd7d96fa49d8e6e875dd40b4f51ad571cae4184",
+  "sha256": "83727edbdb334f75ececf2755ec413b9cfd4d194696d3bfb1da68c70795e2dbe",
+  "palette": [
+    "#f97406",
+    "#fded3e",
+    "#209d86",
+    "#032476"
+  ],
+  "paneColorCheck": {
+    "matched": 34,
+    "total": 34,
+    "valid": true,
+    "mismatches": []
+  }
+}

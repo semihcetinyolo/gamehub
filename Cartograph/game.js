@@ -43,6 +43,7 @@
     hints: START_HINTS, done: false,
   };
   let lastTap = null;
+  let locksShown = false, lastLockTap = 0;
   let layers = {};
   let regionEls = [];
 
@@ -122,15 +123,15 @@
       class: 'board-rim', d: map.shape, fill: 'none', stroke: '#3a4234',
       'stroke-width': 3.5, 'vector-effect': 'non-scaling-stroke', 'pointer-events': 'none',
     }, layers.surface);
-    layers.conflict = el('path', {
-      fill: 'none', stroke: '#e2343f', 'stroke-width': 5, 'stroke-linecap': 'round',
-      'vector-effect': 'non-scaling-stroke', 'pointer-events': 'none', class: 'conflict', d: '',
-    }, layers.surface);
+    layers.conflict = el('g', { class: 'conflict', 'pointer-events': 'none', 'aria-hidden': 'true' }, layers.surface);
+    mistakeKey = ''; wrongOn = false; preFocus = null; clearTimeout(wrongTimer);
     layers.dots = el('g', { 'pointer-events': 'none' }, layers.surface);
+    layers.locks = el('g', { class: 'locks', 'pointer-events': 'none', 'aria-hidden': 'true' }, layers.surface);
+    locksShown = false;
     layers.coach = el('g', { 'pointer-events': 'none' }, layers.surface);
     dotCache = [];
     if (boardLook === '3d') buildDepth();
-    fitBoard();
+    fitBoard(true);
   }
 
   // Reuse the playable paths: lighting never changes geometry or hit targets.
@@ -204,7 +205,7 @@
     render();
   }
 
-  function fitBoard() {
+  function fitBoard(reset = false) {
     if (!S.puzzle) return;
     const { cols, rows } = S.puzzle.map;
     const stage = $('stage').getBoundingClientRect();
@@ -212,10 +213,12 @@
     const stageStyle = getComputedStyle($('stage'));
     const availW = stage.width - parseFloat(stageStyle.paddingLeft) - parseFloat(stageStyle.paddingRight) - pad;
     const availH = stage.height - parseFloat(stageStyle.paddingTop) - parseFloat(stageStyle.paddingBottom) - pad;
-    const cell = Math.max(10, Math.min(availW / cols, availH / rows));
+    const cell = Math.max(1, Math.min(availW / cols, availH / rows));
+    const oldW = parseFloat(svg.style.width) || 1, oldH = parseFloat(svg.style.height) || 1;
     svg.style.width = Math.floor(cell * cols) + 'px';
     svg.style.height = Math.floor(cell * rows) + 'px';
-    setZoom(1, 0, 0);
+    if (reset) setZoom(1, 0, 0); // every level, large ones too, opens showing the whole panel
+    else setZoom(Z.z, Z.x * parseFloat(svg.style.width) / oldW, Z.y * parseFloat(svg.style.height) / oldH);
   }
 
   // Pencil dots: each mark count gets its own layout over the whole region —
@@ -331,7 +334,9 @@
     showMistakes();
     const filled = S.fill.filter(c => c >= 0).length;
     $('progress').textContent = `${filled}/${map.count}`;
-    $('levelPill').textContent = 'SEVİYE ' + S.level;
+    const hard = S.puzzle.glass.difficulty?.tier === 'hard';
+    $('levelPill').textContent = 'SEVİYE ' + S.level + (hard ? ' · ZOR' : '');
+    $('levelPill').classList.toggle('is-hard', hard);
     const badge = $('hintBadge');
     badge.textContent = S.hints > 0 ? S.hints : '+';
     badge.classList.toggle('plus', S.hints <= 0);
@@ -340,27 +345,119 @@
   const popcount = m => { let c = 0; while (m) { c += m & 1; m >>= 1; } return c; };
   const clashEdges = () => S.puzzle.map.edges.filter(e => S.fill[e[4]] >= 0 && S.fill[e[4]] === S.fill[e[5]]);
 
-  // A full board that isn't the panel: red borders on every clash and the clashing panes pulse.
+  // A full board that isn't the panel. Each pair of same-coloured neighbours gets a golden glow on
+  // their shared border and a brass lens (assets/wrong/wrong-lens.webp) over it; right after the
+  // board fills, everything else dims until the next tap. The bar under the board steps through them.
+  // After WRONG_MS it all fades and the board looks normal again; the next paint that leaves the
+  // board full and wrong shows it again.
+  const LENS = { src: 'assets/wrong/wrong-lens.webp', cx: 0.428, cy: 0.413, r: 0.35 }; // tools/wrong/build_art.py
+  const LENS_PX = 26; // lens ring radius on screen at zoom 1
+  const WRONG_MS = 3000;
+  let wrongOn = false, wrongDim = false, wrongTimer = 0, clashStep = 0, clashList = [], mistakeKey = '';
+  let preFocus = null; // the zoom before ‹ › moved it, put back when the marks fade
+
+  function flashMistakes() {
+    if (!wrongOn) { wrongDim = true; clashStep = 0; }
+    wrongOn = true;
+    setFading(false);
+    keepMistakes();
+    showMistakes();
+  }
+  function keepMistakes() {
+    clearTimeout(wrongTimer);
+    wrongTimer = setTimeout(() => {
+      setFading(true);
+      wrongTimer = setTimeout(() => { setFading(false); wrongOn = false; wrongDim = false; showMistakes(); restoreFocus(); }, 450);
+    }, WRONG_MS);
+  }
+  function restoreFocus() {
+    if (!preFocus) return;
+    svg.classList.add('glide');
+    setZoom(preFocus.z, preFocus.x, preFocus.y);
+    preFocus = null;
+    setTimeout(() => svg.classList.remove('glide'), 400);
+  }
+  function setFading(on) {
+    for (const n of [layers.wrong, layers.conflict, $('clashBar')]) n.classList.toggle('fade-out', on);
+  }
+
+  function clashPairs(clashes) {
+    const by = new Map();
+    for (const e of clashes) {
+      const k = e[4] + '-' + e[5];
+      if (!by.has(k)) by.set(k, []);
+      by.get(k).push(e);
+    }
+    return [...by.values()].map(segs => {
+      // the lens goes on the border, at the segment nearest the border's middle
+      const mids = segs.map(e => [(e[0] + e[2]) / 2, (e[1] + e[3]) / 2]);
+      const mx = mids.reduce((t, m) => t + m[0], 0) / mids.length, my = mids.reduce((t, m) => t + m[1], 0) / mids.length;
+      const at = mids.reduce((b, m) => (Math.hypot(m[0] - mx, m[1] - my) < Math.hypot(b[0] - mx, b[1] - my) ? m : b));
+      return { a: segs[0][4], b: segs[0][5], segs, at };
+    });
+  }
+
   function showMistakes() {
     const full = S.fill.every(c => c >= 0);
-    const clashes = full && !S.done ? clashEdges() : [];
-    layers.conflict.setAttribute('d', edgesPath(clashes));
-    layers.wrong.innerHTML = '';
+    const pairs = wrongOn && full && !S.done ? clashPairs(clashEdges()) : [];
+    if (!pairs.length) { wrongOn = false; wrongDim = false; clearTimeout(wrongTimer); setFading(false); }
+    clashList = pairs;
+    clashStep = Math.min(clashStep, Math.max(0, pairs.length - 1));
+    renderClashBar();
     const { map } = S.puzzle;
-    for (const r of new Set(clashes.flatMap(e => [e[4], e[5]]))) {
-      if (S.given[r] >= 0) continue;
-      el('path', { d: map.paths[r], class: 'wrong-pane' }, layers.wrong);
-      el('path', {
-        d: edgesPath(map.outlines[r]), fill: 'none', stroke: '#e2343f', 'stroke-width': 3,
-        'stroke-dasharray': '6 4', 'vector-effect': 'non-scaling-stroke',
-      }, layers.wrong);
-      const [x, y] = map.anchors[r];
-      const g = el('g', { class: 'wrong-mark', transform: `translate(${fmt(x)} ${fmt(y)})` }, layers.dots);
-      el('circle', { r: 0.27, fill: '#e2343f', stroke: '#fff', 'stroke-width': 0.06 }, g);
-      el('path', { d: 'M-.1-.1L.1.1M.1-.1L-.1.1', stroke: '#fff', 'stroke-width': 0.07, 'stroke-linecap': 'round' }, g);
+    const size = parseFloat(svg.style.width) || 1;
+    const key = pairs.map(p => p.a + '-' + p.b).join() + '|' + wrongDim + '|' + size;
+    if (key === mistakeKey) return;
+    mistakeKey = key;
+    layers.wrong.innerHTML = '';
+    layers.conflict.innerHTML = '';
+    if (!pairs.length) return;
+    if (wrongDim) {
+      const mask = el('mask', { id: 'wrongMask', maskUnits: 'userSpaceOnUse', x: 0, y: 0, width: map.cols, height: map.rows }, layers.wrong);
+      el('rect', { width: map.cols, height: map.rows, fill: '#fff' }, mask);
+      for (const r of new Set(pairs.flatMap(p => [p.a, p.b]))) el('path', { d: map.paths[r], fill: '#000' }, mask);
+      el('rect', { class: 'wrong-dim', width: map.cols, height: map.rows, fill: '#14201a', mask: 'url(#wrongMask)' }, layers.wrong);
     }
-    return clashes;
+    const ring = LENS_PX * map.cols / size, d = ring / LENS.r;
+    pairs.forEach((p, i) => {
+      const g = el('g', { class: 'clash', 'data-i': i }, layers.conflict);
+      const seam = edgesPath(p.segs);
+      for (const [w, color, op] of [[15, '#ffd36a', 0.28], [8, '#ffd36a', 0.55], [3.5, '#fff6d2', 1]]) {
+        el('path', { d: seam, fill: 'none', stroke: color, 'stroke-opacity': op, 'stroke-width': w, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'vector-effect': 'non-scaling-stroke' }, g);
+      }
+      el('image', { class: 'lens', href: LENS.src, width: fmt(d), height: fmt(d), x: fmt(p.at[0] - LENS.cx * d), y: fmt(p.at[1] - LENS.cy * d) }, g);
+    });
   }
+
+  function renderClashBar() {
+    const n = clashList.length;
+    $('clashBar').hidden = !n;
+    // the bar needs more room under the board than the rule line; refit when it comes or goes
+    if ($('stage').classList.contains('has-clash') !== !!n) { $('stage').classList.toggle('has-clash', !!n); fitBoard(); }
+    if (!n) return;
+    $('clashCount').textContent = `${n} yerde · birini değiştir`;
+    $('clashIdx').textContent = `${clashStep + 1}/${n}`;
+  }
+
+  // Zoom in on one clash and slide the board so its lens sits in the middle.
+  function focusClash(step) {
+    if (!clashList.length) return;
+    clashStep = (step + clashList.length) % clashList.length;
+    setFading(false);
+    keepMistakes(); // looking around keeps the marks up
+    renderClashBar();
+    const { map } = S.puzzle, p = clashList[clashStep];
+    const w = parseFloat(svg.style.width), h = parseFloat(svg.style.height), z = Math.max(Z.z, 2.2);
+    if (!preFocus) preFocus = { ...Z };
+    svg.classList.add('glide');
+    setZoom(z, -z * (p.at[0] / map.cols - 0.5) * w, -z * (p.at[1] / map.rows - 0.5) * h);
+    setTimeout(() => svg.classList.remove('glide'), 400);
+    const g = layers.conflict.querySelector(`[data-i="${clashStep}"]`);
+    if (g) { g.classList.remove('nudge'); void g.getBBox(); g.classList.add('nudge'); }
+    sfx.select();
+  }
+  $('clashPrev').addEventListener('click', () => focusClash(clashStep - 1));
+  $('clashNext').addEventListener('click', () => focusClash(clashStep + 1));
 
   function pulse(r, cls) {
     const g = regionEls[r].g;
@@ -384,6 +481,11 @@
   // ---------- level ----------
   // Every level is a stained-glass panel (stained-levels.js); after the last one it starts over.
   const STAINED = window.CARTO_STAINED;
+  const levelOrder = window.CARTO_STAINED_ORDER;
+  const savedLevelId = store.get('levelId', null) || (store.get('levelOrder', null) !== levelOrder?.version
+    ? levelOrder?.previousIds[S.level - 1] : null);
+  const savedLevelIndex = STAINED.findIndex(L => L.id === savedLevelId);
+  if (savedLevelIndex >= 0) S.level = savedLevelIndex + 1;
   const wrap = n => ((n - 1) % STAINED.length + STAINED.length) % STAINED.length + 1;
   let glassTimer = 0, glassImage = null;
 
@@ -401,9 +503,12 @@
     S.level = n;
     store.set('level', n);
     const glass = STAINED[n - 1];
+    store.set('levelId', glass.id);
+    if (levelOrder) store.set('levelOrder', levelOrder.version);
     if (!glass.map.outlines) glass.map.outlines = outlinesOf(glass.map);
     setupPuzzle({ map: glass.map, given: glass.given, solution: glass.solution, glass });
     if (!quiet) maybeCoach();
+    if (!quiet && glass.canvasSize === 'large') toast('Büyük vitray · İstersen +/− ile yakınlaştır', 3000);
   }
   const maybeCoach = () => { if (S.level === 1 && !store.get('tutorial', false) && !S.done) startCoach(); };
 
@@ -446,12 +551,12 @@
   }
 
   // ---------- zoom ----------
-  // Pinch (or the +/− buttons, or the mouse wheel) zooms the board up to 4×; one finger drags it
+  // Pinch (or the +/− buttons, or the mouse wheel) zooms the board up to 6×; one finger drags it
   // while zoomed. A gesture never counts as a tap.
-  const MAX_ZOOM = 4;
+  const MAX_ZOOM = 6;
   const Z = { z: 1, x: 0, y: 0 };
   const pointers = new Map();
-  let gesture = null, quietUntil = 0;
+  let gesture = null, quietUntil = 0, zoomRest = 0;
 
   function setZoom(z, x, y) {
     z = Math.max(1, Math.min(MAX_ZOOM, z));
@@ -461,6 +566,11 @@
     Z.x = Math.max(-mx, Math.min(mx, x));
     Z.y = Math.max(-my, Math.min(my, y));
     svg.style.transform = z === 1 ? '' : `translate(${Z.x}px, ${Z.y}px) scale(${z})`;
+    // While the board moves it rides on its own GPU layer (smooth, but painted at the old size);
+    // once it rests the layer is dropped so the browser redraws the vectors sharp at the new zoom.
+    svg.classList.add('zooming');
+    clearTimeout(zoomRest);
+    zoomRest = setTimeout(() => svg.classList.remove('zooming'), 450);
     $('zoomOut').disabled = z <= 1;
     $('zoomIn').disabled = z >= MAX_ZOOM;
     $('stage').classList.toggle('zoomed', z > 1);
@@ -550,9 +660,48 @@
     }
   });
 
+  // A tap on a pre-painted pane shows a lock on every pre-painted pane; the next tap hides them.
+  function showLocks(on) {
+    locksShown = on;
+    layers.locks.innerHTML = '';
+    if (!on) return;
+    const { map } = S.puzzle;
+    for (let r = 0; r < map.count; r++) {
+      if (S.given[r] < 0) continue;
+      const [x, y] = map.anchors[r];
+      const g = el('g', { class: 'lock-pop' }, el('g', { transform: `translate(${fmt(x)} ${fmt(y + 0.03)}) scale(0.5)` }, layers.locks));
+      el('path', { d: 'M-0.21 -0.06V-0.24A0.21 0.21 0 0 1 0.21 -0.24V-0.06', fill: 'none', stroke: '#fff', 'stroke-width': 0.26, 'stroke-linecap': 'round' }, g);
+      el('path', { d: 'M-0.21 -0.06V-0.24A0.21 0.21 0 0 1 0.21 -0.24V-0.06', fill: 'none', stroke: '#2f362a', 'stroke-width': 0.12, 'stroke-linecap': 'round' }, g);
+      el('rect', { x: -0.33, y: -0.1, width: 0.66, height: 0.52, rx: 0.1, fill: '#2f362a', stroke: '#fff', 'stroke-width': 0.08, 'paint-order': 'stroke fill' }, g);
+      el('path', { d: 'M0 0.06a0.07 0.07 0 0 1 0.04 0.13l0.02 0.11h-0.12l0.02 -0.11a0.07 0.07 0 0 1 0.04 -0.13z', fill: '#f4ecd8' }, g);
+    }
+  }
+
   function tapRegion(r) {
     if (S.done) return;
-    if (S.given[r] >= 0) { pulse(r, 'flash'); toast('Çizgili bölgeler hazır gelir, rengi değişmez'); return; }
+    if (wrongDim) { wrongDim = false; showMistakes(); }
+    if (S.given[r] >= 0) {
+      // a double tap meant to paint should not show and hide the locks at once
+      const now = performance.now();
+      if (now - lastLockTap < DOUBLE_MS) return;
+      lastLockTap = now;
+      pulse(r, 'flash'); sfx.select();
+      showLocks(!locksShown);
+      return;
+    }
+    if (coach && coach.step !== 'done') {
+      if (coach.step === 'welcome') { toast('Başlamak için HAZIRIM düğmesine dokun'); return; }
+      const target = coach.step === 'mark' ? coach.r2 : coach.r;
+      if (r !== target) { toast('Önce parlayan bölgeyi deneyelim'); return; }
+      if (coach.step === 'color') { toast('Önce aşağıdaki parlayan rengi seç'); return; }
+      if (coach.step === 'mark') {
+        if (!coach.options.includes(S.color)) { toast('Parlayan renklerden birini seç'); return; }
+        // The note lesson never turns two quick taps into an accidental paint.
+        lastTap = null;
+        toggleMark(r, S.color);
+        return;
+      }
+    }
     const now = performance.now();
     if (lastTap && lastTap.r === r && now - lastTap.t < DOUBLE_MS) {
       if (lastTap.marked) S.marks[r] = lastTap.prev;
@@ -594,6 +743,7 @@
   }
   function fillNotes() {
     if (S.done) return;
+    if (coach && coach.step !== 'done') { toast('Önce kısa eğitimi tamamlayalım'); return; }
     const todo = singleNoted();
     if (!todo.length) { toast('Tek renk notlu bölge yok'); return; }
     for (const r of todo) {
@@ -634,12 +784,13 @@
     if (S.done || S.fill.some(c => c < 0)) return;
     const clashes = clashEdges();
     if (clashes.length) {
-      const panes = new Set(clashes.flatMap(e => [e[4], e[5]])).size;
       sfx.bad(); buzz([30, 40, 30]); shakeBoard();
-      toast(`Yanlış çözüm: kırmızı sınırlı ${panes} bölge komşusuyla aynı renk`, 2800);
+      $('toast').classList.remove('show');
+      flashMistakes();
       return;
     }
     S.done = true;
+    showLocks(false);
     sfx.win();
     $('toast').classList.remove('show');
     $('boardCard').classList.add('won');
@@ -677,7 +828,7 @@
     if (S.puzzle !== puzzle || !S.done) return;
     const defs = svg.querySelector('defs');
     el('image', { id: 'glassArtwork', href: glass.image, width: map.cols, height: map.rows, preserveAspectRatio: 'none' }, defs);
-    const art = el('g', { class: 'glass-art', 'pointer-events': 'none', role: 'img', 'aria-label': glass.name + ' — AI vitray görseli' }, layers.surface);
+    const art = el('g', { class: 'glass-art', 'pointer-events': 'none', role: 'img', 'aria-label': glass.name + ' — tamamlanmış vitray' }, layers.surface);
     map.paths.forEach((d, r) => {
       const clip = el('clipPath', { id: 'glassPane' + r }, defs);
       el('path', { d }, clip);
@@ -738,6 +889,7 @@
 
   function useHint() {
     if (S.done) return;
+    if (coach && coach.step !== 'done') { toast('Önce kısa eğitimi tamamlayalım'); return; }
     if (S.hints <= 0) {
       S.hints += 3;
       toast('+3 ipucu (reklam yeri)');
@@ -826,8 +978,7 @@
   }
 
   // ---------- first-level tutorial ----------
-  // Coach marks on level 1: pick the one colour that fits a pane, double tap to paint it,
-  // single tap another pane to leave a note, then play on.
+  // A twelve-pane cat with four empty panes: rules, colour choice, paint, then pencil notes.
   let coach = null; // { step, r, c, r2 }
   function startCoach() {
     const { map } = S.puzzle, sol = S.puzzle.solution;
@@ -841,8 +992,9 @@
     if (!forced.length) return;
     const [cx, cy] = [map.cols / 2, map.rows / 2];
     forced.sort((a, b) => Math.hypot(map.anchors[a][0] - cx, map.anchors[a][1] - cy) - Math.hypot(map.anchors[b][0] - cx, map.anchors[b][1] - cy));
-    const r = forced[0];
-    coach = { step: 'color', r, c: sol[r] };
+    const lesson = S.puzzle.glass.tutorial;
+    const r = lesson && forced.includes(lesson.paint) ? lesson.paint : forced[0];
+    coach = { step: 'welcome', r, c: sol[r] };
     if (S.color === coach.c) { S.color = (coach.c + 1) % 4; renderBar(); }
     showCoach();
   }
@@ -852,20 +1004,26 @@
     const box = $('coach');
     const name = PALETTE[coach.c].name.toLocaleLowerCase('tr');
     const texts = {
-      color: `<b>Komşu bölgeler aynı renk olamaz.</b> Parlayan bölgenin komşularında üç renk var, geriye sadece <b>${name}</b> kalıyor. Aşağıdan <b>${name}</b> rengini seç.`,
-      paint: `Şimdi parlayan bölgeye <b>iki kez dokun</b>, ${name} renge boyansın.`,
+      welcome: `Bu kediyi birlikte boyayalım! Yalnızca <b>${S.fill.filter(c => c < 0).length} boş alan</b> var. <b>Çizgili alanlar hazırdır.</b> Kenarı ortak olan alanlar farklı renk olmalı.`,
+      color: `Parlayan bölgenin komşularında üç renk var. Geriye <b>${name}</b> kalıyor. Aşağıdan parlayan <b>${name}</b> rengini seç.`,
+      paint: `Parlayan bölgeye <b>iki kez hızlıca dokun</b>. Seçtiğin renk bütün alanı boyar.`,
       mark: coach.step === 'mark' ? coachMarkText() : '',
-      done: 'Notlar küçük noktalar olarak kalır; aynı yere yine tek dokunursan silinir. <b>Çizgili bölgeler</b> hazır gelir, rengi değişmez. Bütün haritayı boya, vitray ortaya çıksın!',
+      done: `${coach.options ? 'İki olası rengi not ettin. ' : ''}<b>Tek dokunuş not ekler veya siler; çift dokunuş boyar.</b> Şimdi kalan <b>${S.fill.filter(c => c < 0).length} alanı</b> tamamla. Komşular boyandıkça gereksiz notlar silinir.`,
     };
-    box.innerHTML = `<p>${texts[coach.step]}</p>` + (coach.step === 'done' ? '<button class="btn-green" type="button" id="coachOk">BAŞLA</button>' : '<button class="coach-skip" type="button" id="coachSkip">Geç</button>');
+    const titles = { welcome: '1 / 4 · KURAL', color: '2 / 4 · RENGİ SEÇ', paint: '3 / 4 · BOYA', mark: '4 / 4 · NOT AL', done: 'SIRA SENDE' };
+    box.innerHTML = `<span class="coach-step">${titles[coach.step]}</span><p>${texts[coach.step]}</p>`
+      + (coach.step === 'welcome' ? '<button class="btn-green" type="button" id="coachReady">HAZIRIM</button>' : '')
+      + (coach.step === 'done' ? '<button class="btn-green" type="button" id="coachOk">DEVAM ET</button>' : '<button class="coach-skip" type="button" id="coachSkip">Eğitimi geç</button>');
     box.hidden = false;
     const ok = $('coachOk'), skip = $('coachSkip');
     if (ok) ok.addEventListener('click', () => endCoach(true));
+    const ready = $('coachReady');
+    if (ready) ready.addEventListener('click', () => { coach.step = 'color'; lastTap = null; showCoach(); });
     if (skip) skip.addEventListener('click', () => endCoach(true));
     const pending = coach.step === 'mark' ? coach.options.filter(c => !(S.marks[coach.r2] & (1 << c))) : [];
     colorButtons.forEach((b, c) => b.classList.toggle('coach-target', (coach.step === 'color' && c === coach.c) || (pending.includes(c) && S.color !== c)));
     layers.coach.innerHTML = '';
-    const target = coach.step === 'mark' ? coach.r2 : coach.step === 'done' ? -1 : coach.r;
+    const target = coach.step === 'mark' ? coach.r2 : ['done', 'welcome'].includes(coach.step) ? -1 : coach.r;
     if (target >= 0) {
       el('path', {
         class: 'coach-ring', d: edgesPath(S.puzzle.map.outlines[target]), fill: 'none', stroke: '#fff7d6',
@@ -915,7 +1073,8 @@
       }
       const dist = r => Math.hypot(map.anchors[r][0] - map.anchors[coach.r][0], map.anchors[r][1] - map.anchors[coach.r][1]);
       two.sort((a, b) => dist(a) - dist(b));
-      coach.r2 = two[0];
+      const lessonNote = S.puzzle.glass.tutorial && S.puzzle.glass.tutorial.note;
+      coach.r2 = two.includes(lessonNote) ? lessonNote : two[0];
       if (coach.r2 != null) {
         const used = new Set(map.adj[coach.r2].map(j => S.fill[j]).filter(c => c >= 0));
         coach.options = [0, 1, 2, 3].filter(c => !used.has(c));
@@ -952,7 +1111,7 @@
       <button class="close" data-act="close" aria-label="Kapat"></button>
       <h2>NASIL OYNANIR</h2>
       <div class="how">
-        ${ICON_RULE}<span>Birbirine değen bölgeler aynı renk olamaz. Harita dolunca yanlış yerler kırmızı yanar.</span>
+        ${ICON_RULE}<span>Ortak kenarı olan bölgeler aynı renk olamaz. Yalnızca köşede buluşanlar komşu sayılmaz. Harita dolunca yanlış yerler kırmızı yanar.</span>
         ${ICON_PALETTE}<span><b>Renk seç:</b> alttaki dört renkten biri hep seçilidir, değiştirmek için dokun.</span>
         ${ICON_TAP}<span><b>Tek dokun:</b> bölgeye seçili rengin notunu koy. <b>Çift dokun:</b> bölgeyi boya.</span>
         ${ICON_FIXED}<span><b>Çizgili bölgeler</b> hazır gelir, rengi değişmez. Düz renkler senin boyadıkların.</span>
@@ -1002,9 +1161,10 @@
   // One chip per level: number, its four glass colours, a tick once its panel is finished.
   function levelChip(L, i, solved) {
     const done = solved.includes(L.id);
-    return `<button class="level-chip${i + 1 === S.level ? ' current' : ''}${done ? ' done' : ''}" data-act="glass" data-i="${i}"
-      aria-label="Seviye ${i + 1}: ${L.name}${done ? ', tamamlandı' : ''}"${i + 1 === S.level ? ' aria-current="true"' : ''}>
-      <b>${i + 1}</b><span class="chip-colors">${L.palette.map(c => `<i style="background:${c}"></i>`).join('')}</span></button>`;
+    const hard = L.difficulty?.tier === 'hard';
+    return `<button class="level-chip${hard ? ' is-hard' : ''}${i + 1 === S.level ? ' current' : ''}${done ? ' done' : ''}" data-act="glass" data-i="${i}"
+      aria-label="Seviye ${i + 1}: ${L.name}${L.canvasSize === 'large' ? ', büyük vitray' : ''}${hard ? ', zor' : ''}${done ? ', tamamlandı' : ''}"${i + 1 === S.level ? ' aria-current="true"' : ''}>
+      <b>${i + 1}</b><span class="chip-colors">${L.palette.map(c => `<i style="background:${c}"></i>`).join('')}</span>${hard ? '<small class="chip-difficulty">ZOR</small>' : ''}</button>`;
   }
 
   $('card').addEventListener('click', e => {
@@ -1041,12 +1201,12 @@
   $('hintBtn').addEventListener('click', useHint);
   $('fillBtn').addEventListener('click', fillNotes);
   $('settingsBtn').addEventListener('click', showSettings);
-  new ResizeObserver(fitBoard).observe($('stage'));
+  new ResizeObserver(() => fitBoard()).observe($('stage'));
   document.addEventListener('gesturestart', e => e.preventDefault());
 
   // The board is set up behind the main menu; the menu's play button calls CartoGame.play().
   startLevel(Math.max(1, S.level | 0), !!document.getElementById('menu'));
-  if (document.fonts) document.fonts.ready.then(fitBoard);
+  if (document.fonts) document.fonts.ready.then(() => fitBoard());
 
   window.CartoGame = {
     S,

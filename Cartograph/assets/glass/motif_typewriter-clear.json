@@ -1,0 +1,27 @@
+{
+  "id": "motif_typewriter",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:13:12.198500+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Daktilo. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_typewriter.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "cfe2ab6e368055eaba9d2a95df67f9d7bab9c23e83458954b2f80a5ea49a5913",
+  "sha256": "6e83e3b4ce533394357117a6bb83d52f300c039e3d005a9666e352695129c2b9",
+  "palette": [
+    "#ec7a1e",
+    "#fdef90",
+    "#79a223",
+    "#0d4b7f"
+  ],
+  "paneColorCheck": {
+    "matched": 33,
+    "total": 33,
+    "valid": true,
+    "mismatches": []
+  }
+}

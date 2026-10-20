@@ -1,0 +1,53 @@
+{
+  "id": "rose",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:12:55.049369+00:00",
+  "source": "assets/glass/rose-junctions.webp",
+  "sourceSha256": "d4ecb85632f2cd5d01b6fe1b2a4156c1be6da6c7ae17d95aeb2c050cabadec53",
+  "sourceGeometrySha256": "f54a9f5983a52361ea4eb635263ca4a76b3871ae0fbd115a687f7ae9129f88ad",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 42,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.30605745941693796
+    },
+    {
+      "patchSize": 96,
+      "donorPatches": 67,
+      "colour": 1,
+      "preservedFraction": 0.2849269948896367
+    },
+    {
+      "patchSize": 99,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.016865652576012587
+    },
+    {
+      "patchSize": 140,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.001311003743374773
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "0a6bdae3a25b4dbe389f41ae0aea3ee1631eff3b73bfefb15b02004471f93a32",
+  "sha256": "175ecd0a59a705c6b8e63dfb1b068c109f7f952a477c29fa3ee11235c109a81b",
+  "palette": [
+    "#aa0732",
+    "#ee8085",
+    "#145f32",
+    "#edba23"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 29,
+    "total": 29,
+    "mismatches": []
+  }
+}

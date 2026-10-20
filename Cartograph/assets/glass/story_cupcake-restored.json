@@ -1,0 +1,53 @@
+{
+  "id": "story_cupcake",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:20:21.060926+00:00",
+  "source": "assets/glass/story_cupcake-clear.webp",
+  "sourceSha256": "dd54f1c3cf2c3ba0211334fca65a863188ca4c9490e10fae2e06625b0f88f34f",
+  "sourceGeometrySha256": "b5db8c59cacb2bb4b5d305c41865abf4e3263932cd2a9d74b600195870579cc4",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 89,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5492454960187768
+    },
+    {
+      "patchSize": 125,
+      "donorPatches": 88,
+      "colour": 1,
+      "preservedFraction": 0.5345795349059889
+    },
+    {
+      "patchSize": 88,
+      "donorPatches": 45,
+      "colour": 2,
+      "preservedFraction": 0.3198419565645297
+    },
+    {
+      "patchSize": 76,
+      "donorPatches": 42,
+      "colour": 3,
+      "preservedFraction": 0.2712696811101746
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "86c524fa35fb18229b72559cd6af0735e59512527c429f1097075ff31beb272f",
+  "sha256": "3bfad7818c1c300606d30b48bdb7ccae7dc7b76ad2d68b76d55ee83b64d8dc55",
+  "palette": [
+    "#c85e71",
+    "#fde272",
+    "#208d91",
+    "#0c2d59"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 22,
+    "total": 22,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "grand_24",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-19T12:54:52.459366+00:00",
+  "prompt": "Use case: style-transfer. Subject: Kanyon Yolculuğu. Transform this exact geometric colour guide into a luminous photographic artisan stained-glass panel. Preserve every pane, boundary, silhouette, margin and all four existing hues exactly. Add gentle handmade translucent glass ripples, tiny bubbles, subtle backlighting and thin dark metallic lead on existing seams. No extra lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the 3:4 portrait reference pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue. Use clean seam junctions without round tabs or decorative bumps. Output resolution 1728x2304.",
+  "references": [
+    "tools/stained/guides/grand_24.png"
+  ],
+  "size": [
+    1728,
+    2304
+  ],
+  "guide": "f783aff17ea295050b40395b2bbba8ee756db1aa199f14c3ccb4126eb77a3325",
+  "sha256": "927c5edea56875832a5c4b2e09625591de83e275dbdcac4a6f831c0a28e95824",
+  "palette": [
+    "#eb9b0e",
+    "#fdfb6c",
+    "#3988d9",
+    "#021860"
+  ],
+  "paneColorCheck": {
+    "matched": 75,
+    "total": 75,
+    "valid": true,
+    "mismatches": []
+  }
+}

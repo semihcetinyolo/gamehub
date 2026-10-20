@@ -1,0 +1,53 @@
+{
+  "id": "motif_saxophone",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:19:37.157954+00:00",
+  "source": "assets/glass/motif_saxophone-clear.webp",
+  "sourceSha256": "1b7cdf02c6b1890d07ba29f9ededcff7ab2ce73251b8af992921615848a71ec2",
+  "sourceGeometrySha256": "a0a0bc3dbe7146964163146baed4875831272205bb8d8afd4f6b1dd4c121930d",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 126,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5939026765984172
+    },
+    {
+      "patchSize": 76,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.12071518259953441
+    },
+    {
+      "patchSize": 97,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.26014677516498397
+    },
+    {
+      "patchSize": 97,
+      "donorPatches": 47,
+      "colour": 3,
+      "preservedFraction": 0.37673734604449255
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "230a2c7c0520976c7d32d0456a373c38d84c13660e31c1dd887e048df18b1ee4",
+  "sha256": "0f431e82abcbe11a1d623a7857b2798dc904ee2dd922e778cb6403e2940227da",
+  "palette": [
+    "#f37e07",
+    "#f6dc31",
+    "#14907b",
+    "#032474"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 25,
+    "total": 25,
+    "mismatches": []
+  }
+}

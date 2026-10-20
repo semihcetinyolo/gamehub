@@ -1,0 +1,53 @@
+{
+  "id": "strawberry",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:24:40.646331+00:00",
+  "source": "assets/glass/strawberry-restored.webp",
+  "sourceSha256": "351b2ccff79b8712e76aa2dbcba63427c4defc1d7a2b0e5953f4746e99080512",
+  "sourceGeometrySha256": "31238e28d87d5154fdc28358c1b12ab734a2888cd50d95b8680a1919fe8421dc",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 117,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6445245019759841
+    },
+    {
+      "patchSize": 47,
+      "donorPatches": 10,
+      "colour": 1,
+      "preservedFraction": 0.2306093114297606
+    },
+    {
+      "patchSize": 66,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.33672485024685817
+    },
+    {
+      "patchSize": 68,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.4072737535087011
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "a83176287da53fa0e46933672924877f6288c55b59cd06713974371f5a60cb12",
+  "sha256": "63ad1cb85e7107283eb2146eb9761157aabe2e1eacc9ad79bafb153c7ba33b62",
+  "palette": [
+    "#d6131a",
+    "#f6d44c",
+    "#366e19",
+    "#0f7b88"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 34,
+    "total": 34,
+    "mismatches": []
+  }
+}

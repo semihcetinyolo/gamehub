@@ -1,0 +1,53 @@
+{
+  "id": "sailboat",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:18:30.215699+00:00",
+  "source": "assets/glass/sailboat-clear.webp",
+  "sourceSha256": "2db84b262f6ddfa53b4a9dbf1d267ca8fb251453fad3fe8db59349e4af99ac4c",
+  "sourceGeometrySha256": "84a0dbc0a4ac8e8d90d23ec325481fab601dc8995ddea17c1e28fc700e855204",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 97,
+      "donorPatches": 44,
+      "colour": 0,
+      "preservedFraction": 0.14546392639733408
+    },
+    {
+      "patchSize": 140,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.2103321718371395
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.2516432752237198
+    },
+    {
+      "patchSize": 129,
+      "donorPatches": 61,
+      "colour": 3,
+      "preservedFraction": 0.11159144025041577
+    }
+  ],
+  "size": [
+    883,
+    1178
+  ],
+  "guide": "2664d8d8520e7a26427bed71930cf0009775f0d6e85153c5bf46e79b24dd7cb7",
+  "sha256": "de3366daa7fe81ea76370cdfe7a50e7a8518903836d8a416d7c76d126df49b93",
+  "palette": [
+    "#0476e8",
+    "#f3f0ea",
+    "#d5060b",
+    "#fce018"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 25,
+    "total": 25,
+    "mismatches": []
+  }
+}

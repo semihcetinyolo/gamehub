@@ -1,0 +1,53 @@
+{
+  "id": "motif_umbrella",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:25:16.312028+00:00",
+  "source": "assets/glass/motif_umbrella-restored.webp",
+  "sourceSha256": "f60435f1766dcc99c9c9baf797a7ba2c43d73d9fc7625c8438c76c62a8949bd7",
+  "sourceGeometrySha256": "07cd75fbf2ea8ad47c2ce70c79d9e4dee22762792c60aedbd27e288f064564fd",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 106,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.4055530303978494
+    },
+    {
+      "patchSize": 112,
+      "donorPatches": 86,
+      "colour": 1,
+      "preservedFraction": 0.5413293684680275
+    },
+    {
+      "patchSize": 22,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.18399725354013138
+    },
+    {
+      "patchSize": 109,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6118307864392298
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "b5a14f650a172cde210eb60d832e9ef9041eb097e6891356b700b21e81780b58",
+  "sha256": "54545a6a0b2c7e463f667953f770b7cec809410d9555c984744ff2e7e190c330",
+  "palette": [
+    "#ed5648",
+    "#fbee8f",
+    "#3ca799",
+    "#031c70"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 22,
+    "total": 22,
+    "mismatches": []
+  }
+}

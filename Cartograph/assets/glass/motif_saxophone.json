@@ -1,0 +1,27 @@
+{
+  "id": "motif_saxophone",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-19T12:58:14.276563+00:00",
+  "prompt": "Use case: style-transfer. Subject: Saksafon. Transform this exact geometric colour guide into a luminous photographic artisan stained-glass panel. Preserve every pane, boundary, silhouette, margin and all four existing hues exactly. Add gentle handmade translucent glass ripples, tiny bubbles, subtle backlighting and thin dark metallic lead on existing seams. No extra lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the 3:4 portrait reference pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue. Use clean seam junctions without round tabs or decorative bumps. Output resolution 768x1024.",
+  "references": [
+    "tools/stained/guides/motif_saxophone.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "07ffd507b203e8f579fd44fa0b35a3827cc7eac2ddbb826c5965beece6382cdd",
+  "sha256": "930bc4a3f5d78d741c03f112b135e852e741454488e6a8ed818b1bb39c99aff0",
+  "palette": [
+    "#fa7d03",
+    "#fee830",
+    "#0e8375",
+    "#012179"
+  ],
+  "paneColorCheck": {
+    "matched": 28,
+    "total": 28,
+    "valid": true,
+    "mismatches": []
+  }
+}

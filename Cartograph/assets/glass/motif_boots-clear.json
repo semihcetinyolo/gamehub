@@ -1,0 +1,27 @@
+{
+  "id": "motif_boots",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T06:58:44.089529+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Yağmur Çizmeleri. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_boots.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "2a0e7a42eec8359aded3eeb38facf128d12366fa0ebb4d265e72ccac27f38e87",
+  "sha256": "d777deda152482ddde79356dfe287f4536e362c1c3090f8d2818c272450a563e",
+  "palette": [
+    "#f57703",
+    "#fce037",
+    "#33957d",
+    "#082779"
+  ],
+  "paneColorCheck": {
+    "matched": 24,
+    "total": 24,
+    "valid": true,
+    "mismatches": []
+  }
+}

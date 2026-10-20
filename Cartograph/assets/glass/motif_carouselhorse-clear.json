@@ -1,0 +1,27 @@
+{
+  "id": "motif_carouselhorse",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T06:58:12.028827+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Atlıkarınca Atı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_carouselhorse.png"
+  ],
+  "size": [
+    1776,
+    2369
+  ],
+  "guide": "837bc83873fbfc5ac93675c81b684fdefe3a76dba1d0296d27631ccf574fe717",
+  "sha256": "6f722c756e10c202204228c480432ff34ec73d9e5d33b951cae25f1ed8cf8d66",
+  "palette": [
+    "#ed462b",
+    "#fdf072",
+    "#3b9b8c",
+    "#062371"
+  ],
+  "paneColorCheck": {
+    "matched": 27,
+    "total": 27,
+    "valid": true,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "motif_swan",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:26:32.148767+00:00",
+  "source": "assets/glass/motif_swan-restored.webp",
+  "sourceSha256": "ef1c7ee4e3e53a98fac65fff4f0847b1219405a65aa9f8c7558e2a3ae5d417cc",
+  "sourceGeometrySha256": "30b241caef4549d3d5cb9b5b59ace9d053badee3627146dfbaebb970b127696a",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 102,
+      "donorPatches": 82,
+      "colour": 0,
+      "preservedFraction": 0.18285418851731702
+    },
+    {
+      "patchSize": 73,
+      "donorPatches": 19,
+      "colour": 1,
+      "preservedFraction": 0.46087265087138873
+    },
+    {
+      "patchSize": 121,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.452782942978684
+    },
+    {
+      "patchSize": 128,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5848351013460392
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "642c50b6bc351e15ee584bbe9c35c4ff6007b5ee2ce7d96b9991c77a29164313",
+  "sha256": "8ab166c7700862f52510952d377c186f4b3ac708524eaccadd19684a7d55ad5b",
+  "palette": [
+    "#e22f1f",
+    "#fcf18e",
+    "#2e9280",
+    "#082b88"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 24,
+    "total": 24,
+    "mismatches": []
+  }
+}

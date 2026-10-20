@@ -1,0 +1,27 @@
+{
+  "id": "story_violin",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:28:41.410978+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Sokak Konseri. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_violin.png"
+  ],
+  "size": [
+    1016,
+    1354
+  ],
+  "guide": "07dde03c655ed40ba336cd1645de5e65bf02e3e7533f31ca2d908074a26d36e4",
+  "sha256": "fc05a237a4d4c9b44e998a078efb7052992087768680590660040bfcd25a1754",
+  "palette": [
+    "#d75d01",
+    "#fee86a",
+    "#409ad0",
+    "#03215f"
+  ],
+  "paneColorCheck": {
+    "matched": 29,
+    "total": 29,
+    "valid": true,
+    "mismatches": []
+  }
+}

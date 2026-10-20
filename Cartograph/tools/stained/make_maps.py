@@ -136,7 +136,7 @@ def region_polys(m):
 
 
 def shape_poly(m):
-    nums = [float(v) for v in re.findall(r'-?\d*\.?\d+', m['shape'])] if m.get('shape') else [0, 0, 12, 0, 12, 16, 0, 16]
+    nums = [float(v) for v in re.findall(r'-?\d*\.?\d+', m['shape'])] if m.get('shape') else [0, 0, m['cols'], 0, m['cols'], m['rows'], 0, m['rows']]
     return Polygon(list(zip(nums[0::2], nums[1::2])))
 
 
@@ -148,14 +148,24 @@ def render(m, solution, palette, path):
     def px(cs):
         return [(x * S, y * S) for x, y in cs]
 
-    img = Image.new('RGB', (12 * S, 16 * S), '#cfcfcf')
-    lab = Image.new('L', (12 * S, 16 * S), 255)
-    d, dl = ImageDraw.Draw(img), ImageDraw.Draw(lab)
+    size = (round(m['cols'] * S), round(m['rows'] * S))
+    img = Image.new('RGB', size, '#cfcfcf')
+    lab = Image.new('L', size, 255)
     for r in order:
+        mask = Image.new('L', size)
+        dm = ImageDraw.Draw(mask)
         geoms = polys[r].geoms if hasattr(polys[r], 'geoms') else [polys[r]]
         for g in geoms:
-            d.polygon(px(g.exterior.coords), fill=palette[solution[r]])
-            dl.polygon(px(g.exterior.coords), fill=solution[r] * 60)
+            # Clipping a polygon against the frame can also return zero-area line fragments.
+            # Render the polygon component; shared border fragments have no fill area.
+            if g.geom_type != 'Polygon':
+                continue
+            dm.polygon(px(g.exterior.coords), fill=255)
+            for interior in g.interiors:
+                dm.polygon(px(interior.coords), fill=0)
+        img.paste(palette[solution[r]], mask=mask)
+        lab.paste(solution[r] * 60, mask=mask)
+    d = ImageDraw.Draw(img)
     for x1, y1, x2, y2, *_ in m['edges']:
         d.line(px([(x1, y1), (x2, y2)]), fill='#161616', width=7, joint='curve')
     for x1, y1, x2, y2, *_ in m['edges']:
@@ -219,4 +229,4 @@ def sheet(ids):
 if __name__ == '__main__':
     ids = sys.argv[1:] or [*LEGACY, *DESIGNS]
     main(ids)
-    sheet([*LEGACY, *DESIGNS])
+    sheet([*LEGACY, *DESIGNS, *sorted(p.stem for p in OUT.glob('chapter_*.json'))])

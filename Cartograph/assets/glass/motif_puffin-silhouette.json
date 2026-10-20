@@ -1,0 +1,53 @@
+{
+  "id": "motif_puffin",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:21:52.720358+00:00",
+  "source": "assets/glass/motif_puffin-junctions.webp",
+  "sourceSha256": "526ab9e139fd36fc7c49a105df8e48a3701033f885580721e7c27373ce3e9162",
+  "sourceGeometrySha256": "1ccbe2a3bab15c2d1cdad4d4b6befaca5988fcd3cda2604ae64d558c3b95f4d9",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 109,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.551984887038729
+    },
+    {
+      "patchSize": 95,
+      "donorPatches": 42,
+      "colour": 1,
+      "preservedFraction": 0.5191323569106768
+    },
+    {
+      "patchSize": 143,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6081697848730847
+    },
+    {
+      "patchSize": 107,
+      "donorPatches": 84,
+      "colour": 3,
+      "preservedFraction": 0.4130831066178732
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "5f453fa60bbf840ee0e7424edebc14927a9d80c7aecef2abb6b43dfe50b42728",
+  "sha256": "218f2100b84b594ee16b477a851b5922744403d36125649e20a8558307850b19",
+  "palette": [
+    "#e2720e",
+    "#f6ec8e",
+    "#6c9f1d",
+    "#073868"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 24,
+    "total": 24,
+    "mismatches": []
+  }
+}

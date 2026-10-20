@@ -1,0 +1,27 @@
+{
+  "id": "rings_25",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:57:17.790743+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Ritim Halkaları. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/rings_25.png"
+  ],
+  "size": [
+    768,
+    768
+  ],
+  "guide": "e7ef9ea1d9fa63da409d5be9c82fd1645fdba26809fc1d79f8dcd235e771f19f",
+  "sha256": "ff7038fb739bbca1e7ddb495d17fc3b818055868bba8648f3430b0967192753d",
+  "palette": [
+    "#2593dc",
+    "#eb1f20",
+    "#fbe543",
+    "#29801d"
+  ],
+  "paneColorCheck": {
+    "matched": 35,
+    "total": 35,
+    "valid": true,
+    "mismatches": []
+  }
+}

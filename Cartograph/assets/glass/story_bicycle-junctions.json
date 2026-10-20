@@ -1,0 +1,53 @@
+{
+  "id": "story_bicycle",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:25:04.186720+00:00",
+  "source": "assets/glass/story_bicycle-restored.webp",
+  "sourceSha256": "b0d925319945aafa38f7be1b9449c08882d33792851e8a79f2b921ce5dd562ca",
+  "sourceGeometrySha256": "ad8b17b3825aa6938517bf25bff378cd092a378457678e9f380b18b4eea9fc36",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 141,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5491756915544533
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5936365004362713
+    },
+    {
+      "patchSize": 98,
+      "donorPatches": 44,
+      "colour": 2,
+      "preservedFraction": 0.04630815554338042
+    },
+    {
+      "patchSize": 112,
+      "donorPatches": 60,
+      "colour": 3,
+      "preservedFraction": 0.4801438522854348
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "26d67ee57b4577e7f401d3939aac8127059ca88113fc1fb29cd48d2e56a3d097",
+  "sha256": "7c5d93f7f50d084147aa03fa5ba87b81e488271c258e29812380c9c956de974b",
+  "palette": [
+    "#e27509",
+    "#fcf483",
+    "#58abe3",
+    "#05308f"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 26,
+    "total": 26,
+    "mismatches": []
+  }
+}

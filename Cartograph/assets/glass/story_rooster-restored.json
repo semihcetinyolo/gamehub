@@ -1,0 +1,53 @@
+{
+  "id": "story_rooster",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:20:04.722985+00:00",
+  "source": "assets/glass/story_rooster-clear.webp",
+  "sourceSha256": "31a5e481d98f36cb1e03f194d1ae500ca9a280a834ebb245a3b6024da94e79b8",
+  "sourceGeometrySha256": "5e263417f30cad65edcfea2be8cb897cbcb1f32e74f948c913166be4a2f1354b",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 86,
+      "donorPatches": 83,
+      "colour": 0,
+      "preservedFraction": 0.2877560226081773
+    },
+    {
+      "patchSize": 70,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.2058886956992223
+    },
+    {
+      "patchSize": 81,
+      "donorPatches": 64,
+      "colour": 2,
+      "preservedFraction": 0.2885881922694296
+    },
+    {
+      "patchSize": 81,
+      "donorPatches": 58,
+      "colour": 3,
+      "preservedFraction": 0.23200949704926951
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "31ba6d9cab1c29ee565d218ab436b2a190c6c20aed20f97eab9fdfefb46c3e30",
+  "sha256": "a8a21c52cfa523b3bb2f7cca8469cc6646ac70ac68d232f648f266c835998a3c",
+  "palette": [
+    "#f36708",
+    "#f7d73d",
+    "#21ab8d",
+    "#032d8c"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 30,
+    "total": 30,
+    "mismatches": []
+  }
+}

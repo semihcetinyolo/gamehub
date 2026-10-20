@@ -1,0 +1,27 @@
+{
+  "id": "rings_04",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T08:01:04.194851+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Üçlü Rezonans. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/rings_04.png"
+  ],
+  "size": [
+    883,
+    883
+  ],
+  "guide": "66e3cd59989a076fbdefc31a53d2d16a2d74dbd885dfd0691ac3031def214583",
+  "sha256": "0f56fba0eb1aa0e25b8724ec36f77ae73c33d12f95b14451a8f13e7f6266093a",
+  "palette": [
+    "#8c3faa",
+    "#fedd22",
+    "#19aa8a",
+    "#1562c0"
+  ],
+  "paneColorCheck": {
+    "matched": 38,
+    "total": 38,
+    "valid": true,
+    "mismatches": []
+  }
+}

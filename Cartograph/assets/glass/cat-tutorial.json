@@ -1,0 +1,27 @@
+{
+  "id": "cat",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-19T08:30:23.480171+00:00",
+  "prompt": "Use case: style-transfer. Turn the attached exact geometric guide into a photographic artisan-made stained glass panel. Subject: a single orange cat silhouette seen from behind, seated on a rooftop in front of a big golden full moon, with teal and charcoal sky panels. The guide contains exactly twelve glass panes: preserve every boundary, every pane colour, the arched outline and the framing pixel-for-pixel. Do not subdivide, merge or move panes. Do not add facial details, seams, anatomy or decorations. Transform only the flat surfaces into rich translucent handmade glass: gentle ripples, tiny bubbles, soft luminous backlighting and fine dark metallic solder seams. Keep all four existing colours exactly as in the guide (ginger orange, golden yellow, charcoal, teal). No glare that washes away colours. Preserve the plain dark grey background outside the arch. Orthographic frontal view, 3:4 portrait, entire panel at identical scale and position. No wall, frame, lettering or watermark.",
+  "references": [
+    "tools/stained/guides/cat.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "befd284c37b27be7ecba152ba0be1ff6fda23b22d897028a02dff1f5754e7d00",
+  "sha256": "015e165fbdeb7313ab2bc1246383b120f981432a337e5f9c875c1465bd55b14c",
+  "palette": [
+    "#f76b02",
+    "#fdd925",
+    "#2e2d2f",
+    "#016d70"
+  ],
+  "paneColorCheck": {
+    "matched": 12,
+    "total": 12,
+    "valid": true,
+    "mismatches": []
+  }
+}

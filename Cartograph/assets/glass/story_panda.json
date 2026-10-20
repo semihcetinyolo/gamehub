@@ -1,0 +1,27 @@
+{
+  "id": "story_panda",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-19T12:27:05.909264+00:00",
+  "prompt": "Create a stained-glass version of this friendly panda colour puzzle. Preserve every existing shape, seam and colour exactly. Add subtle glass texture inside the flat regions. Keep the 3:4 portrait layout and neutral grey outside. No extra details, lettering, round seam tabs or new shapes.",
+  "references": [
+    "tools/stained/guides/story_panda.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "c3a5f9eab5aea41f7d821262b50b7f6c3350738b441697e8d903857fd8ec36ce",
+  "sha256": "d8ef2a47c24eec2c2a76d67d1d2db5e9ce8679a91ab17d0cd4662565a4343870",
+  "palette": [
+    "#bd4f84",
+    "#fadc77",
+    "#2094a9",
+    "#143564"
+  ],
+  "paneColorCheck": {
+    "matched": 39,
+    "total": 39,
+    "valid": true,
+    "mismatches": []
+  }
+}

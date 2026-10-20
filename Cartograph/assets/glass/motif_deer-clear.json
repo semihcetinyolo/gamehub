@@ -1,0 +1,27 @@
+{
+  "id": "motif_deer",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:00:15.223478+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Geyik. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_deer.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "bf6580ca51fc75fd08040ab1fba148e3772c68e7c72ad75a68a61f93afb9c923",
+  "sha256": "d760724e2c73ca6171b2d577aa88a0984d4f9de83b5efecc91f46093e5700f4d",
+  "palette": [
+    "#ea9215",
+    "#fef56f",
+    "#5295da",
+    "#051564"
+  ],
+  "paneColorCheck": {
+    "matched": 37,
+    "total": 37,
+    "valid": true,
+    "mismatches": []
+  }
+}

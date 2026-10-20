@@ -1,0 +1,53 @@
+{
+  "id": "motif_deer",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:19:54.159970+00:00",
+  "source": "assets/glass/motif_deer-clear.webp",
+  "sourceSha256": "d760724e2c73ca6171b2d577aa88a0984d4f9de83b5efecc91f46093e5700f4d",
+  "sourceGeometrySha256": "0654f10ec6d96856405f9142ecedbd1cf151643692e8fe0b0c24b3923a60bef3",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 94,
+      "donorPatches": 54,
+      "colour": 0,
+      "preservedFraction": 0.35502491103484485
+    },
+    {
+      "patchSize": 95,
+      "donorPatches": 47,
+      "colour": 1,
+      "preservedFraction": 0.10344234621273606
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5390788163789959
+    },
+    {
+      "patchSize": 95,
+      "donorPatches": 54,
+      "colour": 3,
+      "preservedFraction": 0.3500990056395201
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "cdf993876b2d3310499af1584802478c766677a8f3478fe77c5f484e16dae27d",
+  "sha256": "4941fc73b0d30da3f44b3795073735b8744302077c1499a73da24824b0b9efd6",
+  "palette": [
+    "#eb9417",
+    "#fcf26f",
+    "#4a8dd3",
+    "#04105a"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 31,
+    "total": 31,
+    "mismatches": []
+  }
+}

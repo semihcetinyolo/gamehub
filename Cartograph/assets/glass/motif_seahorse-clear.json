@@ -1,0 +1,27 @@
+{
+  "id": "motif_seahorse",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:08:59.243069+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Denizatı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_seahorse.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "f992d153acde2a7846e89bb2cd9ba8c6f365722e61ae470a55510967dd06ee66",
+  "sha256": "9290012757c8cab7b974842123c2514b41d90bdbad63979c90affd1bd8875015",
+  "palette": [
+    "#ed2f23",
+    "#feee6c",
+    "#3ab395",
+    "#022b8e"
+  ],
+  "paneColorCheck": {
+    "matched": 34,
+    "total": 34,
+    "valid": true,
+    "mismatches": []
+  }
+}

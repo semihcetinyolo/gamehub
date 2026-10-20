@@ -1,0 +1,53 @@
+{
+  "id": "seashell",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:24:35.751374+00:00",
+  "source": "assets/glass/seashell-restored.webp",
+  "sourceSha256": "a0e810c1d1be4fc3bcff4ceb98c319a68ba4da462c1b5a0e525f9cc6b123091f",
+  "sourceGeometrySha256": "d60d4bdf02269fbdd132a5d2fffde8874bf892c8828e537db0b2c5fd3cc36b38",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 89,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5360527658335303
+    },
+    {
+      "patchSize": 111,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6152988603519657
+    },
+    {
+      "patchSize": 102,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.4627777513084609
+    },
+    {
+      "patchSize": 83,
+      "donorPatches": 48,
+      "colour": 3,
+      "preservedFraction": 0.3905218677438903
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "ae55724ecead7c248ea94243968aa2358e19771e0ccf06ab0a6bf3fd87cead16",
+  "sha256": "ed93594619216790abfc772a1a390f6c9c611f0bf4d14e5a0f645af9c9583bbf",
+  "palette": [
+    "#ed6f79",
+    "#f7d481",
+    "#1aa49e",
+    "#21538c"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 19,
+    "total": 19,
+    "mismatches": []
+  }
+}

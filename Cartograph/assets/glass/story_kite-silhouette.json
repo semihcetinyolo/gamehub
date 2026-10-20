@@ -1,0 +1,53 @@
+{
+  "id": "story_kite",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:25:39.178540+00:00",
+  "source": "assets/glass/story_kite-junctions.webp",
+  "sourceSha256": "b0e5c9093e25a14658451cf16f754c252db867fcf1d790e24afee92440ab2fde",
+  "sourceGeometrySha256": "02e2100ba0b8c6915d6ca06f73553270379ba13adf30f5989e8f236ffecd80f8",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 103,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5316057028593483
+    },
+    {
+      "patchSize": 109,
+      "donorPatches": 52,
+      "colour": 1,
+      "preservedFraction": 0.5169255980114126
+    },
+    {
+      "patchSize": 126,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6084122725743981
+    },
+    {
+      "patchSize": 60,
+      "donorPatches": 52,
+      "colour": 3,
+      "preservedFraction": 0.2775619299759849
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "f5478a17fe6e8aeb7899c07d19929266f3b09cf79c73566159e92dd3cc13c7e6",
+  "sha256": "5b4ef454d2bf519e3282eee74c38605dec5a25f6990ade7f26a9d7c0122dc762",
+  "palette": [
+    "#e96e17",
+    "#f7e595",
+    "#83ae36",
+    "#0a4f84"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 26,
+    "total": 26,
+    "mismatches": []
+  }
+}

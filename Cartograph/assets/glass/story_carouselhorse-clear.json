@@ -1,0 +1,27 @@
+{
+  "id": "story_carouselhorse",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:14:44.115873+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Lunapark Akşamı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_carouselhorse.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "30c19938dd55e28fae6cd1e9566710228913a08e519b95c031246f511816be3b",
+  "sha256": "5a53a13e5b2ee73a10e018053f6662e64b030667446eb031665c9d1d594fe68e",
+  "palette": [
+    "#d11712",
+    "#fde55e",
+    "#248f81",
+    "#032276"
+  ],
+  "paneColorCheck": {
+    "matched": 38,
+    "total": 38,
+    "valid": true,
+    "mismatches": []
+  }
+}

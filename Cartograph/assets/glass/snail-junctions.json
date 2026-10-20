@@ -1,0 +1,53 @@
+{
+  "id": "snail",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:24:35.264028+00:00",
+  "source": "assets/glass/snail-restored.webp",
+  "sourceSha256": "ab8b8eee682a5986562979289925ecac27c5a7ce866704fecb572a0c7fccd78c",
+  "sourceGeometrySha256": "eee669af05d8b37bb556e34fba38d940d8edf9361b646f870719751059a2bee2",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 25,
+      "donorPatches": 13,
+      "colour": 0,
+      "preservedFraction": 0.32712215898703
+    },
+    {
+      "patchSize": 68,
+      "donorPatches": 25,
+      "colour": 1,
+      "preservedFraction": 0.3630811887180664
+    },
+    {
+      "patchSize": 104,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5623274576840737
+    },
+    {
+      "patchSize": 56,
+      "donorPatches": 13,
+      "colour": 3,
+      "preservedFraction": 0.3679655006324643
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "ab7b928b4e5799c0fe8a71f9f6da3f1ff2c82698d4e8384101443aa5e8003ac9",
+  "sha256": "6e0080df9894a3ffd5a29d6ca09735ed93f1aa01e0802e92b0d52e36a6bf9b01",
+  "palette": [
+    "#e04406",
+    "#fbd83d",
+    "#41700d",
+    "#064a96"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 21,
+    "total": 21,
+    "mismatches": []
+  }
+}

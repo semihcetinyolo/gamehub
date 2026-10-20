@@ -1,0 +1,53 @@
+{
+  "id": "maple",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:18:46.804811+00:00",
+  "source": "assets/glass/maple.webp",
+  "sourceSha256": "a96ab80c432f9d5ceed64c72efbe7acb4014b102721f432a9f67078a6451c5d1",
+  "sourceGeometrySha256": "c9bd2f9de02617861f9ed261e9fe4d874d1d651745f588da7f341e2ef2c65499",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 113,
+      "donorPatches": 86,
+      "colour": 0,
+      "preservedFraction": 0.483939717360753
+    },
+    {
+      "patchSize": 106,
+      "donorPatches": 65,
+      "colour": 1,
+      "preservedFraction": 0.3405251930711605
+    },
+    {
+      "patchSize": 77,
+      "donorPatches": 72,
+      "colour": 2,
+      "preservedFraction": 0.351054711952556
+    },
+    {
+      "patchSize": 67,
+      "donorPatches": 45,
+      "colour": 3,
+      "preservedFraction": 0.23216008397904897
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "e97ac82b8d5d89cab119f8cec197aa5c892c2df593b252676814bc3cc0b94ff2",
+  "sha256": "5555b0548e8143f44ef38bee1ba49075e4a977b91617accd9701776d32c37d71",
+  "palette": [
+    "#c51e10",
+    "#f8bc17",
+    "#864a0b",
+    "#0a8580"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 27,
+    "total": 27,
+    "mismatches": []
+  }
+}

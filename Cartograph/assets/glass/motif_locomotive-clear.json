@@ -1,0 +1,27 @@
+{
+  "id": "motif_locomotive",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:04:41.330386+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Buharlı Lokomotif. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_locomotive.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "70afc52fd1e2fba41bca07fd2596227d522dd41b7b0ada2784b266a7c4088ae9",
+  "sha256": "78f9661d0cec62c08072f00177c1e75466e3417d6cf20d5a14790761e2b3b28f",
+  "palette": [
+    "#fa8905",
+    "#fded41",
+    "#30a78f",
+    "#0a2778"
+  ],
+  "paneColorCheck": {
+    "matched": 31,
+    "total": 31,
+    "valid": true,
+    "mismatches": []
+  }
+}

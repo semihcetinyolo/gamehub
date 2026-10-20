@@ -1,0 +1,53 @@
+{
+  "id": "story_submarine",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:13:56.324682+00:00",
+  "source": "assets/glass/story_submarine-junctions.webp",
+  "sourceSha256": "47a7dd5b71284ca62b79eff81f3ea7f6d305d51653073ac8b2a6a3b57a7327c3",
+  "sourceGeometrySha256": "bb2a9a26cd0331dbc0cb576d5aeb80fceff71a0685ebef1f513bc93c602bfd4f",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 89,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5515448154874427
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6093586244164267
+    },
+    {
+      "patchSize": 24,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.18020850124844984
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6284536739890707
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "c1667ffbaf27fa44fe0d0bbad6e04887bdee21f38e9813cf2a5c89cd873cb7bf",
+  "sha256": "7787196923642bfbc6ca2af398e420c476c5a6658cd9d51170073a5eb7d853f2",
+  "palette": [
+    "#de3d37",
+    "#faeb78",
+    "#45a990",
+    "#04347d"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 24,
+    "total": 24,
+    "mismatches": []
+  }
+}

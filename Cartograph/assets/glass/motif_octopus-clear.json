@@ -1,0 +1,27 @@
+{
+  "id": "motif_octopus",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:03:32.573568+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Ahtapot. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_octopus.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "be145b7d8778d2d0dc0e5929f3f5af88c9e8d7d32fc7d94182d9919e6e649b9b",
+  "sha256": "f0c9d4e0523ce05ef1bde2e47569e5c155aeae4016fd8858b082267733dc7a9b",
+  "palette": [
+    "#f77606",
+    "#feeb3b",
+    "#19ab8f",
+    "#042d89"
+  ],
+  "paneColorCheck": {
+    "matched": 48,
+    "total": 48,
+    "valid": true,
+    "mismatches": []
+  }
+}

@@ -22,23 +22,32 @@ ROOT = HERE.parents[1]
 S = 64
 
 
-def check(id):
+def check(id, art_path=None):
     info = json.loads((HERE / 'maps' / f'{id}.json').read_text())
-    meta = json.loads((ROOT / 'assets' / 'glass' / f'{id}.json').read_text())
+    art_path = Path(art_path) if art_path else ROOT / 'assets' / 'glass' / f'{id}.webp'
+    meta = json.loads(art_path.with_suffix('.json').read_text())
     m, sol, pal = info['map'], info['solution'], meta['palette']
     polys = region_polys(m)
-    idx = Image.new('I', (12 * S, 16 * S), -1)
-    d = ImageDraw.Draw(idx)
+    idx = Image.new('I', (round(m['cols'] * S), round(m['rows'] * S)), -1)
     for r in sorted(range(len(polys)), key=lambda r: -polys[r].area):
+        mask = Image.new('L', idx.size)
+        d = ImageDraw.Draw(mask)
         for g in (polys[r].geoms if hasattr(polys[r], 'geoms') else [polys[r]]):
-            d.polygon([(x * S, y * S) for x, y in g.exterior.coords], fill=r)
+            if g.geom_type != 'Polygon':
+                continue
+            d.polygon([(x * S, y * S) for x, y in g.exterior.coords], fill=255)
+            for interior in g.interiors:
+                d.polygon([(x * S, y * S) for x, y in interior.coords], fill=0)
+        idx.paste(r, mask=mask)
     idx = np.asarray(idx)
-    art = np.asarray(Image.open(ROOT / 'assets' / 'glass' / f'{id}.webp').convert('RGB')).astype(float)
+    art = np.asarray(Image.open(art_path).convert('RGB')).astype(float)
     medians = []
     for r in range(m['count']):
         mask = binary_erosion(idx == r, iterations=6)
         if mask.sum() < 30:
             mask = idx == r
+        if not mask.any():
+            raise ValueError(f'{id}: pane {r} has no pixels in its colour mask')
         medians.append(np.median(art[mask], axis=0))
     hexes = ['#' + ''.join(f'{int(v):02x}' for v in c) for c in medians]
     pane_lab = np.array([lab(h) for h in hexes])
@@ -54,9 +63,9 @@ def check(id):
         info['solution'] = got
         (HERE / 'maps' / f'{id}.json').write_text(json.dumps(info, ensure_ascii=False, separators=(',', ':')))
         meta['palette'] = ['#' + ''.join(f'{int(v):02x}' for v in np.median(np.array(medians)[[g == c for g in got]], axis=0)) for c in range(4)]
-        (ROOT / 'assets' / 'glass' / f'{id}.json').write_text(json.dumps(meta, ensure_ascii=False, indent=2) + '\n')
+        art_path.with_suffix('.json').write_text(json.dumps(meta, ensure_ascii=False, indent=2) + '\n')
     guide = Image.open(HERE / 'guides' / f'{id}.png').resize((384, 512))
-    im = Image.open(ROOT / 'assets' / 'glass' / f'{id}.webp').resize((384, 512))
+    im = Image.open(art_path).resize((384, 512))
     sheet = Image.new('RGB', (768, 512))
     sheet.paste(guide, (0, 0))
     sheet.paste(im, (384, 0))

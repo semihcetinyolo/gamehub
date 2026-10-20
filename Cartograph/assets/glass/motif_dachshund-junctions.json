@@ -1,0 +1,53 @@
+{
+  "id": "motif_dachshund",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:26:23.477858+00:00",
+  "source": "assets/glass/motif_dachshund-restored.webp",
+  "sourceSha256": "86d5e371d6a4df80d3a23cc89027032df7502d634b86269cfb215e023544c40d",
+  "sourceGeometrySha256": "350c7b458ba8aa1f3a1fb88e27dbc8fbbaa2f5c6305e344f00e3279125002ba7",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 121,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5108974685629672
+    },
+    {
+      "patchSize": 117,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5669969349652177
+    },
+    {
+      "patchSize": 69,
+      "donorPatches": 60,
+      "colour": 2,
+      "preservedFraction": 0.4448112167329523
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5892704992301755
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "8d24dfa0af04d1f5d7333b83d20f98d91f8760746849a0c22e92dfa9946347cf",
+  "sha256": "bf6158819aeec142bbfb347f985b212b0934e24f2de7d946dc1fa0e5ef530eac",
+  "palette": [
+    "#e76c09",
+    "#f8ec9e",
+    "#668d19",
+    "#09436f"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 27,
+    "total": 27,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "motif_telescope",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:19:17.361588+00:00",
+  "source": "assets/glass/motif_telescope-clear.webp",
+  "sourceSha256": "f81f63c63b4baf4c10f308e8e5b04375bcf71e9cabe1768cd299ff5190fd97d2",
+  "sourceGeometrySha256": "ff62a07e7fa901e482f20b255aba6e3789ec9eda367b2288ebabc3229c61b5a7",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 112,
+      "donorPatches": 43,
+      "colour": 0,
+      "preservedFraction": 0.273200432986294
+    },
+    {
+      "patchSize": 72,
+      "donorPatches": 71,
+      "colour": 1,
+      "preservedFraction": 0.4238594505544366
+    },
+    {
+      "patchSize": 71,
+      "donorPatches": 17,
+      "colour": 2,
+      "preservedFraction": 0.023577628204362416
+    },
+    {
+      "patchSize": 70,
+      "donorPatches": 24,
+      "colour": 3,
+      "preservedFraction": 0.09686599208823718
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "40c0ccbdc8ceba9f96def33bc35f44ebc14a057eb7a8aea48c03caaa3572008f",
+  "sha256": "d60fa2195ac18d660fba53b97f16f0f96889fa8bfc64a341212b00bc7b3eb493",
+  "palette": [
+    "#d74d68",
+    "#fcec64",
+    "#45bcd0",
+    "#21336e"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 27,
+    "total": 27,
+    "mismatches": []
+  }
+}

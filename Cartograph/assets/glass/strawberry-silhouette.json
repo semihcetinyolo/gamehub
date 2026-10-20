@@ -1,0 +1,53 @@
+{
+  "id": "strawberry",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:13:42.954686+00:00",
+  "source": "assets/glass/strawberry-junctions.webp",
+  "sourceSha256": "63ad1cb85e7107283eb2146eb9761157aabe2e1eacc9ad79bafb153c7ba33b62",
+  "sourceGeometrySha256": "4315114d7f0ddd4dcbd9a8e9d7abc3e31a6ef0ff99f5783eb6d69d4d96f43868",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 117,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6697553959321803
+    },
+    {
+      "patchSize": 44,
+      "donorPatches": 14,
+      "colour": 1,
+      "preservedFraction": 0.23773959399330843
+    },
+    {
+      "patchSize": 66,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.3114020527666144
+    },
+    {
+      "patchSize": 68,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.4012662006690876
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "4d1fd299a7c90c4e3cb41fe645c0a534044b2f2d86f1a0d25e3361bb70833208",
+  "sha256": "eaf8998a10ba66859c5b79391ebc5ee6dea66b7da8112a6ff0a9d10e1a0f3059",
+  "palette": [
+    "#d51319",
+    "#f5d44c",
+    "#356d19",
+    "#0f7b87"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 30,
+    "total": 30,
+    "mismatches": []
+  }
+}

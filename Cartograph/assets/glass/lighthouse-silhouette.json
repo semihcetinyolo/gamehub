@@ -1,0 +1,53 @@
+{
+  "id": "lighthouse",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:13:20.233991+00:00",
+  "source": "assets/glass/lighthouse-junctions.webp",
+  "sourceSha256": "dd3f81c6304da7e4a999dd0e3c134d75aab86fdd921f5d8b4030270adf4875c5",
+  "sourceGeometrySha256": "56dbd41f71b111622c892a19976ab80c6091d93029105bb10585a28c1332ded2",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 118,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.3837876584616146
+    },
+    {
+      "patchSize": 85,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.416768382191499
+    },
+    {
+      "patchSize": 63,
+      "donorPatches": 15,
+      "colour": 2,
+      "preservedFraction": 0.2877575579240547
+    },
+    {
+      "patchSize": 87,
+      "donorPatches": 34,
+      "colour": 3,
+      "preservedFraction": 0.22721217870828012
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "fab8f9fe96bbcf104bbd1f5af17f11e67f1351a0f261af50834684b7f5e20852",
+  "sha256": "41ec08c8bc39542181359dc2422b9b12a2a6281374938883103278e081a8a52d",
+  "palette": [
+    "#b20206",
+    "#f6eace",
+    "#052d73",
+    "#f6a707"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 27,
+    "total": 27,
+    "mismatches": []
+  }
+}

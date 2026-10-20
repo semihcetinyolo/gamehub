@@ -1,0 +1,27 @@
+{
+  "id": "motif_astronaut",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T06:57:08.976593+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Astronot. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_astronaut.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "d9c1a4194f7ecc4246b2b4920da85c9dbed78403d2da0025d4851cf8df767147",
+  "sha256": "27aca47658d55cd63757c0637fc01ac4da8b8528963be86905c0e3ec46af9c4e",
+  "palette": [
+    "#de9009",
+    "#fdf662",
+    "#448bd8",
+    "#0a1f66"
+  ],
+  "paneColorCheck": {
+    "matched": 28,
+    "total": 28,
+    "valid": true,
+    "mismatches": []
+  }
+}

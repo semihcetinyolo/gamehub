@@ -1,0 +1,1515 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "level": 1,
+      "id": "cat",
+      "file": "assets/glass/cat-tutorial.webp",
+      "raw": "tools/stained/raw/cat-tutorial.png",
+      "prompt": "Use case: style-transfer. Turn the attached exact geometric guide into a photographic artisan-made stained glass panel. Subject: a single orange cat silhouette seen from behind, seated on a rooftop in front of a big golden full moon, with teal and charcoal sky panels. The guide contains exactly twelve glass panes: preserve every boundary, every pane colour, the arched outline and the framing pixel-for-pixel. Do not subdivide, merge or move panes. Do not add facial details, seams, anatomy or decorations. Transform only the flat surfaces into rich translucent handmade glass: gentle ripples, tiny bubbles, soft luminous backlighting and fine dark metallic solder seams. Keep all four existing colours exactly as in the guide (ginger orange, golden yellow, charcoal, teal). No glare that washes away colours. Preserve the plain dark grey background outside the arch. Orthographic frontal view, 3:4 portrait, entire panel at identical scale and position. No wall, frame, lettering or watermark.",
+      "references": [
+        "tools/stained/guides/cat.png"
+      ]
+    },
+    {
+      "level": 51,
+      "id": "chapter_051",
+      "file": "assets/glass/chapter_051.webp",
+      "raw": "tools/stained/raw/chapter_051.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_051.png"
+      ]
+    },
+    {
+      "level": 52,
+      "id": "chapter_052",
+      "file": "assets/glass/chapter_052.webp",
+      "raw": "tools/stained/raw/chapter_052.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_052.png"
+      ]
+    },
+    {
+      "level": 53,
+      "id": "chapter_053",
+      "file": "assets/glass/chapter_053.webp",
+      "raw": "tools/stained/raw/chapter_053.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_053.png"
+      ]
+    },
+    {
+      "level": 54,
+      "id": "chapter_054",
+      "file": "assets/glass/chapter_054.webp",
+      "raw": "tools/stained/raw/chapter_054.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_054.png"
+      ]
+    },
+    {
+      "level": 55,
+      "id": "chapter_055",
+      "file": "assets/glass/chapter_055.webp",
+      "raw": "tools/stained/raw/chapter_055.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_055.png"
+      ]
+    },
+    {
+      "level": 56,
+      "id": "chapter_056",
+      "file": "assets/glass/chapter_056.webp",
+      "raw": "tools/stained/raw/chapter_056.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_056.png"
+      ]
+    },
+    {
+      "level": 57,
+      "id": "chapter_057",
+      "file": "assets/glass/chapter_057.webp",
+      "raw": "tools/stained/raw/chapter_057.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_057.png"
+      ]
+    },
+    {
+      "level": 58,
+      "id": "chapter_058",
+      "file": "assets/glass/chapter_058.webp",
+      "raw": "tools/stained/raw/chapter_058.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_058.png"
+      ]
+    },
+    {
+      "level": 59,
+      "id": "chapter_059",
+      "file": "assets/glass/chapter_059.webp",
+      "raw": "tools/stained/raw/chapter_059.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_059.png"
+      ]
+    },
+    {
+      "level": 60,
+      "id": "chapter_060",
+      "file": "assets/glass/chapter_060.webp",
+      "raw": "tools/stained/raw/chapter_060.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_060.png"
+      ]
+    },
+    {
+      "level": 61,
+      "id": "chapter_061",
+      "file": "assets/glass/chapter_061.webp",
+      "raw": "tools/stained/raw/chapter_061.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_061.png"
+      ]
+    },
+    {
+      "level": 62,
+      "id": "chapter_062",
+      "file": "assets/glass/chapter_062.webp",
+      "raw": "tools/stained/raw/chapter_062.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_062.png"
+      ]
+    },
+    {
+      "level": 63,
+      "id": "chapter_063",
+      "file": "assets/glass/chapter_063.webp",
+      "raw": "tools/stained/raw/chapter_063.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_063.png"
+      ]
+    },
+    {
+      "level": 64,
+      "id": "chapter_064",
+      "file": "assets/glass/chapter_064.webp",
+      "raw": "tools/stained/raw/chapter_064.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_064.png"
+      ]
+    },
+    {
+      "level": 65,
+      "id": "chapter_065",
+      "file": "assets/glass/chapter_065.webp",
+      "raw": "tools/stained/raw/chapter_065.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_065.png"
+      ]
+    },
+    {
+      "level": 66,
+      "id": "chapter_066",
+      "file": "assets/glass/chapter_066.webp",
+      "raw": "tools/stained/raw/chapter_066.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_066.png"
+      ]
+    },
+    {
+      "level": 67,
+      "id": "chapter_067",
+      "file": "assets/glass/chapter_067.webp",
+      "raw": "tools/stained/raw/chapter_067.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_067.png"
+      ]
+    },
+    {
+      "level": 68,
+      "id": "chapter_068",
+      "file": "assets/glass/chapter_068.webp",
+      "raw": "tools/stained/raw/chapter_068.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_068.png"
+      ]
+    },
+    {
+      "level": 69,
+      "id": "chapter_069",
+      "file": "assets/glass/chapter_069.webp",
+      "raw": "tools/stained/raw/chapter_069.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_069.png"
+      ]
+    },
+    {
+      "level": 70,
+      "id": "chapter_070",
+      "file": "assets/glass/chapter_070.webp",
+      "raw": "tools/stained/raw/chapter_070.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_070.png"
+      ]
+    },
+    {
+      "level": 71,
+      "id": "chapter_071",
+      "file": "assets/glass/chapter_071.webp",
+      "raw": "tools/stained/raw/chapter_071.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_071.png"
+      ]
+    },
+    {
+      "level": 72,
+      "id": "chapter_072",
+      "file": "assets/glass/chapter_072.webp",
+      "raw": "tools/stained/raw/chapter_072.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_072.png"
+      ]
+    },
+    {
+      "level": 73,
+      "id": "chapter_073",
+      "file": "assets/glass/chapter_073.webp",
+      "raw": "tools/stained/raw/chapter_073.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_073.png"
+      ]
+    },
+    {
+      "level": 74,
+      "id": "chapter_074",
+      "file": "assets/glass/chapter_074.webp",
+      "raw": "tools/stained/raw/chapter_074.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_074.png"
+      ]
+    },
+    {
+      "level": 75,
+      "id": "chapter_075",
+      "file": "assets/glass/chapter_075.webp",
+      "raw": "tools/stained/raw/chapter_075.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_075.png"
+      ]
+    },
+    {
+      "level": 76,
+      "id": "chapter_076",
+      "file": "assets/glass/chapter_076.webp",
+      "raw": "tools/stained/raw/chapter_076.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_076.png"
+      ]
+    },
+    {
+      "level": 77,
+      "id": "chapter_077",
+      "file": "assets/glass/chapter_077.webp",
+      "raw": "tools/stained/raw/chapter_077.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_077.png"
+      ]
+    },
+    {
+      "level": 78,
+      "id": "chapter_078",
+      "file": "assets/glass/chapter_078.webp",
+      "raw": "tools/stained/raw/chapter_078.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_078.png"
+      ]
+    },
+    {
+      "level": 79,
+      "id": "chapter_079",
+      "file": "assets/glass/chapter_079.webp",
+      "raw": "tools/stained/raw/chapter_079.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_079.png"
+      ]
+    },
+    {
+      "level": 80,
+      "id": "chapter_080",
+      "file": "assets/glass/chapter_080.webp",
+      "raw": "tools/stained/raw/chapter_080.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_080.png"
+      ]
+    },
+    {
+      "level": 81,
+      "id": "chapter_081",
+      "file": "assets/glass/chapter_081.webp",
+      "raw": "tools/stained/raw/chapter_081.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_081.png"
+      ]
+    },
+    {
+      "level": 82,
+      "id": "chapter_082",
+      "file": "assets/glass/chapter_082.webp",
+      "raw": "tools/stained/raw/chapter_082.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_082.png"
+      ]
+    },
+    {
+      "level": 83,
+      "id": "chapter_083",
+      "file": "assets/glass/chapter_083.webp",
+      "raw": "tools/stained/raw/chapter_083.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_083.png"
+      ]
+    },
+    {
+      "level": 84,
+      "id": "chapter_084",
+      "file": "assets/glass/chapter_084.webp",
+      "raw": "tools/stained/raw/chapter_084.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_084.png"
+      ]
+    },
+    {
+      "level": 85,
+      "id": "chapter_085",
+      "file": "assets/glass/chapter_085.webp",
+      "raw": "tools/stained/raw/chapter_085.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_085.png"
+      ]
+    },
+    {
+      "level": 86,
+      "id": "chapter_086",
+      "file": "assets/glass/chapter_086.webp",
+      "raw": "tools/stained/raw/chapter_086.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_086.png"
+      ]
+    },
+    {
+      "level": 87,
+      "id": "chapter_087",
+      "file": "assets/glass/chapter_087.webp",
+      "raw": "tools/stained/raw/chapter_087.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_087.png"
+      ]
+    },
+    {
+      "level": 88,
+      "id": "chapter_088",
+      "file": "assets/glass/chapter_088.webp",
+      "raw": "tools/stained/raw/chapter_088.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_088.png"
+      ]
+    },
+    {
+      "level": 89,
+      "id": "chapter_089",
+      "file": "assets/glass/chapter_089.webp",
+      "raw": "tools/stained/raw/chapter_089.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_089.png"
+      ]
+    },
+    {
+      "level": 90,
+      "id": "chapter_090",
+      "file": "assets/glass/chapter_090.webp",
+      "raw": "tools/stained/raw/chapter_090.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_090.png"
+      ]
+    },
+    {
+      "level": 91,
+      "id": "chapter_091",
+      "file": "assets/glass/chapter_091.webp",
+      "raw": "tools/stained/raw/chapter_091.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_091.png"
+      ]
+    },
+    {
+      "level": 92,
+      "id": "chapter_092",
+      "file": "assets/glass/chapter_092.webp",
+      "raw": "tools/stained/raw/chapter_092.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_092.png"
+      ]
+    },
+    {
+      "level": 93,
+      "id": "chapter_093",
+      "file": "assets/glass/chapter_093.webp",
+      "raw": "tools/stained/raw/chapter_093.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_093.png"
+      ]
+    },
+    {
+      "level": 94,
+      "id": "chapter_094",
+      "file": "assets/glass/chapter_094.webp",
+      "raw": "tools/stained/raw/chapter_094.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_094.png"
+      ]
+    },
+    {
+      "level": 95,
+      "id": "chapter_095",
+      "file": "assets/glass/chapter_095.webp",
+      "raw": "tools/stained/raw/chapter_095.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_095.png"
+      ]
+    },
+    {
+      "level": 96,
+      "id": "chapter_096",
+      "file": "assets/glass/chapter_096.webp",
+      "raw": "tools/stained/raw/chapter_096.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_096.png"
+      ]
+    },
+    {
+      "level": 97,
+      "id": "chapter_097",
+      "file": "assets/glass/chapter_097.webp",
+      "raw": "tools/stained/raw/chapter_097.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_097.png"
+      ]
+    },
+    {
+      "level": 98,
+      "id": "chapter_098",
+      "file": "assets/glass/chapter_098.webp",
+      "raw": "tools/stained/raw/chapter_098.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_098.png"
+      ]
+    },
+    {
+      "level": 99,
+      "id": "chapter_099",
+      "file": "assets/glass/chapter_099.webp",
+      "raw": "tools/stained/raw/chapter_099.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_099.png"
+      ]
+    },
+    {
+      "level": 100,
+      "id": "chapter_100",
+      "file": "assets/glass/chapter_100.webp",
+      "raw": "tools/stained/raw/chapter_100.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_100.png"
+      ]
+    },
+    {
+      "level": 101,
+      "id": "chapter_101",
+      "file": "assets/glass/chapter_101.webp",
+      "raw": "tools/stained/raw/chapter_101.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_101.png"
+      ]
+    },
+    {
+      "level": 102,
+      "id": "chapter_102",
+      "file": "assets/glass/chapter_102.webp",
+      "raw": "tools/stained/raw/chapter_102.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_102.png"
+      ]
+    },
+    {
+      "level": 103,
+      "id": "chapter_103",
+      "file": "assets/glass/chapter_103.webp",
+      "raw": "tools/stained/raw/chapter_103.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_103.png"
+      ]
+    },
+    {
+      "level": 104,
+      "id": "chapter_104",
+      "file": "assets/glass/chapter_104.webp",
+      "raw": "tools/stained/raw/chapter_104.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_104.png"
+      ]
+    },
+    {
+      "level": 105,
+      "id": "chapter_105",
+      "file": "assets/glass/chapter_105.webp",
+      "raw": "tools/stained/raw/chapter_105.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_105.png"
+      ]
+    },
+    {
+      "level": 106,
+      "id": "chapter_106",
+      "file": "assets/glass/chapter_106.webp",
+      "raw": "tools/stained/raw/chapter_106.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_106.png"
+      ]
+    },
+    {
+      "level": 107,
+      "id": "chapter_107",
+      "file": "assets/glass/chapter_107.webp",
+      "raw": "tools/stained/raw/chapter_107.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_107.png"
+      ]
+    },
+    {
+      "level": 108,
+      "id": "chapter_108",
+      "file": "assets/glass/chapter_108.webp",
+      "raw": "tools/stained/raw/chapter_108.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_108.png"
+      ]
+    },
+    {
+      "level": 109,
+      "id": "chapter_109",
+      "file": "assets/glass/chapter_109.webp",
+      "raw": "tools/stained/raw/chapter_109.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_109.png"
+      ]
+    },
+    {
+      "level": 110,
+      "id": "chapter_110",
+      "file": "assets/glass/chapter_110.webp",
+      "raw": "tools/stained/raw/chapter_110.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_110.png"
+      ]
+    },
+    {
+      "level": 111,
+      "id": "chapter_111",
+      "file": "assets/glass/chapter_111.webp",
+      "raw": "tools/stained/raw/chapter_111.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_111.png"
+      ]
+    },
+    {
+      "level": 112,
+      "id": "chapter_112",
+      "file": "assets/glass/chapter_112.webp",
+      "raw": "tools/stained/raw/chapter_112.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_112.png"
+      ]
+    },
+    {
+      "level": 113,
+      "id": "chapter_113",
+      "file": "assets/glass/chapter_113.webp",
+      "raw": "tools/stained/raw/chapter_113.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_113.png"
+      ]
+    },
+    {
+      "level": 114,
+      "id": "chapter_114",
+      "file": "assets/glass/chapter_114.webp",
+      "raw": "tools/stained/raw/chapter_114.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_114.png"
+      ]
+    },
+    {
+      "level": 115,
+      "id": "chapter_115",
+      "file": "assets/glass/chapter_115.webp",
+      "raw": "tools/stained/raw/chapter_115.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_115.png"
+      ]
+    },
+    {
+      "level": 116,
+      "id": "chapter_116",
+      "file": "assets/glass/chapter_116.webp",
+      "raw": "tools/stained/raw/chapter_116.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_116.png"
+      ]
+    },
+    {
+      "level": 117,
+      "id": "chapter_117",
+      "file": "assets/glass/chapter_117.webp",
+      "raw": "tools/stained/raw/chapter_117.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_117.png"
+      ]
+    },
+    {
+      "level": 118,
+      "id": "chapter_118",
+      "file": "assets/glass/chapter_118.webp",
+      "raw": "tools/stained/raw/chapter_118.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_118.png"
+      ]
+    },
+    {
+      "level": 119,
+      "id": "chapter_119",
+      "file": "assets/glass/chapter_119.webp",
+      "raw": "tools/stained/raw/chapter_119.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_119.png"
+      ]
+    },
+    {
+      "level": 120,
+      "id": "chapter_120",
+      "file": "assets/glass/chapter_120.webp",
+      "raw": "tools/stained/raw/chapter_120.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_120.png"
+      ]
+    },
+    {
+      "level": 121,
+      "id": "chapter_121",
+      "file": "assets/glass/chapter_121.webp",
+      "raw": "tools/stained/raw/chapter_121.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_121.png"
+      ]
+    },
+    {
+      "level": 122,
+      "id": "chapter_122",
+      "file": "assets/glass/chapter_122.webp",
+      "raw": "tools/stained/raw/chapter_122.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_122.png"
+      ]
+    },
+    {
+      "level": 123,
+      "id": "chapter_123",
+      "file": "assets/glass/chapter_123.webp",
+      "raw": "tools/stained/raw/chapter_123.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_123.png"
+      ]
+    },
+    {
+      "level": 124,
+      "id": "chapter_124",
+      "file": "assets/glass/chapter_124.webp",
+      "raw": "tools/stained/raw/chapter_124.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_124.png"
+      ]
+    },
+    {
+      "level": 125,
+      "id": "chapter_125",
+      "file": "assets/glass/chapter_125.webp",
+      "raw": "tools/stained/raw/chapter_125.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_125.png"
+      ]
+    },
+    {
+      "level": 126,
+      "id": "chapter_126",
+      "file": "assets/glass/chapter_126.webp",
+      "raw": "tools/stained/raw/chapter_126.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_126.png"
+      ]
+    },
+    {
+      "level": 127,
+      "id": "chapter_127",
+      "file": "assets/glass/chapter_127.webp",
+      "raw": "tools/stained/raw/chapter_127.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_127.png"
+      ]
+    },
+    {
+      "level": 128,
+      "id": "chapter_128",
+      "file": "assets/glass/chapter_128.webp",
+      "raw": "tools/stained/raw/chapter_128.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_128.png"
+      ]
+    },
+    {
+      "level": 129,
+      "id": "chapter_129",
+      "file": "assets/glass/chapter_129.webp",
+      "raw": "tools/stained/raw/chapter_129.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_129.png"
+      ]
+    },
+    {
+      "level": 130,
+      "id": "chapter_130",
+      "file": "assets/glass/chapter_130.webp",
+      "raw": "tools/stained/raw/chapter_130.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_130.png"
+      ]
+    },
+    {
+      "level": 131,
+      "id": "chapter_131",
+      "file": "assets/glass/chapter_131.webp",
+      "raw": "tools/stained/raw/chapter_131.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_131.png"
+      ]
+    },
+    {
+      "level": 132,
+      "id": "chapter_132",
+      "file": "assets/glass/chapter_132.webp",
+      "raw": "tools/stained/raw/chapter_132.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_132.png"
+      ]
+    },
+    {
+      "level": 133,
+      "id": "chapter_133",
+      "file": "assets/glass/chapter_133.webp",
+      "raw": "tools/stained/raw/chapter_133.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_133.png"
+      ]
+    },
+    {
+      "level": 134,
+      "id": "chapter_134",
+      "file": "assets/glass/chapter_134.webp",
+      "raw": "tools/stained/raw/chapter_134.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_134.png"
+      ]
+    },
+    {
+      "level": 135,
+      "id": "chapter_135",
+      "file": "assets/glass/chapter_135.webp",
+      "raw": "tools/stained/raw/chapter_135.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_135.png"
+      ]
+    },
+    {
+      "level": 136,
+      "id": "chapter_136",
+      "file": "assets/glass/chapter_136.webp",
+      "raw": "tools/stained/raw/chapter_136.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_136.png"
+      ]
+    },
+    {
+      "level": 137,
+      "id": "chapter_137",
+      "file": "assets/glass/chapter_137.webp",
+      "raw": "tools/stained/raw/chapter_137.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_137.png"
+      ]
+    },
+    {
+      "level": 138,
+      "id": "chapter_138",
+      "file": "assets/glass/chapter_138.webp",
+      "raw": "tools/stained/raw/chapter_138.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_138.png"
+      ]
+    },
+    {
+      "level": 139,
+      "id": "chapter_139",
+      "file": "assets/glass/chapter_139.webp",
+      "raw": "tools/stained/raw/chapter_139.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_139.png"
+      ]
+    },
+    {
+      "level": 140,
+      "id": "chapter_140",
+      "file": "assets/glass/chapter_140.webp",
+      "raw": "tools/stained/raw/chapter_140.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_140.png"
+      ]
+    },
+    {
+      "level": 141,
+      "id": "chapter_141",
+      "file": "assets/glass/chapter_141.webp",
+      "raw": "tools/stained/raw/chapter_141.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_141.png"
+      ]
+    },
+    {
+      "level": 142,
+      "id": "chapter_142",
+      "file": "assets/glass/chapter_142.webp",
+      "raw": "tools/stained/raw/chapter_142.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_142.png"
+      ]
+    },
+    {
+      "level": 143,
+      "id": "chapter_143",
+      "file": "assets/glass/chapter_143.webp",
+      "raw": "tools/stained/raw/chapter_143.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_143.png"
+      ]
+    },
+    {
+      "level": 144,
+      "id": "chapter_144",
+      "file": "assets/glass/chapter_144.webp",
+      "raw": "tools/stained/raw/chapter_144.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_144.png"
+      ]
+    },
+    {
+      "level": 145,
+      "id": "chapter_145",
+      "file": "assets/glass/chapter_145.webp",
+      "raw": "tools/stained/raw/chapter_145.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_145.png"
+      ]
+    },
+    {
+      "level": 146,
+      "id": "chapter_146",
+      "file": "assets/glass/chapter_146.webp",
+      "raw": "tools/stained/raw/chapter_146.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_146.png"
+      ]
+    },
+    {
+      "level": 147,
+      "id": "chapter_147",
+      "file": "assets/glass/chapter_147.webp",
+      "raw": "tools/stained/raw/chapter_147.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_147.png"
+      ]
+    },
+    {
+      "level": 148,
+      "id": "chapter_148",
+      "file": "assets/glass/chapter_148.webp",
+      "raw": "tools/stained/raw/chapter_148.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_148.png"
+      ]
+    },
+    {
+      "level": 149,
+      "id": "chapter_149",
+      "file": "assets/glass/chapter_149.webp",
+      "raw": "tools/stained/raw/chapter_149.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_149.png"
+      ]
+    },
+    {
+      "level": 150,
+      "id": "chapter_150",
+      "file": "assets/glass/chapter_150.webp",
+      "raw": "tools/stained/raw/chapter_150.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_150.png"
+      ]
+    },
+    {
+      "level": 151,
+      "id": "chapter_151",
+      "file": "assets/glass/chapter_151.webp",
+      "raw": "tools/stained/raw/chapter_151.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_151.png"
+      ]
+    },
+    {
+      "level": 152,
+      "id": "chapter_152",
+      "file": "assets/glass/chapter_152.webp",
+      "raw": "tools/stained/raw/chapter_152.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_152.png"
+      ]
+    },
+    {
+      "level": 153,
+      "id": "chapter_153",
+      "file": "assets/glass/chapter_153.webp",
+      "raw": "tools/stained/raw/chapter_153.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_153.png"
+      ]
+    },
+    {
+      "level": 154,
+      "id": "chapter_154",
+      "file": "assets/glass/chapter_154.webp",
+      "raw": "tools/stained/raw/chapter_154.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_154.png"
+      ]
+    },
+    {
+      "level": 155,
+      "id": "chapter_155",
+      "file": "assets/glass/chapter_155.webp",
+      "raw": "tools/stained/raw/chapter_155.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_155.png"
+      ]
+    },
+    {
+      "level": 156,
+      "id": "chapter_156",
+      "file": "assets/glass/chapter_156.webp",
+      "raw": "tools/stained/raw/chapter_156.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_156.png"
+      ]
+    },
+    {
+      "level": 157,
+      "id": "chapter_157",
+      "file": "assets/glass/chapter_157.webp",
+      "raw": "tools/stained/raw/chapter_157.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_157.png"
+      ]
+    },
+    {
+      "level": 158,
+      "id": "chapter_158",
+      "file": "assets/glass/chapter_158.webp",
+      "raw": "tools/stained/raw/chapter_158.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_158.png"
+      ]
+    },
+    {
+      "level": 159,
+      "id": "chapter_159",
+      "file": "assets/glass/chapter_159.webp",
+      "raw": "tools/stained/raw/chapter_159.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_159.png"
+      ]
+    },
+    {
+      "level": 160,
+      "id": "chapter_160",
+      "file": "assets/glass/chapter_160.webp",
+      "raw": "tools/stained/raw/chapter_160.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_160.png"
+      ]
+    },
+    {
+      "level": 161,
+      "id": "chapter_161",
+      "file": "assets/glass/chapter_161.webp",
+      "raw": "tools/stained/raw/chapter_161.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_161.png"
+      ]
+    },
+    {
+      "level": 162,
+      "id": "chapter_162",
+      "file": "assets/glass/chapter_162.webp",
+      "raw": "tools/stained/raw/chapter_162.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_162.png"
+      ]
+    },
+    {
+      "level": 163,
+      "id": "chapter_163",
+      "file": "assets/glass/chapter_163.webp",
+      "raw": "tools/stained/raw/chapter_163.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_163.png"
+      ]
+    },
+    {
+      "level": 164,
+      "id": "chapter_164",
+      "file": "assets/glass/chapter_164.webp",
+      "raw": "tools/stained/raw/chapter_164.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_164.png"
+      ]
+    },
+    {
+      "level": 165,
+      "id": "chapter_165",
+      "file": "assets/glass/chapter_165.webp",
+      "raw": "tools/stained/raw/chapter_165.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_165.png"
+      ]
+    },
+    {
+      "level": 166,
+      "id": "chapter_166",
+      "file": "assets/glass/chapter_166.webp",
+      "raw": "tools/stained/raw/chapter_166.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_166.png"
+      ]
+    },
+    {
+      "level": 167,
+      "id": "chapter_167",
+      "file": "assets/glass/chapter_167.webp",
+      "raw": "tools/stained/raw/chapter_167.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_167.png"
+      ]
+    },
+    {
+      "level": 168,
+      "id": "chapter_168",
+      "file": "assets/glass/chapter_168.webp",
+      "raw": "tools/stained/raw/chapter_168.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_168.png"
+      ]
+    },
+    {
+      "level": 169,
+      "id": "chapter_169",
+      "file": "assets/glass/chapter_169.webp",
+      "raw": "tools/stained/raw/chapter_169.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_169.png"
+      ]
+    },
+    {
+      "level": 170,
+      "id": "chapter_170",
+      "file": "assets/glass/chapter_170.webp",
+      "raw": "tools/stained/raw/chapter_170.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_170.png"
+      ]
+    },
+    {
+      "level": 171,
+      "id": "chapter_171",
+      "file": "assets/glass/chapter_171.webp",
+      "raw": "tools/stained/raw/chapter_171.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_171.png"
+      ]
+    },
+    {
+      "level": 172,
+      "id": "chapter_172",
+      "file": "assets/glass/chapter_172.webp",
+      "raw": "tools/stained/raw/chapter_172.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_172.png"
+      ]
+    },
+    {
+      "level": 173,
+      "id": "chapter_173",
+      "file": "assets/glass/chapter_173.webp",
+      "raw": "tools/stained/raw/chapter_173.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_173.png"
+      ]
+    },
+    {
+      "level": 174,
+      "id": "chapter_174",
+      "file": "assets/glass/chapter_174.webp",
+      "raw": "tools/stained/raw/chapter_174.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_174.png"
+      ]
+    },
+    {
+      "level": 175,
+      "id": "chapter_175",
+      "file": "assets/glass/chapter_175.webp",
+      "raw": "tools/stained/raw/chapter_175.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_175.png"
+      ]
+    },
+    {
+      "level": 176,
+      "id": "chapter_176",
+      "file": "assets/glass/chapter_176.webp",
+      "raw": "tools/stained/raw/chapter_176.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_176.png"
+      ]
+    },
+    {
+      "level": 177,
+      "id": "chapter_177",
+      "file": "assets/glass/chapter_177.webp",
+      "raw": "tools/stained/raw/chapter_177.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_177.png"
+      ]
+    },
+    {
+      "level": 178,
+      "id": "chapter_178",
+      "file": "assets/glass/chapter_178.webp",
+      "raw": "tools/stained/raw/chapter_178.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_178.png"
+      ]
+    },
+    {
+      "level": 179,
+      "id": "chapter_179",
+      "file": "assets/glass/chapter_179.webp",
+      "raw": "tools/stained/raw/chapter_179.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_179.png"
+      ]
+    },
+    {
+      "level": 180,
+      "id": "chapter_180",
+      "file": "assets/glass/chapter_180.webp",
+      "raw": "tools/stained/raw/chapter_180.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_180.png"
+      ]
+    },
+    {
+      "level": 181,
+      "id": "chapter_181",
+      "file": "assets/glass/chapter_181.webp",
+      "raw": "tools/stained/raw/chapter_181.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_181.png"
+      ]
+    },
+    {
+      "level": 182,
+      "id": "chapter_182",
+      "file": "assets/glass/chapter_182.webp",
+      "raw": "tools/stained/raw/chapter_182.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_182.png"
+      ]
+    },
+    {
+      "level": 183,
+      "id": "chapter_183",
+      "file": "assets/glass/chapter_183.webp",
+      "raw": "tools/stained/raw/chapter_183.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_183.png"
+      ]
+    },
+    {
+      "level": 184,
+      "id": "chapter_184",
+      "file": "assets/glass/chapter_184.webp",
+      "raw": "tools/stained/raw/chapter_184.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_184.png"
+      ]
+    },
+    {
+      "level": 185,
+      "id": "chapter_185",
+      "file": "assets/glass/chapter_185.webp",
+      "raw": "tools/stained/raw/chapter_185.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_185.png"
+      ]
+    },
+    {
+      "level": 186,
+      "id": "chapter_186",
+      "file": "assets/glass/chapter_186.webp",
+      "raw": "tools/stained/raw/chapter_186.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_186.png"
+      ]
+    },
+    {
+      "level": 187,
+      "id": "chapter_187",
+      "file": "assets/glass/chapter_187.webp",
+      "raw": "tools/stained/raw/chapter_187.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_187.png"
+      ]
+    },
+    {
+      "level": 188,
+      "id": "chapter_188",
+      "file": "assets/glass/chapter_188.webp",
+      "raw": "tools/stained/raw/chapter_188.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_188.png"
+      ]
+    },
+    {
+      "level": 189,
+      "id": "chapter_189",
+      "file": "assets/glass/chapter_189.webp",
+      "raw": "tools/stained/raw/chapter_189.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_189.png"
+      ]
+    },
+    {
+      "level": 190,
+      "id": "chapter_190",
+      "file": "assets/glass/chapter_190.webp",
+      "raw": "tools/stained/raw/chapter_190.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_190.png"
+      ]
+    },
+    {
+      "level": 191,
+      "id": "chapter_191",
+      "file": "assets/glass/chapter_191.webp",
+      "raw": "tools/stained/raw/chapter_191.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_191.png"
+      ]
+    },
+    {
+      "level": 192,
+      "id": "chapter_192",
+      "file": "assets/glass/chapter_192.webp",
+      "raw": "tools/stained/raw/chapter_192.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_192.png"
+      ]
+    },
+    {
+      "level": 193,
+      "id": "chapter_193",
+      "file": "assets/glass/chapter_193.webp",
+      "raw": "tools/stained/raw/chapter_193.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_193.png"
+      ]
+    },
+    {
+      "level": 194,
+      "id": "chapter_194",
+      "file": "assets/glass/chapter_194.webp",
+      "raw": "tools/stained/raw/chapter_194.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_194.png"
+      ]
+    },
+    {
+      "level": 195,
+      "id": "chapter_195",
+      "file": "assets/glass/chapter_195.webp",
+      "raw": "tools/stained/raw/chapter_195.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_195.png"
+      ]
+    },
+    {
+      "level": 196,
+      "id": "chapter_196",
+      "file": "assets/glass/chapter_196.webp",
+      "raw": "tools/stained/raw/chapter_196.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_196.png"
+      ]
+    },
+    {
+      "level": 197,
+      "id": "chapter_197",
+      "file": "assets/glass/chapter_197.webp",
+      "raw": "tools/stained/raw/chapter_197.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_197.png"
+      ]
+    },
+    {
+      "level": 198,
+      "id": "chapter_198",
+      "file": "assets/glass/chapter_198.webp",
+      "raw": "tools/stained/raw/chapter_198.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_198.png"
+      ]
+    },
+    {
+      "level": 199,
+      "id": "chapter_199",
+      "file": "assets/glass/chapter_199.webp",
+      "raw": "tools/stained/raw/chapter_199.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_199.png"
+      ]
+    },
+    {
+      "level": 200,
+      "id": "chapter_200",
+      "file": "assets/glass/chapter_200.webp",
+      "raw": "tools/stained/raw/chapter_200.png",
+      "prompt": "Use case: style-transfer. Transform the attached exact geometric guide into a luminous photographic artisan stained-glass panel. Preserve every pane, every boundary, the silhouette, margins and the four existing hues exactly. Add gentle handmade translucent glass ripples and subtle backlighting within each pane, thin dark metallic lead on existing seams. No new lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the original 3:4 portrait framing pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue.",
+      "references": [
+        "tools/stained/guides/chapter_200.png"
+      ]
+    }
+  ]
+}

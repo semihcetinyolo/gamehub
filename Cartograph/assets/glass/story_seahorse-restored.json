@@ -1,0 +1,53 @@
+{
+  "id": "story_seahorse",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:19:57.556516+00:00",
+  "source": "assets/glass/story_seahorse-clear.webp",
+  "sourceSha256": "e46ecfb653b6327fe9f2c1a8e5490fa1cdf1cd6bba6c56fba9a480295e6393b0",
+  "sourceGeometrySha256": "726a2fc5070bd02e875bc00195ebb103996bd1cbd9759b0719529860b15affee",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 79,
+      "donorPatches": 30,
+      "colour": 0,
+      "preservedFraction": 0.4303089446996088
+    },
+    {
+      "patchSize": 84,
+      "donorPatches": 64,
+      "colour": 1,
+      "preservedFraction": 0.31592039562441465
+    },
+    {
+      "patchSize": 51,
+      "donorPatches": 27,
+      "colour": 2,
+      "preservedFraction": 0.20849030066874757
+    },
+    {
+      "patchSize": 88,
+      "donorPatches": 42,
+      "colour": 3,
+      "preservedFraction": 0.1885801336474992
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "22522e90296fd8e77ee6b5d0f5ebf5a463ae896458709dff55f169ec60766cb5",
+  "sha256": "035a94f89b2941740ca6681a5b5a5863af8a9954035109e760feeb21cf636e0a",
+  "palette": [
+    "#e2474c",
+    "#f9dd64",
+    "#389e77",
+    "#1e4e95"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 24,
+    "total": 24,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "rings_03",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T08:01:21.522812+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Çift Yörünge. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/rings_03.png"
+  ],
+  "size": [
+    883,
+    883
+  ],
+  "guide": "ca584193abdb03d2773b8d54bf759d1d91b1fc8ae4715a4b631b3d2598be92a7",
+  "sha256": "6cc0feae859b33e79f15539d5a74da3e39917c57dbac804f3bcf4954dcadf2b6",
+  "palette": [
+    "#f45f02",
+    "#fdea37",
+    "#0159b2",
+    "#088f4c"
+  ],
+  "paneColorCheck": {
+    "matched": 36,
+    "total": 36,
+    "valid": true,
+    "mismatches": []
+  }
+}

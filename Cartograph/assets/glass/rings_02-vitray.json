@@ -1,0 +1,27 @@
+{
+  "id": "rings_02",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:50:29.913741+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Yağmur Damlaları. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/rings_02.png"
+  ],
+  "size": [
+    768,
+    768
+  ],
+  "guide": "71de933c593a43e54859f3c594af887d1750899055bb02acf31a7d4ee0eb38d0",
+  "sha256": "d622f77a4ba7d8c5a7794aca7207f0d6f0e4a42793807914475f7179d8aa3608",
+  "palette": [
+    "#f25c29",
+    "#fcdb2a",
+    "#2f9e7a",
+    "#014189"
+  ],
+  "paneColorCheck": {
+    "matched": 36,
+    "total": 36,
+    "valid": true,
+    "mismatches": []
+  }
+}

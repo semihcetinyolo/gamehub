@@ -1,0 +1,27 @@
+{
+  "id": "atlas_04",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T08:08:37.879542+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Güney Burnu. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/atlas_04.png"
+  ],
+  "size": [
+    768,
+    883
+  ],
+  "guide": "c73c74e2407096be9a27de882b34dafa47605d26031c1b257ee9527505359150",
+  "sha256": "0c9e245e51008c3215924642e648beb3534adedea5227ca59deec77b0adbc2bc",
+  "palette": [
+    "#f96c04",
+    "#fef43c",
+    "#0171bf",
+    "#069961"
+  ],
+  "paneColorCheck": {
+    "matched": 31,
+    "total": 31,
+    "valid": true,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "story_flamingo",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:22:31.087851+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Tuz Gölünde Sabah. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_flamingo.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "915c5ff6a23347c8c9379251395075028357c609c5c6d9bd67a3a525872378d1",
+  "sha256": "478f8bcb717f6e78cd8b45bf1737e498ed0105b30aace66c7f5fe21c4f9aa01f",
+  "palette": [
+    "#e75325",
+    "#fde896",
+    "#88a420",
+    "#0e547b"
+  ],
+  "paneColorCheck": {
+    "matched": 41,
+    "total": 41,
+    "valid": true,
+    "mismatches": []
+  }
+}

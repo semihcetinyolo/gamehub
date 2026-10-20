@@ -1,0 +1,53 @@
+{
+  "id": "motif_chameleon",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:19:40.915316+00:00",
+  "source": "assets/glass/motif_chameleon-clear.webp",
+  "sourceSha256": "0e567a93289740203279ab1b3ce4b0fdd485f431a08f5cb24e6ee0d462ec945e",
+  "sourceGeometrySha256": "292d81c08487da338b6dd5ae42147b30fc9017eb707139e267f249fed1a1855f",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 64,
+      "donorPatches": 24,
+      "colour": 0,
+      "preservedFraction": 0.06088973370853702
+    },
+    {
+      "patchSize": 102,
+      "donorPatches": 67,
+      "colour": 1,
+      "preservedFraction": 0.4051430365315589
+    },
+    {
+      "patchSize": 55,
+      "donorPatches": 28,
+      "colour": 2,
+      "preservedFraction": 0.2574478675329352
+    },
+    {
+      "patchSize": 74,
+      "donorPatches": 43,
+      "colour": 3,
+      "preservedFraction": 0.21629355538600978
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "28196f92b95f971fd487d7f61092c7a39392711cb7d37f4620d84a5a7e430553",
+  "sha256": "f95a1cf036c4e2568be67531a67cc13fcccd00e181bc2b51ad4555e0c46b48d2",
+  "palette": [
+    "#d54d7b",
+    "#fce144",
+    "#21a3ac",
+    "#092c68"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 29,
+    "total": 29,
+    "mismatches": []
+  }
+}

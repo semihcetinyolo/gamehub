@@ -1,0 +1,53 @@
+{
+  "id": "compass",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:18:35.719725+00:00",
+  "source": "assets/glass/compass.webp",
+  "sourceSha256": "6a615ad75bcce4bd7279729a940a34341cc339ec735b7c37e275c616185164e2",
+  "sourceGeometrySha256": "2c2ad89855a9101355aeece597e114f0ade02754675cb9782970dd7f26cdc18b",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 98,
+      "donorPatches": 64,
+      "colour": 0,
+      "preservedFraction": 0.33730493624481195
+    },
+    {
+      "patchSize": 61,
+      "donorPatches": 43,
+      "colour": 1,
+      "preservedFraction": 0.014976602557116353
+    },
+    {
+      "patchSize": 61,
+      "donorPatches": 19,
+      "colour": 2,
+      "preservedFraction": 0.32219646182221173
+    },
+    {
+      "patchSize": 60,
+      "donorPatches": 12,
+      "colour": 3,
+      "preservedFraction": 0.11540776254294366
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "9ec25a53e116b67aa0e64c576cd56a6ce29a8e891c8486bd1093a0e73def626a",
+  "sha256": "9ccbc26e71fcea5528d6601494e59bd9de757005ea32f39a2b83fe499b9374d8",
+  "palette": [
+    "#6f0313",
+    "#d99b10",
+    "#f1dea6",
+    "#28582e"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 36,
+    "total": 36,
+    "mismatches": []
+  }
+}

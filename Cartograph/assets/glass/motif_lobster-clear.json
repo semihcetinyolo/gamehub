@@ -1,0 +1,27 @@
+{
+  "id": "motif_lobster",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:04:41.324408+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Istakoz. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_lobster.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "f63e7b41b5b97fb019cf086782d379b1c2a3f03dcb893064fd5eedbe4bd3618b",
+  "sha256": "d5868c6166c707d4c64ab732743a5334c6c7e8cdbdbdb1aedcdd47634d9befee",
+  "palette": [
+    "#df880a",
+    "#fce745",
+    "#457fbf",
+    "#091755"
+  ],
+  "paneColorCheck": {
+    "matched": 40,
+    "total": 40,
+    "valid": true,
+    "mismatches": []
+  }
+}

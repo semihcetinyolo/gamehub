@@ -1,0 +1,53 @@
+{
+  "id": "motif_seal",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:25:37.202214+00:00",
+  "source": "assets/glass/motif_seal-restored.webp",
+  "sourceSha256": "72889de70c506a97a6e2342326a55649a67b3c4c6d74964d28d31d33aec4f861",
+  "sourceGeometrySha256": "cd858760a9895ad1819324b2ccf0206ea7b50ec92ee15d94c638a6ac58a254df",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6671753508403184
+    },
+    {
+      "patchSize": 90,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.3846547022635471
+    },
+    {
+      "patchSize": 117,
+      "donorPatches": 94,
+      "colour": 2,
+      "preservedFraction": 0.4592366419746559
+    },
+    {
+      "patchSize": 112,
+      "donorPatches": 60,
+      "colour": 3,
+      "preservedFraction": 0.5411032193987816
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "123d11f7921489a3f4c545b3f111a4e3a7660d8cd859991cd6c6daeb0addc9fb",
+  "sha256": "1a2238189f334f7e277b035a5936f99e8efffead155a6c8689f9ce06e74f260c",
+  "palette": [
+    "#e4870d",
+    "#fceb5e",
+    "#4889be",
+    "#021453"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 28,
+    "total": 28,
+    "mismatches": []
+  }
+}

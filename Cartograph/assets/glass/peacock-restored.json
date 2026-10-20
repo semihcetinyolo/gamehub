@@ -1,0 +1,53 @@
+{
+  "id": "peacock",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:18:27.821107+00:00",
+  "source": "assets/glass/peacock.webp",
+  "sourceSha256": "48460f7f554f862d822324c8a70a8a7f7078375654b31c45fed58649ad4bdb1c",
+  "sourceGeometrySha256": "1d8f0efcd1e0d13c4862c903102710f7ec3fd448728b2c77ef963684ba1183e7",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 105,
+      "donorPatches": 62,
+      "colour": 0,
+      "preservedFraction": 0.313398191917293
+    },
+    {
+      "patchSize": 55,
+      "donorPatches": 13,
+      "colour": 1,
+      "preservedFraction": 0.22616356542261773
+    },
+    {
+      "patchSize": 49,
+      "donorPatches": 23,
+      "colour": 2,
+      "preservedFraction": 0.14614079167425814
+    },
+    {
+      "patchSize": 39,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.017579386825761708
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "83010dc745edef21a9c49e2dabec2fa7640f0c68119acf67c37065cb901c35a5",
+  "sha256": "a0f5288e8ff54b451be9f14eae6846000ba0fd2d8a0fb32c914bdd6a752e0a42",
+  "palette": [
+    "#0243cb",
+    "#0bb6ac",
+    "#fbd309",
+    "#804008"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 18,
+    "total": 18,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "jellyfish",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:24:36.586847+00:00",
+  "source": "assets/glass/jellyfish-restored.webp",
+  "sourceSha256": "0414f661d31f7c941cdbb43bc5532ae1b0b10a9e04b338cd7a490ea3dba54b26",
+  "sourceGeometrySha256": "48d22bcb7393a13a79ea5c1354ec763e6b2ea298216db467713713fe719a115c",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 113,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.559661030534056
+    },
+    {
+      "patchSize": 120,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.45000747051929113
+    },
+    {
+      "patchSize": 87,
+      "donorPatches": 53,
+      "colour": 2,
+      "preservedFraction": 0.35489663401595917
+    },
+    {
+      "patchSize": 102,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.43438393670024517
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "22a8b71a799ad7e018c1ecb69b07e2052e5769e9a79f15ceace3aa863919125d",
+  "sha256": "176f58b0856b74b1eccc3ccf6254d45f567ab4acd978a19a98532b570013ea12",
+  "palette": [
+    "#a64cbd",
+    "#f9d170",
+    "#e74e54",
+    "#0371a0"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 37,
+    "total": 37,
+    "mismatches": []
+  }
+}

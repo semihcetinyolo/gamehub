@@ -1,0 +1,27 @@
+{
+  "id": "motif_puffin",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:09:58.756655+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Deniz Papağanı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_puffin.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "c78d6d718e9bd94fdcd2184b1fd7eb4d1e09b4a71e70bb9da4bd2fa19b448bdd",
+  "sha256": "b459414339b605987146ee4632f3bbf44f47a82e6d3f6d71d4f8d54dd73f785f",
+  "palette": [
+    "#e9720c",
+    "#fdf59a",
+    "#71a324",
+    "#063b6e"
+  ],
+  "paneColorCheck": {
+    "matched": 29,
+    "total": 29,
+    "valid": true,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "spiral_10",
+  "tool": "native vector geometry",
+  "palette": [
+    "#cf7c5c",
+    "#edd573",
+    "#519d95",
+    "#38618e"
+  ],
+  "size": [
+    768,
+    768
+  ],
+  "guide": "8ecf5a2b2fe14f07cba68e39577ec23ab15a1bcbc4aec7fff48c5b779f342286",
+  "sha256": "da5440d02914492a6f0fce516024790e84b142dffcd83fd7fc814ef5b98fd5c0",
+  "references": [
+    "tools/stained/references/16.webp"
+  ],
+  "description": "Connected angular spiral ribbons and long stepped corridors.",
+  "paneColorCheck": {
+    "matched": 22,
+    "total": 22,
+    "valid": true,
+    "mismatches": []
+  }
+}

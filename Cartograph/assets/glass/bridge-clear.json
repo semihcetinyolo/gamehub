@@ -1,0 +1,27 @@
+{
+  "id": "bridge",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T06:54:25.686151+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of a stone arched bridge over a river under the sun. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/bridge.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "632d63dfc59a201ca82f55c75526338fefb47230c065c18573622b636042af0b",
+  "sha256": "248fcc9f2e09a0151235aba3969957e6231a38ba3c45c1deb413431072a65258",
+  "palette": [
+    "#d0772e",
+    "#fddf38",
+    "#1db1d1",
+    "#507225"
+  ],
+  "paneColorCheck": {
+    "matched": 36,
+    "total": 36,
+    "valid": true,
+    "mismatches": []
+  }
+}

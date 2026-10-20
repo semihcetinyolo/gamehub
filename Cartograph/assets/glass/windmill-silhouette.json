@@ -1,0 +1,53 @@
+{
+  "id": "windmill",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:13:44.556755+00:00",
+  "source": "assets/glass/windmill-junctions.webp",
+  "sourceSha256": "9d50afcde9a0734634bb1ef99f2eb97ff780ef49d14a0819d0b2cd3dc7def5bb",
+  "sourceGeometrySha256": "4f1cae6a5529057a871ad8d1e8b3f95e8f96a50446f3ae733fd18549242dae90",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 122,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.44122252181478966
+    },
+    {
+      "patchSize": 110,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.46328715821103444
+    },
+    {
+      "patchSize": 95,
+      "donorPatches": 60,
+      "colour": 2,
+      "preservedFraction": 0.39542448137497016
+    },
+    {
+      "patchSize": 108,
+      "donorPatches": 49,
+      "colour": 3,
+      "preservedFraction": 0.5372734005613826
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "d9e253cac0de2d0fb2da4826ce1518134ce18b5f3711c142720529e97f27680f",
+  "sha256": "c23d08747d4fa85235b88805690632fdb249caddea7caee94ef73e67863871eb",
+  "palette": [
+    "#b0370e",
+    "#efd67d",
+    "#5d995e",
+    "#1d7cb2"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 27,
+    "total": 27,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "story_stingray",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:26:32.894520+00:00",
+  "source": "assets/glass/story_stingray-restored.webp",
+  "sourceSha256": "d4c0578659a09594e1c506207946f2b5fd9f056ab7045302e691f3ce04f90561",
+  "sourceGeometrySha256": "a58d38cd103cd8ba63544b47a6037d62fbcd0f3c0413d2355ed4c99ad17d3c98",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 102,
+      "donorPatches": 70,
+      "colour": 0,
+      "preservedFraction": 0.5230046898977776
+    },
+    {
+      "patchSize": 92,
+      "donorPatches": 31,
+      "colour": 1,
+      "preservedFraction": 0.46425715355909725
+    },
+    {
+      "patchSize": 80,
+      "donorPatches": 36,
+      "colour": 2,
+      "preservedFraction": 0.425371633646867
+    },
+    {
+      "patchSize": 143,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6090503675801705
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "f40c44ee398e5261799cf567d7f8245bd65313915596685b323b36b061835c7a",
+  "sha256": "d73f25cb46dc27ab16aaa376ef70345ab2185d2e782d6148903c224708f977bd",
+  "palette": [
+    "#dd5f1d",
+    "#fdf39c",
+    "#89b02b",
+    "#03446c"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 26,
+    "total": 26,
+    "mismatches": []
+  }
+}

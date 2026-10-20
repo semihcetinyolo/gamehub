@@ -1,0 +1,27 @@
+{
+  "id": "motif_seal",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:09:58.771464+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Fok. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_seal.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "f302b932dc1eb3ae41b1d3ff3a5bc4717a6e0f240a268d9e4464b02e7b1d93e0",
+  "sha256": "161fa027be111416bd004665fd16e8de5d31fa31bd14e7b11730a3a1c78404ce",
+  "palette": [
+    "#e4840c",
+    "#feee60",
+    "#4e91c5",
+    "#011b60"
+  ],
+  "paneColorCheck": {
+    "matched": 33,
+    "total": 33,
+    "valid": true,
+    "mismatches": []
+  }
+}

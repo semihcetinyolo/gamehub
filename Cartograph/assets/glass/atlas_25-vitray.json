@@ -1,0 +1,27 @@
+{
+  "id": "atlas_25",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T08:10:02.016968+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Yeni Kıta. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/atlas_25.png"
+  ],
+  "size": [
+    883,
+    768
+  ],
+  "guide": "bdc1f78c9ae53ef5ac994e0a0479b0885ac9830f467eda6fe5460caecbfd3015",
+  "sha256": "953ba886409cd4c06e455ba1df992866e270a7342073ee84ed5223f396c1e858",
+  "palette": [
+    "#a242b1",
+    "#feec2b",
+    "#36aa9b",
+    "#1d5cca"
+  ],
+  "paneColorCheck": {
+    "matched": 34,
+    "total": 34,
+    "valid": true,
+    "mismatches": []
+  }
+}

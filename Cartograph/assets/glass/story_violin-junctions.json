@@ -1,0 +1,53 @@
+{
+  "id": "story_violin",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:25:37.482971+00:00",
+  "source": "assets/glass/story_violin-restored.webp",
+  "sourceSha256": "f82518a9664428ba9e1601ca5952b2df46c383c374f1ee6a185a0152ec025c93",
+  "sourceGeometrySha256": "3495b952a1c77f19c38b50d31776c9c2648a131cba0fc62aaa3be8fb6127ebce",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 113,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5054782482519874
+    },
+    {
+      "patchSize": 130,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6278395101825017
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5343183898760558
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5757534865953003
+    }
+  ],
+  "size": [
+    1016,
+    1354
+  ],
+  "guide": "ce4ac76778aa5c3563249f268cecd91b76a7c57859c91e7f0dbf010257434e8d",
+  "sha256": "8c6cb80933bbd42488a457ee62386b9441da514db040e01521d455844ef8b7db",
+  "palette": [
+    "#d86403",
+    "#fce166",
+    "#3b9bd1",
+    "#04205e"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 26,
+    "total": 26,
+    "mismatches": []
+  }
+}

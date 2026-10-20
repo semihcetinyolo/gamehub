@@ -1,0 +1,26 @@
+{
+  "id": "atlas_04",
+  "tool": "native vector geometry",
+  "palette": [
+    "#d86b23",
+    "#efdc56",
+    "#1775a7",
+    "#1b9879"
+  ],
+  "size": [
+    768,
+    883
+  ],
+  "guide": "c73c74e2407096be9a27de882b34dafa47605d26031c1b257ee9527505359150",
+  "sha256": "a41b798c83c452aae89e355f0504275433d9b3dc748efc521a78297bc27f1837",
+  "references": [
+    "tools/stained/references/usa.gif"
+  ],
+  "description": "Fictional regional map with distinct coastline and shared provincial borders.",
+  "paneColorCheck": {
+    "matched": 31,
+    "total": 31,
+    "valid": true,
+    "mismatches": []
+  }
+}

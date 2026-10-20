@@ -1,0 +1,27 @@
+{
+  "id": "motif_moka",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:02:39.096869+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Moka Pot. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_moka.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "4d433ece53f17607ee3969171a7dc558436350a342b4a2ebd97674f31bf25037",
+  "sha256": "a861b0896ef08c0492ac9a5f3d515081f5522618f50363abe5fa58277683d82d",
+  "palette": [
+    "#dd6c0b",
+    "#fcf083",
+    "#5e961b",
+    "#023d8b"
+  ],
+  "paneColorCheck": {
+    "matched": 31,
+    "total": 31,
+    "valid": true,
+    "mismatches": []
+  }
+}

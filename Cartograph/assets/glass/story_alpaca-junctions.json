@@ -1,0 +1,53 @@
+{
+  "id": "story_alpaca",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:25:55.706372+00:00",
+  "source": "assets/glass/story_alpaca-restored.webp",
+  "sourceSha256": "655248dcfc77a4fa36dc407d9db2a0910863b96b1a537e30ed986e75e26685a7",
+  "sourceGeometrySha256": "9f57bec21a98c0ed79908f56ec550426b26514beabc6ca1d662476b0b8515c62",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 58,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.1798180884232532
+    },
+    {
+      "patchSize": 63,
+      "donorPatches": 30,
+      "colour": 1,
+      "preservedFraction": 0.3069548462100808
+    },
+    {
+      "patchSize": 114,
+      "donorPatches": 79,
+      "colour": 2,
+      "preservedFraction": 0.5727281673358601
+    },
+    {
+      "patchSize": 97,
+      "donorPatches": 62,
+      "colour": 3,
+      "preservedFraction": 0.4185841235661705
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "a5a673d14da49b60f86e4107ca84438666f008df20c2f3bcf8907a9da39a1d48",
+  "sha256": "e7b8a561faef0e161e27fe9b122da987c0fc85d1bdd8c988777eb0a81bb520f7",
+  "palette": [
+    "#cf4c04",
+    "#fce74a",
+    "#198968",
+    "#082d78"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 33,
+    "total": 33,
+    "mismatches": []
+  }
+}

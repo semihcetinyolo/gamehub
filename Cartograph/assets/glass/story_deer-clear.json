@@ -1,0 +1,27 @@
+{
+  "id": "story_deer",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:17:02.147726+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Orman Açıklığı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_deer.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "8106d62d1f681e81d1b63b9cb7efd804f1e1d8d09f4ab6ca7d923ffa239652db",
+  "sha256": "2282523f9253e8acc7f22b29de1f276e7abcb60b9b68f906ac1d4840bae8de6e",
+  "palette": [
+    "#d26802",
+    "#fef372",
+    "#429bd1",
+    "#02226a"
+  ],
+  "paneColorCheck": {
+    "matched": 42,
+    "total": 42,
+    "valid": true,
+    "mismatches": []
+  }
+}

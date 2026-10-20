@@ -1,0 +1,53 @@
+{
+  "id": "dragonfly",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:18:36.880939+00:00",
+  "source": "assets/glass/dragonfly.webp",
+  "sourceSha256": "733379072374db844a14fbbe132fd63e2010770c3a90805b8f096cc938cfc668",
+  "sourceGeometrySha256": "d7b44c52d0c53476c36cf2dd83ce53586abdce50ac9faaab92a885d855d338c2",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 76,
+      "donorPatches": 89,
+      "colour": 0,
+      "preservedFraction": 0.10920683266126424
+    },
+    {
+      "patchSize": 97,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.42574915396278623
+    },
+    {
+      "patchSize": 94,
+      "donorPatches": 69,
+      "colour": 2,
+      "preservedFraction": 0.13985230533058657
+    },
+    {
+      "patchSize": 58,
+      "donorPatches": 16,
+      "colour": 3,
+      "preservedFraction": 0.15844665600983335
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "c71b6534f7cfbba46613838e53111638c68a990c7e857da9dc18613d0874332c",
+  "sha256": "37130a9f7d1011c20b67161a8f8b40639ea46e53c5266cb807db4ddc50ad30c6",
+  "palette": [
+    "#df3e2b",
+    "#738817",
+    "#fce885",
+    "#04618b"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 33,
+    "total": 33,
+    "mismatches": []
+  }
+}

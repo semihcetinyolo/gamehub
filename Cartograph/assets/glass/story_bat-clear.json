@@ -1,0 +1,27 @@
+{
+  "id": "story_bat",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:13:12.206353+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Mağaradan Uçuş. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_bat.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "495209a22abd8037bde308cc33100d701af0b5511df1d2b52364e35db3f4a1d0",
+  "sha256": "dad15a048dfb92ae790b198467f9d63cb298e10bed54b498b25ac0f65f42dea7",
+  "palette": [
+    "#c23f66",
+    "#fee658",
+    "#1a9aa2",
+    "#0b2b56"
+  ],
+  "paneColorCheck": {
+    "matched": 31,
+    "total": 31,
+    "valid": true,
+    "mismatches": []
+  }
+}

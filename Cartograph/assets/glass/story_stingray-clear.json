@@ -1,0 +1,27 @@
+{
+  "id": "story_stingray",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:29:08.390563+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Derin Mavi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_stingray.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "5b3925c689f6be554548840e37fa62ae12566a4c506db7b092012429449d7287",
+  "sha256": "27168c3abb86d49e8f80b10d4a24f1c544248f85f80a0ad9d0550565996d8ffe",
+  "palette": [
+    "#ea6a24",
+    "#fef69f",
+    "#7da325",
+    "#024670"
+  ],
+  "paneColorCheck": {
+    "matched": 28,
+    "total": 28,
+    "valid": true,
+    "mismatches": []
+  }
+}

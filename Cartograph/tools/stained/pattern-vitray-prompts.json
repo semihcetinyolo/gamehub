@@ -1,0 +1,841 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "id": "spiral_03",
+      "level": 57,
+      "name": "İç Kale",
+      "file": "assets/glass/spiral_03-vitray.webp",
+      "raw": "tools/stained/raw/spiral_03-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_03.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for İç Kale. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_23",
+      "level": 59,
+      "name": "Kabarcık Zinciri",
+      "file": "assets/glass/rings_23-vitray.webp",
+      "raw": "tools/stained/raw/rings_23-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_23.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Kabarcık Zinciri. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_21",
+      "level": 62,
+      "name": "Güneş Toprakları",
+      "file": "assets/glass/atlas_21-vitray.webp",
+      "raw": "tools/stained/raw/atlas_21-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_21.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Güneş Toprakları. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:653 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_10",
+      "level": 64,
+      "name": "Yeşil Vadi",
+      "file": "assets/glass/atlas_10-vitray.webp",
+      "raw": "tools/stained/raw/atlas_10-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_10.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Yeşil Vadi. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_02",
+      "level": 66,
+      "name": "Yağmur Damlaları",
+      "file": "assets/glass/rings_02-vitray.webp",
+      "raw": "tools/stained/raw/rings_02-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_02.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Yağmur Damlaları. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_19",
+      "level": 68,
+      "name": "Halka Pusulası",
+      "file": "assets/glass/rings_19-vitray.webp",
+      "raw": "tools/stained/raw/rings_19-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_19.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Halka Pusulası. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_23",
+      "level": 72,
+      "name": "Uzun Koridor",
+      "file": "assets/glass/spiral_23-vitray.webp",
+      "raw": "tools/stained/raw/spiral_23-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_23.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Uzun Koridor. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_14",
+      "level": 74,
+      "name": "Göl Kıyısı",
+      "file": "assets/glass/atlas_14-vitray.webp",
+      "raw": "tools/stained/raw/atlas_14-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_14.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Göl Kıyısı. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_08",
+      "level": 76,
+      "name": "İç Deniz Kıyısı",
+      "file": "assets/glass/atlas_08-vitray.webp",
+      "raw": "tools/stained/raw/atlas_08-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_08.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for İç Deniz Kıyısı. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_20",
+      "level": 78,
+      "name": "Nehir Ülkesi",
+      "file": "assets/glass/atlas_20-vitray.webp",
+      "raw": "tools/stained/raw/atlas_20-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_20.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Nehir Ülkesi. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 1016:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_07",
+      "level": 82,
+      "name": "Karşılıklı Dönüş",
+      "file": "assets/glass/spiral_07-vitray.webp",
+      "raw": "tools/stained/raw/spiral_07-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_07.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Karşılıklı Dönüş. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_15",
+      "level": 84,
+      "name": "Yukarı Aşağı",
+      "file": "assets/glass/spiral_15-vitray.webp",
+      "raw": "tools/stained/raw/spiral_15-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_15.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Yukarı Aşağı. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_11",
+      "level": 86,
+      "name": "Dağ Eyaletleri",
+      "file": "assets/glass/atlas_11-vitray.webp",
+      "raw": "tools/stained/raw/atlas_11-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_11.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Dağ Eyaletleri. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:653 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_09",
+      "level": 88,
+      "name": "İki Merkez",
+      "file": "assets/glass/spiral_09-vitray.webp",
+      "raw": "tools/stained/raw/spiral_09-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_09.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for İki Merkez. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_25",
+      "level": 92,
+      "name": "Kilitli Geçitler",
+      "file": "assets/glass/spiral_25-vitray.webp",
+      "raw": "tools/stained/raw/spiral_25-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_25.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Kilitli Geçitler. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_10",
+      "level": 94,
+      "name": "Kesişen Ufuklar",
+      "file": "assets/glass/rings_10-vitray.webp",
+      "raw": "tools/stained/raw/rings_10-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_10.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Kesişen Ufuklar. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_24",
+      "level": 96,
+      "name": "Zikzak Rotası",
+      "file": "assets/glass/spiral_24-vitray.webp",
+      "raw": "tools/stained/raw/spiral_24-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_24.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Zikzak Rotası. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_01",
+      "level": 98,
+      "name": "Merkeze Yolculuk",
+      "file": "assets/glass/spiral_01-vitray.webp",
+      "raw": "tools/stained/raw/spiral_01-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_01.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Merkeze Yolculuk. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_01",
+      "level": 102,
+      "name": "Batı Kıyıları",
+      "file": "assets/glass/atlas_01-vitray.webp",
+      "raw": "tools/stained/raw/atlas_01-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_01.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Batı Kıyıları. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:653 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_12",
+      "level": 104,
+      "name": "Dağ Geçidi",
+      "file": "assets/glass/spiral_12-vitray.webp",
+      "raw": "tools/stained/raw/spiral_12-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_12.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Dağ Geçidi. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_07",
+      "level": 106,
+      "name": "Ayın Yankısı",
+      "file": "assets/glass/rings_07-vitray.webp",
+      "raw": "tools/stained/raw/rings_07-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_07.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Ayın Yankısı. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_06",
+      "level": 108,
+      "name": "İkiz Labirent",
+      "file": "assets/glass/spiral_06-vitray.webp",
+      "raw": "tools/stained/raw/spiral_06-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_06.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for İkiz Labirent. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_12",
+      "level": 112,
+      "name": "Geniş Ova",
+      "file": "assets/glass/atlas_12-vitray.webp",
+      "raw": "tools/stained/raw/atlas_12-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_12.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Geniş Ova. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 691:845 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_09",
+      "level": 114,
+      "name": "Gelgit",
+      "file": "assets/glass/rings_09-vitray.webp",
+      "raw": "tools/stained/raw/rings_09-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_09.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Gelgit. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_08",
+      "level": 116,
+      "name": "Çift Sarmal",
+      "file": "assets/glass/spiral_08-vitray.webp",
+      "raw": "tools/stained/raw/spiral_08-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_08.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Çift Sarmal. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_06",
+      "level": 118,
+      "name": "Uzun Kıyı",
+      "file": "assets/glass/atlas_06-vitray.webp",
+      "raw": "tools/stained/raw/atlas_06-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_06.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Uzun Kıyı. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:653 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_05",
+      "level": 122,
+      "name": "İki Körfez",
+      "file": "assets/glass/atlas_05-vitray.webp",
+      "raw": "tools/stained/raw/atlas_05-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_05.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for İki Körfez. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_02",
+      "level": 124,
+      "name": "Dik Açılı Girdap",
+      "file": "assets/glass/spiral_02-vitray.webp",
+      "raw": "tools/stained/raw/spiral_02-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_02.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Dik Açılı Girdap. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_10",
+      "level": 126,
+      "name": "Ayna Koridorları",
+      "file": "assets/glass/spiral_10-vitray.webp",
+      "raw": "tools/stained/raw/spiral_10-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_10.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Ayna Koridorları. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_14",
+      "level": 128,
+      "name": "Merdiven Şehri",
+      "file": "assets/glass/spiral_14-vitray.webp",
+      "raw": "tools/stained/raw/spiral_14-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_14.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Merdiven Şehri. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_25",
+      "level": 132,
+      "name": "Ritim Halkaları",
+      "file": "assets/glass/rings_25-vitray.webp",
+      "raw": "tools/stained/raw/rings_25-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_25.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Ritim Halkaları. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_19",
+      "level": 134,
+      "name": "Dört Kapı",
+      "file": "assets/glass/spiral_19-vitray.webp",
+      "raw": "tools/stained/raw/spiral_19-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_19.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Dört Kapı. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_19",
+      "level": 136,
+      "name": "Yedi Tepe",
+      "file": "assets/glass/atlas_19-vitray.webp",
+      "raw": "tools/stained/raw/atlas_19-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_19.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Yedi Tepe. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_22",
+      "level": 138,
+      "name": "Sahil Birliği",
+      "file": "assets/glass/atlas_22-vitray.webp",
+      "raw": "tools/stained/raw/atlas_22-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_22.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Sahil Birliği. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 691:845 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_03",
+      "level": 142,
+      "name": "Çift Yörünge",
+      "file": "assets/glass/rings_03-vitray.webp",
+      "raw": "tools/stained/raw/rings_03-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_03.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Çift Yörünge. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_18",
+      "level": 144,
+      "name": "Batı Yaylası",
+      "file": "assets/glass/atlas_18-vitray.webp",
+      "raw": "tools/stained/raw/atlas_18-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_18.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Batı Yaylası. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_17",
+      "level": 146,
+      "name": "Dönen Odalar",
+      "file": "assets/glass/spiral_17-vitray.webp",
+      "raw": "tools/stained/raw/spiral_17-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_17.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Dönen Odalar. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_20",
+      "level": 148,
+      "name": "Yankı Kuyusu",
+      "file": "assets/glass/rings_20-vitray.webp",
+      "raw": "tools/stained/raw/rings_20-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_20.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Yankı Kuyusu. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_09",
+      "level": 152,
+      "name": "Çifte Yarımada",
+      "file": "assets/glass/atlas_09-vitray.webp",
+      "raw": "tools/stained/raw/atlas_09-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_09.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Çifte Yarımada. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_02",
+      "level": 154,
+      "name": "Doğu Yarımadası",
+      "file": "assets/glass/atlas_02-vitray.webp",
+      "raw": "tools/stained/raw/atlas_02-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_02.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Doğu Yarımadası. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 691:845 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_11",
+      "level": 156,
+      "name": "Eliptik Dans",
+      "file": "assets/glass/rings_11-vitray.webp",
+      "raw": "tools/stained/raw/rings_11-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_11.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Eliptik Dans. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_13",
+      "level": 158,
+      "name": "Eğimli Halkalar",
+      "file": "assets/glass/rings_13-vitray.webp",
+      "raw": "tools/stained/raw/rings_13-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_13.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Eğimli Halkalar. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_13",
+      "level": 162,
+      "name": "Kanyon Bölgesi",
+      "file": "assets/glass/atlas_13-vitray.webp",
+      "raw": "tools/stained/raw/atlas_13-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_13.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Kanyon Bölgesi. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_22",
+      "level": 164,
+      "name": "Çengel Geçit",
+      "file": "assets/glass/spiral_22-vitray.webp",
+      "raw": "tools/stained/raw/spiral_22-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_22.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Çengel Geçit. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_24",
+      "level": 166,
+      "name": "Dalgaların Buluşması",
+      "file": "assets/glass/rings_24-vitray.webp",
+      "raw": "tools/stained/raw/rings_24-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_24.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Dalgaların Buluşması. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_16",
+      "level": 168,
+      "name": "Dört Avlu",
+      "file": "assets/glass/spiral_16-vitray.webp",
+      "raw": "tools/stained/raw/spiral_16-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_16.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Dört Avlu. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_20",
+      "level": 172,
+      "name": "Birleşen Yollar",
+      "file": "assets/glass/spiral_20-vitray.webp",
+      "raw": "tools/stained/raw/spiral_20-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_20.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Birleşen Yollar. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_14",
+      "level": 174,
+      "name": "İkiz Gezegenler",
+      "file": "assets/glass/rings_14-vitray.webp",
+      "raw": "tools/stained/raw/rings_14-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_14.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for İkiz Gezegenler. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_04",
+      "level": 176,
+      "name": "Üçlü Rezonans",
+      "file": "assets/glass/rings_04-vitray.webp",
+      "raw": "tools/stained/raw/rings_04-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_04.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Üçlü Rezonans. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_06",
+      "level": 178,
+      "name": "Güneş Ufku",
+      "file": "assets/glass/rings_06-vitray.webp",
+      "raw": "tools/stained/raw/rings_06-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_06.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Güneş Ufku. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_08",
+      "level": 184,
+      "name": "Köşe Dalgaları",
+      "file": "assets/glass/rings_08-vitray.webp",
+      "raw": "tools/stained/raw/rings_08-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_08.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Köşe Dalgaları. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_05",
+      "level": 188,
+      "name": "Halka Bahçesi",
+      "file": "assets/glass/rings_05-vitray.webp",
+      "raw": "tools/stained/raw/rings_05-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_05.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Halka Bahçesi. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_21",
+      "level": 194,
+      "name": "Köşeden Merkeze",
+      "file": "assets/glass/spiral_21-vitray.webp",
+      "raw": "tools/stained/raw/spiral_21-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_21.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Köşeden Merkeze. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_04",
+      "level": 198,
+      "name": "Spiral Avlu",
+      "file": "assets/glass/spiral_04-vitray.webp",
+      "raw": "tools/stained/raw/spiral_04-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_04.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Spiral Avlu. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_17",
+      "level": 204,
+      "name": "Kuzey Geçidi",
+      "file": "assets/glass/atlas_17-vitray.webp",
+      "raw": "tools/stained/raw/atlas_17-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_17.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Kuzey Geçidi. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 691:845 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_12",
+      "level": 208,
+      "name": "Uzun Yörüngeler",
+      "file": "assets/glass/rings_12-vitray.webp",
+      "raw": "tools/stained/raw/rings_12-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_12.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Uzun Yörüngeler. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_16",
+      "level": 214,
+      "name": "İç İçe Akıntı",
+      "file": "assets/glass/rings_16-vitray.webp",
+      "raw": "tools/stained/raw/rings_16-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_16.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for İç İçe Akıntı. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_11",
+      "level": 217,
+      "name": "Basamaklı Yol",
+      "file": "assets/glass/spiral_11-vitray.webp",
+      "raw": "tools/stained/raw/spiral_11-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_11.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Basamaklı Yol. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_16",
+      "level": 221,
+      "name": "Büyük Burun",
+      "file": "assets/glass/atlas_16-vitray.webp",
+      "raw": "tools/stained/raw/atlas_16-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_16.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Büyük Burun. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 1016:751 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_18",
+      "level": 224,
+      "name": "Kavşak",
+      "file": "assets/glass/spiral_18-vitray.webp",
+      "raw": "tools/stained/raw/spiral_18-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_18.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Kavşak. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_01",
+      "level": 227,
+      "name": "Dört Yankı",
+      "file": "assets/glass/rings_01-vitray.webp",
+      "raw": "tools/stained/raw/rings_01-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_01.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Dört Yankı. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_21",
+      "level": 231,
+      "name": "İnci Dizisi",
+      "file": "assets/glass/rings_21-vitray.webp",
+      "raw": "tools/stained/raw/rings_21-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_21.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for İnci Dizisi. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_05",
+      "level": 234,
+      "name": "Köşeli Akıntı",
+      "file": "assets/glass/spiral_05-vitray.webp",
+      "raw": "tools/stained/raw/spiral_05-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_05.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Köşeli Akıntı. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_22",
+      "level": 237,
+      "name": "Daireler Korosu",
+      "file": "assets/glass/rings_22-vitray.webp",
+      "raw": "tools/stained/raw/rings_22-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_22.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Daireler Korosu. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_07",
+      "level": 241,
+      "name": "Hilal Ülkesi",
+      "file": "assets/glass/atlas_07-vitray.webp",
+      "raw": "tools/stained/raw/atlas_07-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_07.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Hilal Ülkesi. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 691:845 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_23",
+      "level": 244,
+      "name": "Güney Vadileri",
+      "file": "assets/glass/atlas_23-vitray.webp",
+      "raw": "tools/stained/raw/atlas_23-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_23.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Güney Vadileri. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_15",
+      "level": 247,
+      "name": "Oval Akış",
+      "file": "assets/glass/rings_15-vitray.webp",
+      "raw": "tools/stained/raw/rings_15-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_15.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Oval Akış. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "spiral_13",
+      "level": 251,
+      "name": "Kıvrımlı Sokaklar",
+      "file": "assets/glass/spiral_13-vitray.webp",
+      "raw": "tools/stained/raw/spiral_13-vitray.png",
+      "references": [
+        "tools/stained/guides/spiral_13.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Kıvrımlı Sokaklar. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_24",
+      "level": 254,
+      "name": "Yüksek Yayla",
+      "file": "assets/glass/atlas_24-vitray.webp",
+      "raw": "tools/stained/raw/atlas_24-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_24.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Yüksek Yayla. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_04",
+      "level": 257,
+      "name": "Güney Burnu",
+      "file": "assets/glass/atlas_04-vitray.webp",
+      "raw": "tools/stained/raw/atlas_04-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_04.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Güney Burnu. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_25",
+      "level": 261,
+      "name": "Yeni Kıta",
+      "file": "assets/glass/atlas_25-vitray.webp",
+      "raw": "tools/stained/raw/atlas_25-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_25.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Yeni Kıta. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_17",
+      "level": 264,
+      "name": "Merkezkaç",
+      "file": "assets/glass/rings_17-vitray.webp",
+      "raw": "tools/stained/raw/rings_17-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_17.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Merkezkaç. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_03",
+      "level": 267,
+      "name": "Kuzey Diyarı",
+      "file": "assets/glass/atlas_03-vitray.webp",
+      "raw": "tools/stained/raw/atlas_03-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_03.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Kuzey Diyarı. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "atlas_15",
+      "level": 272,
+      "name": "Kıyı Şeridi",
+      "file": "assets/glass/atlas_15-vitray.webp",
+      "raw": "tools/stained/raw/atlas_15-vitray.png",
+      "references": [
+        "tools/stained/guides/atlas_15.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Kıyı Şeridi. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "rings_18",
+      "level": 275,
+      "name": "Dönen Çemberler",
+      "file": "assets/glass/rings_18-vitray.webp",
+      "raw": "tools/stained/raw/rings_18-vitray.png",
+      "references": [
+        "tools/stained/guides/rings_18.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Dönen Çemberler. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    },
+    {
+      "id": "brain",
+      "level": 276,
+      "name": "Renkli Beyin",
+      "file": "assets/glass/brain-vitray.webp",
+      "raw": "tools/stained/raw/brain-vitray.png",
+      "references": [
+        "tools/stained/guides/brain.png"
+      ],
+      "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Renkli Beyin. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 794:794 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel."
+    }
+  ]
+}

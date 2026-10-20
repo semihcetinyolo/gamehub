@@ -42,6 +42,11 @@
     </div>
     <p class="map-rule" id="mapRule">KOMŞU BÖLGELER, FARKLI RENKLER</p>
     <div class="toast" id="toast" role="status"></div>
+    <div class="clash-bar" id="clashBar" role="status" hidden>
+      <img src="assets/wrong/wrong-lens.webp" alt="" width="40" height="40">
+      <span class="cb-text"><b>Aynı renk yan yana</b><small id="clashCount"></small></span>
+      <span class="cb-step"><button type="button" id="clashPrev" aria-label="Önceki hata">‹</button><span id="clashIdx">1/1</span><button type="button" id="clashNext" aria-label="Sonraki hata">›</button></span>
+    </div>
     <div class="zoom-tools" id="zoomTools" role="group" aria-label="Yakınlaştırma">
       <button class="zoom-btn" id="zoomIn" type="button" aria-label="Yakınlaştır"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button>
       <button class="zoom-btn" id="zoomOut" type="button" aria-label="Uzaklaştır" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button>

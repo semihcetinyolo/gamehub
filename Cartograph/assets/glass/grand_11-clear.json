@@ -1,0 +1,27 @@
+{
+  "id": "grand_11",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T06:53:30.149847+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Ormandaki Kayıp Tapınak. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/grand_11.png"
+  ],
+  "size": [
+    1728,
+    2304
+  ],
+  "guide": "ac8155a92f5296d0bada84669100e6c2f2f48fc46db8565f3ec83a8de757e2cf",
+  "sha256": "213bd3fa50b3ee24221af4f491524d9c06b07198c5ec89aacc2b1e3ae68c7f0a",
+  "palette": [
+    "#f68404",
+    "#fdf73e",
+    "#11958d",
+    "#021992"
+  ],
+  "paneColorCheck": {
+    "matched": 94,
+    "total": 94,
+    "valid": true,
+    "mismatches": []
+  }
+}

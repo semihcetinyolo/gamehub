@@ -1,0 +1,53 @@
+{
+  "id": "story_crab",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:24:59.672667+00:00",
+  "source": "assets/glass/story_crab-restored.webp",
+  "sourceSha256": "c00c70736369aeaf51613f9f5db3f15fa9ea75e0300f745eb0aa8cdfc800d762",
+  "sourceGeometrySha256": "9d1465d6ba65e91ff14aeac74e7bdfcbf9935a42ac44cfa7af5820202bc4bdc2",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 141,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5319968790995364
+    },
+    {
+      "patchSize": 129,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5599321295684467
+    },
+    {
+      "patchSize": 60,
+      "donorPatches": 13,
+      "colour": 2,
+      "preservedFraction": 0.2670324447401607
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6667522546417116
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "73d24c75fabf370c7e39f462c8662a0476b1d59d7e7c181ba9877b952078a10b",
+  "sha256": "79d293d5b40625598b986c787e111378ec3410b8ad054c71d14fd86bf7726c85",
+  "palette": [
+    "#f37314",
+    "#fcdd39",
+    "#3d9f66",
+    "#08326d"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 27,
+    "total": 27,
+    "mismatches": []
+  }
+}

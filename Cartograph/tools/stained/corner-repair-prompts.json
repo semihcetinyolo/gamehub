@@ -1,0 +1,1175 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "id": "bridge",
+      "file": "assets/glass/bridge-clear.webp",
+      "raw": "tools/stained/raw/bridge-clear.png",
+      "references": [
+        "tools/stained/guides/bridge.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of a stone arched bridge over a river under the sun. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "fish",
+      "file": "assets/glass/fish-clear.webp",
+      "raw": "tools/stained/raw/fish-clear.png",
+      "references": [
+        "tools/stained/guides/fish.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of a big friendly tropical fish swimming among bubbles over a sandy sea floor. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "fox",
+      "file": "assets/glass/fox-clear.webp",
+      "raw": "tools/stained/raw/fox-clear.png",
+      "references": [
+        "tools/stained/guides/fox.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of a clever red fox face peeking out between dark green ferns. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_01",
+      "file": "assets/glass/grand_01-clear.webp",
+      "raw": "tools/stained/raw/grand_01-clear.png",
+      "references": [
+        "tools/stained/guides/grand_01.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Dağ Ekspresi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_02",
+      "file": "assets/glass/grand_02-clear.webp",
+      "raw": "tools/stained/raw/grand_02-clear.png",
+      "references": [
+        "tools/stained/guides/grand_02.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Yıldızlı Kamp. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_03",
+      "file": "assets/glass/grand_03-clear.webp",
+      "raw": "tools/stained/raw/grand_03-clear.png",
+      "references": [
+        "tools/stained/guides/grand_03.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Sualtı Şehri. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_04",
+      "file": "assets/glass/grand_04-clear.webp",
+      "raw": "tools/stained/raw/grand_04-clear.png",
+      "references": [
+        "tools/stained/guides/grand_04.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Akdeniz Limanı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_05",
+      "file": "assets/glass/grand_05-clear.webp",
+      "raw": "tools/stained/raw/grand_05-clear.png",
+      "references": [
+        "tools/stained/guides/grand_05.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Göl Kenarı Pagoda. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_06",
+      "file": "assets/glass/grand_06-clear.webp",
+      "raw": "tools/stained/raw/grand_06-clear.png",
+      "references": [
+        "tools/stained/guides/grand_06.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Dağ Rasathanesi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_07",
+      "file": "assets/glass/grand_07-clear.webp",
+      "raw": "tools/stained/raw/grand_07-clear.png",
+      "references": [
+        "tools/stained/guides/grand_07.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Eski Kütüphane. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_08",
+      "file": "assets/glass/grand_08-clear.webp",
+      "raw": "tools/stained/raw/grand_08-clear.png",
+      "references": [
+        "tools/stained/guides/grand_08.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Balon Vadisi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_09",
+      "file": "assets/glass/grand_09-clear.webp",
+      "raw": "tools/stained/raw/grand_09-clear.png",
+      "references": [
+        "tools/stained/guides/grand_09.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Çöl Kervanı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_10",
+      "file": "assets/glass/grand_10-clear.webp",
+      "raw": "tools/stained/raw/grand_10-clear.png",
+      "references": [
+        "tools/stained/guides/grand_10.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Kutup Koyu. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_11",
+      "file": "assets/glass/grand_11-clear.webp",
+      "raw": "tools/stained/raw/grand_11-clear.png",
+      "references": [
+        "tools/stained/guides/grand_11.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Ormandaki Kayıp Tapınak. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_12",
+      "file": "assets/glass/grand_12-clear.webp",
+      "raw": "tools/stained/raw/grand_12-clear.png",
+      "references": [
+        "tools/stained/guides/grand_12.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Sonbahar Kulübesi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_13",
+      "file": "assets/glass/grand_13-clear.webp",
+      "raw": "tools/stained/raw/grand_13-clear.png",
+      "references": [
+        "tools/stained/guides/grand_13.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Yörünge İstasyonu. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_14",
+      "file": "assets/glass/grand_14-clear.webp",
+      "raw": "tools/stained/raw/grand_14-clear.png",
+      "references": [
+        "tools/stained/guides/grand_14.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Mercan Krallığı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_15",
+      "file": "assets/glass/grand_15-clear.webp",
+      "raw": "tools/stained/raw/grand_15-clear.png",
+      "references": [
+        "tools/stained/guides/grand_15.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Nostaljik Tramvay. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_16",
+      "file": "assets/glass/grand_16-clear.webp",
+      "raw": "tools/stained/raw/grand_16-clear.png",
+      "references": [
+        "tools/stained/guides/grand_16.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Mahalle Pastanesi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_17",
+      "file": "assets/glass/grand_17-clear.webp",
+      "raw": "tools/stained/raw/grand_17-clear.png",
+      "references": [
+        "tools/stained/guides/grand_17.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Uçan Adalar. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_18",
+      "file": "assets/glass/grand_18-clear.webp",
+      "raw": "tools/stained/raw/grand_18-clear.png",
+      "references": [
+        "tools/stained/guides/grand_18.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Karlı Dağ Evi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_20",
+      "file": "assets/glass/grand_20-clear.webp",
+      "raw": "tools/stained/raw/grand_20-clear.png",
+      "references": [
+        "tools/stained/guides/grand_20.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Korsan Hazinesi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_21",
+      "file": "assets/glass/grand_21-clear.webp",
+      "raw": "tools/stained/raw/grand_21-clear.png",
+      "references": [
+        "tools/stained/guides/grand_21.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Kanallar Şehri. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_22",
+      "file": "assets/glass/grand_22-clear.webp",
+      "raw": "tools/stained/raw/grand_22-clear.png",
+      "references": [
+        "tools/stained/guides/grand_22.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Rüzgârlı Sahil. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_23",
+      "file": "assets/glass/grand_23-clear.webp",
+      "raw": "tools/stained/raw/grand_23-clear.png",
+      "references": [
+        "tools/stained/guides/grand_23.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Işıklı Lunapark. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_24",
+      "file": "assets/glass/grand_24-clear.webp",
+      "raw": "tools/stained/raw/grand_24-clear.png",
+      "references": [
+        "tools/stained/guides/grand_24.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Kanyon Yolculuğu. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_25",
+      "file": "assets/glass/grand_25-clear.webp",
+      "raw": "tools/stained/raw/grand_25-clear.png",
+      "references": [
+        "tools/stained/guides/grand_25.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Ejderha Dağı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_airship",
+      "file": "assets/glass/motif_airship-clear.webp",
+      "raw": "tools/stained/raw/motif_airship-clear.png",
+      "references": [
+        "tools/stained/guides/motif_airship.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Zeplin. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_alpaca",
+      "file": "assets/glass/motif_alpaca-clear.webp",
+      "raw": "tools/stained/raw/motif_alpaca-clear.png",
+      "references": [
+        "tools/stained/guides/motif_alpaca.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Alpaka. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_astronaut",
+      "file": "assets/glass/motif_astronaut-clear.webp",
+      "raw": "tools/stained/raw/motif_astronaut-clear.png",
+      "references": [
+        "tools/stained/guides/motif_astronaut.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Astronot. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_bat",
+      "file": "assets/glass/motif_bat-clear.webp",
+      "raw": "tools/stained/raw/motif_bat-clear.png",
+      "references": [
+        "tools/stained/guides/motif_bat.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Yarasa. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_bicycle",
+      "file": "assets/glass/motif_bicycle-clear.webp",
+      "raw": "tools/stained/raw/motif_bicycle-clear.png",
+      "references": [
+        "tools/stained/guides/motif_bicycle.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Bisiklet. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_boots",
+      "file": "assets/glass/motif_boots-clear.webp",
+      "raw": "tools/stained/raw/motif_boots-clear.png",
+      "references": [
+        "tools/stained/guides/motif_boots.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Yağmur Çizmeleri. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_camera",
+      "file": "assets/glass/motif_camera-clear.webp",
+      "raw": "tools/stained/raw/motif_camera-clear.png",
+      "references": [
+        "tools/stained/guides/motif_camera.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Fotoğraf Makinesi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_carouselhorse",
+      "file": "assets/glass/motif_carouselhorse-clear.webp",
+      "raw": "tools/stained/raw/motif_carouselhorse-clear.png",
+      "references": [
+        "tools/stained/guides/motif_carouselhorse.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Atlıkarınca Atı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_chameleon",
+      "file": "assets/glass/motif_chameleon-clear.webp",
+      "raw": "tools/stained/raw/motif_chameleon-clear.png",
+      "references": [
+        "tools/stained/guides/motif_chameleon.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Bukalemun. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_crab",
+      "file": "assets/glass/motif_crab-clear.webp",
+      "raw": "tools/stained/raw/motif_crab-clear.png",
+      "references": [
+        "tools/stained/guides/motif_crab.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Yengeç. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_cupcake",
+      "file": "assets/glass/motif_cupcake-clear.webp",
+      "raw": "tools/stained/raw/motif_cupcake-clear.png",
+      "references": [
+        "tools/stained/guides/motif_cupcake.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Kapkek. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_dachshund",
+      "file": "assets/glass/motif_dachshund-clear.webp",
+      "raw": "tools/stained/raw/motif_dachshund-clear.png",
+      "references": [
+        "tools/stained/guides/motif_dachshund.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Sosis Köpek. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_deer",
+      "file": "assets/glass/motif_deer-clear.webp",
+      "raw": "tools/stained/raw/motif_deer-clear.png",
+      "references": [
+        "tools/stained/guides/motif_deer.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Geyik. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_duck",
+      "file": "assets/glass/motif_duck-clear.webp",
+      "raw": "tools/stained/raw/motif_duck-clear.png",
+      "references": [
+        "tools/stained/guides/motif_duck.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Ördek. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_elephant",
+      "file": "assets/glass/motif_elephant-clear.webp",
+      "raw": "tools/stained/raw/motif_elephant-clear.png",
+      "references": [
+        "tools/stained/guides/motif_elephant.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Fil. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_flamingo",
+      "file": "assets/glass/motif_flamingo-clear.webp",
+      "raw": "tools/stained/raw/motif_flamingo-clear.png",
+      "references": [
+        "tools/stained/guides/motif_flamingo.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Flamingo. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_frog",
+      "file": "assets/glass/motif_frog-clear.webp",
+      "raw": "tools/stained/raw/motif_frog-clear.png",
+      "references": [
+        "tools/stained/guides/motif_frog.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Kurbağa. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_giraffe",
+      "file": "assets/glass/motif_giraffe-clear.webp",
+      "raw": "tools/stained/raw/motif_giraffe-clear.png",
+      "references": [
+        "tools/stained/guides/motif_giraffe.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Zürafa. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_gramophone",
+      "file": "assets/glass/motif_gramophone-clear.webp",
+      "raw": "tools/stained/raw/motif_gramophone-clear.png",
+      "references": [
+        "tools/stained/guides/motif_gramophone.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Gramofon. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_guitar",
+      "file": "assets/glass/motif_guitar-clear.webp",
+      "raw": "tools/stained/raw/motif_guitar-clear.png",
+      "references": [
+        "tools/stained/guides/motif_guitar.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Gitar. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_hedgehog",
+      "file": "assets/glass/motif_hedgehog-clear.webp",
+      "raw": "tools/stained/raw/motif_hedgehog-clear.png",
+      "references": [
+        "tools/stained/guides/motif_hedgehog.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Kirpi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_iguana",
+      "file": "assets/glass/motif_iguana-clear.webp",
+      "raw": "tools/stained/raw/motif_iguana-clear.png",
+      "references": [
+        "tools/stained/guides/motif_iguana.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of İguana. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_kite",
+      "file": "assets/glass/motif_kite-clear.webp",
+      "raw": "tools/stained/raw/motif_kite-clear.png",
+      "references": [
+        "tools/stained/guides/motif_kite.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Uçurtma. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_koala",
+      "file": "assets/glass/motif_koala-clear.webp",
+      "raw": "tools/stained/raw/motif_koala-clear.png",
+      "references": [
+        "tools/stained/guides/motif_koala.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Koala. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_lobster",
+      "file": "assets/glass/motif_lobster-clear.webp",
+      "raw": "tools/stained/raw/motif_lobster-clear.png",
+      "references": [
+        "tools/stained/guides/motif_lobster.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Istakoz. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_locomotive",
+      "file": "assets/glass/motif_locomotive-clear.webp",
+      "raw": "tools/stained/raw/motif_locomotive-clear.png",
+      "references": [
+        "tools/stained/guides/motif_locomotive.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Buharlı Lokomotif. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_moka",
+      "file": "assets/glass/motif_moka-clear.webp",
+      "raw": "tools/stained/raw/motif_moka-clear.png",
+      "references": [
+        "tools/stained/guides/motif_moka.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Moka Pot. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_narwhal",
+      "file": "assets/glass/motif_narwhal-clear.webp",
+      "raw": "tools/stained/raw/motif_narwhal-clear.png",
+      "references": [
+        "tools/stained/guides/motif_narwhal.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Deniz Gergedanı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_octopus",
+      "file": "assets/glass/motif_octopus-clear.webp",
+      "raw": "tools/stained/raw/motif_octopus-clear.png",
+      "references": [
+        "tools/stained/guides/motif_octopus.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Ahtapot. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_otter",
+      "file": "assets/glass/motif_otter-clear.webp",
+      "raw": "tools/stained/raw/motif_otter-clear.png",
+      "references": [
+        "tools/stained/guides/motif_otter.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Su Samuru. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_panda",
+      "file": "assets/glass/motif_panda-clear.webp",
+      "raw": "tools/stained/raw/motif_panda-clear.png",
+      "references": [
+        "tools/stained/guides/motif_panda.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Panda. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_pinwheel",
+      "file": "assets/glass/motif_pinwheel-clear.webp",
+      "raw": "tools/stained/raw/motif_pinwheel-clear.png",
+      "references": [
+        "tools/stained/guides/motif_pinwheel.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Rüzgâr Gülü. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_puffin",
+      "file": "assets/glass/motif_puffin-clear.webp",
+      "raw": "tools/stained/raw/motif_puffin-clear.png",
+      "references": [
+        "tools/stained/guides/motif_puffin.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Deniz Papağanı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_raccoon",
+      "file": "assets/glass/motif_raccoon-clear.webp",
+      "raw": "tools/stained/raw/motif_raccoon-clear.png",
+      "references": [
+        "tools/stained/guides/motif_raccoon.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Rakun. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_rocket",
+      "file": "assets/glass/motif_rocket-clear.webp",
+      "raw": "tools/stained/raw/motif_rocket-clear.png",
+      "references": [
+        "tools/stained/guides/motif_rocket.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Roket. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_rooster",
+      "file": "assets/glass/motif_rooster-clear.webp",
+      "raw": "tools/stained/raw/motif_rooster-clear.png",
+      "references": [
+        "tools/stained/guides/motif_rooster.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Horoz. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_saxophone",
+      "file": "assets/glass/motif_saxophone-clear.webp",
+      "raw": "tools/stained/raw/motif_saxophone-clear.png",
+      "references": [
+        "tools/stained/guides/motif_saxophone.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Saksafon. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_seahorse",
+      "file": "assets/glass/motif_seahorse-clear.webp",
+      "raw": "tools/stained/raw/motif_seahorse-clear.png",
+      "references": [
+        "tools/stained/guides/motif_seahorse.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Denizatı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_seal",
+      "file": "assets/glass/motif_seal-clear.webp",
+      "raw": "tools/stained/raw/motif_seal-clear.png",
+      "references": [
+        "tools/stained/guides/motif_seal.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Fok. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_sloth",
+      "file": "assets/glass/motif_sloth-clear.webp",
+      "raw": "tools/stained/raw/motif_sloth-clear.png",
+      "references": [
+        "tools/stained/guides/motif_sloth.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Tembel Hayvan. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_squirrel",
+      "file": "assets/glass/motif_squirrel-clear.webp",
+      "raw": "tools/stained/raw/motif_squirrel-clear.png",
+      "references": [
+        "tools/stained/guides/motif_squirrel.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Sincap. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_stingray",
+      "file": "assets/glass/motif_stingray-clear.webp",
+      "raw": "tools/stained/raw/motif_stingray-clear.png",
+      "references": [
+        "tools/stained/guides/motif_stingray.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Vatoz. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_submarine",
+      "file": "assets/glass/motif_submarine-clear.webp",
+      "raw": "tools/stained/raw/motif_submarine-clear.png",
+      "references": [
+        "tools/stained/guides/motif_submarine.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Denizaltı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_swan",
+      "file": "assets/glass/motif_swan-clear.webp",
+      "raw": "tools/stained/raw/motif_swan-clear.png",
+      "references": [
+        "tools/stained/guides/motif_swan.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Kuğu. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_telescope",
+      "file": "assets/glass/motif_telescope-clear.webp",
+      "raw": "tools/stained/raw/motif_telescope-clear.png",
+      "references": [
+        "tools/stained/guides/motif_telescope.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Teleskop. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_toucan",
+      "file": "assets/glass/motif_toucan-clear.webp",
+      "raw": "tools/stained/raw/motif_toucan-clear.png",
+      "references": [
+        "tools/stained/guides/motif_toucan.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Tukan. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_treasure",
+      "file": "assets/glass/motif_treasure-clear.webp",
+      "raw": "tools/stained/raw/motif_treasure-clear.png",
+      "references": [
+        "tools/stained/guides/motif_treasure.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Hazine Sandığı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_typewriter",
+      "file": "assets/glass/motif_typewriter-clear.webp",
+      "raw": "tools/stained/raw/motif_typewriter-clear.png",
+      "references": [
+        "tools/stained/guides/motif_typewriter.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Daktilo. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_umbrella",
+      "file": "assets/glass/motif_umbrella-clear.webp",
+      "raw": "tools/stained/raw/motif_umbrella-clear.png",
+      "references": [
+        "tools/stained/guides/motif_umbrella.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Şemsiye. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "motif_violin",
+      "file": "assets/glass/motif_violin-clear.webp",
+      "raw": "tools/stained/raw/motif_violin-clear.png",
+      "references": [
+        "tools/stained/guides/motif_violin.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Keman. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "sailboat",
+      "file": "assets/glass/sailboat-clear.webp",
+      "raw": "tools/stained/raw/sailboat-clear.png",
+      "references": [
+        "tools/stained/guides/sailboat.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of a sailboat with two white sails on a sunny blue sea, the sun shining behind. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_airship",
+      "file": "assets/glass/story_airship-clear.webp",
+      "raw": "tools/stained/raw/story_airship-clear.png",
+      "references": [
+        "tools/stained/guides/story_airship.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Bulutların Üstünde. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_alpaca",
+      "file": "assets/glass/story_alpaca-clear.webp",
+      "raw": "tools/stained/raw/story_alpaca-clear.png",
+      "references": [
+        "tools/stained/guides/story_alpaca.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of And Dağları. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_astronaut",
+      "file": "assets/glass/story_astronaut-clear.webp",
+      "raw": "tools/stained/raw/story_astronaut-clear.png",
+      "references": [
+        "tools/stained/guides/story_astronaut.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Uzay Yürüyüşü. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_bat",
+      "file": "assets/glass/story_bat-clear.webp",
+      "raw": "tools/stained/raw/story_bat-clear.png",
+      "references": [
+        "tools/stained/guides/story_bat.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Mağaradan Uçuş. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_bicycle",
+      "file": "assets/glass/story_bicycle-clear.webp",
+      "raw": "tools/stained/raw/story_bicycle-clear.png",
+      "references": [
+        "tools/stained/guides/story_bicycle.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Sahil Bisikleti. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_boots",
+      "file": "assets/glass/story_boots-clear.webp",
+      "raw": "tools/stained/raw/story_boots-clear.png",
+      "references": [
+        "tools/stained/guides/story_boots.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Su Birikintisi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_camera",
+      "file": "assets/glass/story_camera-clear.webp",
+      "raw": "tools/stained/raw/story_camera-clear.png",
+      "references": [
+        "tools/stained/guides/story_camera.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Fotoğraf Gezisi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_carouselhorse",
+      "file": "assets/glass/story_carouselhorse-clear.webp",
+      "raw": "tools/stained/raw/story_carouselhorse-clear.png",
+      "references": [
+        "tools/stained/guides/story_carouselhorse.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Lunapark Akşamı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_chameleon",
+      "file": "assets/glass/story_chameleon-clear.webp",
+      "raw": "tools/stained/raw/story_chameleon-clear.png",
+      "references": [
+        "tools/stained/guides/story_chameleon.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Yağmur Ormanında Kamuflaj. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_crab",
+      "file": "assets/glass/story_crab-clear.webp",
+      "raw": "tools/stained/raw/story_crab-clear.png",
+      "references": [
+        "tools/stained/guides/story_crab.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Kumsalda Yürüyüş. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_cupcake",
+      "file": "assets/glass/story_cupcake-clear.webp",
+      "raw": "tools/stained/raw/story_cupcake-clear.png",
+      "references": [
+        "tools/stained/guides/story_cupcake.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Pastane Vitrini. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_dachshund",
+      "file": "assets/glass/story_dachshund-clear.webp",
+      "raw": "tools/stained/raw/story_dachshund-clear.png",
+      "references": [
+        "tools/stained/guides/story_dachshund.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Parkta Gezinti. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_deer",
+      "file": "assets/glass/story_deer-clear.webp",
+      "raw": "tools/stained/raw/story_deer-clear.png",
+      "references": [
+        "tools/stained/guides/story_deer.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Orman Açıklığı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_duck",
+      "file": "assets/glass/story_duck-clear.webp",
+      "raw": "tools/stained/raw/story_duck-clear.png",
+      "references": [
+        "tools/stained/guides/story_duck.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Sazlık Ailesi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_elephant",
+      "file": "assets/glass/story_elephant-clear.webp",
+      "raw": "tools/stained/raw/story_elephant-clear.png",
+      "references": [
+        "tools/stained/guides/story_elephant.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Savanda Gün Batımı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_flamingo",
+      "file": "assets/glass/story_flamingo-clear.webp",
+      "raw": "tools/stained/raw/story_flamingo-clear.png",
+      "references": [
+        "tools/stained/guides/story_flamingo.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Tuz Gölünde Sabah. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_frog",
+      "file": "assets/glass/story_frog-clear.webp",
+      "raw": "tools/stained/raw/story_frog-clear.png",
+      "references": [
+        "tools/stained/guides/story_frog.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Nilüfer Göleti. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_giraffe",
+      "file": "assets/glass/story_giraffe-clear.webp",
+      "raw": "tools/stained/raw/story_giraffe-clear.png",
+      "references": [
+        "tools/stained/guides/story_giraffe.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Akasya Gölgesi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_gramophone",
+      "file": "assets/glass/story_gramophone-clear.webp",
+      "raw": "tools/stained/raw/story_gramophone-clear.png",
+      "references": [
+        "tools/stained/guides/story_gramophone.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Plakçı Köşesi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_guitar",
+      "file": "assets/glass/story_guitar-clear.webp",
+      "raw": "tools/stained/raw/story_guitar-clear.png",
+      "references": [
+        "tools/stained/guides/story_guitar.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Kamp Ateşi Müziği. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_hedgehog",
+      "file": "assets/glass/story_hedgehog-clear.webp",
+      "raw": "tools/stained/raw/story_hedgehog-clear.png",
+      "references": [
+        "tools/stained/guides/story_hedgehog.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Sonbahar Yaprakları. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_iguana",
+      "file": "assets/glass/story_iguana-clear.webp",
+      "raw": "tools/stained/raw/story_iguana-clear.png",
+      "references": [
+        "tools/stained/guides/story_iguana.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Volkanik Kayalar. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_kite",
+      "file": "assets/glass/story_kite-clear.webp",
+      "raw": "tools/stained/raw/story_kite-clear.png",
+      "references": [
+        "tools/stained/guides/story_kite.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Uçurtma Şenliği. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_koala",
+      "file": "assets/glass/story_koala-clear.webp",
+      "raw": "tools/stained/raw/story_koala-clear.png",
+      "references": [
+        "tools/stained/guides/story_koala.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Okaliptüs Molası. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_lobster",
+      "file": "assets/glass/story_lobster-clear.webp",
+      "raw": "tools/stained/raw/story_lobster-clear.png",
+      "references": [
+        "tools/stained/guides/story_lobster.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Deniz Tabanı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_locomotive",
+      "file": "assets/glass/story_locomotive-clear.webp",
+      "raw": "tools/stained/raw/story_locomotive-clear.png",
+      "references": [
+        "tools/stained/guides/story_locomotive.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Dağ Geçidi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_moka",
+      "file": "assets/glass/story_moka-clear.webp",
+      "raw": "tools/stained/raw/story_moka-clear.png",
+      "references": [
+        "tools/stained/guides/story_moka.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Sabah Kahvesi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_narwhal",
+      "file": "assets/glass/story_narwhal-clear.webp",
+      "raw": "tools/stained/raw/story_narwhal-clear.png",
+      "references": [
+        "tools/stained/guides/story_narwhal.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Kutup Yolculuğu. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_octopus",
+      "file": "assets/glass/story_octopus-clear.webp",
+      "raw": "tools/stained/raw/story_octopus-clear.png",
+      "references": [
+        "tools/stained/guides/story_octopus.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Mercanların Bekçisi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_otter",
+      "file": "assets/glass/story_otter-clear.webp",
+      "raw": "tools/stained/raw/story_otter-clear.png",
+      "references": [
+        "tools/stained/guides/story_otter.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Nehirde Oyun. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_panda",
+      "file": "assets/glass/story_panda-clear.webp",
+      "raw": "tools/stained/raw/story_panda-clear.png",
+      "references": [
+        "tools/stained/guides/story_panda.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Bambu Kahvaltısı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_pinwheel",
+      "file": "assets/glass/story_pinwheel-clear.webp",
+      "raw": "tools/stained/raw/story_pinwheel-clear.png",
+      "references": [
+        "tools/stained/guides/story_pinwheel.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Rüzgârlı Çayır. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_puffin",
+      "file": "assets/glass/story_puffin-clear.webp",
+      "raw": "tools/stained/raw/story_puffin-clear.png",
+      "references": [
+        "tools/stained/guides/story_puffin.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Falez Yuvası. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_raccoon",
+      "file": "assets/glass/story_raccoon-clear.webp",
+      "raw": "tools/stained/raw/story_raccoon-clear.png",
+      "references": [
+        "tools/stained/guides/story_raccoon.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Gece Pikniği. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_rocket",
+      "file": "assets/glass/story_rocket-clear.webp",
+      "raw": "tools/stained/raw/story_rocket-clear.png",
+      "references": [
+        "tools/stained/guides/story_rocket.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Ay Yolculuğu. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_rooster",
+      "file": "assets/glass/story_rooster-clear.webp",
+      "raw": "tools/stained/raw/story_rooster-clear.png",
+      "references": [
+        "tools/stained/guides/story_rooster.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Çiftlikte Şafak. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_saxophone",
+      "file": "assets/glass/story_saxophone-clear.webp",
+      "raw": "tools/stained/raw/story_saxophone-clear.png",
+      "references": [
+        "tools/stained/guides/story_saxophone.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Caz Gecesi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_seahorse",
+      "file": "assets/glass/story_seahorse-clear.webp",
+      "raw": "tools/stained/raw/story_seahorse-clear.png",
+      "references": [
+        "tools/stained/guides/story_seahorse.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Yosunların Arasında. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_seal",
+      "file": "assets/glass/story_seal-clear.webp",
+      "raw": "tools/stained/raw/story_seal-clear.png",
+      "references": [
+        "tools/stained/guides/story_seal.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Buzda Dinlenme. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_sloth",
+      "file": "assets/glass/story_sloth-clear.webp",
+      "raw": "tools/stained/raw/story_sloth-clear.png",
+      "references": [
+        "tools/stained/guides/story_sloth.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Daldaki Siesta. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_squirrel",
+      "file": "assets/glass/story_squirrel-clear.webp",
+      "raw": "tools/stained/raw/story_squirrel-clear.png",
+      "references": [
+        "tools/stained/guides/story_squirrel.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Kışlık Palamutlar. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_stingray",
+      "file": "assets/glass/story_stingray-clear.webp",
+      "raw": "tools/stained/raw/story_stingray-clear.png",
+      "references": [
+        "tools/stained/guides/story_stingray.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Derin Mavi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_submarine",
+      "file": "assets/glass/story_submarine-clear.webp",
+      "raw": "tools/stained/raw/story_submarine-clear.png",
+      "references": [
+        "tools/stained/guides/story_submarine.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Batık Keşfi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_swan",
+      "file": "assets/glass/story_swan-clear.webp",
+      "raw": "tools/stained/raw/story_swan-clear.png",
+      "references": [
+        "tools/stained/guides/story_swan.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Ay Işığında Göl. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_telescope",
+      "file": "assets/glass/story_telescope-clear.webp",
+      "raw": "tools/stained/raw/story_telescope-clear.png",
+      "references": [
+        "tools/stained/guides/story_telescope.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Yıldız Gözlemi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_toucan",
+      "file": "assets/glass/story_toucan-clear.webp",
+      "raw": "tools/stained/raw/story_toucan-clear.png",
+      "references": [
+        "tools/stained/guides/story_toucan.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Tropik Meyve Ziyafeti. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_treasure",
+      "file": "assets/glass/story_treasure-clear.webp",
+      "raw": "tools/stained/raw/story_treasure-clear.png",
+      "references": [
+        "tools/stained/guides/story_treasure.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Korsan Koyu. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_typewriter",
+      "file": "assets/glass/story_typewriter-clear.webp",
+      "raw": "tools/stained/raw/story_typewriter-clear.png",
+      "references": [
+        "tools/stained/guides/story_typewriter.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Yazarın Penceresi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_umbrella",
+      "file": "assets/glass/story_umbrella-clear.webp",
+      "raw": "tools/stained/raw/story_umbrella-clear.png",
+      "references": [
+        "tools/stained/guides/story_umbrella.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Yağmurlu Sokak. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "story_violin",
+      "file": "assets/glass/story_violin-clear.webp",
+      "raw": "tools/stained/raw/story_violin-clear.png",
+      "references": [
+        "tools/stained/guides/story_violin.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Sokak Konseri. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "tree",
+      "file": "assets/glass/tree-clear.webp",
+      "raw": "tools/stained/raw/tree-clear.png",
+      "references": [
+        "tools/stained/guides/tree.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of a tree of life with a strong trunk and a round leafy crown on a green hill, sun rays behind. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    },
+    {
+      "id": "grand_19",
+      "file": "assets/glass/grand_19-clear.webp",
+      "raw": "tools/stained/raw/grand_19-clear.png",
+      "references": [
+        "tools/stained/guides/grand_19.png"
+      ],
+      "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Savanda Buluşma. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different."
+    }
+  ]
+}

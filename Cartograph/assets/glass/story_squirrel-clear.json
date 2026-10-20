@@ -1,0 +1,27 @@
+{
+  "id": "story_squirrel",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:28:41.255381+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Kışlık Palamutlar. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_squirrel.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "8d204b8f835f10e1b784a363d1a5663dab87da38af4d592161bddb0ce57dbe66",
+  "sha256": "aea584091a74a660be33ad0696cb20c96e6e1c502a358cb92b9e3e921a62b909",
+  "palette": [
+    "#e85423",
+    "#fdf09f",
+    "#6d9919",
+    "#034f81"
+  ],
+  "paneColorCheck": {
+    "matched": 38,
+    "total": 38,
+    "valid": true,
+    "mismatches": []
+  }
+}

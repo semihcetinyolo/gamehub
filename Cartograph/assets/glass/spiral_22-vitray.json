@@ -1,0 +1,27 @@
+{
+  "id": "spiral_22",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:59:34.164134+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Çengel Geçit. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/spiral_22.png"
+  ],
+  "size": [
+    768,
+    768
+  ],
+  "guide": "975541e5e62f6b4a69d5ff40701dd74f1b64121272a25d73fe20d2be7f3a5bbb",
+  "sha256": "bd4a9bf91a6bb3f1a9bb3d624f6a9d367c76360d13344cc9ecb72eb44c417d66",
+  "palette": [
+    "#a548b8",
+    "#fede29",
+    "#27b3a4",
+    "#0e4bcd"
+  ],
+  "paneColorCheck": {
+    "matched": 26,
+    "total": 26,
+    "valid": true,
+    "mismatches": []
+  }
+}

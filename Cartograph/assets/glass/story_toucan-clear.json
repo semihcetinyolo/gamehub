@@ -1,0 +1,27 @@
+{
+  "id": "story_toucan",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:27:15.789848+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Tropik Meyve Ziyafeti. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_toucan.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "bd2cc82db028559cb4e2838b9018a3e3d95d548b3a3a681deaa60ba1d621cf8e",
+  "sha256": "73042bbaca1e822826bdc109dbf865c5139c375fab58c0ed2ee0f2b43bf64f6e",
+  "palette": [
+    "#eb7a15",
+    "#fde45e",
+    "#519dcb",
+    "#0f2f65"
+  ],
+  "paneColorCheck": {
+    "matched": 30,
+    "total": 30,
+    "valid": true,
+    "mismatches": []
+  }
+}

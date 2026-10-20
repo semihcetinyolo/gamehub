@@ -1,0 +1,53 @@
+{
+  "id": "story_toucan",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:25:12.527871+00:00",
+  "source": "assets/glass/story_toucan-restored.webp",
+  "sourceSha256": "54d9aeb32b743cd1a6b41e0de5a15a3331457907622dc35a6ee56728924935dc",
+  "sourceGeometrySha256": "7a75bfee9423a52cb528a2e353f16d2414bb8293c58733073ed4505e5724e660",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 56,
+      "donorPatches": 12,
+      "colour": 0,
+      "preservedFraction": 0.18233003606179723
+    },
+    {
+      "patchSize": 111,
+      "donorPatches": 79,
+      "colour": 1,
+      "preservedFraction": 0.4937055555597951
+    },
+    {
+      "patchSize": 105,
+      "donorPatches": 88,
+      "colour": 2,
+      "preservedFraction": 0.5136265242626603
+    },
+    {
+      "patchSize": 134,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5280117315442618
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "13dc8ba76ea331281910369ecd564f63e45c88e784564cb05b0fccf7ad99a5e3",
+  "sha256": "62ac4f51b10f0896c8639a7196cde1ec94cd79e5aadca905770b2a2252bcb5a5",
+  "palette": [
+    "#ed760f",
+    "#fae168",
+    "#589fce",
+    "#0a2e60"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 31,
+    "total": 31,
+    "mismatches": []
+  }
+}

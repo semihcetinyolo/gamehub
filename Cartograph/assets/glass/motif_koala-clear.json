@@ -1,0 +1,27 @@
+{
+  "id": "motif_koala",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:02:39.108173+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Koala. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_koala.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "41423ed3ad097c352e6b66cb727926600092c9f38dc1586f5f0028ff2b3792a3",
+  "sha256": "4e88e2c7e8a9d7bab01308192f99cc6202454f51759657d9d9a07aa36959c0d9",
+  "palette": [
+    "#f87005",
+    "#fee83d",
+    "#21947e",
+    "#012069"
+  ],
+  "paneColorCheck": {
+    "matched": 32,
+    "total": 32,
+    "valid": true,
+    "mismatches": []
+  }
+}

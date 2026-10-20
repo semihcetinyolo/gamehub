@@ -1,0 +1,53 @@
+{
+  "id": "motif_frog",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:25:29.273470+00:00",
+  "source": "assets/glass/motif_frog-restored.webp",
+  "sourceSha256": "864c74c56c99dff205de46a09d81dde0af10dd1d8507c5ac1626dfe0b17e3e58",
+  "sourceGeometrySha256": "632755453712ec49573783c3112ea5f3100cbe57b5c3bf6755387b5f169ba9ee",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 139,
+      "donorPatches": 82,
+      "colour": 0,
+      "preservedFraction": 0.5190592646283874
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6417734993405719
+    },
+    {
+      "patchSize": 109,
+      "donorPatches": 60,
+      "colour": 2,
+      "preservedFraction": 0.5514079765682238
+    },
+    {
+      "patchSize": 99,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5005640269138104
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "5699dd8552aa11aa1085adf5b63f882537dd2a256fb2b999aacaade6587f9f01",
+  "sha256": "6250f81dbd8a514d8d245ac0d2f630c2db7f05740560aa22fffb99a1572f288b",
+  "palette": [
+    "#bf436b",
+    "#f9df44",
+    "#19a3b4",
+    "#02206d"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 26,
+    "total": 26,
+    "mismatches": []
+  }
+}

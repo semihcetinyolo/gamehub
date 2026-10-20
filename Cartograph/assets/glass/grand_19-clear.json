@@ -1,0 +1,27 @@
+{
+  "id": "grand_19",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T06:53:30.379909+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Savanda Buluşma. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/grand_19.png"
+  ],
+  "size": [
+    2007,
+    2676
+  ],
+  "guide": "37e8480a2541f276fa9e8af7f3d87aeb8e5b369a57325f2e09d1930d69f56756",
+  "sha256": "0dbe24066ecb6bb3ac207de1d2e483188dba2ecd9db1c7b93d76048c74a1df9c",
+  "palette": [
+    "#e3910d",
+    "#fdf95a",
+    "#508cdd",
+    "#031564"
+  ],
+  "paneColorCheck": {
+    "matched": 82,
+    "total": 82,
+    "valid": true,
+    "mismatches": []
+  }
+}

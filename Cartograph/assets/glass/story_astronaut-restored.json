@@ -1,0 +1,53 @@
+{
+  "id": "story_astronaut",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:27:53.790254+00:00",
+  "source": "assets/glass/story_astronaut-clear.webp",
+  "sourceSha256": "72a30c019bd2193c318014790c0c798721336b282bc874899370db402cbb79bd",
+  "sourceGeometrySha256": "2dd3bdd1e7a08f12924dd6ef8335d0d909cbce60ba61b690fbd377db0a3892bd",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 80,
+      "donorPatches": 53,
+      "colour": 0,
+      "preservedFraction": 0.04338175744045241
+    },
+    {
+      "patchSize": 96,
+      "donorPatches": 58,
+      "colour": 1,
+      "preservedFraction": 0.2563958194456696
+    },
+    {
+      "patchSize": 84,
+      "donorPatches": 25,
+      "colour": 2,
+      "preservedFraction": 0.15083033993532452
+    },
+    {
+      "patchSize": 97,
+      "donorPatches": 64,
+      "colour": 3,
+      "preservedFraction": 0.2796536669254037
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "58a5acbd576014583ee476272bfae6fb62fc7c4bbd0611ec86514e2ffc8b5371",
+  "sha256": "66825c9ceec1a31f2b084a4bce24d1251db577831f4f853d04892a007e205874",
+  "palette": [
+    "#e37c05",
+    "#fdf459",
+    "#2180d1",
+    "#041b57"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 22,
+    "total": 22,
+    "mismatches": []
+  }
+}

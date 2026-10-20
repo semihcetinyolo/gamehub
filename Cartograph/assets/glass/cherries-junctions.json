@@ -1,0 +1,53 @@
+{
+  "id": "cherries",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:24:39.382683+00:00",
+  "source": "assets/glass/cherries-restored.webp",
+  "sourceSha256": "e23f5f2896eb76a8a78b0978ca7361edf8138bfb3314760b05bda4c9ba139ef2",
+  "sourceGeometrySha256": "94fca3b7d8296da993370a10fdafb5feaf4c5823da4a35d521e7c4843826dd60",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 127,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5710925323824507
+    },
+    {
+      "patchSize": 112,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5195188951001294
+    },
+    {
+      "patchSize": 60,
+      "donorPatches": 21,
+      "colour": 2,
+      "preservedFraction": 0.3346833480000705
+    },
+    {
+      "patchSize": 81,
+      "donorPatches": 49,
+      "colour": 3,
+      "preservedFraction": 0.4685164702582602
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "10d7d8b2715530869825e4b59ff9104877a4c02543e72a5ae374a09ac628c5af",
+  "sha256": "3f77a44ac8e2b42344991752e0c5abe14ee8b6cc980ca22c109874e0a199fb5e",
+  "palette": [
+    "#8e0310",
+    "#fbe788",
+    "#2e832f",
+    "#196aac"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 35,
+    "total": 35,
+    "mismatches": []
+  }
+}

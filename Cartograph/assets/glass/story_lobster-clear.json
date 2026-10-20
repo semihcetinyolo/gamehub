@@ -1,0 +1,27 @@
+{
+  "id": "story_lobster",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:20:07.143963+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Deniz Tabanı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_lobster.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "399a08583e90d0b882b5a263602bd24378dbdd25e04fb64ea7f68ee0c2184c91",
+  "sha256": "8f8231435e0d06436974f6406c8f2cd6ff3cc795da59ad16d4e482fd1d89fa45",
+  "palette": [
+    "#ea8419",
+    "#fdef6e",
+    "#4fa2cc",
+    "#0e2c66"
+  ],
+  "paneColorCheck": {
+    "matched": 41,
+    "total": 41,
+    "valid": true,
+    "mismatches": []
+  }
+}

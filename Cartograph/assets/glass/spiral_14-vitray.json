@@ -1,0 +1,27 @@
+{
+  "id": "spiral_14",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:58:19.448997+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Merdiven Şehri. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/spiral_14.png"
+  ],
+  "size": [
+    883,
+    883
+  ],
+  "guide": "66f7e14862b0620cf76a58814f8dd1a0c59662969e73f74919d9ee800297ee06",
+  "sha256": "67f9cd93b5f672b22a761f4c5f9f8807cff2919f4f9221ea388a3cae9c89bfd7",
+  "palette": [
+    "#014db9",
+    "#fef12f",
+    "#029766",
+    "#e47d8a"
+  ],
+  "paneColorCheck": {
+    "matched": 33,
+    "total": 33,
+    "valid": true,
+    "mismatches": []
+  }
+}

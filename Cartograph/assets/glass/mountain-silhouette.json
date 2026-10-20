@@ -1,0 +1,53 @@
+{
+  "id": "mountain",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:23:26.621551+00:00",
+  "source": "assets/glass/mountain-junction-pilot.webp",
+  "sourceSha256": "267c74e755e3886c4dbb89d46282a7dadcc83ec8b70d7327e99e5a562a533e79",
+  "sourceGeometrySha256": "1a156b9565eeda350b4e2670fa6c745b6f4300c0766ad30b1eb1a69891a04c06",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 56,
+      "donorPatches": 29,
+      "colour": 0,
+      "preservedFraction": 0.3818680443187562
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 84,
+      "colour": 1,
+      "preservedFraction": 0.43443634463781544
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.520194349456349
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5303880237945244
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "106a048df649a7a501f1748de32f3ec87495a59c44b297d655dbff578d435c02",
+  "sha256": "ef1a72a980efa6aa53c7a39cd5486d10593450677a5bc3f6f432fdb1a54424c2",
+  "palette": [
+    "#f06d84",
+    "#fbd214",
+    "#416fa0",
+    "#085826"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 39,
+    "total": 39,
+    "mismatches": []
+  }
+}

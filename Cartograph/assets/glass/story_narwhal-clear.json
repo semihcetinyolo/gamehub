@@ -1,0 +1,27 @@
+{
+  "id": "story_narwhal",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:22:02.535085+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Kutup Yolculuğu. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_narwhal.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "81789035eb3b2880de9168473d252af30c22177bd0d6a59b0ef9b27605121382",
+  "sha256": "6f9821e437e4fbf84c46fc73a6f6e8f87da7a289f5a4033b6d202a5d26a57063",
+  "palette": [
+    "#c14462",
+    "#feea60",
+    "#1e949f",
+    "#082356"
+  ],
+  "paneColorCheck": {
+    "matched": 31,
+    "total": 31,
+    "valid": true,
+    "mismatches": []
+  }
+}

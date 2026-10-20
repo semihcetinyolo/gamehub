@@ -1,0 +1,53 @@
+{
+  "id": "motif_carouselhorse",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:13:02.406962+00:00",
+  "source": "assets/glass/motif_carouselhorse-junctions.webp",
+  "sourceSha256": "80dd568162e6593f59263dd81344caabf51c8af817c0ab30fe34134a522c9077",
+  "sourceGeometrySha256": "c0861c9dcea3d15595aa93f950752888589a5a8a022ed9274fef92843e1e5ee2",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6692795799126879
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6300925522244785
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.44078609103580935
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6918797012815376
+    }
+  ],
+  "size": [
+    1728,
+    2304
+  ],
+  "guide": "d232987bd29822fcf38591c7e13e7de81df23812be5762d4fdab34d8a22bedf5",
+  "sha256": "db19e523b036b7162f0bf82008ea78252bae696e5bce9b78cbaa2862b028d081",
+  "palette": [
+    "#f05431",
+    "#fced71",
+    "#3d9c8f",
+    "#06206c"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 32,
+    "total": 32,
+    "mismatches": []
+  }
+}

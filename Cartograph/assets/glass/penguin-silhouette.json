@@ -1,0 +1,53 @@
+{
+  "id": "penguin",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:13:07.100624+00:00",
+  "source": "assets/glass/penguin-junctions.webp",
+  "sourceSha256": "887b3f36666a8387c50b20ba81b8a5c51ed0d2c6ac22203adb4c07fbdd82fa3b",
+  "sourceGeometrySha256": "ab575d2e2a4e62dc88202641d5a0326c3888915ff24e65ec5e8fa8ed84aaa170",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 94,
+      "donorPatches": 41,
+      "colour": 0,
+      "preservedFraction": 0.41088505916407664
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5415507412445811
+    },
+    {
+      "patchSize": 104,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.4742145811780712
+    },
+    {
+      "patchSize": 122,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.4827490283299413
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "cbd1ec8b8673933e590b4b73d8de384d0491c4a93a674c1a9891ee55c3f42fba",
+  "sha256": "0f5276c701d875862a6a8586ac8737d7bdcccd53519da26063f5cc8fb0105383",
+  "palette": [
+    "#033555",
+    "#f3e098",
+    "#e9850c",
+    "#4096ae"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 30,
+    "total": 30,
+    "mismatches": []
+  }
+}

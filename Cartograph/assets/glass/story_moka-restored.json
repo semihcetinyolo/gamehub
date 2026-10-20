@@ -1,0 +1,53 @@
+{
+  "id": "story_moka",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:20:30.769404+00:00",
+  "source": "assets/glass/story_moka-clear.webp",
+  "sourceSha256": "e99f0f81c4fcf25e0c366a2e52daee6b894a6a8e8ec6ee0c07e3eeaa3831f792",
+  "sourceGeometrySha256": "6f9d329787c0450e33bafac728847a126cfa131a0708c0ed9229f3298bbafe25",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 142,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.2597514422057749
+    },
+    {
+      "patchSize": 136,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.38380338199665087
+    },
+    {
+      "patchSize": 68,
+      "donorPatches": 32,
+      "colour": 2,
+      "preservedFraction": 0.17146573500058035
+    },
+    {
+      "patchSize": 85,
+      "donorPatches": 33,
+      "colour": 3,
+      "preservedFraction": 0.2895484355589888
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "25ffe3ddce54d70685a7ef50db3ebf9dd6655b58e63290b7510cbf3d10138f96",
+  "sha256": "ea358615488ed8ac86314857a3ddfad3c020ac387b97a344300e25d87ee22426",
+  "palette": [
+    "#e46a21",
+    "#fceca5",
+    "#679118",
+    "#034674"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 27,
+    "total": 27,
+    "mismatches": []
+  }
+}

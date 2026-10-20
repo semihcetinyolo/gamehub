@@ -1,0 +1,27 @@
+{
+  "id": "atlas_12",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:56:26.338765+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Geniş Ova. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 691:845 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/atlas_12.png"
+  ],
+  "size": [
+    691,
+    845
+  ],
+  "guide": "3d8fad006c780a0007722c0fca751eaa0cc1a22e50f619ae8bc1de82140657fa",
+  "sha256": "a44af377c2359eff2e2b63994984fa2c86b160d7fd3df580354fb65aedcb8d49",
+  "palette": [
+    "#0168b6",
+    "#fde922",
+    "#089b69",
+    "#db7a86"
+  ],
+  "paneColorCheck": {
+    "matched": 30,
+    "total": 30,
+    "valid": true,
+    "mismatches": []
+  }
+}

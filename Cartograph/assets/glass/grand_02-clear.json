@@ -1,0 +1,27 @@
+{
+  "id": "grand_02",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T06:48:26.949522+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Yıldızlı Kamp. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/grand_02.png"
+  ],
+  "size": [
+    1728,
+    2304
+  ],
+  "guide": "c3c0bc149543a8da53930835ef0d3b9f52baa9108218eff22dfaf56e564df9be",
+  "sha256": "dd900572b5a1e54b32792dd7809522ac7c7b6b463f65654c4b7c018717e127e3",
+  "palette": [
+    "#c43a5a",
+    "#fef059",
+    "#1b859d",
+    "#112350"
+  ],
+  "paneColorCheck": {
+    "matched": 82,
+    "total": 82,
+    "valid": true,
+    "mismatches": []
+  }
+}

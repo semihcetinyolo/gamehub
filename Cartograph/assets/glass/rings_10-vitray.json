@@ -1,0 +1,27 @@
+{
+  "id": "rings_10",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:52:53.519950+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Kesişen Ufuklar. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 768:768 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/rings_10.png"
+  ],
+  "size": [
+    768,
+    768
+  ],
+  "guide": "2b07516970b5bd30b64ad0417ef764e485360d98ab1d930c3cfd2a7931404faf",
+  "sha256": "c023f963ea8eb10bdd88dc89e2a53f3fd8d3204a56eadb065190b51f8801cffd",
+  "palette": [
+    "#3bbaec",
+    "#f74455",
+    "#fce045",
+    "#328624"
+  ],
+  "paneColorCheck": {
+    "matched": 27,
+    "total": 27,
+    "valid": true,
+    "mismatches": []
+  }
+}

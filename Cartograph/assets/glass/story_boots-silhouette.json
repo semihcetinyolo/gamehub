@@ -1,0 +1,53 @@
+{
+  "id": "story_boots",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:13:48.193598+00:00",
+  "source": "assets/glass/story_boots-junctions.webp",
+  "sourceSha256": "4ddf90be43260e44bc32c06b7ecca21d746f1ef74f8fb354a6529ac74cd857bc",
+  "sourceGeometrySha256": "6e2035b8b1f9d93f4186203e8519833bb4aa36e66078d970f7e3beb67fc07955",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 105,
+      "donorPatches": 83,
+      "colour": 0,
+      "preservedFraction": 0.6655095494905248
+    },
+    {
+      "patchSize": 107,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.532259216829562
+    },
+    {
+      "patchSize": 103,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5268935661171048
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6924057358961613
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "1bda2f4152a3f0d612e4dc422a35ea12ce283146757ea4ca71e1da1206c73326",
+  "sha256": "eb28e81b6c2da7a199ef2791f5dfe56c27f5cffb948b311616ce7e85ae44250f",
+  "palette": [
+    "#f96913",
+    "#fcea40",
+    "#1aa374",
+    "#022d7b"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 16,
+    "total": 16,
+    "mismatches": []
+  }
+}

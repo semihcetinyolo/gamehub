@@ -1,0 +1,27 @@
+{
+  "id": "motif_rooster",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:07:30.261204+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Horoz. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_rooster.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "3b587dc1ab3038ed38f731a61f062b01923a214a099c3ed11b68d6db32aad137",
+  "sha256": "7c8cfeca584580056a734d0c8a8b7bf01253862c0a37c10e3a2494f6151daba4",
+  "palette": [
+    "#f87d06",
+    "#fcea3d",
+    "#1ba991",
+    "#011d7a"
+  ],
+  "paneColorCheck": {
+    "matched": 40,
+    "total": 40,
+    "valid": true,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "tulip",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:18:32.622058+00:00",
+  "source": "assets/glass/tulip.webp",
+  "sourceSha256": "c3fb7bdc9818c10399d0cafaa865f00b3e91f15902038c2b3e1bc5516fde8c0c",
+  "sourceGeometrySha256": "fd416ee45a985dfd3bc9928ea8f0fb06892f13e516c616278a4c4a58ae57df27",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 68,
+      "donorPatches": 35,
+      "colour": 0,
+      "preservedFraction": 0.37932296832870516
+    },
+    {
+      "patchSize": 62,
+      "donorPatches": 33,
+      "colour": 1,
+      "preservedFraction": 0.2712560778807945
+    },
+    {
+      "patchSize": 58,
+      "donorPatches": 14,
+      "colour": 2,
+      "preservedFraction": 0.44474482015178407
+    },
+    {
+      "patchSize": 82,
+      "donorPatches": 65,
+      "colour": 3,
+      "preservedFraction": 0.3835230467037134
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "0b3b337ae7fb64a7fcca63bd11a84fac7de78868dc71d3c9de528fde55a6d9ef",
+  "sha256": "bd0f344b279a44c1243dc45d59a9f296cbbba0b7c225e25c8ae815f130bc7b7a",
+  "palette": [
+    "#b6040e",
+    "#ee7d93",
+    "#4c890c",
+    "#f4da8d"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 40,
+    "total": 40,
+    "mismatches": []
+  }
+}

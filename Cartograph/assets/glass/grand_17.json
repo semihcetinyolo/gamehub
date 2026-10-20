@@ -1,0 +1,27 @@
+{
+  "id": "grand_17",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-19T12:43:20.217941+00:00",
+  "prompt": "Use case: style-transfer. Subject: Uçan Adalar. Transform this exact geometric colour guide into a luminous photographic artisan stained-glass panel. Preserve every pane, boundary, silhouette, margin and all four existing hues exactly. Add gentle handmade translucent glass ripples, tiny bubbles, subtle backlighting and thin dark metallic lead on existing seams. No extra lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the 3:4 portrait reference pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue. Use clean seam junctions without round tabs or decorative bumps. Output resolution 1728x2304.",
+  "references": [
+    "tools/stained/guides/grand_17.png"
+  ],
+  "size": [
+    1728,
+    2304
+  ],
+  "guide": "24dba614991db4a5ce226aa398a8e1abb9fb4a3a213003e39f1df9bdbbd1c28d",
+  "sha256": "a318d9e7de48a2514d0fe64b224155ef9a3fff6575c5103fda79bedfeff3925b",
+  "palette": [
+    "#cd5163",
+    "#fef35e",
+    "#0e88b2",
+    "#091c5c"
+  ],
+  "paneColorCheck": {
+    "matched": 80,
+    "total": 80,
+    "valid": true,
+    "mismatches": []
+  }
+}

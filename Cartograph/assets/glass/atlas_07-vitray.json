@@ -1,0 +1,27 @@
+{
+  "id": "atlas_07",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T08:06:43.731007+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Hilal Ülkesi. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 691:845 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/atlas_07.png"
+  ],
+  "size": [
+    691,
+    845
+  ],
+  "guide": "2dd7fd0b6f0bca2a809eaf3ec51d0964c49bc2b72ceef196b3c14506714f803e",
+  "sha256": "321779f831f50f2fbb0c6104d7f25534ce0852acfabc37c9ad15911bf33a8d68",
+  "palette": [
+    "#0273cf",
+    "#fef536",
+    "#14aa57",
+    "#e37690"
+  ],
+  "paneColorCheck": {
+    "matched": 29,
+    "total": 29,
+    "valid": true,
+    "mismatches": []
+  }
+}

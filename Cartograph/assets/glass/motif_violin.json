@@ -1,0 +1,27 @@
+{
+  "id": "motif_violin",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-19T12:46:01.645806+00:00",
+  "prompt": "Use case: style-transfer. Subject: Keman. Transform this exact geometric colour guide into a luminous photographic artisan stained-glass panel. Preserve every pane, boundary, silhouette, margin and all four existing hues exactly. Add gentle handmade translucent glass ripples, tiny bubbles, subtle backlighting and thin dark metallic lead on existing seams. No extra lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the 3:4 portrait reference pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue. Use clean seam junctions without round tabs or decorative bumps. Output resolution 768x1024.",
+  "references": [
+    "tools/stained/guides/motif_violin.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "6b168c10ac0878620ad746911379dc4716d97e9c1f814b8ae11843d0a3559f64",
+  "sha256": "2092ead0836f405edcf0862b123d6267802b48bb4550af7f61196ac511e9165d",
+  "palette": [
+    "#e2850d",
+    "#fdeb58",
+    "#3c85c9",
+    "#021d65"
+  ],
+  "paneColorCheck": {
+    "matched": 30,
+    "total": 30,
+    "valid": true,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "rings_22",
+  "tool": "native vector geometry",
+  "palette": [
+    "#cf855c",
+    "#eddf73",
+    "#519d9b",
+    "#385a8e"
+  ],
+  "size": [
+    883,
+    883
+  ],
+  "guide": "5de9b94a83b11380e3dabca843b0617e65ad3dcbc345c5a9b14ec2464b66ce23",
+  "sha256": "dd96a83761b00e6a5a85d40d4c4e1e5b018e51a458b1b51b1f2971f4df15f856",
+  "references": [
+    "tools/stained/references/38.webp"
+  ],
+  "description": "Overlapping circular bands with staggered divisions.",
+  "paneColorCheck": {
+    "matched": 40,
+    "total": 40,
+    "valid": true,
+    "mismatches": []
+  }
+}

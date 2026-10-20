@@ -1,0 +1,53 @@
+{
+  "id": "lantern",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:12:59.923445+00:00",
+  "source": "assets/glass/lantern-junctions.webp",
+  "sourceSha256": "9e12be74e1cd4322b9b55b4c1cbac106e278368edf129f614636f4c7d9e1c80d",
+  "sourceGeometrySha256": "4b9d701998a5d1397e16f903cb53697ed33b89ee79d16c9d60b84fe3e913640d",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 105,
+      "donorPatches": 55,
+      "colour": 0,
+      "preservedFraction": 0.5135916149222339
+    },
+    {
+      "patchSize": 119,
+      "donorPatches": 80,
+      "colour": 1,
+      "preservedFraction": 0.5703278809937058
+    },
+    {
+      "patchSize": 87,
+      "donorPatches": 47,
+      "colour": 2,
+      "preservedFraction": 0.40507542540710756
+    },
+    {
+      "patchSize": 107,
+      "donorPatches": 72,
+      "colour": 3,
+      "preservedFraction": 0.4253774802377686
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "3dfd3e872ef674dbae2a7c9b0e5df2315a2d7068b7d8d3b2158a93449b2c036d",
+  "sha256": "77f1a0cd43a27860485d7cc13c2cf3cc2ff8fc1699b87ca19ab7935840f2ce8a",
+  "palette": [
+    "#cd3409",
+    "#f8ce15",
+    "#078187",
+    "#203658"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 32,
+    "total": 32,
+    "mismatches": []
+  }
+}

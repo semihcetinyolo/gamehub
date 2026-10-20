@@ -1,0 +1,53 @@
+{
+  "id": "story_hedgehog",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:12:51.680750+00:00",
+  "source": "assets/glass/story_hedgehog-junctions.webp",
+  "sourceSha256": "a54567fe742dc2f93ad9faf051286247dda6434e6466f1d007bf5250e7cc5a5b",
+  "sourceGeometrySha256": "743ee28f85852d4231f7784c318842f78be53dbf19f05f6bc4686089ffa761c6",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 108,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5368512376740443
+    },
+    {
+      "patchSize": 103,
+      "donorPatches": 69,
+      "colour": 1,
+      "preservedFraction": 0.14264274741137517
+    },
+    {
+      "patchSize": 122,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 4.265285811940655e-05
+    },
+    {
+      "patchSize": 134,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.19742639327069056
+    }
+  ],
+  "size": [
+    1728,
+    2304
+  ],
+  "guide": "b4957515bae37981275eb81bec1aaceee230b8b82ff10da53f96c5e20129bcd5",
+  "sha256": "4fb60c2ce49f1ef7f94d01349f5c04277d248c9567b492af767bef76b897e896",
+  "palette": [
+    "#dc5f73",
+    "#facd2c",
+    "#30b1a4",
+    "#082d59"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 21,
+    "total": 21,
+    "mismatches": []
+  }
+}

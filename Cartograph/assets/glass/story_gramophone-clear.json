@@ -1,0 +1,27 @@
+{
+  "id": "story_gramophone",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:21:28.869898+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Plakçı Köşesi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_gramophone.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "b84ed254e92a0a2b956541549a68cd013557e3249ad0a1bfde9d08711738e8b0",
+  "sha256": "f7555b3af85db78adc8a254c49ff58ec9fc3ad08a5b38f9691f6a61381637fad",
+  "palette": [
+    "#ee610b",
+    "#fcdb49",
+    "#31926f",
+    "#03307c"
+  ],
+  "paneColorCheck": {
+    "matched": 33,
+    "total": 33,
+    "valid": true,
+    "mismatches": []
+  }
+}

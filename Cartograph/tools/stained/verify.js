@@ -23,7 +23,7 @@ const FIRST = ['cat', 'cactus', 'lotus', 'heart', 'fox', 'fish', 'flower', 'moon
     assert(await page.locator('#menuProfile').isVisible());
     await page.locator('#menuPlay').click();
     const total = await page.evaluate(() => window.CARTO_STAINED.length);
-    assert.equal(total, 50, `expected 50 levels, got ${total}`);
+    assert.equal(total, 276, `expected 276 levels, got ${total}`);
     assert.deepEqual(await page.evaluate(n => window.CARTO_STAINED.slice(0, n).map(l => l.id), FIRST.length), FIRST);
     // only the default way to play is left
     assert.equal(await page.locator('#lives, #colorChip, #regionPicker').count(), 0);
@@ -41,11 +41,12 @@ const FIRST = ['cat', 'cactus', 'lotus', 'heart', 'fox', 'fish', 'flower', 'moon
 
     // tutorial on the first level: pick the colour, double tap, single tap a note, start
     await page.locator('#coach').waitFor();
+    await page.locator('#coachReady').click();
     await page.screenshot({ path: path.join(SHOTS, 'cartograph-tutorial-1.png') });
     const coach = { target: await page.locator('.color-choice').evaluateAll(bs => bs.findIndex(b => b.classList.contains('coach-target'))) };
     assert(coach.target >= 0, 'tutorial highlights a colour');
     await page.locator('#palette button').nth(coach.target).click();
-    assert.match(await page.locator('#coach').textContent(), /iki kez dokun/);
+    assert.match(await page.locator('#coach').textContent(), /iki kez hızlıca dokun/);
     const step = await page.evaluate(() => {
       const ring = document.querySelector('.coach-ring');
       const { map } = CartoGame.S.puzzle;
@@ -99,7 +100,7 @@ const FIRST = ['cat', 'cactus', 'lotus', 'heart', 'fox', 'fish', 'flower', 'moon
       assert(hits.every(Boolean), `${info.id}: anchors miss panes ${hits.map((h, r) => h ? -1 : r).filter(r => r >= 0)}`);
       const todo = await page.evaluate(() => CartoGame.S.given.flatMap((c, r) => c < 0 && CartoGame.S.fill[r] < 0 ? [{ r, color: CartoGame.S.puzzle.solution[r] }] : []));
       if (level === 2) {
-        // a full but wrong board: clashes are marked in red until fixed
+        // a full but wrong board: each clash gets a glowing border and a lens until fixed
         const wrong = await page.evaluate(() => {
           const S = CartoGame.S, { adj } = S.puzzle.map;
           const r = S.given.findIndex((c, i) => c < 0 && adj[i].some(j => S.given[j] >= 0));
@@ -107,9 +108,9 @@ const FIRST = ['cat', 'cactus', 'lotus', 'heart', 'fox', 'fish', 'flower', 'moon
         });
         for (const { r, color } of todo) await paint(r, r === wrong.r ? wrong.color : color);
         assert.equal(await page.evaluate(() => CartoGame.S.done), false);
-        assert.match(await page.locator('#toast').textContent(), /Yanlış çözüm/);
-        assert(await page.locator('#board .wrong-pane').count() >= 1);
-        assert.notEqual(await page.locator('#board .conflict').getAttribute('d'), '');
+        assert(await page.locator('#clashBar').isVisible());
+        assert(await page.locator('#board .clash .lens').count() >= 1);
+        assert.equal(await page.locator('#board .wrong-dim').count(), 1);
         await page.screenshot({ path: path.join(SHOTS, 'cartograph-wrong.png') });
         await paint(wrong.r, await page.evaluate(r => CartoGame.S.puzzle.solution[r], wrong.r));
       } else {
@@ -117,7 +118,8 @@ const FIRST = ['cat', 'cactus', 'lotus', 'heart', 'fox', 'fish', 'flower', 'moon
         for (const { r, color } of todo) await paint(r, color);
       }
       await page.waitForFunction(() => CartoGame.S.done && !document.querySelector('#glassNext').disabled, null, { timeout: 15000 });
-      assert.equal(await page.locator('#board .wrong-pane').count(), 0);
+      assert.equal(await page.locator('#board .clash').count(), 0);
+      assert(await page.locator('#clashBar').isHidden());
       assert.equal(await page.locator('#glassArtwork').getAttribute('href'), info.image);
       if (level <= 3 || level === total) await page.screenshot({ path: path.join(SHOTS, `cartograph-l${level}-glass.png`) });
       console.log(`  ${level} ${info.id}: ${todo.length} panes painted by tap, artwork shown`);

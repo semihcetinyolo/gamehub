@@ -1,0 +1,27 @@
+{
+  "id": "story_elephant",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:17:35.100134+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Savanda Gün Batımı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_elephant.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "7fe90cc9339618223a0131e8657c440c32278bf0d4b92d9282656ca45e38917c",
+  "sha256": "b3cbeeed88c3e3098960347fcc10ddf11081e2f71a54c0d5820fe17566511437",
+  "palette": [
+    "#ec423d",
+    "#fddd67",
+    "#358d5d",
+    "#0d3c6e"
+  ],
+  "paneColorCheck": {
+    "matched": 40,
+    "total": 40,
+    "valid": true,
+    "mismatches": []
+  }
+}

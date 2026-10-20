@@ -1,0 +1,53 @@
+{
+  "id": "story_iguana",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:25:48.476965+00:00",
+  "source": "assets/glass/story_iguana-restored.webp",
+  "sourceSha256": "5fd8cb6f6ca4d03ccf11f868001a0a99a21ad7803898e06d197113ab3ff5b806",
+  "sourceGeometrySha256": "3c5e604c22bf05f6ec682ef98c3fbe520e8adfb61f22b9678f5b0046d9b68a92",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 93,
+      "donorPatches": 90,
+      "colour": 0,
+      "preservedFraction": 0.44740418263767107
+    },
+    {
+      "patchSize": 94,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.45894958254650936
+    },
+    {
+      "patchSize": 140,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5736205685938228
+    },
+    {
+      "patchSize": 134,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5303860379559644
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "b0c88cd51a3cfb0fef1314f3df3ae216a1bba58161824760b12ea8e62c6c024b",
+  "sha256": "943794efc839971cf19ef8c783029b915b9e28407c02181ae21081e6888eb918",
+  "palette": [
+    "#df3f38",
+    "#fbec80",
+    "#3d9d7d",
+    "#073279"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 27,
+    "total": 27,
+    "mismatches": []
+  }
+}

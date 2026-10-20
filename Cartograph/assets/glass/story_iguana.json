@@ -1,0 +1,27 @@
+{
+  "id": "story_iguana",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-19T12:28:50.599005+00:00",
+  "prompt": "Use case: style-transfer. Subject: Volkanik Kayalar. Transform this exact geometric colour guide into a luminous photographic artisan stained-glass panel. Preserve every pane, boundary, silhouette, margin and all four existing hues exactly. Add gentle handmade translucent glass ripples, tiny bubbles, subtle backlighting and thin dark metallic lead on existing seams. No extra lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the 3:4 portrait reference pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue. Use clean seam junctions without round tabs or decorative bumps. Output resolution 768x1024.",
+  "references": [
+    "tools/stained/guides/story_iguana.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "ce0e44a9594f8b3df49fd895746640ea6ac24e5484254f5614a5e35b75d94ce1",
+  "sha256": "8f15b4f7db0413cf0be3f7d5800a66dd9616054b4e3e1f58975a5e9f54e6e98d",
+  "palette": [
+    "#de2e2f",
+    "#fded73",
+    "#299681",
+    "#08327e"
+  ],
+  "paneColorCheck": {
+    "matched": 35,
+    "total": 35,
+    "valid": true,
+    "mismatches": []
+  }
+}

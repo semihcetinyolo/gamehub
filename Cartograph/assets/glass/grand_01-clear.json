@@ -1,0 +1,27 @@
+{
+  "id": "grand_01",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T06:47:25.920455+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Dağ Ekspresi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/grand_01.png"
+  ],
+  "size": [
+    1728,
+    2304
+  ],
+  "guide": "939ffc51e22f973ecc38ec577aa09e5fc8385b080accae79dcaaed9811aca2cc",
+  "sha256": "f65cb0f3d0a4da86528fefa21a76d466faa600999a21e0ea77ee6a9416c06aa7",
+  "palette": [
+    "#fb9006",
+    "#fdf643",
+    "#22a497",
+    "#05207e"
+  ],
+  "paneColorCheck": {
+    "matched": 83,
+    "total": 83,
+    "valid": true,
+    "mismatches": []
+  }
+}

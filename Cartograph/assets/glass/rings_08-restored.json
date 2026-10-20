@@ -1,0 +1,53 @@
+{
+  "id": "rings_08",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:18:27.982522+00:00",
+  "source": "assets/glass/rings_08-vitray.webp",
+  "sourceSha256": "7d3787120fc3241d6b5e94ddf6b8ecd68bef32cb4752b699f699023d44a7c52e",
+  "sourceGeometrySha256": "1eed13443dcfd8483786a0bd7da3e1ed28a155c4b27af99ad9da97fdbf74382b",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 38,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.08003725890095646
+    },
+    {
+      "patchSize": 48,
+      "donorPatches": 9,
+      "colour": 1,
+      "preservedFraction": 0.27435742459777807
+    },
+    {
+      "patchSize": 39,
+      "donorPatches": 11,
+      "colour": 2,
+      "preservedFraction": 0.09810353473025779
+    },
+    {
+      "patchSize": 39,
+      "donorPatches": 11,
+      "colour": 3,
+      "preservedFraction": 0.0859357044523921
+    }
+  ],
+  "size": [
+    768,
+    768
+  ],
+  "guide": "3ca78152fd1bc8866e6be096ad6f68d7286c656cc62cf66f80b873de05146d37",
+  "sha256": "feea0d76e60beab6a47786185f4fc436de4ceeb78aea50c121463647f320207e",
+  "palette": [
+    "#f46904",
+    "#fded2b",
+    "#014183",
+    "#0a925f"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 26,
+    "total": 26,
+    "mismatches": []
+  }
+}

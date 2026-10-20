@@ -1,0 +1,53 @@
+{
+  "id": "story_locomotive",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:26:30.963369+00:00",
+  "source": "assets/glass/story_locomotive-restored.webp",
+  "sourceSha256": "94f65412423252cdb0fe29316eec601cb5c1852204ae6eb90c795a96d59f69db",
+  "sourceGeometrySha256": "9bbebc37e28f2066f65a5e0fc122515830091fcd5734084afedede6f68bd3b15",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 95,
+      "donorPatches": 83,
+      "colour": 0,
+      "preservedFraction": 0.5071360322484697
+    },
+    {
+      "patchSize": 68,
+      "donorPatches": 52,
+      "colour": 1,
+      "preservedFraction": 0.3117831020034439
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6737222665032532
+    },
+    {
+      "patchSize": 120,
+      "donorPatches": 94,
+      "colour": 3,
+      "preservedFraction": 0.5192023865428396
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "b46529331dbe5e5a0090e282854d749c110f8e2af0fdc46f277857c89311ab0f",
+  "sha256": "47b9eedc277b5caec1e0c23fe54f282989b7ba0e862a30274ccdd9afe923bf34",
+  "palette": [
+    "#f26505",
+    "#fcef41",
+    "#20ae8c",
+    "#02247f"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 32,
+    "total": 32,
+    "mismatches": []
+  }
+}

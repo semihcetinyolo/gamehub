@@ -1,0 +1,53 @@
+{
+  "id": "kaleido",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:13:31.499158+00:00",
+  "source": "assets/glass/kaleido-junctions.webp",
+  "sourceSha256": "48a88a38c9f0cdbe5cf91a5a137b0c748279ba34db7bb91aaab707a0cc41255d",
+  "sourceGeometrySha256": "2e99660460db5852a77fa34d034a902386a164d274e43cc65962485278d0072e",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 47,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.24425075389188858
+    },
+    {
+      "patchSize": 51,
+      "donorPatches": 81,
+      "colour": 1,
+      "preservedFraction": 0.014497643842086318
+    },
+    {
+      "patchSize": 75,
+      "donorPatches": 43,
+      "colour": 2,
+      "preservedFraction": 0.36064604092356883
+    },
+    {
+      "patchSize": 75,
+      "donorPatches": 43,
+      "colour": 3,
+      "preservedFraction": 0.40864797105428713
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "a7d5a4255d79833df451043ff3dad9226abdcd868f65394e215c69e80f75659e",
+  "sha256": "5e61ef5d09d4d72a3569cf58d5a25047b0093c830688eb89d184af7f1bcdb568",
+  "palette": [
+    "#87d51e",
+    "#cf035b",
+    "#eb7406",
+    "#0740c4"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 30,
+    "total": 30,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "story_elephant",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:25:30.306965+00:00",
+  "source": "assets/glass/story_elephant-restored.webp",
+  "sourceSha256": "1e653f927f29813b6ece818669a9bf75f9d127f226fae01b9fef082e8a88944d",
+  "sourceGeometrySha256": "0625fc64547cd1aead7e73c6b157aeb62bce9cfaf3ef4c2f4db301812a4449db",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 134,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5761707409863275
+    },
+    {
+      "patchSize": 110,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.49759456396040713
+    },
+    {
+      "patchSize": 121,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6266212469373301
+    },
+    {
+      "patchSize": 72,
+      "donorPatches": 53,
+      "colour": 3,
+      "preservedFraction": 0.40341452033675984
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "3beee998db9aba57638e50613bc5b4cc29e6ea15d3d4ee75c5e2e282acc28061",
+  "sha256": "5ce31678b6525c08f6480390131a0f43a2816784d2ef8ed8ab4eaa2ddcd57985",
+  "palette": [
+    "#d43136",
+    "#fce16c",
+    "#20794e",
+    "#10467b"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 24,
+    "total": 24,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "motif_cupcake",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:00:15.219396+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Kapkek. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_cupcake.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "44335405d2b886553cd52020462f40c5b9cd1010706bcff5e0436ec4dbbb6308",
+  "sha256": "77e40d17bf34fce69d9cc66d028fd9e018964c61b94ac184f127b3d3917eccf6",
+  "palette": [
+    "#d1526b",
+    "#fee857",
+    "#23949c",
+    "#142953"
+  ],
+  "paneColorCheck": {
+    "matched": 27,
+    "total": 27,
+    "valid": true,
+    "mismatches": []
+  }
+}

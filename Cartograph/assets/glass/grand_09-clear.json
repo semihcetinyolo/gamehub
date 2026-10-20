@@ -1,0 +1,27 @@
+{
+  "id": "grand_09",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T06:50:43.069110+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Çöl Kervanı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/grand_09.png"
+  ],
+  "size": [
+    1987,
+    2650
+  ],
+  "guide": "8446cad18ecd1c249e8a00abe75df3f3b0d01e54676bd6f67ffd54088878670c",
+  "sha256": "41dec743ab6f8e9bb0bd29bd9163392b41e5d626ad266024da0af697c12e842c",
+  "palette": [
+    "#e78e07",
+    "#fdf866",
+    "#4384d5",
+    "#021256"
+  ],
+  "paneColorCheck": {
+    "matched": 72,
+    "total": 72,
+    "valid": true,
+    "mismatches": []
+  }
+}

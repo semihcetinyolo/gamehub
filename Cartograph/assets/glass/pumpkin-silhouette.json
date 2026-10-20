@@ -1,0 +1,53 @@
+{
+  "id": "pumpkin",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:13:13.493818+00:00",
+  "source": "assets/glass/pumpkin-junctions.webp",
+  "sourceSha256": "9fb9e3860e4c45d93d2eaa9e6369056654a13a80db14306ee7dc4eb5a5ba73c7",
+  "sourceGeometrySha256": "38098f67b8b612351a5e0ff537c491a3629f08f38480ff561e0a73174cfebef2",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 76,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.3696687336554595
+    },
+    {
+      "patchSize": 63,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.3230612781793788
+    },
+    {
+      "patchSize": 65,
+      "donorPatches": 26,
+      "colour": 2,
+      "preservedFraction": 0.34663197006200464
+    },
+    {
+      "patchSize": 64,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.36148693789642455
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "9ef360f2b35db3d8a5abcd774be7cd905e329b491e8a749ac25397bf24f78de3",
+  "sha256": "d31a751781049afe7d4b1795482a7e7376d9c316cf3aebf9ab2431ef287225e4",
+  "palette": [
+    "#f35503",
+    "#f9c30b",
+    "#2c711b",
+    "#6b1a89"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 25,
+    "total": 25,
+    "mismatches": []
+  }
+}

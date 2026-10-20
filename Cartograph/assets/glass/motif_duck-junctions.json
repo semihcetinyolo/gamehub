@@ -1,0 +1,53 @@
+{
+  "id": "motif_duck",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:25:23.480477+00:00",
+  "source": "assets/glass/motif_duck-restored.webp",
+  "sourceSha256": "4aba7588229772f40262f762ced9afa984be3bc12d5913d2572092971c9723ca",
+  "sourceGeometrySha256": "a284c148942c1efcbae35e2f22ebbd2af3ff5d223bf2d8c31a9ff9433f669ebc",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 106,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.3084725535690564
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5798045001869646
+    },
+    {
+      "patchSize": 121,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.613328340592282
+    },
+    {
+      "patchSize": 99,
+      "donorPatches": 38,
+      "colour": 3,
+      "preservedFraction": 0.536522321052407
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "ac4704f85ef936208e33b6e9a2dcd0634130b174c702ddc8b6b0636be2c9c713",
+  "sha256": "37b85b752675abf88894061d50f30c6d6b97c68c53dda06cdc31413d713fe902",
+  "palette": [
+    "#e73b28",
+    "#fae971",
+    "#139f94",
+    "#0738aa"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 23,
+    "total": 23,
+    "mismatches": []
+  }
+}

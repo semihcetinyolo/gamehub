@@ -1,0 +1,27 @@
+{
+  "id": "story_frog",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-19T12:20:07.295252+00:00",
+  "prompt": "Render this exact friendly frog puzzle as a handmade stained-glass panel. Keep all existing regions, borders and four colours exactly as shown. Add only subtle translucent glass texture and thin dark seams. Preserve the entire 3:4 composition. No new shapes, bumps, text, or additional details.",
+  "references": [
+    "tools/stained/guides/story_frog.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "78b5aa5c7e47029fcc0aba765f7f8a9d027a3a3b6852c7c618857c50fb40cafa",
+  "sha256": "07a205faa1f5b101c94d0dde714cd16622eaef06cce48552362a777ee14caa9a",
+  "palette": [
+    "#b34c81",
+    "#f9d25f",
+    "#1b9498",
+    "#0e3163"
+  ],
+  "paneColorCheck": {
+    "matched": 36,
+    "total": 36,
+    "valid": true,
+    "mismatches": []
+  }
+}

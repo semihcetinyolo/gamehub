@@ -1,0 +1,27 @@
+{
+  "id": "motif_kite",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:04:41.351607+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Uçurtma. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_kite.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "512a8ef7982f116e3a5f29e5f533b07c6c316ffac2d61a95df5fe87fac2de7c6",
+  "sha256": "fae02abfee133a3acab92efe0127fee56f63251a22a89f1102b7a6c7750432e7",
+  "palette": [
+    "#e07619",
+    "#fcf49b",
+    "#68a52c",
+    "#01439e"
+  ],
+  "paneColorCheck": {
+    "matched": 32,
+    "total": 32,
+    "valid": true,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "story_alpaca",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:11:56.861887+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of And Dağları. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_alpaca.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "ed1b70b17883dea5505fd54672ac51b5b9389e699d78c77fb57484b21d89e733",
+  "sha256": "dbe90275b6cc2bb5b141bcb815a1d852b46d7f8d6513fb741716a4c3291746a4",
+  "palette": [
+    "#e05302",
+    "#feda2f",
+    "#238a65",
+    "#052b76"
+  ],
+  "paneColorCheck": {
+    "matched": 35,
+    "total": 35,
+    "valid": true,
+    "mismatches": []
+  }
+}

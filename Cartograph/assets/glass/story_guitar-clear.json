@@ -1,0 +1,27 @@
+{
+  "id": "story_guitar",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:22:22.536904+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Kamp Ateşi Müziği. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_guitar.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "5f43038b64310182c05082f858e3cb43970a136487b4bc3cdb450ed702bcb687",
+  "sha256": "ea976e3d7d7bf387f5abbb812046bca794a18dba8e4d4ee5905252b9a05e2401",
+  "palette": [
+    "#ec3a29",
+    "#fdef7e",
+    "#219a79",
+    "#022a81"
+  ],
+  "paneColorCheck": {
+    "matched": 36,
+    "total": 36,
+    "valid": true,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cartograph Bölümler</title>
+<!-- Every level as it opens in the game (only the starting clues painted). Reads the game's own
+     stained-levels.js and redraws by itself whenever that file changes. Player progress is never used. -->
+<style>
+:root{--bg:#f3eedf;--card:#fffaf0;--ink:#24352d;--mute:#6b6f5e;--line:#ddd3bb;--accent:#294f43;--accent-ink:#faf3df;--hard:#b3262f;--new:#d98a1c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b211d;--card:#252c27;--ink:#ece6d4;--mute:#a7a894;--line:#3b4339;--accent:#8fc2a7;--accent-ink:#17201b}}
+:root[data-theme="dark"]{--bg:#1b211d;--card:#252c27;--ink:#ece6d4;--mute:#a7a894;--line:#3b4339;--accent:#8fc2a7;--accent-ink:#17201b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 16px}
+.bar{max-width:1600px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center}
+h1{font-size:18px;margin:0 8px 0 0}
+.status{color:var(--mute);font-size:12.5px;display:flex;align-items:center;gap:6px}
+.status i{width:8px;height:8px;border-radius:50%;background:#4b9b6e;display:inline-block}
+.status.busy i{background:var(--new)}
+.spacer{flex:1}
+input[type=search]{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink);width:190px;max-width:100%}
+.seg{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.seg button{font:600 12.5px system-ui;border:0;background:var(--card);color:var(--ink);padding:7px 10px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed=true]{background:var(--accent);color:var(--accent-ink)}
+main{max-width:1600px;margin:0 auto;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(var(--w,190px),1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 8px 9px;display:flex;flex-direction:column;gap:6px;cursor:pointer;text-align:left;font:inherit;color:inherit;position:relative}
+.card:hover{border-color:var(--accent)}
+.card.changed{border:2px solid var(--new)}
+.thumb{aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;background:#efe9d8;border-radius:8px;overflow:hidden}
+.thumb svg{width:100%;height:100%;display:block}
+.top{display:flex;align-items:baseline;gap:6px}
+.num{font-weight:800;font-size:15px}
+.name{color:var(--mute);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
+.meta{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--mute)}
+.sw{display:flex;gap:3px;margin-left:auto}.sw span{width:11px;height:11px;border-radius:50%;border:1px solid rgba(0,0,0,.25)}
+.tags{position:absolute;top:13px;left:13px;display:flex;gap:4px}
+.tag{font:800 9.5px system-ui;letter-spacing:.06em;padding:2px 6px;border-radius:5px;background:var(--accent);color:var(--accent-ink)}
+.tag.hard{background:var(--hard);color:#fff}.tag.new{background:var(--new);color:#fff}
+.empty{color:var(--mute);padding:40px 0;text-align:center}
+dialog{border:0;border-radius:16px;padding:16px;background:var(--card);color:var(--ink);width:min(92vw,640px);max-height:94vh}
+dialog::backdrop{background:rgba(10,14,12,.6)}
+dialog .big{height:min(70vh,760px);display:flex;justify-content:center;background:#efe9d8;border-radius:10px;padding:8px}
+dialog .big svg{height:100%;max-width:100%}
+dialog .row{display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap}
+dialog h2{margin:0 0 10px;font-size:17px}
+.btn{font:700 13px system-ui;border:0;border-radius:9px;padding:9px 14px;cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+@media (max-width:600px){h1{font-size:16px}input[type=search]{width:100%}.spacer{display:none}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <h1>Cartograph · Bölümler</h1>
+  <span class="status" id="status"><i></i><span id="statusText">Yükleniyor…</span></span>
+  <span class="spacer"></span>
+  <input type="search" id="q" placeholder="Numara ya da ad ara" aria-label="Bölüm ara">
+  <div class="seg" id="filter" role="group" aria-label="Filtre">
+    <button data-v="all" aria-pressed="true">Hepsi</button><button data-v="normal">Normal</button><button data-v="hard">Zor</button><button data-v="large">Büyük</button>
+  </div>
+  <div class="seg" id="size" role="group" aria-label="Boyut">
+    <button data-v="130">S</button><button data-v="190" aria-pressed="true">M</button><button data-v="280">L</button>
+  </div>
+</div></header>
+<main><div class="grid" id="grid"></div><p class="empty" id="none" hidden>Eşleşen bölüm yok.</p></main>
+<dialog id="dlg"><h2 id="dlgTitle"></h2><div class="big" id="dlgBoard"></div>
+  <div class="row"><span class="meta" id="dlgMeta"></span><span class="spacer" style="flex:1"></span>
+    <button class="btn ghost" id="dlgClose">Kapat</button><button class="btn" id="dlgPlay">Oyunda aç</button></div></dialog>
+<script>
+(() => {
+  'use strict';
+  const DATA = '../../stained-levels.js';
+  const GAME = '../../';
+  const POLL_MS = 4000;
+  const $ = id => document.getElementById(id);
+  const mem = {
+    get(k, d) { try { const v = localStorage.getItem('sheet.' + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+    set(k, v) { try { localStorage.setItem('sheet.' + k, JSON.stringify(v)); } catch { /* storage off */ } },
+  };
+
+  // Same colour rules as game.js: empty panes on paper, pre-painted panes with darker stripes.
+  const PAPER = '#efeddc', PAPER_COOL = '#e5e9e8', LEAD = '#3a4234';
+  function luminance(hex) {
+    const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255).map(v => (v > 0.04 ? ((v + 0.055) / 1.055) ** 2.4 : v / 12.92));
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  }
+  function shade(hex, amt) {
+    const n = parseInt(hex.slice(1), 16);
+    const ch = v => Math.max(0, Math.min(255, Math.round(v + (amt > 0 ? (255 - v) * amt : v * amt))));
+    return `rgb(${ch(n >> 16)}, ${ch((n >> 8) & 255)}, ${ch(n & 255)})`;
+  }
+  let uid = 0;
+  function boardSvg(L) {
+    const { map, given, palette } = L, id = 'b' + (++uid);
+    const empty = palette.some(p => luminance(p) > 0.7) ? PAPER_COOL : PAPER;
+    let defs = `<clipPath id="${id}c"><path d="${map.shape}"/></clipPath>`;
+    palette.forEach((p, i) => {
+      defs += `<pattern id="${id}s${i}" width=".24" height=".24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width=".065" height=".24" fill="${shade(p, -0.2)}"/></pattern>`;
+    });
+    let panes = '', stripes = '';
+    for (let r = 0; r < map.count; r++) {
+      const c = given[r];
+      panes += `<path d="${map.paths[r]}" fill="${c >= 0 ? palette[c] : empty}"/>`;
+      if (c >= 0) stripes += `<path d="${map.paths[r]}" fill="url(#${id}s${c})"/>`;
+    }
+    const pad = 0.25;
+    return `<svg viewBox="${-pad} ${-pad} ${map.cols + 2 * pad} ${map.rows + 2 * pad}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="${esc(L.name)} açılış hali">
+<defs>${defs}</defs><g clip-path="url(#${id}c)">${panes}${stripes}
+<path d="${map.edgePath}" fill="none" stroke="${LEAD}" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></g>
+<path d="${map.shape}" fill="none" stroke="${LEAD}" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>`;
+  }
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const isHard = L => L.difficulty?.tier === 'hard';
+  const isLarge = L => L.canvasSize === 'large';
+  // What the opening looks like; a level counts as changed when this moves.
+  function signature(L) {
+    const s = JSON.stringify([L.given, L.palette, L.map.shape, L.map.edgePath]);
+    let h = 2166136261;
+    for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return h >>> 0;
+  }
+
+  let levels = [], known = new Map(), changed = new Set(), version = null, cards = [];
+  let filter = mem.get('filter', 'all'), size = mem.get('size', '190');
+  const io = new IntersectionObserver(entries => {
+    for (const e of entries) if (e.isIntersecting) { draw(e.target); io.unobserve(e.target); }
+  }, { rootMargin: '600px' });
+  function draw(card) {
+    const L = levels[+card.dataset.i];
+    card.querySelector('.thumb').innerHTML = boardSvg(L);
+  }
+
+  function build() {
+    const grid = $('grid');
+    io.disconnect();
+    grid.innerHTML = '';
+    cards = levels.map((L, i) => {
+      const toPaint = L.given.filter(c => c < 0).length;
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'card' + (changed.has(L.id) ? ' changed' : '');
+      card.dataset.i = i;
+      card.dataset.text = `${i + 1} ${L.id} ${L.name}`.toLowerCase();
+      card.innerHTML = `<div class="thumb"></div>
+        <div class="tags">${changed.has(L.id) ? '<span class="tag new">DEĞİŞTİ</span>' : ''}${L.tutorial || i === 0 ? '<span class="tag">TUTORIAL</span>' : ''}${isHard(L) ? '<span class="tag hard">ZOR</span>' : ''}${isLarge(L) ? '<span class="tag">BÜYÜK</span>' : ''}</div>
+        <div class="top"><span class="num">${i + 1}</span><span class="name" title="${esc(L.name)}">${esc(L.name)}</span></div>
+        <div class="meta"><span>${L.map.count} bölge · ${toPaint} boş</span><span class="sw">${L.palette.map(p => `<span style="background:${p}"></span>`).join('')}</span></div>`;
+      card.addEventListener('click', () => open(i));
+      grid.appendChild(card);
+      return card;
+    });
+    apply();
+  }
+  function apply() {
+    const q = $('q').value.trim().toLowerCase();
+    let shown = 0;
+    for (const card of cards) {
+      const L = levels[+card.dataset.i];
+      const ok = (filter === 'all' || (filter === 'hard' && isHard(L)) || (filter === 'large' && isLarge(L)) || (filter === 'normal' && !isHard(L)))
+        && (!q || (/^\d+$/.test(q) ? +card.dataset.i + 1 === +q : card.dataset.text.includes(q)));
+      card.hidden = !ok;
+      if (ok) { shown++; if (!card.querySelector('svg')) io.observe(card); }
+    }
+    $('none').hidden = shown > 0;
+    document.querySelectorAll('#filter button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === filter));
+    document.querySelectorAll('#size button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === size));
+    $('grid').style.setProperty('--w', size + 'px');
+  }
+
+  let current = -1;
+  function open(i) {
+    current = i;
+    const L = levels[i];
+    $('dlgTitle').textContent = `${i + 1} · ${L.name}`;
+    $('dlgBoard').innerHTML = boardSvg(L);
+    $('dlgMeta').textContent = `${L.map.count} bölge · ${L.given.filter(c => c >= 0).length} hazır · ${L.given.filter(c => c < 0).length} boş${isHard(L) ? ' · zor' : ''}${isLarge(L) ? ' · büyük' : ''}`;
+    $('dlg').showModal();
+  }
+  $('dlgClose').addEventListener('click', () => $('dlg').close());
+  $('dlg').addEventListener('click', e => { if (e.target === $('dlg')) $('dlg').close(); });
+  // The game resumes at the level stored under carto.levelId; the menu's play button opens it.
+  $('dlgPlay').addEventListener('click', () => {
+    const L = levels[current];
+    try { localStorage.setItem('carto.levelId', JSON.stringify(L.id)); localStorage.setItem('carto.level', JSON.stringify(current + 1)); } catch { /* storage off */ }
+    window.open(GAME, '_blank');
+  });
+  $('q').addEventListener('input', apply);
+  $('filter').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; filter = b.dataset.v; mem.set('filter', filter); apply(); });
+  $('size').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; size = b.dataset.v; mem.set('size', size); apply(); });
+
+  function setStatus(text, busy) {
+    $('statusText').textContent = text;
+    $('status').classList.toggle('busy', !!busy);
+  }
+  const clock = () => new Date().toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+  // Load the game's level file fresh (no cache) and swap it in.
+  function load(tag) {
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = `${DATA}?v=${encodeURIComponent(tag || Date.now())}`;
+      // a file caught half-written parses as an error and leaves nothing behind: retry on the next poll
+      window.CARTO_STAINED = undefined;
+      s.onload = () => {
+        s.remove();
+        const data = window.CARTO_STAINED;
+        Array.isArray(data) && data.length ? resolve(data) : reject(new Error('incomplete'));
+      };
+      s.onerror = () => { s.remove(); reject(new Error('load failed')); };
+      document.head.appendChild(s);
+    });
+  }
+  async function stamp() {
+    const r = await fetch(DATA, { method: 'HEAD', cache: 'no-store' });
+    return [r.headers.get('last-modified'), r.headers.get('etag'), r.headers.get('content-length')].join('|');
+  }
+  async function refresh(first) {
+    setStatus(first ? 'Yükleniyor…' : 'Güncelleniyor…', true);
+    const tag = await stamp().catch(() => String(Date.now()));
+    const data = await load(tag);
+    const fresh = new Map(data.map(L => [L.id, signature(L)]));
+    if (!first) {
+      changed = new Set();
+      for (const [id, sig] of fresh) if (known.get(id) !== sig) changed.add(id);
+    }
+    known = fresh;
+    levels = data;
+    version = tag;
+    build();
+    const note = !first && changed.size ? ` · ${changed.size} bölüm değişti` : '';
+    setStatus(`${levels.length} bölüm · ${clock()} güncel${note}`);
+  }
+  async function poll() {
+    try {
+      if (!document.hidden) {
+        const tag = await stamp();
+        if (tag !== version) await refresh(false);
+      }
+    } catch { setStatus('Oyun dosyasına ulaşılamadı, tekrar deneniyor…', true); }
+    setTimeout(poll, POLL_MS);
+  }
+  refresh(true).then(() => setTimeout(poll, POLL_MS)).catch(() => {
+    setStatus('stained-levels.js okunamadı. Sayfayı oyun sunucusundan aç.', true);
+    setTimeout(poll, POLL_MS);
+  });
+})();
+</script>
+</body>
+</html>

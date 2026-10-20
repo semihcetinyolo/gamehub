@@ -1,0 +1,53 @@
+{
+  "id": "motif_raccoon",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:18:54.276319+00:00",
+  "source": "assets/glass/motif_raccoon-clear.webp",
+  "sourceSha256": "d1464a32a2625ad9ec723ed947cf613dc7057218b661efcc7e053d1055f828a8",
+  "sourceGeometrySha256": "7dd2fe2e6f38f0e6860e083e3123ee99818f0b90d4e0caa33518511a84714804",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 59,
+      "donorPatches": 25,
+      "colour": 0,
+      "preservedFraction": 0.06039264809214501
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.04372517277080567
+    },
+    {
+      "patchSize": 83,
+      "donorPatches": 29,
+      "colour": 2,
+      "preservedFraction": 0.010752370903153901
+    },
+    {
+      "patchSize": 69,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.14068222701820965
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "93729e94aa6fe3b6089f19acd9d4e1889756d9f06043a03faa35c26da54bde00",
+  "sha256": "20c69719a2184cd6cc4beff17f45ae21db068f3215e30a31ae8b978bc1cb4594",
+  "palette": [
+    "#e88707",
+    "#f8e44d",
+    "#5494c7",
+    "#101e50"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 25,
+    "total": 25,
+    "mismatches": []
+  }
+}

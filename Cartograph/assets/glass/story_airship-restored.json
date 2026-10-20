@@ -1,0 +1,53 @@
+{
+  "id": "story_airship",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:19:47.705843+00:00",
+  "source": "assets/glass/story_airship-clear.webp",
+  "sourceSha256": "a9e09a41789eeceee2b08666a58578342974f9258d8c9c5567c5e0ce252fea96",
+  "sourceGeometrySha256": "5c85c370adc2243073e8fb95c3b9fbc3ee15af8fef473fbeb7f526b38d577f58",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 97,
+      "donorPatches": 61,
+      "colour": 0,
+      "preservedFraction": 0.4829502964397566
+    },
+    {
+      "patchSize": 104,
+      "donorPatches": 42,
+      "colour": 1,
+      "preservedFraction": 0.29200763477388253
+    },
+    {
+      "patchSize": 79,
+      "donorPatches": 43,
+      "colour": 2,
+      "preservedFraction": 0.19739253303050627
+    },
+    {
+      "patchSize": 86,
+      "donorPatches": 51,
+      "colour": 3,
+      "preservedFraction": 0.24336668939514466
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "438f30e89a7eb4f42066f112ef472336741f305de9eefa7a4829479fd53995c8",
+  "sha256": "c55a13b8bf5596228ddbde244b483d8ee0c57ba0f4442bfed9d27cede6b1aa84",
+  "palette": [
+    "#e74b4e",
+    "#f7df77",
+    "#31af93",
+    "#063d99"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 19,
+    "total": 19,
+    "mismatches": []
+  }
+}

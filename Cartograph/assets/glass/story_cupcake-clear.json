@@ -1,0 +1,27 @@
+{
+  "id": "story_cupcake",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:17:01.875601+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Pastane Vitrini. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_cupcake.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "bd41ce04e1d16ea0f6ebf0ebed65408d6fdab5df2e2bf6ff0676ede1a53c3109",
+  "sha256": "dd54f1c3cf2c3ba0211334fca65a863188ca4c9490e10fae2e06625b0f88f34f",
+  "palette": [
+    "#c85d72",
+    "#fee06e",
+    "#299496",
+    "#0f2e59"
+  ],
+  "paneColorCheck": {
+    "matched": 25,
+    "total": 25,
+    "valid": true,
+    "mismatches": []
+  }
+}

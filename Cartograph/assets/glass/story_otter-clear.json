@@ -1,0 +1,27 @@
+{
+  "id": "story_otter",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:23:47.180749+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Nehirde Oyun. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_otter.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "097b638f2aca70c5583873dd445117eb1098bb09dd93438c2853e9f2d4558a17",
+  "sha256": "6d34af44bd1086e4b75e6718a1dddde127696d98fc5f33c2413ab97a6f5c56c3",
+  "palette": [
+    "#ee7b0f",
+    "#fef77f",
+    "#3c9cdf",
+    "#07246d"
+  ],
+  "paneColorCheck": {
+    "matched": 43,
+    "total": 43,
+    "valid": true,
+    "mismatches": []
+  }
+}

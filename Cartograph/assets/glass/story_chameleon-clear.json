@@ -1,0 +1,27 @@
+{
+  "id": "story_chameleon",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:17:01.923914+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Yağmur Ormanında Kamuflaj. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_chameleon.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "7ad13f488de8ba7d2ef1295b070406c28a075cc17f8ebb7c5534bfc01402315c",
+  "sha256": "ce7d919f3814c36f3317f878374c70127f423586a76b5de9b482438ebbb3e924",
+  "palette": [
+    "#bc3f7a",
+    "#fddc4f",
+    "#19b1a1",
+    "#05295b"
+  ],
+  "paneColorCheck": {
+    "matched": 40,
+    "total": 40,
+    "valid": true,
+    "mismatches": []
+  }
+}

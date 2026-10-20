@@ -1,0 +1,27 @@
+{
+  "id": "story_moka",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:23:47.199028+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Sabah Kahvesi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_moka.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "d4c3338b3167b3cc612e19f800960fe8446f59395a3c4e394211af7dd4243158",
+  "sha256": "e99f0f81c4fcf25e0c366a2e52daee6b894a6a8e8ec6ee0c07e3eeaa3831f792",
+  "palette": [
+    "#e76b22",
+    "#fdeea4",
+    "#7fa620",
+    "#05507e"
+  ],
+  "paneColorCheck": {
+    "matched": 38,
+    "total": 38,
+    "valid": true,
+    "mismatches": []
+  }
+}

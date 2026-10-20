@@ -69,3 +69,7 @@ pixhaku/assets/levels/**/*.png
 
 # ---- Cocktail Sort: full-size Astra originals (fitted copies live in assets/img) ----
 cocktail_sort/assets/raw/
+
+# Cartograph — local rollout backups and raw AI images (large, kept on disk)
+Cartograph/output/
+Cartograph/tools/stained/raw/

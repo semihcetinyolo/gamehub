@@ -1,0 +1,53 @@
+{
+  "id": "motif_boots",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:26:52.701470+00:00",
+  "source": "assets/glass/motif_boots-restored.webp",
+  "sourceSha256": "938dcd0e735eaffd14d5ee623a2dda0e285589dd7710e8352ed7b1685f471e4a",
+  "sourceGeometrySha256": "8cdda8167e674f10254463bd7846ac433a31976b09ae687b3c366c3a14a63405",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 122,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6733769375651983
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6122076141230016
+    },
+    {
+      "patchSize": 121,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.662400290079358
+    },
+    {
+      "patchSize": 86,
+      "donorPatches": 84,
+      "colour": 3,
+      "preservedFraction": 0.5236689289694929
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "820c6640c33e0bc19a635bf142a170989c8099ad4dcf7c9c6d33419eafb0919b",
+  "sha256": "4d84f95e40761683e69e0bd539d13154b82554407530f2a8d7490d93bbe00dfb",
+  "palette": [
+    "#ef7304",
+    "#f8df41",
+    "#31947b",
+    "#072570"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 18,
+    "total": 18,
+    "mismatches": []
+  }
+}

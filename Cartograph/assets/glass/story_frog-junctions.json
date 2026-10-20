@@ -1,0 +1,53 @@
+{
+  "id": "story_frog",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:26:01.887664+00:00",
+  "source": "assets/glass/story_frog-restored.webp",
+  "sourceSha256": "af8471f53d161befe3d06903ff5dff1e8afb528875013daeb14ab6642e4c668e",
+  "sourceGeometrySha256": "ab499fd174d01f8e8ed21e98b8ad12ff004e98ab13cc866f8360ebe2a94a6e71",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 119,
+      "donorPatches": 85,
+      "colour": 0,
+      "preservedFraction": 0.385132563511279
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.595104461900409
+    },
+    {
+      "patchSize": 88,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5125558430049753
+    },
+    {
+      "patchSize": 89,
+      "donorPatches": 47,
+      "colour": 3,
+      "preservedFraction": 0.5359201180346514
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "8dc520bda852112ecffe1d58d3de547b5e071a9eda74acc3fa752337990e9d75",
+  "sha256": "7edd3855e48c8173e7c86ba025023aedc125e46de6743e3cac05b9d86d656002",
+  "palette": [
+    "#d45084",
+    "#fbe357",
+    "#1ea2a4",
+    "#062f75"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 27,
+    "total": 27,
+    "mismatches": []
+  }
+}

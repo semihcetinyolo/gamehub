@@ -1,0 +1,27 @@
+{
+  "id": "motif_iguana",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:01:49.640292+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of İguana. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_iguana.png"
+  ],
+  "size": [
+    1016,
+    1354
+  ],
+  "guide": "4de03c9882716857161dd8879bf98102cd7e9268e897bb1ae22019bfd11801d5",
+  "sha256": "53addc85eadeba4c00c121bbaeaa0d74a1287115eeaf47b713e86135e0b49092",
+  "palette": [
+    "#ea4b40",
+    "#fef47a",
+    "#29a79e",
+    "#062b89"
+  ],
+  "paneColorCheck": {
+    "matched": 32,
+    "total": 32,
+    "valid": true,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "atlas_22",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:59:01.063783+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for Sahil Birliği. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 691:845 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/atlas_22.png"
+  ],
+  "size": [
+    691,
+    845
+  ],
+  "guide": "62da069a9bd6455e7c761a33583ed38c557c6ff37fa12deb15bcf2104e8def9f",
+  "sha256": "8d3429ea01de87bb8a616331db90da69f6e3fe271626f887f70f0590c13f29a1",
+  "palette": [
+    "#0155c3",
+    "#fdf635",
+    "#0f9a78",
+    "#de8082"
+  ],
+  "paneColorCheck": {
+    "matched": 30,
+    "total": 30,
+    "valid": true,
+    "mismatches": []
+  }
+}

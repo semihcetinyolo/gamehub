@@ -1,0 +1,27 @@
+{
+  "id": "story_hedgehog",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-19T12:11:17.602265+00:00",
+  "prompt": "Use case: style-transfer. Subject: Sonbahar Yaprakları. Transform this exact geometric colour guide into a luminous photographic artisan stained-glass panel. Preserve every pane, boundary, silhouette, margin and all four existing hues exactly. Add gentle handmade translucent glass ripples, tiny bubbles, subtle backlighting and thin dark metallic lead on existing seams. No extra lines, cracks, objects, frames, letters or decorations. Do not shift, stretch, zoom, rotate, merge or subdivide any part. Match the 3:4 portrait reference pixel-for-pixel; neutral dark grey outside the panel. Colour fidelity and precise registration matter more than dramatic lighting. All small and large panes keep exactly the reference hue. Use clean seam junctions without round tabs or decorative bumps. Output resolution 768x1024.",
+  "references": [
+    "tools/stained/guides/story_hedgehog.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "9b8d51b9c477d885951726cd1c963fc057c3a6b853cfd82316b0f28c8da74d2d",
+  "sha256": "29d84f2092f349fe62b59c272886fd90554f0a525699149f1da9a29fe95a13dd",
+  "palette": [
+    "#c73f79",
+    "#fedf44",
+    "#12aaaa",
+    "#0a2c64"
+  ],
+  "paneColorCheck": {
+    "matched": 24,
+    "total": 24,
+    "valid": true,
+    "mismatches": []
+  }
+}

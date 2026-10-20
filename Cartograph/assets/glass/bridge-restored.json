@@ -1,0 +1,53 @@
+{
+  "id": "bridge",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:18:52.159564+00:00",
+  "source": "assets/glass/bridge-clear.webp",
+  "sourceSha256": "248fcc9f2e09a0151235aba3969957e6231a38ba3c45c1deb413431072a65258",
+  "sourceGeometrySha256": "4cad76088f7d900ba675c45b3bbacb976de5caa396ddc223ad9339cfbccc6185",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 50,
+      "donorPatches": 12,
+      "colour": 0,
+      "preservedFraction": 0.1554715227367289
+    },
+    {
+      "patchSize": 53,
+      "donorPatches": 9,
+      "colour": 1,
+      "preservedFraction": 0.17692344893377523
+    },
+    {
+      "patchSize": 54,
+      "donorPatches": 18,
+      "colour": 2,
+      "preservedFraction": 0.10336933858522787
+    },
+    {
+      "patchSize": 63,
+      "donorPatches": 27,
+      "colour": 3,
+      "preservedFraction": 0.19477458989346508
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "e4218b73d54f11e6747d7f1f341e622db0bff4a98053505273f6687161fb852d",
+  "sha256": "1e07416a3239672ac04b1440eb0df6867ae80a7dfc52829331b5fe03aec9f2e1",
+  "palette": [
+    "#ca742f",
+    "#fce855",
+    "#30c8e1",
+    "#577a2f"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 39,
+    "total": 39,
+    "mismatches": []
+  }
+}

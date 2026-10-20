@@ -1,0 +1,27 @@
+{
+  "id": "story_airship",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:17:02.115781+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Bulutların Üstünde. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_airship.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "1dad8d8fc284c3a0c67904059c303f0f04534c286fec8df5dd5ad850fe09f3c8",
+  "sha256": "a9e09a41789eeceee2b08666a58578342974f9258d8c9c5567c5e0ce252fea96",
+  "palette": [
+    "#ef5255",
+    "#fce87c",
+    "#29a48a",
+    "#063c97"
+  ],
+  "paneColorCheck": {
+    "matched": 33,
+    "total": 33,
+    "valid": true,
+    "mismatches": []
+  }
+}

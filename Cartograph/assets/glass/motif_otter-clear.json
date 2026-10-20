@@ -1,0 +1,27 @@
+{
+  "id": "motif_otter",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:04:41.319290+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Su Samuru. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/motif_otter.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "2d958d286e8920aa5ac24dea55161c5603dd5d4d193c72dbcf770c306ae22d99",
+  "sha256": "ee44a1eb8bd3a37a1af1e9cb06c7d83a9e8bd56fc9653109446470c1a2bec74a",
+  "palette": [
+    "#db8610",
+    "#fefa6d",
+    "#4193df",
+    "#061e6d"
+  ],
+  "paneColorCheck": {
+    "matched": 34,
+    "total": 34,
+    "valid": true,
+    "mismatches": []
+  }
+}

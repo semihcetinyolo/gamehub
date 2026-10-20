@@ -1,0 +1,53 @@
+{
+  "id": "motif_pinwheel",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:26:39.579981+00:00",
+  "source": "assets/glass/motif_pinwheel-restored.webp",
+  "sourceSha256": "a8dadee7a71e1877d27125ec9fbb668aae04fd1e54d200862d8e6c3b2abbcaaf",
+  "sourceGeometrySha256": "064780e54fe6487837b2f8ccb2e2bca2ecfa0e9b3ad7bac8a482cd1eb210bd6f",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 124,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6037478205555259
+    },
+    {
+      "patchSize": 102,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.4912152794146809
+    },
+    {
+      "patchSize": 124,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.542355590582185
+    },
+    {
+      "patchSize": 124,
+      "donorPatches": 94,
+      "colour": 3,
+      "preservedFraction": 0.49989521028335415
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "ccdbe5b5d416d04189d59e12abdc66459d0958bb77065585b8d90fb87475bfe0",
+  "sha256": "aabdfddd033478d0749170d42b285a912924f59f1dfacce0eda14d0d2165b296",
+  "palette": [
+    "#cf586b",
+    "#edcd30",
+    "#2493a3",
+    "#092358"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 23,
+    "total": 23,
+    "mismatches": []
+  }
+}

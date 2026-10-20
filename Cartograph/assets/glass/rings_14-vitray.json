@@ -1,0 +1,27 @@
+{
+  "id": "rings_14",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T08:01:21.552090+00:00",
+  "prompt": "Use case: style-transfer. Edit target: the supplied exact colour guide for İkiz Gezegenler. Convert it into a luminous photographic handmade stained-glass panel, consistent with a polished artisan stained-glass puzzle collection. Add realistic translucent rippled glass, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on the exact existing seams. Retain every region, every shared boundary, all holes, silhouette and the FOUR original colour families exactly. Pale colours remain their original hues. Do not add seams, cracks, frames, objects, symbols or text. Preserve the flat readable corner bevels and clear T junctions. No round jigsaw tabs. Do not crop, rotate, zoom, change geometry or recolour any pane. Flat colours are a guide only: the finished result must have visible luminous glass material and natural subtle texture. Match the reference aspect ratio 883:883 and registration exactly. Colour fidelity and boundary alignment take priority over dramatic lighting. Neutral warm light background outside the panel.",
+  "references": [
+    "tools/stained/guides/rings_14.png"
+  ],
+  "size": [
+    883,
+    883
+  ],
+  "guide": "e741db3c320ed824ec1c1a50ab03cf0479c28bc3b3317092c1c87c323f593454",
+  "sha256": "6cd0b675fe3060d0cb7488fed647d435ae8d8c5ff7a1d3afe213737b5e416d53",
+  "palette": [
+    "#a03f94",
+    "#fedd20",
+    "#24a488",
+    "#0647b6"
+  ],
+  "paneColorCheck": {
+    "matched": 32,
+    "total": 32,
+    "valid": true,
+    "mismatches": []
+  }
+}

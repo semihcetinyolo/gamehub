@@ -1,0 +1,27 @@
+{
+  "id": "story_giraffe",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:21:02.677610+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Akasya Gölgesi. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_giraffe.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "ca13dd7367a846275e815d25db505dd64f5708e812c946d0fd6ab45aca5b7a37",
+  "sha256": "a6afc6c62ef83a42e9a368ec978b452bf39bbcbc39f811c8725b16dfbca71912",
+  "palette": [
+    "#f66d08",
+    "#fde541",
+    "#1ea170",
+    "#032d7b"
+  ],
+  "paneColorCheck": {
+    "matched": 43,
+    "total": 43,
+    "valid": true,
+    "mismatches": []
+  }
+}

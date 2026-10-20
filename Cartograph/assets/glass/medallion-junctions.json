@@ -1,0 +1,53 @@
+{
+  "id": "medallion",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T12:24:32.401144+00:00",
+  "source": "assets/glass/medallion-restored.webp",
+  "sourceSha256": "345ce61ce1fe0b92034136f1080735e9e8e6da492f9fa7be914a461abc8a95d7",
+  "sourceGeometrySha256": "33427c8516779405efc1a3ed4428ab0048ba755b1303dc5fbdd49e989d957850",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 103,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.47304045957375934
+    },
+    {
+      "patchSize": 56,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.47088194828938607
+    },
+    {
+      "patchSize": 49,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.36838701716596445
+    },
+    {
+      "patchSize": 91,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.4936522347308776
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "1d8e0a0dd0ac2d6ff74e97711697c48627f7021c235f0f73e1d29e3301e3e1e7",
+  "sha256": "38725cbdf9486f691e4790e7c9a1de11bb6898feeae5116b5466d4036b75fdfa",
+  "palette": [
+    "#11bcb2",
+    "#022eaf",
+    "#fcbf06",
+    "#cf1b0d"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 34,
+    "total": 34,
+    "mismatches": []
+  }
+}

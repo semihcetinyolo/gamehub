@@ -1,0 +1,27 @@
+{
+  "id": "story_koala",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T07:23:10.858148+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Okaliptüs Molası. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/story_koala.png"
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "bc09a9c74ef8fde9f4a42a58b3e55cd0a952506e74932bb38f40ced9291d645f",
+  "sha256": "d14613e7085001d4f3bb00aa3b71dbf8924ee42b78ade1e73421b4f28e7c8c78",
+  "palette": [
+    "#ec5a0a",
+    "#fcdc44",
+    "#209570",
+    "#052c77"
+  ],
+  "paneColorCheck": {
+    "matched": 34,
+    "total": 34,
+    "valid": true,
+    "mismatches": []
+  }
+}

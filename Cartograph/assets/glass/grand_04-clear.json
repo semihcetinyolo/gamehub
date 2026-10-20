@@ -1,0 +1,27 @@
+{
+  "id": "grand_04",
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-20T06:49:25.573150+00:00",
+  "prompt": "Use case: style-transfer. Transform the supplied exact colour guide into a luminous photographic artisan stained-glass panel of Akdeniz Limanı. Keep EVERY pane and all FOUR hues exactly as shown, including the small panes. Preserve ALL boundary locations, silhouette, margin, flat corner bevels and clear T junctions exactly. Add subtle handmade glass ripples, tiny bubbles, gentle backlighting and thin dark metallic lead ONLY on existing seams. No extra lines, cracks, shapes, frames, text, round tabs, cropping, distortion or shifted boundaries. Reference image is the edit target. Match its aspect ratio and composition precisely. Colour fidelity and registration take priority over dramatic lighting. Output portrait 768x1024, or proportional to the reference if different.",
+  "references": [
+    "tools/stained/guides/grand_04.png"
+  ],
+  "size": [
+    1728,
+    2304
+  ],
+  "guide": "23652b2cceb8e6c5386676905001e99f2bf542447d814288f33251698213775a",
+  "sha256": "877fa5f8d9b79d0046eab6b30671b759f01026ffba3ef5be77d172b605ff54c6",
+  "palette": [
+    "#ee9617",
+    "#fdf86e",
+    "#3581d8",
+    "#0a1e69"
+  ],
+  "paneColorCheck": {
+    "matched": 96,
+    "total": 96,
+    "valid": true,
+    "mismatches": []
+  }
+}

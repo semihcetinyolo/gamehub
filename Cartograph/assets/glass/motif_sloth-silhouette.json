@@ -1,0 +1,53 @@
+{
+  "id": "motif_sloth",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T13:28:11.017258+00:00",
+  "source": "assets/glass/motif_sloth-junctions.webp",
+  "sourceSha256": "1ca17312ce0214ad3d1fdb394ab6130d722560942ffc1bdcd79e4e15092624f1",
+  "sourceGeometrySha256": "0e22d3759552c3f335b2d13b09bf51f99ff35efc1ff5f960842d85280443439f",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 103,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5514300809371143
+    },
+    {
+      "patchSize": 129,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5064390979479388
+    },
+    {
+      "patchSize": 123,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5179906663224553
+    },
+    {
+      "patchSize": 105,
+      "donorPatches": 67,
+      "colour": 3,
+      "preservedFraction": 0.5188255161747427
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "71d2c806aa57971cbd6fa049164d81b11549d766af9500b11e94a2d580cd60d4",
+  "sha256": "ff13d6b2e936a1503ac6b6538f7a3c9e5220c31c48d237bc1c8284e97fd4b27b",
+  "palette": [
+    "#e37616",
+    "#faed8e",
+    "#85af20",
+    "#0b5293"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 23,
+    "total": 23,
+    "mismatches": []
+  }
+}

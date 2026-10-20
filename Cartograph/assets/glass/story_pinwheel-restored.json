@@ -1,0 +1,53 @@
+{
+  "id": "story_pinwheel",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T09:20:15.526509+00:00",
+  "source": "assets/glass/story_pinwheel-clear.webp",
+  "sourceSha256": "6b93ba93a60854a3935f2588f4c54660dd6e5b8a030a03073894e785e92c547e",
+  "sourceGeometrySha256": "b893f3cc808f5466b557e03bd46d5bfb7cd50ca579b27224a1df447ddee64c50",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 107,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.31345930163877284
+    },
+    {
+      "patchSize": 88,
+      "donorPatches": 88,
+      "colour": 1,
+      "preservedFraction": 0.19030383556339386
+    },
+    {
+      "patchSize": 107,
+      "donorPatches": 92,
+      "colour": 2,
+      "preservedFraction": 0.4141465077568518
+    },
+    {
+      "patchSize": 108,
+      "donorPatches": 65,
+      "colour": 3,
+      "preservedFraction": 0.2700684515418482
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "fd35cc6b0eeb59352e8a8403ab5004d007de5ab7f1622ff382ce152972f3b5f1",
+  "sha256": "19bec8e9a9706246232d024cc2b4727f73c2bb848f273e2bb9a9834564fdff60",
+  "palette": [
+    "#d1537c",
+    "#fbdf54",
+    "#20979b",
+    "#112c56"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 24,
+    "total": 24,
+    "mismatches": []
+  }
+}
