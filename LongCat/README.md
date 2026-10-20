@@ -12,13 +12,14 @@ Referans: Long Cat (Google Play `com.martinmagni.longcat`). Bizde kedi yerine **
 - `render.js`: tahta çizimi. `dog.js`: üretilmiş sosis köpek atlası, hareketli kulaklar/patiler ve canlı yüz. `art.js`: görsel slotları. `game.js`: ekranlar, girdi, animasyon. `ui.css`: arayüz.
 - [ART.md](ART.md): üretilmiş görseller, animasyonlar ve tam prompt dosyası. [Animasyon önizlemesi](art-preview.html): canlı karakter animasyonları ve derinlik karşılaştırması.
 
-- `levels.js`: 30 bölüm. `tools/gen.js` üretir; `node tools/verify.js` hepsinin çözülebildiğini ve eğri kuralını kontrol eder.
+- `levels.js`: **Longcat paketi, 300 bölüm** (`~/Desktop/game_apk/longcat/puppy-maze-longcat-gdd.html`). Bulmacalar Longcat 2.2.9'dan çevrildi, ayna/döndürme uygulandı ve Puppy Maze eğrisine göre sıralandı (`puppy_port/build.js`). İsimler bizim; `src` Longcat kaynağını, `solution` çözümü tutar. `node tools/verify.js` hepsinin çözülebildiğini ve eğri kuralını kontrol eder. Longcat ilk kaydırmada tuzak kurduğu için açılış kuralları bu pakette yalnızca uyarı verir. `tools/gen.js` kendi üreticimizdir ve çalıştırılırsa `levels.js`'in üzerine yazar.
+- **Açılış ipucu** (Longcat'in seri ödülü): köpek çözümün açılışındayken ipucu patileri sıradaki kaydırmayı kendiliğinden gösterir (başa dönünce yeniden). 5+ bölüm üst üste sıkışmadan kazanınca ya da aynı bölümde 2. sıkışmadan sonra ilk hamle, 5. sıkışmadan sonra ilk iki hamle gösterilir; oyuncu çözümden saparsa susar. Yıldız düşürmez. Ayar: `game.js` → `STREAK_HINT`, `FAILS_HINT`, `FAILS_HINT2`.
 
 **Yüz:** göz kırpar (bazen iki kere), etrafa bakar, kayarken gideceği yöne bakar ve dili dışarıda sallanır, çarpınca gözlerini sıkar, uzun kaydırmada şaşırır, köşeye sıkışınca (tek ve kısa bir çıkış kalınca) hafifçe endişelenir, kazanınca sevinir, sıkışınca küçük bir gözyaşı belirir. Kulaklar ve kuyruk da ruh haline göre hareket eder. Kayarken kafanın arkasında hafif bir blur izi kalır.
 
 ## UI sistemi
 
-Sosis köpeğe özel bisküvi, karamel ve krem teması. Ana menüde yeşil kemik biçimli OYNA butonu, pati desenli zemin, yıldız sayacı ve ayarlar; bölüm seçiminde bisküvi kartları; oyunda ortalanmış bölüm başlığı ve sade ilerleme çubuğu bulunur. Kalan kare sayacı kaldırıldı. Alt alanda yalnızca ödül kemiği (İPUCU) ve pati/dönüş oku (BAŞTAN) butonları bulunur. Geri al boosterı kaldırılmıştır. Ayarlar ve sonuç kartları da aynı krem-kahve görünümündedir. Yeni ölçeklenebilir çizimler: `assets/ui/dog-icons.svg`, `bone-button.svg`, `paw-pattern.svg`. Eski PNG dosyaları korunur ancak arayüz onları kullanmaz.
+Sosis köpeğe özel bisküvi, karamel ve krem teması. Ana menüde yeşil kemik biçimli OYNA butonu, pati desenli zemin, yıldız sayacı ve ayarlar; bölüm seçiminde bisküvi kartları; oyunda ortalanmış bölüm başlığı ve sade ilerleme çubuğu bulunur. Kalan kare sayacı kaldırıldı. Alt alanda üç buton bulunur: BAŞTAN, ödül kemiği (İPUCU) ve GERİ AL. Oyun ekranında ayarlar butonu da vardır. Ayarlar ve sonuç kartları da aynı krem-kahve görünümündedir. Yeni ölçeklenebilir çizimler: `assets/ui/dog-icons.svg`, `bone-button.svg`, `paw-pattern.svg`. Eski PNG dosyaları korunur ancak arayüz onları kullanmaz.
 
 ## Analizden gelen kararlar
 

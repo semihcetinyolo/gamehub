@@ -128,6 +128,20 @@ let idx = 0, lv = null, L = null, S = null, st = null, lay = null, board = null,
 let rewindDirs = [], anim = null, rewind = null, queued = [], over = false, attempt = null;
 let mood = 'idle', fx = D.newFace(), lastDir = [0, 1], squashAt = -1e9, bonkLen = 0, lastT = 0;
 let boxAnim = null, particles = [], trail = [], hint = null, tipTimer = 0, failTimer = 0, idleAt = 0, idleNudged = false;
+// Opening hint (Longcat's win-streak reward): Longcat puzzles trap the very first swipe, so while the dog
+// is on the solution's opening the paw hint plays its next swipe by itself — the 1st swipe on a 5+ level
+// win streak (no stuck) or after the 2nd stuck in the same level, the first 2 swipes after the 5th stuck.
+// Free: it costs no star.
+const STREAK_HINT = 5, FAILS_HINT = 2, FAILS_HINT2 = 5, LETTER = { u: 'up', r: 'right', d: 'down', l: 'left' };
+function openingHint() {
+  if (!L || over || anim || rewind) return;
+  const shown = attempt.fails >= FAILS_HINT2 ? 2 : (prog.streak || 0) >= STREAK_HINT || attempt.fails >= FAILS_HINT ? 1 : 0, n = st.moves.length;
+  if (n >= shown) return;
+  const sol = lv.solution && [...lv.solution].map(c => LETTER[c]);
+  if (sol && st.moves.some((m, k) => m.dir !== sol[k])) return; // left the solution's line
+  const d = sol ? sol[n] : S.hint(st);
+  if (d) showHint(true, d);
+}
 const IDLE_NUDGE = 12000; // no move for this long → the hint button wiggles once (Longcat warns at 6.3 / 12 s)
 const stirred = () => { idleAt = performance.now(); idleNudged = false; };
 
@@ -142,13 +156,14 @@ function start(i) {
   reset();
   show('game'); resize(); syncClock();
   tip(lv.tip || '', lv.tip ? (lv.intro ? 6500 : 4200) : 0);
+  if (!lv.tip && prog.streak === STREAK_HINT) tip(`${STREAK_HINT} bölüm üst üste! Seri sürdükçe ilk hamle gösterilir.`, 3600);
   if (i === 0) setTimeout(() => { if (idx === 0 && !st.moves.length) showHint(true); }, 700);
 }
 function reset() { // fresh board for the current level
   clearTimeout(failTimer);
   st = E.newState(L); anim = null; rewind = null; queued = []; over = false; particles = []; trail = []; hint = null; boxAnim = null;
   mood = 'idle'; fx = D.newFace(); lastDir = tailDir().map(v => -v); stirred();
-  $('result').classList.remove('on'); hud(); kick();
+  $('result').classList.remove('on'); hud(); openingHint(); kick();
 }
 function restart() { if (!L || rewind) return; attempt.restarts++; reset(); }
 function tailDir() { // the tail points at a solid side of the start cell
@@ -217,9 +232,9 @@ function undo() {
   SFX.undo(); hud(); kick();
 }
 const HINT_STEP = 320, HINT_HOLD = 900, HINT_EASE = 300, HINT_PASSES = 3; // ms between paws, full-trail hold, per-paw ease-in; loops
-function showHint(auto) {
+function showHint(auto, dir) {
   if (!L || over || anim) return;
-  const d = S.hint(st);
+  const d = dir || S.hint(st);
   if (!auto) { attempt.hints++; SFX.hint(); }
   if (d) {
     const m = E.move(L, st, d), now = performance.now();
@@ -312,6 +327,7 @@ function finishAnim(now) {
     if (E.won(L, st)) win(now);
     else if (E.stuck(L, st)) fail(now);
   } else mood = 'idle';
+  if (!over) openingHint();
   hud();
   while (queued.length && !over && !input(queued.shift())); // skip queued swipes that are blocked
   if (over) queued = [];
@@ -321,12 +337,12 @@ function win(now) {
   const solveMs = clockNow(); clock.done = true; syncClock(); recordTime(solveMs); showClock(); $('rTime').textContent = 'Süre ' + fmtTime(solveMs);
   bodyPieces(null).flat().forEach((p, i) => { for (let k = 0; k < 2; k++) particles.push({ x: p.x, y: p.y, vx: (Math.random() - .5) * lay.cell * 3, vy: -lay.cell * (1.5 + Math.random() * 2), t0: now + i * 45, life: 700, r: lay.cell * .16, kind: 'star', rot: Math.random() * 6 }); });
   const stars = !attempt.hints && !attempt.undos && !attempt.fails ? 3 : !attempt.hints ? 2 : 1;
-  prog.stars[idx] = Math.max(prog.stars[idx] || 0, stars); saveProg();
+  prog.stars[idx] = Math.max(prog.stars[idx] || 0, stars); prog.streak = attempt.fails ? 1 : (prog.streak || 0) + 1; saveProg();
   setTimeout(() => card(stars), 750);
 }
 // Stuck = fail, and a fail always restarts: sad face, the dog rewinds to its start, fresh board.
 function fail(now) {
-  over = true; mood = 'dead'; attempt.fails++; SFX.stuck(); buzz([20, 40, 20]); hud();
+  over = true; mood = 'dead'; attempt.fails++; prog.streak = 0; saveProg(); SFX.stuck(); buzz([20, 40, 20]); hud();
   failTimer = setTimeout(() => {
     rewindDirs = st.moves.map(m => m.dir);
     const pts = bodyPieces(null);
@@ -435,10 +451,11 @@ function draw(now) {
     pts = truncPieces(rewind.pts, rewind.keep + (full - rewind.keep) * (1 - k));
     if (u >= 1) {
       if (rewind.keepMoves) {
-        const n = rewind.keepMoves; reset();
+        const n = rewind.keepMoves; reset(); hint = null; // back mid-run, not on the start
         for (let i = 0; i < n; i++) E.apply(L, st, rewindDirs[i]);
+        openingHint();
         lastDir = E.DIRS[rewindDirs[n - 1]]; hud(); tip('Sıkıştın — son çözülebilir hamleye döndün.', 1800);
-      } else { reset(); tip('Sıkıştın — baştan!', 1400); }
+      } else { reset(); { const t = { [FAILS_HINT]: 'Sıkıştın — ilk hamle gösteriliyor.', [FAILS_HINT2]: 'Sıkıştın — ilk iki hamle gösteriliyor.' }[attempt.fails]; tip(t || 'Sıkıştın — baştan!', t ? 2200 : 1400); } }
       pts = bodyPieces(null);
     }
   } else pts = bodyPieces(anim, p);
@@ -536,12 +553,12 @@ function star(g, r) { g.beginPath(); for (let i = 0; i < 10; i++) { const a = i 
 // ---------- home scene: the dog solves the 4×4 spiral on a loop ----------
 const home = (() => {
   const hc = $('homeCv'), hg = hc.getContext('2d');
-  const demo = LEVELS.find(l => l.name === 'Kendi kuyruğun') || LEVELS[2];
+  const demo = { grid: ['S...', '....', '....', '....'] };
   let HL, hs, hlay, hboard, hdpr = 1, plan = [], step = 0, t0 = 0, on = false, raf = 0, phase = 'wait', from = null, hfx = D.newFace(), last = 0;
   function resize() {
     const r = hc.getBoundingClientRect(); if (!r.width) return;
     hdpr = Math.min(2.5, devicePixelRatio || 1); hc.width = r.width * hdpr; hc.height = r.height * hdpr;
-    HL = E.parse(demo); hlay = R.layout(HL, r.width, r.height, 48); hboard = R.bakeBoard(HL, hlay, hdpr, depth, LEVELS.indexOf(demo));
+    HL = E.parse(demo); hlay = R.layout(HL, r.width, r.height, 48); hboard = R.bakeBoard(HL, hlay, hdpr, depth, 0);
   }
   function reset(now = performance.now()) { HL = HL || E.parse(demo); hs = E.newState(HL); plan = E.analyse(demo).solution; step = 0; phase = 'wait'; t0 = now; hfx = D.newFace(); }
   const cen = i => ({ x: hlay.ox + (i % HL.W + .5) * hlay.cell, y: hlay.oy + (((i / HL.W) | 0) + .5) * hlay.cell });
@@ -584,7 +601,7 @@ const home = (() => {
 // ---------- debug / playtest hooks ----------
 window.LongDogGame = {
   start, undo, restart, input, state: () => ({ idx, head: st && st.head, count: st && st.count, floor: st && st.need, over, mood, rewinding: !!rewind }),
-  solve: () => S && S.hint(st), tick: () => draw(performance.now()),
+  solve: () => S && S.hint(st), hint: () => hint && hint.dir, tick: () => draw(performance.now()),
   cellCenter: i => { const r = cv.getBoundingClientRect(), p = center(i); return { x: r.left + p.x, y: r.top + p.y }; }, // page coords, for tap tests
 };
 

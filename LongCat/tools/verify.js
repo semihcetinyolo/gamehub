@@ -12,8 +12,12 @@
 //    up before it; tutorials are exempt from the time and decision rules
 //  · HARD peaks are Longcat-hard: 3+ traps and a floor of 67 s rising to 76 s (peaks average ≈ Longcat's ~82 s)
 //  · from level 4 on, estimated solve time is 30–100 s (average ≈ 60 s)
+//  · Longcat pack (levels carry src): Longcat traps the very first swipe, so the opening rules (harsh
+//    trap before 20%, soft start traps, 2/3 free decisions) only warn; the game shows a first-move arrow
 const E = require('../engine.js'); global.window = {}; require('../levels.js'); const LEVELS = window.LEVELS;
-let bad = 0, sum = 0, n = 0;
+let bad = 0, warned = 0, sum = 0, n = 0;
+const LONGCAT = LEVELS.some(lv => lv.src);
+const opening = msg => { console.log(LONGCAT ? msg.replace('✗', '!') : msg); LONGCAT ? warned++ : bad++; };
 const A = LEVELS.map(lv => E.analyse(lv));
 const MECH = { turn: /[┌┐└┘]/, glass: /g/, box: /b/, portal: /@/, pit: /o/, arrow: /[\^>v<]/ };
 const mechsOf = lv => Object.keys(MECH).filter(k => MECH[k].test(lv.grid.join('')));
@@ -47,19 +51,22 @@ const slope = xs.reduce((s, v, k) => s + (k - mx) * (v - my), 0) / xs.reduce((s,
 if (!(slope > 0.3)) { console.log(`✗ the curve does not rise (block averages +${slope.toFixed(2)} s per block)`); bad++; }
 A.forEach((a, i) => {
   if (i < 3 || !a.solvable || LEVELS[i].intro) return;
-  if (a.firstHard < 0.2) { console.log(`  ✗ level ${i + 1}: harsh trap at ${Math.round(a.firstHard * 100)}% progress (needs 20%+)`); bad++; }
+  if (a.firstHard < 0.2 && !LONGCAT) { console.log(`  ✗ level ${i + 1}: harsh trap at ${Math.round(a.firstHard * 100)}% progress (needs 20%+)`); bad++; }
   if (a.endTraps > 2) { console.log(`  ✗ level ${i + 1}: ${a.endTraps} traps near the end`); bad++; }
 });
 const endy = A.filter(a => a.endTraps).length, softy = A.filter((a, i) => i >= 3 && !LEVELS[i].intro && a.firstRisk < 0.2).length;
-if (softy > Math.ceil(LEVELS.length / 8)) { console.log(`✗ ${softy} levels with a trap at the start (max ${Math.ceil(LEVELS.length / 8)})`); bad++; }
+const harsh = A.filter((a, i) => i >= 3 && a.solvable && !LEVELS[i].intro && a.firstHard < 0.2).length;
+if (LONGCAT && harsh) opening(`✗ ${harsh} levels with a harsh trap before 20% progress`);
+if (softy > Math.ceil(LEVELS.length / 8)) opening(`✗ ${softy} levels with a trap at the start (max ${Math.ceil(LEVELS.length / 8)})`);
 const endSoft = A.filter((a, i) => a.endTraps && !LEVELS[i].hard).length;
 if (endSoft > Math.ceil(LEVELS.length / 6)) { console.log(`✗ ${endSoft} non-HARD levels with a late trap (max ${Math.ceil(LEVELS.length / 6)})`); bad++; }
 const play = A.filter((a, i) => i >= 3 && !LEVELS[i].intro), withFree = play.filter(a => a.choices > a.decisions).length;
-if (withFree < play.length * 2 / 3) { console.log(`✗ only ${withFree}/${play.length} levels have a free decision`); bad++; }
+if (withFree < play.length * 2 / 3) opening(`✗ only ${withFree}/${play.length} levels have a free decision`);
 console.log(`traps ${play.reduce((s, a) => s + a.decisions, 0)} of ${play.reduce((s, a) => s + a.choices, 0)} decisions, ${withFree}/${play.length} levels with a free one`);
 const peaksAvg = A.filter((a, i) => LEVELS[i].hard).reduce((s, a, _, r) => s + a.seconds / r.length, 0);
 console.log(`HARD peaks average ~${Math.round(peaksAvg)} s`);
 console.log(`blocks: ${means.map(m => Math.round(m)).join(' ')} s (+${slope.toFixed(1)} s per block)`);
 console.log(`average ~${Math.round(sum / n)} s (level 4+), late traps in ${endy} levels, soft start traps in ${softy}`);
+if (warned) console.log(`${warned} opening rule(s) only warned (Longcat pack)`);
 console.log(bad ? `${bad} problem(s)` : `all ${LEVELS.length} levels ok`);
 process.exit(bad ? 1 : 0);
