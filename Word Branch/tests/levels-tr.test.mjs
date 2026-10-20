@@ -6,8 +6,8 @@ import { validateLevel, createGame, findSolutions, submit, wordOf } from '../log
 
 test('both language sets meet the authored part-length and level-size rules', () => {
   for (const [language, levels] of Object.entries(LEVEL_SETS)) {
-    assert.equal(levels.length, 12, `${language}: twelve levels`);
-    assert.equal(new Set(levels.map(level => level.root)).size, 12);
+    assert.ok(levels.length >= 12, `${language}: retain the original twelve levels and append expansions`);
+    assert.equal(new Set(levels.map(level => level.root)).size, levels.length);
     for (const level of levels) {
       assert.ok(level.words.length >= 8 && level.words.length <= 12);
       let singleLetters = 0;
@@ -36,7 +36,9 @@ test('both language sets meet the authored part-length and level-size rules', ()
 
 test('Turkish branches use meaningful roots and include spaced dictionary compounds', () => {
   const roots = new Set(['SU', 'KAR', 'GÖZ', 'EL', 'DENİZ', 'GÖK', 'YER', 'KARA', 'BAŞ', 'KUŞ', 'AĞAÇ', 'TAŞ']);
-  assert.deepEqual(new Set(TURKISH_LEVELS.map(level => level.root)), roots);
+  assert.deepEqual(new Set(TURKISH_LEVELS.slice(0, 12).map(level => level.root)), roots);
+  const expansionRoots = new Set(['DEMİR', 'YOL', 'SES', 'DİL', 'ATEŞ', 'AY', 'GÜN']);
+  for (const level of TURKISH_LEVELS.slice(12)) assert.ok(expansionRoots.has(level.root));
   assert.ok(TURKISH_LEVELS.some(level => level.words.some(entry => entry.open === true)));
   // These former targets only share letters with their supposed root.
   const unrelated = new Set(['ELBİSE', 'ELASTİK', 'ELEMAN', 'ELVEDA', 'KARANFİL', 'KARBONAT', 'KARAKTER']);
@@ -69,11 +71,11 @@ test('Turkish levels do not pair a -MA/-ME form with its -MAK/-MEK infinitive', 
   }
 });
 
-test('language sets expose the original English set and twelve Turkish levels', () => {
+test('language sets expose the English and expanded Turkish sets', () => {
   assert.equal(LEVEL_SETS.en, ENGLISH_LEVELS);
   assert.equal(LEVEL_SETS.tr, TURKISH_LEVELS);
-  assert.equal(TURKISH_LEVELS.length, 12);
-  assert.equal(new Set(TURKISH_LEVELS.map(level => level.root)).size, 12);
+  assert.ok(TURKISH_LEVELS.length >= 12);
+  assert.equal(new Set(TURKISH_LEVELS.map(level => level.root)).size, TURKISH_LEVELS.length);
   for (const [index, level] of TURKISH_LEVELS.entries()) {
     assert.equal(level.id, index + 1);
     assert.equal(level.root, level.root.toLocaleUpperCase('tr'));

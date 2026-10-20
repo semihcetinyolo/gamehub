@@ -169,4 +169,109 @@ export const LEVELS = [
       { word: 'TAŞBEBEK', parts: ['BE', 'BEK'], open: true },
     ],
   },
+  {
+    // TDK: all targets listed in the root entry; individual/prefix lookups pending in the external verifier.
+    id: 13, root: 'DEMİR', words: [
+      { word: 'DEMİRYOLU', parts: ['YO', 'LU'], open: true },
+      { word: 'DEMİRPARA', parts: ['PA', 'RA'], open: true },
+      { word: 'DEMİRKAPI', parts: ['KA', 'PI'], open: true },
+      { word: 'DEMİRBORU', parts: ['BO', 'RU'], open: true },
+      { word: 'DEMİRBİLEK', parts: ['Bİ', 'LEK'], open: true },
+      { word: 'DEMİRAĞACI', parts: ['AĞA', 'CI'], open: true },
+      { word: 'DEMİRDİKENİ', parts: ['Dİ', 'KE', 'Nİ'], open: true },
+      { word: 'DEMİRLEBLEBİ', parts: ['LEB', 'LE', 'Bİ'], open: true },
+      { word: 'DEMİRPASI', parts: ['PA', 'SI'], open: true },
+      { word: 'DEMİRRENGİ', parts: ['REN', 'Gİ'], open: true },
+    ],
+  },
+  {
+    // TDK: all targets listed in the root entry; individual/prefix lookups pending in the external verifier.
+    id: 14, root: 'YOL', words: [
+      { word: 'YOLAĞZI', parts: ['AĞ', 'ZI'], open: true },
+      { word: 'YOLAYRIMI', parts: ['AY', 'RI', 'MI'], open: true },
+      { word: 'YOLAZIĞI', parts: ['AZI', 'ĞI'], open: true },
+      { word: 'YOLBOYU', parts: ['BO', 'YU'], open: true },
+      { word: 'YOLHALISI', parts: ['HA', 'LI', 'SI'], open: true },
+      { word: 'YOLKİLİMİ', parts: ['Kİ', 'Lİ', 'Mİ'], open: true },
+      { word: 'YOLPARASI', parts: ['PA', 'RA', 'SI'], open: true },
+      { word: 'YOLYORDAM', parts: ['YOR', 'DAM'], open: true },
+      { word: 'YOLYORGUNU', parts: ['YOR', 'GU', 'NU'], open: true },
+      { word: 'YOLİŞARETİ', parts: ['İŞA', 'RE', 'Tİ'], open: true },
+    ],
+  },
+  {
+    // TDK: all targets listed in the root entry; individual/prefix lookups pending in the external verifier.
+    id: 15, root: 'SES', words: [
+      { word: 'SESALETİ', parts: ['ALE', 'Tİ'], open: true },
+      { word: 'SESAYGITI', parts: ['AY', 'GI', 'TI'], open: true },
+      { word: 'SESBİLGİSİ', parts: ['BİL', 'Gİ', 'Sİ'], open: true },
+      { word: 'SESBİLİMİ', parts: ['Bİ', 'Lİ', 'Mİ'], open: true },
+      { word: 'SESBİRİMİ', parts: ['Bİ', 'Rİ', 'Mİ'], open: true },
+      { word: 'SESDUVARI', parts: ['DU', 'VA', 'RI'], open: true },
+      { word: 'SESKUŞAĞI', parts: ['KU', 'ŞA', 'ĞI'], open: true },
+      { word: 'SESPERDESİ', parts: ['PER', 'DE', 'Sİ'], open: true },
+      { word: 'SESUYUMU', parts: ['UYU', 'MU'], open: true },
+      { word: 'SESYOLU', parts: ['YO', 'LU'], open: true },
+      { word: 'SESYAZAR', parts: ['YA', 'ZAR'] },
+      { word: 'SESYAYAR', parts: ['YA', 'YAR'] },
+    ],
+  },
+  {
+    // TDK: all targets listed in the root entry; individual/prefix lookups pending in the external verifier.
+    id: 16, root: 'DİL', words: [
+      { word: 'DİLBALIĞI', parts: ['BA', 'LI', 'ĞI'], open: true },
+      { word: 'DİLBİLGİSİ', parts: ['BİL', 'Gİ', 'Sİ'], open: true },
+      { word: 'DİLBİLİMİ', parts: ['Bİ', 'Lİ', 'Mİ'], open: true },
+      { word: 'DİLBİRLİĞİ', parts: ['BİR', 'Lİ', 'Ğİ'], open: true },
+      { word: 'DİLCAMBAZI', parts: ['CAM', 'BA', 'ZI'], open: true },
+      { word: 'DİLADASI', parts: ['ADA', 'SI'], open: true },
+      { word: 'DİLATLASI', parts: ['AT', 'LA', 'SI'], open: true },
+      { word: 'DİLAVCISI', parts: ['AV', 'CI', 'SI'], open: true },
+      { word: 'DİLŞAKASI', parts: ['ŞA', 'KA', 'SI'], open: true },
+      { word: 'DİLSEVER', parts: ['SE', 'VER'] },
+    ],
+  },
+  {
+    // TDK: all targets listed in the root entry; individual/prefix lookups pending in the external verifier.
+    id: 17, root: 'ATEŞ', words: [
+      { word: 'ATEŞBÖCEĞİ', parts: ['BÖ', 'CE', 'Ğİ'], open: true },
+      { word: 'ATEŞBALIĞI', parts: ['BA', 'LI', 'ĞI'], open: true },
+      { word: 'ATEŞÇİÇEĞİ', parts: ['Çİ', 'ÇE', 'Ğİ'], open: true },
+      { word: 'ATEŞTUĞLASI', parts: ['TUĞ', 'LA', 'SI'], open: true },
+      { word: 'ATEŞKÜRE', parts: ['KÜ', 'RE'], open: true },
+      { word: 'ATEŞÖLÇER', parts: ['ÖL', 'ÇER'] },
+      { word: 'ATEŞPARÇASI', parts: ['PAR', 'ÇA', 'SI'], open: true },
+      { word: 'ATEŞÇEMBERİ', parts: ['ÇEM', 'BE', 'Rİ'], open: true },
+    ],
+  },
+  {
+    // TDK: all targets listed in the root entry; individual/prefix lookups pending in the external verifier.
+    id: 18, root: 'AY', words: [
+      { word: 'AYDEDE', parts: ['DE', 'DE'] },
+      { word: 'AYÇİÇEĞİ', parts: ['Çİ', 'ÇE', 'Ğİ'] },
+      { word: 'AYBALIĞI', parts: ['BA', 'LI', 'ĞI'], open: true },
+      { word: 'AYÇÖREĞİ', parts: ['ÇÖ', 'RE', 'Ğİ'], open: true },
+      { word: 'AYDÖNÜMÜ', parts: ['DÖ', 'NÜ', 'MÜ'], open: true },
+      { word: 'AYIŞIĞI', parts: ['IŞ', 'IĞI'], open: true },
+      { word: 'AYPARÇASI', parts: ['PAR', 'ÇA', 'SI'], open: true },
+      { word: 'AYTAKVİMİ', parts: ['TAK', 'Vİ', 'Mİ'], open: true },
+      { word: 'AYYILI', parts: ['YI', 'LI'], open: true },
+      { word: 'AYMODÜLÜ', parts: ['MO', 'DÜ', 'LÜ'], open: true },
+    ],
+  },
+  {
+    // TDK: all targets listed in the root entry; individual/prefix lookups pending in the external verifier.
+    id: 19, root: 'GÜN', words: [
+      { word: 'GÜNAYDIN', parts: ['AY', 'DIN'] },
+      { word: 'GÜNBEGÜN', parts: ['BE', 'GÜN'] },
+      { word: 'GÜNDÖNDÜ', parts: ['DÖN', 'DÜ'] },
+      { word: 'GÜNBATIMI', parts: ['BA', 'TI', 'MI'], open: true },
+      { word: 'GÜNDÖNÜMÜ', parts: ['DÖ', 'NÜ', 'MÜ'], open: true },
+      { word: 'GÜNIŞIĞI', parts: ['IŞ', 'IĞI'], open: true },
+      { word: 'GÜNORTASI', parts: ['OR', 'TA', 'SI'], open: true },
+      { word: 'GÜNBOYU', parts: ['BO', 'YU'], open: true },
+      { word: 'GÜNBALIĞI', parts: ['BA', 'LI', 'ĞI'], open: true },
+      { word: 'GÜNGÜLÜ', parts: ['GÜ', 'LÜ'], open: true },
+    ],
+  },
 ];

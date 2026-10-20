@@ -232,3 +232,10 @@ Concept: the centre root is a real word and every target genuinely branches from
    avoid grim words. Rare words are fine.
 6. 12 levels per language, 8–12 targets each, gentle curve; English keeps SNOWBALL BA+LL, SNOWFLAKE FL+AKE,
    SNOWBLOWER BL+OW+ER, SNOWFALL FA+LL. English prefix words: FIREFIGHT/FIREFIGHTER style pairs may both be targets.
+
+## Expansion (user: "use every level you have")
+- Turkish (Word Branch:10, owns levels-tr.js + tests/levels-tr.test.mjs): append levels for DEMİR, YOL, SES, DİL, ATEŞ, AY,
+  GÜN after the current 12 (every root that reaches 8 qualifying targets under the CURRENT rules).
+- English (astra-en, Word Branch:4, owns levels.js + a new tests/levels-en.test.mjs): append BLACK, BLUE, GREEN, WHITE,
+  WIND, NIGHT, DAY, PLAY, FRUIT, COFFEE, TEA, FLOWER, BIRTH, HEAT after the current 12 (open compounds use `open: true`).
+- Existing levels keep their order and content. CURRENT content rules apply; slots 5..8 must validate; all tests pass.
