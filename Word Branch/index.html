@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1426">
+  <title>Word Branch</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <header class="top">
+      <div class="level-chip" id="levelLabel">Level 1</div>
+      <div class="top-actions">
+        <button class="icon-btn" id="adminBtn" type="button" data-i18n-label="admin">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg>
+        </button>
+        <button class="icon-btn" id="settingsBtn" type="button" data-i18n-label="settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+        <button class="icon-btn" id="hintBtn" type="button" data-i18n-label="hint">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2h5c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg>
+        </button>
+        <button class="icon-btn" id="restartBtn" type="button" data-i18n-label="restart">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v5h5"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="counter" id="counter" role="status">
+      <span class="counter-fill" id="counterFill"></span>
+      <span class="counter-label" data-i18n="words">Words</span>
+      <span class="counter-num"><b id="foundNum">0</b><i>/</i><span id="totalNum">0</span></span>
+    </div>
+
+    <div class="spacer" aria-hidden="true"></div>
+    <section class="board" id="board" aria-label="Target words"></section>
+    <div class="spacer wide" aria-hidden="true"></div>
+
+    <div class="live-row" id="liveRow">
+      <div class="live" id="live" aria-live="polite"></div>
+      <button class="icon-btn shuffle-btn" id="shuffleBtn" type="button" data-i18n-label="shuffle">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+      </button>
+    </div>
+
+    <section class="wheel-area" id="wheelArea">
+      <div class="wheel" id="wheel">
+        <div class="wheel-disc"></div>
+        <svg class="wheel-lines" id="wheelLines" aria-hidden="true">
+          <polyline id="hintLine" points=""></polyline>
+          <polyline id="hintTrail" points=""></polyline>
+          <polyline id="pathLine" points=""></polyline>
+        </svg>
+        <div class="node root" id="rootNode"><span></span></div>
+        <svg class="wheel-top" id="wheelTop" aria-hidden="true">
+          <g id="hintFinger" opacity="0">
+            <circle class="finger-ring" r="22"></circle>
+            <circle class="finger-dot" r="13"></circle>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <section class="click-area" id="clickArea" hidden></section>
+  </main>
+
+  <div id="fx" aria-hidden="true"></div>
+
+  <div class="overlay" id="overlay" hidden>
+    <div class="card">
+      <div class="card-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+      </div>
+      <h2 id="overlayTitle"></h2>
+      <p id="overlayText"></p>
+      <div class="card-actions">
+        <button class="btn primary" id="nextBtn" type="button"></button>
+        <button class="btn" id="replayBtn" type="button" data-i18n="replay">Replay</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay sheet-backdrop" id="settings" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="sheet-head">
+        <h2 id="settingsTitle" data-i18n="settings">Settings</h2>
+        <button class="sheet-close" id="settingsClose" type="button" data-i18n-label="close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <h3 class="sheet-label" data-i18n="language">Language</h3>
+      <div class="lang-options" id="langOptions" role="radiogroup" aria-labelledby="settingsTitle">
+        <button class="lang-option" type="button" role="radio" data-lang="en" lang="en">
+          <span class="lang-code">EN</span><span class="lang-name">English</span>
+        </button>
+        <button class="lang-option" type="button" role="radio" data-lang="tr" lang="tr">
+          <span class="lang-code">TR</span><span class="lang-name">Türkçe</span>
+        </button>
+      </div>
+      <p class="sheet-note" data-i18n="langNote">Changing the language starts from level 1.</p>
+
+      <h3 class="sheet-label" id="modeLabel" data-i18n="version">Version</h3>
+      <div class="lang-options" id="modeOptions" role="radiogroup" aria-labelledby="modeLabel">
+        <button class="lang-option" type="button" role="radio" data-mode="v1">
+          <span class="lang-code">V1</span><span class="lang-name" data-i18n="modeWheel">Wheel</span>
+        </button>
+        <button class="lang-option" type="button" role="radio" data-mode="v2">
+          <span class="lang-code">V2</span><span class="lang-name" data-i18n="modeTap">Tap</span>
+        </button>
+      </div>
+      <p class="sheet-note" data-i18n="modeNote">Wheel: drag from the centre. Tap: tap the pieces in order.</p>
+    </div>
+  </div>
+
+  <div class="error" id="error" hidden></div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

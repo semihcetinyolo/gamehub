@@ -98,5 +98,9 @@
   {
     "name": "Tidy Up",
     "path": "Tidy Up/game/index.html"
+  },
+  {
+    "name": "Word Branch",
+    "path": "Word Branch/index.html"
   }
 ]
