@@ -30,21 +30,21 @@ export const LEVELS = [
     ],
   },
   {
-    // TDK pending: GÖZ BEBEĞİ, GÖZ KAPAĞI, GÖZ KÜRESİ, GÖZ RENGİ, GÖZ NURU, GÖZ KALEMİ, GÖZ BANYOSU, GÖZ ÇUKURU
+    // TDK: göz yuvarı, göz merceği, göz pınarı replace forms TDK does not list
     id: 3, root: 'GÖZ', words: [
       { word: 'GÖZYAŞI', parts: ['YA', 'ŞI'] },
       { word: 'GÖZBEBEĞİ', parts: ['BE', 'BE', 'Ğİ'], open: true },
       { word: 'GÖZKAPAĞI', parts: ['KA', 'PA', 'ĞI'], open: true },
-      { word: 'GÖZKÜRESİ', parts: ['KÜ', 'RE', 'Sİ'], open: true },
-      { word: 'GÖZRENGİ', parts: ['REN', 'Gİ'], open: true },
+      { word: 'GÖZYUVARI', parts: ['YU', 'VA', 'RI'], open: true },
+      { word: 'GÖZMERCEĞİ', parts: ['MER', 'CE', 'Ğİ'], open: true },
       { word: 'GÖZNURU', parts: ['NU', 'RU'], open: true },
-      { word: 'GÖZKALEMİ', parts: ['KA', 'LE', 'Mİ'], open: true },
+      { word: 'GÖZPINARI', parts: ['PI', 'NA', 'RI'], open: true },
       { word: 'GÖZBANYOSU', parts: ['BAN', 'YO', 'SU'], open: true },
       { word: 'GÖZÇUKURU', parts: ['ÇU', 'KU', 'RU'], open: true },
     ],
   },
   {
-    // TDK pending: EL ARABASI, EL AYNASI, EL ÇANTASI, EL HAVLUSU, EL YAZISI, EL KİTABI, EL SABUNU, EL FENERİ, EL BİLEĞİ
+    // TDK: el bombası replaces el bileği
     id: 4, root: 'EL', words: [
       { word: 'ELDİVEN', parts: ['Dİ', 'VEN'] },
       { word: 'ELARABASI', parts: ['ARA', 'BA', 'SI'], open: true },
@@ -55,21 +55,21 @@ export const LEVELS = [
       { word: 'ELKİTABI', parts: ['Kİ', 'TA', 'BI'], open: true },
       { word: 'ELSABUNU', parts: ['SA', 'BU', 'NU'], open: true },
       { word: 'ELFENERİ', parts: ['FE', 'NE', 'Rİ'], open: true },
-      { word: 'ELBİLEĞİ', parts: ['Bİ', 'LE', 'Ğİ'], open: true },
+      { word: 'ELBOMBASI', parts: ['BOM', 'BA', 'SI'], open: true },
     ],
   },
   {
-    // TDK pending: DENİZALTI, DENİZ YILDIZI, DENİZ ANASI, DENİZ AYGIRI, DENİZ KIZI, DENİZ FENERİ, DENİZ ASLANI, DENİZ İNEĞİ, DENİZ KÖPÜĞÜ
+    // TDK: denizyıldızı, denizanası, denizaygırı, denizaslanı, denizineği, denizköpüğü are written closed
     id: 5, root: 'DENİZ', words: [
       { word: 'DENİZALTI', parts: ['AL', 'TI'] },
-      { word: 'DENİZYILDIZI', parts: ['YIL', 'DI', 'ZI'], open: true },
-      { word: 'DENİZANASI', parts: ['ANA', 'SI'], open: true },
-      { word: 'DENİZAYGIRI', parts: ['AY', 'GI', 'RI'], open: true },
+      { word: 'DENİZYILDIZI', parts: ['YIL', 'DI', 'ZI'] },
+      { word: 'DENİZANASI', parts: ['ANA', 'SI'] },
+      { word: 'DENİZAYGIRI', parts: ['AY', 'GI', 'RI'] },
       { word: 'DENİZKIZI', parts: ['KI', 'ZI'], open: true },
       { word: 'DENİZFENERİ', parts: ['FE', 'NE', 'Rİ'], open: true },
-      { word: 'DENİZASLANI', parts: ['AS', 'LA', 'NI'], open: true },
-      { word: 'DENİZİNEĞİ', parts: ['İNE', 'Ğİ'], open: true },
-      { word: 'DENİZKÖPÜĞÜ', parts: ['KÖ', 'PÜ', 'ĞÜ'], open: true },
+      { word: 'DENİZASLANI', parts: ['AS', 'LA', 'NI'] },
+      { word: 'DENİZİNEĞİ', parts: ['İNE', 'Ğİ'] },
+      { word: 'DENİZKÖPÜĞÜ', parts: ['KÖ', 'PÜ', 'ĞÜ'] },
     ],
   },
   {
@@ -130,41 +130,41 @@ export const LEVELS = [
     ],
   },
   {
-    // TDK pending: KUŞBURNU, KUŞYEMİ, KUŞÜZÜMÜ, KUŞBAŞI, KUŞKONMAZ, KUŞDİLİ, KUŞ BAKIŞI, KUŞ CENNETİ, KUŞ KAFESİ
+    // TDK: kuş üzümü is written open; kuş yuvası replaces kuş cenneti
     id: 10, root: 'KUŞ', words: [
       { word: 'KUŞBURNU', parts: ['BUR', 'NU'] },
       { word: 'KUŞYEMİ', parts: ['YE', 'Mİ'] },
-      { word: 'KUŞÜZÜMÜ', parts: ['ÜZÜ', 'MÜ'] },
+      { word: 'KUŞÜZÜMÜ', parts: ['ÜZÜ', 'MÜ'], open: true },
       { word: 'KUŞBAŞI', parts: ['BA', 'ŞI'] },
       { word: 'KUŞKONMAZ', parts: ['KON', 'MAZ'] },
       { word: 'KUŞDİLİ', parts: ['Dİ', 'Lİ'] },
       { word: 'KUŞBAKIŞI', parts: ['BA', 'KI', 'ŞI'], open: true },
-      { word: 'KUŞCENNETİ', parts: ['CEN', 'NE', 'Tİ'], open: true },
+      { word: 'KUŞYUVASI', parts: ['YU', 'VA', 'SI'], open: true },
       { word: 'KUŞKAFESİ', parts: ['KA', 'FE', 'Sİ'], open: true },
     ],
   },
   {
-    // TDK pending: AĞAÇKAKAN, AĞAÇ KAVUNU, AĞAÇ ÇİLEĞİ, AĞAÇ SAKIZI, AĞAÇ MANTARI, AĞAÇ SERÇESİ, AĞAÇ SANSARI, AĞAÇ KURDU
+    // TDK: ağaç yılanı replaces ağaç mantarı
     id: 11, root: 'AĞAÇ', words: [
       { word: 'AĞAÇKAKAN', parts: ['KA', 'KAN'] },
       { word: 'AĞAÇKAVUNU', parts: ['KA', 'VU', 'NU'], open: true },
       { word: 'AĞAÇÇİLEĞİ', parts: ['Çİ', 'LE', 'Ğİ'], open: true },
       { word: 'AĞAÇSAKIZI', parts: ['SA', 'KI', 'ZI'], open: true },
-      { word: 'AĞAÇMANTARI', parts: ['MAN', 'TA', 'RI'], open: true },
+      { word: 'AĞAÇYILANI', parts: ['YI', 'LA', 'NI'], open: true },
       { word: 'AĞAÇSERÇESİ', parts: ['SER', 'ÇE', 'Sİ'], open: true },
       { word: 'AĞAÇSANSARI', parts: ['SAN', 'SA', 'RI'], open: true },
       { word: 'AĞAÇKURDU', parts: ['KUR', 'DU'], open: true },
     ],
   },
   {
-    // TDK pending: TAŞ OCAĞI, TAŞ KÖMÜRÜ, TAŞ DEVRİ, TAŞ DUVAR, TAŞ BALIĞI, TAŞ MANTARI, TAŞ BASKI, TAŞ BEBEK
+    // TDK: taş fırın and taş yünü replace taş duvar and taş mantarı
     id: 12, root: 'TAŞ', words: [
       { word: 'TAŞOCAĞI', parts: ['OCA', 'ĞI'], open: true },
       { word: 'TAŞKÖMÜRÜ', parts: ['KÖ', 'MÜ', 'RÜ'], open: true },
       { word: 'TAŞDEVRİ', parts: ['DEV', 'Rİ'], open: true },
-      { word: 'TAŞDUVAR', parts: ['DU', 'VAR'], open: true },
+      { word: 'TAŞFIRIN', parts: ['FI', 'RIN'], open: true },
       { word: 'TAŞBALIĞI', parts: ['BA', 'LI', 'ĞI'], open: true },
-      { word: 'TAŞMANTARI', parts: ['MAN', 'TA', 'RI'], open: true },
+      { word: 'TAŞYÜNÜ', parts: ['YÜ', 'NÜ'], open: true },
       { word: 'TAŞBASKI', parts: ['BAS', 'KI'], open: true },
       { word: 'TAŞBEBEK', parts: ['BE', 'BEK'], open: true },
     ],
