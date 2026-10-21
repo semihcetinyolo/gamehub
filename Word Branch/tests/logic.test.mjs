@@ -87,7 +87,7 @@ test('authored levels and validation errors', () => {
   assert.throws(() => validateLevel({ root: 'X', words: [{ word: 'XBB', parts: ['A', 'B'] }] }), /spell/);
   assert.throws(() => validateLevel({ root: 'X', words: [{ word: 'XAB', parts: ['A', 'B'] }, { word: 'XAB', parts: ['A', 'B'] }] }), /Duplicate/);
   assert.throws(() => validateLevel({ root: 'X', words: [{ word: 'XAB', parts: ['AB'] }] }), /at least 2/);
-  assert.deepEqual(DEFAULTS, { visibleRows: 4, wheelSlots: 5 });
+  assert.deepEqual(DEFAULTS, { visibleRows: 4, wheelSlots: 5, decoys: 0 });
 });
 
 test('wrong answers preserve state identity and contents', () => {

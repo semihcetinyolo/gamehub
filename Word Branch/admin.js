@@ -45,7 +45,7 @@ const css = `
 
 const clamp = (value, min, max, fallback) => Math.min(max, Math.max(min, Number.isSafeInteger(value) ? value : fallback));
 
-export function openAdmin({ levels, currentIndex, rows, slots, seed, apply }) {
+export function openAdmin({ levels, currentIndex, rows, slots, decoys, seed, apply }) {
   if (!Array.isArray(levels) || !levels.length || typeof apply !== 'function') {
     throw new Error('openAdmin needs levels and an apply callback');
   }
@@ -60,6 +60,7 @@ export function openAdmin({ levels, currentIndex, rows, slots, seed, apply }) {
   const minSlots = index => Math.max(...levels[index].words.map(word => word.parts.length));
   let draftRows = clamp(rows, 1, 6, DEFAULTS.visibleRows);
   let draftSlots = clamp(slots, minSlots(levelIndex), 8, DEFAULTS.wheelSlots);
+  let draftDecoys = clamp(decoys, 0, 3, DEFAULTS.decoys ?? 0);
   const previousFocus = document.activeElement;
   const dialog = document.createElement('dialog');
   dialog.id = 'wb-admin';
@@ -71,6 +72,7 @@ export function openAdmin({ levels, currentIndex, rows, slots, seed, apply }) {
       <h3>Game settings</h3>
       <div class="wa-setting"><label id="wa-rows-label">Visible rows</label><div class="wa-stepper"><button data-step="rows:-1" aria-label="Fewer visible rows">−</button><output id="wa-rows" aria-labelledby="wa-rows-label"></output><button data-step="rows:1" aria-label="More visible rows">+</button></div></div>
       <div class="wa-setting"><label id="wa-slots-label">Wheel slots</label><div class="wa-stepper"><button data-step="slots:-1" aria-label="Fewer wheel slots">−</button><output id="wa-slots" aria-labelledby="wa-slots-label"></output><button data-step="slots:1" aria-label="More wheel slots">+</button></div></div>
+      <div class="wa-setting"><label id="wa-decoys-label">Fake parts</label><div class="wa-stepper"><button data-step="decoys:-1" aria-label="Fewer fake parts">−</button><output id="wa-decoys" aria-labelledby="wa-decoys-label"></output><button data-step="decoys:1" aria-label="More fake parts">+</button></div></div>
       <h3><label for="wa-seed">Seed</label></h3><div class="wa-seed"><input id="wa-seed" type="text" inputmode="numeric" autocomplete="off" spellcheck="false"><button class="wa-new-seed" type="button">New seed</button></div>
     </div><footer class="wa-footer"><p class="wa-error" role="alert" hidden></p><button class="wa-apply" type="button">Apply / Restart</button></footer>
   </div>`;
@@ -84,11 +86,12 @@ export function openAdmin({ levels, currentIndex, rows, slots, seed, apply }) {
   function refresh() {
     query('#wa-rows').value = draftRows;
     query('#wa-slots').value = draftSlots;
+    query('#wa-decoys').value = draftDecoys;
     for (const button of dialog.querySelectorAll('[data-step]')) {
       const [kind, delta] = button.dataset.step.split(':');
-      const value = kind === 'rows' ? draftRows : draftSlots;
-      const min = kind === 'rows' ? 1 : minSlots(levelIndex);
-      const max = kind === 'rows' ? 6 : 8;
+      const value = { rows: draftRows, slots: draftSlots, decoys: draftDecoys }[kind];
+      const min = { rows: 1, slots: minSlots(levelIndex), decoys: 0 }[kind];
+      const max = { rows: 6, slots: 8, decoys: 3 }[kind];
       button.disabled = value + Number(delta) < min || value + Number(delta) > max;
     }
   }
@@ -98,8 +101,8 @@ export function openAdmin({ levels, currentIndex, rows, slots, seed, apply }) {
       const rawSeed = query('#wa-seed').value.trim();
       if (!/^-?\d+$/.test(rawSeed) || !Number.isSafeInteger(Number(rawSeed))) throw new Error('Enter a whole-number seed.');
       const nextSlots = Math.max(draftSlots, minSlots(index));
-      validateLevel(levels[index], { visibleRows: draftRows, wheelSlots: nextSlots });
-      apply({ levelIndex: index, rows: draftRows, slots: nextSlots, seed: Number(rawSeed) });
+      validateLevel(levels[index], { visibleRows: draftRows, wheelSlots: nextSlots, decoys: draftDecoys });
+      apply({ levelIndex: index, rows: draftRows, slots: nextSlots, decoys: draftDecoys, seed: Number(rawSeed) });
       close();
     } catch (problem) {
       error.textContent = problem.message;
@@ -154,6 +157,7 @@ export function openAdmin({ levels, currentIndex, rows, slots, seed, apply }) {
     button.addEventListener('click', () => {
       const [kind, delta] = button.dataset.step.split(':');
       if (kind === 'rows') draftRows += Number(delta);
+      else if (kind === 'decoys') draftDecoys += Number(delta);
       else draftSlots += Number(delta);
       refresh();
     });

@@ -4,3 +4,4 @@ import './levels-tr.test.mjs';
 
 import './refill-quality.test.mjs';
 import './levels-en.test.mjs';
+import './decoys.test.mjs';

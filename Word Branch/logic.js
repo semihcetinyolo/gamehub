@@ -1,8 +1,9 @@
-export const DEFAULTS = Object.freeze({ visibleRows: 4, wheelSlots: 5 });
+// wheelSlots holds real parts; decoys are extra ring slots with fake parts that fit no target.
+export const DEFAULTS = Object.freeze({ visibleRows: 4, wheelSlots: 5, decoys: 0 });
 
 function options(opts = {}) {
   return { visibleRows: opts.visibleRows ?? DEFAULTS.visibleRows,
-    wheelSlots: opts.wheelSlots ?? DEFAULTS.wheelSlots };
+    wheelSlots: opts.wheelSlots ?? DEFAULTS.wheelSlots, decoys: opts.decoys ?? DEFAULTS.decoys };
 }
 
 export function validateLevel(level, opts = {}) {
@@ -12,6 +13,7 @@ export function validateLevel(level, opts = {}) {
       throw new Error(`${key} must be a positive integer`);
     }
   }
+  if (!Number.isSafeInteger(config.decoys) || config.decoys < 0) throw new Error('decoys must be a non-negative integer');
   if (!level || !/^[A-ZÇĞİÖŞÜ]+$/.test(level.root ?? '')) throw new Error('root must be uppercase letters');
   if (!Array.isArray(level.words) || !level.words.length) throw new Error('words must be a nonempty array');
   const seen = new Set();
@@ -53,6 +55,69 @@ function insert(state, text) {
   if (!empty.length) return;
   const slot = empty[Math.floor(random(state._meta) * empty.length)];
   state.wheel[slot] = { id: `n${state._meta.nextNode++}`, text };
+}
+
+// ---------- decoys ----------
+// A decoy is never a substring of any target's remainder, so it can't take part in any
+// spelling. Real-part logic runs on the ring without decoy slots; decoys keep their slots.
+const VOWELS = new Set('AEIİOÖUÜ');
+
+function decoyText(state) {
+  const meta = state._meta;
+  const onWheel = new Set(state.wheel.filter(Boolean).map(node => node.text));
+  const pool = meta.decoyPool.filter(text => !onWheel.has(text));
+  if (pool.length) return pool[Math.floor(random(meta) * pool.length)];
+  // No pool left: build a syllable from the level's own letters.
+  const vowels = meta.letters.filter(c => VOWELS.has(c));
+  const consonants = meta.letters.filter(c => !VOWELS.has(c));
+  const pick = list => list[Math.floor(random(meta) * list.length)];
+  for (let attempt = 0; attempt < 60 && vowels.length && consonants.length; attempt++) {
+    const text = pick(consonants) + pick(vowels) + (random(meta) < 0.5 ? pick(consonants) : '');
+    if (!onWheel.has(text) && !meta.remainders.some(rest => rest.includes(text))) return text;
+  }
+  return null;
+}
+
+function placeDecoys(state, count) {
+  for (let i = 0; i < count; i++) {
+    const text = decoyText(state);
+    if (!text) return;
+    const node = { id: `n${state._meta.nextNode++}`, text };
+    state.wheel.splice(Math.floor(random(state._meta) * (state.wheel.length + 1)), 0, node);
+    state._meta.decoyIds.push(node.id);
+  }
+}
+
+// After a found word every decoy changes, so fake parts can't be learnt by sight.
+function rerollDecoys(state) {
+  const ids = new Set(state._meta.decoyIds);
+  const lost = new Set();
+  state._meta.decoyIds = [];
+  state.wheel.forEach((node, slot) => {
+    if (!node || !ids.has(node.id)) return;
+    state.wheel[slot] = null;
+    const text = decoyText(state);
+    if (!text) { lost.add(slot); return; }
+    state.wheel[slot] = { id: `n${state._meta.nextNode++}`, text };
+    state._meta.decoyIds.push(state.wheel[slot].id);
+  });
+  // A decoy slot with no replacement is dropped, so real logic never sees a hole it can't fill.
+  if (lost.size) state.wheel = state.wheel.filter((_, slot) => !lost.has(slot));
+}
+
+function withRealWheel(state, fn) {
+  const ids = new Set(state._meta.decoyIds);
+  const full = state.wheel;
+  const decoySlots = new Set(full.flatMap((node, i) => node && ids.has(node.id) ? [i] : []));
+  if (!decoySlots.size) return fn(state);
+  state.wheel = full.filter((_, i) => !decoySlots.has(i));
+  try {
+    return fn(state);
+  } finally {
+    const real = state.wheel;
+    let k = 0;
+    state.wheel = full.map((node, i) => decoySlots.has(i) ? node : real[k++]);
+  }
 }
 
 // Check actual strings, including alternate splits and duplicate texts.
@@ -268,16 +333,22 @@ function prepareInitial(state) {
 export function createGame(level, opts = {}) {
   validateLevel(level, opts);
   const config = options(opts);
+  const remainders = level.words.map(item => item.word.slice(level.root.length));
+  const decoyPool = [...new Set(opts.decoyPool ?? [])].filter(text => typeof text === 'string' &&
+    /^[A-ZÇĞİÖŞÜ]{2,3}$/.test(text) && !remainders.some(rest => rest.includes(text)));
   const state = {
     root: level.root, rows: [], queue: level.words.map(item => item.word),
     wheel: Array(config.wheelSlots).fill(null), found: [], total: level.words.length, done: false,
     _meta: { ...config, rng: seedValue(opts.seed), nextNode: 1, nextRow: 1,
       parts: Object.fromEntries(level.words.map(item => [item.word, [...item.parts]])),
-      open: Object.fromEntries(level.words.map(item => [item.word, item.open === true])) },
+      open: Object.fromEntries(level.words.map(item => [item.word, item.open === true])),
+      decoyIds: [], decoyPool, remainders,
+      letters: [...new Set(remainders.join(''))] },
   };
   while (state.rows.length < config.visibleRows && state.queue.length) state.rows.push(row(state, state.queue.shift()));
   refill(state, true);
   prepareInitial(state);
+  placeDecoys(state, config.decoys);
   return state;
 }
 
@@ -333,7 +404,8 @@ export function submit(state, nodeIds) {
     addedRowId = added.id;
   }
   next.done = !next.rows.length && !next.queue.length;
-  refill(next);
+  withRealWheel(next, () => refill(next));
+  if (!next.done) rerollDecoys(next);
   return { state: next, result: { ok: true, word, rowId: target.id, usedNodeIds: [...nodeIds],
     addedNodeIds: next.wheel.filter(node => node && !available.has(node.id)).map(node => node.id), addedRowId } };
 }

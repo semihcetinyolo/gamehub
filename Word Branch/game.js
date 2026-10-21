@@ -11,6 +11,7 @@ const LEVEL_SETS = levelData.LEVEL_SETS ?? { en: levelData.LEVELS };
 export const CONFIG = {
   visibleRows: DEFAULTS.visibleRows,
   wheelSlots: DEFAULTS.wheelSlots,
+  decoys: 2,             // extra wheel parts that fit no word (taken from the other levels' parts)
   seed: null,            // null = new random seed on every (re)start
   maxWheel: 380,         // px, wheel diameter cap
   minWheel: 220,
@@ -99,7 +100,12 @@ const intParam = (name) => {
 const opts = {
   visibleRows: intParam('rows') ?? CONFIG.visibleRows,
   wheelSlots: intParam('slots') ?? CONFIG.wheelSlots,
+  decoys: intParam('decoys') ?? CONFIG.decoys,
 };
+// ring size: real slots plus decoys (fewer decoys if the pool ran dry)
+const ringSize = () => game?.wheel.length ?? opts.wheelSlots + opts.decoys;
+// fake parts come from the other levels of the same language, so they look like real ones
+const decoyPool = (index) => LEVELS.flatMap((l, i) => (i === index ? [] : l.words.flatMap((w) => w.parts)));
 let fixedSeed = intParam('seed') ?? CONFIG.seed;   // admin apply can pin or release it
 
 // ---------- language ----------
@@ -260,7 +266,7 @@ function startLevel(index) {
   const seed = fixedSeed ?? Math.floor(Math.random() * 2 ** 31);
   try {
     validateLevel(level, opts);
-    game = createGame(level, { ...opts, seed });
+    game = createGame(level, { ...opts, seed, decoyPool: decoyPool(levelIndex) });
   } catch (err) {
     showError(err);
     return;
@@ -307,6 +313,7 @@ function syncUrl() {
   const keep = (name, value, dflt) => (value == null || value === dflt ? p.delete(name) : p.set(name, String(value)));
   keep('rows', opts.visibleRows, DEFAULTS.visibleRows);
   keep('slots', opts.wheelSlots, DEFAULTS.wheelSlots);
+  keep('decoys', opts.decoys, CONFIG.decoys);
   keep('seed', fixedSeed, null);
   history.replaceState(null, '', `${location.pathname}?${p}${location.hash}`);
 }
@@ -353,7 +360,7 @@ function layout() {
   const freeH = innerH - used + els.liveRow.offsetHeight - 48;
   els.clickArea.style.height = `${Math.round(Math.max(CONFIG.v2MinHeight, Math.min(CONFIG.v2MaxHeight, freeH)))}px`;
 
-  const n = opts.wheelSlots;
+  const n = ringSize();
   // fewer slots leave more room on the ring, so the nodes grow a little
   const few = n <= 5;
   let node = Math.min(few ? 84 : 72, Math.max(56, size * (few ? 0.23 : 0.2)));
@@ -382,7 +389,7 @@ function layout() {
 }
 
 function slotPos(slot) {
-  const a = -Math.PI / 2 + (2 * Math.PI * slot) / opts.wheelSlots;
+  const a = -Math.PI / 2 + (2 * Math.PI * slot) / ringSize();
   return { x: geo.size / 2 + geo.R * Math.cos(a), y: geo.size / 2 + geo.R * Math.sin(a) };
 }
 
@@ -935,9 +942,10 @@ async function shuffle() {
     if (!el) return;
     const from = Number(el.dataset.slot);
     el.dataset.slot = String(slot);
-    let d = (slot - from) % opts.wheelSlots;           // shortest way round
-    if (d > opts.wheelSlots / 2) d -= opts.wheelSlots;
-    if (d < -opts.wheelSlots / 2) d += opts.wheelSlots;
+    const n = ringSize();
+    let d = (slot - from) % n;           // shortest way round
+    if (d > n / 2) d -= n;
+    if (d < -n / 2) d += n;
     moves.push({ el, from, d });
   });
   if (board) board.setNodes(game.wheel);             // the board animates tiles to their new places
@@ -986,6 +994,7 @@ async function openAdminPanel() {
     currentIndex: levelIndex,
     rows: opts.visibleRows,
     slots: opts.wheelSlots,
+    decoys: opts.decoys,
     seed: currentSeed,
     apply: applySettings,
   });
@@ -993,10 +1002,10 @@ async function openAdminPanel() {
 
 // Restart with new settings. Throws (and changes nothing) if the level can't be played that way.
 // seed: a number pins it (kept in the URL, Restart replays it); null/'' = fresh random seed each start.
-function applySettings({ levelIndex: index = levelIndex, rows = opts.visibleRows, slots = opts.wheelSlots, seed } = {}) {
+function applySettings({ levelIndex: index = levelIndex, rows = opts.visibleRows, slots = opts.wheelSlots, decoys = opts.decoys, seed } = {}) {
   const i = Number(index);
   if (!Number.isInteger(i) || i < 0 || i >= LEVELS.length) throw new Error(`No level at index ${index}`);
-  const next = { visibleRows: Number(rows), wheelSlots: Number(slots) };
+  const next = { visibleRows: Number(rows), wheelSlots: Number(slots), decoys: Number(decoys) };
   validateLevel(LEVELS[i], next);
   Object.assign(opts, next);
   if (seed !== undefined) {
@@ -1004,7 +1013,7 @@ function applySettings({ levelIndex: index = levelIndex, rows = opts.visibleRows
     fixedSeed = Number.isFinite(n) ? Math.trunc(n) : null;
   }
   startLevel(i);
-  return { levelIndex, rows: opts.visibleRows, slots: opts.wheelSlots, seed: currentSeed };
+  return { levelIndex, rows: opts.visibleRows, slots: opts.wheelSlots, decoys: opts.decoys, seed: currentSeed };
 }
 
 // ---------- wiring ----------

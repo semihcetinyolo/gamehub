@@ -242,3 +242,6 @@ Concept: the centre root is a real word and every target genuinely branches from
 
 ## Revealed letter (UI only)
 About 40% of rows with 3+ blanks start with one blank already showing its letter (`CONFIG.revealChance`, `CONFIG.revealMinBlanks` in game.js). The choice is stable for a given seed and row, so Restart replays it. Logic is unchanged.
+
+## Fake parts (decoys)
+`createGame(level, { decoys, decoyPool })` adds `decoys` extra ring slots holding fake parts; `wheelSlots` still counts real slots, so the ring is `wheelSlots + decoys`. A decoy text is 2–3 letters from `decoyPool` (the UI passes the parts of the other levels in the same language) and is never a substring of any target's remainder, so it can't take part in any spelling. Without a pool, decoys are syllables built from the level's letters. Real-part refill runs on the ring without decoy slots; decoys keep their slots and every decoy is replaced after each found word. Logic default is `decoys: 0`; the UI default is 2 (`CONFIG.decoys`, URL `decoys`, admin "Fake parts" 0–3). Decoy ids are in `state._meta.decoyIds`; the UI must not mark them.
