@@ -1,0 +1,53 @@
+{
+  "id": "v2n_rowboat",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T13:15:57.071060+00:00",
+  "raw": "tools/stained/vitray/raw/v2n_rowboat.png",
+  "rawSha256": "d728ae863e92add8d2486bb1644f91fc559e32ffcc8951d8fdcfcb909a3aec66",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 87,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.4729697997839018
+    },
+    {
+      "patchSize": 92,
+      "donorPatches": 42,
+      "colour": 1,
+      "preservedFraction": 0.603725908512707
+    },
+    {
+      "patchSize": 139,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6205779576376803
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.7167402023790596
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "455c4706fa8a5dcb5277bff21241d014f53567bcc4a884f9188c4348fd111896",
+  "sha256": "c3e6728b79527d521a2ef93fb0be38b04cde7a5ea9fdf2df3a12be3d554369f2",
+  "palette": [
+    "#f9bc15",
+    "#c2360d",
+    "#013e79",
+    "#0cb2b3"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 33,
+    "total": 33,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2n_rowboat.webp"
+}

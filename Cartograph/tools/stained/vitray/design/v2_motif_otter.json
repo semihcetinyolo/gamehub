@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_otter",
+  "name": "Su Samuru",
+  "scene": "A river otter floats on its back with its paws on its chest and a long curved tail amid flowing river currents.",
+  "shape": "oval",
+  "palette": [
+    [
+      "chestnut",
+      "#8B452B"
+    ],
+    [
+      "honey gold",
+      "#E6AD45"
+    ],
+    [
+      "deep teal",
+      "#176B78"
+    ],
+    [
+      "turquoise",
+      "#48B9C5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet for the redraw queue target of 82–122 panes, aiming at 96. Portrait 1086×1448 oval with white exterior. Subject uses chestnut and honey; water uses teal and turquoise. Style references: vitray_fox.png and vitray_lighthouse.png; old motif_otter-panes.webp used for subject only. Visually inspected and regenerated once to remove dangling paw strokes, eye glints and transparent exterior. Remaining concerns: subtle fill shading persists; several adjacent face/belly and water panes share colours and may merge during tracing; some pointed water pieces and closely spaced junctions need geometry review. Exact pane count and T-only junction compliance are not certified. Design sheet only."
+}

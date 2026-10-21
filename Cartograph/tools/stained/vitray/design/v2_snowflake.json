@@ -1,0 +1,34 @@
+{
+  "id": "v2_snowflake",
+  "name": "Kar Tanesi",
+  "scene": "a crystal snowflake with six branched arms glittering in a winter sky",
+  "shape": "oval",
+  "palette": [
+    [
+      "ice turquoise",
+      "#51C9D6"
+    ],
+    [
+      "cornflower blue",
+      "#718FE2"
+    ],
+    [
+      "midnight indigo",
+      "#27385D"
+    ],
+    [
+      "muted violet",
+      "#735399"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 40–50 panes. Six broad branched arms and a central hexagonal crystal in an oval winter-sky panel. Generated with ClaiFace image using vitray fox and lighthouse style references and the old snowflake subject reference; inspected and regenerated once to simplify subdivisions and restore a white exterior. Remaining concerns: subtle fill shading persists, several adjoining turquoise subject panes do not alternate and may merge during tracing; a few arm-tip/sky contacts and central-hexagon connections require geometry review for multi-way or narrow contacts. Exact final pane count is not validated. No geometry or game catalogue changes.",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "assets/glass/snowflake-restored.webp"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "v2_motif_cupcake",
+  "name": "Kapkek",
+  "scene": "A cherry-topped cupcake with sweeping piped frosting and a pleated wrapper fills an oval panel against flowing blue and turquoise bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Raspberry rose",
+      "#D94F70"
+    ],
+    [
+      "Warm amber",
+      "#EDA936"
+    ],
+    [
+      "Turquoise",
+      "#32B7B5"
+    ],
+    [
+      "Deep blue",
+      "#24558A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet inspected after one correction pass. Subject and background colour pairs stay separate; wrapper pleats and background bands alternate. Closed oval with white exterior. Correction simplified wrapper and frosting divisions. Remaining doubts: mild raster shading needs quantization; central upper frosting has a pinched multiway contact and some cherry/frosting endpoints remain crowded. Review these junctions and a few narrow background tips during tracing while preserving the cupcake silhouette. Target 82–122 panes was requested; final traced count is not verified. This is a design sheet, not audited game geometry.",
+  "targetPanes": [
+    82,
+    122
+  ],
+  "generationMethod": "clai image",
+  "generationAttempts": 2,
+  "references": [
+    "tools/stained/vitray/design/vitray_poppies.png",
+    "assets/glass/motif_cupcake-junctions.webp"
+  ],
+  "canvas": [
+    1086,
+    1448
+  ]
+}

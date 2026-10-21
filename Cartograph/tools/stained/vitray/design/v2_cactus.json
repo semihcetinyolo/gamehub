@@ -1,0 +1,42 @@
+{
+  "id": "v2_cactus",
+  "name": "Çöl Kaktüsü",
+  "scene": "A tall saguaro cactus in the desert under a big setting sun with dunes.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "forest green",
+      "#246449"
+    ],
+    [
+      "sage green",
+      "#80AA63"
+    ],
+    [
+      "golden amber",
+      "#E9AA38"
+    ],
+    [
+      "terracotta",
+      "#BE5438"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Cactus uses the green pair; sun, sky and dunes use amber and terracotta. Target 36–46 panes. Generated with clai image using vitray_lighthouse.png and vitray_poppies.png as style references and cactus-contacts.webp as subject reference; regenerated once after review to replace cactus grid crossings with transverse bands. Final image inspected: closed silhouette, opaque white exterior, recognisable cactus, no obvious dangling lines; remaining concerns are subtle fill shading, some same-colour background neighbours, close junctions around arm attachments and narrow dune tips. Raster connected-component estimate gives 62 coloured regions above 100 pixels, exceeding target before same-colour merging; this is not a validated traced pane count. Review and simplify during tracing. No geometry audit or game publication performed.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_lighthouse.png",
+      "tools/stained/vitray/design/vitray_poppies.png",
+      "assets/glass/cactus-contacts.webp"
+    ],
+    "size": [
+      1086,
+      1448
+    ]
+  }
+}

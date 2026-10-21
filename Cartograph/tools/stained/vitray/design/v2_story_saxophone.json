@@ -1,0 +1,29 @@
+{
+  "id": "v2_story_saxophone",
+  "name": "Caz Gecesi",
+  "scene": "A golden alto saxophone curves through flowing blue and teal night bands in an oval stained-glass panel.",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden yellow",
+      "#E9B82F"
+    ],
+    [
+      "burnt orange",
+      "#CF662C"
+    ],
+    [
+      "deep blue",
+      "#205579"
+    ],
+    [
+      "teal",
+      "#32958E"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 38–48 panes. Generated with image_gen using the old saxophone as subject reference and vitray_lighthouse/vitray_poppies as style references; revised once after visual inspection. Final inspection: closed outlines and contained contrasting key panes; key rail removed and upper background junction simplified. Remaining doubts: subtle fill shading persists; adjacent gold pieces at mouthpiece, bell shoulder and lower bend may merge during tracing; close junctions near the mouthpiece and bell should be checked on traced geometry. Palette lists intended flat colours. Design sheet only; no game assets or catalogue changed."
+}

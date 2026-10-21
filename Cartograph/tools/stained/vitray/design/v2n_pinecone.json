@@ -1,0 +1,42 @@
+{
+  "id": "v2n_pinecone",
+  "name": "Kozalak",
+  "scene": "a pine cone",
+  "shape": "oval",
+  "palette": [
+    [
+      "amber",
+      "#D99A32"
+    ],
+    [
+      "chestnut",
+      "#88462B"
+    ],
+    [
+      "teal",
+      "#24796F"
+    ],
+    [
+      "blue",
+      "#58ACCF"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small design sheet; 21 closed coloured panes counted by connected components and visual inspection: 8 full-width alternating pine-cone scale bands and 13 background panes. Generated with clai image using fox style reference (vitray_fox.png), then regenerated once to reduce excessive scale subdivisions. Opaque white exterior, 1086x1448 portrait. Remaining doubts: subtle fill shading persists; some adjacent background panes share teal; several background seams meet subject band endpoints too closely, including apparent four-way contacts on the sides. These require attention during tracing/geometry preparation. No loose line ends observed. Design only; not imported or published.",
+  "paneCount": 21,
+  "targetPanes": [
+    12,
+    22
+  ],
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png"
+    ],
+    "promptSummary": "Elegant oval leaded pine-cone panel, eight alternating amber/chestnut full-width scalloped bands, calm teal/blue background, four flat colours, closed black lead, white exterior, 12–22 panes."
+  }
+}

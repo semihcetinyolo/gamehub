@@ -1,0 +1,35 @@
+{
+  "id": "v2_story_hedgehog",
+  "name": "Sonbahar Yaprakları",
+  "scene": "A hedgehog with sweeping amber and sienna quills walks among autumn foliage in an oval stained-glass panel.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt sienna",
+      "#B94F32"
+    ],
+    [
+      "amber gold",
+      "#E5AD38"
+    ],
+    [
+      "deep teal",
+      "#21675F"
+    ],
+    [
+      "turquoise",
+      "#57B5BE"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 31–41 panes. Generated and visually inspected twice; second image selected for its opaque white exterior and simplified background. Warm colours remain confined to hedgehog and cool colours to background. Remaining doubts: pane count appears above target; subtle fill shading persists; several adjacent subject panes share a colour and will need merging during tracing. Tight convergences at leaf bases, quill tips and ear require geometry review; no obvious free-ended lines. Not geometry-audited or published.",
+  "generator": "clai image",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "assets/glass/story_hedgehog-contacts.webp"
+  ],
+  "generationAttempts": 2
+}

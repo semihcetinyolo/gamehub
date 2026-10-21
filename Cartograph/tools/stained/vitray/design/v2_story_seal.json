@@ -1,0 +1,36 @@
+{
+  "id": "v2_story_seal",
+  "name": "Buzda Dinlenme",
+  "scene": "A harbour seal rests on a polar ice floe beneath flowing Arctic skies, with distant icebergs and rolling sea bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt amber",
+      "#B75B27"
+    ],
+    [
+      "golden ochre",
+      "#E9B84D"
+    ],
+    [
+      "deep ocean blue",
+      "#175579"
+    ],
+    [
+      "turquoise",
+      "#39AAB4"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 93–133 panes. Visually reviewed both generations; regenerated once to remove the gold background sun and reduce shading and crowded joins. Subject/background colour pairs are separated in the selected design. Remaining doubts: subtle fill shading persists, some same-colour neighbours may merge during tracing, and crowded or near-four-way contacts remain around the iceberg horizon and lower wave bands. Narrow neck/flipper tips and the eye-to-muzzle separator require geometry review. Pane count and topology are not yet certified.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/story_seal-silhouette.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create one flat stained-glass DESIGN SHEET for a four-colour tracing puzzle, not finished textured glass. Portrait 3:4 canvas. Level: Buzda Dinlenme (seal resting on ice). Reference 1 shows the old subject only: replace its childish upright mascot geometry with an elegant natural harbour seal reclining on an ice floe, head raised at upper left, rounded tapered torso across the center, front flipper draped down, paired rear flippers to the right. References 2 and 3 show the desired sophisticated flowing leaded-panel design language; do not copy their subjects or shading.\nAn oval panel nearly fills the canvas with pure white outside and a thick continuous black rim; no rectangular frame. Compose approximately 110 closed readable glass panes, target 93–133 total: about 35 meaningful curved seal pieces and 75 ice, sea-wave and polar-sky pieces. Graceful anatomical contours, recognisable rounded earless seal head, visible circular eye pane and closed nose pane. No whisker strokes or loose mouth lines. Use sweeping contour-to-contour stripes along body and flippers, fewer broad facial pieces. Surround with rhythmic flowing sea and sky bands and angular ice-floe pieces; no arbitrary grid.\nEXACTLY FOUR flat solid colours: subject only burnt amber #B75B27 and golden ochre #E9B84D, background only deep ocean blue #175579 and turquoise #39AAB4. Alternate neighbouring pieces within each pair wherever possible. Eye and nose use amber within gold, no fifth fill colour. No white or cream inside panel. White only exterior. Pure black lead of uniform width around 1% of canvas width, smooth curves and crisp boundaries. ALL lines connect junction to junction or rim, no dangling lines. Only well-separated T junctions, never X crossings or four-way contacts, endpoints spaced 3% panel width. No tiny shards, slivers, narrow bridges or nearly touching lines. Flat vector-like fills with absolutely NO gradients, shading, glow, texture, highlights, dots, captions, lettering or signatures. This is a clean production tracing sheet with the elegance of real leaded glass.\nCORRECTIONS TO THE PROVIDED FIRST DRAFT: Keep the seal composition and oval framing, but REMOVE the gold sun completely: replace that circle and surrounding sky with blue/turquoise sky bands. Absolutely no amber/gold anywhere outside seal. Eliminate ALL shading: every pane must be a single uniform solid hex colour, including nose, eye and exterior white. Improve the current roughly 100 panes with clearly offset T joins: remove the X join at the front-flipper shoulder and offset crossings in lower waves; no four-way meetings. Widen the narrow pointed gold strips in torso and neck. Preserve natural earless seal anatomy and the broad blue/turquoise ice floe beneath it. This is flat colouring-book production art, NOT a glass render."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "v2_story_bicycle",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:49:20.035862+00:00",
+  "raw": "tools/stained/vitray/raw/v2_story_bicycle.png",
+  "rawSha256": "fc12f7ee8c4f2feafc3bdc0acd9acbcd4b9dfd6a2eb51fc375a7f2431d2fae38",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 79,
+      "donorPatches": 63,
+      "colour": 0,
+      "preservedFraction": 0.40981494351037717
+    },
+    {
+      "patchSize": 45,
+      "donorPatches": 22,
+      "colour": 1,
+      "preservedFraction": 0.4239189003018305
+    },
+    {
+      "patchSize": 120,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6452207480033276
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6916932025007253
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "ca55ccdfb68f80defd95fc0f61a8829c668a2693a33b7036f0040324f2138716",
+  "sha256": "f17784da5b8bb0e30cd494c9a24938dcf370f323db3a233e8dcbff8ddf5110d9",
+  "palette": [
+    "#ec4627",
+    "#fccd15",
+    "#014695",
+    "#20c6cb"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 55,
+    "total": 55,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_story_bicycle.webp"
+}

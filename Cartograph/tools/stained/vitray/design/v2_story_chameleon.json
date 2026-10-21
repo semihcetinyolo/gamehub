@@ -1,0 +1,39 @@
+{
+  "id": "v2_story_chameleon",
+  "name": "Yağmur Ormanında Kamuflaj",
+  "scene": "A green chameleon with a curled tail grips a branch among broad rainforest leaves.",
+  "shape": "oval",
+  "palette": [
+    [
+      "emerald",
+      "#188568"
+    ],
+    [
+      "lime",
+      "#A9CA45"
+    ],
+    [
+      "terracotta",
+      "#C96B43"
+    ],
+    [
+      "indigo",
+      "#394878"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 34–44 panes. Regenerated once after visual review to simplify excess seams, remove dangling leaf veins and replace the arch with a true oval. Final image visually inspected: recognisable subject, closed outer rim, white exterior and separated subject/background colour pairs. Remaining doubts for tracing: subtle fill shading persists; pane count may exceed target; some adjacent same-colour panes (rear foot, branch and background) will need merging; inspect crowded contacts near head crest, belly/legs and tail spiral, whose inner tip is narrow. No game catalogue changes.",
+  "generation": {
+    "tool": "clai image",
+    "raw": "clai-images/v2-story-chameleon-2.png",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png",
+      "tools/stained/vitray/design/vitray_poppies.png",
+      "assets/glass/story_chameleon-silhouette.webp"
+    ]
+  }
+}

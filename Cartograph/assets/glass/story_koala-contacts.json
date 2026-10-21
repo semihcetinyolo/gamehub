@@ -1,0 +1,53 @@
+{
+  "id": "story_koala",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-21T08:08:54.312543+00:00",
+  "source": "assets/glass/story_koala-panes.webp",
+  "sourceSha256": "1ff0f72cc47cfeb3e41c732bc91d89aa74fdff54ead973410ace67c5d932773b",
+  "sourceGeometrySha256": "e9e972038da2dcc43af86a8d2729514f2b970b77480dfedfede56abbb0d6622e",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 34,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.11337952670692253
+    },
+    {
+      "patchSize": 73,
+      "donorPatches": 34,
+      "colour": 1,
+      "preservedFraction": 0.42979426946425076
+    },
+    {
+      "patchSize": 99,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5008739159888006
+    },
+    {
+      "patchSize": 128,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5186789165629067
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "a86459bae40eb187a6d5238d1b06caa8ee35ef592f3a04b5e61e17662fa9d9c0",
+  "sha256": "fd9ea2a075b90ff574d5d1d56547773005fe4c573ad40884e83396cf5de5ee08",
+  "palette": [
+    "#c84104",
+    "#f8dc3f",
+    "#22996e",
+    "#042b72"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 34,
+    "total": 34,
+    "mismatches": []
+  }
+}

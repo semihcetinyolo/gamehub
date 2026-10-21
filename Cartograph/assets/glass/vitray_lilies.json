@@ -1,0 +1,53 @@
+{
+  "id": "vitray_lilies",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T09:02:40.144241+00:00",
+  "raw": "tools/stained/vitray/raw/vitray_lilies.png",
+  "rawSha256": "60586c93a742cf0c5d377f80820845d1d433ece141a38772a1030e5a49de9534",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6330499434352741
+    },
+    {
+      "patchSize": 117,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5360980330476309
+    },
+    {
+      "patchSize": 98,
+      "donorPatches": 92,
+      "colour": 2,
+      "preservedFraction": 0.5471591330894284
+    },
+    {
+      "patchSize": 89,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.4477494916744541
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "1cfb5c2ac19107df15a09b75a46e913d3f5ac0d4fa5dfc3fca4c48e836ae8d60",
+  "sha256": "c2075155a4ddea365505c792838da89de8e83fb97b4ac1b69edd325167e460ce",
+  "palette": [
+    "#c38deb",
+    "#085c23",
+    "#77e2c3",
+    "#f9cc19"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 79,
+    "total": 79,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/vitray_lilies.webp"
+}

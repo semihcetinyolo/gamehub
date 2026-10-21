@@ -1,0 +1,32 @@
+{
+  "id": "vitray_mountainlake",
+  "name": "Dağ Gölü",
+  "scene": "Layered mountain peaks rise over a broad lake framed by foreground pines.",
+  "shape": "circle",
+  "palette": [
+    [
+      "Mountain ochre",
+      "#C7994D"
+    ],
+    [
+      "Slate purple",
+      "#76688D"
+    ],
+    [
+      "Lake teal",
+      "#287F94"
+    ],
+    [
+      "Forest green",
+      "#4D8867"
+    ]
+  ],
+  "notes": "The focal mountain range is the subject mask; lake, sky and foreground trees are background, allowing those panes to provide clues. Preserve peak outlines and coherent mountain facets. Check horizon, tree/shore contacts and narrow lake bands after tracing. No white snow: ochre is the light mountain colour. One correction removed extra dark-green and bark colours and simplified shoreline fragments. Remaining doubts: a few shallow lake/shore joins, sky endpoints at peaks, and mild rim ellipticity need trace review without bending the mountain silhouettes. Mask preserves thin white interior facet seams and black mountain-pane interiors.",
+  "designPrompt": "Edit the supplied mountain-lake guide. Preserve the three recognizable mountain peak contours, foreground pine shapes, lake and overall composition. Strictly reduce to FOUR single flat fill colours: mountain facets #C7994D ochre and #76688D slate purple; all sky, clouds, water, shore/hills and foreground pine foliage/trunks #287F94 teal and #4D8867 green. Remove the extra dark green, brown tree trunks and golden shore rocks; every non-mountain pane uses teal or green. No gradients, shading or textures. Correct crossed and crowded shore/wave junctions by moving background seams only, keep only spaced T contacts and 85–110 large closed panes. Simplify fine lower shoreline fragments. Outer rim must be a TRUE CIRCLE, equal pixel height and width on portrait 3:4 canvas. At a 1086x1448 canvas, use circle diameter about 1040 centred at (543,724), bounding box approximately (23,204) to (1063,1244). Do not stretch circle into oval. Fit scenery inside that circle while preserving whole subject proportions. White outside, black uniform lead only. No text.",
+  "subjectMaskPrompt": "Edit this finished design into its BLACK AND WHITE SUBJECT MASK. Preserve the EXACT canvas size, aspect ratio, framing, panel shape, every contour and every lead line in its original pixel position. Do NOT redraw, rearrange, simplify or scale anything. Recolour only: every pane of SUBJECT goes pure black #000000, every other pane and exterior pure white #FFFFFF. Keep ALL existing black lead lines black, never turn subject seams white. In the subject this makes a continuous solid black silhouette. Include eye interiors as black. Keep background seams black. No grey, no colour, no shading, no added marks. Output must overlay the input with unchanged geometry. SUBJECT: the mountain RANGE only: all ochre/gold and slate-purple rocky mountain facet panes, including the three main peaks and all their mountain slopes. All green foothills, green foreground trees, lake water, clouds, sky and shoreline are BACKGROUND and become white. Do not mark the foreground pines black. Preserve exact existing circular frame and canvas.",
+  "generationMethod": "built-in image_gen",
+  "canvas": [
+    1086,
+    1448
+  ]
+}

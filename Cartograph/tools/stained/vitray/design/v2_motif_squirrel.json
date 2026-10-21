@@ -1,0 +1,36 @@
+{
+  "id": "v2_motif_squirrel",
+  "name": "Sincap",
+  "scene": "A seated squirrel with a sweeping curled tail holds an acorn among oak leaves.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt orange",
+      "#D96B22"
+    ],
+    [
+      "golden amber",
+      "#E9B63D"
+    ],
+    [
+      "sky blue",
+      "#4E9DBC"
+    ],
+    [
+      "forest teal",
+      "#287563"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; regenerated once after visual inspection. Subject and acorn use the warm pair; woodland uses the cool pair. Target 88–128 panes, exact count not verified. Remaining concerns: loose vein ends in some oak leaves and short finger marks persist; some same-colour neighbouring panes, crowded tail/body junctions, narrow tips, and slight fill shading require attention during tracing. This sheet is not audited playable geometry.",
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_poppies.png",
+    "assets/glass/motif_squirrel-silhouette.webp"
+  ],
+  "prompt": "Create a tracing-ready stained-glass DESIGN SHEET for Sincap (squirrel). Restyle the supplied fox and poppy design references into a new elegant squirrel composition; old squirrel reference supplies subject only, never copy its childish geometry. Portrait 3:4 canvas, centered tall OVAL panel almost touching canvas edges, pure white outside closed thick black oval rim. A graceful anatomically recognizable seated squirrel facing right, small pointed ears, round visible eye pane, holding an acorn between front paws, huge sweeping curled bushy tail rising on the left. Rich Art Nouveau leaded panel composition with meaningful sweeping fur bands and surrounding broad oak-leaf and woodland sky divisions. Aim 100-110 CLOSED panes total (required range 88-128); about 50 subject pieces and 50 background pieces. Exactly FOUR flat saturated fill colors: burnt orange #D96B22 and golden amber #E9B63D ONLY squirrel and acorn, sky blue #4E9DBC and forest teal #287563 ONLY background including leaves and ground. Alternate the two subject colors through adjacent broad fur bands, and two background colors through adjacent sky/leaf bands. Eye is a closed amber or orange round pane contrasting face, no black pupil dot. All internal lines pure black smooth UNIFORM width about 1% of canvas width. Every line connects rim or junction to another junction, no loose ends, no sketch marks. T junctions ONLY, never X crossings or 4-way meeting. Space junctions by at least 3% of panel width. No tiny panes, narrow slivers, near-touching curves. Full contour-to-contour fur bands facilitate alternating colors. Keep natural squirrel silhouette elegant and recognizable. Flat vector-like opaque fills, absolutely NO shading, gradients, glass texture, reflections, highlights, near-white glass, decorative border frame, text, signature, or extra colors. References are style cues only; correct their shading and color-pair violations in this new design.\nCORRECTION PASS: Keep the previous squirrel composition and oval. It had too few pieces and loose leaf veins and finger marks. REMOVE all loose decorative finger marks. Every leaf vein must extend completely from leaf boundary to leaf boundary, forming broad closed panes, and alternate blue/teal across that vein. Add broad closed alternating bands in tail and body and background to reach 88-128 panes. NO shading whatsoever: each pane a single mathematically uniform flat fill. Stagger every junction so there are no X crossings. The eye must sit entirely inside a face pane, not connect several lines at one point. Keep acorn warm colors only and all oak leaves blue/teal only. No tapered hairline linework; all seams same bold width. Do not add texture."
+}

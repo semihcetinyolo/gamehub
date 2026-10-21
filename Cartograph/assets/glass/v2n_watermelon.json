@@ -1,0 +1,53 @@
+{
+  "id": "v2n_watermelon",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T13:10:41.072775+00:00",
+  "raw": "tools/stained/vitray/raw/v2n_watermelon.png",
+  "rawSha256": "c2fa4cc377605f5785e6713fb8456c562fb964df28dc07e00cfca04615725ec4",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 96,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6206199803506413
+    },
+    {
+      "patchSize": 94,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6122089145231717
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.7997276217001854
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.7648329923979366
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "bbbe56b0dda3feba74840b1c2134997abdf9164e2956a0fee255e9930f26f87a",
+  "sha256": "87b1de69c4de4538204b0114311500dc408fc41f0de471fc6cd82d551f6c886e",
+  "palette": [
+    "#fa3c3a",
+    "#036526",
+    "#12c4e4",
+    "#fab404"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 19,
+    "total": 19,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2n_watermelon.webp"
+}

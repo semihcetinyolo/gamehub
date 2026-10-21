@@ -1,0 +1,36 @@
+{
+  "id": "v2n_grapes",
+  "name": "Üzüm Salkımı",
+  "scene": "A bunch of grapes with a vine leaf.",
+  "shape": "oval",
+  "palette": [
+    [
+      "plum",
+      "#713C91"
+    ],
+    [
+      "raspberry",
+      "#C45C93"
+    ],
+    [
+      "teal",
+      "#289B9A"
+    ],
+    [
+      "golden amber",
+      "#E4AE43"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small design sheet; target 12–22 panes. Second generation selected after the first exceeded the pane budget. Inspected at 1086×1448: six grape panes, one vine leaf, one stem, and fourteen background/interstitial panes, 22 total excluding the white exterior (black-line connected-component count, components >100 pixels). Closed contours; no obvious loose lines or X crossings. Remaining defects: two tiny pale cream interstitial panes introduce an unwanted fifth fill, several small triangular fillers are below the intended size, subtle shading remains instead of strictly flat fills, and some adjacent subject/background panes do not alternate. Tight grape junctions need review during tracing. Palette records intended four colors. This is a design sheet only; not audited playable geometry or finished glass artwork.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "reference": "tools/stained/vitray/design/vitray_fox.png",
+    "revisionReference": "first generated v2n_grapes design",
+    "prompt": "Simplify this stained-glass design drastically. Required 16 CLOSED PANES TOTAL, not 40. Keep oval silhouette on pure opaque white portrait 3:4 canvas. Redraw with ONLY SIX very large rounded grapes forming a tapered bunch, each grape ONE unsplit pane; ONE broad lobed vine leaf with NO inner veins or divisions; ONE short broad stem pane; and exactly EIGHT huge calm background panes. That is 8 subject pieces plus 8 background pieces =16. No extra subdivisions anywhere. Every grape about one quarter panel width, not a small berry. Leaf should be smaller than bunch and a single closed piece. Eliminate all little interstitial areas by simplifying the bunch layout. No pale cream filler pieces. Flat digital vector-like solid fills ONLY, no shading, no texture, no glow. Exactly FOUR colors: subject grapes leaf and stem alternate plum #713C91 and magenta #C45C93; background alternates teal #289B9A and gold #E4AE43. Background never purple or pink. No cream or white inside panel. Smooth uniform pure black lead about 1 percent width. All pieces closed. Only spaced T junctions, no four-way contacts. No decorative border ring, no text. Elegant traditional botanical stained glass rather than cartoon. Reduce complexity strongly; this is an easy opening puzzle. COUNT SIX grapes, ONE leaf, ONE stem and EIGHT background pieces before finishing."
+  }
+}

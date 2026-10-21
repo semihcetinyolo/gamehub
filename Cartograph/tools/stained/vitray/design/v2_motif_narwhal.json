@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_narwhal",
+  "name": "Deniz Gergedanı",
+  "scene": "An elegant narwhal swims diagonally upward through flowing Arctic water.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Violet",
+      "#71549B"
+    ],
+    [
+      "Rose",
+      "#DE899E"
+    ],
+    [
+      "Ocean blue",
+      "#195878"
+    ],
+    [
+      "Turquoise",
+      "#36B5B6"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 70–110 panes. Narwhal, tusk, flipper and tail use violet/rose; water uses blue/turquoise. Generated with clai image using vitray_fox and vitray_lighthouse style references and motif_narwhal-junctions subject reference. Inspected initial image and one corrective generation. Final exterior is opaque white and eye is rose. Remaining concerns for tracing: apparent four-way contacts at upper-center water and lower-left water; narrow water wedge immediately above head; some same-colour neighbors and slight residual fill variation. No obvious loose line ends. Pane count and junction spacing require downstream geometry validation; this is a design sheet, not audited game geometry."
+}

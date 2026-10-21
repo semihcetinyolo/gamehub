@@ -1,0 +1,36 @@
+{
+  "id": "vitray_horse",
+  "name": "Şahlanan At",
+  "scene": "A chestnut horse rears above rolling hills under a banded sky.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Copper",
+      "#C96C31"
+    ],
+    [
+      "Chestnut",
+      "#813C35"
+    ],
+    [
+      "Sky blue",
+      "#3187A4"
+    ],
+    [
+      "Green",
+      "#4B8B63"
+    ]
+  ],
+  "notes": "Built-in generation from the rearing-horse reference; warm subject against cool ground and sky. Horse, mane, tail, hooves and eye comprise subject mask. Review foreleg gaps, ankle and hoof junctions, tail near rim, and pane count during tracing; preserve limb silhouettes. Repeated adjacent background colours are deliberate. One targeted correction removed loose nostril detail and separated the tail from the rim. Some hoof/ground seams and leg gaps remain close; final geometry review required. Mask has thin white seams within black subject interiors.",
+  "designPrompt": "Edit this stained-glass design guide with minimal changes, preserving the beautiful intact rearing horse anatomy and smooth oval panel. Remove the dangling nostril squiggle entirely; nose remains a single flat copper pane. Correct the narrow tiny blue gap between the raised forelegs by spacing the WHOLE foreleg shapes slightly apart, without dents or changing their graceful pose. Free the tail tip from the outer rim by moving the whole tail inward a little and preserving its curve. Move all sky/ground seam endpoints away from hoof edges and tips; replace crowded multiway contacts with spaced T junctions. Add 10–15 broad staggered contour-following panes in spacious sky/ground and a few broad body regions for about 80–90 panes total. No slivers or hairline bridges. Exactly FOUR FLAT solid colours: #C96C31 copper and #813C35 chestnut for horse, #3187A4 sky-blue and #4B8B63 green for background. Alternate both cool background colours in the bands while keeping semantic horse/background separation. The eye is one closed blue pane, no pupil. Uniform pure black lead lines only, no black filled details, gradients, tonal shading, texture, highlights or text. White exterior only. Keep original canvas and framing.",
+  "subjectMaskPrompt": "Edit this finished design into its BLACK AND WHITE SUBJECT MASK. Preserve the EXACT canvas size, aspect ratio, framing, panel shape, every contour and every lead line in its original pixel position. Do NOT redraw, rearrange, simplify or scale anything. Recolour only: every pane of SUBJECT goes pure black #000000, every other pane and exterior pure white #FFFFFF. Keep ALL existing black lead lines black, never turn subject seams white. In the subject this makes a continuous solid black silhouette. Include eye interiors as black. Keep background seams black. No grey, no colour, no shading, no added marks. Output must overlay the input with unchanged geometry. SUBJECT: the entire horse: head, eye, ears, mane, neck, torso, ALL four legs and hooves and complete tail. Every blue/green background pane between legs, outside horse and beside tail stays white. The blue eye still becomes BLACK because it belongs to the horse. Preserve same oval and dimensions.",
+  "generationMethod": "built-in image_gen",
+  "canvas": [
+    1086,
+    1448
+  ],
+  "subjectColours": [
+    0,
+    1
+  ]
+}

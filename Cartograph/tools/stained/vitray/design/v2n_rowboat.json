@@ -1,0 +1,29 @@
+{
+  "id": "v2n_rowboat",
+  "name": "Kayık",
+  "scene": "A rowing boat with a broad oar rests on a calm lake.",
+  "shape": "oval",
+  "palette": [
+    [
+      "amber",
+      "#E9AE36"
+    ],
+    [
+      "burnt rust",
+      "#B74D32"
+    ],
+    [
+      "deep lake blue",
+      "#205F85"
+    ],
+    [
+      "turquoise",
+      "#299EAA"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Medium design; target 28–45 panes. Second generation retained after first exceeded pane count and used amber in sky. Final raster has 45 coloured connected components above 500 pixels; visually checked closed lead lines, junctions, silhouette, colour pairs and pane count. Boat and oar use amber/rust; background uses blue/turquoise. Remaining doubts: subtle generated shading persists rather than perfectly flat fills; some neighbouring panes share a colour (including oar blade halves, interior planks and sky), so tracing may merge these; tight junctions around boat rim and benches need geometry-stage review. Opaque white exterior, 1086×1448. Style reference: vitray_lighthouse.png. Design sheet only."
+}

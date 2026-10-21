@@ -7,7 +7,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 
 const URL = process.env.CARTOGRAPH_URL || 'http://localhost:8765/Cartograph/';
 const SHOTS = process.env.SCREENSHOT_DIR || os.tmpdir();
-const FIRST = ['cat', 'cactus', 'lotus', 'heart', 'fox', 'fish', 'flower', 'moon', 'mushroom', 'owl'];
+const FIRST = ['cat', 'fish', 'brain', 'moon', 'flower', 'fox', 'sailboat', 'rabbit', 'pear', 'motif_lobster'];
 
 (async () => {
   const browser = await chromium.launch({ headless: true, executablePath: process.env.CHROMIUM_EXECUTABLE });
@@ -36,17 +36,17 @@ const FIRST = ['cat', 'cactus', 'lotus', 'heart', 'fox', 'fish', 'flower', 'moon
     const paint = async (r, color) => {
       if (await page.evaluate(() => CartoGame.S.color) !== color) await page.locator('#palette button').nth(color).click();
       const p = await at(r);
-      await page.mouse.dblclick(p.x, p.y, { delay: 40 });
+      await page.mouse.click(p.x, p.y);
     };
 
-    // tutorial on the first level: pick the colour, double tap, single tap a note, start
+    // tutorial on the first level: pick the colour, tap to paint, start
     await page.locator('#coach').waitFor();
     await page.locator('#coachReady').click();
     await page.screenshot({ path: path.join(SHOTS, 'cartograph-tutorial-1.png') });
     const coach = { target: await page.locator('.color-choice').evaluateAll(bs => bs.findIndex(b => b.classList.contains('coach-target'))) };
     assert(coach.target >= 0, 'tutorial highlights a colour');
     await page.locator('#palette button').nth(coach.target).click();
-    assert.match(await page.locator('#coach').textContent(), /iki kez hızlıca dokun/);
+    assert.match(await page.locator('#coach').textContent(), /Parlayan bölgeye dokun/);
     const step = await page.evaluate(() => {
       const ring = document.querySelector('.coach-ring');
       const { map } = CartoGame.S.puzzle;
@@ -55,24 +55,10 @@ const FIRST = ['cat', 'cactus', 'lotus', 'heart', 'fox', 'fish', 'flower', 'moon
     assert(step >= 0);
     await paint(step, coach.target);
     assert.equal(await page.evaluate(r => CartoGame.S.fill[r], step), coach.target);
-    assert.match(await page.locator('#coach').textContent(), /ikisini de not al/);
-    const noteR = await page.evaluate(() => {
-      const ring = document.querySelector('.coach-ring');
-      const { map } = CartoGame.S.puzzle;
-      return map.outlines.findIndex(o => o.map(s => `M${s[0]} ${s[1]}L${s[2]} ${s[3]}`).join('') === ring.getAttribute('d'));
-    });
-    const options = await page.evaluate(r => {
-      const S = CartoGame.S, used = new Set(S.puzzle.map.adj[r].map(j => S.fill[j]).filter(c => c >= 0));
-      return [0, 1, 2, 3].filter(c => !used.has(c));
-    }, noteR);
-    assert.equal(options.length, 2, 'the note step points at a pane with two colours left');
-    const np = await at(noteR);
-    for (const c of options) {
-      await page.locator('#palette button').nth(c).click();
-      await page.mouse.click(np.x, np.y);
-      await page.waitForTimeout(350);
-    }
-    assert(await page.evaluate(([r, o]) => o.every(c => CartoGame.S.marks[r] & (1 << c)), [noteR, options]));
+    assert.match(await page.locator('#coach').textContent(), /aynı renkle yeniden dokunmak siler/);
+    // no notes any more: no dots layer, no note button
+    assert.equal(await page.locator('#fillBtn').count(), 0);
+    assert.equal(await page.evaluate(() => 'marks' in CartoGame.S), false);
     await page.screenshot({ path: path.join(SHOTS, 'cartograph-tutorial-2.png') });
     await page.locator('#coachOk').click();
     assert(await page.locator('#coach').isHidden());

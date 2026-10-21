@@ -1,0 +1,41 @@
+{
+  "id": "v2_story_seahorse",
+  "name": "Yosunların Arasında",
+  "scene": "An elegant seahorse with a curled tail floats among flowing kelp and underwater currents.",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral",
+      "#E96B46"
+    ],
+    [
+      "golden amber",
+      "#E7B83F"
+    ],
+    [
+      "ocean blue",
+      "#318BB7"
+    ],
+    [
+      "deep teal",
+      "#247B70"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    94,
+    134
+  ],
+  "notes": "Design sheet only; inspected visually after one corrective regeneration. Warm seahorse and cool water/kelp pairs remain distinct; closed oval rim and clearly recognizable curled-tail silhouette. Remaining concerns for tracing: the generator retains lighter green kelp and subtle fill variation despite the four-color instruction; normalize to the specified palette. Some same-color neighbours, narrow snout/crown pieces and crowded contacts around the dorsal fin, crown and inner tail need geometry review. Pane count is a visual target, not a validated traced count. No game catalogue or geometry changes.",
+  "tool": "image_gen",
+  "prompt": "Create a flat stained-glass DESIGN SHEET for Cartograph level v2_story_seahorse, Yosunların Arasında. Portrait 3:4 canvas, preferably 1536x2048. Reference 1 is the OLD SUBJECT ONLY: a seahorse among seaweed; replace its childish shape with an elegant natural seahorse. References 2 and 3 are style references for elegant sweeping leaded-glass compositions, but use strictly flat fills without their shading. One large graceful right-facing seahorse, long horse-like snout, visible round eye pane, arched neck, plump upright body, scalloped dorsal silhouette and beautifully curled spiral tail, surrounded by flowing kelp and underwater current bands. Oval panel centered nearly touching all four canvas edges, outside pure white, closed thick black rim, no ornamental frame. Aim 110 closed glass panes, permitted range 94–134, about 40 seahorse panes and 70 background panes. Use broad curved crossbands running outline-to-outline across the neck, torso and tail to create alternating colors. Exactly FOUR flat glass colors: coral #E96B46 and golden amber #E7B83F exclusively for seahorse including eye and fins; ocean blue #318BB7 and deep teal #247B70 exclusively for water and kelp. Alternate the two warm colors in the seahorse, and the two cool colors in the background as much as possible; no warm background or cool subject panes. The eye is a clearly visible gold/coral contrasting enclosed round pane, no black pupil. Background should be graceful broad interleaving kelp leaves and flowing wave ribbons with closed subdivisions. Solid pure black uniformly wide lead about 1 percent canvas width. Every line connects at both ends to a junction or rim. Only separated T junctions, no X or four-way contacts; junctions separated by at least 3 percent panel width. No slivers, no hairline channels, no tiny panes. Keep the inner space of the curled tail broad and blue/teal. No textures, gradients, highlights, shadows, thin detail strokes, dots, bubbles, text, captions or signatures. The result is a crisp traceable flat color drawing, with the compositional elegance of authentic artisanal stained glass.\nSTRICT CORRECTION: The previous version introduced a fifth lighter green, subtle shading and crowded four-way junctions. Use ONLY the four stated hex colors, absolutely uniform solid flat fill in each pane, white outside and black lead. All kelp must use the SAME deep teal as the water teal; no extra greens. Simplify the seahorse to one sequence of alternating broad curved bands, without a longitudinal middle seam that makes four-way junctions. Fan fin has 4 broad panes with separated attachment points, not rays converging. Preserve 94–134 panes by giving the background more broad curved wave segments. No converging crowd of thin bands. At every apparent crossing stagger the branch ends into separated T junctions. Keep every pane large and all lines connected.",
+  "references": [
+    "assets/glass/story_seahorse-junctions.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "generationAttempts": 2
+}

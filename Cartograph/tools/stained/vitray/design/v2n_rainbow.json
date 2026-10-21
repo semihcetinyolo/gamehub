@@ -1,0 +1,40 @@
+{
+  "id": "v2n_rainbow",
+  "name": "Gökkuşağı",
+  "scene": "a rainbow arc over two small clouds",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral",
+      "#D95840"
+    ],
+    [
+      "amber",
+      "#F2BB32"
+    ],
+    [
+      "teal",
+      "#159BA6"
+    ],
+    [
+      "deep blue",
+      "#205D85"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening-level design; visually counted 15 closed panes (5 subject, 10 background), within target 12–22. Reviewed after one regeneration: no obvious loose line ends or X crossings. Rainbow and clouds use warm subject pair; sky uses cool background pair. Remaining doubts: subtle shading persists despite flat-fill request; amber rainbow band touches amber clouds, and two lower blue panes share a border, so tracing may merge those pieces. Check tight rainbow-to-cloud tips during tracing. Design sheet only.",
+  "targetPanes": [
+    12,
+    22
+  ],
+  "paneCount": 15,
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create a fresh stained-glass puzzle DESIGN SHEET, portrait 3:4. Reference image is STYLE ONLY: elegant traditional leaded panel, NOT its subject or busy pane count. Subject: a rainbow arc over two small clouds. Oval panel nearly fills pure opaque white canvas, thick uniform pure black closed outer rim, no decorative border. Exactly FOUR flat opaque fill colours: coral #D95840 and amber #F2BB32 for rainbow and clouds ONLY; teal #159BA6 and deep blue #205D85 for background ONLY. No white glass. No shading, texture, gradients, lighting, text, symbols or cartoon face. Beautiful architectural stained-glass composition with only 12–22 large CLOSED panes, ideally 16. Rainbow is THREE broad uninterrupted concentric arch bands alternating coral/amber/coral. Two small scalloped clouds at rainbow feet, each split into two broad warm-coloured pieces, alternate amber/coral. Make 7 subject pieces total. Background about 9 broad calm curved sky divisions alternating teal and blue, above, below and within rainbow. Every lead line terminates on another line or rim, only separated T junctions, no X crossings, no tiny pieces or narrow slivers. Rainbow bands must be visibly wide. Cloud dividers stagger relative to rainbow band junctions. Smooth meaningful curves and elegant symmetry. Uniform black lead about 1% canvas width. Flat fill guide for later tracing; exact 4-colour pair separation essential.",
+  "revisionPrompt": "Revise this rainbow stained-glass puzzle design sheet. Preserve oval silhouette, rainbow over two clouds, 3:4 portrait on pure opaque white, thick black lead, and only 12–22 large closed panes. Crucial corrections: absolutely FLAT uniform fills, no shading whatsoever, no gradients or texture. Exactly four colours coral #D95840 amber #F2BB32 teal #159BA6 deep blue #205D85. Three uninterrupted rainbow arches coral/amber/coral. Make each cloud a SINGLE amber pane (remove its internal divider), so coral rainbow bands meet amber cloud without same-colour adjacency; amber middle rainbow touching amber cloud is acceptable semantic exception. Background: keep the three upper sky panes teal/blue/teal and two small blue side panes. In lower sky remove separator between two touching teal pieces immediately under inner rainbow (merge them), then recolour next large curved band deep blue and bottom large curved band teal, remove or merge any resulting same-colour touching background sections. All neighbouring background panes must alternate teal/blue. Aim 14–16 panes overall. No loose lines, no X crossings, no slivers. Only well-separated T junctions. Elegant authentic leaded window design, never cartoon. Pure flat fill colours are absolutely essential for tracing."
+}

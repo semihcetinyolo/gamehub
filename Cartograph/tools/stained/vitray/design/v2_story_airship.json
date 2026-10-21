@@ -1,0 +1,36 @@
+{
+  "id": "v2_story_airship",
+  "name": "Bulutların Üstünde",
+  "scene": "A classic golden and vermilion airship floats above sweeping blue and turquoise cloud banks.",
+  "shape": "oval",
+  "palette": [
+    [
+      "vermilion",
+      "#CC4935"
+    ],
+    [
+      "golden amber",
+      "#EAB638"
+    ],
+    [
+      "deep blue",
+      "#215C86"
+    ],
+    [
+      "turquoise",
+      "#36A5AA"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 26–36 panes. Inspected both attempts; revised once to remove the upper-sky X crossing, simplify the gondola to three panes and separate the nose from the rim. Subject and background colour pairs are preserved. Remaining doubts: slight generated tonal variation rather than perfectly flat fills; same-colour neighbours remain in the tail and some cloud subdivisions and may merge during tracing; close rear-tail/rim spacing and the sky junction above the envelope need geometry review. No obvious loose line ends seen. Pane count is not certified by tracing.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/story_airship-contacts.webp",
+    "tools/stained/vitray/design/vitray_hotairballoon.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create one flat stained-glass puzzle DESIGN SHEET for Bulutların Üstünde (Above the Clouds), id v2_story_airship. Use the hot-air-balloon and lighthouse design sheets shown in context as style references for elegant flowing leaded-panel craftsmanship, but create a new horizontal zeppelin airship composition, not a balloon or lighthouse. Portrait 3:4 canvas, ideally 1536x2048. A tall oval panel centered on pure white exterior, almost touching all four edges, closed by bold black rim. Exactly 26–36 large closed panes total, aim 32. Majestic classic streamlined zeppelin pointing right, upper-middle of oval, broad cigar-shaped envelope, sculpted rear tail fins, small attached enclosed gondola beneath; sweeping cloud banks below and sky bands above. Elegant recognizable silhouette, no cartoon face, no unnecessary details, no ropes or loose strokes. Envelope has 7 or 9 broad curved ribs running all the way from upper outline to lower outline, alternating vermilion and golden amber; fins and gondola use these same two colours exclusively. Background has broad gracefully scalloped cloud bands and sky ribbons, all exclusively alternating deep blue and turquoise. FOUR flat opaque fill colours only: vermilion #CC4935, golden amber #EAB638, deep blue #215C86, turquoise #36A5AA. No white or near-white panes. No warm colours in background and no cool colours in airship. Every border solid pure black uniform thickness about 1 percent canvas width. NO textures, NO gradients, NO shadows, NO highlights, NO typography. Smooth mature stained-glass curves. Every line joins another line or rim, no loose ends or gaps; only spaced T junctions, never X crossings or four-way contacts. Offset background junctions from airship rib endpoints. Keep every pane broad and easy to paint; no narrow strips, tiny slivers, decorative border bands, propellers, dots, or circles. Flat colour tracing template, not rendered glass. All adjacent panes inside each colour pair should alternate as far as possible. Use the attached style inspiration but simplify to around 32 panes.\nREVISION: Simplify the previous result strictly to 32 panes: 9 envelope ribs, 3 large tail fin panes, 3 large gondola panes, 17 broad sky/cloud panes. Gondola must be a single row of THREE large alternating red/gold/red shapes, no thin top or bottom bands, no windows. Envelope tip must end with ONE large rounded gold nose pane, no converging ribs at nose. Leave clear sky space between airship and oval rim on BOTH sides, no nose or tail touching rim. Sky seams must NOT cross: remove the X above the airship and use only sweeping continuous alternating blue/teal bands. Colours absolutely uniform flat solid fills without any shading or gradients. All cloud bands broad; connect each line cleanly with spaced T junctions. Keep the recognizable elegant airship and tall oval composition."
+}

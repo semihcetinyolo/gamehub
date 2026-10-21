@@ -1,0 +1,53 @@
+{
+  "id": "v2_motif_chameleon",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:24:49.501844+00:00",
+  "raw": "tools/stained/vitray/raw/v2_motif_chameleon.png",
+  "rawSha256": "fe0a5511544c2e9b6603dace64c50238c2db0cf6b684f7172db3a2443e7f9a05",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 100,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5969026544417423
+    },
+    {
+      "patchSize": 114,
+      "donorPatches": 75,
+      "colour": 1,
+      "preservedFraction": 0.6065336662158368
+    },
+    {
+      "patchSize": 90,
+      "donorPatches": 54,
+      "colour": 2,
+      "preservedFraction": 0.45662472685179406
+    },
+    {
+      "patchSize": 117,
+      "donorPatches": 92,
+      "colour": 3,
+      "preservedFraction": 0.5912787136742245
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "228d66c4a973fab33086b748fb478d75cc02e758dacfb23b4e2de321314f2ae3",
+  "sha256": "cdae45a82993231c121daa961b4d78c9ca84dcf66ba9da8329adac45bf0ed46c",
+  "palette": [
+    "#026435",
+    "#b0dc23",
+    "#f2af09",
+    "#da3f04"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 56,
+    "total": 56,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_motif_chameleon.webp"
+}

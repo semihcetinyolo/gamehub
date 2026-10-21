@@ -1,0 +1,29 @@
+{
+  "id": "v2_story_submarine",
+  "name": "Batık Keşfi",
+  "scene": "A vintage exploration submarine with three round portholes and a raised periscope glides through flowing underwater currents.",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden amber",
+      "#E8B52E"
+    ],
+    [
+      "burnt coral",
+      "#C65338"
+    ],
+    [
+      "turquoise",
+      "#239EAC"
+    ],
+    [
+      "deep ocean blue",
+      "#245779"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 31–41 panes. Warm submarine and cool water use separate colour pairs. Reviewed both generations; the single revision removed the four-way hull crossings and concentric porthole rings. Remaining doubts: subtle generated fill shading, some same-colour neighbouring water panes, and closely spaced contacts at the tail and conning tower need attention during tracing. No obvious loose line ends. Design sheet only; not geometry-audited or published."
+}

@@ -1,0 +1,37 @@
+{
+  "id": "v2_story_telescope",
+  "name": "Yıldız Gözlemi",
+  "scene": "An antique telescope on a tripod points toward a crescent moon and stars above rolling nocturnal hills.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "Golden amber",
+      "#E9AF32"
+    ],
+    [
+      "Burnt copper",
+      "#BC5036"
+    ],
+    [
+      "Deep blue",
+      "#234A78"
+    ],
+    [
+      "Turquoise",
+      "#299DA5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 75–115 panes. Telescope, lenses and tripod use amber/copper; sky, moon, stars and hills use blue/turquoise. Visually inspected both generations; regenerated once to correct shading, crossed junctions and blue lenses. Final lens colours and lower background improved. Remaining doubts: subtle shading persists rather than perfectly flat fills; a crossing remains in the sky left of the mount; some background dividers align with tripod segment boundaries; narrow eyepiece rings and pointed star contacts need attention during tracing. Adjacent same-colour sky regions may merge. Design sheet only; no traced-geometry or production audit claimed.",
+  "tool": "image_gen",
+  "prompt": "Create ONE flat stained-glass puzzle DESIGN SHEET for Yıldız Gözlemi (stargazing): an elegant antique astronomical telescope on a three-legged tripod, tilted upward toward the upper left, beneath a crescent moon and several generous stars. The old telescope reference supplies subject only; completely redraw its crude geometry. The lighthouse and balloon references supply elegant leaded-panel composition only; eliminate their shading. Portrait 3:4 canvas, ideally 1536x2048. Tall round-arch silhouette centered nearly touching edges, pure white exterior, closed thick black rim, no decorative border frame. Aim 75–115 closed meaningful panes, ideally 85: telescope barrel with alternating full-width bands, substantial lens and eyepiece, sturdy separated tripod legs with alternating broad segments; night sky divided by graceful sweeping celestial arcs and distant rolling-hill bands, no arbitrary grid. Exactly FOUR flat opaque fill colours: golden amber #E9AF32 and burnt copper #BC5036 exclusively on telescope and entire tripod (subject pair); deep blue #234A78 and turquoise #299DA5 exclusively on ALL background, hills, moon and stars (background pair). Alternate each pair between adjacent panes; prefer through-going bands over branching inner divisions. Moon and stars must stay blue/turquoise, never amber/copper. All fills perfectly flat with no gradients, texture, reflections, shadow, glow or highlights. Pure black smooth uniform lead lines about 1% canvas width. Every line ends on another line or rim. Only separated T junctions, never X or four-way junctions; stagger nearby junctions by at least 3% panel width. No tiny slivers, tiny panes or hairline necks. Minimum pane width 3% panel width except tapered tips; minimum area 1/1000 panel area. Clear recognizable telescope, lens and tripod outlines, handsome real stained-glass craftsmanship translated into flat traceable graphic shapes. No text, symbols added as line decorations, dots, hatch marks, signatures, people or room context. Output only the panel design.\nCORRECTION PASS: Previous draft had visible shading, X crossings in the sky and hills, and blue telescope lenses. Fix these explicitly. Use perfectly uniform solid pixel colours, no lighting whatsoever. Telescope lenses MUST be copper inside amber rims. Make all sweeping background bands noncrossing; a short divider terminates on one band as a T and the next divider is offset well away. Avoid narrow extra mechanical rings on the telescope. Simplify star tips to broad clearly separated closed shapes and ensure no star point coincides with another junction. Maintain about 85 panes and the elegant telescope composition.",
+  "references": [
+    "assets/glass/story_telescope-contacts.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_hotairballoon.png"
+  ],
+  "generationAttempts": 2
+}

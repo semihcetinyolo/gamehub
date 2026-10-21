@@ -1,0 +1,36 @@
+{
+  "id": "v2_story_frog",
+  "name": "Nilüfer Göleti",
+  "scene": "A frog rests on a broad lily pad amid flowing pond ripples.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Leaf green",
+      "#518C45"
+    ],
+    [
+      "Warm gold",
+      "#E7B638"
+    ],
+    [
+      "Deep pond blue",
+      "#245B87"
+    ],
+    [
+      "Turquoise blue",
+      "#56B6CE"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 34–44 panes. Generated and visually checked, then regenerated once to simplify divisions and separate a shoulder crossing. Subject/background colour pairs are preserved. Remaining doubts: visible tonal variation instead of strictly flat fills; several same-colour adjacent frog and water panes will merge during tracing; narrow eye crescents, tight toe contacts and pointed ripple wedges require geometry review. Final pane count is not validated. Design sheet only; not imported or published.",
+  "tool": "image_gen",
+  "prompt": "Create one flat stained-glass puzzle DESIGN SHEET for v2_story_frog, Turkish title Nilüfer Göleti (do not print title). Reference 1 gives only the subject: frog at a pond; completely redraw its childish geometry. References 2 and 3 give elegant flowing leaded-panel design language, NOT their colours or textures.\nPortrait 3:4 canvas, preferably 1536x2048. One tall oval panel nearly touching canvas edges, closed thick black rim, plain pure white exterior. A graceful recognisable frog sitting on a broad lily pad on a quiet pond, gently three-quarter turned, rounded raised eyes, strong folded hind legs and simple front feet. Elegant handcrafted stained-glass composition with large smooth organically curved pieces, not a mascot. Aim 38 total panes, strictly 34-44, including about 18 frog pieces and 20 background/pad pieces. Simplify toes and facial detail to avoid tiny pieces. Two visible round eye panes use gold inside green; no black pupil dots and no loose mouth line. Divide body and legs with broad curved outline-to-outline bands.\nEXACT FOUR FLAT FILL COLOURS: leaf green #518C45 and warm gold #E7B638 exclusively for the frog, alternating neighbouring frog pieces; deep pond blue #245B87 and turquoise blue #56B6CE exclusively for all background, water and lily pad, alternating neighbouring background pieces. No white glass. White only outside oval. No colours borrowed between subject and background. Water divisions use broad flowing ripple arcs connecting frog, lily pad or rim; lily pad in the blue pair with a clear broad notched shape beneath frog. Background needs no flowers or sun.\nAll lead lines pure black uniform about 1% canvas width. Every line fully connected at both ends; every pane closed. T junctions only, no X junctions or four-way contacts. Stagger intersections at least 3% panel width apart. No slivers, close parallel lines or tiny panes. Smooth readable contours with junction angles above 30 degrees. Flat solid colour everywhere: absolutely no gradients, texture, shadows, lighting, highlights, extra black shapes, text, signatures, inset framing. This is a traceable flat design drawing, not finished textured glass.\nREVISION: Simplify to EXACTLY about 38 large panes (16 frog + 22 pond including lily pad). The previous result had too many pieces, subtle shading, and an X crossing at the shoulder. Use STRICTLY SOLID flat fills, zero shading or texture. Every interior division runs outline to outline without crossing another interior division. Frog torso has only 3 broad bands; each leg 2 pieces, head 3 pieces, round eyes 2 pieces each. NO FOUR-WAY CONTACT at shoulder: stagger separate T junctions widely. Background has only 14 broad wave pieces plus 8 lily-pad/water base pieces. Make lily pad recognisable as one broad notched oval shape divided into only 3 broad pieces; its blue pair stays strictly separate from frog green/gold. Maintain elegant oval composition.",
+  "references": [
+    "assets/glass/story_frog-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ]
+}

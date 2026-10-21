@@ -1,0 +1,37 @@
+{
+  "id": "v2_story_kite",
+  "name": "Uçurtma Şenliği",
+  "scene": "A coral and golden diamond kite with a flowing bowed ribbon tail flies through blue and teal wind bands and cloud banks.",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral",
+      "#E75A3A"
+    ],
+    [
+      "golden yellow",
+      "#E9B92F"
+    ],
+    [
+      "sky blue",
+      "#247DAB"
+    ],
+    [
+      "teal green",
+      "#41957B"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 78–118 panes; raster inspection finds 86 coloured connected components of at least 500 pixels. Inspected both generations; the single regeneration removed the kite central spine and its X crossings and made the exterior white. Warm subject/cool background pairing is maintained. Remaining doubts: subtle fill shading persists; some background dividers meet kite stripes at coincident junctions, especially the left kite corner, and bow junctions require tracing review. Some adjacent same-colour cloud/ribbon pieces may merge. No obvious loose line ends. Not geometry-audited or published.",
+  "tool": "clai image",
+  "references": [
+    "assets/glass/story_kite-contacts.webp",
+    "tools/stained/vitray/design/vitray_hotairballoon.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create one flat stained-glass puzzle DESIGN SHEET, portrait 3:4. Reference 1 is the old subject only: a diamond kite with flowing ribbon tail amid clouds. References 2 and 3 show the elegant leaded-panel design language, but do NOT reproduce their shading. Redraw the kite as a refined artisan panel. A tall oval silhouette centered almost touching canvas edges, pure white exterior, thick black closed rim, no decorative frame. One large slightly tilted diamond kite dominates upper center, with a broad sweeping S-shaped ribbon tail descending through the lower half and two broad ribbon bow shapes. Background is flowing wind bands and stylized cloud banks, organic like real cut glass, no arbitrary grid. Aim 90 closed panes total, within 78-118: about 25 kite and ribbon pieces and 65 sky/cloud/wind pieces. Exactly FOUR flat solid fill colours: coral #E75A3A and golden yellow #E9B92F exclusively for kite and ribbon; deep sky blue #247DAB and teal green #41957B exclusively for all background including clouds. Alternate the two warm colours in successive full-width kite stripes and ribbon segments; alternate the two cool colours in background bands. Never use pale or white glass. Every internal lead line uniform pure black about 1 percent image width. Every line ends on another line or rim, all panes fully closed. Only spaced T junctions, never four-way X crossings: avoid the conventional kite cross at the center, instead use full-width diagonal bands. Stagger any subdivision endpoints by at least 3 percent panel width. No tiny panes, thin slivers, loose string lines, dots, narrow parallel gaps. Represent tail as broad coloured closed ribbon panes, not a dangling black string. Preserve clean diamond outline and gracefully flowing tail. Flat vector-like fills ONLY, zero gradients, highlights, shadows, texture, text or signature. This is the tracing source, not finished glass art.",
+  "revisionPrompt": "Correct this stained-glass design sheet while retaining the oval kite festival composition, colours and broad ribbon tail. CRITICAL: flat solid fills only, absolutely NO gradients, glow, shading or texture anywhere. Exactly coral #E75A3A, yellow #E9B92F, blue #247DAB, teal #41957B, plus pure black lead and PURE WHITE opaque exterior. Remove the entire long central spine running through the diamond kite: it creates forbidden X intersections. The kite must consist ONLY of alternating coral/yellow full-width transverse stripes, without any spine or crossing. Every black line must end at the rim or another line. Only three-way T junctions, no X crossings. Add broader curved wind bands and cloud pieces in blue and teal to reach 78-118 closed panes overall, ideally 85. Keep every pane sizeable, no narrow slivers. All subject panes warm colours only, all sky/cloud background panes cool colours only. Flat diagram for machine tracing, not rendered glass. Uniform pure black lines. Center complete oval with 15px white margins on portrait 3:4 opaque white canvas. No text."
+}

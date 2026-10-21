@@ -1,0 +1,36 @@
+{
+  "id": "v2_rose",
+  "name": "Kadife Gül",
+  "scene": "a full rose with layered petals, a stem and two leaves",
+  "shape": "oval",
+  "palette": [
+    [
+      "crimson",
+      "#B82750"
+    ],
+    [
+      "coral",
+      "#EF8290"
+    ],
+    [
+      "emerald",
+      "#28785C"
+    ],
+    [
+      "turquoise",
+      "#59B5BC"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Rose blossom uses the subject pair; stem, two leaves and surrounding divisions use the background pair. Target 38–48 panes. Visually inspected both generations; selected retry improves leaf colour alternation and simplifies the centre. Remaining doubts: subtle tonal variation persists, some adjacent petals share a colour, several petal tips and leaf junctions are narrow/crowded, and total visible divisions may exceed target before tracing/merging. No obvious loose line ends; geometric contact audit has not been performed. Design sheet only.",
+  "tool": "image_gen",
+  "prompt": "Create a flat stained-glass puzzle DESIGN SHEET, not finished glass. Portrait 3:4 canvas. Single elegant full rose with layered curved petals, one stem and two leaves, in an oval panel nearly touching canvas edges with pure white exterior. Reference 1 is only the old subject idea; replace its concentric cartoon geometry completely. Reference 2 is the desired elegant botanical leaded-panel design language, but use perfectly flat fills, no shading. Aim for 38–48 closed substantial panes total (about 22 rose petals and 20 supporting/background panes). A rich natural rose bloom fills upper two thirds, softly spiralling overlapping broad petals, graceful stem and two large pointed leaves below. Exactly FOUR flat colours: crimson #B82750 and coral #EF8290 for the rose flower only; emerald #28785C and turquoise #59B5BC for all background, stem and leaves. Alternate crimson/coral neighbouring flower pieces; alternate emerald/turquoise background pieces as far as possible, never use flower colours in background. Leaves and stem count as botanical background, not flower. Black uniform smooth lead about 1 percent of canvas width, closed thick black oval rim. Every lead line ends at another line or rim, only spaced T junctions, no X/four-way contacts, no loose lines, no tiny pieces, no slivers, no nearly parallel narrow gaps. Petals should be graceful broad true rose petal shapes, not concentric circles, not a generic geometric rosette. All pieces flat solid colour. No white inside panel, no gradients, glass texture, highlights, shadows, speckles, text, frame, labels or signature. Output just one finished design image.\nREVISION: Simplify to approximately 42 panes total. Absolutely flat vector-style fills, NO lighting and NO subtle gradients whatsoever. Reduce petals to 18 broad curved pieces with a simple 3-piece rose centre; avoid crowded tiny central pieces. Use about 24 large surrounding pieces including stem and leaves. Alternate green and turquoise INSIDE the leaves too, rather than every leaf piece green. Same-colour adjacent petals should be merged by removing their separator. Separate all junctions, never four lines meeting. All internal lead the same bold thickness. Keep the elegant realistic rose silhouette.",
+  "references": [
+    "assets/glass/rose-silhouette.webp",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "generationAttempts": 2
+}

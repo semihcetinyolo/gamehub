@@ -1,0 +1,72 @@
+{
+  "id": "vitray_heron",
+  "name": "Balıkçıl",
+  "scene": "A blue heron stands beside a pond among violet irises and flowering branches.",
+  "shape": "octagon",
+  "palette": [
+    [
+      "Azure",
+      "#287EB1"
+    ],
+    [
+      "Muted violet",
+      "#8D66AB"
+    ],
+    [
+      "Leaf green",
+      "#68973E"
+    ],
+    [
+      "Warm gold",
+      "#D5A943"
+    ]
+  ],
+  "notes": "Reviewed after one regeneration. Beak, legs and feet simplified. Remaining concerns: some iris junctions remain clustered; narrow crest, stems and leaf gaps may fall below 3% width, some equal-colour neighbours and subtle fill variation. Trace review required; intended palette listed. Approximate raster region count 172 is outside the requested 70–130; simplify or subdivide during tracing as appropriate.",
+  "tool": "image_gen",
+  "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d79-ddf0-75b0-8c24-eceb8897ba20/exec-e94e2356-dd76-40bc-8d46-46abc235dff0.png",
+  "references": [
+    "tools/stained/vitray/refs/vitray_heron.jpg"
+  ],
+  "prompt": "Create ONE flat Cartograph stained-glass puzzle DESIGN SHEET, a fresh composition inspired by the reference photograph. Portrait 3:4 canvas, preferably 1536x2048; centered panel nearly touching canvas edges on pure white exterior, one thick closed black outer rim, no decorative border frame. EXACTLY FOUR flat solid coloured fills specified below; no white/near-white or cream inside panel. Pure black smooth UNIFORM lead width 1% of canvas width, including eye rings and details. NO texture, shading, gradients, highlights, bubbles, dots, hatching, text or signatures. Target 85-100 panes, allowable 70-130 closed mixed-size panes: meaningful subject parts and organic background waves/bands/leaves, never arbitrary grids. Every line must run from rim/junction to rim/junction; no loose line ends. ONLY separated T-junctions: at most three panes meet at a point, never X or converging fan junctions. Offset neighbouring junctions by at least 3% panel width. All panes at least 3% panel width except pointed tips, area >=1/1000 panel area. No close parallel sliver strips or nearly touching lines, meeting angles >=30 degrees. Keep subject silhouette clear, smooth and recognizable; eyes are clearly visible closed circular COLOURED panes, no black pupil dots. Adjacent panes should have different palette colours where possible. Drop hands, walls, stands, window and photographic setting. Tracing-ready flat illustration, not glass rendering.\nPanel silhouette: OCTAGON with exactly eight straight outer sides, tall portrait proportions, broad clipped corners. Subject: one elegant right-facing blue heron with curved S neck and long golden beak, standing beside blue pond water and purple irises, some overhead flowering leaves as in the reference. FOUR flat colours only: azure #287EB1, muted violet #8D66AB, leaf green #68973E, warm gold #D5A943. Use gold/violet sky instead of white, green/gold bird neck, blue/violet wing. Target only 85 panes total: heron about 20 broad pieces (no fine feather scales), 2 large irises about 12 petals, foliage and bank about 18, broad water/sky bands about 35. Closed simple gold eye pane. Long legs visibly broad at least 3% panel width, feet simple closed silhouettes meeting the bank, no toe scribbles. Iris petals overlap with separate T joins and no common star centre. All lines same thickness. Flat vector solid fill only.\nREGENERATION CORRECTIONS: simplify strongly to 90 total panes. Only 2 small overhead blossoms and 2 irises. Each iris has just 3 broad petals connected along an extended cup rather than converging on a point. Make the beak ONE broad triangular closed pane, remove its centre seam. Neck and legs should have NO narrow inner stripe. Make legs broader and foot one simple broad closed shape. Wing only 8 broad feather panels without nested feather outlines. Put freed-up panes into generous sky bands with offset T divisions. Flatten completely: no lighting, no gradients or highlight patches. All four palette colours are uniform solids.",
+  "attempts": 2,
+  "rasterReview": {
+    "size": [
+      1086,
+      1448
+    ],
+    "enclosedComponentsOver20px": 172,
+    "smallComponentsBelowOneThousandth": 17,
+    "method": "Approximate non-black connected components; not a vector geometry audit.",
+    "paneCountWithinRequestedRange": false
+  },
+  "sha256": "217ac3cb6e1a749d4ea10f9c57d72e568d91ee89b08c91218096f4958f8009a2",
+  "reviewStatus": "needs-tracing-review",
+  "subjectMask": {
+    "file": "tools/stained/vitray/design/vitray_heron.subject.png",
+    "origin": "Existing mask retained; visually reviewed in this task.",
+    "size": [
+      1086,
+      1448
+    ],
+    "sourceSha256": "217ac3cb6e1a749d4ea10f9c57d72e568d91ee89b08c91218096f4958f8009a2",
+    "sha256": "541942717f524d68282b99eb9f8e0520d5fa1733d8c4636dad70ceff7c8e27e5",
+    "spotChecks": [
+      {
+        "seed": [
+          570,
+          289
+        ],
+        "blackFraction": 1.0,
+        "blackMajority": true
+      },
+      {
+        "seed": [
+          620,
+          300
+        ],
+        "blackFraction": 1.0,
+        "blackMajority": true
+      }
+    ]
+  }
+}

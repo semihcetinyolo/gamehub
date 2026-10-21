@@ -1,0 +1,37 @@
+{
+  "id": "v2_story_stingray",
+  "name": "Derin Mavi",
+  "scene": "A graceful stingray with broad sweeping fins and a curved tail glides through flowing deep-ocean currents.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt orange",
+      "#D96928"
+    ],
+    [
+      "golden amber",
+      "#E9B83F"
+    ],
+    [
+      "ocean blue",
+      "#175878"
+    ],
+    [
+      "teal",
+      "#269EAA"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 87–127 panes. Generated and visually inspected twice; second version selected for improved wing junctions. Subject and background colour pairs remain separate, exterior white, and no loose line ends apparent. Remaining concerns for tracing: subtle fill shading persists; some same-colour neighbours may merge; close or multiway junctions remain around the head/wing outlines and several background confluences; wing tips meet the rim. Pane count and geometric compliance are not certified.",
+  "tool": "image_gen",
+  "prompt": "Create a flat stained-glass DESIGN SHEET, not textured finished glass, for a colouring puzzle called Derin Mavi. Portrait 3:4 canvas. A graceful anatomically recognizable stingray viewed from above, broad diamond-shaped undulating wings, small head, and long tapering curved tail sweeping downward, floating in flowing ocean currents. Elegant artisan stained glass composition inspired by the attached fox and lighthouse design references, but a completely new stingray subject. The old stingray image is subject context only: do NOT copy its childish face or geometry. Centered tall OVAL panel nearly touching canvas edges on pure white exterior, closed bold black rim, no extra border frame. Target 100 closed panes total (allowed 87–127), about 35 meaningful broad curved ray fin/body/tail sections and about 65 ocean current sections. Exactly four flat solid fill colors: burnt orange #D96928 and golden amber #E9B83F exclusively for stingray including tail and small round eyes; ocean blue #175878 and teal #269EAA exclusively for all background water. Subject sections alternate orange/amber and background sections alternate blue/teal as far as possible; never mix pairs. Smooth outline-to-outline fin bands aid alternation. All lead pure black and uniform about 1% canvas width. ONLY separated T junctions, never X crossings or four-way contacts. Every line ends on another line or rim. No dangling lines, tiny wedges, near-touching lines, hairline bridges, spots or decorative dots. Panes broad and readable, minimum width 3% panel width except natural pointed tips. Small visible eyes must be closed round panes in the subject color pair, no pupils. Underwater flow should form natural broad curves, not a grid. No white or cream inside panel. Absolutely NO shading, gradients, highlights, texture, glass effects, text or signatures. References guide elegant composition and smooth leadwork only; unlike references keep all fills strictly flat and the subject/background color pairs separate.\nCORRECTION TO THE ATTACHED FIRST DRAFT: Preserve the elegant stingray and oval composition, but eliminate EVERY four-way X crossing, particularly at the middle of both wings. Use simple nonintersecting curved bands that run from one subject outline to another, no interior intersections in the stingray. Background junctions must be separated T joins with at least 3% panel-width spacing; no multi-line pointed confluences. Remove all shading and gradients: each pane a single exact uniform RGB color. Keep 87-127 panes, using additional broad ocean bands if necessary. Ray wings must remain separated from the outer oval by clearly visible water. This is the final clean tracing design, not a glass render.",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "assets/glass/story_stingray-junctions.webp"
+  ],
+  "generationAttempts": 2
+}

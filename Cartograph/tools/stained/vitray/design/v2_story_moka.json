@@ -1,0 +1,36 @@
+{
+  "id": "v2_story_moka",
+  "name": "Sabah Kahvesi",
+  "scene": "An elegant faceted moka pot stands against flowing bands of morning air in an oval stained-glass panel.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Copper",
+      "#BC542F"
+    ],
+    [
+      "Golden amber",
+      "#E7AB32"
+    ],
+    [
+      "Deep blue",
+      "#185877"
+    ],
+    [
+      "Teal",
+      "#329C9C"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 35–45 panes. Inspected initial generation and regenerated once to simplify crossing background seams. Revised image retains the moka silhouette, warm subject/cool background colour pairs, closed oval rim and 3:4 canvas. Remaining doubts: subtle fill shading persists; some lid/body and boiler-shoulder junctions are closely aligned or four-way; a narrow background wedge below the boiler needs merging. Some adjacent subject panes share a colour. Raster component estimate is about 50 panes, above target; merge redundant same-colour subject panes and narrow background wedges during tracing. Not a validated puzzle geometry or final glass artwork.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/story_moka-junctions.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "prompt": "Create the design sheet for Cartograph v2_story_moka, Sabah Kahvesi. Redraw the moka-pot subject of reference image 1 completely in the elegant leaded-panel composition style of references 2 and 3. References are supporting style/subject inputs, not geometry to copy. Portrait 3:4 canvas ideally 1536x2048. A large oval panel nearly touches all four canvas edges, pure white outside, fully closed thick black rim. One handsome traditional Italian stovetop moka coffee pot, clearly recognizable faceted lower boiler, narrow waist, broad upper chamber, slanted lid with knob, left pouring spout, generous right loop handle; composed as an elegant artisanal stained-glass panel. Exactly 35–45 large closed panes overall, aim 40, with about 18 pot pieces and 22 flowing background pieces. Only FOUR FLAT fill colours: copper #BC542F and golden amber #E7AB32 exclusively on all pot parts including handle, lid, knob and spout; deep blue #185877 and teal #329C9C exclusively in the background including handle hole. Alternate copper/gold across pot facets and bands. Alternate blue/teal in broad flowing morning-air bands behind the pot and broad curved tabletop bands below it. Prefer complete outline-to-outline stripe divisions; avoid branching interior lines that defeat two-colour alternation. Each background band should naturally terminate on the pot silhouette or rim. Keep lid and spout connected to the pot, no floating components. No extra objects, no cup, no coffee beans. Pure black smooth uniform lead width approx 1% canvas width. Flat solid fills absolutely NO shading, gradient, texture, glints or highlights, unlike subtle shading in the reference sheets. NO white glass. All lines close panes, zero loose ends. ONLY separated T junctions, no X crossings or four-way contacts; space junctions at least 3% panel width apart. No tiny panes, no slivers, no near-touching parallel borders; panes >=3% panel width except pointed ends, intersections >=30 degrees. Clean readable subject contours, sophisticated curves, no decorative border frame. No text, no symbols, no signature. Save generated PNG to the workspace and return its local file path.\nREVISION: Correct the attached first attempt. It has forbidden X junctions at centre lid/body, left background mid-height and bottom background; eliminate every X by removing some background seams and offsetting pot facet seams along horizontal bands to create clearly separated T junctions. Reduce to 35–45 total panes. Background should be simple NON-INTERSECTING flowing bands, blue then teal then blue, without crosscuts or intersecting arcs. Remove the narrow triangular background slivers. Keep upper chamber facet seams offset at least 40px from lid seams. Eliminate ALL gradients: every coloured pane must be one perfectly uniform RGB solid colour throughout. Pot colour pairs must alternate; merge same-colour adjoining pieces if needed. Preserve elegant oval, clear moka pot silhouette, white exterior and black uniform lead. This is a flat tracing diagram, not rendered glass."
+}

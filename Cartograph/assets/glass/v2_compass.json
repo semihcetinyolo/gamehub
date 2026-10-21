@@ -1,0 +1,53 @@
+{
+  "id": "v2_compass",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:20:04.062464+00:00",
+  "raw": "tools/stained/vitray/raw/v2_compass.png",
+  "rawSha256": "9a3ae4fb73c0ca420b36a5bd18017c7b546fef40c6a0d9057ea6ce57c10e4f66",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 100,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5072028309478931
+    },
+    {
+      "patchSize": 79,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.4903990318251488
+    },
+    {
+      "patchSize": 95,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5430835510415115
+    },
+    {
+      "patchSize": 140,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5696384940639099
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "9eb2474b39d10863fef102e39c70f9f2b1e98d24b5cbfc93974ef7dc264a41b0",
+  "sha256": "eec6903ba3cbdeaa8376b3241cb01bc2d7afd3581415478884b7cb20efeeb344",
+  "palette": [
+    "#fcd418",
+    "#d03d0f",
+    "#023d78",
+    "#11b8b9"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 88,
+    "total": 88,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_compass.webp"
+}

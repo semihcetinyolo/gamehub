@@ -1,0 +1,36 @@
+{
+  "id": "vitray_deer",
+  "name": "Geyik",
+  "scene": "A proud stag with sweeping antlers looks across a layered woodland.",
+  "shape": "gothic arch",
+  "palette": [
+    [
+      "Russet",
+      "#A34D32"
+    ],
+    [
+      "Amber",
+      "#DEA443"
+    ],
+    [
+      "Teal",
+      "#267C70"
+    ],
+    [
+      "Blue",
+      "#365D91"
+    ]
+  ],
+  "notes": "Two designs generated and reviewed; correction removes black-filled facial details and spreads some background seams. Stag including antlers is the subject. Remaining doubts: narrow gaps at several antler forks and tips, crowded right antler overlap, some multiway background joins and large equal-colour areas. Preserve the complete stag contour when tracing; move background seams first. Subtle raster fill variation needs palette quantization. This is a design reference, not audited game geometry. Mask retains thin white internal seams; black pane interiors are suitable for majority voting.",
+  "designPrompt": "Edit this design preserving exact GOTHIC ARCH, stag silhouette, proud head pose, antlers and composition. Resolve crowded contacts at antler bases, where background seams hit antler tips, around ears and lower neck. Move or remove the background seam, never bend the stag outline. Spread every junction by at least 3% panel width and allow only T junctions, no 4-way crossings or thin wedges. Add about 15 broad staggered closed contour-following panes to the spacious neck and sky, so total is around 80. Keep at least 3% panel width for new panes. Palette EXACTLY four single flat colours: stag #A34D32 russet and #DEA443 amber; sky/ferns/hills #267C70 teal and #365D91 blue. REMOVE black-filled nose and pupil: nose should be one russet pane, eye one blue closed pane without black pupil. Black is only thick uniform outlines. No fine nose line, no white highlights, gradients, shading or textures. No text. Fill every region with a constant colour. Natural pointed antler tips stay intact; give the sky breathing room.",
+  "subjectMaskPrompt": "Edit this finished design into its BLACK AND WHITE SUBJECT MASK. Preserve the EXACT canvas size, aspect ratio, framing, panel shape, every contour and every lead line in its original pixel position. Do NOT redraw, rearrange, simplify or scale anything. Recolour only: every pane of SUBJECT goes pure black #000000, every other pane and exterior pure white #FFFFFF. Keep ALL existing black lead lines black, never turn subject seams white. In the subject this makes a continuous solid black silhouette. Include eye interiors as black. Keep background seams black. No grey, no colour, no shading, no added marks. Output must overlay the input with unchanged geometry. SUBJECT: the entire stag, ALL antlers including their individual tines, both ears, head, nose, eye and neck. Sky visible between antler branches remains white. Hills, leaves and all background panes white. Preserve exact original outlines; no newly drawn silhouette.",
+  "generationMethod": "built-in image_gen",
+  "canvas": [
+    1086,
+    1448
+  ],
+  "subjectColours": [
+    0,
+    1
+  ]
+}

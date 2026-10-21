@@ -1,0 +1,29 @@
+{
+  "id": "v2_story_panda",
+  "name": "Bambu Kahvaltısı",
+  "scene": "A seated giant panda eats a leafy bamboo shoot in a lush bamboo grove.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Midnight indigo",
+      "#283852"
+    ],
+    [
+      "Honey gold",
+      "#E9B94F"
+    ],
+    [
+      "Jade green",
+      "#278568"
+    ],
+    [
+      "Turquoise blue",
+      "#55B9CB"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from story_panda with fox and poppies design sheets as style references; target 91–131 panes. Panda uses indigo and honey; bamboo and surrounding grove use jade and turquoise. Visually reviewed both generation attempts. First retained because the retry introduced transparent exterior and a loose paw stroke. Remaining doubts: subtle shading rather than perfectly flat fills; adjacent same-colour panes in ears, face, limbs and bamboo may merge during tracing; crowded leaf contacts near muzzle and lower paws need junction review. Pane count and production geometry have not been validated. Design sheet only."
+}

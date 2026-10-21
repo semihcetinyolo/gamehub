@@ -4,7 +4,60 @@ Oyuna hazır 276 bölüm `../../stained-levels.js` dosyasındadır. `build_level
 içindeki `ORDER` kaynak sırasıdır; oynanış sırası aşağıdaki karıştırma ve zor
 bölüm yerleştirme adımıyla oluşturulur.
 
+## Görünen geometri kuralları (21 Ekim 2026)
+
+Oyuncu çokgeni değil, kurşunun yanında kalan rengi görür. `visible_contacts.py`
+her bölgeyi kurşun yarıçapı (3D çizgi, 300×400 px panoda 1,6 px; büyük 27×36
+sahnelerde 2× yakınlaştırma) ile açar (morfolojik açılış) ve dört kural arar:
+komşular arasında en az 4 px görünen temas, komşu olmayanlar arasında en az 5,5 px
+görünen ayrılık, her bölge tek parça görünür (renk kırıntısı yok), görünen alan en
+az 100 px². Arada kalan "değiyor mu?" durumu yasaktır.
+
+- Onarım `repair_visible_contacts.py`: kurşun altındaki şeridi tabanındaki düz
+  kesikle bir komşuya verir, ayırıcı çizginin ucunu düz kalarak kaydırır veya
+  ince/küçük arka plan bölgesini komşusuna katar. Figür çizgileri değişmez;
+  yayımlanmış renkler geçerli kaldıkça korunur, çakışmada en az cam alanı boyanır.
+- Arka plan bölmeleri geçicidir; figürü/level tasarımını asla bükmez.
+  Tavşandaki çıkıntıların sebebi eski üreticinin minik atomları figüre katmasıydı;
+  `rebuild_authored.py` kaynaktan atom birleştirmeden yeniden kurar.
+- Akış: `rollout_visible_contacts.py` → `visible_contact_assets.py focus` →
+  `visible_contact_clues.js` → `visible_contact_assets.py art` → `publish` →
+  `audit_geometry.py --stamp` → `build_levels.js` → `build_v1_levels.py`.
+  Snapshot: `../../output/visible-contacts/`.
+- Oyunda Ayarlar › SÜRÜM: V1 değişen bölümlerin önceki çizimini
+  (`stained-levels-v1.js`, istenince yüklenir), V2 güncel kataloğu açar.
+- Kalan durumlar iki figür parçası arasında veya kilitli figür çizgisinin yanında
+  olanlardır; kaynakta bütün parçayı taşıyarak çözülür.
+
 ## Güncel geometri ve vitray politikası (20 Ekim 2026)
+
+### Tek görünen bölge, bağımsız boyama
+
+Tamamlandı: **276/276 bölüm**, **74 geometri ve vitray**, **3577/3577 cam parçası**.
+Tarayıcıda 9157 bölge hedefi ve eski kopuk alanlarda 303 gerçek tıklama geçti.
+Bölüm sırası, 27 zor konum, 25 büyük sahne ve kedi öğreticisi korundu.
+[Önce/sonra karşılaştırması](../../output/visible-panes/index.html).
+
+Lotus'taki iki yaprak ve alt üçgen, kurşun çizginin altında kalan ince
+bağlantılar yüzünden tek bölge olmuştu. Çokgenin matematiksel olarak bağlı
+olması yeterli değildir. `visible_panes.py` normal 300×400 px pano ölçeğinde
+hem gerçek 3D çizgi kalınlığıyla hem de ek okunurluk payıyla görünen iç alanı
+denetler. Gerçek çizgi kontrolü, büyük payın tamamen yok edip gizleyebileceği
+küçük parçaları da yakalar.
+
+`audit_geometry.py` **v4** bu kontrolü içerir; derleyici v4 onayı ister.
+Birbirinden ayrı görünen adalar farklı bölge kimlikleriyle boyanmalıdır.
+Nokta/ince köprü ile birleştirme ve yalnızca aynı renkte diye gruplama yasaktır.
+Bağlantıyı gerçekten görünür yapın veya bağımsız bölgeler oluşturun; anlamlı
+silueti bükmeyin. Her düzeltmeden sonra komşuluk, çözüm, ipuçları ve vitray
+aynı son geometriye göre hazırlanır.
+
+Bu onarımın snapshot ve karşılaştırması `output/visible-panes/` içindedir.
+`repair_visible_panes.py` genel düz ayırıcıları hazırlar; çözemediği kaynak
+düzenlerinde başarısız çıkar, otomatik yayınlamaz. `visible_pane_clues.js`,
+`visible_pane_focus.js` ve `visible_pane_assets.py` bu snapshot'a bağlıdır.
+Yeni işte yeni snapshot kullanın. Regresyon: `test_visible_panes.py`;
+gerçek tarayıcı tıklamaları: `verify_visible_panes.js`.
 
 ### Figür sınırlarını koruma ve başlangıç renkleri
 
@@ -96,6 +149,13 @@ pah/köşe düzleştirme hattı artık üretimde kullanılmaz.
 - `play-order.json` oynanış sırasını sabitler. Geometri veya renk değişmesi
   erken desen bölümlerini yeniden seçmez. Yeni bölüm/sıra talebinde bu dosya
   açıkça güncellenir; zor bölümler 10,20,… konumlarını korur.
+- Oyunun başı (kullanıcı, 2026-10-20): `node tools/stained/order_small_start.js`
+  `play-order.json` dosyasını yazar, ardından `build_levels.js` çalıştırılır.
+  2–20: kedi gibi konusu net, en etkileyici klasik vitraylar (`FEATURED` listesi),
+  küçükten büyüğe. 21–50: en az 18 parçalı, en az %25'i boyanacak paneller, parça
+  sayısına göre küçükten büyüğe; aynı seri (Yıldız Kırığı 2/11) veya aynı konu (iki
+  çizme) en az 15 bölüm arayla gelir. Kedi 1., beyin 3. bölüm, zor bölümler 10,20,…
+  yerinde kalır; kalanlar eski göreli sırasını korur, aynı aile yan yana gelmez.
 - `geometryRevision: 3`, `junctionStyle: shared-border-aware`. Kaynak
   oluşturucular mevcut tamamlanmış sürümleri korur.
 
@@ -132,6 +192,50 @@ kontrolü → `image`/`artMetadata` bağlantısı → tam denetim ve katalog der
 sırası zorunludur. Açılış hamleleri ve zor çıkarımlar yeniden doğrulanır;
 kedi eğitimi korunur. Eski bölümlerin üretim tarihçesi aşağıdadır; genel pah
 ve image-gen zorunluluğu anlatan tarihsel notların yerini bu politika alır.
+
+## V2 listesi (`stained-levels-v2.js`, varsayılan liste, 21 Ekim 2026)
+
+Oyun V2 ile açılır (`index.html` yalnızca `stained-levels-v2.js` yükler); Ayarlar >
+SÜRÜM > V1 eski kataloğu (`stained-levels.js`) o anda yükler. Her liste kaldığı
+bölümü `levelId.v1` / `levelId.v2` ile ayrı saklar.
+
+- İçerik: eğitim kedisi `v2_cat`, 26 Pinterest bölümü (`vitray_*`), konusu olan V1
+  bölümlerinin yeni tarzda yeniden çizimi (`v2_*`, `vitray/redraw/queue.json`) ve
+  yeni konular (`v2n_*`, `vitray/fresh_queue.py` → `vitray/fresh/queue.json`,
+  `vitray/FRESH_BRIEF.md`: küçük 12–22, orta 28–45, büyük 70–110 parça).
+- Üretim: `vitray/redraw/pipeline.py [--queue …]` (tasarım → `trace.py` +
+  `build_map.py` → `clues.js` + `art.py guide` → cam + `art.py finish`). Onaysız
+  geometri `work/<id>.rejected.json` olarak kalır, cama geçmez.
+- Sıra: `node tools/stained/vitray/build_v2.js`. Kediden sonra 15 yer çoğunlukla
+  küçük, sonra küçük/orta/büyük döngüsü (`OPENING`, `RAMP`); zorlar 20. yerden
+  itibaren her 10. yerde. Denetimi geçmeyen bölüm atlanır ve yazdırılır.
+- Doğrulama: `LIST=v2 node tools/stained/vitray/verify_taps.js`.
+
+## Pinterest vitray bölümleri (`vitray_*`, 21 Ekim 2026)
+
+Kullanıcının verdiği Pinterest/fotoğraf vitrayları (`vitray/refs/`, kaynak adresleri
+`refs/sources.json`) gerçek kurşunlu cam gibi organik bölünmüş, 60–140 parçalı,
+27×36 tuvalli yeni bölümlere dönüştürülür. Araçlar `vitray/` altındadır:
+
+1. **Tasarım (Astra):** `DESIGN_BRIEF.md` – referanstan düz renkli, siyah kurşunlu
+   çizim (`design/<id>.png/.json`) ve konu maskesi (`<id>.subject.png`, konu siyah).
+2. **İz sürme:** `trace.py` – her piksel en yakın cama atanır, komşu bölgeler aynı
+   sınırı paylaşır; düğümler arası yaylar uçları sabit tutularak yumuşatılır.
+3. **Geometri ve renk:** `build_map.py` – onaylı üretim geçişleri (konu silueti
+   değişmez; `authored_clean`, renk duyarlı `readable_junctions`,
+   `repair_visible_contacts`), sonra tek MILP ile hem dört renk hem de gerekirse
+   kaldırılacak birkaç kurşun seçilir (`colour_merge`): tasarımın kendi renkleri
+   ve konu/arka plan karşıtlığı korunur. Çıktı `work/<id>.map.json` + önizleme.
+4. **İpuçları:** `node vitray/clues.js <id>` (zor için `--hard <id>`); konu
+   parçaları mümkünse boş başlar.
+5. **Cam (Astra):** `art.py guide <id>` → `guides/<id>.png`; `ART_BRIEF.md` ile
+   üretilen `raw/<id>.png` → `art.py finish <id>`: üretilen cam dokusu tam
+   geometriye oturtulur, kurşun tam sınırlara çizilir, her parça çözümle denetlenir.
+6. **Yayın:** `python vitray/publish.py <id>…` → `maps/`, `vitray/catalog.json`,
+   `vitray/insert_order.js` (normal olanlar 51. bölümden sonra eşit aralıkla, zor
+   olanlar 10'un katlarında), `build_levels.js`. Aile adı `vitray`; yan yana gelmez.
+
+`python vitray/status.py` her bölümün aşamasını gösterir.
 
 ## 26–50. bölümlerin kaynakları
 
@@ -181,12 +285,13 @@ Bu düzenleme bölüm sırasını, geometriyi, çözüm renklerini ve görseller
 
 İlk bölüm yine `cat`: 12 büyük parça, 4 boyanacak alan. Geometri `designs.py`
 içindedir. `node tools/stained/build_tutorial.js`, tek çözümü olan başlangıç
-renklerini ve boya/not hedeflerini seçip `maps/cat.json` içine kaydeder.
+renklerini ve boya hedefini seçip `maps/cat.json` içine kaydeder.
 Yeni tamamlanma görseli `assets/glass/cat-tutorial.webp` dosyasıdır.
 
 Kedi haritası yeniden üretilirse `build_tutorial.js` de tekrar çalıştırılmalıdır.
-Eğitim sırası: ortak kenar kuralı ve hazır alanlar, renk seçimi, çift dokunarak
-boyama, tek dokunarak iki olası rengi not alma, kalan üç alanı tamamlama.
+Eğitim sırası: ortak kenar kuralı ve hazır alanlar, renk seçimi, tek dokunarak
+boyama, kalan üç alanı tamamlama. Oyunda not alma yoktur (2026-10-20); `tutorial.note`
+alanı yalnızca eski kedi seçimini sabit tutmak için kalır, oyun okumaz.
 
 ## 51–200. bölümler
 

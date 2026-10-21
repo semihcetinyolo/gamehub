@@ -1,0 +1,41 @@
+{
+  "id": "v2_medallion",
+  "name": "Yıldız Madalyon",
+  "scene": "An Ottoman-style eight-pointed star medallion with interlaced tiles.",
+  "shape": "octagon",
+  "palette": [
+    [
+      "vermilion",
+      "#CD492F"
+    ],
+    [
+      "golden amber",
+      "#E9B63E"
+    ],
+    [
+      "deep cobalt",
+      "#2451A4"
+    ],
+    [
+      "turquoise",
+      "#26AAA7"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Inspected both generations; selected the single permitted revision, with opaque white exterior and a clearer central octagon. Warm colours are reserved for the star, cool colours for background and interlace openings. Remaining issues: subtle fill shading persists; some neighbouring blue background panes repeat a colour; several interlace contacts appear four-way and require separation during tracing. Raster connected-component estimate is 67 coloured regions, above the requested 35–45 target, so simplify during geometry preparation. No obvious loose line ends were seen. Not geometry-audited or published.",
+  "targetPanes": [
+    35,
+    45
+  ],
+  "tool": "clai image",
+  "references": [
+    "assets/glass/medallion-silhouette.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "prompt": "Create a new flat stained-glass DESIGN SHEET for Yildiz Madalyon. Reference 1 is the old subject ONLY: redraw its idea as an elegant Ottoman eight-pointed star medallion with interlaced tile shapes. References 2 and 3 show the desired bold, smooth black lead and graceful designed composition, NOT their subjects. Portrait 3:4 canvas. A tall octagonal panel centred on pure white exterior, nearly touching all canvas edges. Exactly 35–45 large closed panes, ideally 41. A large symmetrical eight-pointed star dominates the centre, with an octagonal centre jewel and broad interlaced star ribbon pieces. Evoke Ottoman tile craftsmanship, sophisticated and restrained. Exactly FOUR FLAT interior colours: vermilion #CD492F and golden amber #E9B63E exclusively for the star medallion subject; deep cobalt #2451A4 and turquoise #26AAA7 exclusively for surrounding background tiles and visible interlace gaps. Alternate the two warm colours across neighbouring star pieces, alternate the two cool colours across background pieces. Build the eight points around a broad central closed octagon, never a many-way central hub. Any interlacing is implied with staggered T junctions, never actual X crossings. All lead lines pure black uniform thickness approximately 1 percent of image width, smooth clean contours, thick closed outer rim. Every seam connects rim or another seam; absolutely no loose ends or open panes. At most three panes meet per junction. Stagger neighbouring junctions by at least 3 percent of panel width. No thin slivers, no tiny pieces, no decorative border frame. Flat vector-like fills with NO shading, gradients, glass texture, reflections, bevels, dots, text, signatures. Background stays within its cool colour pair; subject stays within its warm pair. The entire panel is the picture. Preserve clear eight-pointed star silhouette. CRITICAL REVISION: simplify to 41 panes TOTAL, including background: 17 warm star panes (one centre octagon plus sixteen broad alternating warm pieces) and 24 cool background panes. Do NOT subdivide a ring into eight extra pieces. No shading whatsoever, no darker edges or brighter centres: each fill is a single solid hex colour like a paint bucket. Pure opaque white outside the octagon, NOT transparency, NOT black. Eight star tips clearly visible, broad simple tile pieces.",
+  "generationAttempts": 2
+}

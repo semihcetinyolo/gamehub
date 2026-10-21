@@ -1,0 +1,53 @@
+{
+  "id": "v2_motif_cupcake",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T10:54:42.700247+00:00",
+  "raw": "tools/stained/vitray/raw/v2_motif_cupcake.png",
+  "rawSha256": "34857bfcfc20c5606b86828c4ac65f2ec741dc296ff199b65aaa2fac063b678b",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 86,
+      "donorPatches": 44,
+      "colour": 0,
+      "preservedFraction": 0.5655300999277281
+    },
+    {
+      "patchSize": 76,
+      "donorPatches": 33,
+      "colour": 1,
+      "preservedFraction": 0.5338719139697257
+    },
+    {
+      "patchSize": 74,
+      "donorPatches": 44,
+      "colour": 2,
+      "preservedFraction": 0.48244746296235713
+    },
+    {
+      "patchSize": 111,
+      "donorPatches": 73,
+      "colour": 3,
+      "preservedFraction": 0.502339736696039
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "ace5ab42bceac1415172781cbe00a5c5bae58a6c3f04c9214d6b6cde262f3260",
+  "sha256": "64bdf858af2f32e2d577c50c71a4c6491ba5f6a9723a4ef46cbe573dff1ce8f0",
+  "palette": [
+    "#e82e54",
+    "#fcb20f",
+    "#2ad4c6",
+    "#043c7e"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 60,
+    "total": 60,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_motif_cupcake.webp"
+}

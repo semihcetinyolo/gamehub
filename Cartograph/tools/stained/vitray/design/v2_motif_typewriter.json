@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_typewriter",
+  "name": "Daktilo",
+  "scene": "A vintage mechanical typewriter with a blank amber sheet and round keys sits within an oval of flowing blue glass bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "rust",
+      "#B94B32"
+    ],
+    [
+      "amber",
+      "#E9AE35"
+    ],
+    [
+      "deep blue",
+      "#205878"
+    ],
+    [
+      "turquoise",
+      "#39A6B3"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 31–41 panes. Generated with ClaiFace image using vitray_fox.png and vitray_lighthouse.png as style references; one simplification revision inspected. White exterior, closed oval rim, ten large round keys, subject/background colour pairs preserved. Remaining doubts: slight tonal variation persists despite flat-fill instructions; adjoining rust shoulder/body panes may merge during tracing; a small blue wedge beneath the carriage lever and narrow side background tips need tracing review. No obvious loose line ends; closely spaced contacts near the left platen knob require geometry validation. Not a validated playable level."
+}

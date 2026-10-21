@@ -1,0 +1,44 @@
+{
+  "id": "v2_story_astronaut",
+  "name": "Uzay Yürüyüşü",
+  "scene": "An astronaut floats in a graceful spacewalk pose among broad orbital bands and a distant planet.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Golden yellow",
+      "#E9B943"
+    ],
+    [
+      "Burnt orange",
+      "#C7472D"
+    ],
+    [
+      "Deep blue",
+      "#20516E"
+    ],
+    [
+      "Ocean teal",
+      "#228D96"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    29,
+    39
+  ],
+  "notes": "Second generation selected and visually inspected. Warm colours remain exclusive to the astronaut and blue/teal to space and planet. No obvious loose line ends. Remaining doubts: subtle tonal shading persists despite flat-fill instructions; crowded or four-way shoulder/torso contacts, narrow helmet rim at left, lower boot/rim proximity and some same-colour adjacent suit pieces need attention during tracing. Pane count requires tracer verification. Design sheet only, not audited playable geometry or finished glass.",
+  "generation": {
+    "tool": "image_gen",
+    "attempts": 2,
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15e40-a4ed-7240-81e0-3ce390ed8f02/exec-240689d7-ca11-4a3e-9434-7f13c9d53689.png",
+    "references": [
+      "assets/glass/story_astronaut-junctions.webp",
+      "tools/stained/vitray/design/vitray_lighthouse.png"
+    ],
+    "prompt": "Create a flat traceable stained-glass puzzle DESIGN SHEET, portrait 3:4. Reference 1 shows subject only: astronaut spacewalk. Reference 2 is elegant leaded-panel style inspiration only; simplify drastically to 29–39 panes total, aim 34. Fresh mature composition: a floating astronaut with round closed helmet and large visor, coherent suit, raised gloved hand, bent separated legs and substantial boots, behind him broad orbital sky bands and a small planet. Oval panel nearly filling canvas on pure white exterior, thick closed pure black rim, no inset border. Exactly four flat solid interior colours: golden yellow #E9B943 and burnt orange #C7472D exclusively for the astronaut including visor; deep blue #20516E and ocean teal #228D96 exclusively for all background and planet. Alternate the subject colours across broad suit bands outline-to-outline; alternate blue/teal background bands. No background colours in astronaut. Roughly 19 large astronaut panes and 15 sky/planet panes. Real stained glass design elegance with simple smooth natural contours, not childish stick figure. Flat uniform fills ONLY, NO shading, gradients, highlights, glass texture, text, stars, dots or tiny details. Pure black uniform lead width about 1% canvas width. Every line closes a pane and runs junction-to-junction or rim; no floating open strokes. Only spaced T junctions, no X or four-way contacts; offset background intersections from suit seams by at least 3% panel width. Minimum pane width 3% panel width, no slivers or tiny chips. Simplify joints, omit fingers and mechanical decoration. Clear recognisable suit silhouette, graceful asymmetrical weightless pose. White only outside oval.\nREVISION: Keep this astronaut oval composition, but reduce to 34 total panes, removing redundant shoulder, helmet earpiece, boot and sky seams. CRITICAL flat screenprint colours: every fill must have exactly one constant RGB value, no tonal variation whatsoever. Helmet one broad golden ring around orange visor; no earpieces. Eliminate four-way torso/shoulder contact by moving seam ends apart. Keep planet well away from outer rim, with wide surrounding blue area. No narrow wedges near bottom rim. Simpler sky with 10 broad alternating blue and teal regions and astronaut with 24 panes maximum. Chest pocket can be removed. No white inside the oval.",
+    "visuallyInspected": true
+  }
+}

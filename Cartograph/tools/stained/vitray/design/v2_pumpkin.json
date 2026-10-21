@@ -1,0 +1,36 @@
+{
+  "id": "v2_pumpkin",
+  "name": "Sonbahar Kabağı",
+  "scene": "A ribbed pumpkin with a curling green leaf sits within an oval panel of sweeping autumn garden bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Pumpkin orange",
+      "#E87922"
+    ],
+    [
+      "Golden yellow",
+      "#E9B936"
+    ],
+    [
+      "Emerald green",
+      "#287560"
+    ],
+    [
+      "Sky blue",
+      "#4DA6C5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 32–42 panes. Pumpkin and stem use the warm subject pair; the curling green leaf is treated as surrounding foliage in the cool background pair. Visually inspected after one regeneration: the second image simplifies the stem and rib arrangement; closed outlines and a clear pumpkin silhouette are present. Remaining concerns for tracing: subtle fill variation persists; adjacent green leaf panes and the gold stem/central rib do not alternate; crowded junctions at the upper leaf and pumpkin crown require review, as do pointed side panes. Pane count and geometry have not been formally audited. No catalogue or gameplay changes.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/pumpkin-silhouette.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "prompt": "Create one flat stained-glass puzzle DESIGN SHEET, not finished textured glass. Portrait 3:4 canvas. Subject: an elegant broad ribbed autumn pumpkin with a curling green leaf and stout curved stem, inside a tall oval panel almost touching canvas edges, pure white exterior. Reference 1 is the old pumpkin for subject only; references 2 and 3 are style references for elegant botanical curved leadwork, not their shading. Redraw completely with 32–42 big closed panes total, aim 36. Pumpkin dominates lower two thirds; use 11 flowing rib panes, each long curved division runs outline to outline with distinct endpoints, alternating burnt orange #E87922 and golden yellow #E9B936. Stem may use gold. Curling leaf above pumpkin is part of surrounding foliage, emerald green #287560 and sky blue #4DA6C5; broad curved background bands also alternate only these green and blue colours. Exactly these four flat colours, plus pure black lines and pure white exterior. No orange or gold in background, no blue or green in pumpkin body. Natural elegant glass-cutter curves, strong recognizable pumpkin outline, bold generous pane sizes; all lead lines smooth uniform pure black about 1% canvas width, closed thick outer oval rim. Every line ends at rim or junction, no loose lines. Only separated T junctions, no X/four-way crossings; junctions separated by at least 3% panel width. No thin slivers, no tiny chips, no internal decorative strokes, no veins ending loose. Leaf curl must be a broad closed shape not thin spiral. Background uses sweeping organic arcs interrupted by pumpkin and leaf, never a grid. NO shading, gradients, texture, highlights, realism, bevels, inset border, lettering or signature. Flat traceable colour drawing only.\nREVISION: Prior version failed by having too many panes, shaded fills and a many-way junction above the leaf. Simplify strongly to 34 panes: 9 broad pumpkin ribs, one simple single-piece GOLD stem, 2 broad curled leaf pieces, and 22 broad background panes. Pumpkin rib seams must terminate individually at widely spaced positions along upper and lower pumpkin contour, not converge. Remove small cap pieces at pumpkin shoulders. No multiple junction fan at leaf tip: each background band meets leaf outline separately at clearly distinct positions. Alternate leaf pieces green/blue as part of background. All orange interiors IDENTICAL SOLID RGB, all gold interiors IDENTICAL SOLID RGB; no glow or shaded sides. Simpler and bolder, perfectly flat vector-like fills."
+}

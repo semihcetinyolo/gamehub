@@ -1,0 +1,41 @@
+{
+  "id": "v2_grand_01",
+  "name": "Dağ Ekspresi",
+  "scene": "A steam locomotive and passenger carriage cross an arched mountain viaduct above a winding alpine river.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "Burnt orange",
+      "#C94B32"
+    ],
+    [
+      "Golden amber",
+      "#EAB735"
+    ],
+    [
+      "Deep blue",
+      "#175579"
+    ],
+    [
+      "Teal",
+      "#269D9A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Subject includes locomotive, carriage, attached steam plume and bridge masonry; landscape and bridge openings are background. Target 110–160 panes. Inspected initial generation and one revision. Revision removes warm sky shapes and wheel connecting rod and simplifies windows. Remaining tracing concerns: slight fill shading requires palette quantization; some same-colour neighbours will merge; narrow train roof/funnel/bridge-deck pieces, close wheel contacts and pointed pine-tree gaps need geometry review. Check mountain/river junction spacing at normal play scale. No obvious loose line ends seen. Pane count and production geometry are not audited at this design-sheet stage.",
+  "designPrompt": "Create one portrait 3:4 flat stained-glass DESIGN SHEET for Dag Ekspresi (Mountain Express). Reference 1 is the old subject concept only: steam train crossing an arched viaduct in mountains, redraw entirely with elegant authentic leaded panel design. References 2 and 3 show the desired elegant stained-glass composition and curves, but do NOT copy their shading. A round-arch silhouette centered nearly filling a pure white canvas, thick closed black rim, no decorative border frame. Rich mountain landscape: graceful vintage steam locomotive and a passenger carriage traveling across a sweeping stone viaduct in the lower middle, layered alpine mountain peaks above, stylized flowing steam curling upward and broad river and hillside bands below. Aim 125 closed sizeable panes, within 110–160. Exactly FOUR perfectly FLAT solid fill colors: burnt orange #C94B32 and golden amber #EAB735 for ALL train, steam and bridge subject pieces; deep blue #175579 and teal #269D9A for ALL background mountain, sky, river, landscape and bridge arch openings. Subject alternates orange and gold between adjacent pieces, background alternates blue and teal. Use full-width stripes and meaningful closed silhouette pieces; do not introduce arbitrary grid. Uniform pure BLACK lead lines about 1 percent canvas width, smoothly drawn. Only separated T junctions, NEVER X or four-way contacts, every line connects rim or another line, no loose ends, no tiny slivers, no fine spokes, no narrow parallel lines, no panes thinner than 3 percent panel width, junctions at least 3 percent width apart. Make wheels broad circular amber/orange panes with simple centers, windows also warm colors. All pieces fully enclosed. Pure white ONLY outside the panel. NO shading, gradients, texture, shadows, glass reflections, highlights, white panes, text, signatures, dots, hatching, photo context. This is a clean flat traceable design, not finished textured glass.",
+  "revisionPrompt": "Revise this design sheet preserving its round arch, steam locomotive on viaduct, mountains and river composition. Fix these defects: remove gold sky clouds and gold sun, recolor ALL sky shapes exclusively deep blue #175579 or teal #269D9A. Only the locomotive, carriage, attached steam plume and actual bridge masonry use burnt orange #C94B32 and amber #EAB735. ALL background including mountains, trees, river and arch openings uses blue/teal. Remove ALL subtle shading and gradients: every pane perfectly constant flat color, exactly the four hex colors specified, pure black uniform lead and pure white exterior. Simplify narrow mechanical details: remove the thin wheel connecting rod entirely, use simple large circular wheels with one large center, enlarge cab window to one simple pane, remove thin trim under boiler, simplify funnel to two broad closed panes, simplify carriage windows into three broad panes. No small slivers or thin window frames. Eliminate X contacts, especially the central mountain peak above the cab: stagger internal mountain seams to T junctions separated by 3 percent panel width. Preserve 110–160 substantial closed panes overall, with elegant meaningful broad landscape divisions. Alternate orange/gold within subject and blue/teal within background wherever possible. Every line is closed or terminates on rim or another line, never loose endpoints. No textures, shadows, highlights, text, or white within panel. Output portrait 3:4.",
+  "generationMethod": "built-in image_gen",
+  "references": [
+    "assets/glass/grand_01-panes.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_hotairballoon.png"
+  ],
+  "canvas": [
+    1086,
+    1448
+  ]
+}

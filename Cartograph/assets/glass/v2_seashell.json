@@ -1,0 +1,53 @@
+{
+  "id": "v2_seashell",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T10:52:46.779408+00:00",
+  "raw": "tools/stained/vitray/raw/v2_seashell.png",
+  "rawSha256": "403e2e4342e812ef24d2785efb8ca230029b4600159b123f9d270bd092b93900",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 93,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6053355129778887
+    },
+    {
+      "patchSize": 118,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6658802719697725
+    },
+    {
+      "patchSize": 121,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5783381869040302
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6962578565338203
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "52372ff4c4dd2e69394903dbebc24fd423aa786cce9af7eb22144235ef2058f7",
+  "sha256": "17b9061a323f5d333da287c46bb441ae8c3063bf1079114fd4dae08a845e5494",
+  "palette": [
+    "#f35f3b",
+    "#fabc22",
+    "#024980",
+    "#1ebea0"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 29,
+    "total": 29,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_seashell.webp"
+}

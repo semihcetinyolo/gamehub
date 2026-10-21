@@ -1,0 +1,53 @@
+{
+  "id": "v2_heart",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T10:50:13.183429+00:00",
+  "raw": "tools/stained/vitray/raw/v2_heart.png",
+  "rawSha256": "c1de9cfa260d6c9baa60e1c27e9c07bbe3e69f8cd4762fb4feb2b5d699992ed4",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 139,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6114740646132174
+    },
+    {
+      "patchSize": 108,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.533287140726125
+    },
+    {
+      "patchSize": 116,
+      "donorPatches": 83,
+      "colour": 2,
+      "preservedFraction": 0.5708490863092694
+    },
+    {
+      "patchSize": 95,
+      "donorPatches": 52,
+      "colour": 3,
+      "preservedFraction": 0.5591109205996552
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "0bf7109fdfafa75259751b4d69725ca61f0517e3c38c0db592065bbf93e81aff",
+  "sha256": "8ba8488b962e553959b9bb418cb8bd8ad2bd544e6e5727f6472994ff7ac2220d",
+  "palette": [
+    "#d90420",
+    "#fdd01d",
+    "#014499",
+    "#1dc0a2"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 64,
+    "total": 64,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_heart.webp"
+}

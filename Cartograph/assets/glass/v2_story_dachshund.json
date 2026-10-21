@@ -1,0 +1,53 @@
+{
+  "id": "v2_story_dachshund",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T13:08:04.953354+00:00",
+  "raw": "tools/stained/vitray/raw/v2_story_dachshund.png",
+  "rawSha256": "de6dfc0d8009cc45eedb7f95d24d7458d13e04e8e3f86b6a6b8b585251bdfa5b",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 80,
+      "donorPatches": 72,
+      "colour": 0,
+      "preservedFraction": 0.4671290659568709
+    },
+    {
+      "patchSize": 103,
+      "donorPatches": 76,
+      "colour": 1,
+      "preservedFraction": 0.5916844599948378
+    },
+    {
+      "patchSize": 143,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6558170713305829
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.7680159180813361
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "12e7475ff508a2294779e90b514cfef1bfa41efe6c2a898e73c504171717562f",
+  "sha256": "2a1cc2df67b812b268213233f5f56a7a91b79ee3c374be17d77d8102c96c5fa1",
+  "palette": [
+    "#de4301",
+    "#fcbf0b",
+    "#026744",
+    "#4ec6f7"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 36,
+    "total": 36,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_story_dachshund.webp"
+}

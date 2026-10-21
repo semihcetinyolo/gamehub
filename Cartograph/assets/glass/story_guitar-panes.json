@@ -1,0 +1,53 @@
+{
+  "id": "story_guitar",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T14:35:07.088753+00:00",
+  "source": "assets/glass/story_guitar-junctions.webp",
+  "sourceSha256": "137725a18710d1ed27c45742bcb61eb5a1e7e34e56bfcc0cc0f39b0442e54cd3",
+  "sourceGeometrySha256": "3d81eb9d8182a8b4fb1325a26196981ff45268c787e5441ce0ad39e6a88ea2c1",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 83,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5519571470945347
+    },
+    {
+      "patchSize": 105,
+      "donorPatches": 54,
+      "colour": 1,
+      "preservedFraction": 0.46203124764656517
+    },
+    {
+      "patchSize": 129,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6057684683054857
+    },
+    {
+      "patchSize": 95,
+      "donorPatches": 57,
+      "colour": 3,
+      "preservedFraction": 0.4448846294392589
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "ed9318d8eb2f2f1f4dc369de7ebf233725b47a310cf36e2c85b2c7c091f89809",
+  "sha256": "443a803195cba2205a88f42cd859198ae9ef3d8a023c4eb4e4fbc22752f003cd",
+  "palette": [
+    "#e74032",
+    "#fbeb7c",
+    "#259570",
+    "#042c82"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 26,
+    "total": 26,
+    "mismatches": []
+  }
+}

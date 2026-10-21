@@ -1,0 +1,38 @@
+{
+  "id": "v2_motif_elephant",
+  "name": "Fil",
+  "scene": "An elephant with a raised curling trunk stands before sweeping savanna sky and ground bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "indigo",
+      "#344D80"
+    ],
+    [
+      "cornflower blue",
+      "#739BC4"
+    ],
+    [
+      "ochre gold",
+      "#DDA535"
+    ],
+    [
+      "terracotta",
+      "#B65A39"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from motif_elephant using vitray_fox and vitray_lighthouse as contour-style references. Target 30–40 panes. Generated with clai image; one corrective regeneration performed and inspected. Subject/background colour pairs are separated and exterior is white. Remaining doubts: visible pane count still exceeds target, subtle shading remains rather than exact flat RGB fills, several adjacent subject panes share a colour, and some crowded junctions (especially body/ear and lower legs) require review during tracing. No obvious loose line ends. Design sheet only; not traced, audited or published.",
+  "targetPanes": [
+    30,
+    40
+  ],
+  "references": [
+    "assets/glass/motif_elephant-junctions.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ]
+}

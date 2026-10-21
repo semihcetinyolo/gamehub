@@ -1,0 +1,36 @@
+{
+  "id": "v2_motif_swan",
+  "name": "Kuğu",
+  "scene": "An elegant swan with a flowing S-shaped neck and broad layered feathers floats on gently curving water.",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden yellow",
+      "#E9B938"
+    ],
+    [
+      "coral",
+      "#D96048"
+    ],
+    [
+      "teal",
+      "#268E91"
+    ],
+    [
+      "deep blue",
+      "#254E78"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 26–36 panes. Inspected both generations; regenerated once to simplify divisions and restore opaque white exterior. Subject and background colour pairs are kept separate. Final visual review: closed rim and no obvious loose line ends; mostly separated T junctions. Remaining doubts: slight fill shading persists, some adjacent yellow subject pieces and adjacent blue background pieces may merge during tracing; pointed feather/neck contacts need geometry validation. This is a design sheet, not audited game geometry or final glass artwork.",
+  "generator": "clai image",
+  "generationCount": 2,
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "assets/glass/motif_swan-silhouette.webp"
+  ]
+}

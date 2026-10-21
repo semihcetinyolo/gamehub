@@ -1,0 +1,29 @@
+{
+  "id": "v2_grand_22",
+  "name": "Rüzgârlı Sahil",
+  "scene": "A kite flies above two wind turbines, a coastal hut and a bicycle beside sweeping wind and sea bands.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "vermilion",
+      "#D95639"
+    ],
+    [
+      "gold",
+      "#EAB632"
+    ],
+    [
+      "deep blue",
+      "#205B86"
+    ],
+    [
+      "teal",
+      "#299DAB"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from grand_22 with lighthouse and hot-air-balloon design style references; target 110–160 panes. Visually inspected and regenerated once to remove the kite centre crossing, simplify its tail, improve alternating roof colours and provide a white exterior. Warm pair represents objects including sun rays and hut foundation; cool pair represents sky, sea and path. Remaining doubts: subtle fill shading persists; some same-colour neighbouring subject panes may merge during tracing, crowded contacts remain around kite-tail attachment, turbine roots and bicycle assembly, and upper sun-ray/sky junctions need geometry review. Pane count and exact junction compliance are not certified at the design-sheet stage."
+}

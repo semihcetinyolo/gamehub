@@ -1,0 +1,53 @@
+{
+  "id": "v2_mushroom",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:44:51.504484+00:00",
+  "raw": "tools/stained/vitray/raw/v2_mushroom.png",
+  "rawSha256": "1168d5d4302089fd33c945ec14e17bd895b22a5e542e50f702d298fdc6ba181d",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 123,
+      "donorPatches": 84,
+      "colour": 0,
+      "preservedFraction": 0.5457752589874595
+    },
+    {
+      "patchSize": 131,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6223038200422403
+    },
+    {
+      "patchSize": 125,
+      "donorPatches": 74,
+      "colour": 2,
+      "preservedFraction": 0.6297090990717428
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6187330901328288
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "629c25f65c1490f803d0c8da5863dc548c81a1663b279cbdd6e5937dd81c747f",
+  "sha256": "560f54b52506801dc4f3cc474f10e25daec3d82636342e9b257c6198e9bf71b9",
+  "palette": [
+    "#d40605",
+    "#fdc812",
+    "#024096",
+    "#38821f"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 42,
+    "total": 42,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_mushroom.webp"
+}

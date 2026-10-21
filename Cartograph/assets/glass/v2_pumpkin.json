@@ -1,0 +1,53 @@
+{
+  "id": "v2_pumpkin",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:15:55.647119+00:00",
+  "raw": "tools/stained/vitray/raw/v2_pumpkin.png",
+  "rawSha256": "1c23faccf878cf341a5da5e2373852f18047a9624e397dd49b83682953dd1ff7",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 109,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5662553463691984
+    },
+    {
+      "patchSize": 116,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6190192765296123
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6187521159358457
+    },
+    {
+      "patchSize": 132,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6077009752482677
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "b76265f75c21f25b308c33ad05f05691bf968dda679c79807c2e3cf8a984c52d",
+  "sha256": "3e0c837c428c8e1f5a2c736f38c126445597c83d3d27ec818b3a7469a225a78f",
+  "palette": [
+    "#f25802",
+    "#fdd60e",
+    "#09743c",
+    "#36c0f0"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 36,
+    "total": 36,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_pumpkin.webp"
+}

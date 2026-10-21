@@ -1,0 +1,53 @@
+{
+  "id": "v2n_icecream",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:55:38.861706+00:00",
+  "raw": "tools/stained/vitray/raw/v2n_icecream.png",
+  "rawSha256": "fbed8dd86f7aaed24d8d53d3084551890841d87a7159d192c006de3ceaff52a0",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 116,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6408067784017346
+    },
+    {
+      "patchSize": 124,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.7010973413549084
+    },
+    {
+      "patchSize": 119,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6858835434805425
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.7453405217537874
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "06375458908c86f00903b378e910f006803bdf03d9356210f29b67763e8357e5",
+  "sha256": "e0699f7bcaa8d89c3d928c83fbd707561e8f093bc4080aedf34a7f65bccd541c",
+  "palette": [
+    "#ee472a",
+    "#f9c312",
+    "#014371",
+    "#07b1aa"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 22,
+    "total": 22,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2n_icecream.webp"
+}

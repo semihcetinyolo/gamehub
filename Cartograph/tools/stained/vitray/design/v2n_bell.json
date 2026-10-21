@@ -1,0 +1,34 @@
+{
+  "id": "v2n_bell",
+  "name": "Çan",
+  "scene": "A bell with a bow.",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden yellow",
+      "#E9B52D"
+    ],
+    [
+      "rust red",
+      "#BD4931"
+    ],
+    [
+      "deep blue",
+      "#195778"
+    ],
+    [
+      "teal",
+      "#239B9E"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening-level design; target 12–22 panes. Generated twice and visually checked. Final sheet has approximately 24 closed panes (8 subject, 16 background), slightly above target despite simplification. Four colour families remain semantically separated. Remaining doubts: subtle shading rather than perfectly flat fills; same-blue adjacent background panes; crowded multiway contacts at bow/shoulder junctions and near clapper. No loose line ends observed. Design sheet only; not traced, audited or published.",
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create ONE Cartograph stained-glass design sheet for v2n_bell, Turkish title Çan (do not print title). Subject: a bell with a bow. Portrait 3:4 canvas, opaque pure white outside a large centered oval panel nearly touching edges. Style reference is the lighthouse image provided: elegant authentic leaded panel construction and bold black contours, but dramatically simpler, opening-level design with EXACTLY 12–22 closed panes total, preferably 18. One large graceful bell centered below a simple tied bow. Subject roughly 8 big pieces: two broad bow loops, central knot, optional two wide ribbon tails, bell body with broad full-width curved horizontal bands, flared lip and single large clapper. Simplify overlaps to avoid tiny pieces. Background roughly 8–10 big calm pieces in broad curved bands that stop at subject outline. No decorative border ring. Only FOUR flat opaque fill colours: golden yellow #E9B52D and rust red #BD4931 exclusively for all bell/bow/clapper panes, alternating subject neighbours; deep blue #195778 and teal #239B9E exclusively for background panes, alternating background neighbours. Do not introduce fifth colour or pale/white glass. Uniform pure black lead approximately 1 percent canvas width. Authentic elegant stained glass composition, not cartoon clipart. Flat colour design suitable for tracing, no texture, highlights, shadows, gradients or text. Each pane closed, all lines end at rim or existing contour, only separated T junctions, never X crossings or 4-way contacts. Keep junctions separated at least 3 percent panel width; no tiny shards or narrow slivers. Bell silhouette clean and graceful. Bow unmistakable but very simple, no internal decorative folds. Entire image must have at most 22 panes. Reference is only for style, NOT its dense subdivision or lighthouse subject.\nCRITICAL SIMPLIFICATION for this final attempt: EXACTLY 16 panes overall. Bow is ONLY THREE panes: two plain solid golden loops attached to one rust central knot. NO ribbon tails, NO folds, NO extra line in loops. Bell is ONLY FIVE panes: gold shoulder, rust middle horizontal band, gold lower body, rust broad flared lip, gold round clapper directly attached below lip (no stem, no underside ellipse). Background is ONLY EIGHT broad alternating blue/teal sectors around subject, each line from outside rim to subject contour. No additional lines. Thus 3+5+8=16. Avoid ALL texture and shading: perfectly flat solid fills. Retain sophisticated graceful silhouette. Every junction must be T, background seams attach away from the bell band ends. Do not subdivide for decoration."
+}

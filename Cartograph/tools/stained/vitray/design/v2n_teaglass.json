@@ -1,0 +1,34 @@
+{
+  "id": "v2n_teaglass",
+  "name": "Çay Bardağı",
+  "scene": "a tulip-shaped Turkish tea glass on a saucer",
+  "shape": "oval",
+  "palette": [
+    [
+      "Tea red",
+      "#B84428"
+    ],
+    [
+      "Golden amber",
+      "#EAAF28"
+    ],
+    [
+      "Deep blue",
+      "#18567B"
+    ],
+    [
+      "Turquoise",
+      "#269BA5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small design sheet, target 12–22 panes. Second generation retained after simplifying the first. Visual review: approximately 19 closed panes (7 subject, 12 background), recognizable tulip-shaped glass and saucer, opaque white exterior, separated background divisions and no evident open lines or X crossings. Remaining doubts: generated fills retain subtle shading; the top ellipse and adjacent upper glass are both red and may merge during tracing; some background pieces at the sides of the saucer narrow near the rim. Subject/background colour pairs are kept separate. Design sheet only; no geometry imported or game catalogue changed.",
+  "tool": "image_gen",
+  "prompt": "Create a portrait 3:4 stained-glass DESIGN SHEET for a colouring puzzle, a tulip-shaped Turkish tea glass on a saucer. Use the attached lighthouse ONLY as a reference for elegant traditional leaded-panel craftsmanship and smooth outlines. Much simpler: EXACTLY 16 to 20 large closed panes TOTAL, no decorative border ring. Center a large recognizable waist-pinched Turkish tea glass with flared lip and rounded broad lower bowl, standing on a broad elliptical saucer. Oval panel nearly fills canvas, thick closed pure black rim, opaque pure white exterior. Subject glass and saucer together about 7 large pieces, composed of smooth transverse outline-to-outline bands alternating ONLY deep tea red #B84428 and golden amber #EAAF28. Background about 10 broad calm curved/radial pieces alternating ONLY deep blue #18567B and turquoise #269BA5. Exactly these four FLAT solid fill colours, no white inside panel. No gradients, shading, highlights, texture, dimensional bevels or photographic context. Elegant real stained-glass construction design, never cartoon clip art. Uniform pure black lead about 1 percent canvas width. All lines closed boundary-to-boundary, only separated T junctions, no X or four-way junctions, no dangling lines, no tiny slivers, no extra decorative details, no steam, no spoon, no text. Keep background divider endpoints well apart from subject inner-divider endpoints. A calm bold opening-level composition. 16 to 20 pieces, never more than 22. Save final output locally.\nCORRECTION: The previous attempt had too many background pieces and gradients. Produce a fresh MUCH SIMPLER version. Exactly 6 subject panes: glass has 4 broad horizontal pieces RED-AMBER-RED-AMBER from top to bottom, saucer has 2 broad pieces RED then AMBER; no inner foot ellipse, no thin lip strip. Background exactly 8 broad pieces: four above/along upper glass and four wrapping below/along lower glass, alternating blue and turquoise. Total exactly 14 panes. Pure flat single RGB colour within each piece, absolutely NO shading or vignette; this is a tracing sheet. Avoid narrow saucer rings: broad simple saucer with single curved division. Preserve Turkish tea-glass silhouette.",
+  "references": [
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ]
+}

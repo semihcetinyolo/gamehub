@@ -1,0 +1,56 @@
+{
+  "id": "vitray_lilies",
+  "name": "Zambaklar",
+  "scene": "Two lavender lilies and a closed bud rise among green leaves inside a tall octagonal panel.",
+  "shape": "octagon",
+  "palette": [
+    [
+      "Lavender",
+      "#AA8AC8"
+    ],
+    [
+      "Jade green",
+      "#39735A"
+    ],
+    [
+      "Mint turquoise",
+      "#70B7A0"
+    ],
+    [
+      "Golden ochre",
+      "#D6AE4B"
+    ]
+  ],
+  "notes": "Second generation selected after widening stems and separating bottom arrivals. Visually inspected. Remaining doubts: leaf tips at rim still create crowded multi-way contacts, small gold pieces around lower flower center and some trumpet petal strips may be too narrow, and fills have slight variation. Adjacent petals/leaves repeat colours. Preserve lily outlines and move/remove background dividers when tracing; validate final pane count and width. Final raster estimate: 114 coloured components, within 70–130; count is approximate and does not certify topology.",
+  "generation": {
+    "tool": "image_gen",
+    "reference": "tools/stained/vitray/refs/vitray_lilies.jpg",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d7a-2540-76b1-b4e8-12bd8af65c05/exec-b546d231-8e19-47ad-8db3-dee8b0163eda.png",
+    "prompt": "Use case: illustration-story. Produce one flat vector-like DESIGN SHEET for a Cartograph four-colour stained-glass puzzle, NOT finished glass artwork.\nPortrait 3:4 canvas, ideally 1536x2048. Panel centered and nearly touching all canvas edges, plain pure #FFFFFF exterior only. Thick closed black outer lead silhouette. No inset frame, no surrounding photo context.\nEXACTLY FOUR specified flat solid fill colours inside panel. Black #000000 is exclusively uniform lead, no black filled details; white only outside panel. No pale cream, no white glass. No texture, gradients, translucency, shading, highlights, text, signatures or dots.\nPure black smooth uniform lead lines about 1% canvas width everywhere (15 px at 1536). 80-100 CLOSED panes, 70-130 allowed. Each meaningful subject piece or background band is an individual closed fill area. Every separator reaches another separator or rim, NO free line ends. ONLY THREE-WAY/T JUNCTIONS: no X, no 4+ panes at a point; stagger neighboring junctions at least 3% of panel width apart. Background dividers must stop at subject contours at separated locations, never distort the subject. Pane widths >=3% panel width except their own pointed tips; pane areas >=1/1000 panel area. No nearly parallel narrow slivers, tiny chips, near-touches or hairline necks. Angles >=30 degrees. Eyes are sufficiently large closed round panes. Use broad organic sky/water/leaf/feather subdivisions, never an arbitrary grid. Choose different palette fills on adjacent panes when possible.\nThe supplied photograph is a SUBJECT AND MOOD REFERENCE, not an edit target; draw a fresh composition with its recognizable subject and natural types of background subdivision. Remove photographed setting, decorative frames, glass effects, fine details that cannot become closed panes.\nPANEL: tall OCTAGON, eight straight outer edges: long upright left/right sides, horizontal top and bottom, four diagonal corner cuts. No inner frame. SUBJECT: two large graceful lilies, one open flower in lower half and one trumpet-shaped flower in upper half, one closed bud and generous lance-shaped leaves around them, as reference. Flowers must be clearly coloured lavender, not white. Exactly FOUR SOLID colours: lavender #AA8AC8, jade green #39735A, mint turquoise #70B7A0, golden ochre #D6AE4B. No other hue or white glass. Use large rounded central golden closed pane in open lily so six petals attach to its separate sides, not all meeting at one point. No stamens or loose strokes. Broad stems at least 4% panel width; alternatively single lead veins instead of thin coloured stems. Petals 2-3 broad facets each, leaves 2-4 facets each with staggered vein junctions. About 90 closed panes, including broad curving background panes. Strictly flat vector-style fill: every pane ONE uniform RGB value without any shading or gradient.\nCORRECTION PASS: Widen every gold stem to at least 4% panel width, omit the tiny gold sliver curling beside the lower lily upper-right petal entirely. Keep all leaf and petal tips at least 5% panel width away from outer rim and from another tip. No leaves originating at same rim point as other lines. Move background dividers to separated T contacts on broad leaf sides, not their tips. Bottom stems need separate spaced rim arrivals rather than one merged fan. Simplify upper trumpet inner throat so no narrow purple/gold strips. Petal facet seams end at spaced points on the central gold hub, not at petal-boundary vertices. Uniform black 1%-width lead, 80-100 closed regions. Every colour a perfectly uniform flat fill with no tonal variation."
+  },
+  "rasterReview": {
+    "width": 1086,
+    "height": 1448,
+    "aspectRatio": "3:4",
+    "approximatePaneCount": 114,
+    "method": "4-connected components of saturated coloured pixels (max-min >35, max >80), components >=100 pixels; approximate raster check, not vector geometry audit",
+    "targetPaneCount": [
+      70,
+      130
+    ],
+    "paneCountWithinTarget": true,
+    "visuallyInspected": true,
+    "generationAttempts": 2,
+    "strictBriefCompliance": false,
+    "reason": "Remaining junction/width issues and slight fill variation documented in notes."
+  },
+  "subjectMask": {
+    "file": "tools/stained/vitray/design/vitray_lilies.subject.png",
+    "tool": "image_gen",
+    "reference": "tools/stained/vitray/design/vitray_lilies.png",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d7a-2540-76b1-b4e8-12bd8af65c05/exec-7c197d6a-c9c2-4a1f-8e92-afc5bb271e62.png",
+    "prompt": "Use case: precise-object-edit. Edit the attached FINISHED design sheet into a binary subject segmentation mask. Preserve the exact portrait 3:4 canvas, same size, framing, panel silhouette and every subject contour/pane position. Do not redraw, resize, move, add or remove objects. Fill every subject pane PURE BLACK #000000, regardless of original colour. Fill every background pane PURE WHITE #FFFFFF. Exterior stays pure white. All existing black lead lines can remain black; internal subject seams disappear into black fill (do NOT turn seams white). No grey, colour, shading, gradients, textures, text or legend. This is a semantic pane-majority mask: classify actual object membership, NOT merely the original fill colour. SUBJECT BLACK: the upper-right trumpet lily flower head, all its petals and golden throat; the lower six-petalled open lily, all petals and round golden center; the closed lavender bud at upper-left. BACKGROUND WHITE: ALL leaves, ALL long stems and branches, all mint sky gaps and the exterior. Flower heads and bud only are the subject. Keep exact octagonal panel and framing.",
+    "visuallyInspected": true,
+    "alignment": "Approximate generated edit; intended for per-pane majority vote. Fine internal seam inversions and small contour differences may remain."
+  }
+}

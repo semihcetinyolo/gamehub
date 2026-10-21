@@ -1,0 +1,53 @@
+{
+  "id": "v2_waterfall",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:46:52.964582+00:00",
+  "raw": "tools/stained/vitray/raw/v2_waterfall.png",
+  "rawSha256": "bc6c59782f158b92fde7817ff69526ae9af0884b2b065883d29ab8afa86e5f03",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 121,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6756107661883942
+    },
+    {
+      "patchSize": 94,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5901482060402539
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6638045010236376
+    },
+    {
+      "patchSize": 100,
+      "donorPatches": 91,
+      "colour": 3,
+      "preservedFraction": 0.6194668449080621
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "3ef6bc99d5de9b6d0606526362094c5110c9bf10c4c5c9b72a8cabac3b409f97",
+  "sha256": "9bfdca4522f17ba60a26143d344a1682699d17de58c51ee7a4f1297515a0241d",
+  "palette": [
+    "#0de7ee",
+    "#0042a8",
+    "#fa9c07",
+    "#2a6712"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 42,
+    "total": 42,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_waterfall.webp"
+}

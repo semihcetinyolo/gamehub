@@ -73,3 +73,13 @@ cocktail_sort/assets/raw/
 # Cartograph — local rollout backups and raw AI images (large, kept on disk)
 Cartograph/output/
 Cartograph/tools/stained/raw/
+Cartograph/clai-images/
+Cartograph/stained-levels-v1.js
+# vitray pipeline: AI design sheets and raw glass, trace/geometry intermediates, logs
+Cartograph/tools/stained/vitray/raw/
+Cartograph/tools/stained/vitray/design/*.png
+Cartograph/tools/stained/vitray/design/rejected/
+Cartograph/tools/stained/vitray/work/*
+!Cartograph/tools/stained/vitray/work/*.map.json
+Cartograph/tools/stained/vitray/logs/
+Cartograph/tools/stained/vitray/staged.js

@@ -1,0 +1,35 @@
+{
+  "id": "v2n_feather",
+  "name": "Tüy",
+  "scene": "a single curved feather",
+  "shape": "oval",
+  "palette": [
+    [
+      "amber orange",
+      "#E68A26"
+    ],
+    [
+      "golden yellow",
+      "#EBC343"
+    ],
+    [
+      "sky blue",
+      "#53ACCA"
+    ],
+    [
+      "deep teal",
+      "#217D78"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening-level design. Visually counted 16 closed panes: 6 broad alternating orange/gold feather bands, including the orange quill, and 10 alternating blue/teal background panes. Opaque white exterior; no decorative rim ring. Reviewed after one regeneration: no obvious loose line ends or X crossings; subject and background colour pairs are separated. Remaining doubts: mild tonal variation remains rather than perfectly flat fills, and some neighbouring T junctions near feather band tips need spacing checks during tracing. Design sheet only; no geometry or catalogue changes.",
+  "paneCount": 16,
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Create one Cartograph design sheet: a single elegant curved feather, in a tall oval leaded stained-glass panel. Portrait 3:4 canvas, opaque pure white exterior, oval nearly touching canvas edges. Reference image is ONLY for elegant flowing stained-glass craftsmanship, black outlines and rich colours; simplify dramatically to exactly 18 closed panes TOTAL: 8 large feather pieces and 10 large calm background pieces. Feather rises diagonally from lower left to upper right with a graceful bent pointed tip and recognizable tapered quill. Use broad curved bands crossing the feather fully from outline to outline, alternately amber orange #E68A26 and golden yellow #EBC343. Suggest the feather with swept barblike bands, NOT many thin barbs; no central vein crossing bands. Quill must be a closed broad tapered piece integrated into those 8 pieces, no dangling stroke. Background consists of 10 broad wind-like curved sections, alternating sky blue #53ACCA and deep teal #217D78. Subject uses only orange and gold, background uses only blue and teal. EXACTLY four flat solid fill colours, no white glass. Pure black smooth uniform lead about 1% canvas width. A single black outer oval rim, no decorative border ring. Restrained authentic artisanal leaded panel design, not a cartoon or icon. Flat tracing-ready fills: no shading, gradients, highlights, texture, text, objects or marks. Every divider ends at rim or contour in a clear T junction, never X crossings; stagger boundary contacts generously. All panes broad and closed, no tiny pieces or narrow slivers. Count 18 panes; absolutely no more than 22.\nCORRECTION: The prior design had too many feather barbs, a central branching vein, gradients and an unoutlined orange-yellow quill transition. Make only SIX broad swept feather bands TOTAL, each crossing the entire feather width uninterrupted, alternating orange and gold. NO central vein. The bottommost band includes the quill as one solid orange piece. Background only EIGHT broad closed sections, alternating blue and teal. Target FOURTEEN total pieces. Absolutely uniform solid flat colours, no shading. Feather floats inside the oval, tip spaced away from rim. All colour changes have black lead between them. Use generous T junction separation."
+}

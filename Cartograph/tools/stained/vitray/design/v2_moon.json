@@ -1,0 +1,29 @@
+{
+  "id": "v2_moon",
+  "name": "Ay ve Yıldızlar",
+  "scene": "A crescent moon and twinkling stars in a swirling night sky.",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden yellow",
+      "#F5C542"
+    ],
+    [
+      "amber orange",
+      "#DE852B"
+    ],
+    [
+      "midnight indigo",
+      "#293E78"
+    ],
+    [
+      "teal",
+      "#219A9E"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from moon-contacts.webp with vitray_lighthouse.png and vitray_poppies.png as style references. Portrait 3:4 oval; target 78–118 panes. Moon and five stars use the warm pair, swirling sky uses the cool pair. Reviewed initial generation and regenerated once to simplify star interiors, crescent bands and junctions and restore white exterior. Remaining doubts: subtle fill shading remains; some sky seams and star tips have crowded or potentially four-way contacts, especially beside the lower-right moon tip. Some adjoining sky panes share a colour and may merge during tracing. Pane count and junction spacing require tracing-stage verification. Design sheet only, not audited playable geometry."
+}

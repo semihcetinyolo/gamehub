@@ -1,0 +1,29 @@
+{
+  "id": "v2_story_locomotive",
+  "name": "Dağ Geçidi",
+  "scene": "A vintage steam locomotive crosses a mountain pass beneath flowing steam and layered alpine ridges.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "burnt orange",
+      "#C6532F"
+    ],
+    [
+      "golden amber",
+      "#E8B52D"
+    ],
+    [
+      "deep blue",
+      "#205A80"
+    ],
+    [
+      "teal",
+      "#269C9A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 42–52 panes. Regenerated once after visual inspection to simplify the original excessive pane count and request flat fills and a white exterior. Final sheet inspected: closed outlines, warm locomotive versus cool landscape and steam, broad mountain faces and flowing ground bands. Remaining doubts: subtle shading persists; some same-colour neighbours in the train will merge during tracing; narrow chassis segments and wheel-to-ground contacts need geometry review, and the lower landscape junction needs checking for a near four-way contact. Pane count is a design target, not a certified geometry count. Design sheet only; no tracing, game catalogue changes or finished-glass publication performed."
+}

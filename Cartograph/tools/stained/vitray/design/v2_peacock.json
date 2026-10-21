@@ -1,0 +1,39 @@
+{
+  "id": "v2_peacock",
+  "name": "Tavus Tüyü",
+  "scene": "a single shimmering peacock feather with its eye and flowing barbs",
+  "shape": "oval",
+  "palette": [
+    [
+      "Cobalt blue",
+      "#2456A6"
+    ],
+    [
+      "Turquoise",
+      "#26B5AD"
+    ],
+    [
+      "Amber",
+      "#E3AA37"
+    ],
+    [
+      "Terracotta",
+      "#B95138"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Single feather in an oval panel, target 23–33 panes. Blue/turquoise subject and amber/terracotta background pairs. Visually inspected both generations; regenerated once to simplify the silhouette, separate top from rim and reduce crowded tips. Remaining doubts: subtle fill shading persists; several feather barbs taper narrowly toward the shaft and some eye/shaft contacts need tracing-stage review for short edges or multiway joins. No obvious loose line ends. Design sheet only; geometry and pane count not yet audited.",
+  "generation": {
+    "tool": "image_gen",
+    "attempts": 2,
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15e10-2414-7081-a605-9c56f1902dd5/exec-ddc148ef-0060-4d3d-b42c-58bc83857a32.png",
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png",
+      "tools/stained/vitray/design/vitray_poppies.png",
+      "assets/glass/peacock-restored.webp"
+    ]
+  }
+}

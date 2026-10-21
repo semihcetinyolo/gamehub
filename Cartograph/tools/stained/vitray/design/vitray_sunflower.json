@@ -1,0 +1,36 @@
+{
+  "id": "vitray_sunflower",
+  "name": "Ayçiçeği",
+  "scene": "One large sunflower turns above broad leaves against an organically divided sky.",
+  "shape": "octagon",
+  "palette": [
+    [
+      "Sun gold",
+      "#DCAA35"
+    ],
+    [
+      "Burnt orange",
+      "#AD5B35"
+    ],
+    [
+      "Leaf green",
+      "#4E8467"
+    ],
+    [
+      "Sky blue",
+      "#3C76A0"
+    ]
+  ],
+  "notes": "Only sunflower head including centre and all petals is subject mask; stem, leaves and sky are background. Petals meet a broad closed disk at separated points, not a single radial hub. Centre uses a few broad pieces without seed dots. Review petal tips/centres and background joins during tracing. One correction removed the extra bright-orange colour and simplified overlapping petals. Remaining petal/rim contacts, crowded disk/petal junctions and narrow background tips need tracing review. The generated sheet does not fully alternate adjacent colours within each pair; same-colour neighbours may merge. Mild raster shading needs quantization. Mask has thin white internal subject seams but black pane interiors support majority voting.",
+  "subjectColours": [
+    0,
+    1
+  ],
+  "designPrompt": "Correct this stained glass design sheet, preserving the sunflower composition, octagonal panel and portrait 3:4 white exterior canvas. Exactly FOUR flat fill colours: sunflower head ONLY Sun gold #DCAA35 and Burnt orange #AD5B35, leaves/stem/background ONLY Leaf green #4E8467 and Sky blue #3C76A0. Remove the extra bright orange hue, gradients and shading. Alternate adjacent pieces within these pairs as far as possible; use broad outline-to-outline bands in flower disk. Simplify the crowded centre and lower petal overlapping junctions; only three panes at each separated T contact, no X crossings, thin slivers or loose line ends. Keep recognizable intact flower contour, reposition/scale whole head slightly to clear petal tips from panel rim rather than denting petals. Move background dividers to improve spacing. Broad readable panes, roughly 100 organic panes if feasible. All interior leads uniform pure black width about 1% canvas width. Pure white outside octagon. No lettering, texture or highlights.",
+  "subjectMaskPrompt": "Edit this finished design into its BLACK AND WHITE SUBJECT MASK. Preserve the EXACT canvas size, aspect ratio, framing, panel shape, every contour and every lead line in its original pixel position. Do NOT redraw, rearrange, simplify or scale anything. Recolour only: every pane of SUBJECT goes pure black #000000, every other pane and exterior pure white #FFFFFF. Keep ALL existing black lead lines black, never turn subject seams white. In the subject this makes a continuous solid black silhouette. Include eye interiors as black. Keep background seams black. No grey, no colour, no shading, no added marks. Output must overlay the input with unchanged geometry. SUBJECT: The sunflower HEAD ONLY: all gold and burnt-orange petals and the entire central disk. Include every flower petal, even at the rim. All green stem and leaves and all blue sky/background panes remain WHITE. Do not alter the flower outline or octagonal framing.",
+  "generationMethod": "built-in image_gen",
+  "canvas": [
+    1086,
+    1448
+  ]
+}

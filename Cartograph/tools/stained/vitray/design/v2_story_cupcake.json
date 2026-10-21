@@ -1,0 +1,42 @@
+{
+  "id": "v2_story_cupcake",
+  "name": "Pastane Vitrini",
+  "scene": "A cherry-topped cupcake with sweeping frosting ribbons and a pleated wrapper fills an oval bakery-window panel.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Raspberry",
+      "#C94F70"
+    ],
+    [
+      "Golden apricot",
+      "#F2B544"
+    ],
+    [
+      "Teal",
+      "#247C85"
+    ],
+    [
+      "Sky blue",
+      "#62B6DA"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 90–130 panes. Inspected both generations; revision removed the top and bottom central fan junctions and simplified the wrapper seam. Subject/background colour pairs are kept separate and no loose line ends are apparent. Remaining doubts: subtle fill shading persists, some adjacent cherry/wrapper panes have the same colour, and a few frosting junctions and tapering background pieces need attention when tracing. Pane count and geometric compliance are not certified.",
+  "targetPanes": [
+    90,
+    130
+  ],
+  "tool": "image_gen",
+  "generationAttempts": 2,
+  "references": [
+    "assets/glass/story_cupcake-junctions.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "prompt": "Create exactly one flat stained-glass DESIGN SHEET for Cartograph level v2_story_cupcake, Pastane Vitrini. Reference 1 is the old cupcake subject only; references 2 and 3 are elegant stained-glass composition/style inspirations. Redraw a sophisticated bakery cupcake with a cherry, generous sculpted frosting swirls and a pleated paper cup, in a tall OVAL panel almost touching edges of a portrait 3:4 canvas. Pure white exterior and a closed thick black oval rim. No lettering. Target 90–130 closed panes, ideally 100: use many flowing broad frosting ribbons, alternating pleats, and surrounding graceful curving bakery-window bands, never arbitrary grid. Preserve clear cupcake silhouette. Exactly four flat glass colours: raspberry #C94F70 and golden apricot #F2B544 exclusively for entire cupcake including cherry/frosting/wrapper; teal #247C85 and sky blue #62B6DA exclusively for surrounding background. Alternate subject neighbours within warm pair and background neighbours within cool pair. Prefer full outline-to-outline cuts within subject to avoid three-pane cycles. This is a tracing guide, NOT finished textured glass. Uniform pure black lead ~1% canvas width, smooth curves, every line connects to another line or rim. Only spaced T junctions, no X or four-way junctions, junctions separated >=3% panel width. No tiny pieces, thin slivers, loose ends or gaps; panes >=3% panel width except pointed tips. Flat solid fills absolutely no gradients, shading, texture, white glass, highlights, lettering or decorative border frames. Elegant real leaded-panel design expressed as clean flat colour illustration.\nREVISION: Preserve oval cupcake composition but correct the previous attempt: absolutely uniform flat RGB fills, no shading or lighting whatsoever. Remove radial fans and central vertical axis above cherry and below wrapper; replace them with staggered broad diagonal curved bands meeting in separate T junctions, never four or more seams converging. Remove small scalloped panes along wrapper top: one smooth boundary between frosting and wrapper with pleats ending at well-separated T junctions. Cherry is one raspberry pane with golden stem. Frosting uses broad continuous alternating raspberry and gold ribbons across the frosting, no intermediate cuts or pointed narrow wedges. Ensure 90-130 panes via broad alternating background bands and cupcake meaningful subdivisions. No same-colour adjacent pieces when avoidable. Pure white exterior.",
+  "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15e5f-cbc0-70d3-9be2-eeed927b67cc/exec-4a17d69b-e6ae-457e-98c3-76a3270b15c0.png"
+}

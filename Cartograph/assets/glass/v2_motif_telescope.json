@@ -1,0 +1,53 @@
+{
+  "id": "v2_motif_telescope",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:02:12.135725+00:00",
+  "raw": "tools/stained/vitray/raw/v2_motif_telescope.png",
+  "rawSha256": "2cef01dd0592f6cf6f0784b6c75228be43f9d53ab2871792e43fbd9c4d489b7f",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 130,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6611770753557179
+    },
+    {
+      "patchSize": 109,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5710515114288544
+    },
+    {
+      "patchSize": 74,
+      "donorPatches": 25,
+      "colour": 2,
+      "preservedFraction": 0.20389886781157562
+    },
+    {
+      "patchSize": 142,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6758395606615833
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "4630e3bad4b765b44796537df461be7c98187804ce859857fa4342a7c8e28166",
+  "sha256": "eeed7a59db4fc30bb632f0a6a6466ef52fb39a501a111b615cf71642b9656663",
+  "palette": [
+    "#fabc05",
+    "#e03a12",
+    "#01397f",
+    "#15b9ae"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 48,
+    "total": 48,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_motif_telescope.webp"
+}

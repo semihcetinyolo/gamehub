@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_gramophone",
+  "name": "Gramofon",
+  "scene": "An antique gramophone with a flared brass horn and curved acoustic neck stands on a wooden cabinet against sweeping acoustic wave bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Amber",
+      "#EAB63E"
+    ],
+    [
+      "Burnt rust",
+      "#B94E30"
+    ],
+    [
+      "Teal",
+      "#218D89"
+    ],
+    [
+      "Deep blue",
+      "#244F73"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 26–36 panes. Generated using the old gramophone as subject reference and vitray_fox/vitray_lighthouse as style references; revised once to simplify cabinet and horn. Visually inspected both attempts. Final keeps subject and background colour pairs separate and closed oval framing. Remaining doubts: slight fill shading persists; lower curved neck contains an amber/rust colour transition without black lead; some same-colour subject contacts and close horn-rim junctions need attention during tracing. Pane count and junction topology are not programmatically validated. Design sheet only, not imported into the game."
+}

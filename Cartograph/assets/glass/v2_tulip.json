@@ -1,0 +1,53 @@
+{
+  "id": "v2_tulip",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:24:18.776792+00:00",
+  "raw": "tools/stained/vitray/raw/v2_tulip.png",
+  "rawSha256": "ebfe46f8515c86daccc0db83b20f3f542c84b3850ed279c30733c21591c57527",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 80,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.48902413350334917
+    },
+    {
+      "patchSize": 70,
+      "donorPatches": 41,
+      "colour": 1,
+      "preservedFraction": 0.42233766382776194
+    },
+    {
+      "patchSize": 87,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.543021605610851
+    },
+    {
+      "patchSize": 88,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5415553364813569
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "a20dabae6a0859a6306fa3ed468ffb3e8d8ae4813c933a7c671d23d78199b837",
+  "sha256": "d5ff906b4410c96a6d64bf1039828edc62dd09079ca1b610e0cfa0fcfe475450",
+  "palette": [
+    "#c40414",
+    "#fc837e",
+    "#057e70",
+    "#f8b70f"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 130,
+    "total": 130,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_tulip.webp"
+}

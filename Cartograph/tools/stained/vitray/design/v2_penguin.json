@@ -1,0 +1,35 @@
+{
+  "id": "v2_penguin",
+  "name": "Kutup Pengueni",
+  "scene": "An elegant emperor penguin with a golden belly and amber beak stands on ice amid flowing polar sky and ocean bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "midnight indigo",
+      "#243655"
+    ],
+    [
+      "honey gold",
+      "#E9B94F"
+    ],
+    [
+      "glacier blue",
+      "#58BCE0"
+    ],
+    [
+      "deep teal",
+      "#168477"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 82–122 panes. Penguin uses indigo/gold; sky, ice and water use blue/teal. Gold replaces the original cream to avoid near-white glass. Generated using the fox and lighthouse design sheets as style references and the old penguin as subject reference, then revised once after visual inspection. Final image inspected: closed oval on opaque white exterior, recognizable subject, no apparent loose line ends, improved staggered sky and wave junctions. Remaining doubts: subtle fill shading persists; several same-colour neighbours may merge during tracing, so final pane count is unverified. Narrow beak, feather tips and foot junctions need geometry-stage review; this design sheet is not a stamped geometry audit.",
+  "generator": "clai image",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "assets/glass/penguin-silhouette.webp"
+  ]
+}

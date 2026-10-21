@@ -1,0 +1,36 @@
+{
+  "id": "vitray_dragonfly",
+  "name": "Yusufçuk",
+  "scene": "A broad-winged dragonfly glides over curved pond ripples and a lotus.",
+  "shape": "circle",
+  "palette": [
+    [
+      "Rose",
+      "#C77CA4"
+    ],
+    [
+      "Gold",
+      "#D9AD48"
+    ],
+    [
+      "Teal",
+      "#278F93"
+    ],
+    [
+      "Blue",
+      "#365F9B"
+    ]
+  ],
+  "notes": "Main subject is dragonfly including head, wings and segmented abdomen. Water, lotus and leaves are background. One correction requested separated wing roots, a true circular rim, larger wing-to-rim spacing and a closed lotus centre. Check wing root contacts, narrow band tips, lotus centre and pane count in tracing; preserve dragonfly contours. Slight raster shade variation remains for palette quantization. Remaining doubts: the raster rim is mildly elliptical despite circle request; define final rim from intended circle without deforming dragonfly. Some wing roots remain crowded and pond bands taper near rim. Mask has thin white internal seams; black pane interiors suit majority voting.",
+  "designPrompt": "Correct this design sheet in place, retaining dragonfly posture, four broad wings and pond scene. Outer shape MUST be a true circle of equal pixel width and height centered in the same portrait 3:4 white canvas. Its diameter about 96% canvas width, with equal top and bottom white margins. Slightly reduce the WHOLE dragonfly so all wing tips have at least 4% circle-width clear background to rim; never move just one tip. Give four wings separated attachment points along the broad thorax: no common crowded four-way hub. Lotus: insert one generous closed central polygon so petals meet its perimeter at staggered T junctions, never all meet one point. Recolour lotus petals teal #278F93 and blue #365F9B so ONLY dragonfly is rose #C77CA4 and gold #D9AD48. Exactly these four solid flat fills plus black outlines and white exterior. Add 15–20 spacious closed panes into broad pond bands and wing areas, total around 80. Preserve smooth subject contours and wing edges, no fine insect mesh. All junctions T and widely staggered, no slivers. Remove ALL gradients/shading. No labels, shadows or texture.",
+  "subjectMaskPrompt": "Edit this finished design into its BLACK AND WHITE SUBJECT MASK. Preserve the EXACT canvas size, aspect ratio, framing, panel shape, every contour and every lead line in its original pixel position. Do NOT redraw, rearrange, simplify or scale anything. Recolour only: every pane of SUBJECT goes pure black #000000, every other pane and exterior pure white #FFFFFF. Keep ALL existing black lead lines black, never turn subject seams white. In the subject this makes a continuous solid black silhouette. Include eye interiors as black. Keep background seams black. No grey, no colour, no shading, no added marks. Output must overlay the input with unchanged geometry. SUBJECT: only the dragonfly: head, broad thorax, all four wings and whole segmented abdomen/tail. Everything currently rose/gold becomes pure black. All lotus petals, lotus centre, pond ripples, leaves and other background panes become pure white. Circle outline and background lead may stay black. Preserve same exact canvas and circle placement.",
+  "generationMethod": "built-in image_gen",
+  "canvas": [
+    1086,
+    1448
+  ],
+  "subjectColours": [
+    0,
+    1
+  ]
+}

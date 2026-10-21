@@ -1,0 +1,53 @@
+{
+  "id": "vitray_angelfish",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T09:01:09.163929+00:00",
+  "raw": "tools/stained/vitray/raw/vitray_angelfish.png",
+  "rawSha256": "b8c4d3d0d6ad7f0ffa06164f5c43d9594f3c393b093b01d37b6d92354116b993",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6058024730308043
+    },
+    {
+      "patchSize": 75,
+      "donorPatches": 34,
+      "colour": 1,
+      "preservedFraction": 0.4723629269917382
+    },
+    {
+      "patchSize": 46,
+      "donorPatches": 19,
+      "colour": 2,
+      "preservedFraction": 0.2656414423768821
+    },
+    {
+      "patchSize": 55,
+      "donorPatches": 18,
+      "colour": 3,
+      "preservedFraction": 0.36453519166757825
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "ff77758de24dbbf20439a2ebd8afcc1d826f4fb7a92543313582f02f844e435a",
+  "sha256": "44a3bfab6b6991037ba2c3491af5481dfeeb8f3b142110da88a64cb1eb8c8e92",
+  "palette": [
+    "#028ade",
+    "#3d8e12",
+    "#fa6c02",
+    "#fde626"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 80,
+    "total": 80,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/vitray_angelfish.webp"
+}

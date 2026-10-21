@@ -1,0 +1,29 @@
+{
+  "id": "v2_story_rocket",
+  "name": "Ay Yolculuğu",
+  "scene": "An elegant rocket with swept fins and a flowing exhaust ascends toward the moon through curved orbital sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "vermilion",
+      "#CF492F"
+    ],
+    [
+      "amber gold",
+      "#E9AD32"
+    ],
+    [
+      "navy blue",
+      "#204C78"
+    ],
+    [
+      "turquoise",
+      "#299FA6"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 31–41 panes. Warm pair reserved for rocket, porthole, fins and exhaust; cool pair reserved for sky and moon. Generated with clai image using vitray_lighthouse.png as style reference and story_rocket-junctions.webp as subject reference. Inspected first generation and regenerated once to simplify rocket strips and sky crossings and restore white exterior. Final image inspected: closed outlines and clear subject silhouette, but subtle fill shading remains; same-colour neighbours occur around the moon and central fin/nozzle, and contacts at fin tips and left sky band require attention during tracing. Pane count and junction geometry have not been mechanically validated. Both generation actions logged; no game catalogue changes."
+}

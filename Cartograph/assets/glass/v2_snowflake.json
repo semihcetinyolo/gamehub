@@ -1,0 +1,53 @@
+{
+  "id": "v2_snowflake",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:06:16.957810+00:00",
+  "raw": "tools/stained/vitray/raw/v2_snowflake.png",
+  "rawSha256": "bbc76eca88eef7c41221a773e94a3b599e251d7b4d9b23957e88853ce49b219e",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.7266468605669839
+    },
+    {
+      "patchSize": 80,
+      "donorPatches": 63,
+      "colour": 1,
+      "preservedFraction": 0.48052894151598174
+    },
+    {
+      "patchSize": 36,
+      "donorPatches": 17,
+      "colour": 2,
+      "preservedFraction": 0.14924211584215286
+    },
+    {
+      "patchSize": 97,
+      "donorPatches": 29,
+      "colour": 3,
+      "preservedFraction": 0.4818500763054551
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "67c1883847a93b668b45a4c18ac8f2eda9afa537114c503fe90d9dac6498f55a",
+  "sha256": "c4fa24c886fc1c4dc762b7a8fe98fbe233316bedf851cc9481f6e322da9a4543",
+  "palette": [
+    "#43e4e7",
+    "#588bed",
+    "#103061",
+    "#6f3f9c"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 47,
+    "total": 47,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_snowflake.webp"
+}

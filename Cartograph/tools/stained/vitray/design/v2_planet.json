@@ -1,0 +1,29 @@
+{
+  "id": "v2_planet",
+  "name": "Halkalı Gezegen",
+  "scene": "A ringed planet with a broad equatorial band and two moons floats among sweeping celestial arcs.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt coral",
+      "#D85B3F"
+    ],
+    [
+      "golden amber",
+      "#E9B536"
+    ],
+    [
+      "midnight blue",
+      "#244B78"
+    ],
+    [
+      "turquoise",
+      "#389DA5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 34–44 panes. Planet, ring and both moons use the warm pair; celestial background uses the cool pair. Generated with clai image using the original planet as subject reference and vitray_hotairballoon as style reference. Visually inspected and regenerated once to simplify the ring, reduce crowded joins and restore an opaque white exterior. Remaining doubts: subtle fill variation persists; some neighbouring warm panes share a colour; narrow wedges remain at the front ring/globe overlap and background junctions, and ring tips sit close to the rim. No obvious loose line ends; exact junction topology and pane count require tracing. Not geometry-audited or published."
+}

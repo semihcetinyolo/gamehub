@@ -1,0 +1,36 @@
+{
+  "id": "vitray_butterfly",
+  "name": "Kelebek",
+  "scene": "A large butterfly spreads its patterned wings above broad orchid flowers and leaves.",
+  "shape": "octagon",
+  "palette": [
+    [
+      "Orange",
+      "#E57F2E"
+    ],
+    [
+      "Crimson",
+      "#B53E47"
+    ],
+    [
+      "Teal",
+      "#258A82"
+    ],
+    [
+      "Blue",
+      "#426AA9"
+    ]
+  ],
+  "notes": "Butterfly wings and body are the main warm subject; background flowers and leaves use cool colours. Mask includes butterfly only. Check wing/body contacts, antenna shapes, petal centres and total pane count in tracing; exact four-colour values may require quantizing slight raster variation. One revision added a segmented abdomen and restored cool background flowers. Some wing roots and antenna/head contacts remain close and require geometry review. Mask has thin white internal wing seams but black pane interiors.",
+  "designPrompt": "Edit this existing butterfly guide; preserve tall octagon, lovely smooth butterfly wing outlines, flower silhouettes and four-colour palette. Correct the butterfly anatomy by extending its central coloured abdomen into a broad curved 3-part body below the thorax, separating attachment points of upper and lower wings instead of having 5+ wings/seams meet around one tiny central spot. Do not shrink/dent wings. Stagger all wing-vein endpoints widely along the body. Preserve wing cells broadly, eliminate thin sliver end cells. Every junction only T with at least 3% width separation; no X crossings or crowded flower centres. Simplify backgrounds below wings to large organic leaf/sky pieces. Recolour both orchid FLOWERS entirely teal #258A82 and blue #426AA9, along with the rest of the foliage. Only butterfly body, antenna lobes and wings use #E57F2E orange and #B53E47 crimson. EXACTLY these four flat fills; remove all slight shading/gradients. Uniform pure black lead, white exterior only. 80–100 large CLOSED panes. No added patterns, no tiny dots, no text. Keep original canvas and framing.",
+  "subjectMaskPrompt": "Edit this finished design into its BLACK AND WHITE SUBJECT MASK. Preserve the EXACT canvas size, aspect ratio, framing, panel shape, every contour and every lead line in its original pixel position. Do NOT redraw, rearrange, simplify or scale anything. Recolour only: every pane of SUBJECT goes pure black #000000, every other pane and exterior pure white #FFFFFF. Keep ALL existing black lead lines black, never turn subject seams white. In the subject this makes a continuous solid black silhouette. Include eye interiors as black. Keep background seams black. No grey, no colour, no shading, no added marks. Output must overlay the input with unchanged geometry. SUBJECT: the whole butterfly only, including both antenna-like broad lobes, head, thorax, striped abdomen and all four wings. Everything in the warm orange/crimson butterfly becomes black. Both lower orchid flowers, stems, leaves, buds and all sky/background panes become pure white. Keep exact tall octagon and same canvas.",
+  "generationMethod": "built-in image_gen",
+  "canvas": [
+    1086,
+    1448
+  ],
+  "subjectColours": [
+    0,
+    1
+  ]
+}

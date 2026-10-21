@@ -1,0 +1,53 @@
+{
+  "id": "v2_motif_lobster",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:08:37.880569+00:00",
+  "raw": "tools/stained/vitray/raw/v2_motif_lobster.png",
+  "rawSha256": "e43ceada8ddb85ac9a0796cc781bfb7137dc9220fd00f1ea36102c61b85a2598",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 114,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.46798340468679367
+    },
+    {
+      "patchSize": 69,
+      "donorPatches": 20,
+      "colour": 1,
+      "preservedFraction": 0.446659827687965
+    },
+    {
+      "patchSize": 78,
+      "donorPatches": 28,
+      "colour": 2,
+      "preservedFraction": 0.47319120312472424
+    },
+    {
+      "patchSize": 94,
+      "donorPatches": 60,
+      "colour": 3,
+      "preservedFraction": 0.5131362728980843
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "22ab999f9bc9c3cbc6e131d6c72082dfb9fadd6b40d7e107ff498d03a0267aeb",
+  "sha256": "b2ed02adca823a4654d6fdf5ed135b4d5bd92c0535171d90ad9948e3aa6707ee",
+  "palette": [
+    "#f43a1a",
+    "#fdc819",
+    "#014a7a",
+    "#26c1bd"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 163,
+    "total": 163,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_motif_lobster.webp"
+}

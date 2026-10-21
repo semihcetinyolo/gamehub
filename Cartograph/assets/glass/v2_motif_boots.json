@@ -1,0 +1,53 @@
+{
+  "id": "v2_motif_boots",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T10:54:35.772070+00:00",
+  "raw": "tools/stained/vitray/raw/v2_motif_boots.png",
+  "rawSha256": "95210d145958e2af1f5d8a5ee4efe96c2f4064490bd0357696b19d5aeb723d58",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 115,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5648318358434019
+    },
+    {
+      "patchSize": 117,
+      "donorPatches": 66,
+      "colour": 1,
+      "preservedFraction": 0.5186382718857009
+    },
+    {
+      "patchSize": 90,
+      "donorPatches": 47,
+      "colour": 2,
+      "preservedFraction": 0.5354706037235626
+    },
+    {
+      "patchSize": 103,
+      "donorPatches": 73,
+      "colour": 3,
+      "preservedFraction": 0.5101269810624105
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "61d0d647619f8fa49b9f7cce871b8fe3a07a72d0fdca68088a5f4c5f093e71b9",
+  "sha256": "798cfa7b60b8d9a2def10e29db2a3b4de655cfd512a8c4f3a76771fe41e8f73a",
+  "palette": [
+    "#fdcc05",
+    "#eb430a",
+    "#02498f",
+    "#20ccb2"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 81,
+    "total": 81,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_motif_boots.webp"
+}

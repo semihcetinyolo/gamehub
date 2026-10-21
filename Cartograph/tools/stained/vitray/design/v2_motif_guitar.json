@@ -1,0 +1,42 @@
+{
+  "id": "v2_motif_guitar",
+  "name": "Gitar",
+  "scene": "An elegant acoustic guitar leans gently inside an oval stained-glass panel surrounded by flowing musical waves.",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden amber",
+      "#E9AD32"
+    ],
+    [
+      "burnt terracotta",
+      "#B9472D"
+    ],
+    [
+      "ocean blue",
+      "#195675"
+    ],
+    [
+      "turquoise teal",
+      "#269E9A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Guitar uses amber/terracotta; background uses blue/teal. Inspected both generations; one revision requested to remove shading, increase pane count and add an opaque white exterior. Final image has a closed oval rim and no apparent loose line ends. Remaining doubts: subtle fill variation persists; some same-colour adjacent pieces will merge during tracing; some closely spaced or multi-way contacts, especially beside the neck and in background waves, need geometry review. Target is 99–139 panes; a rough raster connected-component estimate gives 151 interiors before same-colour merging, not a validated traced pane count. No game catalogue changes.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png",
+      "tools/stained/vitray/design/vitray_lighthouse.png",
+      "assets/glass/motif_guitar-junctions.webp"
+    ],
+    "size": [
+      1086,
+      1448
+    ]
+  }
+}

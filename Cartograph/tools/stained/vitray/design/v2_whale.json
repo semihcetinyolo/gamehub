@@ -1,0 +1,29 @@
+{
+  "id": "v2_whale",
+  "name": "Mavi Balina",
+  "scene": "A friendly whale with a broad tail and a little water spout swims through flowing ocean bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Ocean blue",
+      "#185477"
+    ],
+    [
+      "Turquoise",
+      "#28ACC0"
+    ],
+    [
+      "Amber",
+      "#E8A832"
+    ],
+    [
+      "Burnt coral",
+      "#C75B40"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 38–48 panes. Whale and spout use the blue/turquoise pair; background uses amber/coral. Generated with whale-junctions.webp as subject reference and vitray_lighthouse.png as style reference. Visually reviewed and regenerated once to simplify crossing background seams and provide a white exterior. Remaining doubts: subtle fill shading persists; some neighboring subject pieces share a color and may merge during tracing. Eye approaches the head-band seam; spout base, tail fork and flipper junctions need geometry review for narrow tips or multi-way contacts. No game catalogue changes or geometry validation performed."
+}

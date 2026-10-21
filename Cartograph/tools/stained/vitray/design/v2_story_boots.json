@@ -1,0 +1,33 @@
+{
+  "id": "v2_story_boots",
+  "name": "Su Birikintisi",
+  "scene": "Two striped Wellington rain boots stand at staggered heights in a puddle beneath flowing rainy-sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt orange",
+      "#CB542E"
+    ],
+    [
+      "golden amber",
+      "#E9B638"
+    ],
+    [
+      "deep blue",
+      "#205879"
+    ],
+    [
+      "teal",
+      "#29A3AA"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 21–31 panes. Generated twice and visually reviewed. Final simplified composition keeps warm boots and cool background colour pairs. Remaining doubts: subtle shading persists; adjacent toe and ankle pieces share a colour and may merge during tracing; a few stripe/background junctions are too closely aligned and need separation during geometry preparation. Generator returned transparent exterior instead of opaque white; display on white. Not geometry-audited or published.",
+  "references": [
+    "assets/glass/story_boots-silhouette.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ]
+}

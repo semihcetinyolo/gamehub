@@ -1,0 +1,53 @@
+{
+  "id": "grand_15",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T14:48:43.419552+00:00",
+  "source": "assets/glass/grand_15-silhouette.webp",
+  "sourceSha256": "6e5a0f893c6fb7c8a78a34fd920a48ddb29a28f70ef3341017d67930b0ffb55a",
+  "sourceGeometrySha256": "9ee39b4633a4bc1dc55856f2523f3f119397b7939f3a3fa9a7ead2296e2fd8aa",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 121,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.4787073673469289
+    },
+    {
+      "patchSize": 136,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.513990087943148
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5719967799995166
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5738835002732153
+    }
+  ],
+  "size": [
+    1728,
+    2304
+  ],
+  "guide": "34004512e27d3e69fa645ca3dbb7459ba86a3f3b8e4d8b158e50d824b4687ce0",
+  "sha256": "c30cc24917a0a925ff6d4707d7fc9a5d0b4e47c75f24119f1ef1c72476617adb",
+  "palette": [
+    "#f75430",
+    "#fbe86a",
+    "#2c9b90",
+    "#193da1"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 75,
+    "total": 75,
+    "mismatches": []
+  }
+}

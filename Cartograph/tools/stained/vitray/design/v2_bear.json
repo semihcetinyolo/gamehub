@@ -1,0 +1,37 @@
+{
+  "id": "v2_bear",
+  "name": "Orman Ayısı",
+  "scene": "A friendly bear with round ears and a honey-coloured muzzle sits among flowing forest foliage.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Chestnut",
+      "#98502E"
+    ],
+    [
+      "Honey",
+      "#E6AD35"
+    ],
+    [
+      "Forest teal",
+      "#17695F"
+    ],
+    [
+      "Sky blue",
+      "#51ACCC"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 48–58 panes. Inspected both generations and regenerated once to simplify divisions, flatten fills and repair junctions. Final retains clear subject/background colour pairs, closed oval rim and no obvious loose line ends. Remaining doubts: subtle fill shading persists; several same-colour neighbours, notably muzzle and eye surrounds, should merge during tracing; pane count may exceed target before merging; crowded contacts around forehead, ears and lower chest require geometry review. No geometry audit or publication performed.",
+  "tool": "image_gen",
+  "prompt": "Create one Cartograph stained-glass DESIGN SHEET, not finished textured glass. Portrait 3:4 canvas. Reference 1 is the old bear for subject only: a friendly bear with round ears and a honey-coloured muzzle. References 2 and 3 show the elegant leaded-panel composition style, but remove their gradients and strictly obey colour pairs. New fresh elegant bear portrait with upper torso, softly rounded ears, broad honey muzzle, calm small round brown eyes, natural dignified bear proportions, no teddy toy appearance. Center a large OVAL panel nearly touching all four canvas edges, exterior pure white, continuous thick black rim. Aim 52 CLOSED large panes total (48–58); roughly 24 bear panes and 28 background panes. Subject exclusively alternates warm chestnut brown #98502E and honey gold #E6AD35; background exclusively alternates deep forest teal #17695F and clear sky blue #51ACCC. These are exactly the FOUR flat solid fill colours, no additional colours and no white inside panel. Bear forehead, cheeks, neck and shoulders divided with a few smooth meaningful fur bands running outline to outline, alternate honey/brown neighbouring pieces. Broad surrounding leaf-like forest and sky bands alternate teal/blue; no brown or yellow in background. Small round eyes are closed brown-filled panes within honey face pieces; nose a substantial brown closed pane within honey muzzle. No tiny pupils or highlights, no decorative mouth strokes. Every line pure black uniform width about 1 percent canvas width, smooth and graceful. All lines connect rim to junction or junction to junction, zero loose endpoints. Only T junctions, no four-way crossings, space junctions at least 3 percent panel width apart. No slivers, no tiny regions, every piece comfortably broad and traceable. No arbitrary grid, no concentric decorative border frame. Absolutely flat colours: NO lighting, shading, gradients, glass texture, highlights, dots, text, signature. Compose beautiful artisanal stained-glass geometry while retaining readable friendly bear silhouette. Output single image.\nREVISION: Use the fourth reference (previous bear attempt) as composition to simplify. Crucially remove ALL gradients/shading: every pane ONE mathematically constant solid RGB fill, like a four-ink screenprint. Nose and eyes MUST use the SAME chestnut #98502E as body, never darker brown. Reduce to 48–58 panes TOTAL: about 24 bear regions and 28 background regions. Remove unnecessary tiny triangular cheek pieces and reduce crowded fur striping. Fix central forehead four-way crossing by staggering endpoints into spaced T junctions. Do not run seams through eye rims, leave each eye isolated inside one large honey pane. Alternate the two subject colours between adjoining fur bands; the broad muzzle can remain one honey pane enclosing a brown nose, no muzzle subdivision or mouth line necessary. Background only blue and teal. Preserve lovely oval silhouette, round ears, calm bear and forest composition. Completely FLAT solid fills, zero gradients.",
+  "references": [
+    "assets/glass/bear-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15e25-7bbc-7bb2-b97a-ea534bbbf9a1/exec-730b2f0e-541d-4ea4-892c-e9fd777f60e3.png"
+}

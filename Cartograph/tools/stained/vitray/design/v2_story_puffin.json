@@ -1,0 +1,41 @@
+{
+  "id": "v2_story_puffin",
+  "name": "Falez Yuvası",
+  "scene": "A puffin perches on a coastal cliff above sweeping ocean waves.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt orange",
+      "#D65A27"
+    ],
+    [
+      "golden amber",
+      "#E9B83F"
+    ],
+    [
+      "ocean blue",
+      "#245B85"
+    ],
+    [
+      "turquoise",
+      "#39A8AD"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    38,
+    48
+  ],
+  "notes": "Design sheet reviewed after one regeneration. Puffin uses orange/gold; coastal background uses blue/turquoise. Closed oval on white exterior, recognizable puffin silhouette and broad coastal bands. Remaining doubts: subtle fill shading persists; some same-colour neighbours in cheek, wing and feet may merge during tracing; several crowded beak/eye and foot junctions need geometry review. Pane count may exceed the target before merging. No obvious loose line ends. This is a design sheet, not geometry-validated final artwork.",
+  "tool": "clai image",
+  "references": [
+    "assets/glass/story_puffin-silhouette.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Redraw this puffin design as a SIMPLIFIED perfectly FLAT four-colour puzzle diagram. Keep elegant recognizable puffin facing right perched on coastal cliff, and oval silhouette. REQUIRED: ONLY 38 to 48 panes TOTAL, around 18 puffin and 24 background. Remove half of the feather divisions and half of the sea and cliff divisions. REMOVE THE SUN behind the beak entirely; replace it with blue/turquoise sky bands. Eye must be a single burnt-orange round pane in a gold cheek, NO blue pupil and no black pupil. Puffin uses ONLY solid burnt orange #D65A27 and solid golden amber #E9B83F alternating broad pieces. ALL background including sky sea and cliff uses ONLY solid ocean blue #245B85 and solid turquoise #39A8AD alternating broad bands. Absolutely ZERO gradients, lighting or shading, every pane has one identical constant RGB fill throughout its interior. OPAQUE PURE WHITE exterior around the closed oval panel, NOT transparent. 3:4 portrait. Pure black uniform lead 1 percent canvas width, same width interior and outer rim. ALL panes closed. Only T junctions with three panes meeting maximum. Eliminate X junctions at feet, beak and wing: stagger each junction by at least 3 percent canvas width. No tiny strips, narrow wedges, hairline bridges or little rock shards. Large simple graceful shapes, thick easily traceable seams, natural puffin with prominent beak. No text. This is flat vector-like preparatory linework, NOT finished shaded glass.",
+  "initialPrompt": "Create one flat stained-glass puzzle DESIGN SHEET, portrait 3:4 canvas. Reference 1 is the old puffin subject ONLY; redraw it elegantly, do not copy its childish shapes. References 2 and 3 supply the flowing leaded-panel design style ONLY, not their shading or their colour mixing. An elegant recognizable Atlantic puffin in side profile facing right, with large wedge-shaped curved beak, rounded cheek, clearly visible circular eye pane, compact upright body, broad sweeping wing feathers and two sturdy webbed feet, perched on a sea cliff above flowing ocean bands. Panel silhouette is a tall OVAL centered almost touching all canvas edges on pure white exterior, thick closed black rim, no decorative frame. Aim 38–48 closed generously sized panes total, about 18 bird panes and 24 coastal sky, sea and cliff panes. EXACTLY FOUR FLAT fill colours: burnt orange #D65A27 and golden amber #E9B83F exclusively on the puffin including eye, beak and feet; ocean blue #245B85 and turquoise #39A8AD exclusively in all background sky, cliff and waves. Alternate the two subject colours across meaningful broad feather bands and beak sections, alternate background colours across sweeping coastal bands. No white glass, no cream glass, no fifth colour. Pure black smooth uniform lead lines approximately 1 percent canvas width; every seam connects rim or junction to junction, all regions closed. Only separated T junctions, never X or four-way contacts; space junctions at least 3 percent of panel width. No tiny pieces, no hairline slivers, no near-parallel narrow strips, no loose line ends. Keep anatomically graceful puffin outline with a large beak and natural stance, bold simple pieces rather than excessive detail. Absolutely flat solid fills without gradients, textures, lighting, shading or highlights. No text, labels, dots, embellishments, watermark or realistic glass texture. This is a clean traceable colour diagram for future glass artwork."
+}

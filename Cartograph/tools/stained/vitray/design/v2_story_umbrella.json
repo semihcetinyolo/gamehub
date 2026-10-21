@@ -1,0 +1,36 @@
+{
+  "id": "v2_story_umbrella",
+  "name": "Yağmurlu Sokak",
+  "scene": "An open umbrella shelters a curved handle above rippling puddles beneath sweeping rain bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "vermilion",
+      "#D94B38"
+    ],
+    [
+      "golden amber",
+      "#E6AA26"
+    ],
+    [
+      "rain blue",
+      "#235A88"
+    ],
+    [
+      "teal",
+      "#269C9A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 31–41 panes. Reviewed both generated attempts; selected the second for simpler broad puddle bands. Subject and background colour pairs are distinct; no obvious loose line ends. Remaining doubts: subtle fill shading persists, crowded canopy-apex contacts and some near-aligned junctions need review during tracing, and some adjacent background panes share a colour and may merge. Design sheet only; geometry and pane count are not certified.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/story_umbrella-junctions.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "prompt": "Create a flat stained-glass puzzle DESIGN SHEET for Yağmurlu Sokak (rainy street). Reference image 1 is the old umbrella subject only, redraw elegantly; images 2 and 3 are leaded-panel composition style references, do NOT copy their shading or subjects. Portrait 3:4 canvas, ideally 1536x2048. Center a tall OVAL panel almost touching canvas edges, pure white exterior, closed thick pure black rim. One large elegant open umbrella with a scalloped canopy and substantial curved J handle, rainy sweeping sky bands above and rippling wet street bands beneath. Umbrella fills central 75 percent width. Aim exactly 36 broad closed panes total (target 31–41), with approximately 7 alternating curved canopy gores whose seams each terminate separately on upper canopy outline (never all converge), 4 broad transverse handle pieces, remaining panes in sweeping rainfall and puddle bands. Every line ends on an outline or another line, only widely separated T junctions, NO X or four-way contacts. At least 3 percent panel width between junctions and across narrow pieces; no tiny slivers, no hairlines, no floating rain strokes or ornament. Meaningful elegant umbrella silhouette, smooth broad lead-work like an artisan stained glass panel, not childish clipart. Exactly FOUR solid flat colors: vermilion #D94B38 and golden amber #E6AA26 exclusively for umbrella canopy and handle, alternating neighboring subject pieces; deep rain blue #235A88 and saturated teal #269C9A exclusively for all background panes, alternating adjoining bands. No white glass, white exterior only. Black uniform smooth lead approx 1 percent canvas width. NO texture, NO shading, NO gradients, NO highlights, no bevel or decorative border, no text. Distinct panes, fully closed black boundaries, calm clear bold composition.\nREVISION: The previous draft had shaded fills, too many wiggly puddle dividers and X contacts. Correct these. Strict vector-like UNIFORM SOLID RGB fills everywhere, no lighting whatsoever. SIMPLIFY to 34 panes total. Bottom background only SIX broad flowing horizontal bands, each uninterrupted except where umbrella handle occludes them. No vertical or wiggly extra dividers through those bands. Upper background about 16 large smooth rain-band pieces. Umbrella exactly 7 curved canopy pieces, all upper endpoints at least 45px apart; no tiny knob at apex. Make umbrella narrower than panel so its tips do NOT meet the outer rim: leave broad blue/teal space on both sides. Handle 4 broad alternating red/gold segments. No seams from opposite sides meeting at same point on the handle; stagger them. All junctions must be T with three incident lines only. Entire drawing sharp flat solid four colors, pure white outside."
+}

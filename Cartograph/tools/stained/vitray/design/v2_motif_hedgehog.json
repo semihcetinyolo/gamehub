@@ -1,0 +1,37 @@
+{
+  "id": "v2_motif_hedgehog",
+  "name": "Kirpi",
+  "scene": "A hedgehog with sweeping amber and rust quills walks among flowing woodland leaves.",
+  "shape": "oval",
+  "palette": [
+    [
+      "amber",
+      "#E6AB36"
+    ],
+    [
+      "burnt rust",
+      "#A84F2C"
+    ],
+    [
+      "sky blue",
+      "#489DBF"
+    ],
+    [
+      "forest teal",
+      "#246B59"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only, target 70–110 panes. Inspected initial image and regenerated once to remove a face X crossing and request flatter fills. Final inspection: recognizable closed oval, closed eye, warm subject and cool background colour pairs; no obvious loose lead ends. Remaining doubts: subtle fill shading persists; some same-colour adjacent quill/face/background panes may merge in tracing; some quill tips and leaf junctions are tight and need geometric review. Pane count and T-only topology have not been certified by a geometry audit. No game catalogue or geometry changes.",
+  "tool": "image_gen",
+  "generationAttempts": 2,
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_poppies.png",
+    "assets/glass/motif_hedgehog-junctions.webp"
+  ],
+  "prompt": "Create ONE flat stained-glass puzzle DESIGN SHEET for Kirpi (hedgehog). References 1 and 2 are style inspiration only: elegant organic leaded-panel compositions, NOT their subjects. Reference 3 is the old hedgehog subject only; completely redraw its childish geometry. Portrait 3:4 canvas, preferably 1536x2048. A large closed OVAL panel nearly touches all canvas edges; exterior pure white. Elegant recognizable side-view hedgehog facing right, rounded spiny back, tapered snout, small rounded ear, visible round eye and short feet, walking through flowing woodland foliage. Aim 85 CLOSED broad panes, allowed 70-110: about 40 meaningful broad sweeping quill bands and face/body pieces, and 45 leaf/sky/ground pieces. Make the spiny silhouette dignified and natural, no starburst cartoon. Each quill band is a generous curved taper spanning outline to outline; avoid dense needle slivers. Exactly FOUR flat solid fill colours: amber #E6AB36 and burnt rust #A84F2C exclusively for ALL hedgehog parts including eye/nose, alternating neighboring subject bands; sky blue #489DBF and forest teal #246B59 exclusively for ALL background foliage, sky and ground, alternating neighboring background bands. No white glass, cream or additional colours. Eye a closed rust circular pane inside amber face, no black dot or white highlight. Pure black smooth uniform lead about 1% canvas width, thick closed outer rim. Every line connects junction to junction or rim, no loose ends. Only staggered T junctions of three panes, no X or four-way contacts; junctions separated by at least 3% panel width. All panes generous, minimum width 3% panel width except taper tips, each area over 1/1000 panel. Do not create arbitrary grid. Flat vector-like solid colour only: absolutely no shading, gradients, texture, shine, double outlines, text, signature, frame, dots or hatching. Within each semantic side prioritize strictly alternating two-colour broad bands; no cross-assigned colours. This is tracing-ready design art, not a glass photograph.\nREVISION: The previous attempt had an X crossing just behind the eye, gradients in fills, and too many same-colour neighbours. Correct these. Face should be ONE amber pane with a rust circular eye; single rust muzzle/nose pane and rust ear inset. No crossed face stripes. Keep the overall elegant oval hedgehog and about 85 panes. Use FLAT exact solid hex colours with absolutely NO shading even subtle. Simplify quills into alternating broad amber/rust curved bands running from the upper outline to the belly outline, no internal cross intersections. Background use alternating blue and green flowing bands with staggered T joins only. All leaf tips must terminate cleanly without narrow trapped slivers."
+}

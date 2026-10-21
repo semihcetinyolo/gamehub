@@ -1,0 +1,37 @@
+{
+  "id": "v2_story_bat",
+  "name": "Mağaradan Uçuş",
+  "scene": "A bat spreads its scalloped wings as it flies out of a cave framed by flowing rock strata.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "Deep plum",
+      "#542F73"
+    ],
+    [
+      "Coral rose",
+      "#DA7286"
+    ],
+    [
+      "Deep teal",
+      "#126B78"
+    ],
+    [
+      "Turquoise",
+      "#4BB9B0"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 31–41 panes. Inspected both generations; used the single permitted regeneration. Subject/background colour pairs are preserved, exterior is white, and lines appear closed. Remaining concerns: wing knuckles still have crowded multiway junctions; thin upper-wing sections and narrow ear tips need review; several adjacent panes share a colour; subtle fill shading remains; pane count appears above target. These require tracing-stage review; this is not geometry-audited or game-ready artwork.",
+  "tool": "image_gen",
+  "prompt": "Create one flat stained-glass puzzle DESIGN SHEET, portrait 3:4, for Mağaradan Uçuş (Flight from the Cave). Reference 1 is only the old bat subject idea; references 2 and 3 show the elegant leaded-panel composition style, not their subjects or texture. Fresh sophisticated bat flying toward viewer from a cave, broad graceful scalloped outstretched wings, pointed ears, small readable round eyes, slim body. Gothic arch panel almost fills the white canvas. Aim 31–41 closed panes total, about 18 bat panes and 18 cave/background panes. Simplify boldly for large readable pieces. Exactly FOUR flat interior colours: bat exclusively deep plum #542F73 and coral rose #DA7286 alternating in neighboring wing membrane sections and body sections; background exclusively deep teal #126B78 and turquoise #4BB9B0 alternating broad cave strata and flowing night-air bands. Eyes use coral rose within plum face. No white glass. Exterior pure white. Uniform pure black smooth lead about 1 percent canvas width, closed thick black outer rim. Wing inner divisions run fully from outline to outline with separated endpoints, never converge in a fan at one point. Only T junctions, at most three panes meet, neighboring junctions at least 3 percent panel width apart. No X crossings, dangling lines, hairline slivers, tiny decorations, tiny panes, or decorative border frame. Preserve a recognizable natural bat silhouette, wings clearly separated from background; no cartoon crown or facial smile. Broad background lines meet bat outline at offset points from wing seams. All fills perfectly flat: NO gradients, shading, textures, highlights, speckles, text, captions or signatures. No other objects.\nREVISION: Use the attached first attempt as composition reference, but fix its faults. Reduce total panes to 36–40. Absolutely solid uniform colour inside every pane, no lighting or tonal variations whatsoever. Wings must NOT have multiple veins meeting at a knuckle: use only 3 broad alternating curved membrane strips per wing, each seam travels from a distinct upper outline location to a distinct scalloped lower outline location. NO thin strip along upper wing edge. Keep bat wings slightly inside outer rim with generous clear background gaps. Avoid triangular multiway nodes beside shoulders and feet: simple body with two curved cross-bands, single unsegmented head, two ears, two round rose eyes. Each seam endpoint separated by at least 35 pixels. Background simplify to about 20 broad alternating teal/turquoise cave and flowing strata pieces. Strict four solid hex fills and black outlines, white only outside. Round arch silhouette is acceptable. No gradients. Elegant bold stained-glass template.",
+  "references": [
+    "assets/glass/story_bat-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "generationAttempts": 2
+}

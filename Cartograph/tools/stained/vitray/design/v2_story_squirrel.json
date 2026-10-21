@@ -1,0 +1,35 @@
+{
+  "id": "v2_story_squirrel",
+  "name": "Kışlık Palamutlar",
+  "scene": "A squirrel with a sweeping curled tail holds an acorn among winter woodland bands and a fir tree.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt orange",
+      "#C85A24"
+    ],
+    [
+      "golden amber",
+      "#E7AD39"
+    ],
+    [
+      "deep teal",
+      "#176D68"
+    ],
+    [
+      "woodland blue",
+      "#55A8C9"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design-sheet stage only. Target 36–46 panes. Regenerated once after visual review to simplify divisions, isolate the eye and reduce open detail strokes. Warm pair is reserved for squirrel and acorn; cool pair for woodland. Remaining doubts: the generated image retains subtle fill shading and short paw marks; several same-colour neighbours may merge during tracing, and the drawn pane count appears above target before those merges. Some tail/body and background junctions need checking for tight contacts during tracing. No geometry audit or game publication performed.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/story_squirrel-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Create a flat stained-glass puzzle DESIGN SHEET for Kışlık Palamutlar, a graceful squirrel holding an acorn for winter. Reference 1 provides SUBJECT ONLY (squirrel, huge curled tail, acorn, woodland); discard its childish geometry and texture. Reference 2 provides elegant curved leaded panel style ONLY. Portrait 3:4, ideally 1536x2048. Tall oval panel almost touching canvas edges on pure white exterior, closed uniform black rim. Squirrel faces right, upright ears, clear muzzle, large curled tail rising on left, paws holding one large acorn; layered woodland bands and stylized fir silhouettes behind. Exactly 36–46 broad closed panes total, aim 42, roughly 23 squirrel/acorn panes and 19 woodland panes. Mature elegant real stained glass composition rendered as perfectly FLAT vector-like colour fills, NOT textured glass. Exactly four interior colours: burnt orange #C85A24 and golden amber #E7AD39 EXCLUSIVELY squirrel and acorn; deep teal #176D68 and blue #55A8C9 EXCLUSIVELY background woodland. Alternate orange/gold within subject and teal/blue within background. Use broad contour-to-contour curved bands rather than branching internal dividers. Small closed gold eye inside orange face, no black dot eye. Acorn cap and nut in opposite warm colours. Every black line uniform approximately 1% canvas width, smooth, pure black, every line closes a pane. Only well-spaced T junctions, never X or four-way intersections. Junctions separated at least 3% panel width. No narrow slivers, tiny shards, open-ended lines, fur hatching, decorative rim bands, white glass, pale cream, shading, gradients, highlights, textures, lettering, or signature. Keep squirrel anatomy and silhouette clean, distinguish tail from body and acorn from paws; prioritize wide readable panes over detail.\nCORRECTION FOR SECOND ATTEMPT: Use only 40 panes TOTAL, substantially simpler than reference fox. Subject about 20 panes, background about 20. Absolutely solid unvarying flat RGB fills with ZERO shading, no paper grain. Broad simple woodland sky bands; at most ONE fir tree. No finger lines, toe lines, mouth lines or fur strokes that terminate inside a pane. Eye is a standalone circular amber pane entirely surrounded by an orange head pane, away from any seam. Body, tail, paws are simple large curved panes. Acorn cap one orange pane, nut one gold pane. No dark filled triangular wedges around eye. Rim and interior lines same uniform bold width. No seams closer than 3% panel width. Prioritize exactly 36–46 panes."
+}

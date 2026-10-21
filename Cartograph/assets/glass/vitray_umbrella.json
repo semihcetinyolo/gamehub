@@ -1,0 +1,53 @@
+{
+  "id": "vitray_umbrella",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T08:51:46.474579+00:00",
+  "raw": "tools/stained/vitray/raw/vitray_umbrella.png",
+  "rawSha256": "a055d9628253cd49c9dea1b9d8758762036bd1a0e52b758c839fe098789a3b78",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 88,
+      "donorPatches": 55,
+      "colour": 0,
+      "preservedFraction": 0.45817643779553335
+    },
+    {
+      "patchSize": 86,
+      "donorPatches": 40,
+      "colour": 1,
+      "preservedFraction": 0.49844087697303685
+    },
+    {
+      "patchSize": 100,
+      "donorPatches": 47,
+      "colour": 2,
+      "preservedFraction": 0.4847991803434078
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6434950242372888
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "50ab49487eaa4f48949228c3e4388abb926121e9344e173b54c7140329ebeb20",
+  "sha256": "77c25fb3516b3a1f8845727918d34d873f9b117f2d8fe9be41e1fc941c89b43a",
+  "palette": [
+    "#fee81e",
+    "#002fb4",
+    "#c05902",
+    "#3cbac3"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 82,
+    "total": 82,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/vitray_umbrella.webp"
+}

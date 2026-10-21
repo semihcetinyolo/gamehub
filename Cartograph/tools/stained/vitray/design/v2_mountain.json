@@ -1,0 +1,37 @@
+{
+  "id": "v2_mountain",
+  "name": "Dağda Gün Doğumu",
+  "scene": "Mountain peaks glow pink at sunrise beneath a golden sun, with pine trees framing a lake.",
+  "shape": "gothic arch",
+  "palette": [
+    [
+      "rose pink",
+      "#D85D88"
+    ],
+    [
+      "warm gold",
+      "#EAB83F"
+    ],
+    [
+      "deep blue",
+      "#24618B"
+    ],
+    [
+      "teal green",
+      "#269883"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Mountains and sun use the rose/gold subject pair; sky, pine trees, shore and lake use the blue/teal background pair. Inspired by vitray_lighthouse.png and vitray_poppies.png, with mountain-contacts.webp as subject reference. Reviewed initial generation and regenerated once to improve flatness, pine tiers, junctions and white exterior. Remaining doubts: some four-way contacts remain in sky arcs and shoreline; sun panes remain adjacent gold and will need merging/recolouring; subtle fill variation remains. Target is 93–133 panes; raster connected-component estimate is 152 coloured regions >=250 pixels before tracing/merging, so simplification is still needed. No loose interior line ends apparent at review scale; sharp mountain and pine tips need downstream sliver checks. This is not a geometry-audited or published game asset.",
+  "size": [
+    1086,
+    1448
+  ],
+  "targetPanes": [
+    93,
+    133
+  ]
+}

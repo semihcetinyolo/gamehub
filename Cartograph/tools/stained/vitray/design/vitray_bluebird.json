@@ -1,0 +1,88 @@
+{
+  "id": "vitray_bluebird",
+  "name": "Mavi Kuş",
+  "scene": "A blue songbird perches on a leafy branch before a golden oval halo.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "Cobalt",
+      "#245FC2"
+    ],
+    [
+      "Turquoise",
+      "#28AAB4"
+    ],
+    [
+      "Leaf green",
+      "#65973F"
+    ],
+    [
+      "Golden ochre",
+      "#D9AC38"
+    ]
+  ],
+  "notes": "Reviewed after one regeneration. Remaining concerns: some halo/sky boundaries still form aligned four-way contacts, lower-left leaf joins and wing-tail junction need spacing review; subtle fill variation and equal-colour neighbours remain. Palette specifies four intended colours.",
+  "tool": "image_gen",
+  "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d79-ddf0-75b0-8c24-eceb8897ba20/exec-19ce9c1c-3b4c-4548-acdd-adfdb6913aba.png",
+  "references": [
+    "tools/stained/vitray/refs/vitray_bluebird.jpg"
+  ],
+  "prompt": "Create ONE flat Cartograph stained-glass puzzle DESIGN SHEET, a fresh composition inspired by the reference photograph. Portrait 3:4 canvas, preferably 1536x2048; centered panel nearly touching canvas edges on pure white exterior, one thick closed black outer rim, no decorative border frame. EXACTLY FOUR flat solid coloured fills specified below; no white/near-white or cream inside panel. Pure black smooth UNIFORM lead width 1% of canvas width, including eye rings and details. NO texture, shading, gradients, highlights, bubbles, dots, hatching, text or signatures. Target 85-100 panes, allowable 70-130 closed mixed-size panes: meaningful subject parts and organic background waves/bands/leaves, never arbitrary grids. Every line must run from rim/junction to rim/junction; no loose line ends. ONLY separated T-junctions: at most three panes meet at a point, never X or converging fan junctions. Offset neighbouring junctions by at least 3% panel width. All panes at least 3% panel width except pointed tips, area >=1/1000 panel area. No close parallel sliver strips or nearly touching lines, meeting angles >=30 degrees. Keep subject silhouette clear, smooth and recognizable; eyes are clearly visible closed circular COLOURED panes, no black pupil dots. Adjacent panes should have different palette colours where possible. Drop hands, walls, stands, window and photographic setting. Tracing-ready flat illustration, not glass rendering.\nPanel: ROUND ARCH with semicircular top, vertical straight sides, flat horizontal base. Subject: one left-facing vivid blue songbird perched on a broad curving diagonal leafy branch, a warm golden oval halo behind it, blue/green sky divisions around it, inspired by the reference. FOUR colours only: cobalt #245FC2, turquoise #28AAB4, leaf green #65973F, golden ochre #D9AC38. Branch golden/green; no brown fifth colour. Golden cheek and breast details. Circle turquoise eye with black border, no pupil dot. Single simple triangular closed beak, no mouth line. Broad closed leg shapes, no toe scribbles. About 80 panes total, 15 broad bird pieces, 20 leaf/branch pieces, 15 halo pieces with staggered splits, 30 broad sky panes with natural curving seams. Halo is a broad coloured area behind bird, not a thin concentric frame. T junctions ONLY, no radial seams meeting at a common point. NO tiny feather scales, fine lines, highlights or colour variations, strictly solid fills.\nREGENERATION: shift all background divisions where they meet the oval halo so none align with the inner halo divisions. Likewise offset all leaf/background joins, no four-way nodes at leaf tips. Omit the mouth split and make beak one closed triangular pane; lower wing feathers only 5 wide pieces, tail only two wide pieces. No leaf veins that end at the same point as exterior seams. Avoid narrow slivers beside neck or tail. Make flat digital colour perfectly solid, no subtle darkening at pane edges.",
+  "attempts": 2,
+  "rasterReview": {
+    "size": [
+      1086,
+      1448
+    ],
+    "enclosedComponentsOver20px": 82,
+    "smallComponentsBelowOneThousandth": 1,
+    "method": "Approximate non-black connected components; not a vector geometry audit.",
+    "paneCountWithinRequestedRange": true
+  },
+  "sha256": "20988a84a726db3ec1169af3bad62f2ffb78ccbd23567bd5c20ef4da0a432611",
+  "reviewStatus": "needs-tracing-review",
+  "subjectMask": {
+    "id": "vitray_bluebird",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d79-ddf0-75b0-8c24-eceb8897ba20/exec-5ea4f91a-a33e-4e6c-912a-d6ad59f97747.png",
+    "prompts": [
+      "Edit the supplied finished design sheet into a SUBJECT SEGMENTATION MASK. Preserve EXACT original canvas dimensions 1086x1448, portrait 3:4 framing, all pane boundaries, panel silhouette and placement. This is a precise recolouring operation, never redesign or shift any shape. Every pane belonging to the named animal subject must be solid PURE BLACK #000000, including its eyes, beak, feet, fins, every internal patch and all feather patterns regardless of original colour. Every background pane and exterior must be solid PURE WHITE #FFFFFF. Keep all original black lead lines black, including lines between subject panes (they disappear into the black subject). NO white eye holes, no white internal subject seams. No grey, colour, shading, texture or new lines. Return only the edited mask. SUBJECT: the entire single bluebird: head, circular eye, triangular beak, cheek, neck, breast/belly, wing, long tail, and both golden legs/feet are BLACK. BACKGROUND: the golden oval HALO behind the bird is WHITE; the diagonal golden branch is WHITE; every green leaf and blue/turquoise sky piece is WHITE. Do not confuse the golden belly/legs (black subject) with golden halo/branch (white background). Preserve the current geometry exactly.",
+      "Precise local edit to this black/white subject mask. Keep EVERYTHING identical except fill the bird's missing white belly pane BLACK. The target is the long diagonal white curved wedge directly underneath the black wing and above the two black legs, from about x=440 y=640 down-right to x=725 y=890 on this 1086x1448 canvas. It is the bird breast/belly, NOT background. The wedge's top-left is just below the cheek, its bottom-right meets the tail root. Fill that entire single closed white belly shape pure black. Do not fill the big halo behind bird or the white gaps between legs. Leave all other white backgrounds, black subject panes, canvas and line positions unchanged. Output same dimensions and framing.",
+      "Make ONE tiny recolouring correction in this existing 1086x1448 black-and-white mask, no other change. Fill the single white throat pane immediately BELOW the black cheek and LEFT of the black wing, at pixel approximately (435,550), pure BLACK. This white pane extends from (390,474) down to (405,644) and right to roughly (487,660), bounded by black curves. It is the bird neck/throat and must join the black bird. Preserve the larger white halo farther left, every other background, all framing and line positions. Do not redraw anything or change any other pane."
+    ],
+    "size": [
+      1086,
+      1448
+    ],
+    "file": "tools/stained/vitray/design/vitray_bluebird.subject.png",
+    "sourceSha256": "20988a84a726db3ec1169af3bad62f2ffb78ccbd23567bd5c20ef4da0a432611",
+    "sha256": "a5d04e64cf33de6494b35dd34c783a38c1b0a3a85507f1ae1565098807eb422a",
+    "tool": "image_gen",
+    "review": "Visually inspected for subject coverage and approximate alignment; white seams may remain inside black subject.",
+    "spotChecks": [
+      {
+        "seed": [
+          435,
+          550
+        ],
+        "blackFraction": 1.0,
+        "blackMajority": true
+      },
+      {
+        "seed": [
+          540,
+          790
+        ],
+        "blackFraction": 1.0,
+        "blackMajority": true
+      },
+      {
+        "seed": [
+          450,
+          376
+        ],
+        "blackFraction": 1.0,
+        "blackMajority": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "v2_story_swan",
+  "name": "Ay Işığında Göl",
+  "scene": "An elegant swan glides across a moonlit lake beneath a round moon and flowing night-sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Golden yellow",
+      "#E8B942"
+    ],
+    [
+      "Coral",
+      "#D87564"
+    ],
+    [
+      "Midnight blue",
+      "#21466A"
+    ],
+    [
+      "Turquoise",
+      "#299EAA"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 30–40 panes. Swan uses gold/coral and sky, moon and water use midnight blue/turquoise. Generated with fox and lighthouse style references; original story_swan artwork inspected for subject. Regenerated once to simplify feather divisions and restore opaque white exterior. Visually checked: closed oval rim and closed panes, strict subject/background colour pairs. Remaining doubts: slight tonal shading persists; some feather tips are narrow, some same-colour neighbours may merge, and closely spaced joins around the eye and wing need tracing-stage review. Pane target is approximate, not a geometry audit.",
+  "raw": "clai-images/v2-story-swan-2.png",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "assets/glass/story_swan-junctions.webp"
+  ]
+}

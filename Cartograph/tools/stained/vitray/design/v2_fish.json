@@ -1,0 +1,38 @@
+{
+  "id": "v2_fish",
+  "name": "Mercan Balığı",
+  "scene": "A big friendly tropical fish swims among bubbles over a sandy sea floor.",
+  "shape": "oval",
+  "palette": [
+    [
+      "vermilion orange",
+      "#E96825"
+    ],
+    [
+      "golden yellow",
+      "#EABF35"
+    ],
+    [
+      "ocean blue",
+      "#22618A"
+    ],
+    [
+      "turquoise teal",
+      "#36A5A5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 85–125 panes. Fish, fins, tail and eye use the orange/gold pair; water, bubbles, aquatic foliage and seabed use blue/teal. Generated with fox and lighthouse design references; original fish artwork informed the subject. Inspected both attempts and regenerated once to improve crossing seams and replace transparent exterior with white. Final visual review: closed oval rim and closed panes, no obvious loose line ends; colour pairs remain separate. Remaining doubts: subtle fill shading persists, some same-colour adjacent panes may merge during tracing, and close multi-arm contacts at fin roots, tail root and lower foliage need geometry-stage review. Pane count and junction validity are not certified by this design sheet.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png",
+      "tools/stained/vitray/design/vitray_lighthouse.png"
+    ],
+    "subjectReference": "assets/glass/fish-silhouette.webp"
+  }
+}

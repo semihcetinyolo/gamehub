@@ -1,0 +1,53 @@
+{
+  "id": "motif_octopus",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T14:35:34.476347+00:00",
+  "source": "assets/glass/motif_octopus-junctions.webp",
+  "sourceSha256": "5574dc8a2c64747ef2ff8f570174e49b438a343ceda8e134947b9edb768f597e",
+  "sourceGeometrySha256": "571c2f667b09706ff426a430e47a2ff3dcb241f29586138ece0bac4e5ed5ffa7",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5940197792345622
+    },
+    {
+      "patchSize": 106,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.4958413163525418
+    },
+    {
+      "patchSize": 104,
+      "donorPatches": 68,
+      "colour": 2,
+      "preservedFraction": 0.5753789725880145
+    },
+    {
+      "patchSize": 105,
+      "donorPatches": 66,
+      "colour": 3,
+      "preservedFraction": 0.3902530081223761
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "59eda942a4e43bb5d86206c0beaa16c05a31dd7bca25ebb53ef6b9a35a899d1c",
+  "sha256": "4a34ec1da503de4820feb67b053cc9d90b46d2fa7409e0dd24419295940c294a",
+  "palette": [
+    "#e56204",
+    "#fcf474",
+    "#1eb894",
+    "#1345a7"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 22,
+    "total": 22,
+    "mismatches": []
+  }
+}

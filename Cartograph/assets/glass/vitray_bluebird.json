@@ -1,0 +1,53 @@
+{
+  "id": "vitray_bluebird",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T08:50:02.242291+00:00",
+  "raw": "tools/stained/vitray/raw/vitray_bluebird.png",
+  "rawSha256": "d48d23881d8782b4ed2db20461cbaf61f5c02a44f75819dedf529be2e9e68547",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 76,
+      "donorPatches": 27,
+      "colour": 0,
+      "preservedFraction": 0.4654647999522861
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6388690088138315
+    },
+    {
+      "patchSize": 107,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5728244933517093
+    },
+    {
+      "patchSize": 113,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6363124926540399
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "e376112e26c8b04cf47ae53e7612906e52e6a4e18e96e07f9546f4646e5a381e",
+  "sha256": "758aafb037c05600fb2c8131c6cf84fa18c3ff6dbf0b1a5cda19a3cdd526260c",
+  "palette": [
+    "#0133e2",
+    "#05c1d7",
+    "#57990f",
+    "#fdd306"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 58,
+    "total": 58,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/vitray_bluebird.webp"
+}

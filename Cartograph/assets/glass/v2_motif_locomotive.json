@@ -1,0 +1,53 @@
+{
+  "id": "v2_motif_locomotive",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:33:09.627415+00:00",
+  "raw": "tools/stained/vitray/raw/v2_motif_locomotive.png",
+  "rawSha256": "dbdb3fb61b1e44fdaf4cff4bb0007c7f2c0ad5b98a2bf422ccc87732841c80d7",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 79,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.44030857798688106
+    },
+    {
+      "patchSize": 83,
+      "donorPatches": 49,
+      "colour": 1,
+      "preservedFraction": 0.3375287778177163
+    },
+    {
+      "patchSize": 103,
+      "donorPatches": 87,
+      "colour": 2,
+      "preservedFraction": 0.5204387565363515
+    },
+    {
+      "patchSize": 116,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5855013797859258
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "15f43dcad9551ae38da1960ae19564f3ceeae4ea1bffcfaf9292c8746e1fb265",
+  "sha256": "4ed6f7473f73a8173e5008a8a1ef52271c6e7ef12c1fdecc7c0da76f38d1cf39",
+  "palette": [
+    "#d9340f",
+    "#fdc90a",
+    "#014c86",
+    "#13b0a0"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 91,
+    "total": 91,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_motif_locomotive.webp"
+}

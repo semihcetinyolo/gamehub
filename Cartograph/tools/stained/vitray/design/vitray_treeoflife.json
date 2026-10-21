@@ -1,0 +1,36 @@
+{
+  "id": "vitray_treeoflife",
+  "name": "Hayat Ağacı",
+  "scene": "A broad rooted tree spreads flowing branches across an organically divided circular sky.",
+  "shape": "circle",
+  "palette": [
+    [
+      "Bark",
+      "#8D5648"
+    ],
+    [
+      "Ochre",
+      "#D4A041"
+    ],
+    [
+      "Green",
+      "#477E69"
+    ],
+    [
+      "Periwinkle",
+      "#6372B1"
+    ]
+  ],
+  "notes": "Tree trunk, all branches and roots are the subject; open spaces between branches, sky and ground are background. Broad branch anatomy should remain intact; check fork junctions and branch/rim contacts during tracing. Colour values are generation targets and may need raster quantization. One correction simplified narrow internal bark divisions and crowded branch contacts. Remaining doubts: some horizontal limb seams and fork angles still create near/multiway contacts; inspect them after tracing. Mask includes thin white internal bark seams but solid black pane interiors.",
+  "designPrompt": "Edit this tree design preserving the exact main trunk/branch/root silhouettes and circular framing. Fix crowded branch junctions and point contacts by moving/removing BACKGROUND seams first, not denting the tree. Where narrow internal bark cells exist, merge those into broad meaningful bark strips. Particularly separate crossed seams on horizontal limbs at mid-left and mid-right and tiny triangular sky pockets near branch forks. Every junction must be separated T, at least 3% circle width from its neighbour. Keep about 80 broad closed paintable panes. Tree branches and roots remain #8D5648 bark and #D4A041 ochre; all background is #477E69 green or #6372B1 periwinkle. Exactly FOUR single flat fills, remove ALL shading/gradients. Black only bold uniform lead. No extra leaves or textures. Preserve true circular rim, width=height, on portrait 3:4 pure white canvas. Do not introduce new branches, local dents or fine twig threads.",
+  "subjectMaskPrompt": "Edit this finished design into its BLACK AND WHITE SUBJECT MASK. Preserve the EXACT canvas size, aspect ratio, framing, panel shape, every contour and every lead line in its original pixel position. Do NOT redraw, rearrange, simplify or scale anything. Recolour only: every pane of SUBJECT goes pure black #000000, every other pane and exterior pure white #FFFFFF. Keep ALL existing black lead lines black, never turn subject seams white. In the subject this makes a continuous solid black silhouette. Include eye interiors as black. Keep background seams black. No grey, no colour, no shading, no added marks. Output must overlay the input with unchanged geometry. SUBJECT: the complete tree: trunk, ALL branches all the way to outer rim, and every root at the base. Every bark-brown/ochre pane is part of tree and turns black. Every green/periwinkle sky or ground pane between branches/roots turns pure white. Preserve exact circular rim and existing canvas/framing. No new shapes.",
+  "generationMethod": "built-in image_gen",
+  "canvas": [
+    1086,
+    1448
+  ],
+  "subjectColours": [
+    0,
+    1
+  ]
+}

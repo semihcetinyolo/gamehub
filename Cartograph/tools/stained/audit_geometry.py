@@ -1,6 +1,7 @@
 """Audit shared borders, readable junctions and spacing without blanket bevels.
 
-Version 3 also rejects four-or-more-way crossings, including the outer rim.
+Version 4 also rejects panes whose hidden necks disappear beneath game seams.
+Version 3 rejects four-or-more-way crossings, including the outer rim.
 Sharpness alone remains valid. Construction may opt into intermediate junctions;
 published map stamps always require the complete policy.
 """
@@ -11,11 +12,11 @@ from shapely.geometry import LineString,Point
 from shapely.ops import unary_union
 from make_maps import region_polys,shape_poly
 from geom import _clearance
-HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1];VERSION=3
+HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1];VERSION=4
 
 def fingerprint(m):
     edges=';'.join(','.join([*(f'{v:.3f}' for v in e[:4]),*(str(v) for v in e[4:])]) for e in m['edges'])
-    body='\n'.join(m['paths'])+'\n'+m['shape']+'\n'+';'.join(','.join(map(str,a)) for a in m['adj'])+'\n'+edges
+    body=f'{m["cols"]:.3f},{m["rows"]:.3f}\n'+'\n'.join(m['paths'])+'\n'+m['shape']+'\n'+';'.join(','.join(map(str,a)) for a in m['adj'])+'\n'+edges
     return hashlib.sha256(body.encode()).hexdigest()
 
 def inspect(m,large=False,allow_junctions=False):
@@ -57,6 +58,8 @@ def inspect(m,large=False,allow_junctions=False):
                 if .003<distance<.219:
                     issues.append(('near-gap',i,j,round(distance,5),(0,0)))
     if all(p.is_valid and p.geom_type=='Polygon' for p in ps):
+        from visible_panes import inspect as visible_inspect
+        issues.extend(visible_inspect(m,ps))
         covered=unary_union(ps);overlap=sum(p.area for p in ps)-covered.area;missing=outline.symmetric_difference(covered).area
         if overlap>1e-5:issues.append(('overlap',-1,-1,round(overlap,6),(0,0)))
         if missing>outline.length*.001:issues.append(('coverage',-1,-1,round(missing,6),(0,0)))

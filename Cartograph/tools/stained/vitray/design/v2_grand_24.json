@@ -1,0 +1,37 @@
+{
+  "id": "v2_grand_24",
+  "name": "Kanyon Yolculuğu",
+  "scene": "A sailboat journeys along a winding river between towering layered sandstone canyon walls beneath the sun.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Terracotta",
+      "#C64C32"
+    ],
+    [
+      "Golden ochre",
+      "#E8AC32"
+    ],
+    [
+      "Turquoise",
+      "#239EA5"
+    ],
+    [
+      "Deep blue",
+      "#245B83"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 110–160 panes. Inspected initial image and the single prescribed revision. Revision removes narrow mast openings and simplifies distant rock-top tiles. Warm pair is reserved for canyon rocks, sun and boat; cool pair for sky and river. Remaining doubts: subtle fill shading persists; several neighboring rock panes share a colour and may merge during tracing; narrow distant river bands and some close rock junctions require geometry review. No obvious loose line ends; some crowded contacts may need separated T junctions. Final traced pane count is not verified. Design sheet only, not validated puzzle geometry or finished glass.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/grand_24-panes.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_hotairballoon.png"
+  ],
+  "prompt": "Create a flat stained-glass puzzle DESIGN SHEET for Kanyon Yolculuğu (Canyon Journey). Image 1 is the old subject reference only; images 2 and 3 are style references for elegant smooth leaded panel compositions. Fresh mature composition, not the old abstract geometry. Portrait 3:4 canvas, ideally 1536x2048. One large oval panel nearly touching all canvas edges, plain pure white exterior, closed thick black rim, no decorative border frame. A majestic river canyon: tall sculpted sandstone cliffs on both sides, layered mesas receding into distance, a winding river widening toward the foreground, small clearly readable sailboat in the lower river, and a sun high above the gorge. Aim 125-145 CLOSED glass panes (required range 110-160), meaningful strata following the cliff shapes, large flowing river bands and curved sky bands. All subject rock strata, sun and boat use ONLY terracotta #C64C32 and golden ochre #E8AC32, alternating neighboring strips within each subject. All background sky and river panes use ONLY turquoise #239EA5 and deep blue #245B83, alternating bands. Exactly these FOUR solid flat colors inside the panel plus pure black lead. No white interior panes, no pale cream. Uniform smooth pure black lead about 1% of canvas width. Flat vector-like fills with ZERO shading, gradients, texture, highlights, shadows or photographic glass effects. Every line ends at another line or outer rim, every pane closed. Only separated T junctions, never X or four-way crossings; offset junctions at least 3% of panel width. Avoid tiny shards or narrow slivers: all panes broad and readable, area >= 1/1000 panel, width >= 3% except tips. Prefer complete alternating outline-to-outline strata in the cliffs and river bands, avoiding branching internal seams. Keep sculptural canyon silhouettes recognizable and clean. No text, labels, signature, grid or extraneous motifs. The image is a tracing-ready flat design, not finished textured glass.",
+  "revisionPrompt": "Revise this exact canyon design sheet, preserving its oval panel, canyon composition, sun, winding river, sailboat and approximately 130-150 panes. Remove ALL shading and gradients: each pane must be a single uniform solid color. EXACT colors: terracotta #C64C32 and ochre #E8AC32 ONLY for canyon, sun and boat; turquoise #239EA5 and blue #245B83 ONLY for river and sky. Pure white exterior, pure black uniformly thick lines about 1% canvas width. Simplify sailboat: remove narrow background slivers alongside mast, let broad sails share one black separator directly, eliminate tiny bow and deck spaces; use four broad closed warm panes total for sails and hull. Remove tiny rock-top tiles in distant canyon: merge into broad meaningful strata. Alternate warm rock stripes as much as possible; avoid adjacent same-color tiled pieces. Ensure every pane is closed, no loose ends, no X intersections; offset all four-way contacts into separated T junctions. No thin long slivers. Keep elegant smooth rock silhouettes and curved water bands. Flat vector coloring only, no rendered material, no shadows, no gradients, no texture, no text. Portrait 3:4."
+}

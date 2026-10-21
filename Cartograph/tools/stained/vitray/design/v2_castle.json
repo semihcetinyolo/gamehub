@@ -1,0 +1,36 @@
+{
+  "id": "v2_castle",
+  "name": "Masal Şatosu",
+  "scene": "A fairytale castle with three roofed towers and an arched gate rises above rolling hills beneath a flowing banded sky.",
+  "shape": "gothic arch",
+  "palette": [
+    [
+      "Golden ochre",
+      "#E8B43F"
+    ],
+    [
+      "Terracotta",
+      "#B94835"
+    ],
+    [
+      "Teal",
+      "#229C9A"
+    ],
+    [
+      "Deep blue",
+      "#215577"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 71–111 panes. Castle, roofs and closed gate use the warm subject pair; sky and hills use the cool background pair. Inspected both generations; regenerated once to remove warm sky/foreground colours and simplify the gate. Final colour-pair separation is correct and no obvious loose line ends were seen. Remaining doubts: subtle shading persists; small triangular eave panes, some same-colour neighbouring panes, and near-four-way contacts in the lower masonry and foreground require attention during tracing. Pane count and geometry have not been formally audited. No game catalogue or geometry files changed.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/castle-panes.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Create one flat stained-glass puzzle DESIGN SHEET for Masal Şatosu: a fairytale castle with exactly three roofed towers and one large arched gate. Portrait 3:4 canvas, ideally 1536x2048. Elegant mature leaded-panel composition inspired by the supplied lighthouse and fox style references; old castle reference gives subject only, completely redraw its simplistic geometry. Gothic arch silhouette centered almost touching canvas edges, pure white exterior, closed black rim. Tall central turret and two lower flanking towers, handsome tapering conical roofs, flowing sky bands and rolling hills. Target 71–111 closed panes, aim 85. FOUR flat solid colours ONLY: golden ochre #E8B43F and terracotta #B94835 exclusively for all castle/roof/gate panes; teal #229C9A and deep blue #215577 exclusively for sky and landscape. Alternate subject colours in broad crosswise roof and masonry bands; alternate background colours in flowing sky and hill strips. No masonry grid. All lead lines pure black, smooth uniform width about 1% canvas width. Every line ends at rim or junction; all panes closed. T junctions only, no X or four-way contacts, separate junctions by at least 3% panel width. No tiny panes or slivers, widths at least 3% panel width except tips. Make gate in subject colours with broad arch pieces; no tiny windows, ornament, flags or loose lines. NO texture, shading, gradients, highlights, bevel, text or decorative frame. Strictly flat solid fills, no pale or white interior panes. The whole arch is the picture.\nCRITICAL CORRECTION: The previous result wrongly copied the gold halo and gold clouds from the lighthouse reference, and shaded every pane. Remove ALL halos and suns, ALL gold clouds and ALL warm-coloured ground/path. Background sky, clouds, hills and foreground MUST be entirely teal and blue, alternating broad bands, NEVER gold or terracotta. Only the castle itself including its closed gate is gold/terracotta. Each pane is ONE mathematically constant flat colour, vector poster appearance, NO gradients whatsoever. Simplify the arch doorway to one terracotta arched door surrounded by gold wall; no central door seam and no busy radial arch stones. Keep about 85 panes total by using large clean alternating horizontal tower bands and flowing alternating background strips. Reduce subdivision around roof eaves to avoid tiny corner triangles. Use a gently pointed gothic arch outer silhouette. Reference the first generated castle composition but apply these corrections."
+}

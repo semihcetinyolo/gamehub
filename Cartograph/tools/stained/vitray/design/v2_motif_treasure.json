@@ -1,0 +1,37 @@
+{
+  "id": "v2_motif_treasure",
+  "name": "Hazine Sandığı",
+  "scene": "An antique domed treasure chest framed by sweeping ocean-blue and teal bands.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "burnt amber",
+      "#B95B24"
+    ],
+    [
+      "golden yellow",
+      "#E9B832"
+    ],
+    [
+      "ocean blue",
+      "#205A7B"
+    ],
+    [
+      "teal",
+      "#279D9A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 31–41 panes. Generated and visually reviewed twice; selected the simplified second design. Closed outlines and separated lid/body divisions improve readability. Remaining doubts: subtle fill shading persists; gold clasp and horizontal rail touch other gold panes and may merge during tracing; a few background junctions near the lower rim and chest corners require geometry review for close or four-way contacts. Subject/background color pairs are preserved. Design sheet only.",
+  "tool": "image_gen",
+  "prompt": "Create one flat stained-glass puzzle DESIGN SHEET for Hazine Sandığı (Treasure Chest). Portrait 3:4 canvas. Reference 1 is subject context only: replace its childish geometry with an elegant recognizable closed antique treasure chest with a domed lid, broad metal straps and a large central clasp. References 2 and 3 are style references for flowing leaded panel composition, but use fewer, bigger panes and absolutely flat fills, no shading. Center a round-arch silhouette nearly touching all canvas edges on pure white exterior. Thick closed black outer rim. Aim exactly 36 closed large panes total, within 31–41. The large chest occupies the middle two thirds of the panel, subtly three-quarter view with a rounded lid and readable front and right side. No coins, jewels, studs, text, keyhole dots or tiny decorative details. Divide chest into broad meaningful curved lid strips and body boards with integrated wide straps and one large closed clasp pane. Exactly four flat colors: chest subject exclusively burnt amber #B95B24 and rich golden yellow #E9B832, alternating adjacent subject panes; background exclusively deep ocean blue #205A7B and teal #279D9A alternating sweeping bands behind and below the chest. Never put warm colors in background or cool colors in chest. Use about 18 subject panes and 18 background panes. Background divisions flow gracefully around subject and reach rim as broad bands, not a grid. Uniform pure black lead about 1% canvas width, smooth intentional contours. Every line connects boundary to boundary; every pane closed; only well-separated three-way T junctions, no four-way contacts or X crossings. Offset background joins from subject joins. Avoid narrow strips, slivers and nearly parallel seams. All panes broad, no hairline bridges or tiny panes. No frame bands, gradients, texture, shadows, highlights, lettering, signature. This is a clean traceable flat color drawing of a sophisticated stained glass panel, not a photograph of finished glass. Preserve a strong treasury chest silhouette.\nREVISION: The prior output failed because of subtle gradients, too many panes and crossing strap/board seams. Redraw much simpler: 34 large panes total. Flat solid digital colors absolutely no variation within each fill. Use a front-facing chest, not perspective, to simplify topology. Rounded dome lid with 7 broad alternating amber/gold curved pieces; body with 7 broad alternating amber/gold boards, large integrated gold clasp occupying one amber board. Do not draw straps crossing board lines. All divisions stop in staggered T junctions. Chest total 16 panes; background 18 broad blue/teal wave bands. No four-way joins anywhere. Same subject color pair and background color pair. Color adjacent chest pieces alternately amber and gold, not runs of same color. No narrow decorative border on chest. Preserve elegant arched panel.",
+  "references": [
+    "assets/glass/motif_treasure-silhouette.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "generationAttempts": 2
+}

@@ -1,0 +1,53 @@
+{
+  "id": "vitray_mountainlake",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T09:26:15.016920+00:00",
+  "raw": "tools/stained/vitray/raw/vitray_mountainlake.png",
+  "rawSha256": "226c53a753eb34eab37ee715efd59e4694a8fc24e1e11cb9621fb021dcfe5227",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 84,
+      "donorPatches": 18,
+      "colour": 0,
+      "preservedFraction": 0.44293408943301465
+    },
+    {
+      "patchSize": 59,
+      "donorPatches": 36,
+      "colour": 1,
+      "preservedFraction": 0.38415191999994447
+    },
+    {
+      "patchSize": 94,
+      "donorPatches": 34,
+      "colour": 2,
+      "preservedFraction": 0.47856531259938145
+    },
+    {
+      "patchSize": 77,
+      "donorPatches": 40,
+      "colour": 3,
+      "preservedFraction": 0.45259495564354535
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "3d6f44919b143f9dacb41cb45fd698841e9c2d9e15d5b96ebd0b6e47ae595c9d",
+  "sha256": "c485ccf5bae8f2d6de2e9cb35883d41fa7857d55ef446875a306d809d7caeb0d",
+  "palette": [
+    "#febb05",
+    "#8b44d0",
+    "#06c6d6",
+    "#09591a"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 100,
+    "total": 100,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/vitray_mountainlake.webp"
+}

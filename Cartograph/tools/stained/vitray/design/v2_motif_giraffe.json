@@ -1,0 +1,37 @@
+{
+  "id": "v2_motif_giraffe",
+  "name": "Zürafa",
+  "scene": "An elegant long-necked giraffe rises among flowing savanna sky bands and stylised acacia canopies.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Golden ochre",
+      "#E9AD32"
+    ],
+    [
+      "Burnt terracotta",
+      "#A6472D"
+    ],
+    [
+      "Turquoise",
+      "#299E9A"
+    ],
+    [
+      "Deep blue",
+      "#235879"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 76–116 panes. Inspected both generations; revised once to simplify narrow acacia branches and crowded contacts. Subject and background colour pairs remain distinct, exterior white, no obvious open line ends. Remaining doubts: slight tonal variation persists despite flat-fill request; some same-colour neighbours, crowded ear/forehead contacts and a few near-four-way patch junctions require checking during tracing. Design sheet only; geometry and pane count are not certified.",
+  "tool": "image_gen",
+  "prompt": "Create one Cartograph stained-glass DESIGN SHEET, portrait 3:4 canvas. References: first image old giraffe subject only, second fox and third lighthouse are elegant leaded panel composition references. Fresh graceful giraffe with recognisable natural long neck, two ossicones, broad ears and long muzzle in three-quarter profile, shoulder and upper torso at bottom, in a tall OVAL panel almost touching canvas edges. Pure white exterior. Aim 90 closed sizeable panes total (allowed 76–116), about 40 animal panes and 50 background panes. Mature elegant stained-glass craft composition, NOT the childish anatomy of first reference. Flat solid vector-like fills ONLY, absolutely no glass texture, gradients or shadows, lighting or highlights. EXACTLY four glass colors: golden ochre #E9AD32 and burnt terracotta #A6472D exclusively in giraffe; turquoise #299E9A and deep blue #235879 exclusively in background. Animal patch motifs form broad irregular alternating gold/terracotta cross-neck bands with occasional enclosed terracotta patches, retain beautiful giraffe contours. Eye is one clearly visible terracotta round pane inside golden face, no black pupil or extra dots. Background flowing savanna sky bands and generous stylized acacia-leaf arcs exclusively alternating blue/turquoise, arranged around giraffe. Black lead pure #000000 uniform approximately 1% canvas width, black closed outer rim. Every line must terminate at rim or existing line; no loose ends; ONLY separated T junctions, no X crossings or four-way contacts. Junctions separated at least 3% panel width. No thin slivers, tiny panes, closely parallel lines, narrow mane strips, decorative frame, text or signature. Prefer simple continuous cross-subject bands to allow two-color alternation; do not split bands with perpendicular inner seams. Exactly four flat colors inside panel, white only outside. Output just the finished design image.\nREVISION of the last image: Preserve oval composition and giraffe pose, but remove ALL shading. Each pane must be a completely uniform RGB fill with no tonal variation whatsoever. Simplify acacia trees: replace thin trunks and branch triangles with broad flowing sky/leaf panes, no narrow strips. Remove four-way crossings at neck patches: use whole uninterrupted gold/terracotta bands across neck with staggered widely separated T contacts only at outline. Simplify crowded forehead and ear bases. Maintain 76–116 large closed panes using additional broad alternating background bands where needed. Four solid paint-bucket colors, solid white exterior. This is a tracing diagram, not a textured illustration.",
+  "references": [
+    "assets/glass/motif_giraffe-junctions.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "generationAttempts": 2
+}

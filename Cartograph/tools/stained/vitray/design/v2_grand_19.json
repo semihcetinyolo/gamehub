@@ -1,0 +1,41 @@
+{
+  "id": "v2_grand_19",
+  "name": "Savanda Buluşma",
+  "scene": "A giraffe, an elephant and a long-legged bird gather beside an acacia tree in a layered savanna landscape.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "terracotta",
+      "#C85B32"
+    ],
+    [
+      "golden ochre",
+      "#E9B83F"
+    ],
+    [
+      "teal",
+      "#238B87"
+    ],
+    [
+      "deep blue",
+      "#244A70"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    110,
+    160
+  ],
+  "notes": "Design sheet only. Reviewed both generations; second removes the loose giraffe mouth stroke, simplifies acacia branches and makes bird legs consistently warm. Warm pair reserved for animals; cool pair for landscape. Remaining doubts: subtle tonal variation persists instead of perfectly flat fills; some same-colour adjacent animal panes may merge during tracing; possible four-way contacts at acacia trunk fork and elephant front foot/foreground need geometry review; narrow legs, branch gaps and pointed foreground pieces need width checks. Pane count target is not yet verified by tracing. No production geometry audit or game import performed.",
+  "tool": "image_gen",
+  "generationAttempts": 2,
+  "references": [
+    "assets/glass/grand_19-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create one flat stained-glass puzzle DESIGN SHEET for Savanda Bulusma (savanna gathering), id v2_grand_19. Portrait 3:4 canvas. Use attached old artwork only to identify subjects: giraffe, elephant, small long-legged savanna bird and acacia tree. Completely redesign its crude geometry. Other attached fox and lighthouse are elegant lead-line composition style references, NOT subjects to copy. An elegant round-arched panel filling nearly the whole canvas, pure white exterior, closed thick black rim, no decorative border frame. Tall graceful giraffe on right looking left, recognizable elephant lower left with curved trunk and broad ear, small long-legged bird lower right, spreading acacia behind left, layered savanna hills and sweeping sky bands. Rich balanced real artisan stained-glass composition rendered as strictly flat vector-like fills, no glass texture. Aim 125-145 closed generously sized panes (required range 110-160), roughly 60 animal pieces and 70 landscape pieces. Exactly FOUR flat fill colours: terracotta #C85B32 and golden ochre #E9B83F exclusively for all three animals; teal #238B87 and deep blue #244A70 exclusively for ALL background including sky, acacia, land and spaces between legs. No additional fill colours. Subject pieces alternate terracotta and ochre; background bands alternate teal and blue. Animal divisions should be smooth full-width curved bands, contour-to-contour, to enable two-colour alternation; giraffe patches can be large closed ochre islands in terracotta bands. Visible closed round eyes using the opposite SUBJECT colour, no tiny black dots. Background divisions follow acacia canopy, trunk, land contours and sky arcs, never arbitrary grid. Black lead uniform ~1% canvas width, clean smooth curves; every stroke ends on rim or another seam. Only well-separated T junctions; no X or 4-way contacts, no loose strokes. Offset nearby junctions by at least 3% panel width. Broad panes at least 3% panel width except tips, no slivers or tiny details. Preserve strong clear animal silhouettes. Flat solid colours ONLY, no shading gradients highlights texture, no text or labels. White only OUTSIDE panel. Output only the design image. CORRECTION to the attached draft: retain the animals, composition and round arch, but remove ALL shading and gradients: each pane must have a completely uniform solid fill, same exact hex everywhere. Remove the giraffe mouth stroke entirely, no loose lines. Rebuild acacia as broad simple canopy lobes and one broad trunk with only two broad branches, NO narrow branch network, no crossing lines in trunk. Remove tiny triangles and slivers especially at giraffe back and legs. All seams must meet at spaced T junctions, NEVER X crossings (including elephant feet and foreground). Simplify narrow bird legs to two broad closed pieces. Ensure exactly four flat colours and no pink foot. Subject internal broad bands should alternate ochre and terracotta, avoiding same-colour neighbours where possible. Target 110-160 total panes."
+}

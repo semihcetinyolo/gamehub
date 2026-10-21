@@ -1,0 +1,46 @@
+{
+  "id": "v2_motif_octopus",
+  "name": "Ahtapot",
+  "scene": "A coral and gold octopus curls its arms through blue and turquoise ocean currents within an oval stained-glass panel.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Coral",
+      "#D95B3F"
+    ],
+    [
+      "Golden ochre",
+      "#E9AF35"
+    ],
+    [
+      "Deep ocean blue",
+      "#176184"
+    ],
+    [
+      "Turquoise",
+      "#36B2B0"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Second generation selected after one corrective revision and visual inspection. Subject/background colour pairs are separated; eye panes are gold. Remaining doubts: only seven distinct curled arm tips are readily countable; crowded joins near the face and arm roots, narrow wedges at some curls and rim contacts, and subtle fill variation remain. Some adjacent panes repeat colours. Raster estimate is 152 coloured components of at least 120 pixels, above the 94–134 target; this is not a validated traced pane count. Simplify background subdivisions during tracing and inspect all suspected multiway contacts while preserving subject contours. Design sheet only, not production geometry or finished glass.",
+  "targetPanes": [
+    94,
+    134
+  ],
+  "generation": {
+    "tool": "image_gen",
+    "attempts": 2,
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15e46-2d42-7823-b8d4-499fd2cee6dc/exec-17b90796-098a-42eb-be34-a2ad8ec1a818.png",
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png",
+      "tools/stained/vitray/design/vitray_lighthouse.png",
+      "assets/glass/motif_octopus-contacts.webp"
+    ],
+    "prompt": "Create one flat stained-glass DESIGN SHEET for Cartograph level v2_motif_octopus, title Ahtapot (NO text rendered). Portrait 3:4 canvas, ideally 1536x2048. Reference images fox and lighthouse demonstrate elegant leaded panel composition only. Old octopus image supplies subject only: completely redraw it as a graceful natural octopus with bulbous mantle and EIGHT individually readable, broad curling arms, not a childish mascot. Choose a tall OVAL panel centered and nearly touching canvas edges, thick closed pure black rim, pure white exterior. Aim 110 closed panes, within 94-134: about 65 broad transverse flowing bands across the octopus arms and mantle, and 45 large organic ocean-current bands in background. Make arms meander without crossing themselves or each other, ample visible water gaps, organic elegant Art Nouveau stained-glass craftsmanship. Flat solid fills EXACTLY FOUR colours: subject coral #D95B3F and golden ochre #E9AF35; background deep ocean blue #176184 and turquoise #36B2B0. Alternate coral/gold across adjacent subject bands; alternate blue/turquoise in water. Never put subject colours in water or background colours in octopus, including eyes: small gold closed eye panes in coral face, no black pupil dots. Only uniformly thick pure black lead about 1 percent canvas width. All lines must connect rim/outline/junction to junction, all panes closed. Only well-spaced T junctions, NEVER X or four-way joins; stagger band junctions across outlines. At least 3 percent panel width between junctions and within panes except tapered tips. No tiny suckers, no dots, no loose lines, no slivers, no decorative frame. No shading, gradients, glass texture, lighting, highlights, text, labels or signature. Preserve rich elegant recognizable octopus silhouette, with mixed pane sizes and deliberate flowing curves. Image is a clean tracing source, not finished textured glass.",
+    "revisionPrompt": "Create one flat stained-glass DESIGN SHEET for Cartograph level v2_motif_octopus, title Ahtapot (NO text rendered). Portrait 3:4 canvas, ideally 1536x2048. Reference images fox and lighthouse demonstrate elegant leaded panel composition only. Old octopus image supplies subject only: completely redraw it as a graceful natural octopus with bulbous mantle and EIGHT individually readable, broad curling arms, not a childish mascot. Choose a tall OVAL panel centered and nearly touching canvas edges, thick closed pure black rim, pure white exterior. Aim 110 closed panes, within 94-134: about 65 broad transverse flowing bands across the octopus arms and mantle, and 45 large organic ocean-current bands in background. Make arms meander without crossing themselves or each other, ample visible water gaps, organic elegant Art Nouveau stained-glass craftsmanship. Flat solid fills EXACTLY FOUR colours: subject coral #D95B3F and golden ochre #E9AF35; background deep ocean blue #176184 and turquoise #36B2B0. Alternate coral/gold across adjacent subject bands; alternate blue/turquoise in water. Never put subject colours in water or background colours in octopus, including eyes: small gold closed eye panes in coral face, no black pupil dots. Only uniformly thick pure black lead about 1 percent canvas width. All lines must connect rim/outline/junction to junction, all panes closed. Only well-spaced T junctions, NEVER X or four-way joins; stagger band junctions across outlines. At least 3 percent panel width between junctions and within panes except tapered tips. No tiny suckers, no dots, no loose lines, no slivers, no decorative frame. No shading, gradients, glass texture, lighting, highlights, text, labels or signature. Preserve rich elegant recognizable octopus silhouette, with mixed pane sizes and deliberate flowing curves. Image is a clean tracing source, not finished textured glass.\nREVISION: The attached first octopus design is the edit target. Preserve oval, colour pairs, and graceful composition. Correct it: completely flat solid colour interiors, NO shading at all. Increase to about 110 CLOSED panes by adding well-spaced transverse bands across broad arms and 12 extra flowing water bands. Give the animal eight separately visible curled arms (first draft appears to have seven). Remove tiny triangular wedges around eyes and arm roots. Avoid arm contact with rim: keep broad water gaps. Remove all loose-ended black strokes in spiral tips. Every new band cuts completely across its arm from outline to outline. Stagger every background join at least 3 percent panel width away from subject band joins, eliminate any four-way contacts. Eyes simple gold ovals entirely inside coral face. Do not add pupils.",
+    "visuallyInspected": true
+  }
+}

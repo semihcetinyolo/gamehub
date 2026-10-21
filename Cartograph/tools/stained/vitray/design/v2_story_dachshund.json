@@ -1,0 +1,37 @@
+{
+  "id": "v2_story_dachshund",
+  "name": "Parkta Gezinti",
+  "scene": "A long-bodied dachshund walks through a park of broad flowing landscape bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt orange",
+      "#C96028"
+    ],
+    [
+      "golden ochre",
+      "#E6AE35"
+    ],
+    [
+      "teal",
+      "#237A70"
+    ],
+    [
+      "sky blue",
+      "#65B7D2"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 35–45 panes. Oval composition with orange/ochre dachshund and teal/blue park background; no subject mask. Generated with the fox design as style reference and the old dachshund level as subject reference for the first attempt. Regenerated once after visual review to simplify the excessive first pane count and request flatter fills and an opaque white exterior. Final image visually reviewed: semantic colour pairs and recognizable silhouette are retained. Remaining issues for tracing review: slight fill shading persists; short dangling mouth and cheek strokes, a colour transition without a full separator in the rear leg, and crowded or potentially four-way contacts in the lower background require cleanup. Some same-colour neighbours may merge. This is a design sheet, not audited playable geometry or finished glass artwork.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "styleReferences": [
+      "tools/stained/vitray/design/vitray_fox.png"
+    ],
+    "subjectReference": "assets/glass/story_dachshund-junctions.webp"
+  }
+}

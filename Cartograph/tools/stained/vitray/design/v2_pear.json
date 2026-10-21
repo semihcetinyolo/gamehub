@@ -1,0 +1,29 @@
+{
+  "id": "v2_pear",
+  "name": "Altın Armut",
+  "scene": "A golden pear with a green leaf stands within an oval panel of flowing blue and green garden bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden yellow",
+      "#E9B82F"
+    ],
+    [
+      "rich amber",
+      "#C47C20"
+    ],
+    [
+      "emerald green",
+      "#287654"
+    ],
+    [
+      "blue",
+      "#397DA8"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 32–42 panes. Pear and stem use the gold/amber subject pair; the green leaf is treated as botanical background foliage with the blue/green pair. Visually checked after one regeneration: fruit now uses broad alternating outline-to-outline curved bands, closed seams and an opaque white exterior. Remaining doubts: subtle generated fill shading persists; a few neighbouring background panes share a colour and may merge during tracing; close junctions at the leaf/stem attachment and right pear shoulder require geometry-stage validation. No subject mask supplied. Design sheet only; not traced or published."
+}

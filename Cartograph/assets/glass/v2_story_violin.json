@@ -1,0 +1,53 @@
+{
+  "id": "v2_story_violin",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:34:51.064333+00:00",
+  "raw": "tools/stained/vitray/raw/v2_story_violin.png",
+  "rawSha256": "a1679748baf355fc8f9623721587c4b5a5c84c07c45206feab76e085b0ce29cf",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 72,
+      "donorPatches": 39,
+      "colour": 0,
+      "preservedFraction": 0.4174613729656413
+    },
+    {
+      "patchSize": 73,
+      "donorPatches": 32,
+      "colour": 1,
+      "preservedFraction": 0.46282273625132914
+    },
+    {
+      "patchSize": 76,
+      "donorPatches": 53,
+      "colour": 2,
+      "preservedFraction": 0.42630223410121926
+    },
+    {
+      "patchSize": 114,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5416097429492076
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "6d3fc47e0a340c065ef8568248d18256aed260b66fcd9872474c35fadd1774a7",
+  "sha256": "e4ba201ebf5233a9e4cc2f6a85404db3dbe61bef85601d87b65d3f61e1e78911",
+  "palette": [
+    "#d84701",
+    "#fdda14",
+    "#003774",
+    "#0dbcb9"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 105,
+    "total": 105,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_story_violin.webp"
+}

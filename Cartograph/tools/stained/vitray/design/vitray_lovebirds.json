@@ -1,0 +1,78 @@
+{
+  "id": "vitray_lovebirds",
+  "name": "Sevda Kuşu",
+  "scene": "A coral songbird perches on a leafy branch within an oval of flowing coloured sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Warm coral",
+      "#DC6B62"
+    ],
+    [
+      "Deep teal",
+      "#268B98"
+    ],
+    [
+      "Leaf green",
+      "#78A346"
+    ],
+    [
+      "Golden yellow",
+      "#E2B742"
+    ]
+  ],
+  "notes": "Invented four-colour palette for the uncoloured reference. The supplied reference shows one bird, so the single-bird composition is preserved despite the plural ID. Reviewed after one regeneration. Remaining concerns: several leaf-tip/background and wing junctions remain tightly spaced or four-way; some same-colour neighbours and slight raster fill variation. Trace review required.",
+  "tool": "image_gen",
+  "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d79-ddf0-75b0-8c24-eceb8897ba20/exec-1a513303-d524-4ee5-9af0-5fe9803bb21b.png",
+  "references": [
+    "tools/stained/vitray/refs/vitray_lovebirds.jpg"
+  ],
+  "prompt": "Create ONE flat Cartograph stained-glass puzzle DESIGN SHEET, a fresh composition inspired by the reference photograph. Portrait 3:4 canvas, preferably 1536x2048; centered panel nearly touching canvas edges on pure white exterior, one thick closed black outer rim, no decorative border frame. EXACTLY FOUR flat solid coloured fills specified below; no white/near-white or cream inside panel. Pure black smooth UNIFORM lead width 1% of canvas width, including eye rings and details. NO texture, shading, gradients, highlights, bubbles, dots, hatching, text or signatures. Target 85-100 panes, allowable 70-130 closed mixed-size panes: meaningful subject parts and organic background waves/bands/leaves, never arbitrary grids. Every line must run from rim/junction to rim/junction; no loose line ends. ONLY separated T-junctions: at most three panes meet at a point, never X or converging fan junctions. Offset neighbouring junctions by at least 3% panel width. All panes at least 3% panel width except pointed tips, area >=1/1000 panel area. No close parallel sliver strips or nearly touching lines, meeting angles >=30 degrees. Keep subject silhouette clear, smooth and recognizable; eyes are clearly visible closed circular COLOURED panes, no black pupil dots. Adjacent panes should have different palette colours where possible. Drop hands, walls, stands, window and photographic setting. Tracing-ready flat illustration, not glass rendering.\nPanel: tall OVAL. Reference is uncoloured line art showing ONE perched bird; preserve its single-bird subject, right-facing rounded songbird with long tail diagonally toward lower left, curving branch and broad leaves around it. Invented harmonious FOUR-colour palette: warm coral #DC6B62, deep teal #268B98, leaf green #78A346, golden yellow #E2B742. Coral face/breast and golden accents, teal and green broad wing feathers, leafy green/gold branch against alternating teal/coral/gold sky bands. ONE simple circular teal eye pane surrounded by broad face; no pupil dot. One broad triangular beak, no mouth seam. About 80 panes total: 18 bird, 25 leaves/branch, 37 background sky pieces in gentle organic bands. Closed broad legs meeting branch, no thin toes. Leaf veins and feather divisions must land at offset T junctions, never converge with background divisions at tips. No thin strips at the rim. No white inside oval. All interior colours perfectly flat uniform solid RGB, no highlights, no shade, no gradient, no extra colours. Omit the screenshot UI and rectangular frame.\nREGENERATION: simplify tail to TWO broad panes and end wing feather divisions widely apart on the outline, not all at the tail root. Only 6 broad wing feathers. Use ONE broad beak without centre split. Leaves have at most ONE curved divider each, never two or three converging at a tip. Offset sky boundaries at every leaf tip. Keep the same reference-inspired oval single-bird composition and four-colour palette. Use separated readable T junctions only, and exact solid flat fill without any gradient or highlights.",
+  "attempts": 2,
+  "rasterReview": {
+    "size": [
+      1086,
+      1448
+    ],
+    "enclosedComponentsOver20px": 87,
+    "smallComponentsBelowOneThousandth": 1,
+    "method": "Approximate non-black connected components; not a vector geometry audit.",
+    "paneCountWithinRequestedRange": true
+  },
+  "sha256": "46715d032157c3474cac2b816dbdc8e0ba7584f4eef07dc67b3689ef975e034a",
+  "reviewStatus": "needs-tracing-review",
+  "subjectMask": {
+    "id": "vitray_lovebirds",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d79-ddf0-75b0-8c24-eceb8897ba20/exec-b2105536-b49a-4005-ab54-4b66853a0183.png",
+    "prompts": [
+      "Edit the supplied finished design sheet into a SUBJECT SEGMENTATION MASK. Preserve EXACT original canvas dimensions 1086x1448, portrait 3:4 framing, all pane boundaries, panel silhouette and placement. This is a precise recolouring operation, never redesign or shift any shape. Every pane belonging to the named animal subject must be solid PURE BLACK #000000, including its eyes, beak, feet, fins, every internal patch and all feather patterns regardless of original colour. Every background pane and exterior must be solid PURE WHITE #FFFFFF. Keep all original black lead lines black, including lines between subject panes (they disappear into the black subject). NO white eye holes, no white internal subject seams. No grey, colour, shading, texture or new lines. Return only the edited mask. SUBJECT: the entire SINGLE coral bird: head, teal eye, golden beak and cheek, gold collar, coral neck/breast/belly, every green/teal/gold wing feather, both long tail panels extending to lower left, and its gold leg wrapped around branch. All these are BLACK. BACKGROUND: green branch, every surrounding green leaf, all teal/coral/yellow sky bands are WHITE. Do NOT use original colour to classify: green wing feathers are subject but green leaves are background. Keep subject as solid black silhouette with no internal white seams, no white eye hole. Preserve every original boundary and framing."
+    ],
+    "size": [
+      1086,
+      1448
+    ],
+    "file": "tools/stained/vitray/design/vitray_lovebirds.subject.png",
+    "sourceSha256": "46715d032157c3474cac2b816dbdc8e0ba7584f4eef07dc67b3689ef975e034a",
+    "sha256": "a605fa32b2113b295c7bcc367d1512870c675f99e5b033163c450f0ff24d7eda",
+    "tool": "image_gen",
+    "review": "Visually inspected for subject coverage and approximate alignment; white seams may remain inside black subject.",
+    "spotChecks": [
+      {
+        "seed": [
+          770,
+          375
+        ],
+        "blackFraction": 1.0,
+        "blackMajority": true
+      },
+      {
+        "seed": [
+          660,
+          905
+        ],
+        "blackFraction": 0.999,
+        "blackMajority": true
+      }
+    ]
+  }
+}

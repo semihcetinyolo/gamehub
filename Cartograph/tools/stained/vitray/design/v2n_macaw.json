@@ -1,0 +1,42 @@
+{
+  "id": "v2n_macaw",
+  "name": "Ara Papağanı",
+  "scene": "A macaw perched on a broad diagonal branch inside an oval stained-glass panel.",
+  "shape": "oval",
+  "palette": [
+    [
+      "scarlet",
+      "#D84035"
+    ],
+    [
+      "golden yellow",
+      "#EAB83D"
+    ],
+    [
+      "deep teal",
+      "#17766D"
+    ],
+    [
+      "sky blue",
+      "#56ADCF"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; not traced, validated as playable geometry, or published. Inspected both generations and regenerated once as required. Final image retains recognizable macaw contours and uses warm subject / cool background pairs, including a scarlet eye. Remaining doubts: approximately 53 closed chromatic components counted above 200 pixels, exceeding targetPanes [28,45]; subtle tonal shading rather than perfectly flat fills; several same-colour neighbours (beak/face, wing, branch/background) may merge during tracing; some crowded junctions around shoulder and feather tips need geometry review. No obvious loose line ends. Not a fully compliant final tracing guide.",
+  "targetPanes": [
+    28,
+    45
+  ],
+  "observedPaneCount": 53,
+  "generation": {
+    "tool": "image_gen",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png"
+    ],
+    "prompt": "Create a fresh Cartograph stained-glass puzzle DESIGN SHEET of a macaw on a branch, portrait 3:4 canvas. Attached fox is STYLE REFERENCE only: elegant traditional leaded panel with beautifully flowing meaningful contours; draw a MACAW instead, much simpler, NOT cartoon. Tall OVAL silhouette nearly touching canvas edges, closed thick pure black outer lead, opaque PURE WHITE exterior. Exactly 34 closed glass panes total (allowed 28–45), about 18 bird panes and 16 background/branch panes. Bold recognizable macaw facing left, large hooked beak, one clearly visible circular eye pane, proud curved head, folded wing with several broad flowing feather bands, long graceful tapering tail, perched on one substantial diagonal branch. Anatomically elegant; no tiny toes or decorative marks. Flat solid fills ONLY, exactly FOUR chromatic colors: scarlet #D84035 and golden yellow #EAB83D for ALL bird panes including eye/beak (alternate these on neighboring bird panes); deep teal #17766D and sky blue #56ADCF for ALL background AND branch panes (alternate these). Do not borrow colors between pairs. Background is calm broad sweeping bands, no foliage clutter, no border ring. Lead uniformly pure black about 1 percent canvas width. Every separator must join another separator, subject outline or rim: no dangling strokes. Only widely separated T junctions, NEVER X crossings or four-way points. Neighboring junctions separated at least 3 percent panel width; broad panes no slivers or narrow parallel gaps, no tiny panes. Bird subdivisions mainly go across whole forms outline to outline to allow alternating colors. No gradients, texture, shading, highlights, white glass, text, labels or signature. Render as refined flat tracing-ready leaded glass design, 1536x2048 or closest 3:4 portrait.\nCRITICAL REVISION: previous attempt was much too busy, over 50 panes. Use ONLY 30 panes, with 16 subject panes and 14 background/branch panes. SIMPLIFY DRAMATICALLY: wing has only FOUR large feather panes, tail only THREE long broad panes, head and chest about SEVEN panes including a SCARLET circular eye within GOLD face (no pupil, no black dot, no teal eye), feet TWO large panes. Background only FOURTEEN large calm regions including the broad branch, no smaller subdivisions. No scalloped stacks of little feather tips. Strict flat uniform solid hex fills, NO tonal shading whatsoever. Maintain natural elegant macaw silhouette. Count all pieces including eye. Absolute maximum 45 pieces."
+  }
+}

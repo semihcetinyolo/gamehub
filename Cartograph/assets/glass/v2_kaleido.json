@@ -1,0 +1,53 @@
+{
+  "id": "v2_kaleido",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:02:52.301727+00:00",
+  "raw": "tools/stained/vitray/raw/v2_kaleido.png",
+  "rawSha256": "7a27bce2a9802b7ae9b2c94b8b111839f3cc182ac913fc8633814a7ef313459c",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 92,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5395191757280977
+    },
+    {
+      "patchSize": 108,
+      "donorPatches": 91,
+      "colour": 1,
+      "preservedFraction": 0.5646705192339553
+    },
+    {
+      "patchSize": 134,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6711336539497998
+    },
+    {
+      "patchSize": 105,
+      "donorPatches": 53,
+      "colour": 3,
+      "preservedFraction": 0.6033121269200059
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "7fe9b3a3b737dc5c283438908b14a8640b7731bb1e38acea96f010b41d0813be",
+  "sha256": "9dec447ad3deb3b43d91a2b6177d0f0e141b6b2bdd7ab9c6f45dbc5f88c8a374",
+  "palette": [
+    "#eb3717",
+    "#fab708",
+    "#07a1e3",
+    "#016261"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 39,
+    "total": 39,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_kaleido.webp"
+}

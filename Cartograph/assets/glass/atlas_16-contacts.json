@@ -1,0 +1,53 @@
+{
+  "id": "atlas_16",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-21T08:08:56.963932+00:00",
+  "source": "assets/glass/atlas_16-junctions.webp",
+  "sourceSha256": "e0836705d20818eb541c235a45c09a0036e5bbfcd80f40e2949176163e32216f",
+  "sourceGeometrySha256": "74a536d15be19254a1ea9cf3c8f263db5a9e4fa11ec7d5afed9d1a06326cf1c9",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 42,
+      "donorPatches": 11,
+      "colour": 0,
+      "preservedFraction": 0.2917329768689836
+    },
+    {
+      "patchSize": 37,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.2307552241953157
+    },
+    {
+      "patchSize": 47,
+      "donorPatches": 22,
+      "colour": 2,
+      "preservedFraction": 0.252194917758273
+    },
+    {
+      "patchSize": 44,
+      "donorPatches": 23,
+      "colour": 3,
+      "preservedFraction": 0.26048404849851176
+    }
+  ],
+  "size": [
+    883,
+    653
+  ],
+  "guide": "d6d1edc5dc7e5702671e6406e25397cf3599627fac965e182d2f19acf2064e7a",
+  "sha256": "55c2aa88dea57e402fff4474d3e322ab453f2e693f54a25cd203d13f3d533849",
+  "palette": [
+    "#16a1db",
+    "#e91b2b",
+    "#fbe345",
+    "#56a22a"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 32,
+    "total": 32,
+    "mismatches": []
+  }
+}

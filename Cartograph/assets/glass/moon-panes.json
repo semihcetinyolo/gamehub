@@ -1,0 +1,53 @@
+{
+  "id": "moon",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T14:34:52.064592+00:00",
+  "source": "assets/glass/moon-junction-pilot.webp",
+  "sourceSha256": "7b66b7035ecdc7b189e4d9d5919220a889b5408aea9071000cf6a0e04afe8300",
+  "sourceGeometrySha256": "ec44276b5c73f93a18bddd4ce7ec2a903daf30a0ffcdece77778a46dccb17509",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 63,
+      "donorPatches": 36,
+      "colour": 0,
+      "preservedFraction": 0.4074092797368451
+    },
+    {
+      "patchSize": 97,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5737451048438721
+    },
+    {
+      "patchSize": 90,
+      "donorPatches": 62,
+      "colour": 2,
+      "preservedFraction": 0.46228634400252266
+    },
+    {
+      "patchSize": 62,
+      "donorPatches": 12,
+      "colour": 3,
+      "preservedFraction": 0.45930396360995696
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "f71e13efba619bb5b3a73e5e8257fb911287ca66a284ac30575c13e27cf6f432",
+  "sha256": "6d3f9125a9386424ce83e08310843cc2341c516c1ca9ff77726d2bd31d8d5f8d",
+  "palette": [
+    "#0a2a71",
+    "#bbc0c5",
+    "#f4be1b",
+    "#067773"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 19,
+    "total": 19,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "levels": [
+    {
+      "id": "vitray_whaletail",
+      "name": "Balina Kuyruğu",
+      "hard": false,
+      "panes": 105,
+      "source": "user photo 2026-10-21 10.53.52 (whale tail above waves)"
+    },
+    {
+      "id": "vitray_angelfish",
+      "name": "Melek Balığı",
+      "hard": false,
+      "panes": 80,
+      "source": "user photo 2026-10-21 10.51.29 (round panel, angelfish in sea grass)"
+    },
+    {
+      "id": "vitray_bluebird",
+      "name": "Mavi Kuş",
+      "hard": false,
+      "panes": 58,
+      "source": "https://tr.pinterest.com/pin/1043287069942022802/"
+    },
+    {
+      "id": "vitray_butterfly",
+      "name": "Kelebek",
+      "hard": false,
+      "panes": 103,
+      "source": "https://www.pinterest.com/pin/522910206735397531/"
+    },
+    {
+      "id": "vitray_cat",
+      "name": "Kedi",
+      "hard": false,
+      "panes": 97,
+      "source": "https://www.pinterest.com/pin/315463148917335928/"
+    },
+    {
+      "id": "vitray_deer",
+      "name": "Geyik",
+      "hard": false,
+      "panes": 85,
+      "source": "https://www.pinterest.com/pin/116389971601361998/"
+    },
+    {
+      "id": "vitray_dragonfly",
+      "name": "Yusufçuk",
+      "hard": false,
+      "panes": 56,
+      "source": "https://www.pinterest.com/pin/422281199792022/"
+    },
+    {
+      "id": "vitray_fox",
+      "name": "Tilki",
+      "hard": false,
+      "panes": 94,
+      "source": "https://tr.pinterest.com/pin/76772368644077171/"
+    },
+    {
+      "id": "vitray_heron",
+      "name": "Balıkçıl",
+      "hard": true,
+      "panes": 118,
+      "source": "user photo 2026-10-21 10.51.31 (heron, irises, dogwood)"
+    },
+    {
+      "id": "vitray_horse",
+      "name": "Şahlanan At",
+      "hard": false,
+      "panes": 79,
+      "source": "https://www.pinterest.com/pin/351912466157028/"
+    },
+    {
+      "id": "vitray_hotairballoon",
+      "name": "Sıcak Hava Balonu",
+      "hard": false,
+      "panes": 58,
+      "source": "https://www.pinterest.com/pin/797840890264095765/"
+    },
+    {
+      "id": "vitray_hummingbird",
+      "name": "Sinek Kuşu",
+      "hard": false,
+      "panes": 91,
+      "source": "https://www.pinterest.com/pin/449163762811982977/"
+    },
+    {
+      "id": "vitray_kingfisher",
+      "name": "Yalıçapkını",
+      "hard": true,
+      "panes": 135,
+      "source": "https://tr.pinterest.com/pin/516788126012184055/"
+    },
+    {
+      "id": "vitray_koi",
+      "name": "Koi Balıkları",
+      "hard": true,
+      "panes": 108,
+      "source": "https://tr.pinterest.com/pin/1087830485015604306/"
+    },
+    {
+      "id": "vitray_lighthouse",
+      "name": "Deniz Feneri",
+      "hard": false,
+      "panes": 112,
+      "source": "https://tr.pinterest.com/pin/598275131786107747/"
+    },
+    {
+      "id": "vitray_lilies",
+      "name": "Zambaklar",
+      "hard": false,
+      "panes": 79,
+      "source": "https://tr.pinterest.com/pin/588775351325667944/"
+    },
+    {
+      "id": "vitray_lovebirds",
+      "name": "Sevda Kuşu",
+      "hard": false,
+      "panes": 63,
+      "source": "https://tr.pinterest.com/pin/328129522874065779/"
+    },
+    {
+      "id": "vitray_mountainlake",
+      "name": "Dağ Gölü",
+      "hard": false,
+      "panes": 100,
+      "source": "https://www.pinterest.com/pin/88523948902121015/"
+    },
+    {
+      "id": "vitray_owl",
+      "name": "Baykuş",
+      "hard": false,
+      "panes": 134,
+      "source": "https://www.pinterest.com/pin/70157706733871420/"
+    },
+    {
+      "id": "vitray_poppies",
+      "name": "Gelincikler",
+      "hard": false,
+      "panes": 76,
+      "source": "https://www.pinterest.com/pin/259238522272518551/"
+    },
+    {
+      "id": "vitray_sunflower",
+      "name": "Ayçiçeği",
+      "hard": false,
+      "panes": 62,
+      "source": "https://www.pinterest.com/pin/1759287346321915/"
+    },
+    {
+      "id": "vitray_sunmoon",
+      "name": "Güneş ve Ay",
+      "hard": false,
+      "panes": 66,
+      "source": "https://tr.pinterest.com/pin/87960998968093687/"
+    },
+    {
+      "id": "vitray_sunsetsail",
+      "name": "Günbatımı Yelkenlisi",
+      "hard": false,
+      "panes": 63,
+      "source": "https://tr.pinterest.com/pin/4592334726109709696/"
+    },
+    {
+      "id": "vitray_treeoflife",
+      "name": "Hayat Ağacı",
+      "hard": false,
+      "panes": 64,
+      "source": "https://www.pinterest.com/pin/816136763700415653/"
+    },
+    {
+      "id": "vitray_umbrella",
+      "name": "Altın Şemsiye",
+      "hard": false,
+      "panes": 82,
+      "source": "https://tr.pinterest.com/pin/859132066460074409/"
+    }
+  ]
+}

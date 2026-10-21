@@ -1,0 +1,41 @@
+{
+  "id": "v2_story_giraffe",
+  "name": "Akasya Gölgesi",
+  "scene": "A graceful giraffe stands beneath a spreading acacia canopy above rolling savanna bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden ochre",
+      "#E5B638"
+    ],
+    [
+      "burnt rust",
+      "#A94D2C"
+    ],
+    [
+      "deep teal",
+      "#216B61"
+    ],
+    [
+      "sky blue",
+      "#56ABCF"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only, targeting 99–139 panes. Giraffe uses ochre/rust; acacia, sky and ground use teal/blue. Generated with ClaiFace image using vitray_fox.png and vitray_lighthouse.png as style references, and inspected visually. Regenerated once to simplify narrow foliage, remove facial strokes and provide white exterior. Remaining doubts: slight fill shading persists; some adjacent background panes share a colour, some acute junctions and narrow leg/ear sections need tracing review, and a short open seam remains near the right ear. Exact pane count and junction topology have not been audited. No game catalogue or geometry changes.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png",
+      "tools/stained/vitray/design/vitray_lighthouse.png"
+    ],
+    "targetPanes": [
+      99,
+      139
+    ]
+  }
+}

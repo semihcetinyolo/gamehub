@@ -1,0 +1,53 @@
+{
+  "id": "vitray_poppies",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T09:24:11.321970+00:00",
+  "raw": "tools/stained/vitray/raw/vitray_poppies.png",
+  "rawSha256": "cb19dd4b8a57a6f69ead7c0eda010f0c1ed5d75bf6b328e8f9122e9a11b48a55",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 98,
+      "donorPatches": 64,
+      "colour": 0,
+      "preservedFraction": 0.5525741793034961
+    },
+    {
+      "patchSize": 64,
+      "donorPatches": 19,
+      "colour": 1,
+      "preservedFraction": 0.41296546710037385
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6339647164516378
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6399521070144074
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "d69801a57d36b5991212478d67423e340f484ad3ca9ed911be6e928c4c643ed2",
+  "sha256": "504a4b843e5a72c5cc218dcb7c09f74c40652ded5ad285c00fd75b794a9f28ed",
+  "palette": [
+    "#fdcd0a",
+    "#fa6202",
+    "#3a8d3c",
+    "#0876db"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 76,
+    "total": 76,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/vitray_poppies.webp"
+}

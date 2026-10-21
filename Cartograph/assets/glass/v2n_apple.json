@@ -1,0 +1,53 @@
+{
+  "id": "v2n_apple",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:39:56.182034+00:00",
+  "raw": "tools/stained/vitray/raw/v2n_apple.png",
+  "rawSha256": "1249512bafe2958c92f69fc62ab3d4352cf44caa7642beb04e0fe82d3eabb01f",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.7368708289694145
+    },
+    {
+      "patchSize": 128,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.7425849045204136
+    },
+    {
+      "patchSize": 78,
+      "donorPatches": 36,
+      "colour": 2,
+      "preservedFraction": 0.4565001883410323
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.7584285565172755
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "2cc43c7fed4ceaa85b02e5054cbc9cc713abc02559360298915cfddb98324f86",
+  "sha256": "193c963361ab985251cdd71943e440da4d68b46a35b5ce22849d7daada25eb54",
+  "palette": [
+    "#c20206",
+    "#fcae05",
+    "#01585c",
+    "#48d7f8"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 18,
+    "total": 18,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2n_apple.webp"
+}

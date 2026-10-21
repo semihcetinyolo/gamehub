@@ -1,0 +1,39 @@
+{
+  "id": "v2n_caterpillar",
+  "name": "Tırtıl",
+  "scene": "a smiling caterpillar on a leaf",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden yellow",
+      "#E9B935"
+    ],
+    [
+      "amber",
+      "#D87928"
+    ],
+    [
+      "turquoise blue",
+      "#46A9C5"
+    ],
+    [
+      "deep teal",
+      "#20776C"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small introductory design. Caterpillar alternates gold and amber; leaf and background use turquoise and teal. Generated with clai image using vitray_fox.png as style reference, then regenerated once to simplify junctions and flatten fills. Inspected both images. Final raster has 22 substantial closed panes plus one approximately 620-pixel sliver near the lower-right tail/leaf junction (23 total detected interiors); this is slightly above the 12–22 target. Remaining doubts: crowded leaf-tip contacts, adjacent teal regions, slight fill shading, and narrow background wedges require attention during tracing. This is a design sheet, not audited production geometry.",
+  "targetPanes": [
+    12,
+    22
+  ],
+  "paneCount": 23,
+  "tool": "clai image",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "generationAttempts": 2
+}

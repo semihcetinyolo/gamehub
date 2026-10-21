@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_rocket",
+  "name": "Roket",
+  "scene": "An upright rocket with swept fins and a flowing exhaust plume ascends through curved cosmic sky ribbons.",
+  "shape": "oval",
+  "palette": [
+    [
+      "vermilion",
+      "#D94A35"
+    ],
+    [
+      "golden amber",
+      "#EDB72F"
+    ],
+    [
+      "deep cobalt",
+      "#205A89"
+    ],
+    [
+      "turquoise",
+      "#239CA2"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 88–128 panes. Rocket, porthole, fins and exhaust use the warm subject pair; sky uses the cool background pair. Generated with image_gen using lighthouse and hot-air-balloon style references and the old rocket subject reference; visually inspected and regenerated once for flatter fills and clearer junctions. Remaining doubts: subtle fill variation persists, some adjacent same-colour divisions around the porthole and nozzle may merge during tracing, and converging sky arcs beside the body and exhaust junctions need geometry review. Pane count and junction spacing have not been certified by tracing. Design sheet only."
+}

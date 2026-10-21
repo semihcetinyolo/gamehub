@@ -1,0 +1,29 @@
+{
+  "id": "v2_story_duck",
+  "name": "Sazlık Ailesi",
+  "scene": "A graceful duck swims among tall reeds and broad rippling water bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden amber",
+      "#E9B835"
+    ],
+    [
+      "burnt orange",
+      "#C86228"
+    ],
+    [
+      "deep teal",
+      "#176D69"
+    ],
+    [
+      "sky blue",
+      "#51ACCC"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from story_duck with vitray_fox as the style reference. Target 27–37 panes; approximately 35 substantial enclosed colour components in the selected second generation. Portrait 1086×1448, closed oval rim, white exterior. Reviewed both generations; regenerated once to simplify excessive reeds and feather divisions. Subject/background colour pairs are preserved. Remaining doubts: slight tonal shading persists despite flat-fill instructions; adjacent amber head pieces and some teal background pieces share a colour and may merge when traced. Eye meets a head separator; tight tapered contacts at the neck, wing and right reeds require downstream geometry review. No obvious loose line ends; this design sheet is not a geometry audit or finished glass artwork."
+}

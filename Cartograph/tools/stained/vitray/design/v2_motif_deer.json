@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_deer",
+  "name": "Geyik",
+  "scene": "An elegant antlered deer in three-quarter profile stands against flowing woodland and sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt amber",
+      "#C5682C"
+    ],
+    [
+      "golden ochre",
+      "#E8B542"
+    ],
+    [
+      "deep teal",
+      "#176B68"
+    ],
+    [
+      "sky blue",
+      "#59AFCA"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 40–50 panes. Deer and antlers use amber/gold; background uses teal/blue. Generated with clai image using the fox and lighthouse style sheets and the old deer as subject reference; regenerated once after visual inspection to correct a gold background pane and opaque white exterior. Final image visually checked: no obvious loose line ends; remaining concerns are narrow eyebrow/ear pieces, crowded antler and muzzle junctions, adjacent same-colour panes, subtle fill shading, and likely excess panes before tracing/merging. Exact pane count and junction topology remain to be validated by the downstream tracer."
+}

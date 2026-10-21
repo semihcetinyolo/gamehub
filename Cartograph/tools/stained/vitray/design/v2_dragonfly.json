@@ -1,0 +1,55 @@
+{
+  "id": "v2_dragonfly",
+  "name": "Yusufçuk",
+  "scene": "A dragonfly with four translucent wings hovers above a pond.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Amber orange",
+      "#D98228"
+    ],
+    [
+      "Golden yellow",
+      "#E7BA43"
+    ],
+    [
+      "Deep pond teal",
+      "#216C70"
+    ],
+    [
+      "Clear blue",
+      "#55A6C4"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Second generation selected after visual inspection of both attempts. Four separate warm-coloured wings above cool-coloured pond ripples and foliage; white exterior and closed oval rim. Wing strips alternate subject colours and all background uses only the cool pair. Approximately 116 coloured components, within the 94–134 target. No obvious loose line ends. Remaining doubts: subtle fill variation persists; wing-root gaps and some leaf tips are narrow, a few background seams approach subject seams closely, and some adjacent background or thorax panes repeat colours. Tracing must verify T junctions, widths and pane connectivity, merge same-colour neighbours where needed, and preserve the dragonfly contour by moving background seams first. This is a design sheet, not audited geometry or final glass artwork.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png",
+      "tools/stained/vitray/design/vitray_lighthouse.png",
+      "assets/glass/dragonfly-silhouette.webp"
+    ],
+    "actionLogRecorded": true
+  },
+  "rasterReview": {
+    "width": 1086,
+    "height": 1448,
+    "aspectRatio": "3:4",
+    "approximatePaneCount": 116,
+    "targetPaneCount": [
+      94,
+      134
+    ],
+    "paneCountWithinTarget": true,
+    "visuallyInspected": true,
+    "generationAttempts": 2,
+    "method": "4-connected components of coloured pixels (max-min >35 and max >80), components at least 100 pixels; approximate raster count, not geometry audit",
+    "strictBriefCompliance": false,
+    "reason": "Residual fill variation and narrow or crowded contacts documented in notes."
+  }
+}

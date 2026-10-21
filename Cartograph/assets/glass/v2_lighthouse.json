@@ -1,0 +1,53 @@
+{
+  "id": "v2_lighthouse",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T10:49:04.130460+00:00",
+  "raw": "tools/stained/vitray/raw/v2_lighthouse.png",
+  "rawSha256": "ee0094adce805b6d1fe56de9e6c0d661ce6af59d062a4301b30b1c250b4e257e",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 92,
+      "donorPatches": 86,
+      "colour": 0,
+      "preservedFraction": 0.553380329018265
+    },
+    {
+      "patchSize": 94,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5279496230077142
+    },
+    {
+      "patchSize": 82,
+      "donorPatches": 47,
+      "colour": 2,
+      "preservedFraction": 0.4702844752659257
+    },
+    {
+      "patchSize": 119,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5775577945598307
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "d9024d489cf0fac276fa67f1e9a263079fa413def6ad571e1b61ac25b35cd0ee",
+  "sha256": "50ab15a416c7ff460a729ae2a59287e89bc4e25a315aa18bf15952cf877132bd",
+  "palette": [
+    "#e83b17",
+    "#fedf18",
+    "#01477b",
+    "#0cb6b6"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 96,
+    "total": 96,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_lighthouse.webp"
+}

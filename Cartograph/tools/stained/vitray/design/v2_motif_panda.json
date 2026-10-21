@@ -1,0 +1,36 @@
+{
+  "id": "v2_motif_panda",
+  "name": "Panda",
+  "scene": "A seated giant panda framed by sweeping bamboo-like bands in an oval stained-glass panel.",
+  "shape": "oval",
+  "palette": [
+    [
+      "deep indigo",
+      "#29365C"
+    ],
+    [
+      "golden ochre",
+      "#E8B957"
+    ],
+    [
+      "jade green",
+      "#25877B"
+    ],
+    [
+      "sky blue",
+      "#62B9D4"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 39–49 panes. Second generation selected after one retry to simplify excess divisions. Visually reviewed: closed outer oval, clear panda silhouette, separate subject/background colour pairs, no white interior glass. Remaining doubts: subtle tonal variation remains despite flat-fill request; several same-colour neighbours and tight contacts remain, including a possible four-way contact below the left foot and at the left shoulder. These require attention when tracing; this sheet is not audited game geometry.",
+  "tool": "image_gen",
+  "prompt": "Create a flat stained-glass puzzle DESIGN SHEET, not a photograph. Portrait 3:4 canvas 1536x2048. Reference 1 is the old panda subject only: redraw completely, do not copy its crude geometry or texture. Reference 2 fox and reference 3 poppies show elegant curved leaded-panel design language only. A handsome recognizable seated giant panda with rounded ears, characteristic large eye patches, small closed round eyes, rounded muzzle, broad shoulders, belly and paws, amidst a few sweeping bamboo leaves/background bands. OVAL silhouette nearly fills the canvas, centered on pure white exterior, closed black rim. Target exactly 44 closed substantial panes overall (allowed 39-49), roughly 19 panda panes and 25 background panes, large clean pieces. Mature elegant stained-glass composition, no childish cartoon, no ornamental border frame. EXACTLY FOUR perfectly flat fill colours: panda pair deep indigo #29365C and warm golden ochre #E8B957; background pair jade green #25877B and sky blue #62B9D4. No white or pale cream inside panel. All panda including eye/nose panes uses ONLY indigo and ochre. All bamboo/background/ground uses ONLY jade and sky blue. Alternate neighbouring panes within each pair as much as possible; prioritize recognizable panda. Use simple full-width gently curved bands on body, avoid triple meetings within subject. Uniform pure black smooth lead lines approximately 15px at 1536 width. Every line must meet another line or outer rim; no loose lines, whiskers, mouth strokes or dots. Eyes are closed reasonably large coloured panes, no black pupils or white highlights. Only spaced T junctions, never X/four-way contacts; junctions at least 3 percent of panel width apart. Each pane substantial, no slivers, no near-touching contours. No gradients, shadows, texture, highlights, double outlines, lettering, signature. Output only the complete panel design sheet.\nCRITICAL CORRECTION to first attempt: simplify to 39-49 regions TOTAL, not 70. No bamboo overlapping the panda or crossing its body. Only 16 broad background pieces, e.g. eight alternating curved bands on each side, with 23-27 subject pieces. Fewer leaves, no stems. Panda face should be one ochre pane surrounding separate indigo eye patches and nose, with ochre closed round eye panes inside the patches. Do not subdivide face into touching ochre panes. Alternating indigo/ochre broad body bands. Zero shading: every region is a perfectly solid uniform RGB fill. No subtle gradients whatsoever. Keep wide gaps between junctions, especially near ears and feet. Make a simplified elegant leadwork panel.",
+  "references": [
+    "assets/glass/motif_panda-junctions.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ]
+}

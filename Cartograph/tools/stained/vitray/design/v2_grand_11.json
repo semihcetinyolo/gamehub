@@ -1,0 +1,36 @@
+{
+  "id": "v2_grand_11",
+  "name": "Ormandaki Kayıp Tapınak",
+  "scene": "An ancient stepped temple with an arched entrance and broad stairway stands hidden among sweeping tropical forest leaves.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "golden ochre",
+      "#E5AC32"
+    ],
+    [
+      "terracotta",
+      "#B95536"
+    ],
+    [
+      "emerald green",
+      "#288467"
+    ],
+    [
+      "deep blue teal",
+      "#174B59"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 110–160 panes. Temple and stairs use the warm pair; forest and ground use the cool pair. Visually inspected both generations; regenerated once to reduce crowded seams and remove an extra cyan sky tint. Remaining doubts: subtle fill shading persists; some masonry neighbours share a colour, several leaf contacts may be four-way or closely spaced, and a few narrow foliage wedges need checking during tracing. Pane count and geometry are not certified. No obvious loose line ends at full-panel view. No game catalogue or geometry changes.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/grand_11-contacts.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "prompt": "Create a new Cartograph puzzle DESIGN SHEET for Ormandaki Kayıp Tapınak (Lost Temple in the Forest). Reference images: first is old subject inspiration only (a lost stepped temple among jungle wildlife), second and third are STYLE references for elegant stained-glass panel design; do not copy their subject or shading.\nPortrait 3:4 canvas, ideally 1536x2048. A single round-arched panel nearly fills canvas, pure white outside only, closed heavy black rim. Sophisticated architectural composition: a clearly recognizable ancient stepped stone sanctuary with a tall corbelled arched doorway, symmetrical tiered roof, broad stairs descending toward viewer, enveloped by sweeping tropical leaves, tree trunks and canopy. Temple occupies central 60 percent; layered jungle surrounds it. Elegant real leaded-glass craftsmanship translated into strictly FLAT vector-like colour fills; no rendered glass material.\nAim 130 closed panes total, within 110–160. Temple cut into meaningful broad alternating masonry bands and steps, forest into graceful large leaf lobes and sweeping canopy bands. EXACTLY FOUR interior fill colors: golden ochre #E5AC32 and terracotta #B95536 reserved exclusively for all temple, doorway and stairs; emerald green #288467 and deep blue teal #174B59 reserved exclusively for forest, trees, foliage and ground. Alternate the two colours inside each semantic side. Doorway is terracotta or ochre, never black. No white or near-white interior panes.\nPure black smooth uniform lead lines about 1 percent canvas width, approximately 15 px at 1536 width. Every line connects to another seam or rim; all panes fully closed. Only spaced T junctions, at most three panes at any point; no X crossings, no four-way contacts. Offset seams between adjoining architectural courses. Junctions at least 3 percent panel width apart. No hairline slivers, no tiny fragments or decorative strokes. Prefer broad whole-width alternating bands within each subject part to avoid same-color neighbours. Keep beautiful clean temple silhouette and readable foliage. NO texture, gradients, shading, highlights, shadows, dots, writing, ornament frame, bevel or signature. Entire panel is picture. Render a design sheet, not finished glass.\nREVISION: Use the last reference (first generated temple sheet) as the composition to improve. Remove ALL gradients and shading; every interior pixel away from antialiased black edges MUST use one of the FOUR exact hexadecimal colours above. The sky gap is deep blue teal #174B59, never cyan. Reduce crowded masonry and leaf subdivision to about 135 broad panes. Remove mid-leaf veins that produce X junctions, use transverse bands instead. Door arch and large masonry pieces should alternate ochre and terracotta (avoid adjacent ochre blocks). Separate all four-way contacts into spaced T junctions by simplifying seams. Pure solid fills, uniform black linework, absolutely no light or dark variations within a pane."
+}

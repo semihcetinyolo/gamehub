@@ -1,0 +1,46 @@
+{
+  "id": "v2n_icecream",
+  "name": "Dondurma",
+  "scene": "an ice cream cone with two scoops",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral",
+      "#D95745"
+    ],
+    [
+      "amber",
+      "#E8AD36"
+    ],
+    [
+      "deep blue",
+      "#215879"
+    ],
+    [
+      "turquoise",
+      "#239C9E"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening-level design. Visually counted 22 closed panes: 8 subject bands and 14 background pieces, within target 12–22. Subject and background use separate alternating colour pairs. Checked both generated images: no apparent loose seams or X crossings. One revision requested flat fills and separated cone junctions. Remaining doubts: subtle tonal variation persists despite the flat-fill request; a few junctions near scoop edges and the lower-left cone need spacing verification during tracing. No geometry or game catalogue changes made.",
+  "paneCount": 22,
+  "targetPanes": [
+    12,
+    22
+  ],
+  "size": [
+    1086,
+    1448
+  ],
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_lighthouse.png"
+    ],
+    "prompt": "An elegant oval stained-glass panel with two scoops on a cone, 8 alternating coral and amber subject bands, calm alternating deep blue and turquoise background panes, 12–22 closed panes total, thick black lead, spaced T junctions, opaque white exterior, portrait 3:4; no decorative frame, text, gradients or texture. Revision: preserve the 22-pane composition, flatten all four fills and separate background endpoints from cone band endpoints."
+  }
+}

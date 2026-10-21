@@ -1,0 +1,53 @@
+{
+  "id": "v2_story_frog",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:38:17.847900+00:00",
+  "raw": "tools/stained/vitray/raw/v2_story_frog.png",
+  "rawSha256": "149f9cdb6838f109ce6f0db50073ab29d4761428a6a3455720b44e0aae03eee8",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 120,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5313200032715607
+    },
+    {
+      "patchSize": 117,
+      "donorPatches": 70,
+      "colour": 1,
+      "preservedFraction": 0.5755288632779632
+    },
+    {
+      "patchSize": 88,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5475763147623478
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6586277354400515
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "dc3dcc17fe09c42609caf0d291f13babe632a91d7f7a8651848b52c87af0b5bf",
+  "sha256": "0ec06acbf44774cd7100d9be61aea32ef0dcbd7b2588405731717324cacbb7e6",
+  "palette": [
+    "#419b1e",
+    "#fdd706",
+    "#013694",
+    "#40ddf2"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 49,
+    "total": 49,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_story_frog.webp"
+}

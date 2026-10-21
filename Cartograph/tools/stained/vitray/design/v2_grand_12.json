@@ -1,0 +1,37 @@
+{
+  "id": "v2_grand_12",
+  "name": "Sonbahar Kulübesi",
+  "scene": "An autumn woodland cottage with a squirrel holding an acorn, framed by oak leaves and distant fir trees.",
+  "shape": "oval",
+  "palette": [
+    [
+      "amber",
+      "#E9AB32"
+    ],
+    [
+      "burnt rust",
+      "#B64A30"
+    ],
+    [
+      "teal",
+      "#279C99"
+    ],
+    [
+      "deep blue",
+      "#245779"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 110–160 panes. Cottage, squirrel, acorn and autumn trees/leaves use the warm subject pair; sky, distant firs and ground use the cool background pair. Visually reviewed after one corrective regeneration: window X grids removed and roof simplified into bands. Remaining doubts for tracing: subtle fill shading persists; some same-colour neighbouring wall/window panes will merge; small squirrel eye/nose and acorn detail, narrow wall strips, pointed fir contacts and loose leaf/squirrel interior strokes need attention. Pane count and T-junction geometry are not certified. No game catalogue or geometry changes.",
+  "tool": "image_gen",
+  "prompt": "Create a flat stained-glass DESIGN SHEET for Cartograph level v2_grand_12, Sonbahar Kulübesi (Autumn Cottage). Portrait 3:4 canvas, ideally 1536x2048. Use reference 1 only for subject idea: cottage in autumn woodland with a squirrel holding an acorn; completely redraw the crude geometry. References 2 and 3 establish elegant flowing leaded-panel composition, but DO NOT copy their shading. A tall OVAL panel nearly touching canvas edges on pure white exterior, closed thick black rim, no decorative frame. Main focal subject is an elegant rustic gabled cottage with chimney, round attic window, door and generous window panes, nested among graceful autumn tree crowns; an unmistakable squirrel with curling tail and acorn sits in lower-left foreground. Autumn leaf shapes frame cottage. Rich but orderly composition with 110–160 substantial closed panes, aim 125. Exactly FOUR FLAT SOLID glass colours: amber #E9AB32 and burnt rust #B64A30 ONLY for cottage, squirrel, acorn and foreground autumn leaves; teal #279C99 and deep blue #245779 ONLY for sky bands, distant woodland trees, rolling hills and ground. Subject palette indices 0,1. Alternate adjacent pieces within each semantic pair, prefer full outline-to-outline bands instead of branching inner divisions. Cottage roof shingle bands and wall planks alternate amber/rust; squirrel curved body and tail bands alternate amber/rust. Sky and terrain use alternating broad blue/teal sweeping bands; no arbitrary grid. Every seam pure black uniform ~1 percent canvas width. Smooth authored contours and real leadwork elegance, not childish clip art. Every line joins a rim or another line; all panes closed. Only spaced T junctions, never X or four-way intersections; offset seam endpoints. Minimum pane width about 3 percent of panel width, no tiny panes or hairline strips; eyes are clearly visible closed coloured panes with black outline, no black dots. No white glass, pale cream, shading, gradients, textures, shine, bevels, words or signature. This is the flat tracing design, not finished textured glass. Save the generated image and return its local path.\nREVISION: Keep the beautiful composition of the attached first design, but rigorously correct these defects. All fills must be perfectly uniform flat colours, absolutely NO gradient or shading. Eliminate ALL brown: tree trunks and squirrel eye are rust or amber only. Remove ALL window crossbars and all window grid patterns: use single closed oval or rectangular windows with one coloured pane, no cross inside. Replace roof tile grid with full-width alternating rust and amber diagonal bands; no internal cross seams. Chimney bands are single full-width courses with no central vertical seam. Delete tiny door knob. Remove sky sun, replace with blue/teal flowing sky band. Preserve autumn cottage and squirrel, 110–160 closed panes overall with most additional panes in wide flowing background bands and generous autumn foliage shapes. Only T junctions, never X. Closed contour lines only, no loose tips or inner finger marks on squirrel. Four exact flat colours and pure black lines on white exterior are mandatory. Match uniform lead thickness throughout.",
+  "references": [
+    "assets/glass/grand_12-contacts.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "generationAttempts": 2
+}

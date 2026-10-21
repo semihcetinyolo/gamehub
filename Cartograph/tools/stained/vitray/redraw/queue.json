@@ -1,0 +1,2994 @@
+[
+ {
+  "id": "v2_cat",
+  "source": "cat",
+  "v1Level": 1,
+  "name": "Ay Işığında Kedi",
+  "scene": "a ginger orange cat sitting on a dark tiled rooftop, gazing at a full yellow moon in a teal night sky",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 12,
+  "targetPanes": [
+   12,
+   16
+  ],
+  "size": "tutorial",
+  "oldImage": "assets/glass/cat-tutorial.webp",
+  "oldGuide": "tools/stained/guides/cat.png"
+ },
+ {
+  "id": "v2_fish",
+  "source": "fish",
+  "v1Level": 2,
+  "name": "Mercan Balığı",
+  "scene": "a big friendly tropical fish swimming among bubbles over a sandy sea floor",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 17,
+  "targetPanes": [
+   85,
+   125
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/fish-silhouette.webp",
+  "oldGuide": "tools/stained/guides/fish.png"
+ },
+ {
+  "id": "v2_brain",
+  "source": "brain",
+  "v1Level": 3,
+  "name": "Renkli Beyin",
+  "scene": "Renkli Beyin",
+  "kind": "brain",
+  "hard": false,
+  "oldPanes": 12,
+  "targetPanes": [
+   16,
+   26
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/brain-vitray.webp",
+  "oldGuide": "tools/stained/guides/brain.png"
+ },
+ {
+  "id": "v2_moon",
+  "source": "moon",
+  "v1Level": 4,
+  "name": "Ay ve Yıldızlar",
+  "scene": "a crescent moon and twinkling stars in a swirling night sky",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 19,
+  "targetPanes": [
+   78,
+   118
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/moon-contacts.webp",
+  "oldGuide": "tools/stained/guides/moon.png"
+ },
+ {
+  "id": "v2_flower",
+  "source": "flower",
+  "v1Level": 5,
+  "name": "Güneş Çiçeği",
+  "scene": "a beautiful swirling ten-petal sunflower / botanical sun medallion",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 21,
+  "targetPanes": [
+   27,
+   37
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/flower-junctions.webp",
+  "oldGuide": "tools/stained/guides/flower.png"
+ },
+ {
+  "id": "v2_fox",
+  "source": "fox",
+  "v1Level": 6,
+  "name": "Orman Tilkisi",
+  "scene": "a clever red fox face peeking out between dark green ferns",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   71,
+   111
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/fox-contacts.webp",
+  "oldGuide": "tools/stained/guides/fox.png"
+ },
+ {
+  "id": "v2_sailboat",
+  "source": "sailboat",
+  "v1Level": 7,
+  "name": "Yelkenli",
+  "scene": "a sailboat with two white sails on a sunny blue sea, the sun shining behind",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 25,
+  "targetPanes": [
+   32,
+   42
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/sailboat-restored.webp",
+  "oldGuide": "tools/stained/guides/sailboat.png"
+ },
+ {
+  "id": "v2_rabbit",
+  "source": "rabbit",
+  "v1Level": 8,
+  "name": "Çayır Tavşanı",
+  "scene": "a seated rabbit with long ears in a meadow",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 26,
+  "targetPanes": [
+   76,
+   116
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/rabbit-contacts.webp",
+  "oldGuide": "tools/stained/guides/rabbit.png"
+ },
+ {
+  "id": "v2_pear",
+  "source": "pear",
+  "v1Level": 9,
+  "name": "Altın Armut",
+  "scene": "a golden pear with a green leaf",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 25,
+  "targetPanes": [
+   32,
+   42
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/pear-contacts.webp",
+  "oldGuide": "tools/stained/guides/pear.png"
+ },
+ {
+  "id": "v2_motif_lobster",
+  "source": "motif_lobster",
+  "v1Level": 10,
+  "name": "Istakoz",
+  "scene": "Istakoz",
+  "kind": "figurative",
+  "hard": true,
+  "oldPanes": 33,
+  "targetPanes": [
+   87,
+   127
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_lobster-silhouette.webp",
+  "oldGuide": "tools/stained/guides/motif_lobster.png"
+ },
+ {
+  "id": "v2_mushroom",
+  "source": "mushroom",
+  "v1Level": 11,
+  "name": "Mantar Ormanı",
+  "scene": "two spotted red toadstool mushrooms in green grass under a dusky blue sky",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 27,
+  "targetPanes": [
+   35,
+   45
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/mushroom-junctions.webp",
+  "oldGuide": "tools/stained/guides/mushroom.png"
+ },
+ {
+  "id": "v2_lighthouse",
+  "source": "lighthouse",
+  "v1Level": 12,
+  "name": "Deniz Feneri",
+  "scene": "a striped lighthouse on rocks casting beams of light over the sea at dusk",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 27,
+  "targetPanes": [
+   88,
+   128
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/lighthouse-silhouette.webp",
+  "oldGuide": "tools/stained/guides/lighthouse.png"
+ },
+ {
+  "id": "v2_cactus",
+  "source": "cactus",
+  "v1Level": 13,
+  "name": "Çöl Kaktüsü",
+  "scene": "a tall saguaro cactus in the desert under a big setting sun with dunes",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 28,
+  "targetPanes": [
+   36,
+   46
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/cactus-contacts.webp",
+  "oldGuide": "tools/stained/guides/cactus.png"
+ },
+ {
+  "id": "v2_lotus",
+  "source": "lotus",
+  "v1Level": 14,
+  "name": "Lotus",
+  "scene": "a blooming pink lotus flower floating on rippling water at golden dawn",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   92,
+   132
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/lotus-contacts.webp",
+  "oldGuide": "tools/stained/guides/lotus.png"
+ },
+ {
+  "id": "v2_balloon",
+  "source": "balloon",
+  "v1Level": 15,
+  "name": "Sıcak Hava Balonu",
+  "scene": "a striped hot-air balloon floating between soft clouds",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   31,
+   41
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/balloon-contacts.webp",
+  "oldGuide": "tools/stained/guides/balloon.png"
+ },
+ {
+  "id": "v2_heart",
+  "source": "heart",
+  "v1Level": 16,
+  "name": "Kalp Rozeti",
+  "scene": "a heart-shaped rosette of radiant petals around a small glowing heart",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 29,
+  "targetPanes": [
+   74,
+   114
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/heart-silhouette.webp",
+  "oldGuide": "tools/stained/guides/heart.png"
+ },
+ {
+  "id": "v2_whale",
+  "source": "whale",
+  "v1Level": 17,
+  "name": "Mavi Balina",
+  "scene": "a friendly whale with a broad tail and a little water spout",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 29,
+  "targetPanes": [
+   38,
+   48
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/whale-junctions.webp",
+  "oldGuide": "tools/stained/guides/whale.png"
+ },
+ {
+  "id": "v2_penguin",
+  "source": "penguin",
+  "v1Level": 18,
+  "name": "Kutup Pengueni",
+  "scene": "a penguin with a cream belly and amber beak on ice",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 30,
+  "targetPanes": [
+   82,
+   122
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/penguin-silhouette.webp",
+  "oldGuide": "tools/stained/guides/penguin.png"
+ },
+ {
+  "id": "v2_strawberry",
+  "source": "strawberry",
+  "v1Level": 19,
+  "name": "Yaz Çileği",
+  "scene": "a ripe strawberry with a leafy crown and four broad seeds",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 30,
+  "targetPanes": [
+   39,
+   49
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/strawberry-contacts.webp",
+  "oldGuide": "tools/stained/guides/strawberry.png"
+ },
+ {
+  "id": "v2_motif_rooster",
+  "source": "motif_rooster",
+  "v1Level": 20,
+  "name": "Horoz",
+  "scene": "Horoz",
+  "kind": "figurative",
+  "hard": true,
+  "oldPanes": 40,
+  "targetPanes": [
+   71,
+   111
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_rooster-contacts.webp",
+  "oldGuide": "tools/stained/guides/motif_rooster.png"
+ },
+ {
+  "id": "v2_peacock",
+  "source": "peacock",
+  "v1Level": 21,
+  "name": "Tavus Tüyü",
+  "scene": "a single shimmering peacock feather with its eye and flowing barbs",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 18,
+  "targetPanes": [
+   23,
+   33
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/peacock-restored.webp",
+  "oldGuide": "tools/stained/guides/peacock.png"
+ },
+ {
+  "id": "v2_motif_boots",
+  "source": "motif_boots",
+  "v1Level": 23,
+  "name": "Yağmur Çizmeleri",
+  "scene": "Yağmur Çizmeleri",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 18,
+  "targetPanes": [
+   98,
+   138
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_boots-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_boots.png"
+ },
+ {
+  "id": "v2_motif_airship",
+  "source": "motif_airship",
+  "v1Level": 25,
+  "name": "Zeplin",
+  "scene": "Zeplin",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 19,
+  "targetPanes": [
+   25,
+   35
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_airship-panes.webp",
+  "oldGuide": "tools/stained/guides/motif_airship.png"
+ },
+ {
+  "id": "v2_motif_astronaut",
+  "source": "motif_astronaut",
+  "v1Level": 27,
+  "name": "Astronot",
+  "scene": "Astronot",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 19,
+  "targetPanes": [
+   73,
+   113
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_astronaut-contacts.webp",
+  "oldGuide": "tools/stained/guides/motif_astronaut.png"
+ },
+ {
+  "id": "v2_seashell",
+  "source": "seashell",
+  "v1Level": 28,
+  "name": "Deniz Kabuğu",
+  "scene": "a scallop seashell with broad alternating fan ribs",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 19,
+  "targetPanes": [
+   25,
+   35
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/seashell-silhouette.webp",
+  "oldGuide": "tools/stained/guides/seashell.png"
+ },
+ {
+  "id": "v2_grand_02",
+  "source": "grand_02",
+  "v1Level": 30,
+  "name": "Yıldızlı Kamp",
+  "scene": "Yıldızlı Kamp",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 86,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_02-contacts.webp",
+  "oldGuide": "tools/stained/guides/grand_02.png"
+ },
+ {
+  "id": "v2_motif_submarine",
+  "source": "motif_submarine",
+  "v1Level": 32,
+  "name": "Denizaltı",
+  "scene": "Denizaltı",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 20,
+  "targetPanes": [
+   26,
+   36
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_submarine-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_submarine.png"
+ },
+ {
+  "id": "v2_motif_cupcake",
+  "source": "motif_cupcake",
+  "v1Level": 34,
+  "name": "Kapkek",
+  "scene": "Kapkek",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 20,
+  "targetPanes": [
+   82,
+   122
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_cupcake-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_cupcake.png"
+ },
+ {
+  "id": "v2_motif_gramophone",
+  "source": "motif_gramophone",
+  "v1Level": 36,
+  "name": "Gramofon",
+  "scene": "Gramofon",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 20,
+  "targetPanes": [
+   26,
+   36
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_gramophone-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_gramophone.png"
+ },
+ {
+  "id": "v2_snail",
+  "source": "snail",
+  "v1Level": 37,
+  "name": "Bahçe Salyangozu",
+  "scene": "a snail with a large concentric spiral shell",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 21,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/snail-junctions.webp",
+  "oldGuide": "tools/stained/guides/snail.png"
+ },
+ {
+  "id": "v2_motif_swan",
+  "source": "motif_swan",
+  "v1Level": 38,
+  "name": "Kuğu",
+  "scene": "Kuğu",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 20,
+  "targetPanes": [
+   26,
+   36
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_swan-silhouette.webp",
+  "oldGuide": "tools/stained/guides/motif_swan.png"
+ },
+ {
+  "id": "v2_grand_06",
+  "source": "grand_06",
+  "v1Level": 40,
+  "name": "Dağ Rasathanesi",
+  "scene": "Dağ Rasathanesi",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 87,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_06-contacts.webp",
+  "oldGuide": "tools/stained/guides/grand_06.png"
+ },
+ {
+  "id": "v2_story_airship",
+  "source": "story_airship",
+  "v1Level": 41,
+  "name": "Bulutların Üstünde",
+  "scene": "Bulutların Üstünde",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 20,
+  "targetPanes": [
+   26,
+   36
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_airship-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_airship.png"
+ },
+ {
+  "id": "v2_story_treasure",
+  "source": "story_treasure",
+  "v1Level": 43,
+  "name": "Korsan Koyu",
+  "scene": "Korsan Koyu",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 21,
+  "targetPanes": [
+   97,
+   137
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_treasure-silhouette.webp",
+  "oldGuide": "tools/stained/guides/story_treasure.png"
+ },
+ {
+  "id": "v2_waterfall",
+  "source": "waterfall",
+  "v1Level": 44,
+  "name": "Saklı Şelale",
+  "scene": "a waterfall cascading between cliffs into an oval pool",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 20,
+  "targetPanes": [
+   26,
+   36
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/waterfall-contacts.webp",
+  "oldGuide": "tools/stained/guides/waterfall.png"
+ },
+ {
+  "id": "v2_motif_narwhal",
+  "source": "motif_narwhal",
+  "v1Level": 45,
+  "name": "Deniz Gergedanı",
+  "scene": "Deniz Gergedanı",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 21,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_narwhal-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_narwhal.png"
+ },
+ {
+  "id": "v2_story_duck",
+  "source": "story_duck",
+  "v1Level": 47,
+  "name": "Sazlık Ailesi",
+  "scene": "Sazlık Ailesi",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 21,
+  "targetPanes": [
+   27,
+   37
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_duck-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_duck.png"
+ },
+ {
+  "id": "v2_motif_camera",
+  "source": "motif_camera",
+  "v1Level": 49,
+  "name": "Fotoğraf Makinesi",
+  "scene": "Fotoğraf Makinesi",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 22,
+  "targetPanes": [
+   82,
+   122
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_camera-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_camera.png"
+ },
+ {
+  "id": "v2_grand_21",
+  "source": "grand_21",
+  "v1Level": 50,
+  "name": "Kanallar Şehri",
+  "scene": "Kanallar Şehri",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 79,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_21-contacts.webp",
+  "oldGuide": "tools/stained/guides/grand_21.png"
+ },
+ {
+  "id": "v2_owl",
+  "source": "owl",
+  "v1Level": 51,
+  "name": "Gece Baykuşu",
+  "scene": "a wise owl with huge round amber eyes and patterned feathers perched on a branch in a moonlit forest",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 45,
+  "targetPanes": [
+   96,
+   136
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/owl-contacts.webp",
+  "oldGuide": "tools/stained/guides/owl.png"
+ },
+ {
+  "id": "v2_turtle",
+  "source": "turtle",
+  "v1Level": 52,
+  "name": "Deniz Kaplumbağası",
+  "scene": "a sea turtle swimming through sunlit blue water, its shell made of patterned plates",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 38,
+  "targetPanes": [
+   49,
+   59
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/turtle-junction-pilot.webp",
+  "oldGuide": "tools/stained/guides/turtle.png"
+ },
+ {
+  "id": "v2_bird",
+  "source": "bird",
+  "v1Level": 54,
+  "name": "Bahar Kuşu",
+  "scene": "a cheerful orange songbird perched on a branch with pink blossoms, sun behind",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 34,
+  "targetPanes": [
+   79,
+   119
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/bird-contacts.webp",
+  "oldGuide": "tools/stained/guides/bird.png"
+ },
+ {
+  "id": "v2_rosewindow",
+  "source": "rosewindow",
+  "v1Level": 55,
+  "name": "Gül Pencere",
+  "scene": "a gothic cathedral rose window with radiating lancets and a ring of roundels",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 53,
+  "targetPanes": [
+   69,
+   79
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/rosewindow-restored.webp",
+  "oldGuide": "tools/stained/guides/rosewindow.png"
+ },
+ {
+  "id": "v2_mountain",
+  "source": "mountain",
+  "v1Level": 57,
+  "name": "Dağda Gün Doğumu",
+  "scene": "mountain peaks glowing pink at sunrise, the golden sun rising behind, pine trees by a lake",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 39,
+  "targetPanes": [
+   93,
+   133
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/mountain-contacts.webp",
+  "oldGuide": "tools/stained/guides/mountain.png"
+ },
+ {
+  "id": "v2_bee",
+  "source": "bee",
+  "v1Level": 59,
+  "name": "Bal Arısı",
+  "scene": "a happy honeybee with translucent wings flying over glowing honeycomb cells",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 39,
+  "targetPanes": [
+   51,
+   61
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/bee-panes.webp",
+  "oldGuide": "tools/stained/guides/bee.png"
+ },
+ {
+  "id": "v2_grand_18",
+  "source": "grand_18",
+  "v1Level": 60,
+  "name": "Karlı Dağ Evi",
+  "scene": "Karlı Dağ Evi",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 68,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_18-panes.webp",
+  "oldGuide": "tools/stained/guides/grand_18.png"
+ },
+ {
+  "id": "v2_snowflake",
+  "source": "snowflake",
+  "v1Level": 61,
+  "name": "Kar Tanesi",
+  "scene": "a crystal snowflake with six branched arms glittering in a winter sky",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 31,
+  "targetPanes": [
+   40,
+   50
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/snowflake-restored.webp",
+  "oldGuide": "tools/stained/guides/snowflake.png"
+ },
+ {
+  "id": "v2_tulip",
+  "source": "tulip",
+  "v1Level": 62,
+  "name": "Lale",
+  "scene": "a single elegant red tulip with two broad leaves in front of a radiant sunburst",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 40,
+  "targetPanes": [
+   98,
+   138
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/tulip-silhouette.webp",
+  "oldGuide": "tools/stained/guides/tulip.png"
+ },
+ {
+  "id": "v2_kaleido",
+  "source": "kaleido",
+  "v1Level": 63,
+  "name": "Kaleydoskop",
+  "scene": "a kaleidoscope mandala of six-fold petals, stars and diamonds",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   31,
+   41
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/kaleido-contacts.webp",
+  "oldGuide": "tools/stained/guides/kaleido.png"
+ },
+ {
+  "id": "v2_tree",
+  "source": "tree",
+  "v1Level": 64,
+  "name": "Hayat Ağacı",
+  "scene": "a tree of life with a strong trunk and a round leafy crown on a green hill, sun rays behind",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 36,
+  "targetPanes": [
+   90,
+   130
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/tree-contacts.webp",
+  "oldGuide": "tools/stained/guides/tree.png"
+ },
+ {
+  "id": "v2_medallion",
+  "source": "medallion",
+  "v1Level": 65,
+  "name": "Yıldız Madalyon",
+  "scene": "an ottoman-style eight-pointed star medallion with interlaced tiles",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 27,
+  "targetPanes": [
+   35,
+   45
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/medallion-silhouette.webp",
+  "oldGuide": "tools/stained/guides/medallion.png"
+ },
+ {
+  "id": "v2_compass",
+  "source": "compass",
+  "v1Level": 66,
+  "name": "Pusula Gülü",
+  "scene": "an ornate antique compass rose with an eight-pointed star, like on an old sea chart",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 33,
+  "targetPanes": [
+   79,
+   119
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/compass-junctions.webp",
+  "oldGuide": "tools/stained/guides/compass.png"
+ },
+ {
+  "id": "v2_butterflygarden",
+  "source": "butterflygarden",
+  "v1Level": 68,
+  "name": "Kelebek Bahçesi",
+  "scene": "a butterfly with four broad patterned wings",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 29,
+  "targetPanes": [
+   38,
+   48
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/butterflygarden-junctions.webp",
+  "oldGuide": "tools/stained/guides/butterflygarden.png"
+ },
+ {
+  "id": "v2_dragonfly",
+  "source": "dragonfly",
+  "v1Level": 69,
+  "name": "Yusufçuk",
+  "scene": "a dragonfly with four translucent wings above a pond",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 33,
+  "targetPanes": [
+   94,
+   134
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/dragonfly-silhouette.webp",
+  "oldGuide": "tools/stained/guides/dragonfly.png"
+ },
+ {
+  "id": "v2_grand_15",
+  "source": "grand_15",
+  "v1Level": 70,
+  "name": "Nostaljik Tramvay",
+  "scene": "Nostaljik Tramvay",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 75,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_15-contacts.webp",
+  "oldGuide": "tools/stained/guides/grand_15.png"
+ },
+ {
+  "id": "v2_jellyfish",
+  "source": "jellyfish",
+  "v1Level": 72,
+  "name": "Denizanası",
+  "scene": "a jellyfish with a domed bell and four flowing ribbons",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 37,
+  "targetPanes": [
+   97,
+   137
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/jellyfish-silhouette.webp",
+  "oldGuide": "tools/stained/guides/jellyfish.png"
+ },
+ {
+  "id": "v2_bear",
+  "source": "bear",
+  "v1Level": 74,
+  "name": "Orman Ayısı",
+  "scene": "a friendly bear with round ears and a honey-coloured muzzle",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 37,
+  "targetPanes": [
+   48,
+   58
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/bear-contacts.webp",
+  "oldGuide": "tools/stained/guides/bear.png"
+ },
+ {
+  "id": "v2_cherries",
+  "source": "cherries",
+  "v1Level": 76,
+  "name": "İkiz Kiraz",
+  "scene": "two ripe cherries hanging from stems with a broad leaf",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 33,
+  "targetPanes": [
+   94,
+   134
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/cherries-silhouette.webp",
+  "oldGuide": "tools/stained/guides/cherries.png"
+ },
+ {
+  "id": "v2_pumpkin",
+  "source": "pumpkin",
+  "v1Level": 77,
+  "name": "Sonbahar Kabağı",
+  "scene": "a ribbed pumpkin with a curling green leaf",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 25,
+  "targetPanes": [
+   32,
+   42
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/pumpkin-silhouette.webp",
+  "oldGuide": "tools/stained/guides/pumpkin.png"
+ },
+ {
+  "id": "v2_maple",
+  "source": "maple",
+  "v1Level": 78,
+  "name": "Akçaağaç Yaprağı",
+  "scene": "a broad autumn maple leaf divided into warm-coloured lobes",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   92,
+   132
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/maple-silhouette.webp",
+  "oldGuide": "tools/stained/guides/maple.png"
+ },
+ {
+  "id": "v2_acorn",
+  "source": "acorn",
+  "v1Level": 79,
+  "name": "Meşe Palamudu",
+  "scene": "an acorn with a patterned cap and one oak leaf",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 34,
+  "targetPanes": [
+   44,
+   54
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/acorn-contacts.webp",
+  "oldGuide": "tools/stained/guides/acorn.png"
+ },
+ {
+  "id": "v2_grand_23",
+  "source": "grand_23",
+  "v1Level": 80,
+  "name": "Işıklı Lunapark",
+  "scene": "Işıklı Lunapark",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 98,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_23-contacts.webp",
+  "oldGuide": "tools/stained/guides/grand_23.png"
+ },
+ {
+  "id": "v2_rose",
+  "source": "rose",
+  "v1Level": 81,
+  "name": "Kadife Gül",
+  "scene": "a full rose with layered petals, a stem and two leaves",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 29,
+  "targetPanes": [
+   38,
+   48
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/rose-silhouette.webp",
+  "oldGuide": "tools/stained/guides/rose.png"
+ },
+ {
+  "id": "v2_iris",
+  "source": "iris",
+  "v1Level": 82,
+  "name": "Mor Süsen",
+  "scene": "a purple iris flower with broad petals and tall leaves",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 35,
+  "targetPanes": [
+   71,
+   111
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/iris-contacts.webp",
+  "oldGuide": "tools/stained/guides/iris.png"
+ },
+ {
+  "id": "v2_teapot",
+  "source": "teapot",
+  "v1Level": 83,
+  "name": "Çay Saati",
+  "scene": "a decorated teapot with a curved spout and handle on a saucer",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 37,
+  "targetPanes": [
+   48,
+   58
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/teapot-contacts.webp",
+  "oldGuide": "tools/stained/guides/teapot.png"
+ },
+ {
+  "id": "v2_lantern",
+  "source": "lantern",
+  "v1Level": 84,
+  "name": "Işık Feneri",
+  "scene": "an ornate lantern with four glowing golden panes",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 32,
+  "targetPanes": [
+   87,
+   127
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/lantern-silhouette.webp",
+  "oldGuide": "tools/stained/guides/lantern.png"
+ },
+ {
+  "id": "v2_windmill",
+  "source": "windmill",
+  "v1Level": 85,
+  "name": "Yel Değirmeni",
+  "scene": "a windmill with four broad sails and a warm tower",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 27,
+  "targetPanes": [
+   35,
+   45
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/windmill-silhouette.webp",
+  "oldGuide": "tools/stained/guides/windmill.png"
+ },
+ {
+  "id": "v2_castle",
+  "source": "castle",
+  "v1Level": 86,
+  "name": "Masal Şatosu",
+  "scene": "a fairytale castle with three roofed towers and an arched gate",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 32,
+  "targetPanes": [
+   71,
+   111
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/castle-panes.webp",
+  "oldGuide": "tools/stained/guides/castle.png"
+ },
+ {
+  "id": "v2_motif_raccoon",
+  "source": "motif_raccoon",
+  "v1Level": 87,
+  "name": "Rakun",
+  "scene": "Rakun",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   31,
+   41
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_raccoon-silhouette.webp",
+  "oldGuide": "tools/stained/guides/motif_raccoon.png"
+ },
+ {
+  "id": "v2_bridge",
+  "source": "bridge",
+  "v1Level": 88,
+  "name": "Taş Köprü",
+  "scene": "a stone arched bridge over a river under the sun",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 39,
+  "targetPanes": [
+   85,
+   125
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/bridge-junctions.webp",
+  "oldGuide": "tools/stained/guides/bridge.png"
+ },
+ {
+  "id": "v2_story_guitar",
+  "source": "story_guitar",
+  "v1Level": 89,
+  "name": "Kamp Ateşi Müziği",
+  "scene": "Kamp Ateşi Müziği",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 26,
+  "targetPanes": [
+   34,
+   44
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_guitar-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_guitar.png"
+ },
+ {
+  "id": "v2_grand_09",
+  "source": "grand_09",
+  "v1Level": 90,
+  "name": "Çöl Kervanı",
+  "scene": "Çöl Kervanı",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 100,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_09-contacts.webp",
+  "oldGuide": "tools/stained/guides/grand_09.png"
+ },
+ {
+  "id": "v2_planet",
+  "source": "planet",
+  "v1Level": 91,
+  "name": "Halkalı Gezegen",
+  "scene": "a ringed planet with a broad equatorial band and two moons",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 26,
+  "targetPanes": [
+   34,
+   44
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/planet-silhouette.webp",
+  "oldGuide": "tools/stained/guides/planet.png"
+ },
+ {
+  "id": "v2_motif_rocket",
+  "source": "motif_rocket",
+  "v1Level": 92,
+  "name": "Roket",
+  "scene": "Roket",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 22,
+  "targetPanes": [
+   88,
+   128
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_rocket-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_rocket.png"
+ },
+ {
+  "id": "v2_hourglass",
+  "source": "hourglass",
+  "v1Level": 93,
+  "name": "Zaman Kumları",
+  "scene": "an hourglass with golden sand in a carved frame",
+  "kind": "classic",
+  "hard": false,
+  "oldPanes": 30,
+  "targetPanes": [
+   39,
+   49
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/hourglass-contacts.webp",
+  "oldGuide": "tools/stained/guides/hourglass.png"
+ },
+ {
+  "id": "v2_story_raccoon",
+  "source": "story_raccoon",
+  "v1Level": 94,
+  "name": "Gece Pikniği",
+  "scene": "Gece Pikniği",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 32,
+  "targetPanes": [
+   95,
+   135
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_raccoon-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_raccoon.png"
+ },
+ {
+  "id": "v2_motif_treasure",
+  "source": "motif_treasure",
+  "v1Level": 96,
+  "name": "Hazine Sandığı",
+  "scene": "Hazine Sandığı",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   31,
+   41
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_treasure-silhouette.webp",
+  "oldGuide": "tools/stained/guides/motif_treasure.png"
+ },
+ {
+  "id": "v2_story_seal",
+  "source": "story_seal",
+  "v1Level": 98,
+  "name": "Buzda Dinlenme",
+  "scene": "Buzda Dinlenme",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 25,
+  "targetPanes": [
+   93,
+   133
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_seal-silhouette.webp",
+  "oldGuide": "tools/stained/guides/story_seal.png"
+ },
+ {
+  "id": "v2_grand_10",
+  "source": "grand_10",
+  "v1Level": 100,
+  "name": "Kutup Koyu",
+  "scene": "Kutup Koyu",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 106,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_10-contacts.webp",
+  "oldGuide": "tools/stained/guides/grand_10.png"
+ },
+ {
+  "id": "v2_story_flamingo",
+  "source": "story_flamingo",
+  "v1Level": 101,
+  "name": "Tuz Gölünde Sabah",
+  "scene": "Tuz Gölünde Sabah",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 26,
+  "targetPanes": [
+   93,
+   133
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_flamingo-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_flamingo.png"
+ },
+ {
+  "id": "v2_motif_koala",
+  "source": "motif_koala",
+  "v1Level": 103,
+  "name": "Koala",
+  "scene": "Koala",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 27,
+  "targetPanes": [
+   35,
+   45
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_koala-silhouette.webp",
+  "oldGuide": "tools/stained/guides/motif_koala.png"
+ },
+ {
+  "id": "v2_story_crab",
+  "source": "story_crab",
+  "v1Level": 105,
+  "name": "Kumsalda Yürüyüş",
+  "scene": "Kumsalda Yürüyüş",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 27,
+  "targetPanes": [
+   97,
+   137
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_crab-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_crab.png"
+ },
+ {
+  "id": "v2_story_boots",
+  "source": "story_boots",
+  "v1Level": 107,
+  "name": "Su Birikintisi",
+  "scene": "Su Birikintisi",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 16,
+  "targetPanes": [
+   21,
+   31
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_boots-silhouette.webp",
+  "oldGuide": "tools/stained/guides/story_boots.png"
+ },
+ {
+  "id": "v2_story_panda",
+  "source": "story_panda",
+  "v1Level": 109,
+  "name": "Bambu Kahvaltısı",
+  "scene": "Bambu Kahvaltısı",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 32,
+  "targetPanes": [
+   91,
+   131
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_panda-junctions.webp",
+  "oldGuide": "tools/stained/guides/story_panda.png"
+ },
+ {
+  "id": "v2_grand_24",
+  "source": "grand_24",
+  "v1Level": 110,
+  "name": "Kanyon Yolculuğu",
+  "scene": "Kanyon Yolculuğu",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 100,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_24-panes.webp",
+  "oldGuide": "tools/stained/guides/grand_24.png"
+ },
+ {
+  "id": "v2_story_kite",
+  "source": "story_kite",
+  "v1Level": 112,
+  "name": "Uçurtma Şenliği",
+  "scene": "Uçurtma Şenliği",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 27,
+  "targetPanes": [
+   78,
+   118
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_kite-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_kite.png"
+ },
+ {
+  "id": "v2_story_bicycle",
+  "source": "story_bicycle",
+  "v1Level": 114,
+  "name": "Sahil Bisikleti",
+  "scene": "Sahil Bisikleti",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 27,
+  "targetPanes": [
+   35,
+   45
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_bicycle-panes.webp",
+  "oldGuide": "tools/stained/guides/story_bicycle.png"
+ },
+ {
+  "id": "v2_story_sloth",
+  "source": "story_sloth",
+  "v1Level": 116,
+  "name": "Daldaki Siesta",
+  "scene": "Daldaki Siesta",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 27,
+  "targetPanes": [
+   91,
+   131
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_sloth-panes.webp",
+  "oldGuide": "tools/stained/guides/story_sloth.png"
+ },
+ {
+  "id": "v2_story_typewriter",
+  "source": "story_typewriter",
+  "v1Level": 118,
+  "name": "Yazarın Penceresi",
+  "scene": "Yazarın Penceresi",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 25,
+  "targetPanes": [
+   32,
+   42
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_typewriter-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_typewriter.png"
+ },
+ {
+  "id": "v2_grand_12",
+  "source": "grand_12",
+  "v1Level": 120,
+  "name": "Sonbahar Kulübesi",
+  "scene": "Sonbahar Kulübesi",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 86,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_12-contacts.webp",
+  "oldGuide": "tools/stained/guides/grand_12.png"
+ },
+ {
+  "id": "v2_motif_bicycle",
+  "source": "motif_bicycle",
+  "v1Level": 121,
+  "name": "Bisiklet",
+  "scene": "Bisiklet",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 28,
+  "targetPanes": [
+   36,
+   46
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_bicycle-panes.webp",
+  "oldGuide": "tools/stained/guides/motif_bicycle.png"
+ },
+ {
+  "id": "v2_motif_giraffe",
+  "source": "motif_giraffe",
+  "v1Level": 123,
+  "name": "Zürafa",
+  "scene": "Zürafa",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 30,
+  "targetPanes": [
+   76,
+   116
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_giraffe-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_giraffe.png"
+ },
+ {
+  "id": "v2_story_toucan",
+  "source": "story_toucan",
+  "v1Level": 125,
+  "name": "Tropik Meyve Ziyafeti",
+  "scene": "Tropik Meyve Ziyafeti",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 31,
+  "targetPanes": [
+   40,
+   50
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_toucan-silhouette.webp",
+  "oldGuide": "tools/stained/guides/story_toucan.png"
+ },
+ {
+  "id": "v2_motif_squirrel",
+  "source": "motif_squirrel",
+  "v1Level": 127,
+  "name": "Sincap",
+  "scene": "Sincap",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 25,
+  "targetPanes": [
+   88,
+   128
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_squirrel-silhouette.webp",
+  "oldGuide": "tools/stained/guides/motif_squirrel.png"
+ },
+ {
+  "id": "v2_motif_telescope",
+  "source": "motif_telescope",
+  "v1Level": 129,
+  "name": "Teleskop",
+  "scene": "Teleskop",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   31,
+   41
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_telescope-silhouette.webp",
+  "oldGuide": "tools/stained/guides/motif_telescope.png"
+ },
+ {
+  "id": "v2_grand_16",
+  "source": "grand_16",
+  "v1Level": 130,
+  "name": "Mahalle Pastanesi",
+  "scene": "Mahalle Pastanesi",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 71,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_16-contacts.webp",
+  "oldGuide": "tools/stained/guides/grand_16.png"
+ },
+ {
+  "id": "v2_motif_umbrella",
+  "source": "motif_umbrella",
+  "v1Level": 131,
+  "name": "Şemsiye",
+  "scene": "Şemsiye",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 22,
+  "targetPanes": [
+   29,
+   39
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_umbrella-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_umbrella.png"
+ },
+ {
+  "id": "v2_motif_moka",
+  "source": "motif_moka",
+  "v1Level": 133,
+  "name": "Moka Pot",
+  "scene": "Moka Pot",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   80,
+   120
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_moka-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_moka.png"
+ },
+ {
+  "id": "v2_story_rocket",
+  "source": "story_rocket",
+  "v1Level": 135,
+  "name": "Ay Yolculuğu",
+  "scene": "Ay Yolculuğu",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   31,
+   41
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_rocket-junctions.webp",
+  "oldGuide": "tools/stained/guides/story_rocket.png"
+ },
+ {
+  "id": "v2_motif_otter",
+  "source": "motif_otter",
+  "v1Level": 137,
+  "name": "Su Samuru",
+  "scene": "Su Samuru",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 28,
+  "targetPanes": [
+   82,
+   122
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_otter-panes.webp",
+  "oldGuide": "tools/stained/guides/motif_otter.png"
+ },
+ {
+  "id": "v2_story_astronaut",
+  "source": "story_astronaut",
+  "v1Level": 139,
+  "name": "Uzay Yürüyüşü",
+  "scene": "Uzay Yürüyüşü",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 22,
+  "targetPanes": [
+   29,
+   39
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_astronaut-junctions.webp",
+  "oldGuide": "tools/stained/guides/story_astronaut.png"
+ },
+ {
+  "id": "v2_grand_01",
+  "source": "grand_01",
+  "v1Level": 140,
+  "name": "Dağ Ekspresi",
+  "scene": "Dağ Ekspresi",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 88,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_01-panes.webp",
+  "oldGuide": "tools/stained/guides/grand_01.png"
+ },
+ {
+  "id": "v2_story_saxophone",
+  "source": "story_saxophone",
+  "v1Level": 141,
+  "name": "Caz Gecesi",
+  "scene": "Caz Gecesi",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 29,
+  "targetPanes": [
+   38,
+   48
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_saxophone-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_saxophone.png"
+ },
+ {
+  "id": "v2_motif_duck",
+  "source": "motif_duck",
+  "v1Level": 143,
+  "name": "Ördek",
+  "scene": "Ördek",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 23,
+  "targetPanes": [
+   89,
+   129
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_duck-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_duck.png"
+ },
+ {
+  "id": "v2_story_octopus",
+  "source": "story_octopus",
+  "v1Level": 145,
+  "name": "Mercanların Bekçisi",
+  "scene": "Mercanların Bekçisi",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   31,
+   41
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_octopus-junctions.webp",
+  "oldGuide": "tools/stained/guides/story_octopus.png"
+ },
+ {
+  "id": "v2_motif_guitar",
+  "source": "motif_guitar",
+  "v1Level": 147,
+  "name": "Gitar",
+  "scene": "Gitar",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   99,
+   139
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_guitar-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_guitar.png"
+ },
+ {
+  "id": "v2_story_gramophone",
+  "source": "story_gramophone",
+  "v1Level": 149,
+  "name": "Plakçı Köşesi",
+  "scene": "Plakçı Köşesi",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 26,
+  "targetPanes": [
+   34,
+   44
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_gramophone-silhouette.webp",
+  "oldGuide": "tools/stained/guides/story_gramophone.png"
+ },
+ {
+  "id": "v2_grand_03",
+  "source": "grand_03",
+  "v1Level": 150,
+  "name": "Sualtı Şehri",
+  "scene": "Sualtı Şehri",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 75,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_03-panes.webp",
+  "oldGuide": "tools/stained/guides/grand_03.png"
+ },
+ {
+  "id": "v2_story_squirrel",
+  "source": "story_squirrel",
+  "v1Level": 151,
+  "name": "Kışlık Palamutlar",
+  "scene": "Kışlık Palamutlar",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 28,
+  "targetPanes": [
+   36,
+   46
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_squirrel-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_squirrel.png"
+ },
+ {
+  "id": "v2_motif_frog",
+  "source": "motif_frog",
+  "v1Level": 153,
+  "name": "Kurbağa",
+  "scene": "Kurbağa",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 25,
+  "targetPanes": [
+   85,
+   125
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_frog-silhouette.webp",
+  "oldGuide": "tools/stained/guides/motif_frog.png"
+ },
+ {
+  "id": "v2_story_elephant",
+  "source": "story_elephant",
+  "v1Level": 155,
+  "name": "Savanda Gün Batımı",
+  "scene": "Savanda Gün Batımı",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   31,
+   41
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_elephant-junctions.webp",
+  "oldGuide": "tools/stained/guides/story_elephant.png"
+ },
+ {
+  "id": "v2_motif_octopus",
+  "source": "motif_octopus",
+  "v1Level": 157,
+  "name": "Ahtapot",
+  "scene": "Ahtapot",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 21,
+  "targetPanes": [
+   94,
+   134
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_octopus-contacts.webp",
+  "oldGuide": "tools/stained/guides/motif_octopus.png"
+ },
+ {
+  "id": "v2_motif_puffin",
+  "source": "motif_puffin",
+  "v1Level": 159,
+  "name": "Deniz Papağanı",
+  "scene": "Deniz Papağanı",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   31,
+   41
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_puffin-silhouette.webp",
+  "oldGuide": "tools/stained/guides/motif_puffin.png"
+ },
+ {
+  "id": "v2_grand_05",
+  "source": "grand_05",
+  "v1Level": 160,
+  "name": "Göl Kenarı Pagoda",
+  "scene": "Göl Kenarı Pagoda",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 83,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_05-panes.webp",
+  "oldGuide": "tools/stained/guides/grand_05.png"
+ },
+ {
+  "id": "v2_story_umbrella",
+  "source": "story_umbrella",
+  "v1Level": 161,
+  "name": "Yağmurlu Sokak",
+  "scene": "Yağmurlu Sokak",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   31,
+   41
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_umbrella-junctions.webp",
+  "oldGuide": "tools/stained/guides/story_umbrella.png"
+ },
+ {
+  "id": "v2_story_telescope",
+  "source": "story_telescope",
+  "v1Level": 163,
+  "name": "Yıldız Gözlemi",
+  "scene": "Yıldız Gözlemi",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 20,
+  "targetPanes": [
+   75,
+   115
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_telescope-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_telescope.png"
+ },
+ {
+  "id": "v2_motif_saxophone",
+  "source": "motif_saxophone",
+  "v1Level": 165,
+  "name": "Saksafon",
+  "scene": "Saksafon",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 26,
+  "targetPanes": [
+   34,
+   44
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_saxophone-contacts.webp",
+  "oldGuide": "tools/stained/guides/motif_saxophone.png"
+ },
+ {
+  "id": "v2_story_violin",
+  "source": "story_violin",
+  "v1Level": 167,
+  "name": "Sokak Konseri",
+  "scene": "Sokak Konseri",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 28,
+  "targetPanes": [
+   97,
+   137
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_violin-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_violin.png"
+ },
+ {
+  "id": "v2_motif_seal",
+  "source": "motif_seal",
+  "v1Level": 169,
+  "name": "Fok",
+  "scene": "Fok",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 28,
+  "targetPanes": [
+   36,
+   46
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_seal-contacts.webp",
+  "oldGuide": "tools/stained/guides/motif_seal.png"
+ },
+ {
+  "id": "v2_grand_11",
+  "source": "grand_11",
+  "v1Level": 170,
+  "name": "Ormandaki Kayıp Tapınak",
+  "scene": "Ormandaki Kayıp Tapınak",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 92,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_11-contacts.webp",
+  "oldGuide": "tools/stained/guides/grand_11.png"
+ },
+ {
+  "id": "v2_motif_chameleon",
+  "source": "motif_chameleon",
+  "v1Level": 171,
+  "name": "Bukalemun",
+  "scene": "Bukalemun",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 30,
+  "targetPanes": [
+   39,
+   49
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_chameleon-panes.webp",
+  "oldGuide": "tools/stained/guides/motif_chameleon.png"
+ },
+ {
+  "id": "v2_motif_alpaca",
+  "source": "motif_alpaca",
+  "v1Level": 173,
+  "name": "Alpaka",
+  "scene": "Alpaka",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 29,
+  "targetPanes": [
+   96,
+   136
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_alpaca-silhouette.webp",
+  "oldGuide": "tools/stained/guides/motif_alpaca.png"
+ },
+ {
+  "id": "v2_story_bat",
+  "source": "story_bat",
+  "v1Level": 175,
+  "name": "Mağaradan Uçuş",
+  "scene": "Mağaradan Uçuş",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   31,
+   41
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_bat-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_bat.png"
+ },
+ {
+  "id": "v2_story_koala",
+  "source": "story_koala",
+  "v1Level": 177,
+  "name": "Okaliptüs Molası",
+  "scene": "Okaliptüs Molası",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 34,
+  "targetPanes": [
+   73,
+   113
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_koala-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_koala.png"
+ },
+ {
+  "id": "v2_story_submarine",
+  "source": "story_submarine",
+  "v1Level": 179,
+  "name": "Batık Keşfi",
+  "scene": "Batık Keşfi",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   31,
+   41
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_submarine-silhouette.webp",
+  "oldGuide": "tools/stained/guides/story_submarine.png"
+ },
+ {
+  "id": "v2_grand_17",
+  "source": "grand_17",
+  "v1Level": 180,
+  "name": "Uçan Adalar",
+  "scene": "Uçan Adalar",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 83,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_17-contacts.webp",
+  "oldGuide": "tools/stained/guides/grand_17.png"
+ },
+ {
+  "id": "v2_story_carouselhorse",
+  "source": "story_carouselhorse",
+  "v1Level": 181,
+  "name": "Lunapark Akşamı",
+  "scene": "Lunapark Akşamı",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 29,
+  "targetPanes": [
+   38,
+   48
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_carouselhorse-silhouette.webp",
+  "oldGuide": "tools/stained/guides/story_carouselhorse.png"
+ },
+ {
+  "id": "v2_story_iguana",
+  "source": "story_iguana",
+  "v1Level": 183,
+  "name": "Volkanik Kayalar",
+  "scene": "Volkanik Kayalar",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 27,
+  "targetPanes": [
+   80,
+   120
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_iguana-silhouette.webp",
+  "oldGuide": "tools/stained/guides/story_iguana.png"
+ },
+ {
+  "id": "v2_motif_crab",
+  "source": "motif_crab",
+  "v1Level": 185,
+  "name": "Yengeç",
+  "scene": "Yengeç",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 26,
+  "targetPanes": [
+   34,
+   44
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_crab-silhouette.webp",
+  "oldGuide": "tools/stained/guides/motif_crab.png"
+ },
+ {
+  "id": "v2_motif_locomotive",
+  "source": "motif_locomotive",
+  "v1Level": 187,
+  "name": "Buharlı Lokomotif",
+  "scene": "Buharlı Lokomotif",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   84,
+   124
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_locomotive-contacts.webp",
+  "oldGuide": "tools/stained/guides/motif_locomotive.png"
+ },
+ {
+  "id": "v2_motif_bat",
+  "source": "motif_bat",
+  "v1Level": 189,
+  "name": "Yarasa",
+  "scene": "Yarasa",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 17,
+  "targetPanes": [
+   22,
+   32
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_bat-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_bat.png"
+ },
+ {
+  "id": "v2_grand_07",
+  "source": "grand_07",
+  "v1Level": 190,
+  "name": "Eski Kütüphane",
+  "scene": "Eski Kütüphane",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 101,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_07-contacts.webp",
+  "oldGuide": "tools/stained/guides/grand_07.png"
+ },
+ {
+  "id": "v2_motif_deer",
+  "source": "motif_deer",
+  "v1Level": 191,
+  "name": "Geyik",
+  "scene": "Geyik",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 31,
+  "targetPanes": [
+   40,
+   50
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_deer-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_deer.png"
+ },
+ {
+  "id": "v2_motif_violin",
+  "source": "motif_violin",
+  "v1Level": 193,
+  "name": "Keman",
+  "scene": "Keman",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 23,
+  "targetPanes": [
+   82,
+   122
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_violin-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_violin.png"
+ },
+ {
+  "id": "v2_story_alpaca",
+  "source": "story_alpaca",
+  "v1Level": 195,
+  "name": "And Dağları",
+  "scene": "And Dağları",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 29,
+  "targetPanes": [
+   38,
+   48
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_alpaca-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_alpaca.png"
+ },
+ {
+  "id": "v2_story_seahorse",
+  "source": "story_seahorse",
+  "v1Level": 197,
+  "name": "Yosunların Arasında",
+  "scene": "Yosunların Arasında",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   94,
+   134
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_seahorse-junctions.webp",
+  "oldGuide": "tools/stained/guides/story_seahorse.png"
+ },
+ {
+  "id": "v2_story_camera",
+  "source": "story_camera",
+  "v1Level": 199,
+  "name": "Fotoğraf Gezisi",
+  "scene": "Fotoğraf Gezisi",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 28,
+  "targetPanes": [
+   36,
+   46
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_camera-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_camera.png"
+ },
+ {
+  "id": "v2_grand_13",
+  "source": "grand_13",
+  "v1Level": 200,
+  "name": "Yörünge İstasyonu",
+  "scene": "Yörünge İstasyonu",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 91,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_13-panes.webp",
+  "oldGuide": "tools/stained/guides/grand_13.png"
+ },
+ {
+  "id": "v2_story_chameleon",
+  "source": "story_chameleon",
+  "v1Level": 201,
+  "name": "Yağmur Ormanında Kamuflaj",
+  "scene": "Yağmur Ormanında Kamuflaj",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 26,
+  "targetPanes": [
+   34,
+   44
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_chameleon-silhouette.webp",
+  "oldGuide": "tools/stained/guides/story_chameleon.png"
+ },
+ {
+  "id": "v2_story_lobster",
+  "source": "story_lobster",
+  "v1Level": 203,
+  "name": "Deniz Tabanı",
+  "scene": "Deniz Tabanı",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 38,
+  "targetPanes": [
+   96,
+   136
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_lobster-silhouette.webp",
+  "oldGuide": "tools/stained/guides/story_lobster.png"
+ },
+ {
+  "id": "v2_story_frog",
+  "source": "story_frog",
+  "v1Level": 205,
+  "name": "Nilüfer Göleti",
+  "scene": "Nilüfer Göleti",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 26,
+  "targetPanes": [
+   34,
+   44
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_frog-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_frog.png"
+ },
+ {
+  "id": "v2_story_deer",
+  "source": "story_deer",
+  "v1Level": 207,
+  "name": "Orman Açıklığı",
+  "scene": "Orman Açıklığı",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 36,
+  "targetPanes": [
+   86,
+   126
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_deer-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_deer.png"
+ },
+ {
+  "id": "v2_story_rooster",
+  "source": "story_rooster",
+  "v1Level": 209,
+  "name": "Çiftlikte Şafak",
+  "scene": "Çiftlikte Şafak",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 30,
+  "targetPanes": [
+   39,
+   49
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_rooster-silhouette.webp",
+  "oldGuide": "tools/stained/guides/story_rooster.png"
+ },
+ {
+  "id": "v2_grand_25",
+  "source": "grand_25",
+  "v1Level": 210,
+  "name": "Ejderha Dağı",
+  "scene": "Ejderha Dağı",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 88,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_25-contacts.webp",
+  "oldGuide": "tools/stained/guides/grand_25.png"
+ },
+ {
+  "id": "v2_motif_panda",
+  "source": "motif_panda",
+  "v1Level": 211,
+  "name": "Panda",
+  "scene": "Panda",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 30,
+  "targetPanes": [
+   39,
+   49
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_panda-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_panda.png"
+ },
+ {
+  "id": "v2_story_otter",
+  "source": "story_otter",
+  "v1Level": 213,
+  "name": "Nehirde Oyun",
+  "scene": "Nehirde Oyun",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 27,
+  "targetPanes": [
+   80,
+   120
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_otter-panes.webp",
+  "oldGuide": "tools/stained/guides/story_otter.png"
+ },
+ {
+  "id": "v2_motif_typewriter",
+  "source": "motif_typewriter",
+  "v1Level": 215,
+  "name": "Daktilo",
+  "scene": "Daktilo",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   31,
+   41
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_typewriter-contacts.webp",
+  "oldGuide": "tools/stained/guides/motif_typewriter.png"
+ },
+ {
+  "id": "v2_story_giraffe",
+  "source": "story_giraffe",
+  "v1Level": 217,
+  "name": "Akasya Gölgesi",
+  "scene": "Akasya Gölgesi",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 33,
+  "targetPanes": [
+   99,
+   139
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_giraffe-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_giraffe.png"
+ },
+ {
+  "id": "v2_motif_stingray",
+  "source": "motif_stingray",
+  "v1Level": 219,
+  "name": "Vatoz",
+  "scene": "Vatoz",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 22,
+  "targetPanes": [
+   29,
+   39
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_stingray-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_stingray.png"
+ },
+ {
+  "id": "v2_grand_08",
+  "source": "grand_08",
+  "v1Level": 220,
+  "name": "Balon Vadisi",
+  "scene": "Balon Vadisi",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 85,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_08-contacts.webp",
+  "oldGuide": "tools/stained/guides/grand_08.png"
+ },
+ {
+  "id": "v2_story_hedgehog",
+  "source": "story_hedgehog",
+  "v1Level": 221,
+  "name": "Sonbahar Yaprakları",
+  "scene": "Sonbahar Yaprakları",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   31,
+   41
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_hedgehog-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_hedgehog.png"
+ },
+ {
+  "id": "v2_story_pinwheel",
+  "source": "story_pinwheel",
+  "v1Level": 223,
+  "name": "Rüzgârlı Çayır",
+  "scene": "Rüzgârlı Çayır",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 23,
+  "targetPanes": [
+   72,
+   112
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_pinwheel-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_pinwheel.png"
+ },
+ {
+  "id": "v2_story_narwhal",
+  "source": "story_narwhal",
+  "v1Level": 225,
+  "name": "Kutup Yolculuğu",
+  "scene": "Kutup Yolculuğu",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 23,
+  "targetPanes": [
+   30,
+   40
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_narwhal-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_narwhal.png"
+ },
+ {
+  "id": "v2_story_cupcake",
+  "source": "story_cupcake",
+  "v1Level": 227,
+  "name": "Pastane Vitrini",
+  "scene": "Pastane Vitrini",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 22,
+  "targetPanes": [
+   90,
+   130
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_cupcake-junctions.webp",
+  "oldGuide": "tools/stained/guides/story_cupcake.png"
+ },
+ {
+  "id": "v2_story_puffin",
+  "source": "story_puffin",
+  "v1Level": 229,
+  "name": "Falez Yuvası",
+  "scene": "Falez Yuvası",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 29,
+  "targetPanes": [
+   38,
+   48
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_puffin-silhouette.webp",
+  "oldGuide": "tools/stained/guides/story_puffin.png"
+ },
+ {
+  "id": "v2_grand_19",
+  "source": "grand_19",
+  "v1Level": 230,
+  "name": "Savanda Buluşma",
+  "scene": "Savanda Buluşma",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 129,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_19-contacts.webp",
+  "oldGuide": "tools/stained/guides/grand_19.png"
+ },
+ {
+  "id": "v2_motif_dachshund",
+  "source": "motif_dachshund",
+  "v1Level": 231,
+  "name": "Sosis Köpek",
+  "scene": "Sosis Köpek",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 27,
+  "targetPanes": [
+   35,
+   45
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_dachshund-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_dachshund.png"
+ },
+ {
+  "id": "v2_motif_carouselhorse",
+  "source": "motif_carouselhorse",
+  "v1Level": 233,
+  "name": "Atlıkarınca Atı",
+  "scene": "Atlıkarınca Atı",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 33,
+  "targetPanes": [
+   90,
+   130
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_carouselhorse-panes.webp",
+  "oldGuide": "tools/stained/guides/motif_carouselhorse.png"
+ },
+ {
+  "id": "v2_story_dachshund",
+  "source": "story_dachshund",
+  "v1Level": 235,
+  "name": "Parkta Gezinti",
+  "scene": "Parkta Gezinti",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 27,
+  "targetPanes": [
+   35,
+   45
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_dachshund-junctions.webp",
+  "oldGuide": "tools/stained/guides/story_dachshund.png"
+ },
+ {
+  "id": "v2_motif_iguana",
+  "source": "motif_iguana",
+  "v1Level": 237,
+  "name": "İguana",
+  "scene": "İguana",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 24,
+  "targetPanes": [
+   84,
+   124
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_iguana-contacts.webp",
+  "oldGuide": "tools/stained/guides/motif_iguana.png"
+ },
+ {
+  "id": "v2_story_moka",
+  "source": "story_moka",
+  "v1Level": 239,
+  "name": "Sabah Kahvesi",
+  "scene": "Sabah Kahvesi",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 27,
+  "targetPanes": [
+   35,
+   45
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_moka-junctions.webp",
+  "oldGuide": "tools/stained/guides/story_moka.png"
+ },
+ {
+  "id": "v2_grand_20",
+  "source": "grand_20",
+  "v1Level": 240,
+  "name": "Korsan Hazinesi",
+  "scene": "Korsan Hazinesi",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 89,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_20-panes.webp",
+  "oldGuide": "tools/stained/guides/grand_20.png"
+ },
+ {
+  "id": "v2_story_locomotive",
+  "source": "story_locomotive",
+  "v1Level": 241,
+  "name": "Dağ Geçidi",
+  "scene": "Dağ Geçidi",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 32,
+  "targetPanes": [
+   42,
+   52
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_locomotive-contacts.webp",
+  "oldGuide": "tools/stained/guides/story_locomotive.png"
+ },
+ {
+  "id": "v2_story_stingray",
+  "source": "story_stingray",
+  "v1Level": 243,
+  "name": "Derin Mavi",
+  "scene": "Derin Mavi",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 26,
+  "targetPanes": [
+   87,
+   127
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/story_stingray-junctions.webp",
+  "oldGuide": "tools/stained/guides/story_stingray.png"
+ },
+ {
+  "id": "v2_motif_sloth",
+  "source": "motif_sloth",
+  "v1Level": 245,
+  "name": "Tembel Hayvan",
+  "scene": "Tembel Hayvan",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 23,
+  "targetPanes": [
+   30,
+   40
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_sloth-silhouette.webp",
+  "oldGuide": "tools/stained/guides/motif_sloth.png"
+ },
+ {
+  "id": "v2_motif_kite",
+  "source": "motif_kite",
+  "v1Level": 248,
+  "name": "Uçurtma",
+  "scene": "Uçurtma",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 25,
+  "targetPanes": [
+   84,
+   124
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_kite-silhouette.webp",
+  "oldGuide": "tools/stained/guides/motif_kite.png"
+ },
+ {
+  "id": "v2_grand_14",
+  "source": "grand_14",
+  "v1Level": 250,
+  "name": "Mercan Krallığı",
+  "scene": "Mercan Krallığı",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 115,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_14-panes.webp",
+  "oldGuide": "tools/stained/guides/grand_14.png"
+ },
+ {
+  "id": "v2_motif_pinwheel",
+  "source": "motif_pinwheel",
+  "v1Level": 252,
+  "name": "Rüzgâr Gülü",
+  "scene": "Rüzgâr Gülü",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 23,
+  "targetPanes": [
+   80,
+   120
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_pinwheel-silhouette.webp",
+  "oldGuide": "tools/stained/guides/motif_pinwheel.png"
+ },
+ {
+  "id": "v2_story_swan",
+  "source": "story_swan",
+  "v1Level": 255,
+  "name": "Ay Işığında Göl",
+  "scene": "Ay Işığında Göl",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 23,
+  "targetPanes": [
+   30,
+   40
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/story_swan-junctions.webp",
+  "oldGuide": "tools/stained/guides/story_swan.png"
+ },
+ {
+  "id": "v2_motif_seahorse",
+  "source": "motif_seahorse",
+  "v1Level": 258,
+  "name": "Denizatı",
+  "scene": "Denizatı",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 23,
+  "targetPanes": [
+   74,
+   114
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_seahorse-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_seahorse.png"
+ },
+ {
+  "id": "v2_grand_04",
+  "source": "grand_04",
+  "v1Level": 260,
+  "name": "Akdeniz Limanı",
+  "scene": "Akdeniz Limanı",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 100,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_04-panes.webp",
+  "oldGuide": "tools/stained/guides/grand_04.png"
+ },
+ {
+  "id": "v2_motif_flamingo",
+  "source": "motif_flamingo",
+  "v1Level": 262,
+  "name": "Flamingo",
+  "scene": "Flamingo",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 27,
+  "targetPanes": [
+   87,
+   127
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_flamingo-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_flamingo.png"
+ },
+ {
+  "id": "v2_motif_elephant",
+  "source": "motif_elephant",
+  "v1Level": 265,
+  "name": "Fil",
+  "scene": "Fil",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 23,
+  "targetPanes": [
+   30,
+   40
+  ],
+  "size": "like-old",
+  "oldImage": "assets/glass/motif_elephant-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_elephant.png"
+ },
+ {
+  "id": "v2_motif_toucan",
+  "source": "motif_toucan",
+  "v1Level": 269,
+  "name": "Tukan",
+  "scene": "Tukan",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 28,
+  "targetPanes": [
+   84,
+   124
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_toucan-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_toucan.png"
+ },
+ {
+  "id": "v2_grand_22",
+  "source": "grand_22",
+  "v1Level": 270,
+  "name": "Rüzgârlı Sahil",
+  "scene": "Rüzgârlı Sahil",
+  "kind": "scene",
+  "hard": true,
+  "oldPanes": 113,
+  "targetPanes": [
+   110,
+   160
+  ],
+  "size": "large",
+  "oldImage": "assets/glass/grand_22-panes.webp",
+  "oldGuide": "tools/stained/guides/grand_22.png"
+ },
+ {
+  "id": "v2_motif_hedgehog",
+  "source": "motif_hedgehog",
+  "v1Level": 275,
+  "name": "Kirpi",
+  "scene": "Kirpi",
+  "kind": "figurative",
+  "hard": false,
+  "oldPanes": 17,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "size": "like-new",
+  "oldImage": "assets/glass/motif_hedgehog-junctions.webp",
+  "oldGuide": "tools/stained/guides/motif_hedgehog.png"
+ }
+]

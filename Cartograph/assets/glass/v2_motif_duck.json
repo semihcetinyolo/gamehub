@@ -1,0 +1,53 @@
+{
+  "id": "v2_motif_duck",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:13:31.531095+00:00",
+  "raw": "tools/stained/vitray/raw/v2_motif_duck.png",
+  "rawSha256": "5a070cbef34e73b2e155499a9b8bc69d1b2f586a2de347829d47f8231604f532",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 87,
+      "donorPatches": 59,
+      "colour": 0,
+      "preservedFraction": 0.5158607779442682
+    },
+    {
+      "patchSize": 74,
+      "donorPatches": 76,
+      "colour": 1,
+      "preservedFraction": 0.48257308436360546
+    },
+    {
+      "patchSize": 120,
+      "donorPatches": 75,
+      "colour": 2,
+      "preservedFraction": 0.5554228276681226
+    },
+    {
+      "patchSize": 101,
+      "donorPatches": 50,
+      "colour": 3,
+      "preservedFraction": 0.4911872233972824
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "7dc085acbbffcbe892b4abe878eb348a497438316959561d6c8ca22f2890b1bd",
+  "sha256": "454b94f891552b862aba274ef710378e129f28535292d514dff105f7c10c50ba",
+  "palette": [
+    "#fccb19",
+    "#e94f0b",
+    "#09adb2",
+    "#06487c"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 86,
+    "total": 86,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_motif_duck.webp"
+}

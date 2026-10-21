@@ -1,0 +1,29 @@
+{
+  "id": "v2_story_camera",
+  "name": "Fotoğraf Gezisi",
+  "scene": "A vintage travel camera with a large concentric lens and looping strap stands against flowing landscape and sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "amber",
+      "#E9AE32"
+    ],
+    [
+      "burgundy",
+      "#A73750"
+    ],
+    [
+      "turquoise",
+      "#239FAD"
+    ],
+    [
+      "deep blue",
+      "#205477"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 36–46 panes. Generated with clai image using the old camera artwork as subject reference and vitray_fox / vitray_lighthouse as style references; inspected and regenerated once to simplify subdivisions and enforce separate colour pairs. Camera and strap use amber/burgundy; background uses turquoise/deep blue. Remaining doubts: generated fills retain subtle shading; exterior is transparent rather than opaque white and must be interpreted on white. Some same-colour neighbouring panes remain, particularly the camera body and lower lens rim; they may merge during tracing. Small strap attachment pieces and close junctions require review in tracing. Pane count and T-junction compliance are not computationally certified. Design-stage output only."
+}

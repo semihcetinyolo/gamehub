@@ -1,0 +1,41 @@
+{
+  "id": "v2n_apple",
+  "name": "Kırmızı Elma",
+  "scene": "A single shiny apple with a leaf.",
+  "shape": "oval",
+  "palette": [
+    [
+      "ruby red",
+      "#C83236"
+    ],
+    [
+      "warm amber",
+      "#EBA43B"
+    ],
+    [
+      "teal",
+      "#167D87"
+    ],
+    [
+      "sky blue",
+      "#50B9D0"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening-level design: 20 substantial closed panes (7 subject, 13 background), within target 12–22. Opaque white exterior. Inspected after one correction generation: leaf divider removed; no obvious loose line ends. Remaining doubts: slight tonal shading persists, stem touches the same-red central apple pane and the amber leaf touches an amber body pane; narrow tapered background below leaf and crowded junctions around stem/leaf need attention during tracing. This is a design sheet only, not audited or published game geometry.",
+  "targetPanes": [
+    12,
+    22
+  ],
+  "paneCount": 20,
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create one Cartograph stained-glass DESIGN SHEET for Kırmızı Elma: a single shiny apple with a leaf. Use the two attached images solely as style references for elegant traditional leaded-panel composition, NOT their complexity or subjects. Portrait 3:4 canvas, opaque pure white exterior. Tall oval silhouette nearly touching canvas edges, closed thick black rim, no decorative border ring. Bold centered recognizable apple with a short broad stem and one leaf; stylize leaf and stem in the same subject pair. EXACTLY 16 large closed panes total: apple body 5 broad curved outline-to-outline slices alternating ruby red #C83236 and warm amber #EBA43B; one stem pane and one unsplit leaf pane in these subject colors (7 subject panes total). Nine calm broad background panes alternating teal #167D87 and sky blue #50B9D0. No subject colors in background, no background colors in subject. All fills solid and flat, no white or near-white glass. Convey shiny apple through the elegant amber shape, NOT highlights, gradients, shading or texture. Real stained-glass craftsmanship in design, never cartoon clip art. Pure black smooth uniform lead approximately 1 percent canvas width. Every line must terminate at rim or existing boundary, every pane closed, only separated T junctions, never X or four-way junctions. Space junctions at least 3 percent panel width; no tiny pieces, slivers, narrow bridges or decorative detail. Entire leaf must be broad and readable. No text, signature, symbols, dots. Strict maximum 22 panes. This is a flat traceable design sheet, not a photograph.",
+  "correctionPrompt": "Correct this apple design sheet, preserving the oval framing and recognizable apple. Make ALL colored panes perfectly FLAT solid fills with absolutely NO gradients, shadows, texture or lighting: ruby #C83236 and amber #EBA43B exclusively for apple, stem and leaf; teal #167D87 and blue #50B9D0 exclusively for background. Pure white opaque exterior, pure black uniform lead. Remove the diagonal internal seam in the amber leaf so it is ONE large amber pane. Make the stem ruby red to alternate against the amber leaf. Remove the narrow blue strip immediately below the leaf by extending the leaf bottom smoothly down to the apple shoulder, with a clean T junction spaced away from the stem junction. Maintain 12–22 total closed big panes and no X crossings. Every line joins a boundary, no loose ends, no tiny gaps or slivers, all junctions at least 3 percent width apart. This must look like an elegant leaded-glass pattern with strictly flat color fills and no photographic shading. No text. Portrait 3:4."
+}

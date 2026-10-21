@@ -1,0 +1,34 @@
+{
+  "id": "v2n_kangaroo",
+  "name": "Kanguru",
+  "scene": "A kangaroo mid-hop against broad flowing blue sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "terracotta",
+      "#C65A32"
+    ],
+    [
+      "golden amber",
+      "#E9AE3F"
+    ],
+    [
+      "sky blue",
+      "#55ACCA"
+    ],
+    [
+      "deep blue",
+      "#285779"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Medium design sheet; requested target 28–45 panes. Generated with vitray_fox.png as style reference, then regenerated once after review to improve closure, shading and forearm spacing. Reviewed revised image: natural kangaroo silhouette and exclusive warm subject / blue background pairs preserved; snout boundary improved. Remaining doubts: subtle shading persists, forearms contain unoutlined warm colour transitions, some adjacent subject panes repeat colours, small tail/hip triangles and narrow junctions need attention during tracing. Raster connected-component estimate is approximately 49 panes above 500 pixels, exceeding target; tiny additional fragments are possible. This is the reviewed design-stage output, not audited game geometry or finished glass artwork.",
+  "size": "medium",
+  "targetPanes": [
+    28,
+    45
+  ]
+}

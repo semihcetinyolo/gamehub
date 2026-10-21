@@ -1,0 +1,53 @@
+{
+  "id": "v2_dragonfly",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:12:56.942190+00:00",
+  "raw": "tools/stained/vitray/raw/v2_dragonfly.png",
+  "rawSha256": "1fa2807529f67f989dbae109292ec30f1c96eff4e3b957c92f5ae2f8208824d5",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 58,
+      "donorPatches": 37,
+      "colour": 0,
+      "preservedFraction": 0.3411261886977626
+    },
+    {
+      "patchSize": 60,
+      "donorPatches": 33,
+      "colour": 1,
+      "preservedFraction": 0.4576204679096745
+    },
+    {
+      "patchSize": 106,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.49957002339349044
+    },
+    {
+      "patchSize": 107,
+      "donorPatches": 46,
+      "colour": 3,
+      "preservedFraction": 0.506906766881677
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "f71fa40cde460d0b4f095d23dadca56ce72c7904b7f6d40350a99d3621c96e6b",
+  "sha256": "6a5009a348095e8b6cdb01dfd8a433c9e4d1343f4d862d84e92173fb6384d1f3",
+  "palette": [
+    "#f57403",
+    "#f9d023",
+    "#035a59",
+    "#41bff0"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 83,
+    "total": 83,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_dragonfly.webp"
+}

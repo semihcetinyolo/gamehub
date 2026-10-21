@@ -1,0 +1,39 @@
+{
+  "id": "v2n_pine",
+  "name": "Çam Ağacı",
+  "scene": "a simple pine tree on a hill",
+  "shape": "oval",
+  "palette": [
+    [
+      "forest green",
+      "#17654B"
+    ],
+    [
+      "leaf green",
+      "#77AD45"
+    ],
+    [
+      "amber",
+      "#E8AD38"
+    ],
+    [
+      "blue",
+      "#397FA9"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening-level design: 16 visually counted closed panes (5 tree panes and 11 background panes), within target 12–22. Tree greens alternate; sky and hill use only alternating amber and blue. Inspected after one regeneration: no obvious open lines or X junctions. Broad curved tiers preserve the pine silhouette. Remaining doubts: subtle generated shading/texture persists despite the flat-fill revision; hill-band left endpoint tapers and should be checked during tracing. Opaque white exterior composited for final PNG. Design sheet only; not traced or published.",
+  "generation": {
+    "tool": "clai image",
+    "reference": "tools/stained/vitray/design/vitray_lighthouse.png",
+    "attempts": 2,
+    "size": [
+      1086,
+      1448
+    ],
+    "promptSummary": "Simple centered pine on a hill in an oval, 12–22 closed panes, green subject pair, amber/blue background pair, uniform black lead, T junctions only; revision requested flat fills and corrected lower hill alternation."
+  }
+}

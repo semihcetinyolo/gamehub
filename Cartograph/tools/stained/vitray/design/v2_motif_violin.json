@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_violin",
+  "name": "Keman",
+  "scene": "An elegant amber and gold violin with a separate bow stands against flowing blue and teal acoustic-wave bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Burnt amber",
+      "#C76A24"
+    ],
+    [
+      "Golden yellow",
+      "#E9B83F"
+    ],
+    [
+      "Ocean blue",
+      "#205C86"
+    ],
+    [
+      "Turquoise teal",
+      "#279E9A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 82–122 panes. Violin and bow use the warm pair; background uses the cool pair. Referenced vitray_fox.png and vitray_lighthouse.png for style and motif_violin-junctions.webp for subject. Visually reviewed and regenerated once to simplify fingerboard, remove open scroll/f-hole strokes and restore white exterior. Remaining doubts: subtle fill shading persists; narrow bow and C-bout strips, small peg connectors, some same-colour neighbours and possible four-way contacts near the bow ends and lower body require attention during tracing. Pane count and production geometry are not certified. No game catalogue changes."
+}

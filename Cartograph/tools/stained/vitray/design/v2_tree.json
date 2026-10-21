@@ -1,0 +1,36 @@
+{
+  "id": "v2_tree",
+  "name": "Hayat Ağacı",
+  "scene": "A tree of life with a strong trunk and a round leafy crown on a green hill, sun rays behind.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Burnt orange",
+      "#B85426"
+    ],
+    [
+      "Golden amber",
+      "#E9AC32"
+    ],
+    [
+      "Teal green",
+      "#238575"
+    ],
+    [
+      "Sky blue",
+      "#58B6DB"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 90–130 panes. Tree uses orange/amber; sky and hill use teal/blue. Inspected initial generation and regenerated once to improve closed seams, crowded branch junctions and flat fills. Revised image inspected: colour pairs and subject are clear; residual slight fill shading, a small unoutlined teal/blue transition high inside the crown, narrow branch tips and possible multiway contacts remain for tracing review. Pane count and geometry are not yet audited. No game catalogue changes.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/tree-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "prompt": "Create a flat stained-glass DESIGN SHEET for Hayat Ağacı, a tree of life with a strong trunk and a round leafy crown on a green hill, sun rays behind. Reference images: first is OLD subject context only, do not copy its childish geometry or textures; second and third are elegant stained glass composition STYLE references only. Output a portrait 3:4 canvas, ideally 1536x2048, pure white exterior. A large upright OVAL panel nearly touches all canvas edges, closed thick pure black rim. Mature Arts and Crafts design: sculptural stout trunk with gracefully spreading branches, round canopy made of large curved leaf-shaped panes, roots on a broad hill, fan-like sky rays behind. Aim 100-115 closed panes total (mandatory range 90-130), about 65 tree panes and 40 background panes. Exactly FOUR solid flat fill colours: tree exclusively burnt orange #B85426 and golden amber #E9AC32, alternating adjacent tree panes including trunk and leaves; background sky rays and hill exclusively teal green #238575 and sky blue #58B6DB, alternating within background. Hill mainly teal green. No other interior colours, no white glass. Make inner tree separations long sweeping outline-to-outline cuts that alternate the two tree colours; avoid branching inner dividing lines that make three adjacent subject panes. Background rays end on the tree silhouette at staggered positions, never converge on one point. Every seam is pure black uniform 1 percent canvas width. All lines must join another line or the rim with no loose endpoints. Only T junctions, no X or four-way contacts, space neighbouring junctions by 3 percent panel width. Broad meaningful organic panes, no tiny slivers or near-parallel hairline gaps. Clean elegant recognizable tree contour. Flat vector-like colour drawing, absolutely NO gradients, shading, texture, glass lighting, bevels, ornamental border frames, text, symbols, dots or signatures. This is a traceable design sheet, not a rendered glass artwork.\nREVISION of the latest tree image: preserve its attractive overall composition, oval shape, palette pairs, robust winding trunk and rounded leaf crown. Correct the following problems: ALL fill colours must be absolutely flat solid hex colours with zero gradients or shadows. The teal and blue areas inside the crown MUST be separated by a continuous black lead line wherever their colours meet; currently several have unoutlined wavy colour boundaries. Every colour boundary must be black outlined. Simplify crowded branching intersections into clearly spaced T junctions, eliminate X contacts especially where lower limbs join the trunk; remove needle-like branches and narrow tapered root slivers. Use fewer broader root pieces and shift detail to broad canopy leaves to keep 90-130 total panes. Outer sky rays must join leaf outlines away from leaf-tip junctions. No loose endpoints. Uniform pure black seams. Output only the revised flat design sheet."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "v2n_paperboat",
+  "name": "Kağıt Gemi",
+  "scene": "a folded paper boat on waves",
+  "shape": "oval",
+  "palette": [
+    [
+      "Golden amber",
+      "#E7AF32"
+    ],
+    [
+      "Burnt coral",
+      "#CE543A"
+    ],
+    [
+      "Ocean blue",
+      "#21678B"
+    ],
+    [
+      "Turquoise",
+      "#279FA2"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Beginner design: bold folded paper boat inside an oval, with broad calm wave and sky pieces. Second generation removes the central multiway star junction and separates boat tips from the rim. Visually reviewed for closed panes, junctions, shading, colour pairs and pane count. Remaining doubts: slight shading persists; adjacent gold boat panes and adjacent blue sky panes repeat colours; the right hull includes an amber/coral colour transition without a black separator. A background join at the right boat shoulder is crowded. Some wave bands have only two neighbours. These require checking during later tracing; strict geometry and flat-fill compliance are not claimed. Subject uses amber/coral and background uses blue/turquoise only. No subject mask required.",
+  "rasterReview": {
+    "width": 1086,
+    "height": 1448,
+    "approximatePaneCount": 16,
+    "targetPaneCount": [
+      12,
+      22
+    ],
+    "paneCountWithinTarget": true,
+    "method": "4-connected saturated colour components (RGB max-min >45 and max >90), area >500 pixels; count ignores unoutlined within-pane colour changes.",
+    "visuallyInspected": true,
+    "generationAttempts": 2,
+    "strictBriefCompliance": false
+  },
+  "generation": {
+    "tool": "clai image",
+    "references": [
+      "tools/stained/vitray/design/vitray_lighthouse.png"
+    ],
+    "revisionReference": "/tmp/v2n_paperboat-first.png",
+    "raw": "/tmp/v2n_paperboat-refined.png",
+    "file": "tools/stained/vitray/design/v2n_paperboat.png",
+    "summary": "Oval paper boat with 12–22 broad closed panes, amber/coral subject and blue/turquoise background. Revision requested removal of central multiway crossing, separated T junctions, five broad boat folds, flat colours and inset bow/stern."
+  }
+}

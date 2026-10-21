@@ -1,0 +1,29 @@
+{
+  "id": "v2n_candle",
+  "name": "Mum",
+  "scene": "a lit candle with a flame",
+  "shape": "round arch",
+  "palette": [
+    [
+      "Golden amber",
+      "#E9AC27"
+    ],
+    [
+      "Burnt orange",
+      "#CD522B"
+    ],
+    [
+      "Deep blue",
+      "#235377"
+    ],
+    [
+      "Turquoise",
+      "#219FA8"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening-level design; 21 closed coloured panes counted by connected-component analysis and visually reviewed. Seven subject panes and fourteen background panes. Opaque white exterior, portrait 1086x1448. Generated with vitray_lighthouse style reference (vitray_lighthouse.png); one regeneration was reviewed but rejected for 34 panes, retaining the original within the required 12–22 range. Remaining concerns: subtle shading rather than perfectly flat fills; adjacent amber candle top/body panes; crowded or near-four-way junctions along the left candle edge and near flame tips; narrow background wedges at the flame base; candle base touches the outer rim. These require attention during tracing; this is a design sheet, not validated playable geometry."
+}

@@ -1,0 +1,43 @@
+{
+  "id": "v2n_pelican",
+  "name": "Pelikan",
+  "scene": "A pelican perched on a post above calm coastal water.",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden amber",
+      "#E9B93F"
+    ],
+    [
+      "burnt orange",
+      "#C75B32"
+    ],
+    [
+      "turquoise",
+      "#2DABA9"
+    ],
+    [
+      "deep blue",
+      "#245978"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. One initial generation and one corrective regeneration, both logged. Final image visually inspected: recognisable pelican, closed oval rim, opaque near-white exterior, subject/background colour pairs preserved, no obvious loose lines or X crossings. Remaining deviations: approximately 53 substantial closed coloured regions by raster connected-component count, above target 28–45; subtle shading remains rather than strictly flat fills; several touching same-colour subject panes may merge during tracing; narrow beak-tip and tail-tip panes need attention. Not geometry-audited or game-published.",
+  "targetPanes": [
+    28,
+    45
+  ],
+  "review": {
+    "estimatedPanes": 53,
+    "paneCountMethod": "Connected saturated-colour regions above 500 pixels at 1086x1448; approximate raster count",
+    "withinTarget": false,
+    "generationAttempts": 2
+  },
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ]
+}

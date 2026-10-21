@@ -1,0 +1,36 @@
+{
+  "id": "v2n_avocado",
+  "name": "Avokado",
+  "scene": "an avocado half with its stone",
+  "shape": "oval",
+  "palette": [
+    [
+      "avocado green",
+      "#739B38"
+    ],
+    [
+      "golden chartreuse",
+      "#D3BC42"
+    ],
+    [
+      "teal",
+      "#247C87"
+    ],
+    [
+      "coral",
+      "#CB7056"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening design; 17 closed coloured components counted in the raster (target 12–22). Oval panel on opaque white, pear-shaped avocado half with a fully enclosed circular stone. Inspected after one regeneration: no visible loose line ends or X crossings; stone surround improved to a broad green pane. Remaining doubts: subtle shading persists rather than perfectly uniform fills, and some adjacent subject areas do not alternate colours; tracer may merge these. Some pointed band joins should be checked at tracing scale. Design sheet only.",
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Create one stained-glass puzzle DESIGN SHEET for Avokado: an avocado half with its stone. Reference image is STYLE ONLY: elegant flowing leaded panel craftsmanship, NOT its fox subject, density, texture or shading. Portrait 3:4 canvas, opaque pure white exterior. Large centered oval silhouette nearly touching canvas edges, closed thick pure-black outer rim. Single bold pear-shaped avocado half centered upright with large circular stone in lower belly. EXACTLY FOUR FLAT fill colours: avocado subject exclusively avocado green #739B38 and golden chartreuse #D3BC42; background exclusively rich teal #247C87 and coral #CB7056. The circular stone is golden chartreuse, framed by green flesh, no brown fifth colour. Aim for 16 closed panes TOTAL (allowed 12–22): about 6–8 broad avocado panes and 8–10 very broad quiet curved background sectors. Subject pieces alternate the two subject colours; background pieces alternate its two colours. Keep stone a simple closed circle; avocado other seams may be sweeping broad outline-to-outline bands above and below stone. No thin rind stripe: silhouette alone describes the skin. All lead lines uniform pure black about 1 percent canvas width. Every line terminates on rim or another line, only clearly separated T junctions, never X or four-way junctions. Very large readable pieces, no tiny chips, no slivers, no decorative border ring. Sophisticated real stained-glass composition reduced to a perfectly flat tracing design; NOT cartoon illustration, no face, no hands. Absolutely no gradients, texture, lighting, highlights, shading, text, signatures, extra objects or decorative details. White only outside the oval, no white glass.\nREVISION: The prior version had gradients and pinched crescents around the stone. Fix these explicitly: truly solid uniform RGB fills, no variation anywhere in a pane. Make the circular stone an isolated complete circular pane enclosed inside ONE broad green flesh pane with generous space on all sides. No seams touch the stone circle at all. Above that flesh pane use 4 broad alternating curved bands across the avocado, from outer silhouette to outer silhouette. Below it use 2 broad alternating bands. Do not split the enclosing green flesh pane or create a narrow rind, pinched crescents, triangular tips near the stone, or three-way contacts on the stone. Total about 16 panes, including 8 calm alternating teal/coral background sectors. Make all background sectors full-width, no tiny bottom filler.",
+  "generationAttempts": 2,
+  "paneCount": 17
+}

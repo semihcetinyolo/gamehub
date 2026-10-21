@@ -1,0 +1,36 @@
+{
+  "id": "v2_grand_17",
+  "name": "Uçan Adalar",
+  "scene": "Three floating rocky islands carrying tall-roofed houses drift among flowing cloud and sky bands.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "terracotta",
+      "#CE513D"
+    ],
+    [
+      "golden amber",
+      "#E9B632"
+    ],
+    [
+      "deep blue",
+      "#225D85"
+    ],
+    [
+      "teal",
+      "#289FAD"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 110–160 panes. Warm houses and floating islands against blue/teal sky and clouds. Inspected both generations; regenerated once to close a dangling roof seam and correct sky and window colour pairs. Final sheet retains slight fill variation, some same-colour neighbouring panes, narrow roof facets and potentially crowded contacts at roof and island tips; tracing must validate and may merge equal-colour neighbours. Design sheet only, no geometry or catalogue publication.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/grand_17-contacts.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_hotairballoon.png"
+  ],
+  "prompt": "Create a flat stained-glass puzzle DESIGN SHEET for Uçan Adalar (Floating Islands). Portrait 3:4 canvas, ideally 1536x2048. References: image 1 old subject only (floating islands with houses among clouds); images 2 and 3 elegant leaded-panel composition/style only. Redraw freshly and elegantly, do not copy childish old geometry or shading in references. One round-arch panel nearly filling canvas, pure white exterior, heavy closed black rim. Three separated floating rocky islands at staggered heights, each supporting a charming tall-roof house, with long broad faceted hanging rock bases. Rich flowing sky and cloud bands behind. Aim 125-140 CLOSED sizeable panes total within 110-160. Houses and islands together are subject, exclusively alternating terracotta #CE513D and golden amber #E9B632. Sky and clouds exclusively alternate deep blue #225D85 and teal #289FAD. Exactly these FOUR FLAT solid fills plus pure black lead and pure white outside. No gradients, no shading, texture or highlights. Subject pieces use outline-to-outline broad alternating bands and roof facets. Background uses sinuous alternating sky ribbons, interrupted naturally by silhouettes, avoid arbitrary grid. Pure black smooth uniform lead about 1% canvas width. Every line ends on rim or a seam, all panes closed, only spaced T junctions, no X or four-way contacts. Junctions separated by at least 3% width. Broad pieces at least 3% width, no slivers, no tiny decorative panes, no dangling lines, no dots or text. Clean recognizable house silhouettes and elegant rocky island outlines. Use big readable windows in the subject pair only. No separate decorative frame. Flat vector-like colour fields suitable for tracing, not finished textured glass.\nREVISION: Keep the three-island composition of the attached first draft, but correct failures. Absolutely uniform flat fills without subtle shading. Remove the yellow sky moon: all sky/clouds must be blue or teal only. Windows and doors must be amber or terracotta only, opposite their wall. Close the loose diagonal on uppermost left roof: no dangling lines. Stagger roof ridge contacts so no four-way junction. Remove narrow tiny roof triangles. Ensure all joins only T and alternating warm subject pieces. 110-160 panes. Exact four solid colours."
+}

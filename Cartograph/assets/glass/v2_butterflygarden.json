@@ -1,0 +1,53 @@
+{
+  "id": "v2_butterflygarden",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:12:18.667777+00:00",
+  "raw": "tools/stained/vitray/raw/v2_butterflygarden.png",
+  "rawSha256": "e2d2420cfb33549f7d2fcf1a123f669f656d99709b6c9d19975672cf81dc5475",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 83,
+      "donorPatches": 81,
+      "colour": 0,
+      "preservedFraction": 0.5686265410755234
+    },
+    {
+      "patchSize": 117,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5931033558517491
+    },
+    {
+      "patchSize": 128,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6545590805805233
+    },
+    {
+      "patchSize": 117,
+      "donorPatches": 61,
+      "colour": 3,
+      "preservedFraction": 0.598925672837873
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "006cc4f2ce92c421f76a9d1cdc86e2c30df6da43ee7a4677425f07c0dced35a7",
+  "sha256": "7609502da74484b011225c88ebe28ffe2a8f093b8a219bc33462b13501e47130",
+  "palette": [
+    "#fede12",
+    "#f7481c",
+    "#16a3e5",
+    "#066b3d"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 48,
+    "total": 48,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_butterflygarden.webp"
+}

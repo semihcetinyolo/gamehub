@@ -5,7 +5,7 @@
   'use strict';
 
   const G = window.CartoGame;
-  const STAINED = window.CARTO_STAINED;
+  const STAINED = window.CARTO_LEVELS;  // the active list (game.js swaps it in place)
   const ART = window.CARTO_MENU_ART || {};
   const store = G.store;
   const $ = id => document.getElementById(id);
@@ -19,12 +19,12 @@
     P.name = 'Kâşif ' + (1000 + Math.floor(Math.random() * 9000));
     store.set('profile', P);
   }
-  const activeIds = new Set(STAINED.map(L => L.id));
-  const solved = () => store.get('solved', []).filter(id => activeIds.has(id));
+  const activeIds = () => new Set(STAINED.map(L => L.id));
+  const solved = () => { const ids = activeIds(); return store.get('solved', []).filter(id => ids.has(id)); };
   const stats = () => ({
     panels: new Set(solved()).size,
     panes: store.get('stats.panes', 0),
-    perfect: new Set(store.get('perfect', []).filter(id => activeIds.has(id))).size,
+    perfect: (ids => new Set(store.get('perfect', []).filter(id => ids.has(id))).size)(activeIds()),
     hints: store.get('stats.hints', 0),
   });
 
@@ -144,8 +144,13 @@
 
   if (ART['menu-background']) menu.style.setProperty('--menu-bg', `url("${ART['menu-background']}")`);
 
+  // The menu covers the page from the first paint; only a later return to it
+  // fades in, so the game screen never shows through while the page starts.
+  let shown = false;
   function show() {
     renderMenu();
+    menu.classList.toggle('fade', shown);
+    shown = true;
     menu.hidden = false;
     document.body.classList.add('in-menu');
   }
@@ -251,6 +256,7 @@
   }, true);
 
   window.addEventListener('carto:solved', () => { if (!menu.hidden) renderMenu(); });
+  window.addEventListener('carto:list', () => { if (!menu.hidden) renderMenu(); });
   // Starting a level from the settings' level grid while the menu is open goes straight in.
   card.addEventListener('click', e => {
     if (!menu.hidden && e.target.closest('[data-act="glass"],[data-act="tutorial"]')) setTimeout(hide, 0);

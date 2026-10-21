@@ -1,0 +1,38 @@
+{
+  "id": "v2_grand_08",
+  "name": "Balon Vadisi",
+  "scene": "Three hot-air balloons float above a winding river and layered valley hills with a small cottage.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "vermilion",
+      "#D65338"
+    ],
+    [
+      "golden amber",
+      "#E9AF28"
+    ],
+    [
+      "deep blue",
+      "#245B86"
+    ],
+    [
+      "teal",
+      "#379D91"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only, target 110–160 panes. Warm pair reserved for balloons, baskets and cottage; cool pair for landscape and sky. Inspected both generations; revised once to separate the largest balloon crossing and simplify supports. Remaining doubts for tracing: slight tonal variation persists; several narrow balloon side pieces, small baskets/chimney and close junctions need review. Some adjacent panes share a colour and may merge. Pane count and production geometry have not been certified.",
+  "tool": "image_gen",
+  "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15e5e-66da-7f23-b4bc-86c840599845/exec-54517317-126e-4247-a687-03b3d045b4fc.png",
+  "references": [
+    "assets/glass/grand_08-contacts.webp",
+    "tools/stained/vitray/design/vitray_hotairballoon.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create ONE flat stained-glass puzzle DESIGN SHEET for Balon Vadisi (Balloon Valley), id v2_grand_08. Portrait 3:4 canvas ideally 1536x2048. Reference 1 is the old subject idea only: three hot-air balloons at different heights over a valley. References 2 and 3 show elegant curved leaded-panel design style, not texture or shading. Redraw an elegant rich landscape with three clearly recognizable hot-air balloons, one large upper-left, medium right-middle, smaller upper-right, over sweeping valley hills and a winding river, tiny simple cottage in lower valley if space permits. Round-arch outer silhouette centered nearly touching canvas edges, plain PURE WHITE exterior, continuous thick black rim, no decorative frame. Target 110-160 distinct closed panes, aim 125. Exactly FOUR perfectly FLAT fill colours: vermilion #D65338 and golden amber #E9AF28 ONLY for balloon envelopes, baskets and optional cottage (subject pair indices 0,1); deep blue #245B86 and teal #379D91 ONLY for sky, clouds, rolling valley and river (background pair indices 2,3). Alternate adjacent subject pieces between vermilion and amber using smooth broad stripes across balloon silhouettes; alternate blue and teal background bands. No white inside panel. Make rich but large readable curved glass pieces, no arbitrary grid. Pure black smooth UNIFORM lead width about 1% canvas width for all seams. Every line closes between rim or junctions. ONLY separated T junctions, never X/four-way crossings, offset neighbouring junctions by 3% of panel width. Avoid converging balloon gores at a single apex: broad offset cap and broad throat. Use stepped staggered subdivisions if needed but prioritize alternating colour pairs; any unavoidable same-colour adjacency is acceptable over semantic colour mixing. No tiny pieces, slivers, hairline supports, dots, floating lines. Baskets attached by broad closed shapes. Lead meets rim at strong angles. Absolutely no gradients, shading, glass texture, highlights, shadows, text, watermarks. This is clean flat tracer input, with elegant real stained-glass composition.",
+  "revisionPrompt": "Create ONE flat stained-glass puzzle DESIGN SHEET for Balon Vadisi (Balloon Valley), id v2_grand_08. Portrait 3:4 canvas ideally 1536x2048. Reference 1 is the old subject idea only: three hot-air balloons at different heights over a valley. References 2 and 3 show elegant curved leaded-panel design style, not texture or shading. Redraw an elegant rich landscape with three clearly recognizable hot-air balloons, one large upper-left, medium right-middle, smaller upper-right, over sweeping valley hills and a winding river, tiny simple cottage in lower valley if space permits. Round-arch outer silhouette centered nearly touching canvas edges, plain PURE WHITE exterior, continuous thick black rim, no decorative frame. Target 110-160 distinct closed panes, aim 125. Exactly FOUR perfectly FLAT fill colours: vermilion #D65338 and golden amber #E9AF28 ONLY for balloon envelopes, baskets and optional cottage (subject pair indices 0,1); deep blue #245B86 and teal #379D91 ONLY for sky, clouds, rolling valley and river (background pair indices 2,3). Alternate adjacent subject pieces between vermilion and amber using smooth broad stripes across balloon silhouettes; alternate blue and teal background bands. No white inside panel. Make rich but large readable curved glass pieces, no arbitrary grid. Pure black smooth UNIFORM lead width about 1% canvas width for all seams. Every line closes between rim or junctions. ONLY separated T junctions, never X/four-way crossings, offset neighbouring junctions by 3% of panel width. Avoid converging balloon gores at a single apex: broad offset cap and broad throat. Use stepped staggered subdivisions if needed but prioritize alternating colour pairs; any unavoidable same-colour adjacency is acceptable over semantic colour mixing. No tiny pieces, slivers, hairline supports, dots, floating lines. Baskets attached by broad closed shapes. Lead meets rim at strong angles. Absolutely no gradients, shading, glass texture, highlights, shadows, text, watermarks. This is clean flat tracer input, with elegant real stained-glass composition.\nREVISION: Use the attached first design as the composition to improve. Remove ALL shading and gradients: each pane must be one single solid exact RGB colour, vector-flat. Fix ALL four-way intersections especially at the top of the largest balloon (near x=350 y=175 in reference): move one endpoint at least 35px along the shared seam so this becomes TWO well separated T junctions. At the largest balloon apex separate the background junction from the balloon rim junction by at least 35px. Remove very narrow balloon side slivers and tiny chimney pane; simplify basket supports into wide closed panes and don't subdivide tiny baskets. Keep 110-160 broad panes, three balloons, elegant valley, round arch, exact four colours. Increase minimum lead width to 10px at 1086px canvas width. No other changes."
+}

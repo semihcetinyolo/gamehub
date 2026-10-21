@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_camera",
+  "name": "Fotoğraf Makinesi",
+  "scene": "A vintage photographic camera with a concentric lens and sweeping shoulder strap against flowing Art Deco rays and bands.",
+  "shape": "octagon",
+  "palette": [
+    [
+      "burnt orange",
+      "#C65A2E"
+    ],
+    [
+      "amber gold",
+      "#E8B83F"
+    ],
+    [
+      "deep blue",
+      "#205877"
+    ],
+    [
+      "turquoise",
+      "#39A5AC"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Portrait 1086x1448. Generated with ClaiFace image using the old camera as subject reference and vitray_fox/vitray_lighthouse as style references; inspected and regenerated once to restore opaque white exterior and warm viewfinder. Remaining doubts: subtle fill shading persists; several same-colour adjacent panes may merge during tracing; some lens and lower-background junctions need review for four-way contacts. Target is 82–122 panes; preliminary black-line connected-component count is approximately 146 substantial enclosed regions before same-colour merging, above target. Palette hex values specify intended flat colours. This is not an audited game geometry or finished glass asset."
+}

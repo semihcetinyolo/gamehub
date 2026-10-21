@@ -1,0 +1,39 @@
+{
+  "id": "v2n_clocktower",
+  "name": "Saat Kulesi",
+  "scene": "a clock tower",
+  "shape": "round arch",
+  "palette": [
+    [
+      "Golden amber",
+      "#E9AE32"
+    ],
+    [
+      "Burnt terracotta",
+      "#B94932"
+    ],
+    [
+      "Teal",
+      "#249DAB"
+    ],
+    [
+      "Deep blue",
+      "#205878"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Medium fresh design; 35 closed coloured panes counted with connected-component inspection (14 tower, 21 background), within target 28–45. Round-arch silhouette, opaque white exterior, no decorative border ring. Tower uses amber/terracotta and background uses teal/blue. Regenerated once after initial image exceeded pane budget. Visual check: no obvious open lead ends or X crossings; broad readable panes. Remaining doubts: subtle generated shading rather than perfectly flat fills; clock separator is curved/abstract rather than angular hands; amber half of dial borders amber housing and may merge during tracing; some background endpoints near tower slab seams need geometry-stage spacing review. This is a design sheet only.",
+  "targetPanes": [
+    28,
+    45
+  ],
+  "paneCount": 35,
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Draw a VERY SIMPLE elegant traditional stained glass clock tower design sheet, portrait 3:4, round arch silhouette occupying canvas, white opaque exterior. Reference is ONLY for leaded glass visual language. CRITICAL: only 30 to 36 TOTAL large closed panes, NEVER MORE THAN 45. Previous design too complex, radically simplify. Tower about 16 panes, background about 16. Tower wide and dignified, roof is a SINGLE terracotta triangle, no finial, no roof subdivisions, no belfry, no columns, no mouldings, no small trims. Beneath roof a SINGLE amber rectangular clock housing surrounding one large terracotta circular clock face; clock face bisected with one bent rim-to-centre-to-rim lead line into amber and terracotta sectors suggesting clock hands with NO loose ends and NO numerals/ticks. Beneath this clock housing tower shaft made of ONLY eight broad alternating amber and terracotta horizontal slabs, each slab ONE pane from left outline to right outline. Broad base with just two large alternating pieces. NO windows or doors. Background ONLY about sixteen broad blue/teal gently curving sky and ground bands, each stretching from tower silhouette to panel rim, alternate blue/teal, stagger their endpoints from tower horizontal seams so only T junctions occur. NO bushes, clouds, rocks, rays, grid or extra details. EXACTLY FOUR FLAT SOLID colors: amber #E9AE32 and terracotta #B94932 exclusive to tower, teal #249DAB and blue #205878 exclusive to background. Black outlines uniform width 1% canvas width, closed panes only, no X or four-way intersections, no narrow slivers, no decorative border ring. No shading, texture, gradients, highlights, text, cartoon style. All colored regions MUST be perfectly uniform flat fills. Keep the architecture and every pane BIG and easily countable. Clock face two large filled sectors, not drawn hands."
+}

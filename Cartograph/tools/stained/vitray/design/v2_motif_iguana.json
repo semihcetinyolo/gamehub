@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_iguana",
+  "name": "İguana",
+  "scene": "An iguana with a sweeping curled tail rests on a diagonal branch among tropical fronds.",
+  "shape": "oval",
+  "palette": [
+    [
+      "emerald",
+      "#16765B"
+    ],
+    [
+      "lime green",
+      "#A6C84B"
+    ],
+    [
+      "amber",
+      "#E7A632"
+    ],
+    [
+      "terracotta",
+      "#B95138"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 84–124 panes. Generated with fox and poppies design references, then regenerated once after visual review to simplify claws and remove transparent exterior. Final visual review: recognisable iguana, oval rim and subject/background colour pairs retained. Remaining issues for tracing: subtle fill shading persists; short open toe strokes remain; some crowded or possible four-way contacts occur around dorsal crest, limbs and lower tail; some same-colour neighbouring pieces may merge. Pane count is a design target, not a verified geometry count. Design sheet only; not production geometry or final glass artwork."
+}

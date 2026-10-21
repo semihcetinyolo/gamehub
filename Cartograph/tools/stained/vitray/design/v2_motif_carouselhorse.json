@@ -1,0 +1,41 @@
+{
+  "id": "v2_motif_carouselhorse",
+  "name": "Atlıkarınca Atı",
+  "scene": "An elegant leaping carousel horse with a flowing mane and tail rides a vertical pole amid sweeping carnival sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral",
+      "#E65B45"
+    ],
+    [
+      "golden yellow",
+      "#E8B936"
+    ],
+    [
+      "sky blue",
+      "#3694C4"
+    ],
+    [
+      "deep teal",
+      "#246B64"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    90,
+    130
+  ],
+  "tool": "clai image; image_gen correction",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_hotairballoon.png",
+    "assets/glass/motif_carouselhorse-panes.webp"
+  ],
+  "prompt": "Create one flat stained-glass puzzle DESIGN SHEET, portrait 3:4. References 1 and 2 are style references for elegant flowing leaded-panel composition only. Reference 3 is the old carousel-horse subject idea; entirely redraw its crude anatomy. Depict one beautiful recognizable vintage carousel horse in leaping profile facing right, gracefully curved neck, upright ears, flowing mane and tail, ornate broad saddle, four clearly separated bent legs and hooves, a sturdy vertical carousel pole passing behind the saddle and body. Center within a tall oval silhouette almost touching canvas edges, pure white exterior and closed thick black oval rim, no decorative frame. Aim 100-115 closed panes total, within 90-130, meaningful flowing horse pieces and surrounding sweeping carnival canopy/sky bands. Exactly FOUR flat solid fill colors: coral #E65B45 and golden yellow #E8B936 exclusively for the entire horse, saddle, mane, tail and pole; sky blue #3694C4 and deep teal #246B64 exclusively for background. Alternate each pair within its side wherever possible; use full-width bands across subject parts rather than branching internal seams. No white glass. Pure black uniform smooth lead about 1 percent canvas width. All lines terminate on other lines or rim, all panes completely closed. Only well-separated T junctions, never X or four-way contacts. Avoid narrow slivers, tiny ornament, thin reins, loose lines, almost touching edges. One clearly visible round eye pane in a subject color, no black dot or shine. Broad segments on legs and pole, readable silhouette. Real artisan stained-glass compositional sophistication but strictly flat vector-like color drawing for tracing: NO texture, gradients, shading, highlights, shadows, bevels, typography, signature, or extra colors. No photograph context. Ensure elegant equine anatomy rather than cartoon or rocking horse.",
+  "correctionPrompt": "Correct this carousel-horse stained-glass design sheet while preserving its oval composition and elegant horse silhouette. Output portrait 3:4 PNG. Exterior MUST be opaque pure white, not transparent. All pane interiors MUST be completely uniform flat fills, no gradients or shading whatsoever. Use exactly coral #E65B45 and golden yellow #E8B936 for horse and carousel pole only, and sky blue #3694C4 and deep teal #246B64 for background only. Alternate the carousel pole segments coral/gold. Improve alternating coral/gold for neighboring horse pieces and blue/teal for neighboring background pieces. Merge unnecessary same-color adjacent panes if needed, target 90-130 total. Remove the black nostril dash; no floating black details. Pure black uniform-width closed lead lines, only T junctions, no four-way crossings; separate crowded chest and saddle junctions, simplify tiny slivers around mane and saddle. Preserve recognizable ears, closed round golden eye, all four legs, tail, saddle, pole, and smooth subject contour. No text, texture, highlights, shadows or additional colors.",
+  "notes": "Oval carousel-horse design sheet; subject pair indices 0/1, background pair 2/3. Visually inspected after initial generation and one correction pass. Correction restored opaque white exterior, alternated pole colours and removed floating nostril detail. Remaining doubts: subtle fill variation remains; adjacent gold pieces around saddle, muzzle and mane may merge during tracing; crowded chest/saddle junctions and narrow mane tips need geometry review. Target 90–130 panes; exact traced count and junction audit not yet performed. Design sheet only."
+}

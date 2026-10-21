@@ -1,0 +1,53 @@
+{
+  "id": "v2n_clocktower",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T13:15:23.526834+00:00",
+  "raw": "tools/stained/vitray/raw/v2n_clocktower.png",
+  "rawSha256": "fa021264724e84d7be1f1f4814687ea1d11603321b5730965daac4d95aae369a",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 114,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.697163566465363
+    },
+    {
+      "patchSize": 137,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6509559756238535
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.7389573648285279
+    },
+    {
+      "patchSize": 137,
+      "donorPatches": 93,
+      "colour": 3,
+      "preservedFraction": 0.6155007431293442
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "a45efbe6da7efac20b43b27ec6f12441fb967036a018c337acadf456e3b43f76",
+  "sha256": "04745a9d86ec25c0bffabe65b487bb1e3f90d577e8164f06a98b6c2fbc50647c",
+  "palette": [
+    "#fbb80f",
+    "#c5310f",
+    "#06adb6",
+    "#013c6c"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 33,
+    "total": 33,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2n_clocktower.webp"
+}

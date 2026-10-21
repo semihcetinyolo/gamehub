@@ -1,0 +1,36 @@
+{
+  "id": "v2_motif_telescope",
+  "name": "Teleskop",
+  "scene": "A brass refracting telescope on a broad tripod points upward across flowing night-sky bands.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "amber",
+      "#E7AB28"
+    ],
+    [
+      "coral",
+      "#C65338"
+    ],
+    [
+      "midnight blue",
+      "#194D73"
+    ],
+    [
+      "teal",
+      "#25999E"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 31–41 panes. Inspected both generations; selected the simplified second attempt. Subject/background colour pairs are maintained and no obvious loose line ends or X crossings were seen. Remaining doubts: mild tonal shading persists despite flat-fill instructions; background divisions may push traced pane count above target; narrow sky wedge near upper-left objective/rim and tight tripod-top contacts need tracing review. Not geometry-audited or published.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/motif_telescope-silhouette.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create a new Cartograph stained-glass puzzle DESIGN SHEET for Teleskop (telescope). Reference 1 shows the old subject only; redraw elegantly, do not copy its crude geometry. Reference 2 is composition/style inspiration, but remove all its shading and simplify to 31–41 closed panes total, ideally 36. Portrait 3:4 canvas, round-arch panel nearly touching canvas edges, pure white exterior, thick closed pure-black rim. Elegant recognizable brass astronomical refracting telescope pointing diagonally upward left, large objective at upper-left, narrower eyepiece lower-right, robust tripod below with three visibly separated legs. Rich yet simple leaded-panel craftsmanship, generous pieces. Exactly FOUR absolutely FLAT solid glass colours: amber #E7AB28 and coral #C65338 for ALL telescope, lens, mount and tripod panes only; midnight blue #194D73 and teal #25999E for ALL background only. No white glass. Telescope sections alternate amber/coral across its full width, similarly broad transverse sections in the legs. Background 16–20 generous flowing night-sky bands interrupted naturally by the telescope and tripod, alternating blue and teal. Subject approximately 16–20 panes. No extra stars, circles or decorations. Uniform pure black leading approximately 1 percent of canvas width everywhere, smooth refined contours. Every line must run junction-to-junction or rim, every pane fully closed, only separated T junctions, NEVER X crossings or four-way contacts; junctions spaced at least 3 percent panel width, panes at least 3 percent width except pointed ends. Keep tripod joints broad and leg separations clearly visible. No tiny details, loose lines, slivers, rim decorative frame, text, shadows, gradients, glass texture, highlights, hatching or speckles. Flat vector-like tracing sheet, not finished textured glass. Save generated image to local disk and report its path.",
+  "retryPrompt": "Revise this telescope design sheet. Keep recognizable telescope/tripod, round arch, white exterior, portrait 3:4. STRICT flat fills with NO gradients, shading, lighting, or texture. EXACTLY 36 large panes TOTAL in the entire picture: simplify telescope to 8 panes (lens, broad tube sections and eyepiece), mounting assembly 3 panes, tripod 9 panes (3 broad sections per leg), background 16 panes. Remove ALL narrow collars, rings, knobs and little feet, no tiny panes. The telescope should float comfortably within arch, objective well separated from rim. Telescope and tripod use ONLY alternating solid #E7AB28 amber and #C65338 coral. Background ONLY alternating solid #194D73 blue and #25999E teal. Exactly those four fills plus uniform black leading and pure white outside. Smooth flat graphic illustration, no rendered glass. Every pane closed, lines rim-to-subject or outline-to-outline, no loose ends, no X or four-way crossings, ONLY well spaced T junctions. Background consists of FEW sweeping wide sky ribbons, avoid subdividing with little spokes. Omit fine mechanical details. Subject silhouette elegant and recognizable. 31–41 panes allowed, aim 36. Simplify drastically from reference, which has too many pieces."
+}

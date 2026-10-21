@@ -1,0 +1,53 @@
+{
+  "id": "story_flamingo",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-21T08:08:42.058361+00:00",
+  "source": "assets/glass/story_flamingo-silhouette.webp",
+  "sourceSha256": "f4d563d41d436dcfa1abcc5eced9b31cee4439ab94b77e4359d2a7a767992855",
+  "sourceGeometrySha256": "8ad30a7d43e4a22f46dd295bf1015a481b7f374aec264e3ce72e8f1edf9fc1e3",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 106,
+      "donorPatches": 54,
+      "colour": 0,
+      "preservedFraction": 0.46844915576301
+    },
+    {
+      "patchSize": 132,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6119062649524035
+    },
+    {
+      "patchSize": 82,
+      "donorPatches": 84,
+      "colour": 2,
+      "preservedFraction": 0.3775654033998784
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.710499058519084
+    }
+  ],
+  "size": [
+    1075,
+    1434
+  ],
+  "guide": "e8c1b54eec0370a5adb87256f865857bb9da5eada030c1339a3e3d8a0cffe8fe",
+  "sha256": "2345dec83b8c9924fde104b5dcff6120cebc03d04076eab9e381f60db02083a9",
+  "palette": [
+    "#e9602a",
+    "#f4dd90",
+    "#7e9a1a",
+    "#19597d"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 26,
+    "total": 26,
+    "mismatches": []
+  }
+}

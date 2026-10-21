@@ -1,0 +1,36 @@
+{
+  "id": "vitray_poppies",
+  "name": "Gelincikler",
+  "scene": "Golden California poppies rise on broad stems before rolling hills and a banded sky.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "Gold",
+      "#E3B33C"
+    ],
+    [
+      "Poppy orange",
+      "#D8752F"
+    ],
+    [
+      "Leaf green",
+      "#4C8864"
+    ],
+    [
+      "Sky blue",
+      "#3D7DAD"
+    ]
+  ],
+  "notes": "Flower heads and buds are the subject mask; stems, leaves, hills and sky are background. Gold/orange petals contrast with green/blue scenery. Keep cup silhouettes and broad stems, review any clustered petal junctions and narrow gaps after tracing. Four semantic fill targets; slight raster variation may need quantization. Retry removed the extra lime-green fill family. Remaining petal/base junctions and slender stems need tracing review; mild raster shading needs quantization. Mask contains thin white subject seams but black pane interiors support majority voting.",
+  "subjectColours": [
+    0,
+    1
+  ],
+  "designPrompt": "Correct this lovely California-poppy design with minimal changes, preserving the five orange/gold cup-shaped heads and round arch. STRICTLY FOUR COLOURS only: petals #E3B33C gold and #D8752F orange, ALL leaves/stems/hills #4C8864 green and sky #3D7DAD blue. Eliminate the extra bright lime green from stems and leaves; all vegetation must use the SAME green value as hills or the allowed blue. Alternate some lower background leaf areas blue/green to keep broad stems readable. No shading or gradients anywhere, single constant fill per pane. Fix any loose black leaf/flower strokes by removing them or making complete boundaries. Spread the crowded joins at cup bases and leaf forks into T contacts, not X or multiway points. Keep main flower silhouettes intact and broad stems at least 3% panel width, no thin slivers. Add about 8 broad staggered divisions in spacious stem/sky regions to keep 75–90 closed panes. No dots, stamens, fine veins, fifth colour, shadows or texture. Preserve exact canvas and arch outline.",
+  "subjectMaskPrompt": "Edit this finished design into its BLACK AND WHITE SUBJECT MASK. Preserve the EXACT canvas size, aspect ratio, framing, panel shape, every contour and every lead line in its original pixel position. Do NOT redraw, rearrange, simplify or scale anything. Recolour only: every pane of SUBJECT goes pure black #000000, every other pane and exterior pure white #FFFFFF. Keep ALL existing black lead lines black, never turn subject seams white. In the subject this makes a continuous solid black silhouette. Include eye interiors as black. Keep background seams black. No grey, no colour, no shading, no added marks. Output must overlay the input with unchanged geometry. SUBJECT: ALL FIVE poppy FLOWER HEADS only, including cup openings, petals and warm buds. Every orange/gold flower pane becomes pure black. ALL green stems and leaves, hills and blue sky become pure white. Do NOT include stems in subject. Preserve five head silhouettes and exact round arch framing and canvas.",
+  "generationMethod": "built-in image_gen",
+  "canvas": [
+    1086,
+    1448
+  ]
+}

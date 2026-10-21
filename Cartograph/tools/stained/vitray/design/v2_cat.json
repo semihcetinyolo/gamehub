@@ -1,0 +1,39 @@
+{
+  "id": "v2_cat",
+  "name": "Ay Işığında Kedi",
+  "scene": "A ginger orange cat sits on a dark tiled rooftop, gazing at a full yellow moon in a teal night sky.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "ginger orange",
+      "#E97624"
+    ],
+    [
+      "golden yellow",
+      "#E9BA35"
+    ],
+    [
+      "teal",
+      "#269B9A"
+    ],
+    [
+      "deep navy",
+      "#24435B"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Tutorial design, targeting 12–16 large panes. Cat and moon form the warm focal subject; sky and rooftop use the cool pair. Inspected after one regeneration: four broad alternating cat panes, one full moon, broad sky sections and three roof tiles; no obvious loose line ends or X crossings. Remaining doubts: subtle generated shading persists; top sky changes navy to teal around the moon without a fully enclosing divider, so its final partition/colour needs resolution during tracing. Lower left sky and roof share navy. Moon-to-ear clearance is narrow, and the right torso/tail junction should be checked at gameplay scale. This is a design sheet, not validated playable geometry.",
+  "generation": {
+    "tool": "image_gen",
+    "attempts": 2,
+    "prompt": "Create a flat stained-glass puzzle DESIGN SHEET, portrait 3:4 canvas. References 1 fox and 2 lighthouse show elegant curved leaded-panel composition ONLY; simplify dramatically to EXACTLY 12–16 LARGE closed panes for a tutorial. Reference 3 is the old cat scene; redraw elegantly, do not copy blocky outline. Scene: a ginger cat sitting on a dark tiled rooftop gazing up at a full golden moon in a teal night sky. Round-arch silhouette nearly fills pure white canvas, thick pure black rim, smooth uniform pure black lead about 1% canvas width. Cat seen from behind with elegant pointed ears, gently curved shoulders and broad curled tail, no face details or whiskers. Cat uses 4–5 broad panes alternating ginger orange #E97624 and golden yellow #E9BA35; moon is a single circular golden yellow pane, treated as a warm focal subject alongside cat. Background sky and rooftop use ONLY teal #269B9A and deep navy #24435B, alternating broad closed sections. Total 12–16 panes including cat, moon, sky, roof. Roof just 3 broad tiles, sky 4–6 large sections. Exactly four flat solid fill colours plus black lead and pure white exterior; NO gradients, shading, texture, highlights, extra decorative details, text or frame bands. Each divider goes from rim or subject outline to rim or subject outline; stagger all endpoints. Only spaced T junctions, no X crossings, no loose line ends, no thin slivers, no nearly touching borders, no tiny panes. Preserve recognisable graceful sitting-cat silhouette with a wide tail, avoid cartoon mascot styling. All neighbouring subject panes alternate orange/yellow; all neighbouring background panes alternate teal/navy. Moon must have ample clearance from rim and cat. Clean flat traceable geometry is essential.\nCORRECTIONS TO FIRST ATTEMPT: Output truly SOLID FLAT fills, like a vector cutting template, each pane constant RGB, zero tonal variation. Put moon entirely ABOVE cat with at least 7% panel-width gap, never behind or touching ears. Simplify cat to FOUR panes with three non-intersecting broad curved transverse cuts all the way from one outer silhouette side to the other: orange head and shoulders, golden middle torso, orange haunches, golden broad tail/base; no other ear lines or interior branches. Each cut must have ample separation, no tiny thin tapered yellow strips or seams branching at same point. Keep sky in six big alternating teal/navy regions and rooftop in three broad alternating teal/navy tiles; stagger roof tile junctions away from cat contacts. Aim 14 closed panes total. Do not inherit shading from style references. Flat vector graphic with four exact solid colours.",
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png",
+      "tools/stained/vitray/design/vitray_lighthouse.png"
+    ],
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15e02-4007-7de1-82a2-05e19f4e36ec/exec-2e1d8c2c-c45c-4918-947c-489f116bc7eb.png"
+  }
+}

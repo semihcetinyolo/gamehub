@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_pinwheel",
+  "name": "Rüzgâr Gülü",
+  "scene": "A four-bladed folded pinwheel on a straight stick turns amid sweeping wind ribbons inside an oval stained-glass panel.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Coral vermilion",
+      "#DB563D"
+    ],
+    [
+      "Golden amber",
+      "#EFBF38"
+    ],
+    [
+      "Turquoise",
+      "#289FA8"
+    ],
+    [
+      "Deep ocean blue",
+      "#245878"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 80–120 panes. Warm alternating blade folds, circular hub and segmented stick contrast with cool wind ribbons. Original subject: assets/glass/motif_pinwheel-silhouette.webp; style references: vitray_fox.png and vitray_lighthouse.png. Generated and visually inspected, then regenerated once to improve closed band subdivisions, crowded junctions and white exterior. Final sheet inspected: semantic colour pairs are preserved and no obvious loose line ends; remaining concerns include subtle fill shading, some crowded multiway contacts along blade fold seams and narrow tapered wind regions. Exact pane count, junction separation and flat palette require tracing-stage validation; this is not audited playable geometry."
+}

@@ -1,0 +1,40 @@
+{
+  "id": "v2_hourglass",
+  "name": "Zaman Kumları",
+  "scene": "An hourglass with golden sand in a carved frame.",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden yellow",
+      "#E9B936"
+    ],
+    [
+      "burnt amber",
+      "#B95B28"
+    ],
+    [
+      "deep blue",
+      "#235B83"
+    ],
+    [
+      "teal",
+      "#329E9A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only, reviewed after one regeneration. Warm subject and cool background colour pairs are respected; a broad neck avoids an X crossing. Remaining doubts: subtle generated tonal variation persists rather than perfectly flat hex fills; some neighbouring frame and bulb panes share a colour and may merge during tracing. Background junctions at the left waist and narrow gaps beside the lower bulb need geometry review. Pane count may exceed the requested 39–49 before same-colour merges. No game catalogue or geometry changes made.",
+  "targetPanes": [
+    39,
+    49
+  ],
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/hourglass-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create a flat traceable stained-glass DESIGN SHEET, not finished glass, for Zaman Kumları: an elegant hourglass with golden sand in a carved frame. Portrait 3:4 canvas. Large oval panel nearly touching canvas edges, pure white exterior, closed thick black rim. Reference 1 shows subject only; references 2 and 3 show elegant leaded composition style, but do not copy their gradients or colour mixing. Aim 44 large closed panes total, within 39–49. Graceful symmetrical hourglass with broad sculpted caps and two carved upright posts, curving upper and lower bulbs, a visibly wide neck (not an X point), sand represented by broad flowing bands, no thin sand stream or dots. Exactly FOUR flat solid fill colours: golden yellow #E9B936 and burnt amber #B95B28 only for ALL hourglass subject panes including frame and bulb interiors; deep blue #235B83 and teal #329E9A only for surrounding background including openings between posts and bulbs. Alternate subject colours along meaningful full-width bands and carved post sections, alternate background colours in flowing broad bands around the subject. No near-white glass. About 24 subject pieces and 20 background pieces. Pure black smooth uniform lead lines about 1% canvas width. All strokes connect to borders or junctions, every pane closed. Only spaced T junctions; absolutely no X or four-way contacts, no loose ends, no narrow slivers, tiny panes or near-parallel close lines. Offset background divisions from frame and bulb junctions. Every region visibly connected, width at least 3% panel width except pointed tips. Elegant real craft stained-glass composition simplified into solid vector-like colours. No texture, shading, gradients, highlights, decorative outer frame, letters, symbols, signature or photo context.\nREVISION: simplify drastically to 44 panes total. Each upright post has only FIVE broad alternating amber/gold sections, no little collars. Each top/bottom cap is ONE broad amber or gold pane, no nested carved bands. Upper bulb FIVE broad alternating gold/amber bands; lower bulb FIVE broad alternating gold/amber bands, warm colours fill entire bulb interior, NEVER teal or blue inside either bulb. Do not outline bulbs with a narrow gold strip. Background about 20 broad blue/teal flowing panes. True completely UNIFORM solid flat hex colour fills, zero lighting, zero gradients, zero shading, zero texture. Use the attached first attempt only for overall hourglass oval composition; simplify all extra seams. Each pane closed, all T junctions well spaced. Preserve wide neck. The broad alternating bands suggest sand."
+}

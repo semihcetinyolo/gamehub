@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_locomotive",
+  "name": "Buharlı Lokomotif",
+  "scene": "A vintage steam locomotive with three large driving wheels travels beneath a sweeping steam plume in an oval stained-glass panel.",
+  "shape": "oval",
+  "palette": [
+    [
+      "rust red",
+      "#C54B32"
+    ],
+    [
+      "golden amber",
+      "#EDB932"
+    ],
+    [
+      "deep blue",
+      "#205F87"
+    ],
+    [
+      "teal",
+      "#219A9B"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 84–124 panes. Warm locomotive against cool steam, sky and ground; cab windows show cool background. Generated with clai image using lighthouse and hot-air-balloon design style references; inspected and regenerated once to remove boiler crossings, driving rods and railway sleepers. Final visual review: closed outlines and improved T junctions; residual subtle fill shading, narrow cab/chassis pieces and some same-colour neighbouring wheel/steam panes remain. Wheel-to-ground contacts and crowded chimney/boiler joins require scrutiny during tracing; pane count and geometry are not certified. Design sheet only."
+}

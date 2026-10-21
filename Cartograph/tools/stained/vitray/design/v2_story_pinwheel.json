@@ -1,0 +1,41 @@
+{
+  "id": "v2_story_pinwheel",
+  "name": "Rüzgârlı Çayır",
+  "scene": "A four-bladed pinwheel turns above sweeping ribbons of a windswept meadow.",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral orange",
+      "#E86A32"
+    ],
+    [
+      "golden yellow",
+      "#EDBD32"
+    ],
+    [
+      "sky blue",
+      "#419AC4"
+    ],
+    [
+      "teal green",
+      "#24796A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    72,
+    112
+  ],
+  "notes": "Design sheet only. Warm pair reserved for pinwheel and stick; cool pair for sky and meadow. Inspected both generations; one revision removed extra green and simplified meadow junctions. Remaining doubts: some same-colour neighbouring background panes may merge during tracing, closely spaced junctions around the hub and pointed ribbon ends need geometry review, and subtle generated fill variation remains. Pane target is aspirational pending tracing; no production geometry audit claimed.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/story_pinwheel-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "prompt": "Create one flat stained-glass puzzle DESIGN SHEET for Rüzgârlı Çayır, a graceful four-bladed toy pinwheel on a slender stick in a windswept meadow. Redraw image 1 entirely; images 2 and 3 are style references only for elegant leaded-panel composition. Portrait 3:4 canvas, preferably 1536x2048. Tall OVAL silhouette centred, nearly touching canvas edges, pure white exterior, heavy closed black rim. Exactly FOUR flat solid fill colors: coral orange #E86A32 and golden yellow #EDBD32 exclusively for pinwheel blades, round hub and stick; sky blue #419AC4 and deep teal green #24796A exclusively for all meadow and sky background. No white glass. No textures, shading, gradients, highlights, lettering, dots or decorative frames. Uniform pure black leading about 1% canvas width. Four elegant broad folded sails clearly read as a pinwheel, sweeping around a substantial circular hub, no radial multiway point. Blade dividers must terminate at separated locations on hub or outlines, never all converge. Each sail contains 5-7 broad sweeping full-width alternating orange/yellow strips; the stick has alternating orange/yellow sections. Background wind ribbons and broad curved meadow leaves alternate blue/green with simple closed pieces. Aim 80-95 closed panes total, target range 72-112, no arbitrary grids. All lines run boundary to boundary, no loose endpoints. T junctions only, never X or four-way junctions; separate junctions at least 3% panel width. No slivers or tiny panes. Clean mature crafted stained-glass composition, flat vector-like drawing for automated tracing. Each subject stripe alternates its two warm colors; background bands alternate the two cool colors. Preserve subject identity from old image but not its simplistic geometry.",
+  "revisionPrompt": "Revise this pinwheel design sheet. Preserve the oval, four broad curled sails, circular hub, stick, 3:4 framing and approximate pane count (72-112). CRITICAL flat vector drawing: exactly four uniform solid colors, no gradients at all: orange #E86A32, yellow #EDBD32 for entire pinwheel and stick ONLY; blue #419AC4 and teal #24796A for all sky and meadow ONLY. Remove the fifth lighter green entirely. White only exterior. Pure black smooth uniform lines about 1% width. Simplify meadow leaves into broad windswept ribbon pieces alternating teal and blue, with no nested skinny leaves, no multiway contacts, no tiny pockets. Remove the tiny red sliver at top of right blade. All divisions closed, every junction T-shaped with no X crossings; separate nearby T junctions by at least 3% panel width. Keep bold mature elegant stained-glass composition, no texture/shading/highlights. Subject strips alternate orange/yellow and background pieces alternate blue/teal as far as possible. No text."
+}

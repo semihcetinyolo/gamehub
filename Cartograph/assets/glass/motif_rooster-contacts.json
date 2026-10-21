@@ -1,0 +1,53 @@
+{
+  "id": "motif_rooster",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-21T08:08:26.070162+00:00",
+  "source": "assets/glass/motif_rooster-panes.webp",
+  "sourceSha256": "8cbb25704b07ba0a1d64df9646af7a2eb888313d3d72522cd4a51a9844aa0f75",
+  "sourceGeometrySha256": "3a9214bc38bc2a071eaf44817277be0c6e7acd6ab1257831c762acca2e7aee40",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 86,
+      "donorPatches": 45,
+      "colour": 0,
+      "preservedFraction": 0.4631184710037598
+    },
+    {
+      "patchSize": 62,
+      "donorPatches": 57,
+      "colour": 1,
+      "preservedFraction": 0.4197588363962241
+    },
+    {
+      "patchSize": 71,
+      "donorPatches": 72,
+      "colour": 2,
+      "preservedFraction": 0.46943181741184087
+    },
+    {
+      "patchSize": 98,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.4495992962652454
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "b102836abf0a5ddfee3b5832660c34f7ef3ef94fd6e6cbc7642a8f959a875706",
+  "sha256": "ac79f96ed342c43833091f70cf5d4af83403dc93ba45d358dd30e6db78b8fb3f",
+  "palette": [
+    "#f5800a",
+    "#f6e43d",
+    "#1ca38b",
+    "#031a71"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 40,
+    "total": 40,
+    "mismatches": []
+  }
+}

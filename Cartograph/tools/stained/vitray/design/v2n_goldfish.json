@@ -1,0 +1,40 @@
+{
+  "id": "v2n_goldfish",
+  "name": "Japon Balığı",
+  "scene": "a goldfish with a flowing tail",
+  "shape": "oval",
+  "palette": [
+    [
+      "vermilion orange",
+      "#EB681F"
+    ],
+    [
+      "golden yellow",
+      "#F5BE37"
+    ],
+    [
+      "turquoise",
+      "#3EB6D3"
+    ],
+    [
+      "deep teal",
+      "#167478"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. One simplification regeneration completed after the first image exceeded the pane budget. Final visual inspection: closed oval and recognisable flowing-tail goldfish; subject/background colour pairs preserved, but some same-colour subject panes share borders. Raster connected-component count is 26 panes (9 subject, 17 background), still above the requested 12–22. Remaining concerns: crowded junction at lower fin tip, some narrow pointed regions, and mild generated shading instead of strictly flat fills. These require downstream design cleanup; this sheet is not validated production geometry. Generated transparency was composited onto opaque white.",
+  "targetPanes": [
+    12,
+    22
+  ],
+  "observedPanes": 26,
+  "tool": "clai image",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Create a new stained-glass puzzle design sheet of a goldfish with a flowing tail, titled only in metadata Japon Balığı: NO text in image. Attached fox is a STYLE REFERENCE ONLY for elegant leaded-panel craftsmanship and smooth meaningful contours, NOT its complexity or subject. Portrait 3:4 canvas, opaque pure white exterior. One large centred vertical OVAL panel nearly touching all canvas edges, thick closed black rim without decorative border ring. A graceful goldfish swims diagonally upward left, rounded body with elegant large flowing tail curling downward right, clearly recognisable fins. Crucial: only 12–22 closed panes TOTAL, aim 18: about 8 large fish pieces including one visible round eye pane and 10 broad calm water pieces. No scales, bubbles, plants, fin rays or extra decoration. Exactly four FLAT solid glass colours: vermilion orange #E86B20 and golden yellow #F2C443 ONLY on fish, turquoise #42AEC5 and deep teal #176D70 ONLY on water. Alternate orange and yellow fish pieces; alternate turquoise and deep teal neighbouring water pieces. Eye is a small gold-coloured closed pane within orange head, no black dot pupil. Use large smooth outline-to-outline body/tail divisions that permit pair alternation. Background broad flowing water partitions connect fish outline to outer rim with staggered joins, not concentric rings or a chain of horizontal bands. Most panes touch at least three others. Every line connects boundary or junction to boundary or junction, no loose lines. Uniform pure black lead about 1% canvas width. ONLY separated T junctions with at least 3% panel width between joins, never X or four-way meetings, no pinched narrow slivers or tiny fragments. Natural refined stained-glass design, not cartoon, no smiling face. Flat fills for tracing, no gradients, shading, reflections, glass texture or highlights. Before finishing count closed panes and keep total under 23.",
+  "regenerationPrompt": "Simplify the attached goldfish design radically into an EASY stained-glass puzzle. Preserve elegant goldfish with flowing tail, oval silhouette, portrait 3:4 pure white opaque exterior and four-colour palette. EXACTLY 18 CLOSED GLASS PIECES TOTAL: 8 fish pieces and 10 water pieces. This is a strict upper budget, not 18 per part. Fish must have only: 1 orange head, 1 yellow circular eye inside head, 1 golden body, 1 orange dorsal fin, 1 orange lower fin, 3 broad flowing tail lobes alternating orange/gold/orange. Remove ALL other inner fish lines. Head/body separator is one smooth curve outline-to-outline. No mouth line. Tail has only TWO internal dividers. Use exactly TEN big calm background water panes alternating turquoise #42AEC5 and deep teal #176D70. Fish colours ONLY vermilion #E86B20 and gold #F2C443. Do not subdivide any of these listed pieces. No background grid, concentric rings or decorative frame. Every lead line closes a pane. Only spaced T junctions: no crossing or four-way contacts anywhere, separate the origins of tail dividers. Uniform pure black lead 1% canvas width, thick closed outer oval. Every pane spacious, no tiny fragments, fins broad without narrow wedges. FOUR FLAT SOLID COLOURS WITHOUT ANY SHADING, GRADIENTS, TEXTURE OR HIGHLIGHTS. No text. Maintain refined traditional stained-glass silhouette, not cartoon. Count panes before finishing: eighteen TOTAL including eye; absolutely no more than twenty-two."
+}

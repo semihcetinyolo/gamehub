@@ -1,0 +1,53 @@
+{
+  "id": "v2_cactus",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T10:47:38.134872+00:00",
+  "raw": "tools/stained/vitray/raw/v2_cactus.png",
+  "rawSha256": "43af44aac2487bcb6d2f614f722368af46309efc655a0edabb9c8f4d86a7b81b",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 79,
+      "donorPatches": 25,
+      "colour": 0,
+      "preservedFraction": 0.44752735417595657
+    },
+    {
+      "patchSize": 104,
+      "donorPatches": 91,
+      "colour": 1,
+      "preservedFraction": 0.592797348860504
+    },
+    {
+      "patchSize": 137,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5957329139975536
+    },
+    {
+      "patchSize": 134,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6468635406545534
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "cc09162a425db9b801a531e7f976ccf77259156d4d2fe51f10e9e1edcdf3ee58",
+  "sha256": "9cf247a63f4d023010d606368575a0e3f96d7703fd4f8bbaefd9e35d2f642adc",
+  "palette": [
+    "#034d2b",
+    "#a0c147",
+    "#fab112",
+    "#c33312"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 44,
+    "total": 44,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_cactus.webp"
+}

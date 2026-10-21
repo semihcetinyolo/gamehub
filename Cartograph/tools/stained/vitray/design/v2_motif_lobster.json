@@ -1,0 +1,36 @@
+{
+  "id": "v2_motif_lobster",
+  "name": "Istakoz",
+  "scene": "A lobster with raised pincers, segmented legs and a broad tail fan surrounded by flowing underwater currents.",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral",
+      "#D94B38"
+    ],
+    [
+      "gold",
+      "#F3B83F"
+    ],
+    [
+      "ocean blue",
+      "#185A7D"
+    ],
+    [
+      "turquoise",
+      "#32A6AD"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 87–127 panes. Reviewed both generated attempts; one revision simplified claw crossings and replaced pale gaps with turquoise. Subject/background colour pairs are preserved. Remaining doubts: slight tonal shading persists; some narrow antenna and eye-adjacent pieces and close junctions at leg roots/tail require tracing review; same-colour adjacent carapace pieces may merge. Pane count and topology have not been computationally certified.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/motif_lobster-silhouette.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create a flat stained-glass puzzle DESIGN SHEET for Istakoz (lobster). Use attached fox and lighthouse sheets only as style references for elegant curved leadwork, NOT their subjects or shading. Portrait 3:4 canvas, preferably 1536x2048. A tall oval panel nearly fills the canvas, closed thick black rim, pure white exterior. A recognisable anatomically inspired lobster seen from above: two large raised open pincers, segmented arms, elongated carapace, six broad splayed walking legs, segmented tapered abdomen and broad tail fan. Graceful substantial antenna shapes integrated as closed panes, no loose line ends. Elegant artisan glass composition, not childish. About 100 closed substantial panes (target 87–127), roughly 55 lobster panes and 45 flowing underwater current panes. Broad curved water bands follow the animal and terminate at its outline or rim. Four exact flat colours only: coral red #D94B38 and golden orange #F3B83F exclusively for all lobster parts including eyes; deep ocean blue #185A7D and turquoise #32A6AD exclusively for surrounding water. Alternate the two subject colours along the tail stripes, claw segments and leg sections; alternate the two water colours in background. No white inside the oval. Each meaningful segment runs outline-to-outline so its two colours can alternate. Uniform pure black lead about 1% canvas width, smooth curves, no shading, gradients, texture, highlights, dots, text or signature. Every pane closed, every line joins a boundary; T junctions only, no X crossings or four-way contacts. Separate neighbouring junctions by at least 3% panel width, avoid slivers and tiny cells; broad sturdy legs with visibly broad water gaps. Eye panes substantial and coloured golden orange within coral head. Tail fan divisions meet at staggered T junctions, not a single star point. Preserve lobster recognisability and clean contours. Output only the illustration.\nREVISION: The attached first attempt needs correction. Retain its composition but simplify to 105 panes total. Remove crossing internal seams inside both pincers: use simple alternating coral/gold transverse bands from outline to outline with no central longitudinal seam. Simplify carapace similarly into 5 alternating broad transverse bands, NO central line and NO feather-like panels. Eliminate all X crossings in background by removing dividers or staggering their meeting points widely. Replace the two near-white gaps beside the base of the carapace with turquoise. Remove all shading and gradients: absolutely solid four flat ink fills. Broaden antennae and leg gaps. All subject panes use only coral and gold, all background only blue and turquoise. Maintain smooth closed oval rim."
+}

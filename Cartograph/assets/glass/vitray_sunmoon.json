@@ -1,0 +1,53 @@
+{
+  "id": "vitray_sunmoon",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T08:51:55.796042+00:00",
+  "raw": "tools/stained/vitray/raw/vitray_sunmoon.png",
+  "rawSha256": "5ad12355ae45090ac67ea367cc1a8a6a9af307f1dee56cf7f963525f3578510f",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 96,
+      "donorPatches": 55,
+      "colour": 0,
+      "preservedFraction": 0.5214071092821189
+    },
+    {
+      "patchSize": 89,
+      "donorPatches": 41,
+      "colour": 1,
+      "preservedFraction": 0.35108943858583674
+    },
+    {
+      "patchSize": 133,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5715610585079471
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6465201618866643
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "9330d10c9da2497aa306c5aa4f29798c593c5264e10c0229be5f0a4cce3bfa9e",
+  "sha256": "aaf2abdb6fb9c32a0f568cb4e756dbe82280f40dec1be33f98f0e4b1194d6cbe",
+  "palette": [
+    "#fdde1b",
+    "#f27002",
+    "#003090",
+    "#32a9b0"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 66,
+    "total": 66,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/vitray_sunmoon.webp"
+}

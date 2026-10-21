@@ -1,0 +1,39 @@
+{
+  "id": "v2n_birdcage",
+  "name": "Kuş Kafesi",
+  "scene": "An open birdcage with a bird on top.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "amber",
+      "#E8AC2D"
+    ],
+    [
+      "burnt red",
+      "#BF4932"
+    ],
+    [
+      "deep blue",
+      "#205878"
+    ],
+    [
+      "teal",
+      "#269B9E"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Medium design sheet; target 28–45 panes. Regenerated once to reduce the first attempt's excessive pane count. Final has 41 closed coloured components >400 px measured from black-lead segmentation at 1086×1448, consistent with visual inspection. Warm bird and cage; cool background and cage openings. No obvious loose lead ends. Remaining concerns: adjacent same-colour bird and cage pieces will merge on tracing; several cage dome/base junctions appear four-way or too closely spaced and require geometry review; narrow cage uprights and the bird/cage contact need normal-scale inspection. Slight generated shading remains instead of strictly flat fills. Design only, not geometry-audited or published.",
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create a portrait 3:4 stained-glass design sheet for a colouring puzzle, titled conceptually an open birdcage with a bird on top (NO text in image). Attached image is STYLE REFERENCE ONLY: use its elegant authentic leaded panel composition and confident smooth black lead, but MUCH simpler, exactly 28–45 closed panes, aim 36 total. Opaque pure white exterior, centred round-arch silhouette almost fills canvas, thick black closed outer rim, no decorative border ring. Main subject: a handsome domed antique birdcage, with a visibly swung-open door on its right side, and a single large graceful songbird sitting on the dome, facing left, bold recognisable beak, head, wing and tail. Cage is a broad stained-glass interpretation with just 3 broad vertical compartments, not a mesh of thin rods; curved dome and solid plinth; open door drawn as a broad simple angled glass shape, never dangling lines. Bird about 6 meaningful broad panes, cage about 12–16 broad panes, background about 12–14 calm sweeping pieces. Use EXACTLY FOUR flat glass colours: warm amber #E8AC2D and burnt red #BF4932 exclusively for bird and cage solid subject pieces; deep blue #205878 and teal #269B9E exclusively for sky and the spaces seen through cage and doorway. Alternate each pair wherever adjacent; no white or cream panes. Each divider must fully close panes by ending at rim or an existing border; only separated T-junctions, no four-way X crossings, no dangling perch or foot strokes. All lead uniform black around 1 percent canvas width. Every pane broad and readable, no tiny decorations, no thin slivers or small border strips. Bird eye, if included, is a clearly sized closed amber or red pane. Design reads like real elegant leaded stained glass, never cartoon, but keep fills flat and solid for tracing: NO gradients, textures, reflections, shadows, highlights or additional colours. No concentric ornamental rings. No labels, signature, room context, frame or text. Match reference craftsmanship, not its pane count or composition.\nCRITICAL REVISION: The previous attempt had about 65 panes, too many! STRICT MAXIMUM 45. Draw a greatly simplified composition aiming exactly 34 panes. Bird only FIVE panes including its beak, no crest, no eye inset; one red head/beak silhouette, amber chest, red wing, amber belly, red tail. Cage dome only THREE alternating broad panes; cage structure only EIGHT panes including plinth and a single broad swung-open door. Background only EIGHT big panes outside the cage, TWO broad blue/teal panes per each of THREE large cage openings, ONE inside open door. No narrow rods. Do not add ornamental divisions. Wide calm background bands, only 2–3 divisions on each side. Keep flat uniform solid colours, absolutely no shading, no gradients. Make the open door a broad solid amber leaf hinged on the right, angled outward, to avoid thin framing. Ensure black lines close every piece, separated T junctions only.",
+  "paneCount": 41,
+  "targetPanes": [
+    28,
+    45
+  ]
+}

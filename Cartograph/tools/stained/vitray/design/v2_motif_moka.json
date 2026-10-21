@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_moka",
+  "name": "Moka Pot",
+  "scene": "An elegant faceted stovetop moka pot stands inside an oval panel surrounded by flowing coffee-aroma ribbons.",
+  "shape": "oval",
+  "palette": [
+    [
+      "copper",
+      "#C65432"
+    ],
+    [
+      "golden amber",
+      "#ECAF30"
+    ],
+    [
+      "deep blue",
+      "#245575"
+    ],
+    [
+      "turquoise",
+      "#329B9A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from motif_moka; lighthouse and poppies design sheets supplied as style references. Target 80–120 panes. Warm pair restricted to the pot and cool pair to the background including the handle opening. Reviewed the initial generation and regenerated once to improve flat fills, opaque white exterior and T junctions. Final visual review: recognisable silhouette and closed lead network; no obvious dangling lines. Remaining doubts: subtle tonal variation persists, some same-colour neighbouring panes may merge, narrow spout lip and boiler corner panes need attention, and several shoulder/base seam junctions and tightly converging background curls require geometry-stage validation. Pane count is a generation target, not a verified traced count. Design sheet only."
+}

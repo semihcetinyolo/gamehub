@@ -1,0 +1,29 @@
+{
+  "id": "v2_story_sloth",
+  "name": "Daldaki Siesta",
+  "scene": "A relaxed sloth hangs from a sweeping branch amid lush tropical leaves.",
+  "shape": "oval",
+  "palette": [
+    [
+      "copper",
+      "#B96736"
+    ],
+    [
+      "honey gold",
+      "#E5B654"
+    ],
+    [
+      "forest green",
+      "#286455"
+    ],
+    [
+      "turquoise",
+      "#56B8BB"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 91–131 panes. Warm copper/gold sloth and cool green/turquoise branch and foliage use separate colour pairs. Inspired by vitray fox and poppy design sheets and the original story_sloth subject. Generated twice; selected second version after visual review. Closed facial panes replace the first attempt’s dangling mouth stroke; opaque white exterior and oval rim. Remaining concerns for tracing: some multi-way foliage contacts (especially upper-left and lower foliage), narrow tapered fur pieces, adjacent same-colour background panes and slight fill tonal variation. Pane count and junction geometry are not yet mechanically validated."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "v2_maple",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:28:04.683861+00:00",
+  "raw": "tools/stained/vitray/raw/v2_maple.png",
+  "rawSha256": "786362995f38ba429232ec420f14e31d34641fa464e88521214fb5fda30ff9fa",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 91,
+      "donorPatches": 73,
+      "colour": 0,
+      "preservedFraction": 0.4829281140364001
+    },
+    {
+      "patchSize": 78,
+      "donorPatches": 24,
+      "colour": 1,
+      "preservedFraction": 0.47297642950884544
+    },
+    {
+      "patchSize": 94,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5741789479750274
+    },
+    {
+      "patchSize": 111,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5566912540764689
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "72d060585cdaa82a5517577e21149f776e680c4c2480e6c0465bb056e041dcce",
+  "sha256": "4bba4389a70367537ba0a4df48cb21e852b4e8df3bf02fb6a2e2683d70e88325",
+  "palette": [
+    "#f32105",
+    "#fdd30a",
+    "#027859",
+    "#2ebaf7"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 90,
+    "total": 90,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_maple.webp"
+}

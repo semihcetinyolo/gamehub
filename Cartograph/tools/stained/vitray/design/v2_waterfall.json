@@ -1,0 +1,36 @@
+{
+  "id": "v2_waterfall",
+  "name": "Saklı Şelale",
+  "scene": "A waterfall cascading between cliffs into an oval pool.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Turquoise",
+      "#26B9C4"
+    ],
+    [
+      "Deep blue",
+      "#24639B"
+    ],
+    [
+      "Warm ochre",
+      "#C68A3C"
+    ],
+    [
+      "Forest green",
+      "#477548"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Waterfall and oval pool use the blue/turquoise subject pair; surrounding cliff strata and landscape use ochre/green. Target 26–36 panes. Visually inspected both generations; regenerated once to replace pinched vertical ribbons with broad horizontal cascade bands. Remaining doubts: subtle shading persists, extra cliff subdivisions exceed the requested pane target, some adjacent background panes share colours, and several close junctions and pool-edge contacts require review during tracing. This is a design sheet, not audited game geometry or finished glass artwork.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/waterfall-contacts.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "prompt": "Create one flat stained-glass DESIGN SHEET for Saklı Şelale: a waterfall cascading between cliffs into an oval pool. Portrait 3:4 canvas. An elegant tall OVAL panel almost touching the canvas edges, completely closed thick black rim, plain pure white exterior. Reference 1 is the old waterfall: preserve only the subject idea, entirely redraw its awkward geometry. References 2 and 3 show the sophisticated leaded-panel design language, not their subject or density. Aim for 30 large clean closed panes, within 26–36 total. A graceful broad cascade dropping between two sculptural layered cliffs, widening into a clearly oval pool in the lower quarter. Waterfall and pool are the SUBJECT, use ONLY turquoise #26B9C4 and deep blue #24639B, alternating broad water bands; elegant flowing curves. Cliff, upper landscape and foreground are BACKGROUND, use ONLY warm ochre #C68A3C and forest green #477548, alternating broad strata. Exactly four flat solid fill colours throughout interior; no white or cream interior. Use outline-to-outline water bands and simple cliff strata to permit two-colour alternation; never add branch seams within a water band. Pure black uniform lead about 1 percent canvas width. Every line ends on rim or another boundary, all panes closed. Only separated T junctions, never X or four-way crossings; stagger strata ends on opposite sides of cascade seams by at least 3 percent panel width. No narrow slivers, tiny panes or nearly touching lines. Smooth natural meaningful subject silhouette. Flat vector-like colour only, absolutely NO shading, gradients, glass texture, shine, bevels, secondary outlines, speckles, floating strokes, text, captions or signatures. Sophisticated real stained-glass composition simplified into big traceable panes. Do not copy the gradients visible in the references.\nCORRECTION FOR FINAL ATTEMPT: The previous output had subtle gradients, too many pieces and pinched water slivers. Remove ALL gradients. Each pane must be ONE mathematically solid RGB colour. Make only 28–32 panes. Use 12 broad cliff strata on each side combined, 4 broad landscape/foreground panes, 8 broad waterfall bands and 4 pool panes. Cascade must be a broad continuous silhouette with simple gently bowed HORIZONTAL bands across its entire width, alternating blue and turquoise from top to bottom. No skinny vertical ribbons and no branching within the waterfall. Pool is a simple oval with 4 broad curved bands, no spiral and no pinched wedges. Background strata alternate forest green and ochre. Avoid same-colour adjacent strata. Uniform black lead, clean separated T joints. Elegant recognizable waterfall, with simpler geometry than the prior attempt."
+}

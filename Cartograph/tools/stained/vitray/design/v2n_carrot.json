@@ -1,0 +1,42 @@
+{
+  "id": "v2n_carrot",
+  "name": "Havuç",
+  "scene": "a carrot with leafy top",
+  "shape": "oval",
+  "palette": [
+    [
+      "carrot orange",
+      "#ED7926"
+    ],
+    [
+      "leaf green",
+      "#588B38"
+    ],
+    [
+      "cobalt blue",
+      "#345B9A"
+    ],
+    [
+      "turquoise",
+      "#53BBC5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening-level design; 22 closed coloured panes counted by connected components and visually reviewed: 5 root bands, 3 leaves and 14 background pieces. Subject uses orange/green; background uses cobalt/turquoise. Opaque white exterior, portrait 1086x1448. Regenerated once to simplify the crown and root. No obvious open lines or X crossings. Remaining doubts: slight generated shading remains rather than perfectly flat fills; two orange side leaves touch the orange root shoulder and may merge during tracing; the left leaf base is relatively narrow and should be checked at playing scale. Palette values are the requested colour targets. Design sheet only, not traced or published.",
+  "paneCount": 22,
+  "targetPanes": [
+    12,
+    22
+  ],
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png"
+    ],
+    "promptSummary": "Tall oval carrot panel with five alternating orange/green root bands, three broad leaves, calm cobalt/turquoise background bands, thick closed black lead, spaced T junctions, four flat colour targets, white exterior and 12–22 panes."
+  }
+}

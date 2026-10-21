@@ -1,0 +1,847 @@
+[
+ {
+  "id": "v2n_apple",
+  "name": "Kırmızı Elma",
+  "scene": "a single shiny apple with a leaf",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_lemon",
+  "name": "Limon",
+  "scene": "a lemon with two leaves",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_watermelon",
+  "name": "Karpuz Dilimi",
+  "scene": "a watermelon slice with seeds",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_carrot",
+  "name": "Havuç",
+  "scene": "a carrot with leafy top",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_grapes",
+  "name": "Üzüm Salkımı",
+  "scene": "a bunch of grapes with a vine leaf",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_pine",
+  "name": "Çam Ağacı",
+  "scene": "a simple pine tree on a hill",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_shootingstar",
+  "name": "Kayan Yıldız",
+  "scene": "a shooting star with a curved tail",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_raincloud",
+  "name": "Yağmur Bulutu",
+  "scene": "a cloud with three raindrops",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_rainbow",
+  "name": "Gökkuşağı",
+  "scene": "a rainbow arc over two small clouds",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_paperboat",
+  "name": "Kağıt Gemi",
+  "scene": "a folded paper boat on waves",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_goldfish",
+  "name": "Japon Balığı",
+  "scene": "a goldfish with a flowing tail",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_birdnest",
+  "name": "Kuş Yuvası",
+  "scene": "a nest with three eggs on a branch",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_key",
+  "name": "Eski Anahtar",
+  "scene": "an ornate old key",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_bell",
+  "name": "Çan",
+  "scene": "a bell with a bow",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_giftbox",
+  "name": "Hediye Kutusu",
+  "scene": "a gift box with a ribbon bow",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_clover",
+  "name": "Dört Yapraklı Yonca",
+  "scene": "a four-leaf clover",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_daisy",
+  "name": "Papatya",
+  "scene": "a single daisy flower with a stem",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_ladybug",
+  "name": "Uğur Böceği",
+  "scene": "a ladybug seen from above",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_caterpillar",
+  "name": "Tırtıl",
+  "scene": "a smiling caterpillar on a leaf",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_pinecone",
+  "name": "Kozalak",
+  "scene": "a pine cone",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_feather",
+  "name": "Tüy",
+  "scene": "a single curved feather",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_icecream",
+  "name": "Dondurma",
+  "scene": "an ice cream cone with two scoops",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_teaglass",
+  "name": "Çay Bardağı",
+  "scene": "a tulip-shaped Turkish tea glass on a saucer",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_pomegranate",
+  "name": "Nar",
+  "scene": "a pomegranate with a crown top",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_avocado",
+  "name": "Avokado",
+  "scene": "an avocado half with its stone",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_snowdrop",
+  "name": "Kardelen",
+  "scene": "a drooping snowdrop flower",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_chick",
+  "name": "Civciv",
+  "scene": "a round chick",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_olive",
+  "name": "Zeytin Dalı",
+  "scene": "an olive branch with olives",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_evileye",
+  "name": "Nazar Boncuğu",
+  "scene": "a round evil-eye bead",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_candle",
+  "name": "Mum",
+  "scene": "a lit candle with a flame",
+  "kind": "fresh",
+  "size": "small",
+  "hard": false,
+  "targetPanes": [
+   12,
+   22
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_seagull",
+  "name": "Martı",
+  "scene": "a seagull gliding over waves",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_eagle",
+  "name": "Kartal",
+  "scene": "an eagle with spread wings",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_stork",
+  "name": "Leylek",
+  "scene": "a stork standing on one leg",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_beaver",
+  "name": "Kunduz",
+  "scene": "a beaver beside a log",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_kangaroo",
+  "name": "Kanguru",
+  "scene": "a kangaroo mid-hop",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_zebra",
+  "name": "Zebra",
+  "scene": "a zebra head with bold stripes",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_camel",
+  "name": "Deve",
+  "scene": "a camel among dunes",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_lamb",
+  "name": "Kuzu",
+  "scene": "a woolly lamb in a meadow",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_macaw",
+  "name": "Ara Papağanı",
+  "scene": "a macaw on a branch",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_pelican",
+  "name": "Pelikan",
+  "scene": "a pelican on a post",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_clocktower",
+  "name": "Saat Kulesi",
+  "scene": "a clock tower",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_rowboat",
+  "name": "Kayık",
+  "scene": "a rowing boat on a lake",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_vase",
+  "name": "Çiçekli Vazo",
+  "scene": "a vase with three flowers",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_birdcage",
+  "name": "Kuş Kafesi",
+  "scene": "an open birdcage with a bird on top",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_samovar",
+  "name": "Semaver",
+  "scene": "a Turkish samovar with a teapot on top",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_passionflower",
+  "name": "Çarkıfelek",
+  "scene": "a passion flower bloom",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_orchid",
+  "name": "Orkide",
+  "scene": "an orchid stem with blossoms",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_anglerfish",
+  "name": "Fener Balığı",
+  "scene": "an anglerfish with its glowing lure",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_shark",
+  "name": "Köpek Balığı",
+  "scene": "a shark swimming",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_hourglass",
+  "name": "Kum Saati",
+  "scene": "an ornate hourglass",
+  "kind": "fresh",
+  "size": "medium",
+  "hard": false,
+  "targetPanes": [
+   28,
+   45
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_aurora",
+  "name": "Kuzey Işıkları",
+  "scene": "northern lights over a snowy pine forest and a cabin",
+  "kind": "fresh",
+  "size": "large",
+  "hard": false,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_lavender",
+  "name": "Lavanta Tarlası",
+  "scene": "lavender field rows towards a farmhouse at sunset",
+  "kind": "fresh",
+  "size": "large",
+  "hard": true,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_riceterraces",
+  "name": "Pirinç Terasları",
+  "scene": "rice terraces stepping down a valley",
+  "kind": "fresh",
+  "size": "large",
+  "hard": false,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_sakura",
+  "name": "Sakura Köprüsü",
+  "scene": "a red arched bridge under cherry blossoms",
+  "kind": "fresh",
+  "size": "large",
+  "hard": false,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_fireflies",
+  "name": "Ateş Böcekleri",
+  "scene": "fireflies over a pond at night",
+  "kind": "fresh",
+  "size": "large",
+  "hard": true,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_sled",
+  "name": "Kış Kızağı",
+  "scene": "a sled on a snowy hill with a village below",
+  "kind": "fresh",
+  "size": "large",
+  "hard": false,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_greatwave",
+  "name": "Büyük Dalga",
+  "scene": "a great curling ocean wave",
+  "kind": "fresh",
+  "size": "large",
+  "hard": false,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_caravanserai",
+  "name": "Kervansaray Avlusu",
+  "scene": "an arched caravanserai courtyard with a fountain",
+  "kind": "fresh",
+  "size": "large",
+  "hard": true,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_flowermarket",
+  "name": "Çiçek Pazarı",
+  "scene": "a flower market stall with buckets of flowers",
+  "kind": "fresh",
+  "size": "large",
+  "hard": false,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_treehouse",
+  "name": "Ağaç Ev",
+  "scene": "a treehouse in a big oak",
+  "kind": "fresh",
+  "size": "large",
+  "hard": false,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_gardengate",
+  "name": "Bahçe Kapısı",
+  "scene": "an arched garden gate covered in roses",
+  "kind": "fresh",
+  "size": "large",
+  "hard": true,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_beehive",
+  "name": "Arı Kovanı Bahçesi",
+  "scene": "beehives in a flower garden with bees",
+  "kind": "fresh",
+  "size": "large",
+  "hard": false,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_floatingmarket",
+  "name": "Yüzen Pazar",
+  "scene": "boats with fruit on a canal market",
+  "kind": "fresh",
+  "size": "large",
+  "hard": false,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_lanterns",
+  "name": "Fener Festivali",
+  "scene": "paper lanterns rising over a river",
+  "kind": "fresh",
+  "size": "large",
+  "hard": true,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "brief": "FRESH_BRIEF.md"
+ },
+ {
+  "id": "v2n_vineyard",
+  "name": "Bağ Bozumu",
+  "scene": "a vineyard on rolling hills with grapes in front",
+  "kind": "fresh",
+  "size": "large",
+  "hard": false,
+  "targetPanes": [
+   70,
+   110
+  ],
+  "brief": "FRESH_BRIEF.md"
+ }
+]

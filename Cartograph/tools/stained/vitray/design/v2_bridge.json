@@ -1,0 +1,37 @@
+{
+  "id": "v2_bridge",
+  "name": "Taş Köprü",
+  "scene": "a stone arched bridge over a river under the sun",
+  "shape": "round arch",
+  "palette": [
+    [
+      "terracotta",
+      "#BD5135"
+    ],
+    [
+      "golden ochre",
+      "#E9AE38"
+    ],
+    [
+      "deep blue",
+      "#195879"
+    ],
+    [
+      "turquoise",
+      "#32A6B3"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only, targeting 85–125 panes. Stone bridge uses the warm pair; sky, stylised sun and river use the cool pair. Inspected both generations; selected the second for broader masonry and river panes. Remaining doubts: subtle fill shading, same-colour neighbours around the sun and some masonry, several apparent four-way sky/water contacts and narrow wave tips require resolution during tracing. No obvious loose line ends. Not a geometry-audited playable level.",
+  "tool": "image_gen",
+  "prompt": "Create a flat tracing DESIGN SHEET for Cartograph level v2_bridge, Tas Kopru: a stone arched bridge over a river under the sun. Attached lighthouse and fox are STYLE references only: elegant actual leaded-panel composition, but remove their shading. Portrait 3:4 canvas, preferably 1536x2048. A centered round-arch silhouette almost touches canvas edges, pure white exterior, closed thick black rim, no decorative border. Stone bridge spans the middle with one magnificent broad semicircular open arch and strong abutments, gently raised parapet, recognisable masonry voussoirs. River visible through opening and across foreground; a circular sun in sky above. Refined architectural stained-glass composition, not childish geometry. Aim 85–125 substantial closed panes, around 100 total: about 40 masonry pieces, 30 sky pieces and 30 river pieces. Exactly FOUR flat ink colours: terracotta #BD5135 and golden ochre #E9AE38 ONLY for stone bridge subject; deep blue #195879 and turquoise #32A6B3 ONLY for sky, sun and river background. Sun is a turquoise disk against blue, with blue/turquoise sky bands around it, no warm background colour. Subject panes alternate terracotta/ochre, background panes alternate blue/turquoise. Use outline-to-outline divisions, broad masonry wedges and flowing wave bands, avoid grid. All pure black lead lines uniform about 1 percent canvas width. Every pane closed; every line connects rim or another line; T junctions only with widely spaced endpoints, never X or 4-way meeting. Stagger masonry and wave intersections. No narrow slivers, small fragments, near-touching lines, loose ends. Smooth meaningful architecture contours. Exactly solid flat fills, no shading, gradients, texture, glass lighting, text, labels, signature. This is a traceable colour drawing, not finished glass.\nRevision: the previous attempt had sliver-shaped river panes and subtle shading. Make EVERY fill strictly constant, like a vector flood fill. Simplify river to 24–30 broad rounded wave panes with no long needle shapes. No crossing wave lines. Simplify bridge to 38–44 large panes, eliminate narrow parapet strips and caps, use one broad course instead. Sky around 30 panes. The circular sun should be one blue disk surrounded by a continuous turquoise annulus; attach outer sky dividers at staggered positions, so no same-colour sun neighbours. Avoid same-colour adjacent bridge stones as far as possible. Prioritise flat traceability and broad clear T junctions over decoration.",
+  "references": [
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "sourceImage": "assets/glass/bridge-junctions.webp",
+  "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15e2d-10e7-74a1-a704-441e4fddefe0/exec-2d7fcf41-99ef-4dbb-8227-defb7dc7ee4a.png"
+}

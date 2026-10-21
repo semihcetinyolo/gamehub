@@ -1,0 +1,36 @@
+{
+  "id": "v2_lantern",
+  "name": "Işık Feneri",
+  "scene": "An ornate lantern with four glowing golden panes.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "golden yellow",
+      "#F3BD32"
+    ],
+    [
+      "amber orange",
+      "#D86628"
+    ],
+    [
+      "peacock teal",
+      "#159B9E"
+    ],
+    [
+      "twilight blue",
+      "#23527C"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 87–127 panes. Inspected initial generation and performed one revision: four main windows are now present and handle uses subject colours. Remaining doubts: subtle fill shading persists; some cap divisions and background contacts appear four-way or tightly spaced, narrow strips remain beside windows, and some same-colour neighbours may merge during tracing. Pane count and production geometry have not been audited. No subject mask required.",
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_poppies.png",
+    "assets/glass/lantern-silhouette.webp"
+  ],
+  "prompt": "Revise this lantern design sheet, preserving the elegant centered lantern and round-arch panel on white exterior. Mandatory corrections: FOUR golden window panes, not two: divide EACH of the two tall golden windows halfway up with a broad amber horizontal structural band, whose ends meet side posts at staggered heights away from other junctions. Recolour the hanging HANDLE itself gold/amber, only its hole is teal. Remove ALL gradient/shading/texture: perfectly FLAT SOLID fills, exactly golden #F3BD32 and amber #D86628 for ALL subject parts, teal #159B9E and blue #23527C for ALL background panes. Pure black uniform lead, pure white outside only. Remove X/four-way crossings, particularly on cap and background near shoulders: offset the endpoint of every dividing line on opposite sides of a shared boundary by at least 3% panel width to create two visibly separated T junctions. Keep subject silhouette smooth. Eliminate thin sliver panes beside windows, consolidate tiny ornaments into broad panes. Aim 87–127 CLOSED regions, roughly 100. Alternate gold/amber within subject and teal/blue within background. Broad smooth bands, no arbitrary grid, no tiny details. Every seam joins a rim or seam, no open ends. No text. Portrait 3:4."
+}

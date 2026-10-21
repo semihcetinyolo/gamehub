@@ -1,0 +1,36 @@
+{
+  "id": "vitray_cat",
+  "name": "Kedi",
+  "scene": "A fluffy seated cat rests beside broad flowers and leaves beneath a round arch.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "Gold",
+      "#D99B40"
+    ],
+    [
+      "Reddish brown",
+      "#99503E"
+    ],
+    [
+      "Turquoise",
+      "#2D8C8B"
+    ],
+    [
+      "Blue violet",
+      "#5062A4"
+    ]
+  ],
+  "notes": "Warm cat silhouette against cool background foliage; turquoise eye panes remain part of the cat subject. A targeted correction removes loose fur marks and simplifies cramped face/foliage junctions. Remaining doubts: cheek/mouth contacts, narrow fur tips and background contacts need tracing review. Mask covers cat and curled tail only; background flowers and foliage stay white. Raster fills have slight variation to quantize. Mask keeps thin white internal seams, with all subject pane interiors black. Prefer the supplied subject mask for the turquoise eye panes, which are an exception to the subject colour pair.",
+  "designPrompt": "Edit this existing design with minimal geometry changes. Keep cat pose and silhouette, round arch, framing, broad fur pieces and cool flowers. Remove every dangling stroke or free-ended fur mark, notably the isolated tapered black line inside the lower chest/right foreleg. All black lines must be complete boundaries between closed panes. Simplify crowded mouth/cheek contacts and flower leaf forks to well-separated T junctions, no 4-way crossings. Broaden narrow fur pieces by moving whole internal boundaries without changing outer cat contour. Eye should be ONE closed turquoise almond pane each, no pupil/split line. Nose one clearly sized reddish-brown closed pane, no tiny sliver. Recolour ALL background twigs/stems to turquoise or blue-violet; the warm colours belong only to the cat. Exactly #D99B40 gold and #99503E reddish brown for cat; #2D8C8B turquoise and #5062A4 blue-violet for sky/flowers/leaves. Flat single solid colours, NO gradients, shading or textures. Preserve about 80–95 closed panes. Black only uniform lead. White exterior only. Leave at least 3% panel width between neighbouring junctions.",
+  "subjectMaskPrompt": "Edit this finished design into its BLACK AND WHITE SUBJECT MASK. Preserve the EXACT canvas size, aspect ratio, framing, panel shape, every contour and every lead line in its original pixel position. Do NOT redraw, rearrange, simplify or scale anything. Recolour only: every pane of SUBJECT goes pure black #000000, every other pane and exterior pure white #FFFFFF. Keep ALL existing black lead lines black, never turn subject seams white. In the subject this makes a continuous solid black silhouette. Include eye interiors as black. Keep background seams black. No grey, no colour, no shading, no added marks. Output must overlay the input with unchanged geometry. SUBJECT: the entire seated cat including both ears, both turquoise eye panes, nose, face, fluffy chest, legs, paws and the whole curled tail to the right. All flowers, twigs, leaves, sky and ground panes remain pure white. Keep internal cat seams black, do not introduce white outlines. Exact same canvas and round arch framing.",
+  "generationMethod": "built-in image_gen",
+  "canvas": [
+    1086,
+    1448
+  ],
+  "subjectColours": [
+    0,
+    1
+  ]
+}

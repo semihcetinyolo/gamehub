@@ -1,0 +1,53 @@
+{
+  "id": "teapot",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-21T08:08:35.811574+00:00",
+  "source": "assets/glass/teapot-silhouette.webp",
+  "sourceSha256": "65feb5951f5b696e5b5293b2af587a4a674b7ec3c203d7db7c693dab0c645816",
+  "sourceGeometrySha256": "454d6b44758e0f501a2338bb26087a988f3508ea10f62942d218d3a0f3059ae6",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 78,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.4856056838184393
+    },
+    {
+      "patchSize": 119,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5435567522194324
+    },
+    {
+      "patchSize": 83,
+      "donorPatches": 80,
+      "colour": 2,
+      "preservedFraction": 0.4586628030091244
+    },
+    {
+      "patchSize": 79,
+      "donorPatches": 63,
+      "colour": 3,
+      "preservedFraction": 0.48886965788083087
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "1b20527beb72d321f293641da9849b902d299854ea4a4b36c50a241fc5e3d29b",
+  "sha256": "cfa7d37ce2d80dbabade7452af751b92022a42f7ecf6765e104fc6ad9a6adc34",
+  "palette": [
+    "#c51911",
+    "#eec43f",
+    "#179f99",
+    "#553b86"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 37,
+    "total": 37,
+    "mismatches": []
+  }
+}

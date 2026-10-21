@@ -1,0 +1,43 @@
+{
+  "id": "v2n_beaver",
+  "name": "Kunduz",
+  "scene": "a beaver beside a log",
+  "shape": "oval",
+  "palette": [
+    [
+      "copper",
+      "#B65C32"
+    ],
+    [
+      "amber",
+      "#E7B543"
+    ],
+    [
+      "deep teal",
+      "#226D73"
+    ],
+    [
+      "river blue",
+      "#65B4D0"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Medium design sheet; target 28–45 panes. Beaver and log use warm pair, background uses cool pair. Generated using ClaiFace image skill with fox and lighthouse style references, then regenerated once to reduce excessive divisions and correct colour-pair leakage. Final image inspected: recognizable beaver and paddle tail, closed oval, opaque nearly white exterior, no obvious loose line ends. Remaining doubts: threshold-based closed-component count is approximately 47 including small background pockets, slightly above target; several tight or four-way-looking junctions at neck, arm and tail require geometry review; some adjacent panes share a colour; subtle shading remains instead of strictly flat fills. This is a design sheet, not audited playable geometry.",
+  "size": "medium",
+  "targetPanes": [
+    28,
+    45
+  ],
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png",
+      "tools/stained/vitray/design/vitray_lighthouse.png"
+    ],
+    "promptSummary": "Oval leaded-glass design of a beaver beside a log; 34 intended large closed panes, copper and amber subject, teal and blue background, thick black lead, separated T junctions, opaque white exterior; retry simplifies divisions and removes sun."
+  }
+}

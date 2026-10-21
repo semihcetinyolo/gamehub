@@ -1,0 +1,37 @@
+{
+  "id": "v2_teapot",
+  "name": "Çay Saati",
+  "scene": "A decorated teapot with a curved spout and handle on a saucer.",
+  "shape": "oval",
+  "palette": [
+    [
+      "amber",
+      "#ECAF28"
+    ],
+    [
+      "vermilion",
+      "#CC4934"
+    ],
+    [
+      "turquoise",
+      "#299FAD"
+    ],
+    [
+      "violet",
+      "#6653A0"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 48–58 panes. Teapot, lid, spout, handle and saucer use the warm pair; background and handle opening use the cool pair. Visually reviewed and regenerated once to simplify junctions. Remaining doubts: upper-left background and lower handle opening retain apparent four-way contacts; tight tapered joins occur in the vessel decoration and below the knob. Some adjacent panes share a colour and may merge during tracing. Subtle fill variation remains rather than perfectly flat colours. Pane count and production geometry require downstream tracing/validation; this is a design sheet only.",
+  "tool": "image_gen",
+  "prompt": "Create a flat stained-glass puzzle DESIGN SHEET, not finished textured glass. Portrait 3:4 canvas. Reference 1 old teapot is SUBJECT ONLY; references 2 fox and 3 poppies show elegant smooth stained-glass composition. Redraw an elegant decorated teapot with long curved upward spout on left, generous loop handle on right, domed lid and knob, sitting on a wide saucer. Center within a tall OVAL panel nearly touching canvas edges, pure white exterior, closed thick black rim. Aim 48–58 closed panes total (about 24 teapot/saucer and 28 background). Decorate vessel with flowing broad curved outline-to-outline bands alternating warm colours, not tiny floral details. Background flowing broad art-nouveau bands alternate cool colours. Exactly FOUR flat solid fill colours: amber #ECAF28 and vermilion #CC4934 exclusively for teapot including lid, spout, handle and saucer; turquoise #299FAD and violet #6653A0 exclusively background including the hole in handle. Colours alternate within each pair as much as possible. No white glass. Pure black smooth uniform lead about 1% canvas width. Every line connects to rim or junction; only spaced T junctions, never X or 4-way contacts; offset background junctions from subject dividers. No loose ends, no slivers, no tiny panes, no narrow almost-parallel lines. Every pane at least 3% panel width across except tips. Elegant recognizable ceramic silhouette, spacious large pieces. STRICTLY FLAT FILLS: no gradients, texture, highlights, shadows, extra colours, lettering or decorative border frame. Make mature artisan panel design with refined contours.\nREVISION: The attached first draft has four-way X crossings, especially upper-left background, left spout attachment, handle interior, and saucer; also near-tangencies and faint shading. Redraw with simpler broad bands, about 52 panes. Separate all four-way crossings into two T junctions at least 3% panel width apart. Each line terminates on a continuous boundary with no opposite continuation nearby. Use truly uniform solid colour within every pane, no lighting variation. Keep the elegant oval teapot composition and strict subject/background colour pairs. Avoid intricate subdivisions of saucer rim; three broad saucer bands are enough. Keep every pane broad and visible.",
+  "references": [
+    "assets/glass/teapot-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "generationAttempts": 2
+}

@@ -1,0 +1,35 @@
+{
+  "id": "v2_motif_bat",
+  "name": "Yarasa",
+  "scene": "A bat spreads its scalloped wings across an oval panel of sweeping night-sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "plum",
+      "#683C78"
+    ],
+    [
+      "amber",
+      "#EBA83D"
+    ],
+    [
+      "midnight blue",
+      "#204B75"
+    ],
+    [
+      "teal",
+      "#279CA5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 22–32 panes. Inspected both generations; selected simplified second version. Subject/background colour pairs are preserved. Remaining doubts: subtle fill shading persists; some wing-root and lower sky junctions are crowded or multiway, some same-colour adjacent panes will merge, and visible pane count may exceed target before merging. Requires tracing-stage geometry review; not validated playable geometry.",
+  "tool": "image_gen",
+  "prompt": "Create one flat stained-glass DESIGN SHEET for Yarasa (bat), not finished textured glass. Reference 1 is the old bat only for subject; references 2 and 3 show elegant leaded-panel design language. Redraw a graceful recognizable front-facing bat with extended scalloped wings and pointed ears, in a tall oval panel nearly touching the edges of a portrait 3:4 white canvas. Exactly 22–32 large closed panes total, aim 26. Subject pair ONLY plum #683C78 and amber #EBA83D, alternating neighboring bat pieces; background pair ONLY midnight blue #204B75 and teal #279CA5, alternating broad gently arcing night-sky bands. No moon, stars, leaves or extra objects. Bat wings have a few sweeping curved partitions extending outline-to-outline, never a fan converging at one point; body simple, two generous closed amber eye panes in plum head. Elegant natural silhouette, not childish or a logo. ALL FILLS perfectly flat solid, exactly four interior colors; pure white only outside oval. Pure black uniform lead lines approximately 1% canvas width, thick closed outer rim, smooth curves. No gradient, shading, texture, highlights, white panes, tiny details, decorative border frame, text or signature. All seams end at outline/rim or separated T junctions, NO X or 4-way junctions; junction spacing at least 3% panel width. Broad panes, no slivers or near-touching lines. Preserve a readable bat with large sculptural wings and small central body. Output only the single portrait design.\nREVISION: Prior output had roughly 45 panes, gradients, and multiway hubs at wing shoulders. Simplify drastically to 26 total panes. Each wing ONLY FOUR broad alternating plum/amber membrane pieces, seams individually separated along upper edge, NEVER converge at wing shoulder. Head single plum pane with two amber eyes, ears solid plum connected to head without inner ear dividers. Torso exactly THREE horizontal alternating amber/plum/amber sections, no vertical central seam. Background about 10 broad alternating teal/blue sky areas. No extra divisions for joints or fingers. Bat wingtips stop well inside oval, do not touch outer border. Critical perfectly uniform solid fill per pane, no shading whatsoever. Match the design language of the attached fox reference but much simpler, only 26 big panes.",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "generationAttempts": 2
+}

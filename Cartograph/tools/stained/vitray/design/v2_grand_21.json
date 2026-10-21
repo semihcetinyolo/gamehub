@@ -1,0 +1,36 @@
+{
+  "id": "v2_grand_21",
+  "name": "Kanallar Şehri",
+  "scene": "An elegant canal city with warm waterfront palazzi, an arched stone bridge and a sailboat on flowing blue and teal water.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "terracotta",
+      "#C75035"
+    ],
+    [
+      "golden amber",
+      "#E9B83F"
+    ],
+    [
+      "deep blue",
+      "#205A80"
+    ],
+    [
+      "teal",
+      "#239D9F"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 110–160 panes. Buildings, windows, bridge and sailboat use the warm pair; sky and canal use the cool pair. Inspected both generations; revision removes cool windows, sun and most narrow architectural trim. Remaining doubts: subtle fill variation persists, some same-colour neighbouring panes may merge during tracing, narrow distant windows and pointed wave junctions require geometry-stage review. Pane count and T-junction compliance are not certified by this visual review.",
+  "tool": "image_gen",
+  "prompt": "Create a clean flat stained-glass DESIGN SHEET for Kanallar Sehri (City of Canals), a sophisticated elegant canal city with waterfront gabled palazzi, an arched pedestrian bridge across the middle and one sailboat in the foreground. Use the attached old image only for subject idea, completely redraw its childish geometry. Other attached images are style references for elegant flowing leaded composition, but eliminate their shading. Portrait 3:4 canvas, round arch silhouette nearly touching edges, exterior pure white, thick closed black rim, no inset decorative frame. Aim 110-160 clearly closed substantial panes (about 125): expressive architectural sections, roof bands, broad window panes, arched bridge voussoirs, sail panels and flowing canal/sky bands. Exactly four flat interior fills: terracotta #C75035 and golden amber #E9B83F exclusively for all subject buildings, bridge and boat; deep blue #205A80 and teal #239D9F exclusively for sky, water and spaces through bridge. Windows use subject pair. Alternate neighbours within each pair wherever possible. No white glass. Solid pure black lead uniform approximately 1% canvas width; smooth graceful contours. Every separator must end on rim or another separator, no loose strokes or decorative lines. Only spaced T junctions, never X or four-way contacts; stagger seams by at least 3% panel width. All panes broad and traceable, no tiny ornamental details, no hairline slivers, no cramped railings, no thin masts or ropes. Boat sails meet hull without hairline pieces. City remains clearly recognizable, warm architecture stands out from cool canal. Flat vector-like solid colour only, no gradients, shadows, texture, highlights, text, signature or photorealism. This is a tracing guide for real elegant stained glass, not finished glass.\nREVISION: retain the canal city composition of the last image but simplify to around 125 large panes. Absolutely flat fills with zero shading. All windows MUST be terracotta within amber walls or amber within terracotta walls, NEVER blue or teal windows. Remove the sun entirely, replace with blue/teal sky bands. Remove thin window surrounds, balconies, railings, chimneys and posts. No narrow trim bands on buildings or bridge. Broad simple arched windows, about 2 per facade. Bridge is just one broad alternating terracotta/amber arch of large stone panes, no narrow curved border strips. Boat uses wide alternate stripes, no thin mast. Sky and water exclusively alternating blue/teal with fewer long slender bands and more broad waves. Keep architecture elegant and mature. Only T junctions, offset intersections; all closed panes. Use exactly specified four SOLID uniform hex colours, no gradients or simulated lighting whatsoever.",
+  "references": [
+    "assets/glass/grand_21-contacts.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_hotairballoon.png"
+  ]
+}

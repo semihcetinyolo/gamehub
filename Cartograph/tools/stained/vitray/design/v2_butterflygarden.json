@@ -1,0 +1,37 @@
+{
+  "id": "v2_butterflygarden",
+  "name": "Kelebek Bahçesi",
+  "scene": "A butterfly with four broad patterned wings fills an oval panel surrounded by flowing garden foliage.",
+  "shape": "oval",
+  "palette": [
+    [
+      "amber",
+      "#F6BC32"
+    ],
+    [
+      "coral",
+      "#DF573F"
+    ],
+    [
+      "sky blue",
+      "#419BC3"
+    ],
+    [
+      "leaf green",
+      "#287763"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from the old butterfly subject with fox and poppies design sheets as style references. Target 38–48 panes. Visually inspected both generations; selected the single permitted regeneration for simpler wing bands and an undivided body. Subject and background colour pairs remain separate; no obvious open-ended strokes. Remaining doubts: subtle fill shading persists, some same-colour neighbours will merge during tracing, and crowded contacts near the head, wing roots and oval tips need geometry review. Pane count and T-junction compliance are not certified at design-sheet stage.",
+  "tool": "image_gen",
+  "prompt": "Create one flat stained-glass DESIGN SHEET for Kelebek Bahçesi, a butterfly with four broad patterned wings. References: image 1 is old butterfly subject reference ONLY; images 2 and 3 are elegant botanical leaded panel style references. Fresh mature elegant Art Nouveau composition, not the old childish ovals. Portrait 3:4 canvas, large closed oval panel nearly touching all canvas edges on pure white exterior. Dominant symmetrical butterfly with four beautifully shaped broad wings and substantial narrow body surrounded by graceful garden leaf/sky divisions. Target 38–48 closed panes TOTAL, aim 44: about 24 butterfly pieces and 20 background pieces. Exactly four flat interior colors: amber #F6BC32 and coral #DF573F EXCLUSIVELY for butterfly, sky blue #419BC3 and deep leaf green #287763 EXCLUSIVELY for background. Within each wing use broad flowing outline-to-outline curved bands alternating amber and coral; no vein networks or dots. Background broad flowing leaf and sky ribbons alternate blue and green. Body amber/coral, never a background color. No antenna lines ending freely: omit antennae if needed. Pure black smooth uniform lead lines about 1% of canvas width, closed thick black outer rim. Every line joins a rim or junction. T junctions ONLY, no X/four-way crossings; stagger all meeting points at least 3% of panel width, especially where wing bands meet body. No tiny panes, no slivers, each pane broadly readable. Subject silhouette graceful and recognizable, distinct top and lower wing pairs. Absolutely flat solid color fills, NO shading, NO gradient, NO texture, NO highlights, NO photorealistic glass, no lettering, no decorative border frame. White only outside oval. This is a tracing source for a puzzle, not finished glass art.\nREVISION: previous output has too many panes, gradients, four-way crosses in hindwings and crowded narrow central leaf tips. Simplify strongly to EXACTLY 42 large panes. Each of four wings should have 6 broad curved stripes (24 panes total), body one single coral pane, and 17 broad background panes. Stripes run all the way from wing edge to wing edge, NEVER intersect one another or branch. Solid single-color fills with absolutely identical RGB throughout each region, like a vector diagram. No pinched body subdivisions, no skinny leafy center spines, no antennae. Keep each wing separate along a broad continuous single coral body; amber stripe endpoints may touch coral body but never form crossing vertices. Background should use broad alternating blue/green curved bands connecting rim to butterfly, no branching leaf veins or converging fans. Stagger all background joints from wing stripe joints by generous space. This is a flat four-color cut-glass pattern, not shaded illustration. Preserve the elegant oval and four-wing butterfly.",
+  "references": [
+    "assets/glass/butterflygarden-junctions.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "generationAttempts": 2
+}

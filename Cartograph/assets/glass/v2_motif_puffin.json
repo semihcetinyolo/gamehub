@@ -1,0 +1,53 @@
+{
+  "id": "v2_motif_puffin",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:18:13.277693+00:00",
+  "raw": "tools/stained/vitray/raw/v2_motif_puffin.png",
+  "rawSha256": "c9cec3071f813372c82ec5e388bfdf921392707439f6d5410e6b5840fbdcb8d6",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 106,
+      "donorPatches": 82,
+      "colour": 0,
+      "preservedFraction": 0.5034641658322749
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6557257275184406
+    },
+    {
+      "patchSize": 90,
+      "donorPatches": 41,
+      "colour": 2,
+      "preservedFraction": 0.5803217996313644
+    },
+    {
+      "patchSize": 135,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6809376249004963
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "fb817e6d8706da623bfd7a5c0a700ad87ed442e6473d5db009e5aab4213a69a2",
+  "sha256": "9e6c4c404b3cde24b557c8b14b4f37176526557597090d52a955870be3126bf2",
+  "palette": [
+    "#eb490c",
+    "#fac622",
+    "#023f75",
+    "#10a298"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 44,
+    "total": 44,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_motif_puffin.webp"
+}

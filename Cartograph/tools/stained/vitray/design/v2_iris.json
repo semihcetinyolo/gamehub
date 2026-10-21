@@ -1,0 +1,37 @@
+{
+  "id": "v2_iris",
+  "name": "Mor Süsen",
+  "scene": "A purple iris flower with broad petals and tall leaves.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Deep violet",
+      "#683AA4"
+    ],
+    [
+      "Lilac",
+      "#B56CD0"
+    ],
+    [
+      "Sky blue",
+      "#328BC1"
+    ],
+    [
+      "Leaf green",
+      "#43966B"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only, target 71–111 panes. Flower heads use violet/lilac; sky, stem and sword leaves use blue/green. Inspected both generations; revision aimed to separate central petal joins and flatten fills. Remaining doubts: crowded convergences around flower throat and some pointed leaf gaps need tracing-stage review; some same-colour neighbouring leaf panes may merge. Subtle generated fill variation remains; palette specifies intended flat colours. No geometry audit or game publication performed.",
+  "tool": "image_gen",
+  "prompt": "Create one flat stained-glass puzzle DESIGN SHEET for Mor Süsen, a purple iris flower with broad petals and tall leaves. Reference 1 is the old subject only; completely redraw its primitive geometry. References 2 and 3 demonstrate elegant organic leaded panel compositions, not textures or shading. Portrait 3:4 canvas, preferably 1536x2048. A tall OVAL panel centered nearly touching edges, pure white exterior, closed thick black rim, no decorative border band. A botanically recognizable majestic iris dominates upper two thirds: three upright gently ruffled broad standards and three sweeping drooping fall petals, graceful tall sword leaves below. Elegant Art Nouveau leaded window composition. Aim 85-95 closed panes total, within 71-111: about 40 broad flower petal pieces and 45-55 sky/leaf/stem pieces. Exactly FOUR flat solid fill colors: deep violet #683AA4 and saturated lilac #B56CD0 only for flower head petals, medium sky blue #328BC1 and leaf green #43966B only for all background, leaves and stem. NO yellow centers or fifth color. Flower subdivisions sweep across each petal outline-to-outline in alternating violet and lilac bands; avoid branching internal lines. Background uses flowing broad blue/green alternating bands and sword-leaf silhouettes, never purple. All lead lines pure black, smooth uniform width about 1% canvas width; no shading, gradients, glass texture, highlights or text. Every line ends on another line or rim; every pane closed; only spaced T junctions, never X crossings or four-way contacts. Offset joins by at least 3% panel width. No narrow slivers, tiny panes or hairline parallel divisions; every pane visibly broad. Preserve recognizable graceful iris contours. This is a tracing-ready flat color design, not finished glass.\nREVISION: preserve the elegant iris composition of the last attached design, but correct the crowded central petal junctions. Separate all petal joins with broad connecting edges; no fan of 4 or more seams at the flower center or anywhere. Stagger every seam endpoint visibly. Petal interior divisions must be separate outline-to-outline parallel sweeping stripes, not branching networks. Use strictly uniform solid flat colors, absolutely no gradients, shading, vignette or subtle variation within any pane. Make lead lines uniform thickness. Maintain 71-111 readable closed panes and only two purple colors in flowers, only blue/green elsewhere. Adjacent background panes should alternate blue/green even within leaves. Avoid long narrow triangular gaps between tall leaves.",
+  "references": [
+    "assets/glass/iris-contacts.webp",
+    "tools/stained/vitray/design/vitray_poppies.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "generationAttempts": 2
+}

@@ -1,0 +1,39 @@
+{
+  "id": "v2n_snowdrop",
+  "name": "Kardelen",
+  "scene": "a drooping snowdrop flower",
+  "shape": "oval",
+  "palette": [
+    [
+      "mint",
+      "#74C9A5"
+    ],
+    [
+      "emerald",
+      "#238469"
+    ],
+    [
+      "blue",
+      "#4278B5"
+    ],
+    [
+      "lavender",
+      "#A187C4"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Inspected both generations and performed the one requested regeneration. Revised image has 27 closed coloured components by raster lead-boundary counting, above the requested 12–22 range; simplify background divisions before tracing. Petals alternate mint/emerald, but mint calyx touches mint outer petals. Subtle shading remains, and the right petal/leaf-tip contact plus narrow basal wedges need geometry review. No obvious loose line ends. Not geometry-audited or game-ready.",
+  "targetPanes": [
+    12,
+    22
+  ],
+  "observedPanes": 27,
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Create ONE Cartograph stained-glass DESIGN SHEET, portrait 3:4. Subject: a drooping snowdrop flower (Kardelen), single elegant large hanging bell on an arched broad stem with two lanceolate leaves. Oval panel nearly fills canvas, thick closed black rim, opaque pure white exterior. Attached fox is STYLE reference only: elegant authentic stained glass craftsmanship, smooth meaningful curves, not a cartoon; use dramatically fewer panes. STRICT 12–22 closed glass pieces TOTAL, aim 18: roughly 8 large plant pieces and 10 broad calm background pieces. No border ring, no little filler pieces. Exactly FOUR flat glass colours: plant only mint #74C9A5 and emerald #238469, alternating touching plant pieces; background only blue #4278B5 and lavender #A187C4, alternating broad curved bands. Snowdrop petals use distinctly coloured mint, not white. No background colour on plant, no plant colour in background. Large recognisable nodding bell with three long petals and graceful leaves; no tiny details. Pure black uniform lead about 1% canvas width; every seam joins rim or another seam. Only spaced T junctions, no X/four-way junctions, no loose ends, no near-touch lines or slivers, minimum pane width 3% panel width. Flat opaque colours, no shading, texture, highlights, gradients, text, signature or photo context. Construct an elegant leaded panel composition with clean traceable closed panes. Do not copy fox subject or its high pane count. REVISION: simplify to 16–20 total panes. Central flower petal must be EMERALD, flanking petals MINT so petals alternate. Calyx MINT with broad stem EMERALD; avoid three mutually adjacent plant regions by staggering petal attachments along calyx outline. Only TWO broad unsplit basal leaves, MINT, attach at different heights to stem. No pinched little triangular background pockets between petals: separate petal tips widely. Keep every junction a spaced T, particularly flower cap and leaf bases. Each pane is ONE EXACT SOLID flat hex colour with absolutely no gradient, shading or texture. Pure white exterior. Keep graceful drooping snowdrop in tall oval. Style reference image provides elegance only; obey simplified pane count."
+}

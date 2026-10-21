@@ -1,0 +1,53 @@
+{
+  "id": "v2_story_toucan",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:01:12.029563+00:00",
+  "raw": "tools/stained/vitray/raw/v2_story_toucan.png",
+  "rawSha256": "59406678fd6edcb876f9b95fc7e8a3f6a29746b0ece4e5b0c7d75bbc6537f4a4",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 128,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6167569783377058
+    },
+    {
+      "patchSize": 103,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5909115287272995
+    },
+    {
+      "patchSize": 111,
+      "donorPatches": 81,
+      "colour": 2,
+      "preservedFraction": 0.5994284426092851
+    },
+    {
+      "patchSize": 143,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5673330081667061
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "efb0be282e68e88edaa829a4c9bb309de85452e571ab0117513e202d2339d31e",
+  "sha256": "51f5136a8567f5acabb2e34b835a7e3a3935b082190c4193d6bdae324a7622c6",
+  "palette": [
+    "#f65002",
+    "#fac404",
+    "#01533d",
+    "#34c3de"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 51,
+    "total": 51,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_story_toucan.webp"
+}

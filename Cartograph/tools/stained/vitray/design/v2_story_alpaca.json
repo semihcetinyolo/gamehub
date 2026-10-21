@@ -1,0 +1,37 @@
+{
+  "id": "v2_story_alpaca",
+  "name": "And Dağları",
+  "scene": "A standing alpaca overlooks layered ridges of the Andes.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Burnt orange",
+      "#C75B2B"
+    ],
+    [
+      "Golden ochre",
+      "#E5B63C"
+    ],
+    [
+      "Deep blue",
+      "#215679"
+    ],
+    [
+      "Teal",
+      "#299D9A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 38–48 panes. Visually reviewed and regenerated once to remove the gold background sun, open muzzle strokes and top-centre X crossing. Warm colours stay on the alpaca and blue/teal on the background. Remaining concerns: subtle fill shading, some same-colour adjacent pieces, crowded ear-root and foot junctions, narrow gaps between legs, and likely excess panes; exact pane count and topology need tracing validation. Not geometry-audited or published.",
+  "tool": "image_gen",
+  "prompt": "Create ONE flat stained-glass puzzle DESIGN SHEET for And Dağları (Andes alpaca), portrait 3:4 canvas. Reference 1 is the OLD alpaca subject only: redraw gracefully rather than copying childish forms. References 2 and 3 show elegant leaded panel composition, but DO NOT copy their shading or colour mixing. Full standing alpaca facing right, long upright neck, two ears, rounded woolly body and distinct legs, with broad Andean mountain ridges and sky bands behind it. Oval outer silhouette nearly fills canvas; pure white exterior; thick closed pure black rim. Aim 38–48 closed panes TOTAL, ideally 44: approximately 23 alpaca pieces and 21 background pieces. Elegant bold large curved pieces, no tiny wool curls. EXACTLY four FLAT fills: burnt orange #C75B2B and golden ochre #E5B63C exclusively for alpaca; deep blue #215679 and teal #299D9A exclusively for sky/mountains/ground. Alternate orange and ochre inside alpaca using outline-to-outline curved bands; alternate blue and teal mountain/sky bands. One clear small closed ochre eye pane in orange face, no black dot or white eye; no decorative open mouth strokes. Keep natural recognizable alpaca contours and ears. Uniform pure black lead approx 1 percent image width, smooth purposeful curves. Every line joins outline or another line, all panes closed; only spaced T junctions, never X or four-way contacts, no dangling lines. Junctions separated by at least 3 percent panel width. No slivers, minimum pane width around 3 percent panel width apart from pointed tips; no pane smaller than 1/1000 panel area. No texture, gradients, lighting, highlights, shadows, white interior glass, extra palette hues, lettering, labels or frame decoration. Output solely the design image.\nCORRECTIONS to previous draft (fourth reference): REMOVE SUN entirely; all background must only blue and teal. Remove all open mouth/nostril strokes; a clean muzzle outline suffices. Remove shading: digitally uniform solid fills. Simplify drastically to 42 panes total, fewer broad divisions on legs and body. Eliminate X crossing near top centre by using nonintersecting sky bands. Each background line must flow rim to alpaca outline or rim to rim without crossing any other background line. Mountain ridges should be parallel layered zigzag bands without internal peak spokes. Within alpaca, use simple parallel full-width curved stripes with no internal branching; do not make flame-shaped pieces. All junctions T only, spaced apart, no four-way contacts at feet or ear roots. Restrict intricate detail and do not insert thin wedges between legs. Keep elegant alpaca pose and oval panel.",
+  "references": [
+    "assets/glass/story_alpaca-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "generationAttempts": 2
+}

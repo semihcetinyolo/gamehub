@@ -1,0 +1,40 @@
+{
+  "id": "v2n_lemon",
+  "name": "Limon",
+  "scene": "A lemon with two leaves.",
+  "shape": "oval",
+  "palette": [
+    [
+      "lemon yellow",
+      "#F2CE35"
+    ],
+    [
+      "warm amber",
+      "#D99522"
+    ],
+    [
+      "botanical green",
+      "#216A51"
+    ],
+    [
+      "turquoise",
+      "#48A9B5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening-level design, 22 closed coloured panes counted by raster connected components (area >1000 px), within target 12–22. Fruit alternates yellow/amber; two leaves are botanical background elements in the green/turquoise pair. Inspected after one regeneration. Remaining doubts: slight tonal shading remains; adjacent green leaf/background panes may merge on tracing; a few fruit-band endpoints meet background seams closely and require junction review during geometry tracing. This is a design sheet, not geometry-audited finished game artwork.",
+  "targetPanes": [
+    12,
+    22
+  ],
+  "paneCount": 22,
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Create one Cartograph stained-glass design sheet: a lemon with two leaves. Portrait 3:4 canvas, opaque pure white outside a large centered oval panel nearly touching all canvas edges. Reference is STYLE ONLY: elegant authentic leaded-panel composition and smooth black seams, not its fox subject or high complexity. This is a very SIMPLE opening puzzle: exactly 16 large closed panes total, never over 22. Lemon fruit uses 6 broad alternating curved strips, two simple leaves above it use 2 panes total, surrounding background uses 8 calm broad curved divisions. Bold recognizable whole lemon with natural pointed ends, slightly diagonal, two broad leaves clearly readable. No small stems, veins, filler, rings or decorative border. Exactly FOUR flat glass colors: lemon yellow #F2CE35 and warm amber #D99522 exclusively for the fruit, deep botanical green #216A51 and turquoise #48A9B5 exclusively for the surrounding background including the two leaves. Leaves belong to botanical background color pair. Alternate colors between adjacent pieces within each pair. Authentic elegant stained glass design, never cartoon character or clipart. FLAT uniform color fills for tracing, no texture, shading, gradients, highlights, shadows. Uniform pure black lead width approximately 1 percent canvas width, closed thick black outer rim. Every seam ends on outline or another seam, no dangling lines, no four-way X crossings, only staggered T junctions well spaced apart. Internal fruit bands run outline to outline without intersecting; background junctions land at different positions from fruit bands. All panes broad and visibly connected, no tiny slivers. No white glass. No text, labels or signature.\nREVISION: Simplify further. Exactly 6 fruit panes and 10 botanical/background panes total =16. The two leaves MUST attach at two DIFFERENT widely separated points on the fruit outline, never meeting each other at a junction. Remove ALL narrow triangular background fragments and all gradients. Broad flat fills only. Background seams must meet lemon outline midway along a fruit pane, never at an internal fruit stripe endpoint. Leave wide calm turquoise space between leaves. No overlapping seams, no X junctions. Wide background bands rather than radial pointed wedges.",
+  "generationAttempts": 2
+}

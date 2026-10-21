@@ -1,0 +1,35 @@
+{
+  "id": "v2_mushroom",
+  "name": "Mantar Ormanı",
+  "scene": "two spotted red toadstool mushrooms in green grass under a dusky blue sky",
+  "shape": "oval",
+  "palette": [
+    [
+      "Vermilion red",
+      "#C84435"
+    ],
+    [
+      "Golden ochre",
+      "#E7AD43"
+    ],
+    [
+      "Dusky blue",
+      "#355F87"
+    ],
+    [
+      "Fern green",
+      "#53845C"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 35–45 panes. Two spotted mushrooms in an oval botanical panel. Reviewed both generations; selected the simpler second attempt. Subject/background colour pairs remain separate. Remaining doubts: subtle tonal variation persists; adjacent gold underside pieces and adjacent green grass pieces will need merging or recolouring during tracing. A few crowded or shallow contacts at cap/sky and grass tips need geometry review; exact traced pane count is not yet validated. No obvious loose line ends. No subject mask required.",
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_poppies.png",
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Create a flat stained-glass puzzle DESIGN SHEET, portrait 3:4. References 1 and 2 are STYLE ONLY: elegant botanical leaded panel composition, smooth broad curves; do not copy subjects. Draw exactly two spotted red toadstool mushrooms in green grass under a dusky blue sky, a tall graceful mushroom at left and a shorter one at right. One large oval silhouette centred on pure white exterior, almost touching canvas edges, black closed outer rim, no decorative border. Aim 35–45 large closed panes total (about 40), not intricate. Exactly FOUR flat interior colours: vermilion red #C84435 and golden ochre #E7AD43 exclusively mushrooms (caps, large oval spots, curved stems); dusky blue #355F87 and fern green #53845C exclusively background sky and broad grass/leaf ribbons. Alternate red/gold neighbouring mushroom sections and blue/green neighbouring background sections wherever possible. Red caps with a few gold oval spots; gold stems may have red broad alternating bands. Elegant organic mushroom contours, no cartoon faces. Background has sweeping sky bands and broad botanical blades, no arbitrary grid. Pure black uniform lead about 1% of canvas width. Every line closed or connected to rim/junction, only spaced T junctions, never X or four-way crossings, junction spacing >=3% panel width. No small slivers, hairline grass, tiny panes or loose lines. Use broad outline-to-outline divisions to simplify two-colour alternation. ABSOLUTELY flat solid colours, no gradients, shading, texture, highlights, extra colours, white glass, lettering or signature. This is traceable flat design, not a photograph of glass.\nREVISION: First attempt was too complex with about 75 panes, subtle shading and many adjacent green panes. Simplify drastically to 38–42 panes total: TWO large red domed caps each with only THREE gold enclosed oval spots, one broad gold underside per cap (no radial gills), each stem THREE broad alternating gold/red/gold sections, background ONLY 20–24 broad sweeping sky/grass panes. Background blue and green must alternate from band to band even in the sky and ground. No leaf veins. All interiors rigorously uniform flat RGB, zero shading. Keep rim and smooth adult botanical elegance. Avoid spots tangent to cap outline; spots sit comfortably inside with broad red surrounding space. Separate every junction by generous space. Outline-to-outline stripes only; NO crowded fan junctions."
+}

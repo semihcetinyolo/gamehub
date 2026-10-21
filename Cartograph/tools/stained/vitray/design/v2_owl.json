@@ -1,0 +1,47 @@
+{
+  "id": "v2_owl",
+  "name": "Gece Baykuşu",
+  "scene": "a wise owl with huge round amber eyes and patterned feathers perched on a branch in a moonlit forest",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden amber",
+      "#EAB83F"
+    ],
+    [
+      "burnt copper",
+      "#A9512E"
+    ],
+    [
+      "midnight blue",
+      "#194B70"
+    ],
+    [
+      "forest teal",
+      "#258D88"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    96,
+    136
+  ],
+  "notes": "Oval owl panel with amber/copper subject and blue/teal forest, branch and moon. Visually checked both generations; revision removes stray beak mark and simplifies forest divisions. Remaining doubts: slight generated fill variation; same-colour neighbouring sectors around eyes and some background bands may merge during tracing; crowded tapered joins around ear tufts, wing roots and feet need geometry-stage inspection. Pane count is a target, not a traced or audited count. No obvious open seams observed. Design sheet only.",
+  "tool": "image_gen",
+  "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15e1a-3968-78f1-a857-fe3fb1bde279/exec-663311c8-266c-4ad2-8c64-606a066f035e.png",
+  "references": [
+    "assets/glass/owl-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create one flat stained-glass design sheet for Gece Baykuşu: a wise owl with huge round amber eyes and patterned feathers perched on a branch in a moonlit forest. Portrait 3:4 canvas, preferably 1536x2048. A tall oval panel fills nearly the whole canvas, with pure white exterior and a closed thick pure black outer rim. References: first image is subject inspiration ONLY, completely redesign its childish geometry; second and third images are the elegant leaded-panel composition style. Use flat solid fills, NO shading or texture at all. Exactly four glass colours: golden amber #EAB83F and burnt copper #A9512E ONLY in the owl (including eyes, beak, wings, feet); deep midnight blue #194B70 and forest teal #258D88 ONLY in the background (including moon, branch, leaves and forest). White only outside the oval. Owl face has large concentric round eyes using alternating copper and amber circles, no black filled pupils. Refined natural symmetrical owl silhouette with ear tufts, elegant folded wings and curved patterned feather bands. Branch stretches beneath the owl; botanical forest shapes frame it and a teal moon occupies the upper background. Aim 110-120 closed generously sized panes overall, within 96-136. Owl feather bands run across whole body or whole wing and alternate amber/copper; forest bands alternate blue/teal. Neighbouring pieces within each side should alternate their two colours. Uniform pure black lead about 1% canvas width, smooth curves, no loose ends or gaps, only separated T junctions, never X or four-way intersections. Separate junctions by at least 3% panel width. No tiny pieces, slivers, closely parallel seams, hatching, black dots or decorative marks. Each line connects rim or junction to rim or junction; eyes are clearly visible closed round panes. Keep an elegant real stained-glass composition expressed as perfectly flat tracing artwork, not photorealistic glass. No lettering, title, signature, inset or legend.",
+  "revisionPrompt": "Revise this owl design sheet, preserving its elegant owl, huge round eyes, oval framing, moonlit forest, portrait 3:4 aspect and four-colour subject/background separation. Correct production tracing defects: make every coloured fill ABSOLUTELY FLAT UNIFORM with no shading, gradients, highlights or texture. Exactly amber #EAB83F and copper #A9512E on owl ONLY; teal #258D88 and blue #194B70 on background ONLY; pure white exterior; pure black uniform-width lead. Remove the little stray black mark inside the beak. Simplify from its excessive subdivisions to approximately 116 closed panes total (96-136). Use larger sweeping alternating amber/copper feather bands and larger blue/teal forest pieces. Eliminate small triangular slivers near ears, shoulders, claws and tail. Avoid four-way junctions, especially the central chest feather spine and crossing leaf stems: stagger each joining seam so only three panes meet at each junction, separated by at least 3% panel width. Eliminate all dangling seams. Eye surround sectors currently touch same colour: merge such adjacent gold pieces or alternate copper and gold sectors while keeping large eyes clearly readable. Maintain semantic colour pairs strictly. No black filled pupils, dots, marks, text or signature. Pure flat drawing for tracing, not a glass render.",
+  "review": {
+    "visuallyInspected": true,
+    "generationAttempts": 2,
+    "strictBriefCompliance": false
+  }
+}

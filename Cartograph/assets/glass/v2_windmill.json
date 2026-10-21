@@ -1,0 +1,53 @@
+{
+  "id": "v2_windmill",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:23:36.078211+00:00",
+  "raw": "tools/stained/vitray/raw/v2_windmill.png",
+  "rawSha256": "493a9583afb4056d9a2974ec305be4892166f0c9c587f72d5a9f69e9b1a1eae0",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 106,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6099599788767663
+    },
+    {
+      "patchSize": 119,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.651384925503084
+    },
+    {
+      "patchSize": 119,
+      "donorPatches": 94,
+      "colour": 2,
+      "preservedFraction": 0.6071838903963528
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.7385235454492508
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "c8c1ec4105d4553849e87bdfb84d02a37ca1c7045efd5c248a1972ba79833292",
+  "sha256": "388d6b52374d942a4d4a245094a5f9d59e2a03b808ed2e1a1a7255edd80329da",
+  "palette": [
+    "#ed3107",
+    "#fed806",
+    "#014394",
+    "#0ebcb1"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 42,
+    "total": 42,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_windmill.webp"
+}

@@ -1,1 +1,1 @@
-{"name": "Cartograph", "entry": "index.html", "fugo": {"mode": "zip", "exclude": ["vitray example/*", "mozaic example/*", "art-levels.js", "assets/ui/*", "assets/glass/*.png", "assets/menu/src/*", "assets/wrong/src/*"]}}
+{"name": "Cartograph", "entry": "index.html", "fugo": {"mode": "zip", "exclude": ["vitray example/*", "mozaic example/*", "art-levels.js", "assets/ui/*", "assets/glass/*.png", "assets/menu/src/*", "assets/wrong/src/*", "output/*", "stained-levels-v1.js", "clai-images/*", "h?.png", "m?.png", "mm*.png", "t?.png", "zoom.png"], "only_used": ["assets/glass/*"]}}

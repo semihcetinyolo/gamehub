@@ -1,0 +1,37 @@
+{
+  "id": "v2_story_violin",
+  "name": "Sokak Konseri",
+  "scene": "An elegant upright violin and separate bow stand against flowing musical ribbons and curved street paving.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt amber",
+      "#C65A24"
+    ],
+    [
+      "golden yellow",
+      "#EAB936"
+    ],
+    [
+      "deep blue",
+      "#164F78"
+    ],
+    [
+      "turquoise",
+      "#299CA7"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 97–137 panes. Visually reviewed initial sheet and regenerated once to remove a warm background ribbon and simplify narrow neck/bow subdivisions. Final warm subject/cool background separation is clear; no obvious loose line ends. Remaining doubts: subtle fill shading persists; some same-colour neighbouring panes may merge during tracing; a few narrow peg/scroll and f-hole areas and close or multiway-looking contacts near the lower oval and body need tracing-stage review. Pane count and junction geometry are not mechanically certified. Design sheet only.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/story_violin-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create one flat stained-glass DESIGN SHEET for Cartograph level v2_story_violin, Sokak Konseri (Street Concert). Reference 1 is the old subject: violin and separate bow; redraw it elegantly, do not copy crude geometry. References 2 and 3 are style examples of graceful leaded panels, not subjects to include. Portrait 3:4 canvas, ideally 1536x2048. Large closed OVAL panel nearly touching canvas edges, pure white exterior. A recognizable elegant upright violin fills the center-left, long neck, stylized scroll, graceful symmetrical upper/lower bouts and C waist; separate substantial bow to right, no crossing over violin. Musical flowing background ribbons evoke sound, with a few broad street-paving curves below. Aim 110 closed panes total (97–137), meaningful flowing subdivisions, no arbitrary grid. Violin/bow only two flat colours: burnt amber #C65A24 and golden yellow #EAB936. Background only two flat colours: deep blue #164F78 and turquoise #299CA7. Alternate adjacent bands within each pair; never use warm colours in background or blues in violin/bow. Violin has graceful broad curved bands across its body, outline to outline, alternating amber and gold, plus broad fingerboard and tailpiece areas, no tiny strings. Suggest f holes as sizable closed gold/amber shapes, no black strokes ending freely. Background flowing ribbons alternate blues. EXACTLY four solid fills, black lines and pure white exterior only. All lines uniform pure black approximately 1% canvas width. Absolutely no shading, gradients, texture, highlights, tiny decorative marks, text, signature or bevel frames. All panes closed, every line connects rim or junction. T junctions only, three panes maximum; no X crossings; stagger junctions by at least 3% panel width. No slivers, small chips, near parallel hairline regions or loose line ends. Pane widths at least 3% panel width except deliberate tips, pane areas >=0.1% panel. Refined real leaded-glass panel composition rendered as a clean flat tracing design, NOT finished textured glass.",
+  "revisionPrompt": "Revise this violin DESIGN SHEET, preserving oval composition and subject, to correct these specific defects: remove the yellow ribbon in upper-left background, replace it with blue/turquoise; absolutely every background pane uses only deep blue #164F78 or turquoise #299CA7. All violin and bow panes only amber #C65A24 or gold #EAB936. Make ALL fills truly uniform flat exact solid colors, no gradients or shading anywhere. Remove thin double-outline rims around violin; single black contour only. Simplify tuning pegs to broad shapes with no tiny connecting chips. Simplify f holes to broad closed shapes, no narrow channels. Simplify neck and bow into wider alternating cross bands rather than skinny longitudinal strips; no X intersections. Increase broad meaningful subdivisions to roughly 110 panes, within 97–137. All internal seams uniform pure black same weight as contours, about 1% image width. Only spaced T junctions, no crossing lines, no dangling ends; all regions closed. Alternate warm bands inside subject and cool flowing bands outside, no three-piece cycles where avoidable. Pure white exterior, portrait 3:4, oval almost filling canvas. No text or texture. This is a flat tracing sheet for an elegant leaded glass panel."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "vitray_peacock",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T10:29:30.840753+00:00",
+  "raw": "tools/stained/vitray/raw/vitray_peacock.png",
+  "rawSha256": "53023c112fd42e958d6e1df79a06af12c43e4e6e4b5e2fcb8c7689eda64cb5cc",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 64,
+      "donorPatches": 42,
+      "colour": 0,
+      "preservedFraction": 0.34401818891784575
+    },
+    {
+      "patchSize": 96,
+      "donorPatches": 49,
+      "colour": 1,
+      "preservedFraction": 0.4366628413819883
+    },
+    {
+      "patchSize": 92,
+      "donorPatches": 44,
+      "colour": 2,
+      "preservedFraction": 0.4455597954625928
+    },
+    {
+      "patchSize": 87,
+      "donorPatches": 56,
+      "colour": 3,
+      "preservedFraction": 0.46971266912954035
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "0f6f1df0db6f5cf21b9c7e5c8d3f38fb6c7e8e759bc8874e11998a14c7027341",
+  "sha256": "52d1b8d8e417406dd11e4ae07fcc71845afe315974d16ab140d8a4a647da5044",
+  "palette": [
+    "#013ac7",
+    "#13b8ab",
+    "#f9b704",
+    "#f2697d"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 153,
+    "total": 153,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/vitray_peacock.webp"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "v2_motif_gramophone",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:01:26.717491+00:00",
+  "raw": "tools/stained/vitray/raw/v2_motif_gramophone.png",
+  "rawSha256": "24a9094bbe9a18a84f94e24f070268b7f97812e791742d860b5ca919c5e02100",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 133,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6681488167409795
+    },
+    {
+      "patchSize": 125,
+      "donorPatches": 83,
+      "colour": 1,
+      "preservedFraction": 0.6052444129559843
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.7176354503261493
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.662114288137689
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "407c36fd79b2d6139fca50cfce54de30caacea023171615b6b7f9a7a36ec140c",
+  "sha256": "83bedc46d96dda43dee90bf2de8169082dd25d39b376a6dc7df6eef257705cba",
+  "palette": [
+    "#fabc11",
+    "#bd310d",
+    "#038879",
+    "#063a6f"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 32,
+    "total": 32,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_motif_gramophone.webp"
+}

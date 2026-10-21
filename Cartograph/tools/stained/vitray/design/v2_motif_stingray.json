@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_stingray",
+  "name": "Vatoz",
+  "scene": "A graceful stingray with broad sweeping wings and a curved tail glides through flowing ocean bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt orange",
+      "#D96832"
+    ],
+    [
+      "golden amber",
+      "#EDBD43"
+    ],
+    [
+      "deep ocean blue",
+      "#155577"
+    ],
+    [
+      "turquoise",
+      "#269EA5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 29–39 panes. Generated with clai image using the fox and lighthouse design sheets as style references and the old stingray as subject reference. Visually inspected and regenerated once to simplify the first design. Subject/background colour pairs are preserved and the revised exterior is white. Remaining issues: subtle shading persists; pane count appears above target; several colour boundaries have hairline rather than uniform lead; eye marks have loose ends; narrow wingtip water gaps and crowded contacts at wing folds and tail need review during tracing. Some same-colour neighbouring panes may merge. This is not audited puzzle geometry or finished glass artwork."
+}

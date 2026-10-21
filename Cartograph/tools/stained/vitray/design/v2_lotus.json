@@ -1,0 +1,37 @@
+{
+  "id": "v2_lotus",
+  "name": "Lotus",
+  "scene": "A blooming pink lotus flower floats on rippling water at golden dawn.",
+  "shape": "oval",
+  "palette": [
+    [
+      "rose pink",
+      "#D94F82"
+    ],
+    [
+      "golden amber",
+      "#F2B632"
+    ],
+    [
+      "deep teal",
+      "#166A78"
+    ],
+    [
+      "jade green",
+      "#51A58A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Layered lotus petals use rose and gold; flowing dawn and water bands use teal and jade. Portrait 3:4 design sheet, white exterior, closed black oval rim. Target 92–132 panes; exact traced count is not verified. Visually reviewed and regenerated once to remove the gold background sun and restore the background colour pair. Remaining doubts: subtle fill variation, crowded tapered contacts near the upper central petals and flower base, and occasional same-colour neighbouring petals may require merging during tracing. This is a design sheet, not audited puzzle geometry.",
+  "references": [
+    "tools/stained/vitray/design/vitray_poppies.png",
+    "assets/glass/lotus-contacts.webp"
+  ],
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2
+  }
+}

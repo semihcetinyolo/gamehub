@@ -1,0 +1,64 @@
+{
+  "id": "vitray_whaletail",
+  "name": "Balina Kuyruğu",
+  "scene": "A blue whale tail rises above curling waves beneath amber and violet sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Deep ocean blue",
+      "#19537C"
+    ],
+    [
+      "Turquoise",
+      "#26A6B5"
+    ],
+    [
+      "Amber",
+      "#D7A83C"
+    ],
+    [
+      "Violet blue",
+      "#6651A5"
+    ]
+  ],
+  "notes": "Reviewed after one regeneration. Remaining concerns: X-like contact at tail fork, several close sky/wave joins and narrow pointed inserts; slight raster fill variation and some same-colour neighbours remain. Review these during tracing. Palette lists intended colours.",
+  "tool": "image_gen",
+  "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d79-ddf0-75b0-8c24-eceb8897ba20/exec-a4da62a3-d98b-44cc-a127-ae8a6f00ccf7.png",
+  "references": [
+    "tools/stained/vitray/refs/vitray_whaletail.jpg"
+  ],
+  "prompt": "Create ONE flat Cartograph stained-glass puzzle DESIGN SHEET, a fresh composition inspired by the reference photograph. Portrait 3:4 canvas, preferably 1536x2048; centered panel nearly touching canvas edges on pure white exterior, one thick closed black outer rim, no decorative border frame. EXACTLY FOUR flat solid coloured fills specified below; no white/near-white or cream inside panel. Pure black smooth UNIFORM lead width 1% of canvas width, including eye rings and details. NO texture, shading, gradients, highlights, bubbles, dots, hatching, text or signatures. Target 85-100 panes, allowable 70-130 closed mixed-size panes: meaningful subject parts and organic background waves/bands/leaves, never arbitrary grids. Every line must run from rim/junction to rim/junction; no loose line ends. ONLY separated T-junctions: at most three panes meet at a point, never X or converging fan junctions. Offset neighbouring junctions by at least 3% panel width. All panes at least 3% panel width except pointed tips, area >=1/1000 panel area. No close parallel sliver strips or nearly touching lines, meeting angles >=30 degrees. Keep subject silhouette clear, smooth and recognizable; eyes are clearly visible closed circular COLOURED panes, no black pupil dots. Adjacent panes should have different palette colours where possible. Drop hands, walls, stands, window and photographic setting. Tracing-ready flat illustration, not glass rendering.\nPanel silhouette: tall OVAL. Subject: one sweeping upright whale tail rising from layered curling ocean waves, two broad flukes in upper third, curving stem descending into water. Preserve the reference's elegant blue marine mood and sweeping waves, replace the clear beige glass with strongly coloured warm amber sky. FOUR colours only: deep ocean blue #19537C, turquoise #26A6B5, amber #D7A83C, violet blue #6651A5. Use broad staggered patches in tail and many organic broad wave and sky-band panes to reach 85-100 panes, without squeezing slender strips. Keep fluke silhouette intact and never let more than three panes meet at the fork. Plain flat colour fields.\nREGENERATION: first draft was too sparse and had glass-like blue highlights. Make this a flat cartoon/vector graphic with absolutely identical solid RGB colour across every interior, no lighting at all. Mandatory approximately 90 panes: roughly 20 in the tail, 35 in the sky, 35 in waves. Divide broad bands with staggered broad curving seams that end at T junctions. No converging wave tips, no needle-shaped inserts. Each division leaves generous pane widths and separated junctions.",
+  "attempts": 2,
+  "rasterReview": {
+    "size": [
+      1086,
+      1448
+    ],
+    "enclosedComponentsOver20px": 119,
+    "smallComponentsBelowOneThousandth": 1,
+    "method": "Approximate non-black connected components; not a vector geometry audit.",
+    "paneCountWithinRequestedRange": true
+  },
+  "sha256": "c8ccc7c75606bde5d038f17de628200edc3a1d3d9541e0abb675ac96b40605c1",
+  "reviewStatus": "needs-tracing-review",
+  "subjectMask": {
+    "file": "tools/stained/vitray/design/vitray_whaletail.subject.png",
+    "origin": "Existing mask retained; visually reviewed in this task.",
+    "size": [
+      1086,
+      1448
+    ],
+    "sourceSha256": "c8ccc7c75606bde5d038f17de628200edc3a1d3d9541e0abb675ac96b40605c1",
+    "sha256": "912cf5c2afd926e90f114ffd0a97fafcf72ea252ca7035148d9d17856086f56b",
+    "spotChecks": [
+      {
+        "seed": [
+          520,
+          650
+        ],
+        "blackFraction": 0.967,
+        "blackMajority": true
+      }
+    ]
+  }
+}

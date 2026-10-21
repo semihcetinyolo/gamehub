@@ -1,0 +1,40 @@
+{
+  "id": "v2n_olive",
+  "name": "Zeytin Dalı",
+  "scene": "an olive branch with olives",
+  "shape": "oval",
+  "palette": [
+    [
+      "olive green",
+      "#7C963F"
+    ],
+    [
+      "forest green",
+      "#284B39"
+    ],
+    [
+      "honey amber",
+      "#DEA536"
+    ],
+    [
+      "burnt orange",
+      "#B96737"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening-level design; 12–22 target panes. Final image inspected after one regeneration: 21 substantial enclosed raster components counted, with three leaves, two olives and a broad diagonal stem. Subject uses the two greens; background uses amber/orange. Opaque white exterior, closed oval rim, no decorative border. Remaining doubts: subtle generated shading persists; green leaf/stem boundaries soften or open at upper-left and lower leaf bases, so tracing must check separation; a narrow connector beneath the upper-left leaf and close junctions need geometry review. Some adjacent background areas share amber. This is a design sheet, not audited playable geometry.",
+  "size": "small",
+  "targetPanes": [
+    12,
+    22
+  ],
+  "paneCount": 21,
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create one Cartograph stained-glass design sheet for Zeytin Dalı: an olive branch with olives. Reference image is STYLE ONLY, not its subject or complexity. Portrait 3:4 opaque pure white canvas. A large centered oval panel nearly touching canvas edges, thick closed black rim, no decorative border ring. Elegant authentic leaded stained-glass composition, never cartoon. VERY SIMPLE opening-level design: exactly 18 large closed panes total, about 9 subject panes and 9 calm background panes; absolutely at most 22. One graceful diagonal olive branch with four large lance-shaped leaves and three bold oval olives. Broad paintable stem, no thin twig slivers; leaves single whole panes without veins. Exactly FOUR glass fill colours: olive green #7C963F and deep forest green #284B39 exclusively for branch/leaves/olives; rich honey amber #DEA536 and muted burnt orange #B96737 exclusively for background. Alternate the two subject colours across touching subject parts and the two background colours across broad calm background bands. Background divisions sweep from rim to subject contour, do not cross the subject. Use broad simple shapes, no filler pieces. Smooth uniform pure-black lead about 1 percent canvas width. Every line joins rim or another border; all panes fully closed; only spaced T junctions, no X or four-way contacts. No nearly touching borders, no tiny pieces, no lead-only dangling stems. Flat consistent fills with no gradients, texture, highlights or shadows, preserving the elegant real stained-glass design language of the reference. No white glass, text, labels, signature, photo setting or extra objects. Output a single panel image.\nCORRECTION FOR FINAL ATTEMPT: reduce composition to THREE large leaves and TWO oval olives on ONE broad continuous dark forest green stem. Leaves all olive green, olives olive green, each joins forest stem with wide direct contact and no little stalk panes. These are SIX subject panes total. Background exactly TEN large alternating honey amber/burnt orange panes, for SIXTEEN total. No inner lines in any leaves or olives. Background seams must end on subject or rim, spaced widely and staggered at leaf tips. Entire pane interiors perfectly flat solid colour: ZERO shading or vignette. No pinched green connections. Restrained graceful botanical panel."
+}

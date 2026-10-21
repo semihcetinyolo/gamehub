@@ -1,0 +1,48 @@
+{
+  "id": "v2_story_toucan",
+  "name": "Tropik Meyve Ziyafeti",
+  "scene": "A toucan perches beside two ripe mangoes amid sweeping tropical foliage.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Coral orange",
+      "#E76832"
+    ],
+    [
+      "Golden yellow",
+      "#E8B83F"
+    ],
+    [
+      "Deep teal",
+      "#176F68"
+    ],
+    [
+      "Turquoise",
+      "#4BAFC0"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Second generation selected after simplifying crowded fruit crossings and foliage. Visually inspected: closed oval and recognizable subject; colour pairs remain semantically separated, with no obvious loose line ends. Remaining doubts: subtle fill variation, same-colour adjacent feather/leaf panes, crowded or near-four-way contacts at leaf tips and wing joins, narrow toe and tail-adjacent wedges. Raster connected-component estimate is 72 coloured regions of at least 150 pixels, above requested 40–50; tracing must simplify background divisions and merge repeated-colour subdivisions while preserving subject contours. Design sheet only; strict geometry and pane-count compliance is not claimed.",
+  "targetPanes": [
+    40,
+    50
+  ],
+  "generation": {
+    "tool": "image_gen",
+    "attempts": 2,
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15e3b-58dc-7911-9711-c5267cea4b99/exec-1f0a326a-0e5d-4b7e-b2d6-05b224a5db63.png",
+    "references": [
+      "assets/glass/story_toucan-silhouette.webp",
+      "tools/stained/vitray/design/vitray_fox.png"
+    ],
+    "prompt": "Create a clean flat stained-glass DESIGN SHEET for Tropik Meyve Ziyafeti, a graceful toucan perched on a branch beside two tropical fruits. First reference is old subject inspiration only, do not copy primitive shapes or glass texture; second is elegant leaded composition style only. Portrait 3:4 canvas. Center a tall OVAL panel nearly touching canvas edges on pure white exterior, closed heavy black rim. Exactly 40–50 large closed panes, aim 46 total. Recognizable toucan profile facing right with magnificent long arched beak, small clearly visible round eye pane, graceful breast, broad wing and long tapered tail; fruit on right beside beak, broad tropical leaves around bird. Sophisticated artisanal leaded panel, flowing organic silhouettes. EXACTLY FOUR FLAT fill colours: coral orange #E76832 and golden yellow #E8B83F exclusively for toucan including eye and fruits; deep teal #176F68 and turquoise #4BAFC0 exclusively for background, leaves and perch. Subject neighbouring panes alternate coral/gold, background panes alternate teal/turquoise. Use full width curved bands across subject for easy alternating colours rather than branching internal lines. Eye gold against coral head, no pupil or highlight. Perch a broad background-colour band. Keep divisions minimal to meet 40–50 total panes. Uniform pure black lead approximately 1% canvas width. No gradients, shading, texture, white glass, highlights, dots, text or decorative frame. Every seam closes at a rim or junction; only spaced T junctions, never X crossings or four-way vertices. Junctions separated at least 3% panel width, broad visible panes no slivers or tiny wedges; all leaves have closed outlines. Preserve beautiful natural bird contour. Render design sheet only, not a photograph.\nREVISION, CRITICAL: simplify aggressively to 44 panes TOTAL: about 17 bird panes including eye and simple feet, 4 fruit panes, 23 background panes. The first design was too complex. Two simple oval mango fruits each bisected by ONE curve, NOT pineapple, NOT rosette, NOT radial fruit segments. Background only broad sweeping bands with a few large leaves, no dense foliage. Bird breast divided into alternating coral and gold bands (never gold beside gold). Flat solid colours without any light or dark modulation. Ensure only T junctions and no star centres. Reference 1 now shows composition to simplify, reference 2 shows stylistic elegance only. All other original requirements remain."
+  },
+  "validation": {
+    "visuallyInspected": true,
+    "strictBriefCompliance": false,
+    "colouredComponentEstimate": 72
+  }
+}

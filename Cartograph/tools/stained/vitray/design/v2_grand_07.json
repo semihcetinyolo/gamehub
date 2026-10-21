@@ -1,0 +1,29 @@
+{
+  "id": "v2_grand_07",
+  "name": "Eski Kütüphane",
+  "scene": "An old library with two tiers of bookshelves and an open book on a reading table beneath a gothic vault.",
+  "shape": "gothic arch",
+  "palette": [
+    [
+      "terracotta",
+      "#BE5036"
+    ],
+    [
+      "amber",
+      "#EAB536"
+    ],
+    [
+      "deep blue",
+      "#245875"
+    ],
+    [
+      "teal",
+      "#319C9B"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 110–160 panes. Generated with ClaiFace image using lighthouse and poppies style references and the old grand_07 subject image; inspected and regenerated once. Retry removes the central ornament and tiled floor crossings, offsets open-book bands and supplies white exterior. Remaining doubts: some four-way contacts remain along the upper vault centreline; narrow book-cover and shelf pieces need tracing review; adjacent equal colours remain on some books and shelves; warm ribs remain linked visually to the shelving; slight fill variation remains despite flat-colour request. Exact pane count and geometry are not validated. No game catalogue changes."
+}

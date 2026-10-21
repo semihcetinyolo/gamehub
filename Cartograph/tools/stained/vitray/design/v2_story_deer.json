@@ -1,0 +1,37 @@
+{
+  "id": "v2_story_deer",
+  "name": "Orman Açıklığı",
+  "scene": "A graceful antlered stag stands in a forest clearing framed by flowing trees, foliage and distant hills.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "burnt amber",
+      "#C76B28"
+    ],
+    [
+      "golden yellow",
+      "#E7B844"
+    ],
+    [
+      "forest teal",
+      "#195B53"
+    ],
+    [
+      "clear blue",
+      "#4B9EC2"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 86–126 panes. Generated with ClaiFace image using vitray_fox.png for style and story_deer-contacts.webp for subject, then regenerated once to correct background colour leakage, nose colour and crowded junctions. Both versions visually inspected. Final deer uses amber/gold and background teal/blue, with white exterior and a closed round-arch rim. Remaining doubts: subtle fill tonal variation persists; some adjacent same-colour panes may merge during tracing, and tight antler tips, ear/eye details, rear-leg seams and foliage junctions need geometric validation. Exact pane count is not yet traced or certified. No game catalogue or geometry changes.",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "assets/glass/story_deer-contacts.webp"
+  ],
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2
+  }
+}

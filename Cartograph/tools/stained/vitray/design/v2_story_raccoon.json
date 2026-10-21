@@ -1,0 +1,44 @@
+{
+  "id": "v2_story_raccoon",
+  "name": "Gece Pikniği",
+  "scene": "A masked raccoon holds picnic fruit beside a basket in a moonlit woodland, its ringed tail curling across the foreground.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Warm copper",
+      "#B85D35"
+    ],
+    [
+      "Honey gold",
+      "#E7B94E"
+    ],
+    [
+      "Midnight blue",
+      "#204567"
+    ],
+    [
+      "Turquoise",
+      "#359C9A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Both generations visually inspected for open lines, X crossings, shading and colour pairs; one regeneration completed, and the simpler second composition selected. Remaining issues: subtle shading persists; finger strokes end inside paws; some crowded or potentially four-way contacts remain around ears, foliage and basket; a few narrow regions remain. Colour-pair exceptions include the blue nose, turquoise fruit leaf/stem, and copper background branches. Adjacent same-colour regions will need merging or recolouring during tracing. Raster estimate is 163 coloured connected components of at least 100 pixels, exceeding the 95–135 target; this is not a validated geometry pane count. Simplify background subdivisions and basket detail while preserving the raccoon silhouette before geometry production. Not audited playable geometry or finished glass artwork.",
+  "targetPanes": [
+    95,
+    135
+  ],
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "raw": "clai-images/v2-story-raccoon-design-2.png",
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png",
+      "tools/stained/vitray/design/vitray_lighthouse.png"
+    ],
+    "subjectReference": "assets/glass/story_raccoon-contacts.webp",
+    "visuallyInspected": true
+  }
+}

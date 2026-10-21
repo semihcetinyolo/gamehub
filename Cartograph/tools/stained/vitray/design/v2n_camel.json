@@ -1,0 +1,36 @@
+{
+  "id": "v2n_camel",
+  "name": "Deve",
+  "scene": "a camel among dunes",
+  "shape": "round arch",
+  "palette": [
+    [
+      "burnt amber",
+      "#C57422"
+    ],
+    [
+      "golden ochre",
+      "#E9B843"
+    ],
+    [
+      "deep blue",
+      "#245F86"
+    ],
+    [
+      "turquoise",
+      "#399D9A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Medium design sheet, target 28–45 panes. Revised once after initial generation was too busy. Final image has 35 enclosed regions larger than 500 pixels by black-lead connected-component count at 1086×1448; visual inspection confirms a bold camel and broad desert bands. Subject and background colour pairs are separated. Remaining doubts: dangling mouth/nostril strokes and a shoulder stroke require cleanup before tracing; subtle tonal shading remains; several lower background neighbours are both turquoise and may merge during tracing. Some subject junctions/near contacts need geometry-stage review. Design sheet only, not audited or imported into the game.",
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create a new Cartograph stained-glass design sheet: a camel among dunes, Turkish level Deve, id v2n_camel. Attached fox and lighthouse are STYLE REFERENCES ONLY: emulate their elegant leaded panel craftsmanship and smooth restrained colour, but far simpler with ONLY 28 to 45 closed glass pieces total, target 36. Portrait 3:4 canvas, opaque pure white outside a single round-arched panel nearly touching canvas edges, thick closed black outer rim, no decorative border ring. A bold anatomically recognisable one-humped camel standing in side profile facing left, long curved upright neck, small head and ear, large single hump, four clearly separated sturdy legs, elegant desert silhouette. Camel occupies most of panel, split into about 18 generous meaningful panes using continuous bands across neck, torso and legs. Background about 18 broad calm flowing desert-dune and sky pieces, no sun or other objects. EXACTLY FOUR solid glass fill colours: burnt amber #C57422 and golden ochre #E9B843 exclusively for camel; deep blue #245F86 and turquoise #399D9A exclusively for all background including dunes. Within each subject/background pair alternate adjacent panes as far as possible. No white or pale glass. Match the real elegant stained-glass design vocabulary of references, never cute cartoon, no photoreal surroundings. Uniform pure black lead approximately 1 percent canvas width, closed panes, smooth curves, ONLY T junctions, no X or four-way meetings; junctions spaced apart at least 3 percent width. No dangling mouth lines, no dots, no black filled eye: if eye used make one visible closed ochre pane in amber head. Every leg is broad, every gap spacious. No slivers, tiny decorative pieces, hatching, textures, shading, gradients, glints, text or signature. Restrained clean flat colours as reference design sheets. Count pieces carefully: between 28 and 45 total, this is essential.\nCORRECTION FOR THIS NEW VERSION: Last attempt had roughly 60 pieces. Dramatically reduce to 32-38 total. Camel only 14-17 pieces: one head, one muzzle, one ear, one eye, 3 neck bands, 4 broad body pieces, each of FOUR legs ONE SINGLE UNCUT piece from torso to foot, no knee or hoof subdivisions, no divided tail. Background ONLY 4 broad wavy dune/sky bands across panel behind camel, their interruption by legs naturally creates additional pieces. Absolutely no additional small background subdivisions. Keep big readable pieces and exact flat uniform fills; remove all shading from references. Separate every meeting into well-spaced T junctions.",
+  "paneCount": 35
+}

@@ -1,0 +1,36 @@
+{
+  "id": "v2_motif_chameleon",
+  "name": "Bukalemun",
+  "scene": "A chameleon with a curled tail grips a sweeping branch inside an oval stained-glass panel.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Emerald",
+      "#16734B"
+    ],
+    [
+      "Lime green",
+      "#9CCB45"
+    ],
+    [
+      "Golden amber",
+      "#E6AC32"
+    ],
+    [
+      "Burnt orange",
+      "#BF572C"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 39–49 panes. Regenerated once after visual review to remove green background foliage and simplify divisions. Final review: subject/background colour pairs are separated; closed oval and recognisable silhouette, no obvious dangling lines. Remaining doubts: more divisions than target, subtle generated fill shading, narrow mouth and tail-core pieces, crowded junctions near neck/foreleg, and some adjacent same-colour pieces. Tracing should measure pane count and junction spacing; this is not audited playable geometry.",
+  "tool": "image_gen",
+  "prompt": "Create one flat vector-like stained-glass DESIGN SHEET for Bukalemun (chameleon), not finished textured glass. Portrait 3:4. Large oval panel nearly touching all canvas edges, pure white exterior, closed thick black rim. Reference 1 is old subject only: completely redraw as elegant natural chameleon perched on a sweeping branch, facing right, large domed casque head, clearly visible circular eye pane, gracefully arched back, two strong bent grasping legs, broad unmistakable curled spiral tail at lower left. References 2 and 3 show elegant leaded panel composition only. Simplify to 39–49 generously sized CLOSED panes total (aim 44). Exactly FOUR flat interior fill colours: emerald #16734B and lime green #9CCB45 exclusively for all chameleon pieces; golden amber #E6AC32 and burnt orange #BF572C exclusively for branch and background. Alternate adjacent subject bands emerald/lime; alternate background amber/orange. Body bands run fully from silhouette to silhouette, tail bands run fully across thick tail. No scales, toes, spikes or tiny decorative details. Eye a single substantial emerald circular pane in lime head, no pupil or highlight. Background a few broad sweeping botanical arcs suggesting tropical foliage, no grid and no decorative frame. Pure black uniform lead about 1 percent canvas width, smooth graceful curves. Every line ends at another lead or rim, no loose ends. Only separated T junctions, never X or 4-way crossings; junctions at least 3 percent panel width apart. No slivers or near-tangent contacts, every pane broad and visibly connected, tail core generous. No gradients, no shading, no texture, no white interior panes, no text. This is elegant artisan stained glass geometry rendered with perfectly flat solid colours, not a childish cartoon.\nCORRECTIONS ARE CRITICAL: use only 44 panes total; remove all background leaves in green. Every area outside the chameleon itself, including every leaf and branch, MUST be amber or burnt orange. Green belongs ONLY to animal anatomy. Perfectly uniform flat fills with ZERO lighting variation or gradient. Simplify background to 18 broad panes; animal about 26. No seams converging at same point: separate head, cheek and neck junctions widely. Tail simple broad open spiral with amber inner negative space, only 6 green alternating tail segments. No long narrow ribbons. Do not copy shading or dense subdivisions from references.",
+  "references": [
+    "assets/glass/motif_chameleon-panes.webp",
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "generationAttempts": 2
+}

@@ -6,42 +6,42 @@
   },
   {
     "level": 2,
-    "id": "cactus",
-    "issues": []
-  },
-  {
-    "level": 3,
-    "id": "lotus",
-    "issues": []
-  },
-  {
-    "level": 4,
-    "id": "heart",
-    "issues": []
-  },
-  {
-    "level": 5,
-    "id": "fox",
-    "issues": []
-  },
-  {
-    "level": 6,
     "id": "fish",
     "issues": []
   },
   {
-    "level": 7,
-    "id": "flower",
+    "level": 3,
+    "id": "brain",
     "issues": []
   },
   {
-    "level": 8,
+    "level": 4,
     "id": "moon",
     "issues": []
   },
   {
+    "level": 5,
+    "id": "flower",
+    "issues": []
+  },
+  {
+    "level": 6,
+    "id": "fox",
+    "issues": []
+  },
+  {
+    "level": 7,
+    "id": "sailboat",
+    "issues": []
+  },
+  {
+    "level": 8,
+    "id": "rabbit",
+    "issues": []
+  },
+  {
     "level": 9,
-    "id": "mushroom",
+    "id": "pear",
     "issues": []
   },
   {
@@ -51,47 +51,47 @@
   },
   {
     "level": 11,
-    "id": "owl",
+    "id": "mushroom",
     "issues": []
   },
   {
     "level": 12,
-    "id": "rings_07",
+    "id": "lighthouse",
     "issues": []
   },
   {
     "level": 13,
-    "id": "turtle",
+    "id": "cactus",
     "issues": []
   },
   {
     "level": 14,
-    "id": "peacock",
+    "id": "lotus",
     "issues": []
   },
   {
     "level": 15,
-    "id": "rings_08",
-    "issues": []
-  },
-  {
-    "level": 16,
     "id": "balloon",
     "issues": []
   },
   {
+    "level": 16,
+    "id": "heart",
+    "issues": []
+  },
+  {
     "level": 17,
-    "id": "bird",
+    "id": "whale",
     "issues": []
   },
   {
     "level": 18,
-    "id": "rosewindow",
+    "id": "penguin",
     "issues": []
   },
   {
     "level": 19,
-    "id": "spiral_24",
+    "id": "strawberry",
     "issues": []
   },
   {
@@ -101,47 +101,47 @@
   },
   {
     "level": 21,
-    "id": "sailboat",
+    "id": "peacock",
     "issues": []
   },
   {
     "level": 22,
-    "id": "mountain",
+    "id": "rings_07",
     "issues": []
   },
   {
     "level": 23,
-    "id": "rings_06",
+    "id": "motif_boots",
     "issues": []
   },
   {
     "level": 24,
-    "id": "bee",
+    "id": "chapter_184",
     "issues": []
   },
   {
     "level": 25,
-    "id": "lighthouse",
+    "id": "motif_airship",
     "issues": []
   },
   {
     "level": 26,
-    "id": "snowflake",
+    "id": "rings_18",
     "issues": []
   },
   {
     "level": 27,
-    "id": "rings_19",
+    "id": "motif_astronaut",
     "issues": []
   },
   {
     "level": 28,
-    "id": "tulip",
+    "id": "seashell",
     "issues": []
   },
   {
     "level": 29,
-    "id": "kaleido",
+    "id": "chapter_095",
     "issues": []
   },
   {
@@ -151,47 +151,47 @@
   },
   {
     "level": 31,
-    "id": "spiral_10",
+    "id": "chapter_079",
     "issues": []
   },
   {
     "level": 32,
-    "id": "tree",
+    "id": "motif_submarine",
     "issues": []
   },
   {
     "level": 33,
-    "id": "medallion",
+    "id": "rings_19",
     "issues": []
   },
   {
     "level": 34,
-    "id": "compass",
+    "id": "motif_cupcake",
     "issues": []
   },
   {
     "level": 35,
-    "id": "spiral_25",
+    "id": "rings_17",
     "issues": []
   },
   {
     "level": 36,
-    "id": "butterflygarden",
+    "id": "motif_gramophone",
     "issues": []
   },
   {
     "level": 37,
-    "id": "dragonfly",
+    "id": "snail",
     "issues": []
   },
   {
     "level": 38,
-    "id": "atlas_08",
+    "id": "motif_swan",
     "issues": []
   },
   {
     "level": 39,
-    "id": "snail",
+    "id": "rings_11",
     "issues": []
   },
   {
@@ -201,47 +201,47 @@
   },
   {
     "level": 41,
-    "id": "seashell",
+    "id": "story_airship",
     "issues": []
   },
   {
     "level": 42,
-    "id": "jellyfish",
+    "id": "spiral_10",
     "issues": []
   },
   {
     "level": 43,
-    "id": "atlas_15",
+    "id": "story_treasure",
     "issues": []
   },
   {
     "level": 44,
-    "id": "whale",
+    "id": "waterfall",
     "issues": []
   },
   {
     "level": 45,
-    "id": "penguin",
+    "id": "motif_narwhal",
     "issues": []
   },
   {
     "level": 46,
-    "id": "rabbit",
+    "id": "chapter_099",
     "issues": []
   },
   {
     "level": 47,
-    "id": "atlas_13",
+    "id": "story_duck",
     "issues": []
   },
   {
     "level": 48,
-    "id": "bear",
+    "id": "spiral_08",
     "issues": []
   },
   {
     "level": 49,
-    "id": "cherries",
+    "id": "motif_camera",
     "issues": []
   },
   {
@@ -251,47 +251,47 @@
   },
   {
     "level": 51,
-    "id": "pear",
+    "id": "owl",
     "issues": []
   },
   {
     "level": 52,
-    "id": "strawberry",
+    "id": "turtle",
     "issues": []
   },
   {
     "level": 53,
-    "id": "pumpkin",
+    "id": "rings_08",
     "issues": []
   },
   {
     "level": 54,
-    "id": "maple",
+    "id": "bird",
     "issues": []
   },
   {
     "level": 55,
-    "id": "acorn",
+    "id": "rosewindow",
     "issues": []
   },
   {
     "level": 56,
-    "id": "rose",
+    "id": "spiral_24",
     "issues": []
   },
   {
     "level": 57,
-    "id": "iris",
+    "id": "mountain",
     "issues": []
   },
   {
     "level": 58,
-    "id": "teapot",
+    "id": "rings_06",
     "issues": []
   },
   {
     "level": 59,
-    "id": "lantern",
+    "id": "bee",
     "issues": []
   },
   {
@@ -301,47 +301,47 @@
   },
   {
     "level": 61,
-    "id": "windmill",
+    "id": "snowflake",
     "issues": []
   },
   {
     "level": 62,
-    "id": "castle",
+    "id": "tulip",
     "issues": []
   },
   {
     "level": 63,
-    "id": "bridge",
+    "id": "kaleido",
     "issues": []
   },
   {
     "level": 64,
-    "id": "waterfall",
+    "id": "tree",
     "issues": []
   },
   {
     "level": 65,
-    "id": "planet",
+    "id": "medallion",
     "issues": []
   },
   {
     "level": 66,
-    "id": "hourglass",
+    "id": "compass",
     "issues": []
   },
   {
     "level": 67,
-    "id": "motif_raccoon",
+    "id": "spiral_25",
     "issues": []
   },
   {
     "level": 68,
-    "id": "rings_01",
+    "id": "butterflygarden",
     "issues": []
   },
   {
     "level": 69,
-    "id": "story_guitar",
+    "id": "dragonfly",
     "issues": []
   },
   {
@@ -351,47 +351,47 @@
   },
   {
     "level": 71,
-    "id": "motif_rocket",
+    "id": "atlas_08",
     "issues": []
   },
   {
     "level": 72,
-    "id": "spiral_13",
+    "id": "jellyfish",
     "issues": []
   },
   {
     "level": 73,
-    "id": "story_raccoon",
+    "id": "atlas_15",
     "issues": []
   },
   {
     "level": 74,
-    "id": "atlas_07",
+    "id": "bear",
     "issues": []
   },
   {
     "level": 75,
-    "id": "motif_treasure",
+    "id": "atlas_13",
     "issues": []
   },
   {
     "level": 76,
-    "id": "spiral_02",
+    "id": "cherries",
     "issues": []
   },
   {
     "level": 77,
-    "id": "story_seal",
+    "id": "pumpkin",
     "issues": []
   },
   {
     "level": 78,
-    "id": "atlas_10",
+    "id": "maple",
     "issues": []
   },
   {
     "level": 79,
-    "id": "story_flamingo",
+    "id": "acorn",
     "issues": []
   },
   {
@@ -401,47 +401,47 @@
   },
   {
     "level": 81,
-    "id": "motif_koala",
+    "id": "rose",
     "issues": []
   },
   {
     "level": 82,
-    "id": "rings_14",
+    "id": "iris",
     "issues": []
   },
   {
     "level": 83,
-    "id": "story_crab",
+    "id": "teapot",
     "issues": []
   },
   {
     "level": 84,
-    "id": "spiral_07",
+    "id": "lantern",
     "issues": []
   },
   {
     "level": 85,
-    "id": "story_boots",
+    "id": "windmill",
     "issues": []
   },
   {
     "level": 86,
-    "id": "spiral_20",
+    "id": "castle",
     "issues": []
   },
   {
     "level": 87,
-    "id": "story_panda",
+    "id": "motif_raccoon",
     "issues": []
   },
   {
     "level": 88,
-    "id": "rings_11",
+    "id": "bridge",
     "issues": []
   },
   {
     "level": 89,
-    "id": "story_kite",
+    "id": "story_guitar",
     "issues": []
   },
   {
@@ -451,47 +451,47 @@
   },
   {
     "level": 91,
-    "id": "story_bicycle",
+    "id": "planet",
     "issues": []
   },
   {
     "level": 92,
-    "id": "atlas_24",
+    "id": "motif_rocket",
     "issues": []
   },
   {
     "level": 93,
-    "id": "motif_astronaut",
+    "id": "hourglass",
     "issues": []
   },
   {
     "level": 94,
-    "id": "atlas_03",
+    "id": "story_raccoon",
     "issues": []
   },
   {
     "level": 95,
-    "id": "story_sloth",
+    "id": "rings_01",
     "issues": []
   },
   {
     "level": 96,
-    "id": "rings_15",
+    "id": "motif_treasure",
     "issues": []
   },
   {
     "level": 97,
-    "id": "story_typewriter",
+    "id": "spiral_13",
     "issues": []
   },
   {
     "level": 98,
-    "id": "atlas_21",
+    "id": "story_seal",
     "issues": []
   },
   {
     "level": 99,
-    "id": "motif_bicycle",
+    "id": "atlas_07",
     "issues": []
   },
   {
@@ -501,47 +501,47 @@
   },
   {
     "level": 101,
-    "id": "motif_giraffe",
+    "id": "story_flamingo",
     "issues": []
   },
   {
     "level": 102,
-    "id": "atlas_20",
+    "id": "spiral_02",
     "issues": []
   },
   {
     "level": 103,
-    "id": "story_toucan",
+    "id": "motif_koala",
     "issues": []
   },
   {
     "level": 104,
-    "id": "rings_23",
+    "id": "atlas_10",
     "issues": []
   },
   {
     "level": 105,
-    "id": "motif_squirrel",
+    "id": "story_crab",
     "issues": []
   },
   {
     "level": 106,
-    "id": "spiral_23",
+    "id": "rings_14",
     "issues": []
   },
   {
     "level": 107,
-    "id": "motif_telescope",
+    "id": "story_boots",
     "issues": []
   },
   {
     "level": 108,
-    "id": "atlas_17",
+    "id": "spiral_07",
     "issues": []
   },
   {
     "level": 109,
-    "id": "motif_umbrella",
+    "id": "story_panda",
     "issues": []
   },
   {
@@ -551,47 +551,47 @@
   },
   {
     "level": 111,
-    "id": "motif_moka",
+    "id": "spiral_20",
     "issues": []
   },
   {
     "level": 112,
-    "id": "rings_09",
+    "id": "story_kite",
     "issues": []
   },
   {
     "level": 113,
-    "id": "story_rocket",
+    "id": "atlas_24",
     "issues": []
   },
   {
     "level": 114,
-    "id": "spiral_19",
+    "id": "story_bicycle",
     "issues": []
   },
   {
     "level": 115,
-    "id": "motif_otter",
+    "id": "atlas_03",
     "issues": []
   },
   {
     "level": 116,
-    "id": "spiral_12",
+    "id": "story_sloth",
     "issues": []
   },
   {
     "level": 117,
-    "id": "story_astronaut",
+    "id": "rings_15",
     "issues": []
   },
   {
     "level": 118,
-    "id": "rings_18",
+    "id": "story_typewriter",
     "issues": []
   },
   {
     "level": 119,
-    "id": "story_saxophone",
+    "id": "atlas_21",
     "issues": []
   },
   {
@@ -601,47 +601,47 @@
   },
   {
     "level": 121,
-    "id": "motif_duck",
+    "id": "motif_bicycle",
     "issues": []
   },
   {
     "level": 122,
-    "id": "spiral_04",
+    "id": "atlas_20",
     "issues": []
   },
   {
     "level": 123,
-    "id": "story_octopus",
+    "id": "motif_giraffe",
     "issues": []
   },
   {
     "level": 124,
-    "id": "spiral_11",
+    "id": "rings_23",
     "issues": []
   },
   {
     "level": 125,
-    "id": "motif_guitar",
+    "id": "story_toucan",
     "issues": []
   },
   {
     "level": 126,
-    "id": "atlas_25",
+    "id": "spiral_23",
     "issues": []
   },
   {
     "level": 127,
-    "id": "story_gramophone",
+    "id": "motif_squirrel",
     "issues": []
   },
   {
     "level": 128,
-    "id": "rings_22",
+    "id": "atlas_17",
     "issues": []
   },
   {
     "level": 129,
-    "id": "story_squirrel",
+    "id": "motif_telescope",
     "issues": []
   },
   {
@@ -651,47 +651,47 @@
   },
   {
     "level": 131,
-    "id": "motif_frog",
+    "id": "motif_umbrella",
     "issues": []
   },
   {
     "level": 132,
-    "id": "atlas_06",
+    "id": "rings_09",
     "issues": []
   },
   {
     "level": 133,
-    "id": "story_elephant",
+    "id": "motif_moka",
     "issues": []
   },
   {
     "level": 134,
-    "id": "spiral_08",
+    "id": "spiral_19",
     "issues": []
   },
   {
     "level": 135,
-    "id": "motif_octopus",
+    "id": "story_rocket",
     "issues": []
   },
   {
     "level": 136,
-    "id": "spiral_05",
+    "id": "spiral_12",
     "issues": []
   },
   {
     "level": 137,
-    "id": "motif_puffin",
+    "id": "motif_otter",
     "issues": []
   },
   {
     "level": 138,
-    "id": "rings_04",
+    "id": "spiral_04",
     "issues": []
   },
   {
     "level": 139,
-    "id": "story_umbrella",
+    "id": "story_astronaut",
     "issues": []
   },
   {
@@ -701,47 +701,47 @@
   },
   {
     "level": 141,
-    "id": "story_telescope",
+    "id": "story_saxophone",
     "issues": []
   },
   {
     "level": 142,
-    "id": "rings_20",
+    "id": "spiral_11",
     "issues": []
   },
   {
     "level": 143,
-    "id": "motif_saxophone",
+    "id": "motif_duck",
     "issues": []
   },
   {
     "level": 144,
-    "id": "rings_05",
+    "id": "atlas_25",
     "issues": []
   },
   {
     "level": 145,
-    "id": "story_violin",
+    "id": "story_octopus",
     "issues": []
   },
   {
     "level": 146,
-    "id": "rings_17",
+    "id": "rings_22",
     "issues": []
   },
   {
     "level": 147,
-    "id": "motif_seal",
+    "id": "motif_guitar",
     "issues": []
   },
   {
     "level": 148,
-    "id": "atlas_04",
+    "id": "atlas_06",
     "issues": []
   },
   {
     "level": 149,
-    "id": "motif_chameleon",
+    "id": "story_gramophone",
     "issues": []
   },
   {
@@ -751,47 +751,47 @@
   },
   {
     "level": 151,
-    "id": "motif_alpaca",
+    "id": "story_squirrel",
     "issues": []
   },
   {
     "level": 152,
-    "id": "rings_25",
+    "id": "spiral_05",
     "issues": []
   },
   {
     "level": 153,
-    "id": "story_bat",
+    "id": "motif_frog",
     "issues": []
   },
   {
     "level": 154,
-    "id": "rings_02",
+    "id": "rings_04",
     "issues": []
   },
   {
     "level": 155,
-    "id": "story_koala",
+    "id": "story_elephant",
     "issues": []
   },
   {
     "level": 156,
-    "id": "spiral_16",
+    "id": "rings_20",
     "issues": []
   },
   {
     "level": 157,
-    "id": "story_submarine",
+    "id": "motif_octopus",
     "issues": []
   },
   {
     "level": 158,
-    "id": "spiral_15",
+    "id": "rings_05",
     "issues": []
   },
   {
     "level": 159,
-    "id": "story_carouselhorse",
+    "id": "motif_puffin",
     "issues": []
   },
   {
@@ -801,47 +801,47 @@
   },
   {
     "level": 161,
-    "id": "story_airship",
+    "id": "story_umbrella",
     "issues": []
   },
   {
     "level": 162,
-    "id": "spiral_14",
+    "id": "atlas_04",
     "issues": []
   },
   {
     "level": 163,
-    "id": "story_treasure",
+    "id": "story_telescope",
     "issues": []
   },
   {
     "level": 164,
-    "id": "atlas_14",
+    "id": "rings_25",
     "issues": []
   },
   {
     "level": 165,
-    "id": "story_iguana",
+    "id": "motif_saxophone",
     "issues": []
   },
   {
     "level": 166,
-    "id": "spiral_22",
+    "id": "rings_02",
     "issues": []
   },
   {
     "level": 167,
-    "id": "motif_crab",
+    "id": "story_violin",
     "issues": []
   },
   {
     "level": 168,
-    "id": "chapter_067",
+    "id": "spiral_16",
     "issues": []
   },
   {
     "level": 169,
-    "id": "motif_locomotive",
+    "id": "motif_seal",
     "issues": []
   },
   {
@@ -851,47 +851,47 @@
   },
   {
     "level": 171,
-    "id": "motif_bat",
+    "id": "motif_chameleon",
     "issues": []
   },
   {
     "level": 172,
-    "id": "atlas_01",
+    "id": "spiral_15",
     "issues": []
   },
   {
     "level": 173,
-    "id": "motif_deer",
+    "id": "motif_alpaca",
     "issues": []
   },
   {
     "level": 174,
-    "id": "chapter_161",
+    "id": "spiral_14",
     "issues": []
   },
   {
     "level": 175,
-    "id": "motif_violin",
+    "id": "story_bat",
     "issues": []
   },
   {
     "level": 176,
-    "id": "spiral_06",
+    "id": "atlas_14",
     "issues": []
   },
   {
     "level": 177,
-    "id": "story_alpaca",
+    "id": "story_koala",
     "issues": []
   },
   {
     "level": 178,
-    "id": "chapter_168",
+    "id": "spiral_22",
     "issues": []
   },
   {
     "level": 179,
-    "id": "story_seahorse",
+    "id": "story_submarine",
     "issues": []
   },
   {
@@ -901,47 +901,47 @@
   },
   {
     "level": 181,
-    "id": "story_camera",
+    "id": "story_carouselhorse",
     "issues": []
   },
   {
     "level": 182,
-    "id": "atlas_23",
+    "id": "chapter_067",
     "issues": []
   },
   {
     "level": 183,
-    "id": "story_chameleon",
+    "id": "story_iguana",
     "issues": []
   },
   {
     "level": 184,
-    "id": "chapter_121",
+    "id": "atlas_01",
     "issues": []
   },
   {
     "level": 185,
-    "id": "story_lobster",
+    "id": "motif_crab",
     "issues": []
   },
   {
     "level": 186,
-    "id": "rings_21",
+    "id": "chapter_161",
     "issues": []
   },
   {
     "level": 187,
-    "id": "story_frog",
+    "id": "motif_locomotive",
     "issues": []
   },
   {
     "level": 188,
-    "id": "chapter_095",
+    "id": "spiral_06",
     "issues": []
   },
   {
     "level": 189,
-    "id": "story_deer",
+    "id": "motif_bat",
     "issues": []
   },
   {
@@ -951,47 +951,47 @@
   },
   {
     "level": 191,
-    "id": "story_rooster",
+    "id": "motif_deer",
     "issues": []
   },
   {
     "level": 192,
-    "id": "atlas_16",
+    "id": "chapter_168",
     "issues": []
   },
   {
     "level": 193,
-    "id": "motif_camera",
+    "id": "motif_violin",
     "issues": []
   },
   {
     "level": 194,
-    "id": "chapter_099",
+    "id": "atlas_23",
     "issues": []
   },
   {
     "level": 195,
-    "id": "motif_cupcake",
+    "id": "story_alpaca",
     "issues": []
   },
   {
     "level": 196,
-    "id": "spiral_01",
+    "id": "chapter_121",
     "issues": []
   },
   {
     "level": 197,
-    "id": "motif_panda",
+    "id": "story_seahorse",
     "issues": []
   },
   {
     "level": 198,
-    "id": "chapter_079",
+    "id": "rings_21",
     "issues": []
   },
   {
     "level": 199,
-    "id": "story_otter",
+    "id": "story_camera",
     "issues": []
   },
   {
@@ -1001,47 +1001,47 @@
   },
   {
     "level": 201,
-    "id": "motif_typewriter",
+    "id": "story_chameleon",
     "issues": []
   },
   {
     "level": 202,
-    "id": "atlas_05",
+    "id": "atlas_16",
     "issues": []
   },
   {
     "level": 203,
-    "id": "story_giraffe",
+    "id": "story_lobster",
     "issues": []
   },
   {
     "level": 204,
-    "id": "chapter_153",
+    "id": "spiral_01",
     "issues": []
   },
   {
     "level": 205,
-    "id": "motif_stingray",
+    "id": "story_frog",
     "issues": []
   },
   {
     "level": 206,
-    "id": "spiral_03",
+    "id": "atlas_05",
     "issues": []
   },
   {
     "level": 207,
-    "id": "story_hedgehog",
+    "id": "story_deer",
     "issues": []
   },
   {
     "level": 208,
-    "id": "chapter_128",
+    "id": "chapter_153",
     "issues": []
   },
   {
     "level": 209,
-    "id": "story_pinwheel",
+    "id": "story_rooster",
     "issues": []
   },
   {
@@ -1051,47 +1051,47 @@
   },
   {
     "level": 211,
-    "id": "story_narwhal",
+    "id": "motif_panda",
     "issues": []
   },
   {
     "level": 212,
-    "id": "rings_16",
+    "id": "spiral_03",
     "issues": []
   },
   {
     "level": 213,
-    "id": "motif_narwhal",
+    "id": "story_otter",
     "issues": []
   },
   {
     "level": 214,
-    "id": "chapter_075",
+    "id": "chapter_128",
     "issues": []
   },
   {
     "level": 215,
-    "id": "motif_airship",
+    "id": "motif_typewriter",
     "issues": []
   },
   {
     "level": 216,
-    "id": "atlas_22",
+    "id": "rings_16",
     "issues": []
   },
   {
     "level": 217,
-    "id": "story_duck",
+    "id": "story_giraffe",
     "issues": []
   },
   {
     "level": 218,
-    "id": "chapter_083",
+    "id": "chapter_075",
     "issues": []
   },
   {
     "level": 219,
-    "id": "story_cupcake",
+    "id": "motif_stingray",
     "issues": []
   },
   {
@@ -1101,47 +1101,47 @@
   },
   {
     "level": 221,
-    "id": "motif_gramophone",
+    "id": "story_hedgehog",
     "issues": []
   },
   {
     "level": 222,
-    "id": "rings_10",
+    "id": "atlas_22",
     "issues": []
   },
   {
     "level": 223,
-    "id": "story_puffin",
+    "id": "story_pinwheel",
     "issues": []
   },
   {
     "level": 224,
-    "id": "chapter_059",
+    "id": "chapter_083",
     "issues": []
   },
   {
     "level": 225,
-    "id": "motif_dachshund",
+    "id": "story_narwhal",
     "issues": []
   },
   {
     "level": 226,
-    "id": "rings_13",
+    "id": "rings_10",
     "issues": []
   },
   {
     "level": 227,
-    "id": "motif_carouselhorse",
+    "id": "story_cupcake",
     "issues": []
   },
   {
     "level": 228,
-    "id": "chapter_184",
+    "id": "chapter_059",
     "issues": []
   },
   {
     "level": 229,
-    "id": "story_dachshund",
+    "id": "story_puffin",
     "issues": []
   },
   {
@@ -1151,47 +1151,47 @@
   },
   {
     "level": 231,
-    "id": "motif_iguana",
+    "id": "motif_dachshund",
     "issues": []
   },
   {
     "level": 232,
-    "id": "atlas_19",
+    "id": "rings_13",
     "issues": []
   },
   {
     "level": 233,
-    "id": "story_moka",
+    "id": "motif_carouselhorse",
     "issues": []
   },
   {
     "level": 234,
-    "id": "chapter_091",
+    "id": "atlas_19",
     "issues": []
   },
   {
     "level": 235,
-    "id": "story_locomotive",
+    "id": "story_dachshund",
     "issues": []
   },
   {
     "level": 236,
-    "id": "atlas_09",
+    "id": "chapter_091",
     "issues": []
   },
   {
     "level": 237,
-    "id": "motif_swan",
+    "id": "motif_iguana",
     "issues": []
   },
   {
     "level": 238,
-    "id": "chapter_193",
+    "id": "atlas_09",
     "issues": []
   },
   {
     "level": 239,
-    "id": "story_stingray",
+    "id": "story_moka",
     "issues": []
   },
   {
@@ -1201,47 +1201,47 @@
   },
   {
     "level": 241,
-    "id": "atlas_11",
+    "id": "story_locomotive",
     "issues": []
   },
   {
     "level": 242,
-    "id": "motif_sloth",
+    "id": "chapter_193",
     "issues": []
   },
   {
     "level": 243,
-    "id": "chapter_087",
+    "id": "story_stingray",
     "issues": []
   },
   {
     "level": 244,
-    "id": "spiral_18",
+    "id": "atlas_11",
     "issues": []
   },
   {
     "level": 245,
-    "id": "motif_kite",
+    "id": "motif_sloth",
     "issues": []
   },
   {
     "level": 246,
-    "id": "chapter_063",
+    "id": "chapter_087",
     "issues": []
   },
   {
     "level": 247,
-    "id": "atlas_18",
+    "id": "spiral_18",
     "issues": []
   },
   {
     "level": 248,
-    "id": "motif_pinwheel",
+    "id": "motif_kite",
     "issues": []
   },
   {
     "level": 249,
-    "id": "chapter_177",
+    "id": "chapter_063",
     "issues": []
   },
   {
@@ -1251,47 +1251,47 @@
   },
   {
     "level": 251,
-    "id": "spiral_09",
+    "id": "atlas_18",
     "issues": []
   },
   {
     "level": 252,
-    "id": "story_swan",
+    "id": "motif_pinwheel",
     "issues": []
   },
   {
     "level": 253,
-    "id": "chapter_051",
+    "id": "chapter_177",
     "issues": []
   },
   {
     "level": 254,
-    "id": "spiral_17",
+    "id": "spiral_09",
     "issues": []
   },
   {
     "level": 255,
-    "id": "motif_seahorse",
+    "id": "story_swan",
     "issues": []
   },
   {
     "level": 256,
-    "id": "chapter_137",
+    "id": "chapter_051",
     "issues": []
   },
   {
     "level": 257,
-    "id": "rings_03",
+    "id": "spiral_17",
     "issues": []
   },
   {
     "level": 258,
-    "id": "motif_flamingo",
+    "id": "motif_seahorse",
     "issues": []
   },
   {
     "level": 259,
-    "id": "chapter_071",
+    "id": "chapter_137",
     "issues": []
   },
   {
@@ -1301,47 +1301,47 @@
   },
   {
     "level": 261,
-    "id": "rings_24",
+    "id": "rings_03",
     "issues": []
   },
   {
     "level": 262,
-    "id": "motif_elephant",
+    "id": "motif_flamingo",
     "issues": []
   },
   {
     "level": 263,
-    "id": "chapter_104",
+    "id": "chapter_071",
     "issues": []
   },
   {
     "level": 264,
-    "id": "atlas_02",
+    "id": "rings_24",
     "issues": []
   },
   {
     "level": 265,
-    "id": "motif_submarine",
+    "id": "motif_elephant",
     "issues": []
   },
   {
     "level": 266,
-    "id": "chapter_113",
+    "id": "chapter_104",
     "issues": []
   },
   {
     "level": 267,
-    "id": "motif_toucan",
+    "id": "atlas_02",
     "issues": []
   },
   {
     "level": 268,
-    "id": "atlas_12",
+    "id": "chapter_113",
     "issues": []
   },
   {
     "level": 269,
-    "id": "chapter_144",
+    "id": "motif_toucan",
     "issues": []
   },
   {
@@ -1351,32 +1351,32 @@
   },
   {
     "level": 271,
-    "id": "motif_boots",
+    "id": "atlas_12",
     "issues": []
   },
   {
     "level": 272,
-    "id": "spiral_21",
+    "id": "chapter_144",
     "issues": []
   },
   {
     "level": 273,
-    "id": "chapter_055",
+    "id": "spiral_21",
     "issues": []
   },
   {
     "level": 274,
-    "id": "motif_hedgehog",
+    "id": "chapter_055",
     "issues": []
   },
   {
     "level": 275,
-    "id": "rings_12",
+    "id": "motif_hedgehog",
     "issues": []
   },
   {
     "level": 276,
-    "id": "brain",
+    "id": "rings_12",
     "issues": []
   }
 ]

@@ -1,0 +1,29 @@
+{
+  "id": "v2_brain",
+  "name": "Renkli Beyin",
+  "scene": "A human brain in lateral view with flowing cerebral folds, a rounded cerebellum and a short brainstem inside an oval panel.",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral",
+      "#D45D50"
+    ],
+    [
+      "amber",
+      "#E9AE38"
+    ],
+    [
+      "deep blue",
+      "#24577A"
+    ],
+    [
+      "turquoise",
+      "#39A5B5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 16–26 panes. Generated with image_gen using the old brain image for subject and vitray_fox/vitray_lighthouse for style; regenerated once to simplify excessive folds and crowded contacts. Selected retry visually reviewed: closed brain silhouette, white exterior and semantic warm subject/cool background pairs. Remaining doubts: pane count appears above target; subtle shading remains; some touching subject panes share a colour; several fold tips and cerebellum junctions are closely spaced; a lower-right background blue/turquoise boundary lacks black lead. These require cleanup during tracing; this is not audited playable geometry or finished glass artwork."
+}

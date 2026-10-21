@@ -1,0 +1,29 @@
+{
+  "id": "v2_flower",
+  "name": "Güneş Çiçeği",
+  "scene": "a beautiful swirling ten-petal sunflower / botanical sun medallion",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden yellow",
+      "#F6BB22"
+    ],
+    [
+      "burnt orange",
+      "#E57924"
+    ],
+    [
+      "cobalt blue",
+      "#3589BB"
+    ],
+    [
+      "leaf green",
+      "#479363"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Oval botanical sun medallion targeting 27–37 large panes. Flower uses gold/orange only; background uses blue/green only. Generated with clai image using the old flower and vitray_poppies style reference; inspected and regenerated once to correct shading and transparent exterior. Final exterior is white, contours are closed with no obvious loose ends or X crossings. Remaining doubts: subtle fill variation persists, several petal tips and central junctions need spacing review during tracing, and the stylized overlapping petals do not read as an unambiguous count of ten. The gold heart touches some gold petals; those may merge in tracing. Design sheet only; no game catalogue or geometry changes."
+}

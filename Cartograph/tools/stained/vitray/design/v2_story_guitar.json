@@ -1,0 +1,40 @@
+{
+  "id": "v2_story_guitar",
+  "name": "Kamp Ateşi Müziği",
+  "scene": "An acoustic guitar stands among fir trees beneath a moon in a flowing nocturnal woodland panel.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Golden amber",
+      "#E9AC32"
+    ],
+    [
+      "Burnt terracotta",
+      "#C34E32"
+    ],
+    [
+      "Midnight blue",
+      "#204D70"
+    ],
+    [
+      "Turquoise",
+      "#269CA5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    34,
+    44
+  ],
+  "notes": "Design sheet only, generated and visually checked twice; second attempt selected for simpler, larger panes. Guitar uses amber/terracotta and woodland predominantly blue/turquoise. Remaining doubts: moon incorrectly uses subject amber; subtle tonal variation remains despite flat-fill request; several same-colour adjacent panes will merge during tracing. Close contacts around tree tips, headstock and lower guitar need geometric review; pane count is not certified. No loose internal strokes apparent. No game catalogue or geometry changes.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/story_guitar-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create one flat stained-glass puzzle DESIGN SHEET for v2_story_guitar, titled Kamp Ateşi Müziği (do not write any text). Portrait 3:4 canvas. Reference 1 is the old subject: an acoustic guitar outdoors with fir trees and moon. Redraw elegantly from scratch, not its childish geometry. References 2 and 3 provide elegant flowing leaded-panel design vocabulary only. OUTPUT: centred tall OVAL panel nearly touching canvas edges, closed thick black outer rim, pure white exterior. Exactly 38 to 42 large closed panes total (target allowed 34–44). A prominent graceful acoustic guitar slightly tilted, with recognizable waisted body, long neck, broad headstock, one large round soundhole and simplified bridge; no fine strings, frets, tuning pegs, loose strokes, dots or tiny details. Behind it two simplified fir silhouettes, moon and broad flowing night-sky/ground bands, all integrated into closed glass panes. Flat solid fills ONLY with exactly four glass colors: golden amber #E9AC32 and burnt terracotta #C34E32 exclusively for every guitar pane including soundhole; midnight blue #204D70 and turquoise #269CA5 exclusively for all background panes including trees and moon. Guitar subdivided into broad curved bands alternating amber and terracotta; soundhole terracotta wholly within amber pane. Background pieces alternate blue and turquoise wherever possible. Prefer simple broad glass cuts to decorative subdivisions. Uniform PURE BLACK lead about 1% canvas width on every edge. Every stroke connects rim or a junction or is a closed loop; only clearly spaced T junctions, never X crossings or four-way contacts; avoid slivers, parallel close lines and tiny panes. All panes at least 3% panel width wide apart from pointed tips. Keep neighboring junctions more than 3% panel width apart. No shading, gradients, lighting, texture, bevels, glass shine, text or signatures. Output is a clean flat traceable drawing, not a photograph and not finished textured glass.\nCORRECTIONS FROM FIRST ATTEMPT: Strictly simplify to 38 panes, NOT 60+. Guitar 14 panes total, whole background 24 panes total. ONLY 3 broad pieces along neck, 2 headstock pieces, 7 body pieces including round soundhole and simple closed bridge. Two fir trees each just ONE large unsegmented pane; moon ONE pane. Remaining backdrop uses just 19 broad flowing pieces. Avoid dense lower waves, remove half the background seams compared with references. Crucial: FLAT computer vector colour swatches, absolutely NO tonal variations within a pane, no illumination or gradient anywhere. T junctions spaced apart; do not align neck subdivisions with background lines. Subject pair alternating terracotta and amber, background alternating blue and turquoise. Elegant guitar contours preserved. 38 large pieces, simple bold oval panel."
+}

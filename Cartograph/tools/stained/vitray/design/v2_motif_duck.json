@@ -1,0 +1,39 @@
+{
+  "id": "v2_motif_duck",
+  "name": "Ördek",
+  "scene": "An elegant duck swims among flowing pond waves and reeds inside an oval stained-glass panel.",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden yellow",
+      "#E8B735"
+    ],
+    [
+      "burnt orange",
+      "#C85A2B"
+    ],
+    [
+      "teal",
+      "#168F99"
+    ],
+    [
+      "deep blue",
+      "#215879"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from motif_duck with vitray_fox and vitray_lighthouse style references. Duck uses the warm pair; sky, reeds and water use the cool pair. Target 89–129 panes; raster inspection found 123 coloured connected components larger than 100 pixels (not a geometry audit). Reviewed both generations for closed lines, crossings, shading and colour pairs; regenerated once to remove the bill sliver, strengthen lead, separate junctions and restore an opaque white exterior. Remaining doubts: subtle colour variation persists within fills, a few crowded junctions in upper-left sky, feathers and lower waves may need separation, some reed tips are narrow, and some same-colour neighbours may merge during tracing. Palette lists intended flat tracing colours. Design sheet only; no geometry or game catalogue changes.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png",
+      "tools/stained/vitray/design/vitray_lighthouse.png",
+      "assets/glass/motif_duck-junctions.webp"
+    ],
+    "selectedSource": "clai-images/v2-motif-duck-design-2.png"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "v2n_pomegranate",
+  "name": "Nar",
+  "scene": "a pomegranate with a crown top",
+  "shape": "oval",
+  "palette": [
+    [
+      "Ruby red",
+      "#B52B46"
+    ],
+    [
+      "Coral",
+      "#EE795F"
+    ],
+    [
+      "Sky blue",
+      "#56ADCD"
+    ],
+    [
+      "Deep teal",
+      "#23766E"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small design sheet; target 12–22 panes. Visual count: 19 closed panes, comprising 6 subject panes (crown plus five alternating horizontal fruit bands) and 13 background panes. Inspected after one regeneration: no apparent loose ends or X crossings; fruit/background junctions are staggered. Remaining doubts: two neighbouring lower-right background panes are both teal and may merge during tracing; subtle generated tonal variation remains despite the flat-fill instruction; closest lower fruit/background T junction spacing should be checked in tracing. Opaque white exterior, no decorative border. Design stage only.",
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Use the attached fox panel only as a reference for elegant traditional leaded stained-glass DESIGN language and smooth black seams. Redesign it completely as ONE bold centered pomegranate with crown top, no fox, no foliage. Portrait 3:4 opaque pure white canvas. Tall oval panel nearly touching canvas edges, thick closed black rim, no decorative border ring. A whole rounded pomegranate with a recognizable broad three-point calyx crown, occupying most of panel width. Very simple beginner puzzle: exactly 16 large closed glass pieces total: 6 subject pieces (5 broad curved vertical fruit lobes alternating ruby red #B52B46 and coral #EE795F, plus a single coral crown touching the red upper fruit piece), and 10 large calm background pieces alternating sky blue #56ADCD and deep teal #23766E around the fruit. Adapt fruit splits to keep adjacent subject pieces alternating two colors, with every internal seam running outline to outline, never intersecting another internal seam. Background seams run from outer oval to fruit silhouette at positions well separated from fruit seams. Only T junctions; no four-way or X crossings; every seam connected at both ends. All junctions spaced broadly, no narrow slivers, no tiny seed details. Crown has broad simple points, clearly reads as pomegranate not apple. Exactly four flat solid glass colors; black for uniform lead around 1 percent canvas width, pure white exterior only. Elegant authentic stained-glass composition, not a cartoon character. For tracing use FLAT fills, no texture, shading, gradients, reflections, highlights, text, labels or signature. Target 12-22 panes is mandatory, aim 16.",
+  "revisionPrompt": "Revise this pomegranate design sheet. Keep oval silhouette, white exterior, crowned whole fruit, four-color ruby/coral fruit and sky-blue/deep-teal background palette and 12-22 large panes. Correct construction: replace all vertical fruit lobes with FIVE BROAD gently curved HORIZONTAL BANDS spanning left fruit outline to right outline. Alternate bands ruby, coral, ruby, coral, ruby from top to bottom. One coral crown on top attaches only to top ruby band. Thus six subject panes total, no internal intersections and no seams converge at bottom or crown corners. Background has TEN calm broad pieces arranged around fruit, strictly alternating sky-blue and teal around complete cycle, with each divider running from oval rim to fruit outline. Every background divider attaches to fruit at least 45 pixels AWAY from any fruit band endpoint or crown corner. Never line up seams through fruit outline; T junctions only, no X. 16 panes total. Pure FLAT SOLID opaque colors, no shading whatsoever, no gradients, no grain, no texture. Uniform black lead width, enclosed panes, no small details. Elegant traditional stained-glass design with simple bold proportions, no decorative border, no text.",
+  "generationAttempts": 2
+}

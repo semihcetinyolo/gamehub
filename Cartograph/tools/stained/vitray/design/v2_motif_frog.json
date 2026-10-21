@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_frog",
+  "name": "Kurbağa",
+  "scene": "An elegant crouching frog rests among flowing pond ripples and tall reeds.",
+  "shape": "oval",
+  "palette": [
+    [
+      "emerald green",
+      "#28784B"
+    ],
+    [
+      "golden lime",
+      "#B8CB45"
+    ],
+    [
+      "cobalt blue",
+      "#285A9B"
+    ],
+    [
+      "turquoise blue",
+      "#56BACA"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 85–125 panes. Frog uses emerald and lime; reeds and pond use cobalt and turquoise. Generated with ClaiFace image using fox and poppy design references and the old frog as subject reference. Visually inspected both generations; one corrective regeneration removed green background reeds and restored white exterior. Remaining doubts for tracing: slight fill variation persists, some same-colour neighbours may merge, and close junctions around folded limbs, toes and reed tips need geometry review. Pane count and production geometry audit are not certified by this design sheet."
+}

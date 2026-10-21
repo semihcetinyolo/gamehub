@@ -1,0 +1,53 @@
+{
+  "id": "v2_story_lobster",
+  "name": "Deniz Tabanı",
+  "scene": "An elegant lobster raises its broad claws above a segmented body and fan tail among flowing underwater currents and kelp on the sea floor.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Coral red",
+      "#D64B35"
+    ],
+    [
+      "Amber",
+      "#EAAE38"
+    ],
+    [
+      "Ocean blue",
+      "#174D78"
+    ],
+    [
+      "Turquoise",
+      "#39A9B5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Inspected both generations and selected the single correction pass. Lobster uses the warm pair and background uses the cool pair; no obvious loose-ended lines. Remaining doubts: subtle shading and teal variation persist, adjacent subject panes sometimes repeat a colour, several claw/body/background joins may be four-way, and narrow antenna/abdomen/leg-tip pieces need review. Raster component estimate is 205, above the 96–136 target; simplify background and nonessential subdivisions during tracing while preserving subject contours. This is a design sheet, not audited playable geometry or final glass artwork.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "assets/glass/story_lobster-silhouette.webp",
+      "tools/stained/vitray/design/vitray_fox.png",
+      "tools/stained/vitray/design/vitray_lighthouse.png"
+    ],
+    "selectedAttempt": 2,
+    "actionLogged": true
+  },
+  "rasterReview": {
+    "width": 1086,
+    "height": 1448,
+    "approximatePaneCount": 205,
+    "targetPaneCount": [
+      96,
+      136
+    ],
+    "paneCountWithinTarget": false,
+    "method": "4-connected saturated pixel components with max-minus-min >45 and max >85, area at least 150 pixels; approximate raster estimate, not vector audit.",
+    "visuallyInspected": true,
+    "strictBriefCompliance": false
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "v2_motif_umbrella",
+  "name": "Şemsiye",
+  "scene": "An open vermilion and golden umbrella with a curved J handle stands against flowing blue and teal rain-sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Vermilion",
+      "#DF543D"
+    ],
+    [
+      "Golden yellow",
+      "#E8B82F"
+    ],
+    [
+      "Rain blue",
+      "#287BAC"
+    ],
+    [
+      "Teal",
+      "#36958B"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    29,
+    39
+  ],
+  "notes": "Inspected both generations; selected single retry. Canopy ribs now terminate separately along dome and background apex convergence is removed. Subject and background colour pairs remain separate; closed panes and no obvious X crossings or loose ends at visual inspection. Remaining concerns for tracing: subtle fill shading requires palette quantization; closely spaced upper-left canopy/background junctions and narrow blue wedge under central scallop need review. Gold shaft touches gold canopy and may merge during tracing. Design sheet only; geometry not audited.",
+  "designPrompt": "Create one flat stained-glass puzzle DESIGN SHEET for Şemsiye (umbrella). Portrait 3:4 canvas. Elegant oval panel nearly filling pure white canvas, closed thick black rim. First reference shows the subject only; second reference shows elegant organic leaded composition, but eliminate all its shading. A beautiful broad domed open umbrella with scalloped lower edge, gracefully curved J handle, centered in flowing rain-sky bands. Exactly 29–39 closed panes total, aim 34. Large meaningful pieces, no decorative border. Subject canopy and thick visible handle use ONLY vermilion #DF543D and golden yellow #E8B82F; alternating adjacent subject panes. Background uses ONLY deep blue #287BAC and teal #36958B, alternating broad curved bands. Exactly four solid flat colours, black lines, white exterior. No white glass, no gradients, no texture, no shadows. Canopy use curved ribs that meet upper outline at widely separated places, NEVER a converging central fan vertex. Subject divisions run outline-to-outline. Handle at least 5% panel width, closed colored glass region with 3–4 alternating segments. Background bands terminate on subject/rim with well-separated T junctions. All lines uniform pure black about 1% canvas width. Only three-way T joins, no X intersections, dangling lines, tiny panes, narrow slivers, near-touching lines, or cracks. Mature elegant stained-glass composition, not childish clip art. No text or signature.",
+  "retryPrompt": "Revise this umbrella design sheet. Preserve oval framing, umbrella outline and J handle, four semantic colours, 3:4 portrait white exterior and about 34 panes. CRITICAL: separate the converging seams at umbrella top. Make central gold canopy panel broad and FLAT-TOPPED at the curved outer canopy boundary: its left and right ribs must start 12% panel width apart. All other ribs start at distinct widely spaced positions on the dome. Move background seam currently touching the canopy apex far to one side. At most THREE panes at every junction, never four or more. Remove pinched background wedges: use broad flowing bands, no Y splitting into thin pointed strips. ONLY perfectly constant solid fills #DF543D vermilion, #E8B82F gold on umbrella and handle; #287BAC blue, #36958B teal on background. Absolutely NO gradient, shading, mottling, highlights or texture. All panes fully closed with uniform black lead. Alternating adjacent panes within each pair, no background warm colours. Target 29–39 panes. No text.",
+  "generationMethod": "built-in image_gen",
+  "references": [
+    "assets/glass/motif_umbrella-junctions.webp",
+    "tools/stained/vitray/design/vitray_hotairballoon.png"
+  ],
+  "canvas": [
+    1086,
+    1448
+  ]
+}

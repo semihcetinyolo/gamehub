@@ -1,0 +1,39 @@
+{
+  "id": "v2n_clover",
+  "name": "Dört Yapraklı Yonca",
+  "scene": "a four-leaf clover",
+  "shape": "oval",
+  "palette": [
+    [
+      "deep emerald",
+      "#207448"
+    ],
+    [
+      "fresh leaf green",
+      "#8CBE42"
+    ],
+    [
+      "deep cobalt blue",
+      "#315BA7"
+    ],
+    [
+      "warm sky blue",
+      "#62BCE0"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening-level design; 17 closed coloured components counted (>500 pixels), within target 12–22. Four broad heart-shaped leaflets and curved stem, green subject pair and blue background pair. Inspected final image after one regeneration: no obvious loose lines or X crossings; some acute tapered contacts near leaflet attachments and subtle tonal variation remain for tracing review. Top-right leaflet joins same-green stem without a dividing lead; it is one visible region. Design sheet only.",
+  "targetPanes": [
+    12,
+    22
+  ],
+  "paneCount": 17,
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Create one stained-glass puzzle DESIGN SHEET for a four-leaf clover. Reference image is STYLE ONLY: elegant traditional leaded panel, graceful botanical contours, not a cartoon. New composition radically simpler than reference: exactly 18 large closed panes total, allowable 12–22. Portrait 3:4 canvas, opaque pure white exterior, tall OVAL panel nearly touching edges, thick uniform pure-black lead about 1% canvas width, no decorative border ring. Four bold heart-shaped clover leaflets arranged around a short broad central stem, unmistakably FOUR leaves. Avoid a shared central crossing: attach leaflets at staggered locations on a broad curved stem with separated T junctions. Each leaf has just two large halves with a single smooth outline-to-outline divider (8 leaf panes); stem one or two broad panes. Background about 8 broad calm curved/radial pieces. Exactly FOUR FLAT fill colours: deep emerald #207448 and fresh leaf green #8CBE42 exclusively clover and stem; deep cobalt blue #315BA7 and warm sky blue #62BCE0 exclusively background. Alternate the two greens inside the subject and the two blues in background. No white glass. Every lead line ends at rim or another line; all panes fully closed. Only separated T junctions, no X or 4-way junctions, no tiny central atom, no narrow slivers, no decorative veins. No gradients, textures, highlights, shadows, lettering or signature. Mature elegant stained-glass craftsmanship conveyed by contours and composition, with flat solid colour fills suitable for tracing. Do not copy fox or foliage. Save a single clean design. REVISION: Make all fills absolutely uniform solid colours, no lighting or tonal variation whatsoever. Draw the four leaves as four separate heart-shaped leaflets with broad BLUE gaps between them, surrounding a broad single green curved stem. Simplify each leaf to ONE unsplit green pane to eliminate crowded vein/attachment crossings; alternate dark and light green leaflets. Stem may have 2 large panes. Use 8–10 broad blue background panes so total remains 14–16. At leaf-stem attachments use clearly separated T junctions with substantial borders; never pinch together leaf tip, vein, background divider, and stem at one junction. Background dividers attach to broad outer leaf edges well away from their tips. Preserve elegant heart-shaped botanical contours, oval framing and four-colour strategy."
+}

@@ -1,0 +1,37 @@
+{
+  "id": "v2_motif_toucan",
+  "name": "Tukan",
+  "scene": "An elegant toucan with a sweeping bill and long tail perches on a branch amid tropical foliage.",
+  "shape": "oval",
+  "palette": [
+    [
+      "vermilion",
+      "#E86B24"
+    ],
+    [
+      "golden yellow",
+      "#E9B936"
+    ],
+    [
+      "sky blue",
+      "#4CAACB"
+    ],
+    [
+      "deep teal",
+      "#23776D"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 84–124 panes. Bird uses orange/gold; foliage, sky and perch use blue/teal. Visually inspected initial generation and one correction pass. Correction restored the opaque white exterior. Remaining doubts: subtle fill variation persists; several neighbouring background panes and some bird panes share a colour and may merge during tracing. A few feather/foliage tips and closely spaced junctions require checking after tracing. No obvious loose line ends; exact pane count and T-junction compliance are not geometry-audited.",
+  "tool": "clai image",
+  "references": [
+    "assets/glass/motif_toucan-junctions.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "prompt": "Create a flat stained-glass puzzle DESIGN SHEET for Tukan, a sophisticated elegant toucan perched on a branch, profile facing right with a large long curved bill, graceful feathered body and long tail. Portrait 3:4 canvas. Tall OVAL silhouette almost touching canvas edges, closed thick black rim, exterior pure white. Reference 1 is only the old subject idea, do not copy its childish geometry. References 2 and 3 give elegant flowing leaded-panel composition, but do not copy their gradients or mixed colour assignments. Aim for 100 CLOSED substantial panes (84-124 total), about 40 in toucan and 60 in surrounding tropical foliage and broad sky bands. Four EXACT solid colours only: vermilion #E86B24 and golden yellow #E9B936 exclusively for ALL bird parts including beak, eye, wing, tail and feet; sky blue #4CAACB and deep teal #23776D exclusively for ALL background including branch and leaves. Alternate the two colours inside each side wherever panes share a border. Use continuous broad feather bands from silhouette to silhouette and alternating curved leaf/sky bands; avoid branching internal subdivisions that force triangles of adjacency. Eye is one clearly visible gold round closed pane in orange head, no black pupil dot. All black lead lines same width about 1 percent canvas width, smoothly curved. ONLY T junctions with at most 3 panes per junction, separate junctions by at least 3 percent panel width. No X crossings, no loose lines, no unclosed panes, no thin slivers or tiny pieces, no pane under 0.1 percent panel area. Recognisable natural bird anatomy, elegant huge toucan bill, NOT cartoon. No white glass, gradients, shading, texture, reflections, text, decorative border frame or signature. This is clean flat tracer input, not finished textured glass.",
+  "correctionPrompt": "Correct this exact toucan design sheet. Preserve the oval composition, toucan contours and approximately 100 closed panes. Make the exterior OPAQUE PURE WHITE, not transparent. Remove ALL gradients, shadows, glow, noise and texture: every pane must be a perfectly uniform solid flat fill, exactly one of #E86B24 orange, #E9B936 gold, #4CAACB sky blue, #23776D teal. Bird uses exclusively orange and gold; background foliage and branch exclusively blue and teal. Recolour consecutive background panes to alternate blue/teal and bird panes orange/gold whenever possible. Black uniform lead lines, closed borders. Fix any four-way crossings by separating into well spaced T junctions. No tiny slivers or detached line ends. No text, no frames. Preserve portrait 3:4."
+}

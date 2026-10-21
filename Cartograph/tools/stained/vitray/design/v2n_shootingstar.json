@@ -1,0 +1,44 @@
+{
+  "id": "v2n_shootingstar",
+  "name": "Kayan Yıldız",
+  "scene": "a shooting star with a curved tail",
+  "shape": "oval",
+  "palette": [
+    [
+      "Gold",
+      "#F2C230"
+    ],
+    [
+      "Amber",
+      "#E87924"
+    ],
+    [
+      "Deep blue",
+      "#245A91"
+    ],
+    [
+      "Teal",
+      "#249C9B"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small design: 20 closed coloured regions counted by connected-component inspection, within target 12–22. Warm star and curved tail, cool alternating sky bands. Inspected both generations; one revision simplified star divisions. Remaining tracing concerns: mild fill shading needs quantization; narrow tail joins near star and lower curve need review; star right tip meets rim; a thin background seam below right star point separates two blue areas and should merge during tracing. No loose line ends observed. Design sheet only, not audited playable geometry.",
+  "targetPanes": [
+    12,
+    22
+  ],
+  "paneCount": 20,
+  "canvas": [
+    1086,
+    1448
+  ],
+  "generationMethod": "built-in image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "designPrompt": "Create one portrait 3:4 design sheet for a leaded stained glass puzzle, shooting star with a curved tail (Kayan Yildiz). Attached image is a STYLE REFERENCE ONLY for elegant stained glass composition and smooth bold black lead; do not copy its fox or density. Opaque pure white exterior. A tall oval panel nearly fills the canvas, closed thick pure black outer rim, no decorative border ring. Exactly 16 large closed panes total: about 7 subject panes and 9 calm background panes, absolutely no more than 22. One large recognizable five-point shooting star in the upper right, sweeping broad curved tail trailing toward lower left. Subject silhouette is graceful and bold; subdivide star with two offset outline-to-outline seams, never a central radial hub; tail consists of broad alternating flowing segments. Exactly four flat saturated glass colours: golden yellow #F2C230 and amber orange #E87924 exclusively in star and tail; deep blue #245A91 and teal #249C9B exclusively in the background. Alternate colours within each pair where panes touch. Background large calm sweeping bands, no small stars or extra objects. Elegant authentic artisan leaded-panel design, not a cartoon icon. Flat solid fills, no gradients, no texture, no lighting or shadows. Uniform thick black lead about 1 percent of image width. Every line closes from boundary to boundary; only well separated T junctions, never X crossings or four-way junctions, no loose lines. No tiny pieces, no thin slivers, no white glass. No text, symbols, signature, or watermark. Priority is low pane count and a clearly recognizable shooting star.",
+  "revisionPrompt": "Revise this shooting-star stained-glass design sheet. Keep oval silhouette, white exterior, four-colour warm subject/cool sky composition, curved tail, and 12–22 total big closed panes. CRITICAL: star top tip currently meets a sky seam and internal seam, creating crowded multiway contact. Keep star entirely inside oval with a broad blue/teal gap from rim; shift all background seam endpoints away from star tips and away from subject inner seam endpoints by at least 40 pixels. Keep five clearly recognizable star points. Simplify subject: star is just TWO broad panes split by ONE smooth curve connecting two non-tip edges; no radial hub. Tail has FIVE broad curved segments, joining the star at two widely separated non-tip positions; do not converge three tail strands at one point. Use offset joins with only three panes meeting. Background 8 to 10 large calm blue/teal bands. All four fills must be SINGLE CONSTANT solid colours: gold #F2C230, amber #E87924, blue #245A91, teal #249C9B. Remove ALL shading, gradients and texture. Uniform pure black smooth lead. No thin wedges or hairline slivers. Only closed panes, every line boundary to boundary, no X crossings. No white glass. No text. Portrait 3:4."
+}

@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_rooster",
+  "name": "Horoz",
+  "scene": "A proud rooster with sweeping layered tail feathers stands against flowing sky and farmland bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "vermilion orange",
+      "#D94F25"
+    ],
+    [
+      "golden yellow",
+      "#EAAF32"
+    ],
+    [
+      "sky blue",
+      "#4499BE"
+    ],
+    [
+      "deep teal",
+      "#236C65"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 71–111 panes, requested approximately 85–95. Orange/gold rooster and blue/teal background pairs retained. Generated with clai image using fox and poppies style references and the old rooster subject reference; one correction generation reviewed. Opaque white exterior and clearer leg/beak alternation in the corrected image. Remaining review concerns: slight tonal variation persists; crowded converging tail roots, narrow feather tips, a few same-colour neighbours and short open toe strokes need attention during tracing. Pane count and junction spacing are not geometrically certified. No game catalogue or geometry changes."
+}

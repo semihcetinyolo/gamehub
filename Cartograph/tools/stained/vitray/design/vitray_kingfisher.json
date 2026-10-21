@@ -1,0 +1,47 @@
+{
+  "id": "vitray_kingfisher",
+  "name": "Yalıçapkını",
+  "scene": "A golden and turquoise bird perches among broad leaves and orange flowers beneath a pointed arch.",
+  "shape": "gothic arch",
+  "palette": [
+    [
+      "Burnt orange",
+      "#E8752A"
+    ],
+    [
+      "Golden yellow",
+      "#E4BD43"
+    ],
+    [
+      "Turquoise",
+      "#328C9A"
+    ],
+    [
+      "Leaf green",
+      "#43694B"
+    ]
+  ],
+  "notes": "Two generations inspected; first retained because retry introduced a fifth brown fill. Remaining doubts: beak touches flower, toes and several tail/feather panes are narrow, eye joins and some leaf/wing contacts are crowded or four-way, and fills have subtle variation. Adjacent feathers and petals repeat colours. Tracing should separate whole flower from beak and simplify foot/feather detail while preserving bird silhouette; verify pane count and geometry. Final raster estimate: 194 coloured components, above the 130-pane maximum. Simplify nonessential background/leaf subdivisions during tracing; this sheet does not yet meet the pane-count rule.",
+  "generation": {
+    "tool": "image_gen",
+    "reference": "tools/stained/vitray/refs/vitray_kingfisher.jpg",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d7a-2540-76b1-b4e8-12bd8af65c05/exec-5203a178-2700-42e0-b435-e878e7bbaf9a.png",
+    "prompt": "Use case: illustration-story. Produce one flat vector-like DESIGN SHEET for a Cartograph four-colour stained-glass puzzle, NOT finished glass artwork.\nPortrait 3:4 canvas, ideally 1536x2048. Panel centered and nearly touching all canvas edges, plain pure #FFFFFF exterior only. Thick closed black outer lead silhouette. No inset frame, no surrounding photo context.\nEXACTLY FOUR specified flat solid fill colours inside panel. Black #000000 is exclusively uniform lead, no black filled details; white only outside panel. No pale cream, no white glass. No texture, gradients, translucency, shading, highlights, text, signatures or dots.\nPure black smooth uniform lead lines about 1% canvas width everywhere (15 px at 1536). 80-100 CLOSED panes, 70-130 allowed. Each meaningful subject piece or background band is an individual closed fill area. Every separator reaches another separator or rim, NO free line ends. ONLY THREE-WAY/T JUNCTIONS: no X, no 4+ panes at a point; stagger neighboring junctions at least 3% of panel width apart. Background dividers must stop at subject contours at separated locations, never distort the subject. Pane widths >=3% panel width except their own pointed tips; pane areas >=1/1000 panel area. No nearly parallel narrow slivers, tiny chips, near-touches or hairline necks. Angles >=30 degrees. Eyes are sufficiently large closed round panes. Use broad organic sky/water/leaf/feather subdivisions, never an arbitrary grid. Choose different palette fills on adjacent panes when possible.\nThe supplied photograph is a SUBJECT AND MOOD REFERENCE, not an edit target; draw a fresh composition with its recognizable subject and natural types of background subdivision. Remove photographed setting, decorative frames, glass effects, fine details that cannot become closed panes.\nPANEL: GOTHIC POINTED ARCH, two smooth curved shoulders meeting at one apex, straight vertical sides, flat bottom. SUBJECT: long-beaked kingfisher-like colourful songbird perched on a broad diagonal branch, facing right, orange/gold head and chest, teal blue wing and long tail, surrounding broad leaves and three large simple flowers, as in reference photo. Keep large circular eye a single deep teal pane without pupil/highlight. No tiny claws, stamens or feather dots. Flowers use big central closed pentagonal panes separating petals so petals never all converge at one point. Branch is wide enough to paint. Leaves use central lead veins only with staggered side veins. About 90 closed panes, roughly 30 bird feathers, 25 flowers/leaves/branch and 35 broad organic background panes. EXACT four flat colours: burnt orange #E8752A, golden yellow #E4BD43, turquoise #328C9A, leaf green #43694B. Pure solid fills with no gradients."
+  },
+  "rasterReview": {
+    "width": 1086,
+    "height": 1448,
+    "aspectRatio": "3:4",
+    "approximatePaneCount": 194,
+    "method": "4-connected components of saturated coloured pixels (max-min >35, max >80), components >=100 pixels; approximate raster check, not vector geometry audit",
+    "targetPaneCount": [
+      70,
+      130
+    ],
+    "paneCountWithinTarget": false,
+    "visuallyInspected": true,
+    "generationAttempts": 2,
+    "strictBriefCompliance": false,
+    "reason": "Remaining junction/width issues and slight fill variation documented in notes."
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "v2_story_octopus",
+  "name": "Mercanların Bekçisi",
+  "scene": "An elegant octopus spreads eight curling arms through broad ocean currents above a coral reef.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Coral vermilion",
+      "#D65039"
+    ],
+    [
+      "Golden amber",
+      "#ECAF38"
+    ],
+    [
+      "Deep ocean blue",
+      "#175B80"
+    ],
+    [
+      "Turquoise",
+      "#30AFB5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    31,
+    41
+  ],
+  "tool": "image_gen",
+  "prompt": "Create one flat stained-glass puzzle DESIGN SHEET for Mercanların Bekçisi (Guardian of the Corals). Portrait 3:4 canvas, preferably 1536x2048. Use the visible fox and lighthouse images as STYLE REFERENCES ONLY for graceful traditional leaded panel composition, not their subjects or dense pane counts. Redraw the old octopus subject as an elegant natural octopus with a tall rounded mantle and eight clearly readable broad curling arms in a flowing underwater composition. Oval silhouette almost touching canvas edges, pure white exterior, fully closed thick black rim. Aim 31–41 large closed panes total, about 36, with simple graceful broad wave bands behind the octopus; subtle coral-like background shapes can occupy bottom corners in background colours only. Exactly FOUR solid flat colours: coral vermilion #D65039 and golden amber #ECAF38 for octopus ONLY, deep ocean blue #175B80 and turquoise #30AFB5 for water/background ONLY. Alternate the two warm colours in whole-width bands across mantle and arms; alternate the blue pair in background wave bands. Eyes should be visible closed amber panes in coral, without added pupil dots. Eight arms, generous water spaces between them, avoid overlapping arms or tightly wound narrow spirals. Sophisticated elegant cut glass contours, not childish mascot. Uniform pure black lead width about 1 percent of canvas width, smooth arcs. Every line connects to an outline or junction: no loose ends. ONLY well spaced T junctions, absolutely no X crossings or four-way contacts. No slivers or tiny panes; each pane at least 3 percent panel width except its tip. Subject band junctions offset from background junctions. No extra rim bands. No shading, gradients, texture, highlights, white glass, dots, bubbles, lettering or signatures. Deliver only the single clean flat design sheet.\nREVISION: First attached image is the octopus draft to simplify; second is a style reference. Reduce pane count strongly to 31–41 total. Remove ALL coral branches and small details. Use only 10 broad background water regions, 24 broad warm octopus regions, and two simple amber oval eye panes. Eyes must be single closed oval amber shapes entirely inside a coral area, NO outer eye rings, no lines crossing eyes. Replace longitudinal narrow flame-like subject strips with broad transverse alternating warm colour bands. Eight arms with open uncrowded bends; no little spirals. Avoid the draft's X intersections, overly complex divisions and gradients. Strict solid flat colour and uniform black lead. Make the octopus mantle shorter and broader, natural shape. Preserve oval outline and white exterior. This is a simple bold ~36-pane design.",
+  "references": [
+    "assets/glass/story_octopus-junctions.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "notes": "Design sheet only; visually inspected after one regeneration. Warm subject and cool background pairs are separated; oval rim and pane boundaries appear closed with no obvious loose line ends. Remaining doubts: pane count appears above the 31–41 target; some near-tangent/four-way contacts remain at arm roots and near the lower side arms; subtle fill variation remains rather than perfectly flat colours. Seven arm tips are distinctly visible, with the eighth not independently readable. Tracing should review these issues before production geometry.",
+  "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15e42-7c30-73d3-ba89-8ae4046d0fd3/exec-a7bdbe8c-be81-4376-abdb-422f15c94fd4.png"
+}

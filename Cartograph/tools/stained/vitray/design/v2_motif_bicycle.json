@@ -1,0 +1,38 @@
+{
+  "id": "v2_motif_bicycle",
+  "name": "Bisiklet",
+  "scene": "An elegant vintage bicycle stands against flowing sky and ground bands in a round-arched stained-glass panel.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "vermilion",
+      "#CC513B"
+    ],
+    [
+      "golden amber",
+      "#E7AC32"
+    ],
+    [
+      "deep teal",
+      "#176878"
+    ],
+    [
+      "turquoise",
+      "#49A7AD"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 36–46 panes. Bicycle frame, saddle, handlebar and wheel rims use the warm subject pair; background and wheel openings use the teal pair. Generated twice and visually reviewed; second design selected for simpler large panes and white exterior. Remaining doubts: subtle shading persists and the lower crank/frame pane blends amber into vermilion; some touching subject segments share a colour, and narrow triangular gaps remain at rear frame/wheel contacts. These require attention during tracing; no production geometry validation claimed. No obvious loose line ends; inspect close T junctions and wheel/ground contacts at tracing scale.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "source": "clai-images/v2-motif-bicycle-design-2.png",
+    "references": [
+      "tools/stained/vitray/design/vitray_hotairballoon.png",
+      "assets/glass/motif_bicycle-panes.webp"
+    ]
+  }
+}

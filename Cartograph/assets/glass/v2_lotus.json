@@ -1,0 +1,53 @@
+{
+  "id": "v2_lotus",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T10:47:57.242711+00:00",
+  "raw": "tools/stained/vitray/raw/v2_lotus.png",
+  "rawSha256": "68bb93f9fddb51c19fdc4d462df5dfd9314a568d1308dde9c84cd872cf603967",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 84,
+      "donorPatches": 52,
+      "colour": 0,
+      "preservedFraction": 0.5474737967410117
+    },
+    {
+      "patchSize": 93,
+      "donorPatches": 49,
+      "colour": 1,
+      "preservedFraction": 0.5034955613307334
+    },
+    {
+      "patchSize": 108,
+      "donorPatches": 63,
+      "colour": 2,
+      "preservedFraction": 0.5866895887009727
+    },
+    {
+      "patchSize": 101,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5368795733405488
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "4cfdf69ad707be1ab33fef1f9a561196b7c33d8972ff3bac9f8f1b942e46115b",
+  "sha256": "b608ed3bf47d12faebb0bc7567302eba7b7bd1cfec6852499ce620fe8306fcbf",
+  "palette": [
+    "#f54873",
+    "#fdc006",
+    "#015264",
+    "#63bf83"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 72,
+    "total": 72,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_lotus.webp"
+}

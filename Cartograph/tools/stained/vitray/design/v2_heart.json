@@ -1,0 +1,36 @@
+{
+  "id": "v2_heart",
+  "name": "Kalp Rozeti",
+  "scene": "a heart-shaped rosette of radiant petals around a small glowing heart",
+  "shape": "oval",
+  "palette": [
+    [
+      "ruby",
+      "#C8324B"
+    ],
+    [
+      "golden amber",
+      "#EDA92C"
+    ],
+    [
+      "deep blue",
+      "#24649A"
+    ],
+    [
+      "turquoise",
+      "#39A99D"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Oval heart-rosette design, warm subject pair and cool background pair. Target 74–114 panes. Visually reviewed and regenerated once. Remaining doubts: multiway contacts at the upper axial petal and lower rosette tip, crowded petal tips at the sides, adjacent ruby heart pieces and some same-colour background neighbours; slight tonal variation persists. Closed lines appear continuous, but geometry and pane count need tracer validation. Design sheet only.",
+  "tool": "image_gen",
+  "prompt": "Create ONE flat stained-glass DESIGN SHEET for Kalp Rozeti. Portrait 3:4 canvas. Reference 1 is the old subject idea only: a heart-shaped rosette of radiant petals around a small glowing heart. Reference 2 is style inspiration for elegant curved leaded panel composition, but use strictly FLAT SOLID fills without its shading. Fresh sophisticated artisan composition: tall oval silhouette nearly touching canvas edges, pure white exterior, closed black rim. A clearly recognisable small central heart surrounded by two generous staggered wreaths of elongated radiant petal shapes whose overall arrangement suggests a larger heart. Aim 88 closed panes total, within 74–114: around 48 heart/petal panes and 40 flowing background panes. Only four solid glass colours: ruby #C8324B and golden amber #EDA92C exclusively inside central heart and radiant petals; deep blue #24649A and turquoise #39A99D exclusively in surrounding background. Alternate the two warm colours across subject pieces, alternate the two cool colours across background pieces. Petal subdivisions should run across the entire petal from outline to outline, no branching inside petals. Background flows in broad curved staggered bands around rosette, never a square grid. Elegant clean contours, no cartoon face. Pure black smooth uniform lead approximately 1 percent canvas width. All lines end on a rim or another line with separated T junctions, ONLY three regions per junction, no X or multiray hubs; offset adjacent joins at least 3 percent panel width. Broad buildable glass pieces, no slivers, no narrow bridges, no tiny chips. No decorative frame, no inner border ring, no white panes, no gradients, no shading, no texture, no highlights, no text. Flat tracing-ready graphic, not finished glass photography.\nREVISION: The previous version has X crossings at the top petal, central heart tip, bottom rosette tip and petal corners. Rebuild those contacts as widely staggered T junctions: never let seams on opposite sides of a contour meet at the same location. Use a SINGLE unpartitioned ruby central heart, with golden petals behind it; no center seam in heart. Reduce touching pointed petal corners by separating them with broad neighbouring pieces. Add broad outline-to-outline subdivisions in long petals to reach 74-114 panes. Absolutely uniform solid fills, zero lighting or tonal variation. Every background band alternates blue and teal; do not leave adjoining blue-blue panes. Preserve elegant heart-rosette composition and oval. This is a tracing template, precision geometric flat colour, not a rendered illustration.",
+  "references": [
+    "assets/glass/heart-silhouette.webp",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "generationAttempts": 2
+}

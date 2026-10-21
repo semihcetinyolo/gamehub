@@ -1,0 +1,53 @@
+{
+  "id": "v2_story_hedgehog",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T13:00:02.473483+00:00",
+  "raw": "tools/stained/vitray/raw/v2_story_hedgehog.png",
+  "rawSha256": "6bf4715957001c1cdad87f3f49aa63a665720d66b76b2187ef6e4a85971b31d5",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 79,
+      "donorPatches": 39,
+      "colour": 0,
+      "preservedFraction": 0.533515122997251
+    },
+    {
+      "patchSize": 107,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5725133969412424
+    },
+    {
+      "patchSize": 57,
+      "donorPatches": 25,
+      "colour": 2,
+      "preservedFraction": 0.31933088732332787
+    },
+    {
+      "patchSize": 124,
+      "donorPatches": 86,
+      "colour": 3,
+      "preservedFraction": 0.6469829287654877
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "950632aa396444677d7542d2fb6414dbdb7437e157907ec7815e8c6567d8cb8c",
+  "sha256": "547b5a39654eeda19451879eb91fcc3100a1d2672135c745238ec422ca55dffd",
+  "palette": [
+    "#c02e0a",
+    "#fcc014",
+    "#085646",
+    "#39c2cb"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 45,
+    "total": 45,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_story_hedgehog.webp"
+}

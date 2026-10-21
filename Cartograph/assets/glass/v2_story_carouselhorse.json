@@ -1,0 +1,53 @@
+{
+  "id": "v2_story_carouselhorse",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:27:32.078344+00:00",
+  "raw": "tools/stained/vitray/raw/v2_story_carouselhorse.png",
+  "rawSha256": "6b9c00d6dbab4cd05fc2f1a73d6ac48da6e49e370cfb23e3c3abae5aa6af5e87",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 83,
+      "donorPatches": 94,
+      "colour": 0,
+      "preservedFraction": 0.44575557321468356
+    },
+    {
+      "patchSize": 112,
+      "donorPatches": 63,
+      "colour": 1,
+      "preservedFraction": 0.5393047644043858
+    },
+    {
+      "patchSize": 98,
+      "donorPatches": 76,
+      "colour": 2,
+      "preservedFraction": 0.5592665041868813
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6370729911711186
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "f1eb2d7b71228fb53960b423185c3a5746581e750e8c324e07352340f013b0a8",
+  "sha256": "b8c96e70b8bcfcf8227bc070553adbf7bc17210ca64fd561f5797561639a743d",
+  "palette": [
+    "#fdcb14",
+    "#f64a28",
+    "#0241a8",
+    "#08988d"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 68,
+    "total": 68,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_story_carouselhorse.webp"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "v2_story_typewriter",
+  "name": "Yazarın Penceresi",
+  "scene": "A vintage typewriter with an upright sheet of paper stands before flowing window bands in a round-arch stained-glass panel.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "golden amber",
+      "#E9AD32"
+    ],
+    [
+      "brick rust",
+      "#B84D35"
+    ],
+    [
+      "deep blue",
+      "#205B80"
+    ],
+    [
+      "teal",
+      "#399F9B"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    32,
+    42
+  ],
+  "notes": "Design sheet only. Inspected both generations; used the single permitted regeneration to remove the radial typebar fan and simplify knobs and base. Subject/background colour pairs are maintained and keys are clearly closed. Remaining doubts: a four-way contact persists near the top centre; some roller connectors and lower keyboard gaps are narrow; subtle fill shading remains rather than exact flat hex colours; total pane count appears above the requested 32–42 and needs checking during tracing. No game geometry or catalogue was modified.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/story_typewriter-contacts.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "prompt": "Create the Cartograph design sheet v2_story_typewriter, Turkish title Yazarın Penceresi (do NOT print the title). Use the attached old typewriter image ONLY for subject identity; redraw its simplistic typewriter as an elegant vintage mechanical typewriter. Use the attached lighthouse and poppies ONLY as style references for clean leaded stained-glass compositions. Output a flat tracing design, NOT finished textured glass.\nPortrait 3:4 canvas, ideally 1536x2048. One round-arch silhouette, centered, nearly filling the canvas, closed black outer rim, pure white exterior. About 36–40 CLOSED panes total, within 32–42. A large unmistakable vintage typewriter with upright sheet of paper, carriage roller, rounded sloping shoulders, two rows of four large round keys, long spacebar and curved base. Paper is saturated golden amber, never white, and can have 2–3 broad alternating gold/rust bands with no text. Typewriter subject is ONLY golden amber #E9AD32 and brick rust #B84D35. Make key disks golden amber inside a rust keyboard pane, with generous separation. Other mechanical components alternate gold/rust across full-width bands; keep silhouette elegant. Surrounding window-like background consists ONLY of deep blue #205B80 and teal #399F9B, alternating in broad flowing arch/sky bands that terminate on subject outline or outer rim; use roughly 15 background panes with generous spacing, not a grid. Background never uses gold or rust; subject never blue or teal.\nEXACTLY four solid fill colours plus pure black lead and pure white outside. Uniform black lines approx 1% canvas width. NO gradients, shading, highlights, glass texture, text, letters, symbols, dots or decoration. Every line fully closes a pane, no dangling strokes. At most THREE panes per junction: stagger all joins, NO X or four-way crossings. Neighbouring junctions at least 3% panel width apart. No slivers or tiny pieces; minimum pane width 3% except tips. Keep substantial space between all circular keys and other borders. Make about 36–40 large meaningful pieces, count deliberately. Do not copy extra complexity or shading from references.\nREVISION of generated typewriter: retain overall attractive typewriter and arch composition, but radically simplify to 32–42 panes TOTAL. Eliminate the entire radial fan of typebars: replace it with ONE broad rust semicircle within gold housing. Remove tiny side knob ridges, narrow crank handle and tiny connector spaces: just two large rounded roller knobs. Only 10–12 broad background panes, 8 round gold keys, one gold spacebar, and roughly 14 large subject body/paper/roller pieces. Remove the extra line inside rust keyboard above keys. Remove double strip around bottom base: one gold band above one rust base. Absolutely FLAT vector-style solid fill colours with no gradients or lighting whatsoever. Fix upper background X crossing: stagger the ends of arcs by at least 50 pixels, keeping only T junctions. Keep all circular keys separated from other lines by at least 45 pixels. Adjacent gold body pieces should merge without seam; alternate gold and rust wherever divided. Use exact solid colours requested. Keep pure white exterior. This is a tracing sheet, no realistic rendering."
+}

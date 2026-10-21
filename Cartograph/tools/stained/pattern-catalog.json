@@ -9,9 +9,9 @@
       "family": "rings",
       "variant": 0,
       "large": false,
-      "file": "assets/glass/rings_01-silhouette.webp",
+      "file": "assets/glass/rings_01-panes.webp",
       "vector": "tools/stained/guides/rings_01.svg",
-      "playLevel": 68
+      "playLevel": 95
     },
     {
       "id": "spiral_01",
@@ -23,7 +23,7 @@
       "large": false,
       "file": "assets/glass/spiral_01-silhouette.webp",
       "vector": "tools/stained/guides/spiral_01.svg",
-      "playLevel": 196
+      "playLevel": 204
     },
     {
       "id": "atlas_01",
@@ -35,7 +35,7 @@
       "large": false,
       "file": "assets/glass/atlas_01-junctions.webp",
       "vector": "tools/stained/guides/atlas_01.svg",
-      "playLevel": 172
+      "playLevel": 184
     },
     {
       "id": "rings_02",
@@ -45,9 +45,9 @@
       "family": "rings",
       "variant": 1,
       "large": false,
-      "file": "assets/glass/rings_02-silhouette.webp",
+      "file": "assets/glass/rings_02-panes.webp",
       "vector": "tools/stained/guides/rings_02.svg",
-      "playLevel": 154
+      "playLevel": 166
     },
     {
       "id": "spiral_02",
@@ -59,7 +59,7 @@
       "large": false,
       "file": "assets/glass/spiral_02-junctions.webp",
       "vector": "tools/stained/guides/spiral_02.svg",
-      "playLevel": 76
+      "playLevel": 102
     },
     {
       "id": "atlas_02",
@@ -71,7 +71,7 @@
       "large": false,
       "file": "assets/glass/atlas_02-junctions.webp",
       "vector": "tools/stained/guides/atlas_02.svg",
-      "playLevel": 264
+      "playLevel": 267
     },
     {
       "id": "rings_03",
@@ -83,7 +83,7 @@
       "large": false,
       "file": "assets/glass/rings_03-silhouette.webp",
       "vector": "tools/stained/guides/rings_03.svg",
-      "playLevel": 257
+      "playLevel": 261
     },
     {
       "id": "spiral_03",
@@ -93,9 +93,9 @@
       "family": "spiral",
       "variant": 2,
       "large": false,
-      "file": "assets/glass/spiral_03-silhouette.webp",
+      "file": "assets/glass/spiral_03-panes.webp",
       "vector": "tools/stained/guides/spiral_03.svg",
-      "playLevel": 206
+      "playLevel": 212
     },
     {
       "id": "atlas_03",
@@ -107,7 +107,7 @@
       "large": false,
       "file": "assets/glass/atlas_03-junctions.webp",
       "vector": "tools/stained/guides/atlas_03.svg",
-      "playLevel": 94
+      "playLevel": 115
     },
     {
       "id": "rings_04",
@@ -119,7 +119,7 @@
       "large": false,
       "file": "assets/glass/rings_04-silhouette.webp",
       "vector": "tools/stained/guides/rings_04.svg",
-      "playLevel": 138
+      "playLevel": 154
     },
     {
       "id": "spiral_04",
@@ -131,7 +131,7 @@
       "large": false,
       "file": "assets/glass/spiral_04-silhouette.webp",
       "vector": "tools/stained/guides/spiral_04.svg",
-      "playLevel": 122
+      "playLevel": 138
     },
     {
       "id": "atlas_04",
@@ -143,7 +143,7 @@
       "large": false,
       "file": "assets/glass/atlas_04-junctions.webp",
       "vector": "tools/stained/guides/atlas_04.svg",
-      "playLevel": 148
+      "playLevel": 162
     },
     {
       "id": "rings_05",
@@ -155,7 +155,7 @@
       "large": false,
       "file": "assets/glass/rings_05-silhouette.webp",
       "vector": "tools/stained/guides/rings_05.svg",
-      "playLevel": 144
+      "playLevel": 158
     },
     {
       "id": "spiral_05",
@@ -165,9 +165,9 @@
       "family": "spiral",
       "variant": 4,
       "large": false,
-      "file": "assets/glass/spiral_05-silhouette.webp",
+      "file": "assets/glass/spiral_05-panes.webp",
       "vector": "tools/stained/guides/spiral_05.svg",
-      "playLevel": 136
+      "playLevel": 152
     },
     {
       "id": "atlas_05",
@@ -179,7 +179,7 @@
       "large": false,
       "file": "assets/glass/atlas_05-junctions.webp",
       "vector": "tools/stained/guides/atlas_05.svg",
-      "playLevel": 202
+      "playLevel": 206
     },
     {
       "id": "rings_06",
@@ -191,7 +191,7 @@
       "large": false,
       "file": "assets/glass/rings_06-restored.webp",
       "vector": "tools/stained/guides/rings_06.svg",
-      "playLevel": 23
+      "playLevel": 58
     },
     {
       "id": "spiral_06",
@@ -203,7 +203,7 @@
       "large": false,
       "file": "assets/glass/spiral_06-silhouette.webp",
       "vector": "tools/stained/guides/spiral_06.svg",
-      "playLevel": 176
+      "playLevel": 188
     },
     {
       "id": "atlas_06",
@@ -215,7 +215,7 @@
       "large": false,
       "file": "assets/glass/atlas_06-silhouette.webp",
       "vector": "tools/stained/guides/atlas_06.svg",
-      "playLevel": 132
+      "playLevel": 148
     },
     {
       "id": "rings_07",
@@ -227,7 +227,7 @@
       "large": false,
       "file": "assets/glass/rings_07-restored.webp",
       "vector": "tools/stained/guides/rings_07.svg",
-      "playLevel": 12
+      "playLevel": 22
     },
     {
       "id": "spiral_07",
@@ -237,9 +237,9 @@
       "family": "spiral",
       "variant": 6,
       "large": false,
-      "file": "assets/glass/spiral_07-silhouette.webp",
+      "file": "assets/glass/spiral_07-panes.webp",
       "vector": "tools/stained/guides/spiral_07.svg",
-      "playLevel": 84
+      "playLevel": 108
     },
     {
       "id": "atlas_07",
@@ -251,7 +251,7 @@
       "large": false,
       "file": "assets/glass/atlas_07-junctions.webp",
       "vector": "tools/stained/guides/atlas_07.svg",
-      "playLevel": 74
+      "playLevel": 99
     },
     {
       "id": "rings_08",
@@ -263,7 +263,7 @@
       "large": false,
       "file": "assets/glass/rings_08-silhouette.webp",
       "vector": "tools/stained/guides/rings_08.svg",
-      "playLevel": 15
+      "playLevel": 53
     },
     {
       "id": "spiral_08",
@@ -273,9 +273,9 @@
       "family": "spiral",
       "variant": 7,
       "large": false,
-      "file": "assets/glass/spiral_08-silhouette.webp",
+      "file": "assets/glass/spiral_08-panes.webp",
       "vector": "tools/stained/guides/spiral_08.svg",
-      "playLevel": 134
+      "playLevel": 48
     },
     {
       "id": "atlas_08",
@@ -285,9 +285,9 @@
       "family": "atlas",
       "variant": 7,
       "large": false,
-      "file": "assets/glass/atlas_08-junction-pilot.webp",
+      "file": "assets/glass/atlas_08-panes.webp",
       "vector": "tools/stained/guides/atlas_08.svg",
-      "playLevel": 38
+      "playLevel": 71
     },
     {
       "id": "rings_09",
@@ -299,7 +299,7 @@
       "large": false,
       "file": "assets/glass/rings_09-junctions.webp",
       "vector": "tools/stained/guides/rings_09.svg",
-      "playLevel": 112
+      "playLevel": 132
     },
     {
       "id": "spiral_09",
@@ -309,9 +309,9 @@
       "family": "spiral",
       "variant": 8,
       "large": false,
-      "file": "assets/glass/spiral_09-silhouette.webp",
+      "file": "assets/glass/spiral_09-panes.webp",
       "vector": "tools/stained/guides/spiral_09.svg",
-      "playLevel": 251
+      "playLevel": 254
     },
     {
       "id": "atlas_09",
@@ -323,7 +323,7 @@
       "large": false,
       "file": "assets/glass/atlas_09-silhouette.webp",
       "vector": "tools/stained/guides/atlas_09.svg",
-      "playLevel": 236
+      "playLevel": 238
     },
     {
       "id": "rings_10",
@@ -335,7 +335,7 @@
       "large": false,
       "file": "assets/glass/rings_10-restored.webp",
       "vector": "tools/stained/guides/rings_10.svg",
-      "playLevel": 222
+      "playLevel": 226
     },
     {
       "id": "spiral_10",
@@ -345,9 +345,9 @@
       "family": "spiral",
       "variant": 9,
       "large": false,
-      "file": "assets/glass/spiral_10-silhouette.webp",
+      "file": "assets/glass/spiral_10-panes.webp",
       "vector": "tools/stained/guides/spiral_10.svg",
-      "playLevel": 31
+      "playLevel": 42
     },
     {
       "id": "atlas_10",
@@ -359,7 +359,7 @@
       "large": false,
       "file": "assets/glass/atlas_10-junctions.webp",
       "vector": "tools/stained/guides/atlas_10.svg",
-      "playLevel": 78
+      "playLevel": 104
     },
     {
       "id": "rings_11",
@@ -371,7 +371,7 @@
       "large": false,
       "file": "assets/glass/rings_11-junctions.webp",
       "vector": "tools/stained/guides/rings_11.svg",
-      "playLevel": 88
+      "playLevel": 39
     },
     {
       "id": "spiral_11",
@@ -383,7 +383,7 @@
       "large": false,
       "file": "assets/glass/spiral_11-silhouette.webp",
       "vector": "tools/stained/guides/spiral_11.svg",
-      "playLevel": 124
+      "playLevel": 142
     },
     {
       "id": "atlas_11",
@@ -395,7 +395,7 @@
       "large": false,
       "file": "assets/glass/atlas_11-junctions.webp",
       "vector": "tools/stained/guides/atlas_11.svg",
-      "playLevel": 241
+      "playLevel": 244
     },
     {
       "id": "rings_12",
@@ -407,7 +407,7 @@
       "large": false,
       "file": "assets/glass/rings_12-silhouette.webp",
       "vector": "tools/stained/guides/rings_12.svg",
-      "playLevel": 275
+      "playLevel": 276
     },
     {
       "id": "spiral_12",
@@ -419,7 +419,7 @@
       "large": false,
       "file": "assets/glass/spiral_12-silhouette.webp",
       "vector": "tools/stained/guides/spiral_12.svg",
-      "playLevel": 116
+      "playLevel": 136
     },
     {
       "id": "atlas_12",
@@ -431,7 +431,7 @@
       "large": false,
       "file": "assets/glass/atlas_12-junctions.webp",
       "vector": "tools/stained/guides/atlas_12.svg",
-      "playLevel": 268
+      "playLevel": 271
     },
     {
       "id": "rings_13",
@@ -443,7 +443,7 @@
       "large": false,
       "file": "assets/glass/rings_13-silhouette.webp",
       "vector": "tools/stained/guides/rings_13.svg",
-      "playLevel": 226
+      "playLevel": 232
     },
     {
       "id": "spiral_13",
@@ -455,7 +455,7 @@
       "large": false,
       "file": "assets/glass/spiral_13-junctions.webp",
       "vector": "tools/stained/guides/spiral_13.svg",
-      "playLevel": 72
+      "playLevel": 97
     },
     {
       "id": "atlas_13",
@@ -467,7 +467,7 @@
       "large": false,
       "file": "assets/glass/atlas_13-junctions.webp",
       "vector": "tools/stained/guides/atlas_13.svg",
-      "playLevel": 47
+      "playLevel": 75
     },
     {
       "id": "rings_14",
@@ -479,7 +479,7 @@
       "large": false,
       "file": "assets/glass/rings_14-silhouette.webp",
       "vector": "tools/stained/guides/rings_14.svg",
-      "playLevel": 82
+      "playLevel": 106
     },
     {
       "id": "spiral_14",
@@ -489,9 +489,9 @@
       "family": "spiral",
       "variant": 13,
       "large": false,
-      "file": "assets/glass/spiral_14-silhouette.webp",
+      "file": "assets/glass/spiral_14-panes.webp",
       "vector": "tools/stained/guides/spiral_14.svg",
-      "playLevel": 162
+      "playLevel": 174
     },
     {
       "id": "atlas_14",
@@ -503,7 +503,7 @@
       "large": false,
       "file": "assets/glass/atlas_14-junctions.webp",
       "vector": "tools/stained/guides/atlas_14.svg",
-      "playLevel": 164
+      "playLevel": 176
     },
     {
       "id": "rings_15",
@@ -515,7 +515,7 @@
       "large": false,
       "file": "assets/glass/rings_15-silhouette.webp",
       "vector": "tools/stained/guides/rings_15.svg",
-      "playLevel": 96
+      "playLevel": 117
     },
     {
       "id": "spiral_15",
@@ -527,7 +527,7 @@
       "large": false,
       "file": "assets/glass/spiral_15-silhouette.webp",
       "vector": "tools/stained/guides/spiral_15.svg",
-      "playLevel": 158
+      "playLevel": 172
     },
     {
       "id": "atlas_15",
@@ -539,7 +539,7 @@
       "large": false,
       "file": "assets/glass/atlas_15-junctions.webp",
       "vector": "tools/stained/guides/atlas_15.svg",
-      "playLevel": 43
+      "playLevel": 73
     },
     {
       "id": "rings_16",
@@ -551,7 +551,7 @@
       "large": false,
       "file": "assets/glass/rings_16-silhouette.webp",
       "vector": "tools/stained/guides/rings_16.svg",
-      "playLevel": 212
+      "playLevel": 216
     },
     {
       "id": "spiral_16",
@@ -563,7 +563,7 @@
       "large": false,
       "file": "assets/glass/spiral_16-silhouette.webp",
       "vector": "tools/stained/guides/spiral_16.svg",
-      "playLevel": 156
+      "playLevel": 168
     },
     {
       "id": "atlas_16",
@@ -575,7 +575,7 @@
       "large": false,
       "file": "assets/glass/atlas_16-junctions.webp",
       "vector": "tools/stained/guides/atlas_16.svg",
-      "playLevel": 192
+      "playLevel": 202
     },
     {
       "id": "rings_17",
@@ -587,7 +587,7 @@
       "large": false,
       "file": "assets/glass/rings_17-restored.webp",
       "vector": "tools/stained/guides/rings_17.svg",
-      "playLevel": 146
+      "playLevel": 35
     },
     {
       "id": "spiral_17",
@@ -599,7 +599,7 @@
       "large": false,
       "file": "assets/glass/spiral_17-silhouette.webp",
       "vector": "tools/stained/guides/spiral_17.svg",
-      "playLevel": 254
+      "playLevel": 257
     },
     {
       "id": "atlas_17",
@@ -611,7 +611,7 @@
       "large": false,
       "file": "assets/glass/atlas_17-junctions.webp",
       "vector": "tools/stained/guides/atlas_17.svg",
-      "playLevel": 108
+      "playLevel": 128
     },
     {
       "id": "rings_18",
@@ -623,7 +623,7 @@
       "large": false,
       "file": "assets/glass/rings_18-restored.webp",
       "vector": "tools/stained/guides/rings_18.svg",
-      "playLevel": 118
+      "playLevel": 26
     },
     {
       "id": "spiral_18",
@@ -635,7 +635,7 @@
       "large": false,
       "file": "assets/glass/spiral_18-silhouette.webp",
       "vector": "tools/stained/guides/spiral_18.svg",
-      "playLevel": 244
+      "playLevel": 247
     },
     {
       "id": "atlas_18",
@@ -645,9 +645,9 @@
       "family": "atlas",
       "variant": 17,
       "large": false,
-      "file": "assets/glass/atlas_18-junctions.webp",
+      "file": "assets/glass/atlas_18-panes.webp",
       "vector": "tools/stained/guides/atlas_18.svg",
-      "playLevel": 247
+      "playLevel": 251
     },
     {
       "id": "rings_19",
@@ -659,7 +659,7 @@
       "large": false,
       "file": "assets/glass/rings_19-junctions.webp",
       "vector": "tools/stained/guides/rings_19.svg",
-      "playLevel": 27
+      "playLevel": 33
     },
     {
       "id": "spiral_19",
@@ -671,7 +671,7 @@
       "large": false,
       "file": "assets/glass/spiral_19-silhouette.webp",
       "vector": "tools/stained/guides/spiral_19.svg",
-      "playLevel": 114
+      "playLevel": 134
     },
     {
       "id": "atlas_19",
@@ -683,7 +683,7 @@
       "large": false,
       "file": "assets/glass/atlas_19-junctions.webp",
       "vector": "tools/stained/guides/atlas_19.svg",
-      "playLevel": 232
+      "playLevel": 234
     },
     {
       "id": "rings_20",
@@ -695,7 +695,7 @@
       "large": false,
       "file": "assets/glass/rings_20-silhouette.webp",
       "vector": "tools/stained/guides/rings_20.svg",
-      "playLevel": 142
+      "playLevel": 156
     },
     {
       "id": "spiral_20",
@@ -707,7 +707,7 @@
       "large": false,
       "file": "assets/glass/spiral_20-silhouette.webp",
       "vector": "tools/stained/guides/spiral_20.svg",
-      "playLevel": 86
+      "playLevel": 111
     },
     {
       "id": "atlas_20",
@@ -719,7 +719,7 @@
       "large": false,
       "file": "assets/glass/atlas_20-junctions.webp",
       "vector": "tools/stained/guides/atlas_20.svg",
-      "playLevel": 102
+      "playLevel": 122
     },
     {
       "id": "rings_21",
@@ -731,7 +731,7 @@
       "large": false,
       "file": "assets/glass/rings_21-silhouette.webp",
       "vector": "tools/stained/guides/rings_21.svg",
-      "playLevel": 186
+      "playLevel": 198
     },
     {
       "id": "spiral_21",
@@ -743,7 +743,7 @@
       "large": false,
       "file": "assets/glass/spiral_21-silhouette.webp",
       "vector": "tools/stained/guides/spiral_21.svg",
-      "playLevel": 272
+      "playLevel": 273
     },
     {
       "id": "atlas_21",
@@ -755,7 +755,7 @@
       "large": false,
       "file": "assets/glass/atlas_21-junctions.webp",
       "vector": "tools/stained/guides/atlas_21.svg",
-      "playLevel": 98
+      "playLevel": 119
     },
     {
       "id": "rings_22",
@@ -767,7 +767,7 @@
       "large": false,
       "file": "assets/glass/rings_22-silhouette.webp",
       "vector": "tools/stained/guides/rings_22.svg",
-      "playLevel": 128
+      "playLevel": 146
     },
     {
       "id": "spiral_22",
@@ -779,7 +779,7 @@
       "large": false,
       "file": "assets/glass/spiral_22-silhouette.webp",
       "vector": "tools/stained/guides/spiral_22.svg",
-      "playLevel": 166
+      "playLevel": 178
     },
     {
       "id": "atlas_22",
@@ -791,7 +791,7 @@
       "large": false,
       "file": "assets/glass/atlas_22-junctions.webp",
       "vector": "tools/stained/guides/atlas_22.svg",
-      "playLevel": 216
+      "playLevel": 222
     },
     {
       "id": "rings_23",
@@ -803,7 +803,7 @@
       "large": false,
       "file": "assets/glass/rings_23-silhouette.webp",
       "vector": "tools/stained/guides/rings_23.svg",
-      "playLevel": 104
+      "playLevel": 124
     },
     {
       "id": "spiral_23",
@@ -815,7 +815,7 @@
       "large": false,
       "file": "assets/glass/spiral_23-silhouette.webp",
       "vector": "tools/stained/guides/spiral_23.svg",
-      "playLevel": 106
+      "playLevel": 126
     },
     {
       "id": "atlas_23",
@@ -827,7 +827,7 @@
       "large": false,
       "file": "assets/glass/atlas_23-junctions.webp",
       "vector": "tools/stained/guides/atlas_23.svg",
-      "playLevel": 182
+      "playLevel": 194
     },
     {
       "id": "rings_24",
@@ -839,7 +839,7 @@
       "large": false,
       "file": "assets/glass/rings_24-silhouette.webp",
       "vector": "tools/stained/guides/rings_24.svg",
-      "playLevel": 261
+      "playLevel": 264
     },
     {
       "id": "spiral_24",
@@ -851,7 +851,7 @@
       "large": false,
       "file": "assets/glass/spiral_24-silhouette.webp",
       "vector": "tools/stained/guides/spiral_24.svg",
-      "playLevel": 19
+      "playLevel": 56
     },
     {
       "id": "atlas_24",
@@ -863,7 +863,7 @@
       "large": false,
       "file": "assets/glass/atlas_24-junctions.webp",
       "vector": "tools/stained/guides/atlas_24.svg",
-      "playLevel": 92
+      "playLevel": 113
     },
     {
       "id": "rings_25",
@@ -875,7 +875,7 @@
       "large": false,
       "file": "assets/glass/rings_25-junctions.webp",
       "vector": "tools/stained/guides/rings_25.svg",
-      "playLevel": 152
+      "playLevel": 164
     },
     {
       "id": "spiral_25",
@@ -887,7 +887,7 @@
       "large": false,
       "file": "assets/glass/spiral_25-silhouette.webp",
       "vector": "tools/stained/guides/spiral_25.svg",
-      "playLevel": 35
+      "playLevel": 67
     },
     {
       "id": "atlas_25",
@@ -899,7 +899,7 @@
       "large": false,
       "file": "assets/glass/atlas_25-junctions.webp",
       "vector": "tools/stained/guides/atlas_25.svg",
-      "playLevel": 126
+      "playLevel": 144
     }
   ]
 }

@@ -1,0 +1,38 @@
+{
+  "id": "v2n_evileye",
+  "name": "Nazar Boncuğu",
+  "scene": "a round evil-eye bead",
+  "shape": "oval",
+  "palette": [
+    [
+      "cobalt blue",
+      "#174B92"
+    ],
+    [
+      "turquoise",
+      "#29B6C8"
+    ],
+    [
+      "amber",
+      "#E8AD32"
+    ],
+    [
+      "burnt orange",
+      "#C85B32"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small design: 21 closed panes counted (5 concentric subject panes and 16 alternating background sectors), within target 12–22. Subject and background use separate alternating colour pairs. Visually inspected: closed outlines, separated T junctions, no X crossings or loose lines, generous pane widths. Generated circular request rendered as a slightly elongated oval. Mild fill shading remains after one correction attempt; retained the original opaque-white version because the correction introduced transparency and did not remove shading. No subject mask required. Design sheet only; not imported or published.",
+  "paneCount": 21,
+  "targetPanes": [
+    12,
+    22
+  ],
+  "tool": "clai image",
+  "references": [
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ]
+}

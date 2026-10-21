@@ -1,0 +1,53 @@
+{
+  "id": "v2_jellyfish",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:18:45.350169+00:00",
+  "raw": "tools/stained/vitray/raw/v2_jellyfish.png",
+  "rawSha256": "3bc24114e3e57fca13eb1cc5adbab6d0892acca9d681e072d753880c563ef79a",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 74,
+      "donorPatches": 40,
+      "colour": 0,
+      "preservedFraction": 0.4663904145404648
+    },
+    {
+      "patchSize": 88,
+      "donorPatches": 69,
+      "colour": 1,
+      "preservedFraction": 0.5179470227039993
+    },
+    {
+      "patchSize": 97,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5280613860433176
+    },
+    {
+      "patchSize": 107,
+      "donorPatches": 66,
+      "colour": 3,
+      "preservedFraction": 0.5526220929155656
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "923dc0608c04299a2b322e725b0b6291acd1a11562e9f076f89ff9273f67639c",
+  "sha256": "cb4b374b1bc80514d181b3c7376bbd3621303cbdfecc5d5b1db657c2a71b2a2d",
+  "palette": [
+    "#ef4a22",
+    "#f8b506",
+    "#014875",
+    "#10a6a7"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 100,
+    "total": 100,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_jellyfish.webp"
+}

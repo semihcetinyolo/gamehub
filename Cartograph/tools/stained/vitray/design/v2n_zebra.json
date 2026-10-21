@@ -1,0 +1,40 @@
+{
+  "id": "v2n_zebra",
+  "name": "Zebra",
+  "scene": "A zebra head with bold stripes.",
+  "shape": "oval",
+  "palette": [
+    [
+      "indigo",
+      "#303D73"
+    ],
+    [
+      "golden ochre",
+      "#DDAF42"
+    ],
+    [
+      "teal",
+      "#238B81"
+    ],
+    [
+      "azure",
+      "#58B5D8"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Medium design; target 28–45 panes. Regenerated once to simplify excessive stripes. Final raster inspection counts 39 enclosed pane interiors excluding exterior, using connected components above 500 pixels. Indigo/gold subject and teal/azure background pairs are preserved. Closed eye, broad neck stripes and closed oval rim; no obvious loose line ends. Remaining doubts: subtle fill shading persists, and tight junctions at ear bases and where mane joins neck need review during tracing; a few same-colour subject neighbours may merge. Design sheet only; not geometry-audited or published.",
+  "paneCount": 39,
+  "size": "medium",
+  "targetPanes": [
+    28,
+    45
+  ],
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "styleReference": "tools/stained/vitray/design/vitray_fox.png"
+  }
+}

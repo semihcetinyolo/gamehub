@@ -1,0 +1,39 @@
+{
+  "id": "v2_story_carouselhorse",
+  "name": "Lunapark Akşamı",
+  "scene": "An elegant carousel horse with a flowing mane and tail rises on its pole against sweeping evening sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "amber",
+      "#E9AF32"
+    ],
+    [
+      "coral",
+      "#D85B48"
+    ],
+    [
+      "evening blue",
+      "#285B9B"
+    ],
+    [
+      "teal",
+      "#258D8B"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Reviewed both generations; regenerated once to reduce excessive segmentation. Warm colours are reserved for horse and pole, cool colours for the background. Remaining doubts: pane count still appears above the 38–48 target before same-colour merging; adjacent same-colour seams remain on the saddle, torso and muzzle. Some mane/ear junctions are crowded and need checking during tracing; subtle fill variation remains. No obvious loose-ended seams. Not geometry-audited or published.",
+  "targetPanes": [
+    38,
+    48
+  ],
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_hotairballoon.png"
+  ],
+  "prompt": "Create ONE flat stained-glass puzzle DESIGN SHEET for Lunapark Akşamı (carousel horse at evening). Portrait 3:4 canvas, ideally 1536x2048. The references show the elegant flowing leaded-panel style: use that style but a NEW carousel horse composition, not the fox or balloon. Center a tall OVAL panel nearly touching canvas edges on pure white exterior. Bold graceful recognizable carousel horse in side profile facing right, raised bent front leg, flowing mane and tail, saddle and a sturdy vertical carousel pole passing behind horse from top to bottom rim. Mature elegant artisanal stained glass silhouette, not childish geometry. Total 38–48 large closed glass panes, aim 44: about 24 horse/pole pieces and 20 background pieces. Exact FOUR solid flat glass colors: amber #E9AF32 and coral #D85B48 exclusively horse, saddle, mane, tail and pole; evening blue #285B9B and teal #258D8B exclusively background. Alternate colors within each pair wherever pieces share borders. Anatomical divisions and flowing transverse stripes across the horse from outline to outline; broad curving evening sky bands behind it. One visible round amber eye in a coral head pane, no black pupil dot. All fills absolutely uniform, NO texture, shading, gradients or highlights. Uniform pure BLACK lead around 1% canvas width, closed thick black oval rim, no inner border frame. Every seam must connect a rim/outline/junction to another; no loose lines. Only well separated T junctions, never X or four-way crossings. Stagger seams at the pole and horse outlines, spacing at least 3% panel width. No tiny shards, slivers, narrow bridges or decorative dots. Use generously wide legs/pole and large smooth anatomical shapes. No white glass inside panel. Pure white only outside oval. No text or signature. Only one panel.\nCRITICAL REVISION: The first attempt was far too busy, about 90 panes. HALVE the complexity: absolutely only 38–48 panes in the ENTIRE panel, including pole and background. Draw about 22 big warm subject panes and 20 big cool background panes. Horse body ONE broad amber pane with ONE coral saddle, neck 3 broad pieces, head 3, mane 3, tail 3, legs just 1 or 2 pieces each. Pole only 2 long visible pieces, NO spiral stripes. Background only 8 sweeping alternating bands interrupted by the horse and pole. No decorative striping across body or legs. Uniform FLAT fills, no subtle shading. Keep the elegant horse contours and widely separated closed T joins. Adjacent same-color panes should simply be merged, no useless boundary between them."
+}

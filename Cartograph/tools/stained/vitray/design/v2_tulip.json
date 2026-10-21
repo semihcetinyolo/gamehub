@@ -1,0 +1,29 @@
+{
+  "id": "v2_tulip",
+  "name": "Lale",
+  "scene": "A single elegant red tulip with two broad leaves in front of a radiant sunburst.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Ruby red",
+      "#C92F48"
+    ],
+    [
+      "Coral pink",
+      "#F07888"
+    ],
+    [
+      "Teal",
+      "#238A83"
+    ],
+    [
+      "Golden ochre",
+      "#DDAA36"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Oval botanical panel; requested 98–138 panes, aiming for 110. Bloom uses ruby/coral; foliage, stem and radiant background use teal/ochre. Generated with clai image using vitray_poppies.png as style reference, then regenerated once for more panes and flatter fills. Visually reviewed both attempts for open lines, crossings, shading and colour pairs. Remaining doubts: slight tonal variation persists; several adjacent subdivisions share a colour and may merge during tracing; crowded contacts near leaf tips and flower base require geometry validation. Pane count is not yet measured. Design sheet only; no game catalogue changes."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "vitray_butterfly",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T08:57:52.923591+00:00",
+  "raw": "tools/stained/vitray/raw/vitray_butterfly.png",
+  "rawSha256": "de8e298d90a77a3ff667e398dfbd7bd91729feabd871206902fbc958121965e3",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 89,
+      "donorPatches": 75,
+      "colour": 0,
+      "preservedFraction": 0.4569120300725099
+    },
+    {
+      "patchSize": 63,
+      "donorPatches": 62,
+      "colour": 1,
+      "preservedFraction": 0.45003513099194664
+    },
+    {
+      "patchSize": 121,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6096396347576439
+    },
+    {
+      "patchSize": 103,
+      "donorPatches": 82,
+      "colour": 3,
+      "preservedFraction": 0.4900356179187509
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "a617e54ca60e94bcefa0c014001de1e7bda59a797fc59df3b3a2587d44435684",
+  "sha256": "8fdca90b96e92c24dfe52d89f1bbfb81eaecfe82ae5e14cc420637742d5ac67f",
+  "palette": [
+    "#fe9703",
+    "#ce0616",
+    "#03917f",
+    "#105bdc"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 103,
+    "total": 103,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/vitray_butterfly.webp"
+}

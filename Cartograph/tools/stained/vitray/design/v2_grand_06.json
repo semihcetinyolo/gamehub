@@ -1,0 +1,40 @@
+{
+  "id": "v2_grand_06",
+  "name": "Dağ Rasathanesi",
+  "scene": "A domed mountain observatory and a large astronomical telescope stand above layered ridges beneath sweeping celestial sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Golden ochre",
+      "#E6B637"
+    ],
+    [
+      "Terracotta",
+      "#BC5038"
+    ],
+    [
+      "Deep blue",
+      "#205675"
+    ],
+    [
+      "Turquoise",
+      "#279F9D"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    110,
+    160
+  ],
+  "notes": "Design sheet only. Visually inspected both generations; used the single permitted regeneration to correct blue subject windows/lens and the golden sky disc. Final subject/background pairs are separated. Remaining doubts: subtle fill shading persists rather than exact constant RGB fills; several same-colour neighbours may merge during tracing, so final pane count is unverified. Some narrow architectural trim and crowded dome-cap/terrace junctions require attention during tracing; no obvious loose line ends. This is not audited playable geometry or final glass artwork.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/grand_06-contacts.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_hotairballoon.png"
+  ],
+  "prompt": "Create a clean flat stained-glass puzzle DESIGN SHEET for Dağ Rasathanesi (Mountain Observatory), id v2_grand_06. Portrait 3:4 canvas, preferably 1536x2048. Use attached old art only for subject concept (observatory dome and telescope), completely redraw elegantly. Use attached lighthouse and balloon as style references for flowing handcrafted leaded-panel composition, but absolutely NO gradients or texture.\nAn oval silhouette nearly fills pure white canvas, closed pure black rim. A majestic mountain-top observatory with a broad round ribbed dome and curved drum occupies the middle; a clearly recognizable large astronomical telescope angled up toward the left on a robust pedestal in the foreground. Layered mountain ridges below and sweeping celestial sky arcs above. Elegant architectural silhouette, mature Pinterest stained glass composition, no childish rocket. Rich but readable scene with 110–160 closed substantial panes, aim 125. Subdivide architecture with broad continuous alternating bands, dome with curved ribs; mountains and sky with flowing contour bands, no arbitrary grid. Do not crowd lines at the dome apex: ribs end at separate T junctions along a broad curved cap.\nExactly FOUR solid flat fill colours: golden ochre #E6B637 and terracotta #BC5038 exclusively for subject (observatory architecture and telescope including pedestal), deep blue #205675 and turquoise #279F9D exclusively for background (sky, mountains, ground). Adjacent pieces within each semantic pair should alternate; prefer full-width stripes across each architectural component to simplify two-colour alternation. No white glass, white only outside oval. No pale cream.\nAll lead lines pure black uniform width about 1% of image width; smooth confident curves, every line closed or ending at rim/another line. Only spaced T junctions, no X or four-way contacts, junctions at least 3% panel width apart. No tiny shards, all pieces >=0.1% panel area, no hairline strips, no decorative thin strokes or floating marks. No text, no stars as tiny dots, no extra frame, no bevels, NO shading, NO highlights, NO glow, NO photographic glass. This is a flat traceable production design sheet, not finished textured artwork.\nREVISION: Use the most recent observatory image as composition reference and correct these defects. Every fill MUST be a single constant RGB colour, absolutely no gradient or vignette anywhere. Observatory windows and telescope lens MUST use gold or terracotta, never blue. Remove the golden moon; replace it with a turquoise celestial disc within blue sky. Remove narrow trim strips, double rings and small mechanical details. Broaden remaining architectural bands and use single weight black borders everywhere. No four-way intersections on lower right building. Keep around 120 large closed panes. Colours strictly #E6B637 #BC5038 #205675 #279F9D, plus black seams and white exterior only."
+}

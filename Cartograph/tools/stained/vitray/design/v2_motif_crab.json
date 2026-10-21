@@ -1,0 +1,37 @@
+{
+  "id": "v2_motif_crab",
+  "name": "Yengeç",
+  "scene": "A crab raises its curved pincers above a broad striped carapace amid flowing tidal bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral",
+      "#D94C35"
+    ],
+    [
+      "golden amber",
+      "#EBAF32"
+    ],
+    [
+      "ocean blue",
+      "#195878"
+    ],
+    [
+      "turquoise",
+      "#299C9A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from the original crab with fox and lighthouse design references. Target 34–44 panes. Inspected both attempts; regenerated once to simplify and flatten. Warm subject and cool background pairs are preserved. Remaining doubts: generated segmentation still appears above target; subtle fill shading remains, some same-colour subject neighbours may merge, and narrow gaps near eyes, shoulders and leg tips need attention during tracing. Closed outlines appear intact; junction spacing and any four-way contacts require geometry validation. Design sheet only.",
+  "tool": "image_gen",
+  "prompt": "Create a flat stained-glass DESIGN SHEET for Yengeç (crab), not finished textured glass. Reference images: first is the old crab subject only, redraw its childish geometry completely; second and third are style references for elegant leaded panel composition, not their shading or palette placement.\nPortrait 3:4 canvas, preferably 1536x2048. One large oval panel nearly touching all four canvas edges, pure white outside, closed thick black outer rim. Elegant naturalistic crab seen from above/front, broad curved carapace, two raised substantial open pincers, six clearly separated tapered articulated walking legs, small round clearly visible eye panes. Compose graceful, readable, balanced contours, no cartoon face. Background broad flowing tidal bands.\nAim 38 closed panes total, strictly 34–44. Large simple meaningful pieces, not excessive segmentation. EXACTLY FOUR flat opaque fill colours: coral red #D94C35 and golden amber #EBAF32 exclusively for all crab pieces including eyes; deep ocean blue #195878 and turquoise #299C9A exclusively for background. Alternate the two warm colours across neighbouring crab pieces; alternate cool colours across background bands. Carapace can have three broad outline-to-outline curved bands, alternating warm colours. No colour gradients, texture, shading, light reflections or extra colours. Black lead and white exterior are not fill colours.\nUniform pure black lead about 1 percent canvas width, smooth elegant curves. Every line closes a pane and ends on another line or outer rim, never dangling. Only T junctions, no X crossings or four-way junctions. Separate neighbouring junctions by at least 3 percent panel width. No thin sliver panes or tiny details, all panes broad enough for tracing; generous visible water gaps between legs; no nearly touching curves. No decorative frame, no text, no labels, no signature. The whole oval is the picture. This is a clean traceable four-colour pattern, not a photograph.\nCORRECTIONS TO FIRST DRAFT: simplify aggressively to 40 panes TOTAL, including background. Crab only 24 panes: each of six legs ONE undivided curved tapered pane (6), each raised pincer and arm THREE broad panes (6), shell FOUR large bands (4), two eye circles plus their stalks (4), remaining four broad shoulder connectors at most. Background only 14–16 broad panes. No extra stripes in legs, no tiny triangular wedges around eye stalks or between limbs. Separate eye stalks from background dividers with wide space. CRITICAL: Completely FLAT solid colour, same exact RGB throughout each pane. Absolutely no subtle gradient, texture, vignette or lighting, unlike reference images. Pure vector-poster flatness. Closed outlines, only spacious T junctions. Preserve elegant recognisable crab and oval panel.",
+  "references": [
+    "assets/glass/motif_crab-silhouette.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "generationAttempts": 2
+}

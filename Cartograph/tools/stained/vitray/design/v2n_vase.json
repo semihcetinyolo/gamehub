@@ -1,0 +1,29 @@
+{
+  "id": "v2n_vase",
+  "name": "Çiçekli Vazo",
+  "scene": "A vase with three flowers.",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral red",
+      "#C64E40"
+    ],
+    [
+      "golden amber",
+      "#EFB936"
+    ],
+    [
+      "turquoise",
+      "#269FA9"
+    ],
+    [
+      "deep blue",
+      "#225A80"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Medium design, target 28–45 panes. Regenerated once to simplify the background, flower petals and vase bands. Final image has 36 closed colour components above 500 pixels (1086×1448); three tulips, three broad stems and five vase bands. Subject uses warm pair, background uses cool pair; exterior is opaque white. References: vitray_fox.png and vitray_lighthouse.png. Visual inspection: no obvious loose line ends; remaining concerns are subtle generated shading, some same-colour adjacency at stems and background, and crowded contacts where stems meet flowers/vase which require junction review during tracing. Design sheet only; geometry and game publication not performed."
+}

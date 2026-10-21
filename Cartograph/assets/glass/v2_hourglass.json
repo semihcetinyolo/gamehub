@@ -1,0 +1,53 @@
+{
+  "id": "v2_hourglass",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:26:34.326672+00:00",
+  "raw": "tools/stained/vitray/raw/v2_hourglass.png",
+  "rawSha256": "fc04f90d9daf661da498a983d06373ba5887a0884680157233a627e9e23e6d56",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 91,
+      "donorPatches": 62,
+      "colour": 0,
+      "preservedFraction": 0.5934250475481734
+    },
+    {
+      "patchSize": 97,
+      "donorPatches": 56,
+      "colour": 1,
+      "preservedFraction": 0.5678384045989461
+    },
+    {
+      "patchSize": 85,
+      "donorPatches": 42,
+      "colour": 2,
+      "preservedFraction": 0.5460792830392556
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6500461666037087
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "cdbba3ffc3815445949e13eb3c0a77b0e0bb2a302ea9c88d33729a95808806c6",
+  "sha256": "a20489dc8b7accd31a6ea0d38fabc126b28dceb4d40eeea8b42fd0ca72be6d9b",
+  "palette": [
+    "#fde00f",
+    "#e34e01",
+    "#003993",
+    "#0fb39e"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 46,
+    "total": 46,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_hourglass.webp"
+}

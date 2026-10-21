@@ -1,0 +1,35 @@
+{
+  "id": "v2_motif_koala",
+  "name": "Koala",
+  "scene": "A koala embraces a eucalyptus trunk amid flowing leaf-shaped background divisions.",
+  "shape": "oval",
+  "palette": [
+    [
+      "slate purple",
+      "#55516D"
+    ],
+    [
+      "lavender",
+      "#ABA0CC"
+    ],
+    [
+      "deep teal",
+      "#207D78"
+    ],
+    [
+      "golden amber",
+      "#D9A53B"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 35–45 panes. Generated with ClaiFace image using fox and poppies style references and the old koala for subject inspiration, then regenerated once to simplify divisions and replace loose eye strokes with closed oval panes. Visually reviewed final image: subject/background colour pairs remain separate, eyes are closed, exterior is white. Remaining doubts: pane count may exceed target; slight tonal variation remains; some adjacent panes share a colour, and crowded contacts at the left ear/head and lower-right arm/background need scrutiny during tracing. No geometry certification or game publication performed.",
+  "tool": "clai image",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_poppies.png",
+    "assets/glass/motif_koala-silhouette.webp"
+  ]
+}

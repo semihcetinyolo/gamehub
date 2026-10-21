@@ -1,0 +1,53 @@
+{
+  "id": "lotus",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-21T08:15:58.635399+00:00",
+  "source": "assets/glass/lotus-panes.webp",
+  "sourceSha256": "5c1397d0c561d730d5a66201cdbd4b938bb64f287b58a92df4f5c9ecb2755a6e",
+  "sourceGeometrySha256": "ec69729dff1dd5f28ca225296650f8e0b546e30d36884f54816b307a7341bbf9",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 42,
+      "donorPatches": 41,
+      "colour": 0,
+      "preservedFraction": 0.3474505326305463
+    },
+    {
+      "patchSize": 63,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.4597063381917707
+    },
+    {
+      "patchSize": 103,
+      "donorPatches": 68,
+      "colour": 2,
+      "preservedFraction": 0.4979634128327368
+    },
+    {
+      "patchSize": 102,
+      "donorPatches": 68,
+      "colour": 3,
+      "preservedFraction": 0.40593301252141994
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "037dde0efa2bcb1cc19496771e32c3bdd989c408140fcfdf296efc77d9769c8c",
+  "sha256": "53557cc02eef34faea5b51bff620d2b21a2811dedc196ceda7e3b4d02f440bb7",
+  "palette": [
+    "#e65c77",
+    "#3fa653",
+    "#f7bb10",
+    "#075055"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 24,
+    "total": 24,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "v2_rosewindow",
+  "name": "Gül Pencere",
+  "scene": "a gothic cathedral rose window with radiating lancets and a ring of roundels",
+  "shape": "circle",
+  "palette": [
+    [
+      "Ruby",
+      "#C3344B"
+    ],
+    [
+      "Golden amber",
+      "#E9AD32"
+    ],
+    [
+      "Cobalt",
+      "#2855A5"
+    ],
+    [
+      "Teal",
+      "#238C87"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Inspected both generations; second selected. Eight radiating striped lancets and a ring of roundels retain the rose-window subject. Subject and background colour pairs are separated; amber centre contrasts ruby lancet bases. No obvious loose line ends. Remaining doubts: several lancet tips still meet background divisions in crowded four-way contacts, narrow blue gaps persist near the central medallion, subtle fill variation remains, and the outer roundel ring is not perfectly symmetric. Pane count must be confirmed during tracing against the 69–79 target. Preserve lancet contours and resolve junctions by moving background divisions. Design sheet only; not geometry-audited or published.",
+  "generation": {
+    "tool": "image_gen",
+    "attempts": 2,
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15e1b-d52b-78f1-a3c0-53029ba840fb/exec-b382124b-4e5c-43c0-af61-0032eb2660d2.png",
+    "references": [
+      "assets/glass/rosewindow-restored.webp",
+      "tools/stained/vitray/design/vitray_fox.png"
+    ],
+    "prompt": "Create one flat stained-glass puzzle design sheet for Gül Pencere: a gothic cathedral rose window with radiating lancets and a ring of roundels. Portrait 3:4 canvas, circular panel centred almost touching left/right edges on pure white exterior. Use attached rosewindow image for SUBJECT ONLY; attached fox for elegant leaded composition and confident smooth line style ONLY. Fresh refined cathedral tracery, not the old cartoon scallops. Target 69–79 CLOSED generously sized panes, ideally 73. Circular outer rim, central medallion, eight radiating pointed lancets, surrounding ring of twelve roundels, broad background divisions. Exactly FOUR perfectly FLAT colours: ruby #C3344B and golden amber #E9AD32 exclusively for subject lancets, medallion and roundels; cobalt #2855A5 and teal #238C87 exclusively for surrounding background. Alternate colours within each pair, use transverse full-width bands within lancets. No white glass. Pure black smooth uniform lead approximately 1 percent canvas width, closed thick outer border. Every line ends at rim or a junction, no loose ends. Only separated T junctions: stagger radial joins across concentric boundaries so never X or four-way junctions. Central medallion prevents any spokes meeting in centre. Space roundels well apart, broad clean panes, no thin slivers, no tiny detail. No decorative outer border bands. NO shading, gradients, texture, highlights, text, labels, shadows, realistic glass rendering. This is a clean flat tracing sheet, not finished glass artwork.\nREVISION: The prior image has four-way meetings at pointed lancet tips and narrow blue spokes, and subtle gradients. Correct these. Keep every lancet tip isolated inside a broad background pane, with no background seam meeting that tip. Stagger all background joins away from lancet endpoints by at least 4 percent panel width. Keep central medallion golden amber to contrast adjacent ruby lancet bases. All eight gaps between lancets must be broad, never hairline blue spokes. 73 large panes total, reduce outer divisions as needed. Perfect solid flat fills with zero shading. Maintain clean circular silhouette wholly inside canvas with a small white margin. Exactly twelve roundels evenly spaced. The fox reference is for line style only. Prioritize closed readable T junctions and proper colour pairs."
+  }
+}

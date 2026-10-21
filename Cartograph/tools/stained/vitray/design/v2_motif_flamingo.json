@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_flamingo",
+  "name": "Flamingo",
+  "scene": "An elegant flamingo with a sweeping S-shaped neck and one lifted leg stands among reeds and flowing lagoon ripples.",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral",
+      "#F47C67"
+    ],
+    [
+      "rose",
+      "#BE365C"
+    ],
+    [
+      "turquoise",
+      "#36B7B0"
+    ],
+    [
+      "lagoon blue",
+      "#185B80"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 87–127 panes. Bird uses coral and rose; lagoon, sky and reeds use turquoise and blue. Generated with clai image using the fox and lighthouse design sheets as style references and the old flamingo as subject reference. Inspected initial output and regenerated once for flatter fills, white exterior and simpler junctions. Final visual review: recognizable silhouette, closed oval rim, separated eye and semantic colour pairs retained. Remaining doubts: subtle fill variation persists; several close or potentially four-way contacts in lower-left ripples and wing feathers need tracing-stage review, as do narrow reed tips and equal-colour neighbours in head/wing. Pane count and junction validity are not certified by this design-sheet review."
+}

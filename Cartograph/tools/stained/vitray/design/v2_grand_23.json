@@ -1,0 +1,37 @@
+{
+  "id": "v2_grand_23",
+  "name": "Işıklı Lunapark",
+  "scene": "A grand Ferris wheel rises above a carousel horse and pavilion, with a hot-air balloon floating over flowing evening sky and ground bands.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "Golden amber",
+      "#E9AE28"
+    ],
+    [
+      "Vermilion",
+      "#C84C36"
+    ],
+    [
+      "Deep blue",
+      "#205880"
+    ],
+    [
+      "Turquoise",
+      "#299D9E"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 110–160 panes. Inspected both generations; retained the single prescribed revision, which simplified gondola windows and removed the horse's loose facial seam. Remaining doubts: subtle shading and a greenish cast persist below the wheel hub; canopy apex and some wheel/roof contacts remain crowded or potentially multi-way; some gondola posts and balloon basket details are narrow. Several same-colour neighbours may merge during tracing, so final pane count is not yet verified. Cool gondola windows represent background openings. This is a design sheet, not validated puzzle geometry or finished glass artwork.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/grand_23-contacts.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_hotairballoon.png"
+  ],
+  "prompt": "Create exactly one flat stained-glass puzzle DESIGN SHEET for Işıklı Lunapark (illuminated amusement park). Reference 1 is the old subject concept ONLY, never copy its geometry or texture. References 2 and 3 are elegant leaded composition style references, but eliminate all their gradients. Portrait 3:4 canvas, ideally 1536x2048. One round-arched panel nearly filling the canvas, pure white outside, closed black rim, no decorative frame. A magnificent recognisable Ferris wheel fills the upper middle, with eight spacious rounded gondolas around a segmented wheel ring and a large circular hub so spokes terminate at distinct T junctions rather than converging at a point. Below and left is an elegant carousel pavilion with a scalloped striped canopy and a clearly recognisable single carousel horse, simplified into broad flowing shapes. A small hot air balloon floats at upper right. Flowing sky bands and sweeping ground bands unify the scene. Mature artisanal stained-glass composition, not childish clipart.\nAim 110–160 CLOSED generous panes, about 125. Every black line connects boundaries; no loose ends, X crossings or junctions with four or more regions. Offset adjacent junctions by at least 3% panel width, no narrow slivers, all panes at least 0.1% panel area. Smooth black lead uniform about 1% canvas width. Spokes terminate separately against hub and wheel rim. Keep carousel details simple and generous.\nEXACTLY FOUR perfectly flat interior colours: golden amber #E9AE28 and vermilion #C84C36 for ALL amusement attractions, horse, balloon, wheel, hub, spokes, gondolas and pavilion; deep blue #205880 and turquoise #299D9E for ALL background sky, ground and negative spaces between wheel spokes. Subject palette indices [0,1]. Alternate warm colours between neighbouring subject pieces and cool colours between neighbouring background bands. Prefer whole-width stripes with no branching subdivisions inside a stripe. No white or pale cream panes. White only outside. No shading, gradients, glow, texture, highlights, fine decorative lines, dots, lettering, stars or signatures. This is a clean traceable colour drawing, NOT a glass rendering. Preserve recognisable Ferris wheel, carousel horse and balloon.",
+  "revisionPrompt": "Revise this amusement park stained-glass design sheet. Preserve composition, round arch, Ferris wheel, carousel horse and balloon. STRICT FLAT VECTOR FILLS: eliminate all gradients, shadows, green patches and texture. Exactly four solid fill colours #E9AE28 golden amber, #C84C36 vermilion for attractions; #205880 deep blue and #299D9E turquoise for sky, ground and negative space. Pure white exterior, pure black lead. Fix ALL four-way junctions, especially canopy apex: replace converging roof stripe tips with broad curved cap so each stripe terminates at its own spaced T junction. Offset wheel internal arc endpoints on either side of each spoke rather than aligning them. Gondola windows must be large blue openings, eliminate tiny golden window posts and strips. Make supports and poles broad. No open line ends on horse: every anatomical seam joins outline or another junction, no eye dot. Alternate adjacent subject sections amber/vermilion and background sections blue/turquoise. Aim 110–160 closed large panes, no narrow slivers, no tiny details. Uniform black lines approximately 1% canvas width. No gradients at all. Keep same 3:4 portrait composition, elegant real leaded panel design translated into flat colour drawing."
+}

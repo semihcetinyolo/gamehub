@@ -1,0 +1,34 @@
+{
+  "id": "v2n_raincloud",
+  "name": "Yağmur Bulutu",
+  "scene": "a cloud with three raindrops",
+  "shape": "oval",
+  "palette": [
+    [
+      "cobalt blue",
+      "#245A9A"
+    ],
+    [
+      "turquoise",
+      "#36ADC4"
+    ],
+    [
+      "golden amber",
+      "#E9B632"
+    ],
+    [
+      "burnt orange",
+      "#BC622D"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening-level design; visually counted 18 closed panes (5 cloud, 3 raindrops, 10 background), within target 12–22. Inspected both generations; regenerated once to simplify the background. Remaining doubts: generated fills retain shading, and lower background panes blend amber and orange; some background seams coincide with cloud interior endpoints, creating apparent four-way contacts, and some seam endpoints are close. No obvious loose line ends. Colour pairs remain separated between subject and background. Design sheet only; not geometry-audited or published.",
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create a new Cartograph stained-glass design sheet for Yağmur Bulutu: a cloud with exactly three raindrops. Attached lighthouse is STYLE REFERENCE ONLY: elegant real leaded-panel craftsmanship and smooth meaningful curves, never a cartoon; do NOT copy its subject or its high complexity. Portrait 3:4 opaque pure white canvas, tall oval panel almost touching canvas edges, closed thick pure black rim. Flat solid fills with exactly FOUR glass colours: cobalt blue #245A9A and turquoise #36ADC4 exclusively for cloud and raindrops, golden amber #E9B632 and burnt orange #BC622D exclusively for background. No white or pale glass. A bold large cloud centered in upper middle made of FIVE broad closed panes separated by four simple curved outline-to-outline seams, alternating blue/turquoise as a chain; below are THREE widely separated large teardrops each ONE solid pane, two turquoise and one cobalt. Background only EIGHT to TEN broad calm curved or radial pieces alternating amber and burnt orange. Total sixteen to eighteen closed panes, NEVER over 22. Subject has no face, eyes or decoration. Every lead line closes a pane and ends on the rim or another boundary. Only well separated T junctions, never X crossings or four-way contacts. Background lines must meet subject outlines well away from internal seam endpoints. No slivers or tiny filler, no decorative border ring. Uniform pure black lead about 1 percent canvas width. Flat rich colour surfaces, no texture, highlights, shading, gradient, photographic context, text or signature. Show the complete panel centered on white. This is a precise traceable design, with the elegance of a stained-glass window.\nCRITICAL CORRECTION: previous attempt had too many background pieces and gradients. Use ONLY THREE broad background regions above the cloud, TWO broad regions alongside it, and FOUR broad regions below it, for NINE background panes plus EIGHT subject panes = SEVENTEEN TOTAL. Do not make fine sun rays. Each raindrop may sit wholly within a large background pane with no additional seams touching it. Flat uniform SOLID fills, absolutely NO gradient or shading within any pane. Cloud interior five simple alternating wide vertical curved slices. Keep every background seam endpoint at least 6 percent panel width away from cloud interior seam endpoints. Simplicity and 12-22 total panes are essential."
+}

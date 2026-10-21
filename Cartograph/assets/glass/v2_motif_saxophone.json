@@ -1,0 +1,53 @@
+{
+  "id": "v2_motif_saxophone",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:21:52.847488+00:00",
+  "raw": "tools/stained/vitray/raw/v2_motif_saxophone.png",
+  "rawSha256": "dd6d40aa6c01dfed23165837de48ad0f77f3358aebd908370c6c59578e61484f",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 111,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5459759729758342
+    },
+    {
+      "patchSize": 89,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5252746825199732
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.7198646471036929
+    },
+    {
+      "patchSize": 119,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5633072473092214
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "e2f296a723f4a736b4f394e7949e4d701f71845bd7a332a5984a031f26272fcf",
+  "sha256": "c5a5b78252bdcbf6665819228ca138c1e40177befe632451fcbb3b2140aa6468",
+  "palette": [
+    "#f9c30b",
+    "#c34902",
+    "#12b4c0",
+    "#043472"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 43,
+    "total": 43,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_motif_saxophone.webp"
+}

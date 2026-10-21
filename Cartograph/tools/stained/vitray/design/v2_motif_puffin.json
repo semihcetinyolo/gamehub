@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_puffin",
+  "name": "Deniz Papağanı",
+  "scene": "An Atlantic puffin stands in right-facing profile on a coastal rock against sweeping sea and sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt orange",
+      "#D85B30"
+    ],
+    [
+      "golden amber",
+      "#E9B83F"
+    ],
+    [
+      "ocean blue",
+      "#245778"
+    ],
+    [
+      "teal",
+      "#319D9B"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from motif_puffin; fox and lighthouse sheets attached as style references. Target 31–41 panes. Generated and visually inspected, then regenerated once to remove bill crossings, eye connector and toe marks and restore a white exterior. Subject uses orange/amber exclusively; background uses blue/teal exclusively. Remaining concerns: subtle fill shading persists; a four-way shoulder junction and several same-colour neighbouring bird panes remain; tapered wing pieces and closely spaced bill-root junctions need review during tracing. Raster connected-component estimate is 53 coloured regions, above the requested pane target; same-colour merging may reduce this but the final count is not validated. Design sheet only, not audited puzzle geometry or finished glass artwork."
+}

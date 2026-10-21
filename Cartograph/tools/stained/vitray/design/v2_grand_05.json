@@ -1,0 +1,39 @@
+{
+  "id": "v2_grand_05",
+  "name": "Göl Kenarı Pagoda",
+  "scene": "An elegant three-tier pagoda stands beside a rippling lake, framed by pine trees and layered mountains.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "terracotta",
+      "#C44B32"
+    ],
+    [
+      "amber gold",
+      "#E9AE30"
+    ],
+    [
+      "deep lake blue",
+      "#205C86"
+    ],
+    [
+      "jade teal",
+      "#329E96"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only, targeting 110–160 panes. Pagoda and architectural foundation use the warm pair; sky, mountains, pines, rocks and lake use the cool pair. Generated with lighthouse and poppies style references and the old grand_05 artwork as subject reference, then revised once after visual inspection to remove the warm sun, simplify small architectural details and stagger roof junctions. Final image visually reviewed: no obvious loose line ends; colour-pair separation improved. Remaining doubts: some same-colour neighbours will merge during tracing, close contacts in sky and water bands and narrow pine branches need geometry review, and subtle fill variation remains. Pane count and junction spacing are design targets, not geometry-certified measurements.",
+  "generator": "clai image",
+  "references": [
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_poppies.png",
+    "assets/glass/grand_05-panes.webp"
+  ],
+  "size": [
+    1086,
+    1448
+  ]
+}

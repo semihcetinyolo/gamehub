@@ -1,0 +1,42 @@
+{
+  "id": "v2n_daisy",
+  "name": "Papatya",
+  "scene": "a single daisy flower with a stem",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden yellow",
+      "#E7B936"
+    ],
+    [
+      "burnt orange",
+      "#C55A32"
+    ],
+    [
+      "teal",
+      "#279C9D"
+    ],
+    [
+      "deep blue",
+      "#205B80"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening-level design: six gold petals, one orange centre and one orange stem, with thirteen teal/blue background panes; 21 coloured connected components counted, within target 12–22. Opaque white exterior, portrait 1086×1448. Generated with clai image using lighthouse style reference (vitray_lighthouse.png); regenerated once to simplify the stem and background. Visually checked for closed lines, crossings, shading, colour pairs and pane count. Remaining doubts: subtle tonal shading persists instead of strictly flat fills; background wedges taper too tightly at petal bases, and some petal contacts near the centre may read as multiway contacts or same-colour adjacent petals. These need attention during later geometry preparation. Design sheet only; not audited or published game geometry.",
+  "paneCount": 21,
+  "targetPanes": [
+    12,
+    22
+  ],
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_lighthouse.png"
+    ],
+    "promptSummary": "Oval leaded-glass daisy with six gold petals, orange centre and unsegmented orange stem; teal/blue background, 12–22 closed panes, white exterior, flat four-colour fills and separated T junctions."
+  }
+}

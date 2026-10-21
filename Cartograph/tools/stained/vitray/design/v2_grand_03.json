@@ -1,0 +1,37 @@
+{
+  "id": "v2_grand_03",
+  "name": "Sualtı Şehri",
+  "scene": "A submarine and a graceful manta ray glide above a domed underwater city among flowing currents and kelp.",
+  "shape": "oval",
+  "palette": [
+    [
+      "amber",
+      "#E9AC32"
+    ],
+    [
+      "coral",
+      "#D95B3F"
+    ],
+    [
+      "ocean blue",
+      "#185A83"
+    ],
+    [
+      "turquoise",
+      "#259EA6"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 110–160 panes. Inspected initial image and one corrective regeneration. Revision improves city-window colour pairing, broadens ray tail and removes narrow tower spires. Remaining doubts: subtle fill variation persists; some same-colour neighbouring panes and closely spaced junctions remain around submarine, dome caps and kelp tips. Pane count and junction geometry require tracing-stage validation; not certified game geometry. White is exterior only. No subject mask required.",
+  "tool": "image_gen",
+  "prompt": "Create a flat stained-glass puzzle DESIGN SHEET, not finished textured glass, for Sualtı Şehri (Underwater City). Portrait 3:4 canvas, preferably 1536x2048. Image 1 is the old subject reference: retain the idea of a submarine above a submerged domed city with a graceful manta ray. Images 2 and 3 are style references for elegant handcrafted leaded panel composition and smooth meaningful contours, NOT texture or shading. Fresh sophisticated composition: tall oval silhouette centered nearly filling canvas, closed thick black rim, pure white exterior. Three elegant domed undersea towers of different heights occupy lower half, a sleek submarine with three large portholes upper left, a graceful ray upper right, sweeping ocean current bands and broad kelp ribbons connecting composition. Aim 130 closed substantial panes within 110–160 total: around 55 subject pieces, 75 water and kelp pieces. Use architectural transverse bands, roof segments and curved full-width hull/wing divisions. Exactly FOUR flat solid colors: amber #E9AC32 and coral #D95B3F exclusively for city, submarine and ray; ocean blue #185A83 and turquoise #259EA6 exclusively for surrounding water, seabed and kelp. Subject panes alternate amber/coral; background panes alternate blue/turquoise. Windows and portholes use the opposite SUBJECT color from surrounding wall or hull. No white inside panel. No gradients, shading, light effects, textures, glass reflections, text or extra colors. Uniform pure black smooth lead about 1% canvas width, same weight inside and outside. All lines close panes and end on rim or another line. Only T junctions, no X or four-way meetings; stagger junctions at least 3% panel width. No narrow slivers, tiny decorations, loose lines, black dots or bubble strings. Each pane substantial and single connected piece, at least 3% panel width except pointed tips. Avoid grid masonry; partition with meaningful dome curves, broad tower courses, flowing water bands. Keep subject outlines graceful and instantly recognizable. NO frame within frame, no decorative border, no words or captions.\nREVISION of the last generated sheet: retain its oval underwater city composition, but fix these defects. Entire image must be MATTE FLAT SOLID FILLS with absolutely NO subtle gradients or darkening at edges. All city windows must be amber or coral, not blue. Remove vertical cuts through same-colored dome halves; use alternating wide roof segments instead. Remove crowded convergence of water bands near left submarine tail, at ray tail tip and right lower tower: separate their T junctions widely along outlines, never 4-way points. Remove tiny spires and replace with broad simple dome caps. Broaden ray tail to a clearly paintable ribbon, no hairline tip. Keep 110–160 substantial closed panes, count roughly 125. Pure white exterior and exactly the four specified solid colors plus black lines. All inner lines same width as outer rim. Adjacent same-color divisions should be omitted, not invented. Preserve elegant smooth contours.",
+  "references": [
+    "assets/glass/grand_03-panes.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "generationAttempts": 2
+}

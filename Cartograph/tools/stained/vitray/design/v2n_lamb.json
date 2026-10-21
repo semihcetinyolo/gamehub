@@ -1,0 +1,43 @@
+{
+  "id": "v2n_lamb",
+  "name": "Kuzu",
+  "scene": "a woolly lamb in a meadow",
+  "shape": "oval",
+  "palette": [
+    [
+      "honey gold",
+      "#E5B94F"
+    ],
+    [
+      "terracotta",
+      "#AC563B"
+    ],
+    [
+      "turquoise",
+      "#52ADC0"
+    ],
+    [
+      "deep teal green",
+      "#236D5A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Generated with ClaiFace image using vitray_fox.png as a style reference, then regenerated once to simplify pane count and remove dangling mouth/eye strokes. Final image inspected for open lines, X crossings, shading, colour pairs and pane count. Raster connected-component count: 52 coloured panes above 450 px, exceeding target 28–45 after the permitted retry. Subject/background colour pairs remain separate, but some adjacent panes within each pair share a colour and may merge during tracing. Subtle fill shading remains rather than perfectly flat fills. Some closely spaced junctions around the ears and narrow gaps between legs need geometry review. Not geometry-audited or game-published.",
+  "targetPanes": [
+    28,
+    45
+  ],
+  "observedPaneCount": 52,
+  "generationAttempts": 2,
+  "tool": "clai image",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "size": [
+    1086,
+    1448
+  ]
+}

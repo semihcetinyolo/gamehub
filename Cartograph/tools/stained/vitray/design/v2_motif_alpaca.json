@@ -1,0 +1,39 @@
+{
+  "id": "v2_motif_alpaca",
+  "name": "Alpaka",
+  "scene": "A standing alpaca with a long upright neck and flowing wool panes overlooks rolling Andean hills.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Amber",
+      "#D98432"
+    ],
+    [
+      "Golden yellow",
+      "#EFC653"
+    ],
+    [
+      "Sky blue",
+      "#4CADD0"
+    ],
+    [
+      "Deep teal",
+      "#24766D"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 96–136 panes, generation aimed at 110; exact count requires tracing. Portrait 1086×1448, oval rim, white exterior. Subject uses amber/gold and landscape uses blue/teal. Visually inspected both generations; one revision separated the prominent upper-left hill crossing and simplified background divisions. Remaining doubts: subtle tonal variation persists in generated fills; some same-colour neighbours, closely spaced junctions and narrow wool tips may require merging or review during tracing. No obvious loose line ends. Not geometry-audited or published.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png",
+      "tools/stained/vitray/design/vitray_poppies.png",
+      "assets/glass/motif_alpaca-silhouette.webp"
+    ],
+    "promptSummary": "Elegant standing alpaca in an oval panel; approximately 110 closed panes; amber/gold subject and blue/teal landscape; flat fills, uniform black lead, spaced T junctions and white exterior. Revision requested flat fills and removal of four-way crossings."
+  }
+}

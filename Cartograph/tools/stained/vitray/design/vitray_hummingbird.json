@@ -1,0 +1,36 @@
+{
+  "id": "vitray_hummingbird",
+  "name": "Sinek Kuşu",
+  "scene": "A hummingbird hovers beside trumpet flowers amid leaves and flowing sky bands.",
+  "shape": "octagon",
+  "palette": [
+    [
+      "Vermilion",
+      "#E75E36"
+    ],
+    [
+      "Amber",
+      "#E8B64D"
+    ],
+    [
+      "Teal",
+      "#217F78"
+    ],
+    [
+      "Cobalt",
+      "#345BA3"
+    ]
+  ],
+  "notes": "Built-in image generation from the reference. Main bird is warm against cool sky and foliage; flowers are secondary focal panes and included in subject mask. Tracing review must check narrow beak and tail tips, petal/leaf junctions and small eye. Equal neighbouring colours intentionally permitted for semantic readability. One targeted geometry simplification was generated. The model mask retains thin white internal subject seams; interiors are black for pane-majority classification. Palette fills show subtle raster variation to quantize during tracing.",
+  "designPrompt": "Edit this four-colour flat design while preserving its tall OCTAGON, bird pose and expressive silhouette, flowers, canvas framing and exterior. Correct crowded geometry: turn every X or multiway junction into separated T junctions, particularly the upper-left leaves, lower-left foliage and the shoulder where both wings join the body. Give each pair of junctions at least 3% of panel width spacing. Remove excessive small leaves/background seams to retain 80–100 broad closed panes. Broaden whole narrow background pieces, never dent the bird. Make all fills mathematically solid and flat with no shading or highlights. Exactly four colours: #E75E36 vermilion and #E8B64D amber for bird and flower heads, #217F78 teal and #345BA3 cobalt for background/foliage. Adjacent same colours permitted. No added colours. Keep eye a warm iris and solid black pupil, no white highlights. Uniform pure black lead. No texture, gradient, new objects, labels or decorative border.",
+  "subjectMaskPrompt": "Edit this finished design into its BLACK AND WHITE SUBJECT MASK. Preserve the EXACT canvas size, aspect ratio, framing, panel shape, every contour and every lead line in its original pixel position. Do NOT redraw, rearrange, simplify or scale anything. Recolour only: every pane of SUBJECT goes pure black #000000, every other pane and exterior pure white #FFFFFF. Keep ALL existing black lead lines black, never turn subject seams white. In the subject this makes a continuous solid black silhouette. Include eye interiors as black. Keep background seams black. No grey, no colour, no shading, no added marks. Output must overlay the input with unchanged geometry. SUBJECT: all hummingbird parts including wings, beak, eye, body and tail, and all trumpet flower heads including buds. Every leaf, stem and sky/background pane becomes white. Subject interiors and their internal leads must be solid black.",
+  "generationMethod": "built-in image_gen",
+  "canvas": [
+    1086,
+    1448
+  ],
+  "subjectColours": [
+    0,
+    1
+  ]
+}

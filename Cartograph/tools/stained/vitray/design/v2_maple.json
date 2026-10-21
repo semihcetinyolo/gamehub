@@ -1,0 +1,36 @@
+{
+  "id": "v2_maple",
+  "name": "Akçaağaç Yaprağı",
+  "scene": "A broad autumn maple leaf divided into warm-coloured lobes.",
+  "shape": "oval",
+  "palette": [
+    [
+      "vermilion",
+      "#D94B32"
+    ],
+    [
+      "golden amber",
+      "#E9AF32"
+    ],
+    [
+      "deep teal",
+      "#19776F"
+    ],
+    [
+      "clear blue",
+      "#55A9CB"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Oval botanical panel with a broad five-lobed maple leaf and curved stem; warm subject pair and cool flowing background pair. Target 92–132 panes. Visually reviewed after one corrective regeneration: closed panel and recognisable contour; no obvious loose line ends. Remaining doubts for tracing: crowded multi-line contacts at leaf base and a few lobe junctions, some narrow background tips, adjacent same-colour pieces, and slight residual fill variation. Exact pane count and geometric validity are not certified by this design sheet.",
+  "tool": "image_gen",
+  "prompt": "Create a flat stained-glass DESIGN SHEET for Cartograph level v2_maple, Akçaağaç Yaprağı. Portrait 3:4 canvas, ideally 1536x2048. References: first image is OLD maple subject only, do not copy its geometry or texture; second and third are stylistic references for elegant leaded-panel composition. Draw one large recognisable broad autumn maple leaf with five pointed lobes, natural elegant serrations and a curved sturdy stem, inside a tall OVAL panel nearly filling the canvas. Rich but readable 92–132 closed panes, aim 105. The leaf occupies most of the panel, segmented into meaningful flowing vein-like bands across each lobe; avoid many veins converging at the leaf centre. Stagger junctions. Background consists of flowing autumn breeze bands wrapping around the leaf, richly subdivided into broad pieces, no grid and no decorative border frame. EXACTLY FOUR FLAT FILL COLOURS: vermilion #D94B32 and golden amber #E9AF32 exclusively for leaf and stem; deep teal #19776F and clear blue #55A9CB exclusively for background. Alternate the two warm colours between neighbouring leaf pieces and the two cool colours between neighbouring background pieces wherever possible. Entirely flat solid colours, NO shading, gradients, texture, lighting, highlights, white glass, pale cream, dots or text. Pure white exterior only. Pure black smooth lead lines of uniform width about 1% canvas width with closed thick outer oval rim. Every line must connect rim/junction to rim/junction, no loose line ends or gaps. Only separated T junctions, NO X crossings or 4-way meetings. Junction separation at least 3% panel width. No tiny panes or sliver strips; panes at least 3% panel width except natural pointed tips and at least 1/1000 panel area. Preserve clean natural maple outline, sophisticated botanical stained glass design, not childish geometric icon. No text or palette swatches.\nCORRECTION PASS: Use the supplied first draft as composition reference. Remove ALL gradients: every pane must be a single absolutely uniform RGB colour, like a vector flood fill. Simplify crowded leaf base so no veins converge on a single hub: make each vein terminate at a different point on a broad sweeping central seam, with at least 3% panel width between successive joins. Remove all X crossings in background, especially bottom right, by shifting entire dividers to well-separated T junctions. Avoid narrow pointed background wedges alongside upper leaf tip. Keep the roughly 105 panes, oval, large maple leaf, four strict semantic colours. Each background band alternates blue/teal; leaf panes alternate red/gold. Output only the flat design, pure white exterior.",
+  "references": [
+    "assets/glass/maple-silhouette.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ]
+}

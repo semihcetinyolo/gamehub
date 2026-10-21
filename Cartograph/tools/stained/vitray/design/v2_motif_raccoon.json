@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_raccoon",
+  "name": "Rakun",
+  "scene": "A seated masked raccoon curls its striped tail beneath its body against sweeping woodland bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Dark plum",
+      "#493B58"
+    ],
+    [
+      "Warm honey",
+      "#DDA54B"
+    ],
+    [
+      "Teal",
+      "#207F80"
+    ],
+    [
+      "Cornflower blue",
+      "#619BC5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 31–41 panes. Generated with ClaiFace image using the old raccoon and vitray_fox style references; regenerated once to simplify excess divisions and request flat fills. Reviewed the second image: closed oval, opaque white exterior, recognizable mask and ringed tail, subject/background colour pairs remain separated, no obvious loose line ends. Remaining doubts: pane count visually exceeds target; subtle fill shading persists; some same-colour neighbours and crowded cheek/body/tail junctions require review during tracing. Not geometry-audited or published."
+}

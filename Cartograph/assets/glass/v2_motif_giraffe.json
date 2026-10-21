@@ -1,0 +1,53 @@
+{
+  "id": "v2_motif_giraffe",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:59:57.965499+00:00",
+  "raw": "tools/stained/vitray/raw/v2_motif_giraffe.png",
+  "rawSha256": "2c82d7ffe1c3d4ba9aba0814a48389a7e3a875a09fa162eb2e8f05bad2b92fc7",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 93,
+      "donorPatches": 32,
+      "colour": 0,
+      "preservedFraction": 0.47996917848246723
+    },
+    {
+      "patchSize": 117,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5696687723094892
+    },
+    {
+      "patchSize": 99,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5872591444087752
+    },
+    {
+      "patchSize": 116,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5295621533686402
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "20838a49e8f67182f482100d8c3abbd1e423d1800c02f0193e54223228d8274d",
+  "sha256": "99a324adcd8659a1bc007322474307f876382c9541c8618b3fa4313ffe214dc4",
+  "palette": [
+    "#fdcb0e",
+    "#c02d0a",
+    "#0fbfad",
+    "#01427d"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 78,
+    "total": 78,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_motif_giraffe.webp"
+}

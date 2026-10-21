@@ -1,0 +1,37 @@
+{
+  "id": "v2_story_iguana",
+  "name": "Volkanik Kayalar",
+  "scene": "An iguana with a sweeping curled tail rests on volcanic rocks beneath a distant volcano and flowing sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "forest green",
+      "#24704D"
+    ],
+    [
+      "lime green",
+      "#A8C94D"
+    ],
+    [
+      "terracotta",
+      "#C65B3D"
+    ],
+    [
+      "deep blue",
+      "#245579"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; revised once and visually inspected. Iguana uses the green pair; landscape uses terracotta and blue. Closed oval rim and simplified eye/toes. Remaining concerns: subtle fill variation persists, several same-colour neighbours may merge during tracing, crowded crest/body contacts and the volcano summit require junction review, and some crest/toe panes may be too small. Target 80–120 panes; exact traced count and production geometry compliance are not validated.",
+  "tool": "image_gen",
+  "prompt": "Create one flat stained-glass puzzle design sheet, portrait 3:4, ideally 1536x2048. Subject: an elegant anatomically recognizable iguana resting diagonally on volcanic rocks, head facing upper right, long curling tapering tail around lower left, strong bent legs, visible round eye, pronounced dewlap and broad dorsal crest. Distant volcanic peaks and sweeping sky bands. Fresh sophisticated artisan leaded-panel composition, NOT the childish shapes of the old reference. Use the attached fox and lighthouse designs as composition and smooth lead-line style references only. Silhouette: tall oval nearly touching all canvas edges, closed thick black rim, pure white exterior, no rectangular frame. Aim 95 closed meaningful panes, within 80–120: roughly 50 iguana panes and 45 volcanic landscape/sky panes. EXACTLY FOUR FLAT FILL COLOURS: forest green #24704D and lime green #A8C94D exclusively for iguana; terracotta #C65B3D and deep blue #245579 exclusively for rocks, volcanoes and sky. Every iguana part including eye uses only the two greens. Alternate the greens with broad curved stripes running outline to outline across torso, tail and limbs, and alternating crest segments; alternate background colours within rock facets and sweeping sky bands. No other fill colours and no white interior panes. Black uniform smooth lead lines about 1% canvas width. All lines connect rim/junction to junction; no dangling lines, no decorative strokes, no pupil dots. ONLY separated T junctions, never X or four-way contacts. Separate adjacent junctions at least 3% panel width. Broad panes, no slivers, no tiny scales or tiny toes, minimum pane area 1/1000 panel area, no narrow parallel seams. Preserve natural clean subject contour. Flat solid vector-like fills, absolutely NO shading, gradients, glass texture, highlights, text, signatures or borders within the oval. This is a tracing design sheet, not finished textured glass.\nREVISION: Simplify dramatically to 90–105 panes total. Only 8 broad dorsal crest lobes, 3 broad blunt toes per visible foot, one simple round lime eye in a forest-green head pane, NO concentric eye rings. Volcano summit may have ONLY two outline edges and one interior divider, never a fan of seams. Each background band should span broad distances, 30–35 background panes maximum. Each body stripe must span fully from silhouette to silhouette; no scale-like divisions. Strictly solid uniform RGB fills; remove all gradients and lighting from references. Uniform thick black lines. Stagger intersections to prevent any four-way X. No narrow black-outline tendrils, pointed claws or tiny slivers.",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "assets/glass/story_iguana-silhouette.webp"
+  ],
+  "generationAttempts": 2
+}

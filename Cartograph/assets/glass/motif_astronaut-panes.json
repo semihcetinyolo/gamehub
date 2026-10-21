@@ -1,0 +1,53 @@
+{
+  "id": "motif_astronaut",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T14:35:18.462060+00:00",
+  "source": "assets/glass/motif_astronaut-junctions.webp",
+  "sourceSha256": "913cbe1095a876fca28bf54170a7465e88b5ea484ac8c3e504c193edc37c0c0c",
+  "sourceGeometrySha256": "0b22ad3ed3ea5c200aec1811a9857fa4c967643ed4fa25bdf132e2876fade911",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 84,
+      "donorPatches": 35,
+      "colour": 0,
+      "preservedFraction": 0.43403334695189544
+    },
+    {
+      "patchSize": 55,
+      "donorPatches": 30,
+      "colour": 1,
+      "preservedFraction": 0.4196501311557868
+    },
+    {
+      "patchSize": 93,
+      "donorPatches": 53,
+      "colour": 2,
+      "preservedFraction": 0.4799299442352891
+    },
+    {
+      "patchSize": 120,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5956124873955541
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "c7b8a8db654caaa73d9d14a82e786ead6c18302d84a16f105c7ae339c31b098b",
+  "sha256": "2a2cd15ae434f70cfdf4bda134130ea16e17b478e4f9c658b885fa6777a81564",
+  "palette": [
+    "#da8e08",
+    "#faf25e",
+    "#458ed8",
+    "#071d69"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 19,
+    "total": 19,
+    "mismatches": []
+  }
+}

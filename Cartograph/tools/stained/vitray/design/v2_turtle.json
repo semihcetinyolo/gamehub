@@ -1,0 +1,29 @@
+{
+  "id": "v2_turtle",
+  "name": "Deniz Kaplumbağası",
+  "scene": "a sea turtle swimming through sunlit blue water, its shell made of patterned plates",
+  "shape": "oval",
+  "palette": [
+    [
+      "Burnt amber",
+      "#C77724"
+    ],
+    [
+      "Golden yellow",
+      "#E9B949"
+    ],
+    [
+      "Ocean blue",
+      "#245B91"
+    ],
+    [
+      "Turquoise blue",
+      "#46ACC2"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Oval portrait panel with a diagonally swimming sea turtle, patterned shell plates, four sweeping flippers and alternating blue water bands. Requested target 49–59 panes. Generated with fox and hot-air-balloon design references and the old turtle image; inspected and regenerated once to correct the blue eye, transparent exterior, excess segmentation and shading. Final image has a white exterior and warm subject / blue background separation. Remaining doubts: pane count visually exceeds target; mild fill shading remains; some neighbouring subject panes share a colour and may merge during tracing; eye contacts and a few closely spaced shell junctions require downstream geometry review. No obvious loose line ends or X crossings seen. Design sheet only; not traced, audited or published."
+}

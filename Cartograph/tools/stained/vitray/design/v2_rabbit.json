@@ -1,0 +1,38 @@
+{
+  "id": "v2_rabbit",
+  "name": "Çayır Tavşanı",
+  "scene": "A seated rabbit with long ears in a meadow.",
+  "shape": "oval",
+  "palette": [
+    [
+      "amber",
+      "#E6AD35"
+    ],
+    [
+      "terracotta",
+      "#B95439"
+    ],
+    [
+      "teal",
+      "#23786D"
+    ],
+    [
+      "sky blue",
+      "#62B5D0"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Elegant left-facing seated rabbit with upright ears, rounded haunch and tail; flowing meadow leaves and sky divisions. Target 76–116 panes; raster connected-component estimate 98 coloured regions, not a geometry audit. Reviewed both generations; selected second for opaque white exterior and clearer enclosed round eye. Rabbit uses amber/terracotta, background teal/blue. Remaining doubts: subtle shading persists, some same-colour neighbours may merge during tracing, and close junctions at ear roots, chest and lower foliage need geometry review. No obvious loose line ends. This is a design sheet only, not validated playable geometry or finished glass artwork.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_fox.png",
+      "tools/stained/vitray/design/vitray_lighthouse.png"
+    ],
+    "promptSummary": "Fresh elegant seated meadow rabbit in an oval, portrait 3:4, approximately 90 closed panes, four flat colours split into exclusive subject/background pairs, uniform black lead, separated T junctions, pure white exterior; no shading or texture."
+  }
+}

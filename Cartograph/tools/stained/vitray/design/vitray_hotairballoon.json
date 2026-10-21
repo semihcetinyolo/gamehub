@@ -1,0 +1,36 @@
+{
+  "id": "vitray_hotairballoon",
+  "name": "Sıcak Hava Balonu",
+  "scene": "A large hot-air balloon floats over broad rolling fields beneath flowing cloud bands.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "Coral",
+      "#D65348"
+    ],
+    [
+      "Gold",
+      "#E2AF3E"
+    ],
+    [
+      "Sky blue",
+      "#4085AB"
+    ],
+    [
+      "Field green",
+      "#527D5F"
+    ]
+  ],
+  "notes": "Main balloon canopy, collar, basket and broad supports are subject; sky and landscape remain background. Only one dominant balloon for readability. Check staggered canopy-band joins and basket/support gaps in tracing. Do not introduce thin ropes or grid crossings. Retry staggered canopy seams and simplified basket to three panes. Remaining collar/support junctions need tracing review; faint blue glow below basket and mild fill shading need quantization. Basket touches a hill division. Mask contains thin white subject seams but black pane interiors support majority voting.",
+  "subjectColours": [
+    0,
+    1
+  ],
+  "designPrompt": "Fix this design in place, preserving exact round arch, balloon outline, colours and overall composition. CRITICAL: currently canopy seams form numerous four-way grid crossings. Keep the six broad vertical curved gores, but shift each horizontal seam endpoint along its vertical gore boundary so adjacent gore cross-seams never meet. Each cross-seam terminates at a clearly separated T junction at least 3% panel width from the next. Think genuinely staggered brick courses, not a zigzag grid with four pieces at each vertex. About 30–35 large canopy panes. Do not distort balloon outer contour. Increase basket to three large closed panes with staggered seams; move HILL boundary down to leave a full blue sky pane beneath and around basket, avoid basket corner touching hill. Supports broad warm strips with a single broad cool opening between them, no thin ropes. Maintain 75–95 total closed panes by adding several broad sky/field divisions away from the subject. EXACT four single constant colours: balloon/collar/supports/basket #D65348 coral and #E2AF3E gold; scenery #4085AB blue and #527D5F green. No gradients, shading or textures. Uniform black lead, white exterior only. Remove all remaining four-way joins and small background wedges.",
+  "subjectMaskPrompt": "Edit this finished design into its BLACK AND WHITE SUBJECT MASK. Preserve the EXACT canvas size, aspect ratio, framing, panel shape, every contour and every lead line in its original pixel position. Do NOT redraw, rearrange, simplify or scale anything. Recolour only: every pane of SUBJECT goes pure black #000000, every other pane and exterior pure white #FFFFFF. Keep ALL existing black lead lines black, never turn subject seams white. In the subject this makes a continuous solid black silhouette. Include eye interiors as black. Keep background seams black. No grey, no colour, no shading, no added marks. Output must overlay the input with unchanged geometry. SUBJECT: The entire hot air balloon: red/gold canopy, collar, supports and basket. The blue opening between the supports remains WHITE, along with every sky and field pane. All balloon panes black.",
+  "generationMethod": "built-in image_gen",
+  "canvas": [
+    1086,
+    1448
+  ]
+}

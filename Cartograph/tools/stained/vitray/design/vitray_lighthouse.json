@@ -1,0 +1,57 @@
+{
+  "id": "vitray_lighthouse",
+  "name": "Deniz Feneri",
+  "scene": "A red lighthouse casts golden beams over teal waves and a rocky island beneath a round arch.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "Brick red",
+      "#C7472D"
+    ],
+    [
+      "Golden yellow",
+      "#E9B943"
+    ],
+    [
+      "Ocean teal",
+      "#228D96"
+    ],
+    [
+      "Deep blue",
+      "#20516E"
+    ]
+  ],
+  "notes": "Second generation selected after correcting lantern grid and narrow rays. Visually inspected. Remaining doubts: several halo/sky intersections remain four-way, some wave ends and roof/base strips are narrow, and slight fill variation remains. Adjacent gold halo and cloud panes repeat a colour. Trace must verify 70–130 pane count, separate crowded junctions by moving background dividers, and preserve lighthouse contours. Final raster estimate: 161 coloured components, above the 130-pane maximum. Simplify nonessential background/leaf subdivisions during tracing; this sheet does not yet meet the pane-count rule.",
+  "generation": {
+    "tool": "image_gen",
+    "reference": "tools/stained/vitray/refs/vitray_lighthouse.jpg",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d7a-2540-76b1-b4e8-12bd8af65c05/exec-fd855589-85b1-4dd8-8e7f-54df8437b6b4.png",
+    "prompt": "Use case: illustration-story. Produce one flat vector-like DESIGN SHEET for a Cartograph four-colour stained-glass puzzle, NOT finished glass artwork.\nPortrait 3:4 canvas, ideally 1536x2048. Panel centered and nearly touching all canvas edges, plain pure #FFFFFF exterior only. Thick closed black outer lead silhouette. No inset frame, no surrounding photo context.\nEXACTLY FOUR specified flat solid fill colours inside panel. Black #000000 is exclusively uniform lead, no black filled details; white only outside panel. No pale cream, no white glass. No texture, gradients, translucency, shading, highlights, text, signatures or dots.\nPure black smooth uniform lead lines about 1% canvas width everywhere (15 px at 1536). 80-100 CLOSED panes, 70-130 allowed. Each meaningful subject piece or background band is an individual closed fill area. Every separator reaches another separator or rim, NO free line ends. ONLY THREE-WAY/T JUNCTIONS: no X, no 4+ panes at a point; stagger neighboring junctions at least 3% of panel width apart. Background dividers must stop at subject contours at separated locations, never distort the subject. Pane widths >=3% panel width except their own pointed tips; pane areas >=1/1000 panel area. No nearly parallel narrow slivers, tiny chips, near-touches or hairline necks. Angles >=30 degrees. Eyes are sufficiently large closed round panes. Use broad organic sky/water/leaf/feather subdivisions, never an arbitrary grid. Choose different palette fills on adjacent panes when possible.\nThe supplied photograph is a SUBJECT AND MOOD REFERENCE, not an edit target; draw a fresh composition with its recognizable subject and natural types of background subdivision. Remove photographed setting, decorative frames, glass effects, fine details that cannot become closed panes.\nPANEL: ROUND ARCH with semicircle top, straight vertical sides, flat horizontal base. SUBJECT: tall red-and-gold lighthouse on broad rocky islet, turquoise rolling ocean below, glowing golden circular halo and broad light beams behind lantern, rounded clouds. Reference photo is composition inspiration. Fresh simpler composition with 85 panes: approximately 25 lighthouse, 20 rocks and waves, 40 broad sky, clouds and staggered halo segments. Use thick wide tower bands, just two large simple closed arched window panes, no railings or tiny masonry. Omit finial and thin tower ribs; roof one broad red cap. Rays meet halo circles at staggered T junctions, never aligned spokes across arcs. Waves overlap as broad enclosed ribbons with staggered dividers. Exact four colours: brick red #C7472D, golden yellow #E9B943, ocean teal #228D96, deep blue #20516E. NO fifth colour or white glass. Flat colour chart, no lighting effects even though lighthouse is luminous in subject.\nCORRECTION: Absolutely remove all gradients; this is a flat solid-colour tracing diagram, not a lighting render. Break ALL four-way intersections: vertical seam at center top must NOT continue through halo arcs; offset each next ring divider horizontally by 5% panel width. No lantern window grid: only three large vertical lantern panes, no horizontal crossing line. Only one broad light beam each side, subdivided at staggered locations, no narrow beams converging to a pinched center. Remove extra thin rim bands on tower balcony. Simplify wave tips and rock joins to spacious three-way junctions. Preserve recognizable lighthouse, round arch and 80-100 broad panes."
+  },
+  "rasterReview": {
+    "width": 1086,
+    "height": 1448,
+    "aspectRatio": "3:4",
+    "approximatePaneCount": 161,
+    "method": "4-connected components of saturated coloured pixels (max-min >35, max >80), components >=100 pixels; approximate raster check, not vector geometry audit",
+    "targetPaneCount": [
+      70,
+      130
+    ],
+    "paneCountWithinTarget": false,
+    "visuallyInspected": true,
+    "generationAttempts": 2,
+    "strictBriefCompliance": false,
+    "reason": "Remaining junction/width issues and slight fill variation documented in notes."
+  },
+  "subjectMask": {
+    "file": "tools/stained/vitray/design/vitray_lighthouse.subject.png",
+    "tool": "image_gen",
+    "reference": "tools/stained/vitray/design/vitray_lighthouse.png",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d7a-2540-76b1-b4e8-12bd8af65c05/exec-14288e34-e3a4-4a87-abe9-e3452a03be81.png",
+    "prompt": "Use case: precise-object-edit. Edit the attached FINISHED design sheet into a binary subject segmentation mask. Preserve the exact portrait 3:4 canvas, same size, framing, panel silhouette and every subject contour/pane position. Do not redraw, resize, move, add or remove objects. Fill every subject pane PURE BLACK #000000, regardless of original colour. Fill every background pane PURE WHITE #FFFFFF. Exterior stays pure white. All existing black lead lines can remain black; internal subject seams disappear into black fill (do NOT turn seams white). No grey, colour, shading, gradients, textures, text or legend. This is a semantic pane-majority mask: classify actual object membership, NOT merely the original fill colour. SUBJECT BLACK: ONLY lighthouse building: red roof, three yellow lantern panes, red balcony, all red/gold tower bands, BOTH dark-blue arched windows (black, not holes), and the narrow golden horizontal built foundation immediately beneath tower. BACKGROUND WHITE: every irregular red/gold ROCK below foundation, all sea waves, sky, golden clouds, circular golden halo and golden horizontal light rays. Do NOT classify rocks as lighthouse. Fill all building panes black without white internal seams. Preserve exact round-arch panel.",
+    "visuallyInspected": true,
+    "alignment": "Approximate generated edit; intended for per-pane majority vote. Fine internal seam inversions and small contour differences may remain.",
+    "correction": "Filled all three lantern panes and two tower window panes black in a second mask edit."
+  }
+}

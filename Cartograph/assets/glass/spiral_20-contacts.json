@@ -1,0 +1,53 @@
+{
+  "id": "spiral_20",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-21T08:08:41.183990+00:00",
+  "source": "assets/glass/spiral_20-silhouette.webp",
+  "sourceSha256": "f9918e959dee9c66ac81118cfa05f89cbd7448226788155f834c5319e7a1aa01",
+  "sourceGeometrySha256": "457f6485c8d5d5d4d371a7d907ef484d4531acd87f6192ac2f2a2ab78bfd90a5",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 64,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.271408686467158
+    },
+    {
+      "patchSize": 64,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.36256644178493935
+    },
+    {
+      "patchSize": 64,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.39990403620488163
+    },
+    {
+      "patchSize": 64,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.3857692168252849
+    }
+  ],
+  "size": [
+    768,
+    768
+  ],
+  "guide": "1e4a8646542760c0877c5f8e0d311f0642e5d573ca00004cb78f52465d76112c",
+  "sha256": "04a299522b305adaaa371f9f980e0d17f434cf73d8d73124edce2524954d1af5",
+  "palette": [
+    "#e25b11",
+    "#fce538",
+    "#2ba495",
+    "#064eb2"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 24,
+    "total": 24,
+    "mismatches": []
+  }
+}

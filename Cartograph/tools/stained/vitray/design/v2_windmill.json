@@ -1,0 +1,29 @@
+{
+  "id": "v2_windmill",
+  "name": "Yel Değirmeni",
+  "scene": "a windmill with four broad sails and a warm tower",
+  "shape": "round arch",
+  "palette": [
+    [
+      "terracotta",
+      "#C64F32"
+    ],
+    [
+      "golden amber",
+      "#EAB83F"
+    ],
+    [
+      "deep blue",
+      "#216083"
+    ],
+    [
+      "turquoise",
+      "#269C9C"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 35–45 panes. Warm windmill and four broad sails use the subject pair; sweeping sky and ground use the blue–turquoise pair. Generated with ClaiFace image using lighthouse and fox style references and old windmill subject reference, then regenerated once to simplify background and request flat fills and an opaque white exterior. Visually checked both versions. Remaining doubts: subtle tonal variation persists; pane count appears above target; closely converging background seams above the roof, contacts at sail divisions, and tiny roof-eave wedges need attention during tracing. Some same-colour subject neighbours may merge. No obvious loose line ends. This is not geometry-audited final game artwork."
+}

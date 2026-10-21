@@ -1,0 +1,37 @@
+{
+  "id": "v2_lighthouse",
+  "name": "Deniz Feneri",
+  "scene": "a striped lighthouse on rocks casting beams of light over the sea at dusk",
+  "shape": "round arch",
+  "palette": [
+    [
+      "vermilion",
+      "#CC4B32"
+    ],
+    [
+      "golden amber",
+      "#F2BA32"
+    ],
+    [
+      "deep ocean blue",
+      "#185577"
+    ],
+    [
+      "turquoise",
+      "#259CA5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 88–128 panes. Lighthouse exclusively warm colours; rocks, sea, sky and beams exclusively cool colours. Generated and visually checked twice, with one corrective regeneration as required. Revision removed finial, small windows and lantern subdivisions and corrected rock colours. Remaining doubts: subtle generated shading remains; some same-colour neighbours may merge during tracing; a few beam-edge and wave junctions appear crowded or four-way, and wave tips need geometry review. Exact pane count and production geometry are not certified.",
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "assets/glass/lighthouse-silhouette.webp"
+  ],
+  "prompt": "Create one flat stained-glass puzzle DESIGN SHEET, portrait 3:4. Reference images: first lighthouse and second fox are style references for elegant flowing leaded-panel composition, third old lighthouse is subject reference only. Redraw a striped lighthouse on rocks casting two broad beams over the sea at dusk. Center a tall ROUND ARCH panel almost touching canvas edges, closed black outer rim on pure white exterior. Aim 100-115 individually closed panes (allowed 88-128). Elegant hand-crafted glass geometry but entirely FLAT SOLID fills, NO texture, NO gradients, NO shadows or highlights. Exactly FOUR glass colours: vermilion #CC4B32 and golden amber #F2BA32 exclusively for the lighthouse subject; deep ocean blue #185577 and turquoise #259CA5 exclusively for ALL background including rocks, sea, sky and beams. Lighthouse stripes alternate vermilion and amber across the whole tower; windows use only these warm colours. Background beams are turquoise outlined wedges amid blue dusk, not yellow. Sky has flowing broad arcs; waves and coastal rocks give natural organic divisions. Alternate the two cool colours between neighbouring background pieces wherever possible. About 18-24 subject panes, remaining 75-90 background panes; clean readable architecture with a lantern room, conical roof, broad alternating tower bands and base. Uniform pure black smooth lead approximately 1 percent canvas width. Every line closes a pane, no loose ends, no X crossings, no four-way junctions: offset every meeting to separated T junctions at least 3 percent panel width apart. No tiny panes, no slivers, no close parallel lines, no arbitrary grid or border frame. No lettering or signature. Improve on the references by eliminating their shading, colour-pair mixing and X crossings. This is a traceable flat design, not final textured glass.",
+  "revisionPrompt": "Revise this lighthouse design sheet. Preserve round arch framing, portrait 3:4, elegant striped lighthouse and sweeping sea composition, about 100-115 closed panes. CRITICAL: render as absolutely FLAT solid vector-like fills with no gradients, shading, texture or variation within any pane. Only four exact colours: #CC4B32 vermilion and #F2BA32 amber reserved exclusively for lighthouse building; #185577 deep blue and #259CA5 turquoise for sky, beams, ALL ROCKS and water. Recolour every rock cool blue or turquoise. Alternate colours in each pair between touching pieces where possible. Remove roof finial and its loose stem entirely. Simplify lantern to three broad alternating amber/vermilion/amber panes with no horizontal subdivision or tiny railing cells. Remove all little windows in tower bands. Remove four-way X junctions at beam edges by staggering sky seam endpoints by at least 3 percent panel width. Simplify needle-like wave slivers into broad closed waves. Uniform pure BLACK lead about 1 percent image width, each line from rim or junction to junction; only separated T junctions, no X, no dangling lines. Pure white exterior only. No decorative frame, text, symbols. Keep exactly 88-128 generous individually closed panes overall."
+}

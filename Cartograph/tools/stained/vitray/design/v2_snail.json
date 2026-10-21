@@ -1,0 +1,29 @@
+{
+  "id": "v2_snail",
+  "name": "Bahçe Salyangozu",
+  "scene": "A garden snail with a large concentric spiral shell rests among flowing leaves and sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt orange",
+      "#D96B27"
+    ],
+    [
+      "golden amber",
+      "#E9B83F"
+    ],
+    [
+      "teal",
+      "#24796D"
+    ],
+    [
+      "cornflower blue",
+      "#57A8CC"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 70–110 panes. Snail shell, body and antennae use the warm pair; garden and sky use the cool pair. Referenced vitray_fox.png and vitray_poppies.png for style and inspected the old snail artwork for subject. Generated with clai image and visually checked; regenerated once to simplify junctions and make the exterior white. Remaining doubts for tracing: crowded contacts above the shell and at the lower foliage, possible four-way contacts within the body, some same-colour neighbours, and subtle residual fill variation. No obvious loose line ends. Pane count and junction compliance are not geometry-audited. Both generations recorded with action-log."
+}

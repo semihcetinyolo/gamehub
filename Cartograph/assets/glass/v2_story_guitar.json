@@ -1,0 +1,53 @@
+{
+  "id": "v2_story_guitar",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:25:26.587175+00:00",
+  "raw": "tools/stained/vitray/raw/v2_story_guitar.png",
+  "rawSha256": "820a2c4b0e6504f6b24f8dcda62493765420b4814ba4a4aca5cdc89d232b84d6",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 124,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6448435778658933
+    },
+    {
+      "patchSize": 108,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6450311929803133
+    },
+    {
+      "patchSize": 65,
+      "donorPatches": 27,
+      "colour": 2,
+      "preservedFraction": 0.15958374686550084
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6770675635535718
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "ee5262c385bb4158fcbb076f43119c482688bc95f02121e624ea5d34178afae4",
+  "sha256": "a1710dcb9bffdf05b5c146fdf4f163b53cb7fb50ac3a2cf85f952004d1d51c0b",
+  "palette": [
+    "#fdc809",
+    "#d52a0d",
+    "#033978",
+    "#07adaa"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 36,
+    "total": 36,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_story_guitar.webp"
+}

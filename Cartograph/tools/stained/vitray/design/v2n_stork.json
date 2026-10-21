@@ -1,0 +1,41 @@
+{
+  "id": "v2n_stork",
+  "name": "Leylek",
+  "scene": "a stork standing on one leg",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden ochre",
+      "#E7B743"
+    ],
+    [
+      "burnt vermilion",
+      "#C65335"
+    ],
+    [
+      "sky blue",
+      "#52AEC9"
+    ],
+    [
+      "deep teal",
+      "#236C69"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Medium design sheet, target 28–45 panes. Regenerated once to simplify excessive feather and water divisions and loose toe line. Selected second generation has 48 closed coloured regions (excluding white exterior, connected-component thresholds 65/80/95, area >100 px); still 3 above maximum. Subject and background colour pairs are separate, but adjacent same-colour panes remain at breast, legs and sky. Small eye panes are below preferred area; subtle fill shading remains despite flat-fill request. Inspect close shoulder/leg seam junctions and the short folded-leg crease before tracing. This is a design sheet only, not validated playable geometry or final glass artwork.",
+  "size": "medium",
+  "targetPanes": [
+    28,
+    45
+  ],
+  "paneCount": 48,
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Create a new Cartograph stained-glass DESIGN SHEET, a stork standing on one leg, Turkish title Leylek (do not write any text). Use attached fox only as an elegant leaded-panel style reference, NOT subject or pane density. Portrait 3:4, oval panel nearly filling canvas on opaque pure white exterior, closed thick black rim, no decorative border ring. Graceful anatomically recognizable stork with long straight pointed beak, tall gently curving neck, broad folded wing with 5 wide feather bands, one sturdy straight supporting leg and other leg visibly folded up. Exactly 34 closed glass panes total, aiming 18 bird panes and 16 calm background panes. STRICT 28–45 panes; no tiny detail, no decorative foliage. Large curved sky and water bands behind bird. Exactly FOUR FLAT solid fill colours: bird exclusively golden ochre #E7B743 and burnt vermilion #C65335, alternating adjacent pieces; background exclusively sky blue #52AEC9 and deep teal #236C69 alternating bands. Small visible ochre/vermilion enclosed eye pane, no black dot or white eye. No white or cream glass. Uniform pure black lead about 1% canvas width, smooth natural contours. Every lead line joins outline or other line; T junctions only, never X or four-way contacts; widely spaced junctions. All panes broad and connected, especially leg width at least 3% panel width. Wing stripes run fully outline to outline for alternating colours, no interior branching. Elegant traditional stained-glass craftsmanship in composition, never a cartoon, but STRICTLY flat opaque colour drawing for tracing: no shading, texture, gradients, highlights, shadows, text or signature. Beak remains one long broad triangular pane. Keep all 34 regions fully closed.\nREVISION: The previous attempt was too busy with many overlapping feather tips and too many lower water bands. Simplify dramatically: exactly 14 bird panes and 16 background panes for total 30. Only FOUR broad simple parallel curved wing stripes, NOT overlapping individual pointed feathers. Only THREE broad water bands below body, divided by the standing leg; no branching water seams, no short wedge panes. Beak tip ends well inside oval, never hits rim. Absolutely flat fills with NO subtle shading or gradient. All lines fully closed including foot; no loose toe lines. Prevent any four-way contact on chest: offset each seam endpoint by at least 4% panel width. Background can keep same-colour neighbours where necessary; do not add extra panels for decoration. Match elegant stork anatomy.",
+  "generationAttempts": 2
+}

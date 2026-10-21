@@ -1,0 +1,36 @@
+{
+  "id": "v2_motif_saxophone",
+  "name": "Saksafon",
+  "scene": "An elegant golden saxophone curves through flowing blue and teal bands inside an oval stained-glass panel.",
+  "shape": "oval",
+  "palette": [
+    [
+      "gold",
+      "#E9B832"
+    ],
+    [
+      "burnt amber",
+      "#C66A23"
+    ],
+    [
+      "teal",
+      "#239DAD"
+    ],
+    [
+      "deep blue",
+      "#214E78"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 34–44 panes. Generated with built-in image_gen and visually reviewed; regenerated once to simplify tube divisions and request flat fills. Subject/background colour pairs are preserved. Remaining concerns: subtle fill shading persists; middle key and a mouthpiece section have same-colour neighbours; some blue/teal background divisions also have same-colour neighbours and may merge during tracing. Mouthpiece touches oval rim; tight contacts at key/body edges and inner U-bend require geometry review. Design sheet only, not audited playable geometry.",
+  "tool": "image_gen",
+  "prompt": "Create a flat stained-glass puzzle DESIGN SHEET of an elegant saxophone. Image 1 is subject reference only: redraw its childish saxophone into an elegant recognizable instrument. Image 2 is leaded composition style reference only, NOT its shading or complexity. Portrait 3:4 canvas. Large oval panel nearly touching edges, pure white exterior, closed thick pure black outer rim. Exactly 34–44 large closed panes, aim 38. A handsome curved saxophone with slender bent neck, mouthpiece, long tapering body, sweeping U-bend and large upward flaring bell at right. Simplified generous key panes. Use exactly FOUR flat solid fill colours: gold #E9B832 and burnt amber #C66A23 exclusively for ALL instrument parts including mouthpiece and bell interior; teal #239DAD and deep blue #214E78 exclusively for background. Alternate gold/amber across subject bands and teal/blue across sweeping musical wave background bands. Interior subject dividers run outline to outline. No background colour inside instrument. No tiny keys, no thin strips. Elegant handcrafted leaded panel composition but completely flat solid fills, NO shading, gradients, texture, reflections, highlights or text. Smooth pure black lead lines uniform width about 1% canvas width. Every seam connects two boundaries, no dangling ends. Only separated T junctions, no X or four-way junctions; endpoints offset at least 3% panel width. Every pane broad, no slivers. Background sweeping waves must meet instrument at different locations from its internal bands. Do not include decorative border frame, music notes or extra objects.\nCORRECTIONS to the saxophone image: absolutely NO gradients or shading anywhere. Each pane must have a SINGLE CONSTANT RGB VALUE throughout. Exactly 38 panes total: about 16 instrument panes and 22 background panes. Remove ALL narrow collars, thin key rods, lengthwise subdivisions and tiny mouthpiece fittings. Divide saxophone tube only into large alternating gold/amber transverse sections. Include just THREE broad round gold key panes fully enclosed inside THREE broad amber body sections, no rods. Mouthpiece comfortably separated from oval rim. Background broad alternating blue/teal flowing ribbons; no same-colour neighbours, no branching ribbon subdivisions. T junctions only. Keep elegant natural saxophone silhouette, large flared bell and pure white exterior.",
+  "references": [
+    "assets/glass/motif_saxophone-contacts.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "generationAttempts": 2
+}

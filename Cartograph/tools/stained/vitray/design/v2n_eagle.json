@@ -1,0 +1,39 @@
+{
+  "id": "v2n_eagle",
+  "name": "Kartal",
+  "scene": "An eagle with spread wings in an oval panel against broad curved sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "ochre",
+      "#A65B22"
+    ],
+    [
+      "amber",
+      "#F2B632"
+    ],
+    [
+      "deep blue",
+      "#24547A"
+    ],
+    [
+      "sky blue",
+      "#54ACC6"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Reviewed after one regeneration: 48 closed coloured components above 500 px detected at 1086×1448, exceeding the requested 28–45 by three. Broad eagle silhouette and semantic colour pairs are preserved. Remaining doubts: four-way contacts at left upper wing/sky and chest/wing junctions; eye touches head seam; some same-colour adjacent subject and sky panes; subtle fill shading remains. Requires simplification and junction cleanup before tracing or production. No catalogue publication performed.",
+  "targetPanes": [
+    28,
+    45
+  ],
+  "detectedPanes": 48,
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Redesign this eagle stained glass DESIGN SHEET to be drastically simpler: MAXIMUM 40 closed colored pieces in the entire image. Aim exactly 32: eagle 18, sky 14. This is a medium easy puzzle. Keep the graceful eagle with raised spread wings, hooked profile beak and oval panel on opaque pure white portrait 3:4 canvas. Use FOUR truly FLAT solid colors no gradients: eagle alternating ochre #A65B22 and amber #F2B632, sky alternating deep blue #24547A and sky blue #54ACC6. Pure black uniform thick lead. Reduce each wing to just FOUR very large broad feather panes, not many little feather tips; no upper/lower wing subdivisions. Head has one large ochre pane, one amber beak pane and one amber circular eye fully enclosed within ochre well away from boundaries. Torso only FOUR broad alternating curved transverse bands across its whole width, no central spine, no branching on chest. Tail only THREE large fan panes. Sky only FOURTEEN big spacious pieces in broad bands with all junctions staggered, NEVER four-way or X contacts. Keep wing tips comfortably inside rim, separated by wide blue sky areas, not tiny slots. No decorations, no border ring, no text, no shadows, no highlights, no gradients, no glass texture. Elegant artisan stained glass design, not cartoon. Every line goes between junctions; no loose ends. Only three-way T junctions. Count panes: 8 wing + 3 head + 4 body + 3 tail + 14 sky = 32 panes. Do not add extra subdivisions. Reference 1 is the overly complex eagle to SIMPLIFY drastically, reference 2 is style only."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "v2_motif_camera",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:06:39.536314+00:00",
+  "raw": "tools/stained/vitray/raw/v2_motif_camera.png",
+  "rawSha256": "0df188c39ca51e3563ee63087abcdf9b8b4e37122e76351e4a1bf1e613c251c6",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 122,
+      "donorPatches": 91,
+      "colour": 0,
+      "preservedFraction": 0.5067650501791423
+    },
+    {
+      "patchSize": 95,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.4872786740862887
+    },
+    {
+      "patchSize": 67,
+      "donorPatches": 57,
+      "colour": 2,
+      "preservedFraction": 0.4874926801696022
+    },
+    {
+      "patchSize": 124,
+      "donorPatches": 84,
+      "colour": 3,
+      "preservedFraction": 0.5573168238368948
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "b5c6545071e99b2a2037aedf520d89808bc8dfd5b3410491339675798b212771",
+  "sha256": "c836bf3725644aefc0ef5b29e34ff20380f4d45fa4261b849c669fbe5601f07d",
+  "palette": [
+    "#df4205",
+    "#fdd423",
+    "#024375",
+    "#2ac5c0"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 102,
+    "total": 102,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_motif_camera.webp"
+}

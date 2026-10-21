@@ -1,0 +1,36 @@
+{
+  "id": "vitray_owl",
+  "name": "Baykuş",
+  "scene": "A horned owl perches on a branch among sweeping forest leaves.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "Amber",
+      "#D18A32"
+    ],
+    [
+      "Sienna",
+      "#8F462B"
+    ],
+    [
+      "Teal",
+      "#287C78"
+    ],
+    [
+      "Blue",
+      "#4168A5"
+    ]
+  ],
+  "notes": "Built-in image generation from the reference, followed by one targeted correction. Subject colours are amber and sienna; cool branches and leaves are background. Remaining doubts: crowded beak/cheek junction and tapered tail/feather tips require tracing review; image generation is not a geometry audit. Owl only is the subject mask. Mask includes narrow white internal seams from the generated edit; subject pane interiors remain predominantly black for majority voting.",
+  "designPrompt": "Edit this existing design, preserving the graceful owl, full round arch silhouette, composition, white exterior, framing and all important owl contours. Correct it into a STRICT FOUR-COLOUR FLAT VECTOR guide. Exactly #D18A32 amber and #8F462B sienna for owl, #287C78 teal and #4168A5 blue predominantly for background. Replace yellow eye iris with amber #D18A32; eliminate ALL white eye highlights and shading/gradients. Do not add colours. Leave each pupil as a simple small solid black disk. Recolour background branches teal/blue so all warm panes belong to the owl. Maintain flat single-colour fills. Carefully untangle the crowded intersection immediately below the beak and the crossing near the forehead into well-spaced T junctions by moving background seams or a complete internal seam; do not damage the recognizable beak/face. Simplify crowded feather seams enough to avoid tiny triangular slivers while retaining approximately 85–100 large closed panes. Use thick smooth uniform pure-black outlines, no extra decoration. Preserve the exact round arch contour and 3:4 canvas.",
+  "subjectMaskPrompt": "Edit this finished design into its BLACK AND WHITE SUBJECT MASK. Preserve the EXACT canvas size, aspect ratio, framing, panel shape, every contour and every lead line in its original pixel position. Do NOT redraw, rearrange, simplify or scale anything. Recolour only: every pane of SUBJECT goes pure black #000000, every other pane and exterior pure white #FFFFFF. Existing black lead lines may remain black, including all background seams. No grey, no colour, no shading, no added marks. Output must overlay the input with unchanged geometry. SUBJECT: the entire owl only, including face, eyes, beak, wings, body and tail. All branches, leaves, sky and background panes become pure white. Do not include the perch in the owl silhouette.",
+  "generationMethod": "built-in image_gen",
+  "canvas": [
+    1086,
+    1448
+  ],
+  "subjectColours": [
+    0,
+    1
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "v2_motif_guitar",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:30:13.443152+00:00",
+  "raw": "tools/stained/vitray/raw/v2_motif_guitar.png",
+  "rawSha256": "7565bbb92e56c7be91fde44d5b64188f00f006a926f50e75b1a1653b6a44a549",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 68,
+      "donorPatches": 46,
+      "colour": 0,
+      "preservedFraction": 0.46464269482682574
+    },
+    {
+      "patchSize": 116,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.5411421536607302
+    },
+    {
+      "patchSize": 71,
+      "donorPatches": 68,
+      "colour": 2,
+      "preservedFraction": 0.4909783650909162
+    },
+    {
+      "patchSize": 83,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5083122674994289
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "75456d340a37c1956f71b14364b42ebae4fa742445d19b470df7075781eee94f",
+  "sha256": "51e364ea74c6db6e52e9c200463b024a5180a85503dbb4f5defa5a49bc4631e6",
+  "palette": [
+    "#fdc60f",
+    "#cf3413",
+    "#02457a",
+    "#12bcb1"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 96,
+    "total": 96,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_motif_guitar.webp"
+}

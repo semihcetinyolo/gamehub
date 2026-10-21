@@ -1,0 +1,37 @@
+{
+  "id": "v2_grand_10",
+  "name": "Kutup Koyu",
+  "scene": "Two penguins stand on ice shelves above a swimming fish in a polar bay beneath icy peaks and flowing aurora ribbons.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Amber",
+      "#E7A52B"
+    ],
+    [
+      "Burnt coral",
+      "#BF503D"
+    ],
+    [
+      "Ocean blue",
+      "#245A85"
+    ],
+    [
+      "Turquoise",
+      "#42A9AC"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 110–160 panes. Animals use amber/coral; sky, ice and water use blue/turquoise. Visually reviewed and regenerated once for flat fills and separated junctions. Remaining doubts: subtle tonal variation persists, some same-colour neighbouring panes may merge during tracing, and crowded/X-like contacts remain in central peaks, left-side water and shelf divisions. Narrow pointed wave pieces need review during geometry tracing. Not geometry-audited or published.",
+  "tool": "image_gen",
+  "prompt": "Create one flat stained-glass tracing design sheet for Cartograph level v2_grand_10, Kutup Koyu (Polar Bay). Portrait 3:4, ideally 1536x2048. Reference 1 is the old subject only: polar bay wildlife, two penguins on ice and a fish swimming below, icy peaks and waves. Entirely redraw as elegant mature leaded-panel illustration, not childish old geometry. References 2 and 3 supply flowing lead composition and bold readable silhouettes, but eliminate their shading and palette mixing.\nChoose a tall OVAL silhouette centered almost touching canvas edges on PURE WHITE exterior, closed heavy black rim, no decorative border frame. Compose two clearly recognizable elegant penguins (one larger on left middle, one smaller right upper-middle) standing on iceberg shelves, with one large fish below among sweeping bay currents. Aurora ribbons and angular distant ice peaks above. About 125 closed generously sized panes, within 110–160: roughly 35–45 meaningful wildlife panes and 80–90 landscape panes. Finely composed but no tiny details.\nExactly FOUR absolutely solid flat interior colors: subject pair amber #E7A52B and burnt coral #BF503D; background pair ocean blue #245A85 and turquoise #42A9AC. ALL penguin and fish pieces including eyes, beaks, flippers, fins alternate ONLY amber and coral. ALL sky, ice, mountains, aurora and water alternate ONLY blue and turquoise. No white or near-white interior glass. Meaningful cross-body curved bands alternate the animal colors; avoid three mutually adjacent subdivisions. Background flowing bands alternate blue/turquoise; stagger any transverse dividers.\nPure black smooth uniform lead width around 1 percent canvas width, outer rim same or slightly heavier. Every stroke closes a pane and joins another line or rim. ONLY three-way T junctions, NO X crossings or four-way junctions. Separate junctions by at least 3 percent panel width. No slivers or hairline bridges, minimum pane area 1/1000 panel, broad round eye panes. No loose strokes, whiskers, dots or decorative marks. Preserve animal contours. Flat vector-like color blocks, NO gradients, texture, shadows, highlights, lettering, labels or signature. The whole panel is the picture.\nCORRECTION PASS: Preserve the oval polar scene from the last reference, but remove ALL gradients and tonal variations: bucket-fill every pane with its EXACT single hex color. Resolve the X crossings in mountain ridges, left water behind large penguin, ice shelves and lower waves by shifting endpoints apart, minimum 3 percent panel width. Trim excessively pointed parallel wave slivers into broader simple waves. Each animal wing or body stripe should have enough width and must fully close into an outline. Prioritize 110–130 broad panes and clean separated T junctions over excessive detail. Adjacent panes within each pair should alternate whenever possible. This is a flat tracing diagram, absolutely no lighting or material texture.",
+  "references": [
+    "assets/glass/grand_10-contacts.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ],
+  "generationAttempts": 2
+}

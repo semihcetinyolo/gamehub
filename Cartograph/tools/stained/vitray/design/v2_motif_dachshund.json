@@ -1,0 +1,39 @@
+{
+  "id": "v2_motif_dachshund",
+  "name": "Sosis Köpek",
+  "scene": "A long-bodied dachshund stands in profile amid flowing meadow and sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Copper",
+      "#C65D32"
+    ],
+    [
+      "Golden amber",
+      "#E9B949"
+    ],
+    [
+      "Sky blue",
+      "#55AFD0"
+    ],
+    [
+      "Deep teal",
+      "#247568"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 35–45 panes. Visually reviewed both attempts; retained the single allowed retry, which removes the gold background sun and simplifies foliage and subdivisions. Subject/background colour pairs are separated. Remaining concerns: subtle shading persists; some touching same-colour panes (ear, shoulder and background bands) may merge during tracing; several tapered belly/tail pieces and near-convergent band junctions require geometry review. Pane count is not yet verified by tracing. Design sheet only; not published game artwork.",
+  "generation": {
+    "tool": "image_gen",
+    "attempts": 2,
+    "references": [
+      "assets/glass/motif_dachshund-junctions.webp",
+      "tools/stained/vitray/design/vitray_fox.png",
+      "tools/stained/vitray/design/vitray_lighthouse.png"
+    ],
+    "prompt": "Create one flat stained-glass DESIGN SHEET for Cartograph level v2_motif_dachshund, Sosis Köpek. Reference 1 is the old subject only: a dachshund. Reference 2 fox and reference 3 lighthouse show elegant leaded panel composition, NOT their gradients or colour mixing. Fresh refined recognisable natural dachshund in side profile facing right: very long low torso, short legs, long muzzle, broad pendulous ear, gently raised tapering tail. Beautiful smooth meaningful anatomical curves, not a childish symbol. Portrait 3:4 canvas ideally 1536x2048. One large vertical OVAL panel almost touching canvas edges, closed thick black rim, pure white exterior. Aim 40 closed panes total, strictly 35-45, large bold meaningful pieces. Dog fills middle width with ample elongated body; curved meadow and sky bands fill above/below. Exactly FOUR solid flat colours: copper #C65D32 and golden amber #E9B949 ONLY dog, sky blue #55AFD0 and deep teal #247568 ONLY background. Dog pieces alternate copper/gold, including closed visible gold eye within copper face, nose in copper against gold muzzle; background bands alternate blue/teal. No background colours within dog or subject colours in background. Divide torso with a few complete curved bands outline-to-outline, no arbitrary grid. All black lead uniform about 1 percent of width, pure black. Every stroke closes or meets rim/another line; no loose decorative marks, no mouth stroke, no dots except a closed coloured eye pane. Only spacious T junctions, never X or 4-way contacts; junctions at least 3 percent width apart. No narrow slivers, no tiny panes, no nearly touching seams. No shading, gradients, texture, highlights, inset frames, text or signature. This is a clean vector-like colour map for later tracing, NOT finished textured glass. Use references for artistry but follow these stricter rules.\nCORRECT the attached initial attempt. Keep its elegant dog and oval composition, but simplify to ONLY 40 panes total: approximately 18 large dog panes and 22 large background panes. REMOVE SUN completely and REMOVE all foliage; background is only broad alternating blue/teal flowing bands. FLAT SOLID colours essential: zero gradients, lighting, texture, shadows, vignette. The previous image was shaded and oversegmented. Merge little belly slivers, extra toe pieces and redundant flank lines. Only two near legs need be visible, short sturdy legs with large feet; no skinny far legs. Each band in dog must alternate copper/gold; ear one copper pane against golden neck, eye gold in copper face. No copper against copper seam. Background blue/teal only, no gold sun. Lead all exactly same width, with rim slightly thicker. No four-way junctions, offset seam endpoints. Preserve long dachshund proportions."
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "vitray_umbrella",
+  "name": "Altın Şemsiye",
+  "scene": "A woman in a flowing blue dress shelters beneath a golden umbrella inside a pointed arch.",
+  "shape": "gothic arch",
+  "palette": [
+    [
+      "Golden yellow",
+      "#E5B83C"
+    ],
+    [
+      "Royal blue",
+      "#274E9C"
+    ],
+    [
+      "Warm ochre",
+      "#B87939"
+    ],
+    [
+      "Turquoise",
+      "#59A6AD"
+    ]
+  ],
+  "notes": "Second generation selected with more canopy/dress/background panes and broader legs. Visually inspected. Remaining doubts: canopy has several four-way crossings, hub is still smaller and more crowded than requested, waistband and a few dress wedges are narrow, and some background joins approach the subject closely. Slight fill variation remains; adjacent gold/blue panes repeat colours. Trace should simplify crowded seams while keeping umbrella edge and dress silhouette. Final raster estimate: 117 coloured components, within 70–130; count is approximate and does not certify topology.",
+  "generation": {
+    "tool": "image_gen",
+    "reference": "tools/stained/vitray/refs/vitray_umbrella.jpg",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d7a-2540-76b1-b4e8-12bd8af65c05/exec-9bc66637-b0fc-4fc9-bf76-eef929810e4c.png",
+    "prompt": "Use case: illustration-story. Produce one flat vector-like DESIGN SHEET for a Cartograph four-colour stained-glass puzzle, NOT finished glass artwork.\nPortrait 3:4 canvas, ideally 1536x2048. Panel centered and nearly touching all canvas edges, plain pure #FFFFFF exterior only. Thick closed black outer lead silhouette. No inset frame, no surrounding photo context.\nEXACTLY FOUR specified flat solid fill colours inside panel. Black #000000 is exclusively uniform lead, no black filled details; white only outside panel. No pale cream, no white glass. No texture, gradients, translucency, shading, highlights, text, signatures or dots.\nPure black smooth uniform lead lines about 1% canvas width everywhere (15 px at 1536). 80-100 CLOSED panes, 70-130 allowed. Each meaningful subject piece or background band is an individual closed fill area. Every separator reaches another separator or rim, NO free line ends. ONLY THREE-WAY/T JUNCTIONS: no X, no 4+ panes at a point; stagger neighboring junctions at least 3% of panel width apart. Background dividers must stop at subject contours at separated locations, never distort the subject. Pane widths >=3% panel width except their own pointed tips; pane areas >=1/1000 panel area. No nearly parallel narrow slivers, tiny chips, near-touches or hairline necks. Angles >=30 degrees. Eyes are sufficiently large closed round panes. Use broad organic sky/water/leaf/feather subdivisions, never an arbitrary grid. Choose different palette fills on adjacent panes when possible.\nThe supplied photograph is a SUBJECT AND MOOD REFERENCE, not an edit target; draw a fresh composition with its recognizable subject and natural types of background subdivision. Remove photographed setting, decorative frames, glass effects, fine details that cannot become closed panes.\nPANEL: GOTHIC POINTED ARCH, two smooth curved shoulders meeting in pointed apex, long vertical sides and flat base. SUBJECT: back view of an elegant woman in a flowing deep-blue dress holding a large golden umbrella that hides her face, inspired by supplied reference. Woman occupies center/lower half, wide umbrella covers upper-left/middle. Four broad dress folds, substantial legs and shoes with no thin straps, no loose handle end. Umbrella canopy divided around a small closed oval gold hub: spokes end at different points around hub, never all one point. Background has broad curved rain/sky shapes, no literal raindrops or dots. Make about 80 closed panes by cutting sky into broad arcing bands with staggered T dividers, dress into 15 broad fabric sections, canopy into 15 large curved gores, remainder background and ground. EXACTLY FOUR flat fill colours: golden yellow #E5B83C, royal blue #274E9C, warm ochre #B87939, turquoise #59A6AD. Only black lead and pure white exterior in addition. No skin/cream fifth colour. No gradients or shading; each pane is one constant RGB colour.\nCORRECTION: Increase total to 85-95 spacious CLOSED panes. Enlarge umbrella hub to a clear oval 10% panel width so spokes end at widely spaced distinct points. Only SIX main spokes around hub; add 2-3 transverse curved dividers to each broad canopy gore, offset across its boundary (no four-way cross). Divide broad blue skirt into 15 closed flowing fabric pieces; all seams reach hems or other seams and no narrowing-to-hairline fragments. Background needs 45 broad curving sky/ground pieces, subdivide broad existing shapes using staggered short seams. No X crossings among background waves. Separate two entire legs by 5% panel width, each leg at least 4% wide, no thin colour sliver between legs. Remove tiny waist chips. Truly flat uniform RGB fills, zero gradients or light effects."
+  },
+  "rasterReview": {
+    "width": 1086,
+    "height": 1448,
+    "aspectRatio": "3:4",
+    "approximatePaneCount": 117,
+    "method": "4-connected components of saturated coloured pixels (max-min >35, max >80), components >=100 pixels; approximate raster check, not vector geometry audit",
+    "targetPaneCount": [
+      70,
+      130
+    ],
+    "paneCountWithinTarget": true,
+    "visuallyInspected": true,
+    "generationAttempts": 2,
+    "strictBriefCompliance": false,
+    "reason": "Remaining junction/width issues and slight fill variation documented in notes."
+  },
+  "subjectMask": {
+    "file": "tools/stained/vitray/design/vitray_umbrella.subject.png",
+    "tool": "image_gen",
+    "reference": "tools/stained/vitray/design/vitray_umbrella.png",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d7a-2540-76b1-b4e8-12bd8af65c05/exec-fc885e15-78c2-4c52-8dfa-81c5391677c4.png",
+    "prompt": "Use case: precise-object-edit. Edit the attached FINISHED design sheet into a binary subject segmentation mask. Preserve the exact portrait 3:4 canvas, same size, framing, panel silhouette and every subject contour/pane position. Do not redraw, resize, move, add or remove objects. Fill every subject pane PURE BLACK #000000, regardless of original colour. Fill every background pane PURE WHITE #FFFFFF. Exterior stays pure white. All existing black lead lines can remain black; internal subject seams disappear into black fill (do NOT turn seams white). No grey, colour, shading, gradients, textures, text or legend. This is a semantic pane-majority mask: classify actual object membership, NOT merely the original fill colour. SUBJECT BLACK: the ENTIRE golden umbrella canopy including its central oval hub, and the ENTIRE woman including blue dress, bodice, sleeve, legs and shoes. BACKGROUND WHITE: all turquoise and ochre sky/ground panes, all openings around arm or between legs, exterior. Preserve the same pointed-arch panel. Keep subject fully solid black; no individual subject panes left white.",
+    "visuallyInspected": true,
+    "alignment": "Approximate generated edit; intended for per-pane majority vote. Fine internal seam inversions and small contour differences may remain.",
+    "correctionPrompt": "Image 1 is the black-and-white mask to correct, image 2 the original colour sheet for exact pane membership. Correct ONLY the omitted umbrella canopy panes along the upper-left arch. In image 2 ALL yellow panes belong to umbrella and must be BLACK in image 1, including the yellow pieces that directly TOUCH the outer arch on the left from approximately (29% canvas width,9% height) down to (7% width,34% height). The current mask incorrectly left several white scalloped triangular holes between umbrella black area and left arch; fill those with pure black. Do not change upper sky above umbrella (turquoise/ochre in original), lower-left sky below scalloped hem, woman, dress, legs, framing, black lines or any other pixels. Output same 3:4 black-white mask, no colour or shading."
+  }
+}

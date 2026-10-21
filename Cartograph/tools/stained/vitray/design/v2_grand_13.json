@@ -1,0 +1,29 @@
+{
+  "id": "v2_grand_13",
+  "name": "Yörünge İstasyonu",
+  "scene": "An orbital station with broad solar wings floats above a planetary horizon beside an ascending rocket and a spacewalking astronaut.",
+  "shape": "octagon",
+  "palette": [
+    [
+      "Copper orange",
+      "#D56832"
+    ],
+    [
+      "Golden amber",
+      "#EAB83F"
+    ],
+    [
+      "Midnight blue",
+      "#204C78"
+    ],
+    [
+      "Turquoise teal",
+      "#269B9F"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from grand_13 with lighthouse and hot-air-balloon design style references. Target 110–160 panes. Warm pair reserved for station, rocket and astronaut; cool pair for space and planet. Visually reviewed initial generation and one revision: revision removes antenna and several narrow collars, simplifies chest detail and supplies white exterior. Remaining doubts: subtle fill variation persists; some same-colour neighbours will merge in tracing; solar-wing seam intersections and a few close station/astronaut junctions need geometry review. Pane count is a design target, not a verified traced count. Design sheet only; no game geometry or catalogue changes."
+}

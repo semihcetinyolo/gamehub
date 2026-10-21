@@ -1,0 +1,29 @@
+{
+  "id": "v2_grand_14",
+  "name": "Mercan Krallığı",
+  "scene": "An octopus, a curled seahorse and a crab inhabit a coral kingdom surrounded by flowing underwater currents.",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral vermilion",
+      "#E45A3D"
+    ],
+    [
+      "golden amber",
+      "#EAAF35"
+    ],
+    [
+      "ocean blue",
+      "#185A82"
+    ],
+    [
+      "turquoise",
+      "#36ACB5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from grand_14 with fox and lighthouse design sheets as style references. Portrait 1086×1448 oval; target 110–160 panes. Animals and corals use the warm pair; water uses the cool pair. Generated and visually checked twice, with one revision for flat colours and junction clarity. Remaining doubts: subtle fill variation persists; some same-colour neighbours, crowded contacts near octopus roots, seahorse fin/tail and crab legs, and small crab eye-stalk panes need attention during tracing. No obvious loose line ends seen; exact pane count and T-only geometry are not certified. Design sheet only."
+}

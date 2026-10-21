@@ -1,0 +1,29 @@
+{
+  "id": "v2_story_flamingo",
+  "name": "Tuz Gölünde Sabah",
+  "scene": "An elegant flamingo stands on one leg in the shallow waters of Lake Tuz at dawn, surrounded by flowing sky bands, lake ripples and reeds.",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral pink",
+      "#EF7890"
+    ],
+    [
+      "deep rose",
+      "#BE365D"
+    ],
+    [
+      "turquoise",
+      "#39B8B4"
+    ],
+    [
+      "deep lake blue",
+      "#245D86"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 93–133 panes. Flamingo uses coral and rose; all sky, lake and reeds use turquoise and blue. Generated with fox and lighthouse design references, then visually inspected and revised once to remove the beak crossing and simplify feathers and ripples. Final visual review: closed oval rim and no obvious loose line ends; colour pairs remain separate. Remaining tracing concerns: subtle fill shading persists, some same-colour neighbours may merge, a possible four-way junction remains at the lower neck/wing and closely spaced reed/water joins need geometry review. Pane count has not been mechanically verified. No game catalogue changes."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "v2_motif_octopus",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:25:21.414146+00:00",
+  "raw": "tools/stained/vitray/raw/v2_motif_octopus.png",
+  "rawSha256": "d3b1e3c44676950c51ba697b40780b1664efa95f973fec10470553eb9ec4e844",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 81,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.4646962376152003
+    },
+    {
+      "patchSize": 66,
+      "donorPatches": 85,
+      "colour": 1,
+      "preservedFraction": 0.40588767462854963
+    },
+    {
+      "patchSize": 117,
+      "donorPatches": 89,
+      "colour": 2,
+      "preservedFraction": 0.5310941166108757
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5647058615424788
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "a4217949b8663f2bec7915c74f1c7789c8c749b3c2073834efe9619515cddfb4",
+  "sha256": "5c606180712baafdc67fb3a6b20d27d08ee2ed83f01822d643f32c690f7cf193",
+  "palette": [
+    "#f24a22",
+    "#fcc823",
+    "#01497f",
+    "#2bd4c6"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 110,
+    "total": 110,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_motif_octopus.webp"
+}

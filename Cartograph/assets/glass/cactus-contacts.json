@@ -1,0 +1,53 @@
+{
+  "id": "cactus",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-21T08:08:25.862374+00:00",
+  "source": "assets/glass/cactus-junctions.webp",
+  "sourceSha256": "29335eb7f21532f27ec5afbd64f349fd73343db30a17c4d72f492db87d8781d3",
+  "sourceGeometrySha256": "2c218d36a59d7b45baf888bd8bebb4e94a4e93efd7ff1d465c9932d38f35fe4b",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 111,
+      "donorPatches": 94,
+      "colour": 0,
+      "preservedFraction": 0.5525732331072576
+    },
+    {
+      "patchSize": 85,
+      "donorPatches": 52,
+      "colour": 1,
+      "preservedFraction": 0.44678926254491286
+    },
+    {
+      "patchSize": 91,
+      "donorPatches": 55,
+      "colour": 2,
+      "preservedFraction": 0.5855790106687234
+    },
+    {
+      "patchSize": 99,
+      "donorPatches": 60,
+      "colour": 3,
+      "preservedFraction": 0.4933637886294065
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "8e82621251510bc9f39dcb4df2ab042303847c2252eb15601f3c9024f4746e70",
+  "sha256": "883761f8b4bbc1d0d1fba019ae3f4a9384526594877916e453557e399698bf92",
+  "palette": [
+    "#c0310b",
+    "#f7cd64",
+    "#3d7415",
+    "#1ec8d4"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 28,
+    "total": 28,
+    "mismatches": []
+  }
+}

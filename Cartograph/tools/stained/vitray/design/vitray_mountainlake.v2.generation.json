@@ -1,0 +1,23 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "id": "vitray_mountainlake",
+      "file": "tools/stained/vitray/design/vitray_mountainlake.png",
+      "raw": "tools/stained/vitray/design/vitray_mountainlake.png",
+      "references": [
+        "tools/stained/vitray/refs/vitray_mountainlake.jpg"
+      ],
+      "prompt": "Use case: illustration-story. Create a completely NEW flat design sheet for a stained-glass colouring puzzle, inspired by the supplied photograph of a mountain lake panel. Input image is COMPOSITION REFERENCE only, not an edit target. Portrait 3:4 canvas, preferably 1536x2048. A TRUE CIRCLE panel (equal width and height) centred on pure white, almost touching left/right canvas edges, with generous equal white above and below; thick closed black rim. Three majestic angular mountain peaks dominate upper middle, alpine lake across lower middle, three foreground pine trees framing sides and lower foreground, flowing sky bands above, low foothills along shore. No photo context.\n\nCRITICAL FOUR-COLOUR PAIRS: exactly four opaque FLAT solid fill colours: amber #E6A33A and violet #8060A8 exclusively for ALL mountain panes, alternating amber/violet across neighbouring mountain facets; teal #289DA7 and deep green #245B4B exclusively for ALL sky/clouds, lake, hills, pines, trunks, shore and other background panes. These two background colours MUST ALTERNATE THROUGHOUT the entire background: teal/green sky bands, teal/green lake waves, teal/green hillside bands, teal/green pine tiers. NO all-green trees or hills; NO all-teal water; each pine has alternating TEAL and GREEN tiers. No amber or violet outside mountains. No teal or green inside mountains. No white snow or white interior panes. White ONLY outside circle.\n\n110–160 closed visible panes, aim 135. Rich but readable broad organic lead divisions, not a grid. Approximately 40 mountain facets, 25 sky/cloud bands, 20 foothill/shore pieces, 30 water waves, 20 broad tree tiers. Mountain facet seams should mostly run continuously from silhouette edge to silhouette edge as noncrossing stripes/folds, so amber/violet alternation works. Similarly flowing continuous background bands should alternate teal/green. Uniform pure black lead approximately 1% canvas width everywhere, smooth purposeful lines. Every seam starts and ends at rim or a genuine T junction. Only spaced T junctions; no X or four-way contacts, no loose ends, no slivers or tiny crumbs. Junctions at least 3% panel width apart. Maintain clean recognizable mountain outlines and broad pine silhouettes. Avoid cells with three same-pair colours mutually touching; prioritise alternating bands. Flat cartoon vector-like drawing, NO gradients, shading, glass texture, highlights, noise, bevels, extra colours, decorative border, text, letters or signatures. This is a clean tracing sheet, not finished textured glass."
+    },
+    {
+      "id": "vitray_mountainlake.subject",
+      "file": "tools/stained/vitray/design/vitray_mountainlake.subject.png",
+      "raw": "tools/stained/vitray/design/vitray_mountainlake.subject.png",
+      "references": [
+        "tools/stained/vitray/design/vitray_mountainlake.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Convert the supplied finished mountain-lake design to a binary SUBJECT MASK, preserving its exact 1086x1448 pixel canvas, framing, circle, every contour and every lead seam in the identical positions. RECOLOUR ONLY; do not redraw, move, scale, crop, simplify, add or remove geometry. Mountains are the ONLY subject: fill ALL amber and violet mountain facet interiors pure BLACK #000000. Fill ALL teal and green interiors pure WHITE #FFFFFF: sky/clouds, lake/water, low foothills below mountains, all three foreground pine trees including their trunks, shoreline and foreground ground. Keep EVERY original black lead line black, including background seams; subject internal seams disappear into the black mountain silhouette. Exterior remains pure WHITE. Black-and-white only, no grey, no colour, no shading. Mountain mask must follow the three peak silhouettes at the top and terminate exactly at the existing foothill/tree borders below. Do not include trees or green foothills in the subject. Strict geometric alignment to the supplied design is more important than aesthetics."
+    }
+  ]
+}

@@ -73,11 +73,11 @@ const authoredLevels = ORDER.map((id, i) => {
   }
   const { map, solution } = info;
   const geometry = info.geometryQuality;
-  const body = map.paths.join('\n') + '\n' + map.shape + '\n'
+  const body = `${map.cols.toFixed(3)},${map.rows.toFixed(3)}\n` + map.paths.join('\n') + '\n' + map.shape + '\n'
     + map.adj.map(a => a.join(',')).join(';') + '\n'
     + map.edges.map(e => [...e.slice(0, 4).map(v => v.toFixed(3)), ...e.slice(4)].join(',')).join(';');
   const fingerprint = crypto.createHash('sha256').update(body).digest('hex');
-  assert(geometry?.version === 3 && geometry.valid && !geometry.issues.length,
+  assert(geometry?.version === 4 && geometry.valid && !geometry.issues.length,
     `${id}: run audit_geometry.py --stamp before building`);
   assert.equal(geometry.fingerprint, fingerprint, `${id}: geometry changed after audit`);
 

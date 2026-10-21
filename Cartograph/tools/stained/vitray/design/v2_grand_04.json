@@ -1,0 +1,38 @@
+{
+  "id": "v2_grand_04",
+  "name": "Akdeniz Limanı",
+  "scene": "Two sailboats float before a terracotta and golden Mediterranean waterfront beneath a sun and flowing blue sky.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "terracotta",
+      "#C64D35"
+    ],
+    [
+      "golden ochre",
+      "#EDB932"
+    ],
+    [
+      "deep blue",
+      "#205A85"
+    ],
+    [
+      "teal",
+      "#269CA6"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only, target 110–160 panes. Buildings, boats and sun are the warm-colour subject; sea, sky and vegetation use the cool pair. Inspected both generations; one correction pass improved window colours and removed some tiny decorative tips. Remaining doubts for tracing: subtle fill shading persists; some same-colour neighbours, narrow mast strips, small distant details and close roof/quay junctions may require merging or cleanup. A few cool architectural openings and a warm tree remain. Pane count and junction topology are not geometry-audited. No obvious loose lead ends seen at overview scale.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/grand_04-panes.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_hotairballoon.png"
+  ],
+  "prompt": "Create a flat stained-glass puzzle DESIGN SHEET for Akdeniz Limani, a Mediterranean harbor. Portrait 3:4 canvas 1536x2048. Elegant rounded-arch panel nearly touching canvas edges, closed thick black rim, pure white exterior. Rich composition of waterfront Mediterranean houses with pitched roofs, arched doors and windows, one larger graceful sailboat foreground and a second smaller sailboat behind, curved sea waves and flowing sky bands. Aim 125-145 closed panes (required range 110-160). Refer to the supplied lighthouse and balloon images ONLY for elegant flowing leaded-panel design language; do not copy subjects and do not copy their shading. Original old harbor image supplies the subject idea only; replace childish shapes with elegant recognizable architecture and sails. Exactly FOUR perfectly flat fill colours: terracotta #C64D35 and golden ochre #EDB932 for ALL buildings, roofs, doors, windows, sailboat hulls and sails; deep blue #205A85 and teal #269CA6 exclusively for ALL sky and sea. Subject colours alternate within subject, background colours alternate in background. No white glass. No other colours except pure black lead and pure white outside. Use broad strips crossing subject outline-to-outline so warm pair alternation works, and sweeping blue-teal wave ribbons. Architectural details must be substantial closed panes, no tiny roof tiles. Uniform pure black lead approximately 1% canvas width, smooth curves. Every line must connect rim or junction to junction, no dangling lines. Only separated T junctions, never X or four-way crossings; stagger junctions at least 3% panel width. No narrow slivers or panes under 1/1000 panel area. Entire picture is the panel with no decorative border bands, no text, no signatures, no shading, no gradients, no texture, no reflections. This is a crisp flat tracing source, NOT finished realistic glass. Check every pane closure and four-colour pair separation.",
+  "correctionPrompt": "Correct this Mediterranean harbor stained-glass DESIGN SHEET. Preserve rounded arch, houses, two sailboats, flowing waves and rich 110-160 pane composition. CRITICAL remove ALL shading, glow, gradients and textures: every pane must have a mathematically solid flat RGB fill. Exactly four fill colours: terracotta #C64D35 and ochre #EDB932 for buildings roofs doors windows boats sails and sun; blue #205A85 and teal #269CA6 for sky sea and background vegetation. Recolour every blue window and blue door inside buildings to terracotta when surrounded by gold, or gold when surrounded by terracotta. Alternate warm pair within subject and cool pair in background; no background warm panes except sun subject. Eliminate four-way junctions by offsetting seams to separate T junctions. Remove narrow enclosed mast strips and tiny decorative tower tips; lead may serve as mast. Every pane closed, no loose lines, no tiny slivers. Uniform pure black lead around 1% width. Exterior pure white. Completely FLAT vector-like colour design, no photorealistic glass, no lighting. Portrait 3:4.",
+  "generationAttempts": 2
+}

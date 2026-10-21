@@ -1,0 +1,29 @@
+{
+  "id": "v2_story_gramophone",
+  "name": "Plakçı Köşesi",
+  "scene": "An antique gramophone with a broad flared brass horn and record cabinet stands against flowing acoustic wave bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Golden amber",
+      "#E8AD32"
+    ],
+    [
+      "Burnt orange",
+      "#BC4E2B"
+    ],
+    [
+      "Peacock teal",
+      "#278F96"
+    ],
+    [
+      "Deep blue",
+      "#254F73"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 34–44 panes. Warm subject pair and cool background pair remain separated. Generated with the fox and lighthouse style references and the old gramophone subject reference; one simplification retry inspected. Closed oval on white exterior; no obvious loose lead ends. Remaining doubts: subtle tonal shading persists despite flat-fill instructions; visible subdivision count appears above target, several same-colour subject neighbours may merge during tracing, and close horn-tip junctions, tube/platter contact and cabinet seams need geometry review. No geometry validation or game publication performed."
+}

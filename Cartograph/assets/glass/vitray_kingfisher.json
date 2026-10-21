@@ -1,0 +1,53 @@
+{
+  "id": "vitray_kingfisher",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T09:11:23.398225+00:00",
+  "raw": "tools/stained/vitray/raw/vitray_kingfisher.png",
+  "rawSha256": "a30644cce3fc2066fd7dbea2808a2241e96755cabe95342d19e7743cb2d9f900",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 63,
+      "donorPatches": 35,
+      "colour": 0,
+      "preservedFraction": 0.3513092805366028
+    },
+    {
+      "patchSize": 98,
+      "donorPatches": 70,
+      "colour": 1,
+      "preservedFraction": 0.4764973976399249
+    },
+    {
+      "patchSize": 139,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5392603268865558
+    },
+    {
+      "patchSize": 79,
+      "donorPatches": 53,
+      "colour": 3,
+      "preservedFraction": 0.47192241470210144
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "edc6f8bf9accc8734edf59f3146e52d92fdc3cce152bb5d65dbd646b1f794f2a",
+  "sha256": "9484718c6cfe9046e0658303f95c3f912008d1fd46f3be41ef5edb849098ad2e",
+  "palette": [
+    "#fc6602",
+    "#fcdd24",
+    "#079fbb",
+    "#295617"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 135,
+    "total": 135,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/vitray_kingfisher.webp"
+}

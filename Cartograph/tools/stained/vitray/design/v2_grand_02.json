@@ -1,0 +1,29 @@
+{
+  "id": "v2_grand_02",
+  "name": "Yıldızlı Kamp",
+  "scene": "A tent and acoustic guitar beside a campfire in a pine forest beneath a crescent moon and five stars.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "terracotta",
+      "#D65A38"
+    ],
+    [
+      "golden amber",
+      "#E9B934"
+    ],
+    [
+      "night blue",
+      "#244B78"
+    ],
+    [
+      "turquoise teal",
+      "#238F98"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from grand_02 with lighthouse and hot-air-balloon design style references; target 110–160 panes. Warm subject pair for tent, guitar, flames and celestial motifs; cool background pair for forest, mountains, sky and ground. Visually inspected and regenerated once to correct shading, exterior transparency, guitar colour and junctions. Remaining doubts: subtle fill variation persists; several crowded or four-way contacts around moon tips, tent apex and fabric seams, and some same-colour neighbours require tracing-stage review. Pane count is a design target, not a validated traced count. Design sheet only."
+}

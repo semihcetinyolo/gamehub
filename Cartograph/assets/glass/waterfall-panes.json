@@ -1,0 +1,53 @@
+{
+  "id": "waterfall",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T14:35:06.555689+00:00",
+  "source": "assets/glass/waterfall-silhouette.webp",
+  "sourceSha256": "fe5f0dce6f6d1b50e781dc6d643fab2e67b5e75f3af2fd17d9e810db0dc5e9da",
+  "sourceGeometrySha256": "3a346ad4c0f1d478a819bed0c6759dfe780fa7d61e54a216e3beb0d8bf5d816f",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 99,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.2100443758220829
+    },
+    {
+      "patchSize": 45,
+      "donorPatches": 76,
+      "colour": 1,
+      "preservedFraction": 0.151889309227277
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6577760805285169
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6619406332341208
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "4489c4b54d5dd158fb50addd8d0188d49ee21f2cf7de0239f8ac48d3a49321d5",
+  "sha256": "5565d68884281216497169e35524c543ffc3d9699640da9cf89140499b72c3c9",
+  "palette": [
+    "#077f9c",
+    "#dbf2e1",
+    "#526f16",
+    "#834721"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 21,
+    "total": 21,
+    "mismatches": []
+  }
+}

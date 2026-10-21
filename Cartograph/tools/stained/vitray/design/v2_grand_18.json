@@ -1,0 +1,29 @@
+{
+  "id": "v2_grand_18",
+  "name": "Karlı Dağ Evi",
+  "scene": "An alpine chalet nestles between fir trees beneath snowy mountain peaks and a winter moon.",
+  "shape": "oval",
+  "palette": [
+    [
+      "terracotta",
+      "#B94D36"
+    ],
+    [
+      "golden amber",
+      "#E6AA35"
+    ],
+    [
+      "glacier blue",
+      "#62BBD5"
+    ],
+    [
+      "deep alpine blue",
+      "#24577A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 110–160 panes. Chalet including roof, chimney, windows and door uses the warm pair; mountains, sky, moon, firs and snow use the blue pair. Generated with clai image using vitray_lighthouse.png and vitray_fox.png as style references and grand_18-panes.webp for subject context. Visually inspected both attempts; one corrective regeneration simplified windows and separated the moon. Remaining doubts: X/four-way contacts persist in the right sky, mountain valley above the chimney, chimney bricks and some foreground bands; a few narrow roof/tree-tip panes and same-colour neighbours remain. Subtle fill shading remains, so palette normalization is needed during tracing. No obvious loose line ends. Pane count is a visual target, not a validated traced count. These issues must be resolved before playable geometry; this is not audited final artwork."
+}

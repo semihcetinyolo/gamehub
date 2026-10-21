@@ -1,0 +1,53 @@
+{
+  "id": "vitray_deer",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T09:02:36.128523+00:00",
+  "raw": "tools/stained/vitray/raw/vitray_deer.png",
+  "rawSha256": "5e4c25d47846119da77d73c6697931b97cd95814ebf7df0b3def031b6c3d7c94",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 95,
+      "donorPatches": 42,
+      "colour": 0,
+      "preservedFraction": 0.5221311603786547
+    },
+    {
+      "patchSize": 65,
+      "donorPatches": 34,
+      "colour": 1,
+      "preservedFraction": 0.3865376879916921
+    },
+    {
+      "patchSize": 102,
+      "donorPatches": 68,
+      "colour": 2,
+      "preservedFraction": 0.533785631470536
+    },
+    {
+      "patchSize": 123,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5371485094745374
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "c5c8e55e97831e42c7701225853f2e0c317dfc8c16eac0071b0afa88f0d585c8",
+  "sha256": "fe9c299eecb155ac693ac2ce56d7d2bc8f41e49e2e542176502ad69992bdc838",
+  "palette": [
+    "#ba2e04",
+    "#fedc25",
+    "#0a824c",
+    "#0549b9"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 85,
+    "total": 85,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/vitray_deer.webp"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "v2_story_otter",
+  "name": "Nehirde Oyun",
+  "scene": "A playful river otter floats among flowing river ribbons and riverbank reeds.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Copper",
+      "#B85C38"
+    ],
+    [
+      "Golden ochre",
+      "#E8B64B"
+    ],
+    [
+      "Turquoise",
+      "#279B9B"
+    ],
+    [
+      "Deep river blue",
+      "#235777"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 80–120 panes. Otter uses copper and gold; river and reeds use turquoise and blue. Inspired by vitray fox and lighthouse design references, with the original story_otter image used only for subject. Generated with clai image and visually inspected; one revision removed open toe strokes, simplified eyes and restored a white exterior. Remaining concerns for tracing: subtle fill shading persists, some adjacent subject panes share gold, and several reed/belly junctions and narrow tail tips need geometry review. Pane count and T-only topology are not certified. Design sheet only."
+}

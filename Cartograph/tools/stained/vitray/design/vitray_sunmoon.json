@@ -1,0 +1,56 @@
+{
+  "id": "vitray_sunmoon",
+  "name": "Güneş ve Ay",
+  "scene": "A golden sun with a simple face shines above a crescent moon and three stars inside a round arch.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "Sun gold",
+      "#E8BD45"
+    ],
+    [
+      "Amber orange",
+      "#D88832"
+    ],
+    [
+      "Night blue",
+      "#244D7A"
+    ],
+    [
+      "Sky teal",
+      "#4A92A1"
+    ]
+  ],
+  "notes": "Second generation selected: face is now three closed coloured panes. Visually inspected. Remaining doubts: some ray/star/moon tips still coincide with background seams, several sky joins remain four-way, the top ray approaches the rim too closely, and a few wavy rays are narrow. Flat fills retain slight tonal variation. Preserve circular sun and crescent contours; relocate background seams and verify 70–130 panes when tracing. Final raster estimate: 94 coloured components, within 70–130; count is approximate and does not certify topology.",
+  "generation": {
+    "tool": "image_gen",
+    "reference": "tools/stained/vitray/refs/vitray_sunmoon.jpg",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d7a-2540-76b1-b4e8-12bd8af65c05/exec-ace44202-82b3-4358-9f51-2073c94551c3.png",
+    "prompt": "Use case: illustration-story. Produce one flat vector-like DESIGN SHEET for a Cartograph four-colour stained-glass puzzle, NOT finished glass artwork.\nPortrait 3:4 canvas, ideally 1536x2048. Panel centered and nearly touching all canvas edges, plain pure #FFFFFF exterior only. Thick closed black outer lead silhouette. No inset frame, no surrounding photo context.\nEXACTLY FOUR specified flat solid fill colours inside panel. Black #000000 is exclusively uniform lead, no black filled details; white only outside panel. No pale cream, no white glass. No texture, gradients, translucency, shading, highlights, text, signatures or dots.\nPure black smooth uniform lead lines about 1% canvas width everywhere (15 px at 1536). 80-100 CLOSED panes, 70-130 allowed. Each meaningful subject piece or background band is an individual closed fill area. Every separator reaches another separator or rim, NO free line ends. ONLY THREE-WAY/T JUNCTIONS: no X, no 4+ panes at a point; stagger neighboring junctions at least 3% of panel width apart. Background dividers must stop at subject contours at separated locations, never distort the subject. Pane widths >=3% panel width except their own pointed tips; pane areas >=1/1000 panel area. No nearly parallel narrow slivers, tiny chips, near-touches or hairline necks. Angles >=30 degrees. Eyes are sufficiently large closed round panes. Use broad organic sky/water/leaf/feather subdivisions, never an arbitrary grid. Choose different palette fills on adjacent panes when possible.\nThe supplied photograph is a SUBJECT AND MOOD REFERENCE, not an edit target; draw a fresh composition with its recognizable subject and natural types of background subdivision. Remove photographed setting, decorative frames, glass effects, fine details that cannot become closed panes.\nPANEL: ROUND ARCH, semicircle top, long straight sides and flat bottom. SUBJECT: a large golden sun in the upper half, a broad golden crescent moon in lower-left half, three well-spaced large four-point stars on the right and between them, against deep blue celestial sky, inspired by the reference photo. Redraw simplified celestial scene. Sun has a perfectly round main disc with simple calm face made from just two closed broad curved eye panes and one closed broad nose/mouth shape; no dangling lines. Around disc use 12 broad alternating straight and gently wavy rays. Rays attach at widely spaced points around circular disc; never crowd many into one point. No narrow double ring around sun. Crescent spans about half panel width and is subdivided into 5 broad closed pieces; keep clean moon contour and generous inner blue area. Stars are each ONE large four-point closed pane, no internal crosses, each at least 9% panel width, no tiny stars. Background subdivided into 50-60 broad sweeping celestial sky panes with staggered T junctions, not a grid. Overall 80-100 panes. EXACT four flat colours: sun gold #E8BD45, amber orange #D88832, night blue #244D7A, sky teal #4A92A1. White ONLY outside. No texture, no glitter, no gradients, no extra hues; solid vector bucket fills.\nCORRECTION: Sun face MUST consist of three SEPARATE CLOSED COLOURED SHAPES inside disc: two broad amber oval eyes and a simple amber oval smiling mouth. No eyebrows, nose, eyelashes, open strokes or thin black linework. Same 1%-canvas lead width on face as rest. Shorten ALL sun rays so outer tips stay at least 5% canvas width from panel rim and from moon, and at least 5% from any background junction. Ray tips must point into a SINGLE broad blue pane: no background divider can meet a ray tip. Similarly NO background seams meet star tips or moon tips; terminate background seams on broad sides of motifs, spaced well apart. Star interiors are each one closed gold pane, broad center. Keep 80-100 panes by dividing spacious blue areas using separated T junctions. Uniform flat exact palette, no gradients."
+  },
+  "rasterReview": {
+    "width": 1086,
+    "height": 1448,
+    "aspectRatio": "3:4",
+    "approximatePaneCount": 94,
+    "method": "4-connected components of saturated coloured pixels (max-min >35, max >80), components >=100 pixels; approximate raster check, not vector geometry audit",
+    "targetPaneCount": [
+      70,
+      130
+    ],
+    "paneCountWithinTarget": true,
+    "visuallyInspected": true,
+    "generationAttempts": 2,
+    "strictBriefCompliance": false,
+    "reason": "Remaining junction/width issues and slight fill variation documented in notes."
+  },
+  "subjectMask": {
+    "file": "tools/stained/vitray/design/vitray_sunmoon.subject.png",
+    "tool": "image_gen",
+    "reference": "tools/stained/vitray/design/vitray_sunmoon.png",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d7a-2540-76b1-b4e8-12bd8af65c05/exec-ecee8c46-2c0e-4cbd-a49f-7af26a1cdd30.png",
+    "prompt": "Use case: precise-object-edit. Edit the attached FINISHED design sheet into a binary subject segmentation mask. Preserve the exact portrait 3:4 canvas, same size, framing, panel silhouette and every subject contour/pane position. Do not redraw, resize, move, add or remove objects. Fill every subject pane PURE BLACK #000000, regardless of original colour. Fill every background pane PURE WHITE #FFFFFF. Exterior stays pure white. All existing black lead lines can remain black; internal subject seams disappear into black fill (do NOT turn seams white). No grey, colour, shading, gradients, textures, text or legend. This is a semantic pane-majority mask: classify actual object membership, NOT merely the original fill colour. SUBJECT BLACK: ONLY the large circular sun disc including both eyes and mouth (solid completely black circle), the entire crescent moon including all its yellow pieces, and all three four-point stars. BACKGROUND WHITE: all straight and wavy rays around sun (the brief classifies rays as background), all blue/teal sky panes, the moon inner opening, exterior. Keep every existing black outline in position. Sun disc black, sun rays WHITE. No white eye or mouth holes within sun disc.",
+    "visuallyInspected": true,
+    "alignment": "Approximate generated edit; intended for per-pane majority vote. Fine internal seam inversions and small contour differences may remain."
+  }
+}

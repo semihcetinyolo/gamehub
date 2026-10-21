@@ -79,13 +79,10 @@ button:disabled { cursor: default; }
 @keyframes pop { 40% { transform: scale(1.04); } }
 #board { display: block; touch-action: manipulation; overflow: visible; }
 #board .region { cursor: pointer; }
-#board .region .fill { transition: fill .18s; }
 #board .region.flash .fill { animation: flash .35s; }
 #board .lock-pop { transform-box: fill-box; transform-origin: center; animation: lockPop .22s ease-out; }
 @keyframes lockPop { from { transform: scale(.3); opacity: 0; } }
 @keyframes flash { 0% { filter: brightness(1.12); } 100% { filter: none; } }
-#board .region.paint .fill { animation: paint .35s ease-out; }
-@keyframes paint { 0% { filter: brightness(1.35) saturate(.6); } 100% { filter: none; } }
 .map-rule { position: absolute; bottom: 2.5cqw; margin: 0; font-size: 2.6cqw; letter-spacing: .08em; color: #748167; }
 .toast {
   position: absolute; z-index: 4; left: 50%; bottom: 3cqw;
@@ -135,7 +132,7 @@ button:disabled { cursor: default; }
 .map-progress svg { width: 4.4cqw; height: 4.4cqw; color: #a8894a; }
 .progress { font-size: 3.8cqw; line-height: 1; letter-spacing: .04em; }
 
-/* ---------- colour bar: 4 colours + paint/note switch ---------- */
+/* ---------- colour bar: 4 colours ---------- */
 .color-bar { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3.4cqw; }
 .palette { display: contents; }
 .color-choice {
@@ -415,8 +412,8 @@ button:disabled { cursor: default; }
     repeating-linear-gradient(0deg, #677c4c09 0 1px, transparent 1px 32px),
     repeating-linear-gradient(90deg, #677c4c09 0 1px, transparent 1px 32px),
     #e8ead9;
-  animation: menuIn .35s ease-out;
 }
+.menu.fade { animation: menuIn .35s ease-out; }
 .menu[style*="--menu-bg"] { background: var(--menu-bg) center / cover, #e8ead9; }
 .menu[style*="--menu-bg"]::before { display: none; }
 @keyframes menuIn { from { opacity: 0; } }
@@ -498,9 +495,3 @@ body.in-menu .coach { display: none; }
 .gal-big { width: 62%; margin: 0 auto 2cqw; aspect-ratio: 3 / 4; }
 .gal-big svg { width: 100%; height: 100%; }
 
-/* fill single-colour notes */
-.fill-btn[hidden] { display: none; }
-.fill-btn { background: #cfe0c8; }
-.fill-btn:disabled { opacity: .55; }
-.fill-btn .badge[hidden] { display: none; }
-.fill-help { display: block; margin: 1.6cqw .6cqw 0; text-align: left; font-size: 3cqw; line-height: 1.4; color: var(--muted); }

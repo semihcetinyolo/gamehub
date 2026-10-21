@@ -1,0 +1,53 @@
+{
+  "id": "story_typewriter",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-21T08:08:42.876289+00:00",
+  "source": "assets/glass/story_typewriter-panes.webp",
+  "sourceSha256": "d083b798f582e61221122286a171737eba0988be2e400164a2c4804d8f5eff25",
+  "sourceGeometrySha256": "06f8bd79592c263a3b76931ff3c41fd8a22ff8c823fd55a4e9f9e3b5fc5535e2",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 57,
+      "donorPatches": 48,
+      "colour": 0,
+      "preservedFraction": 0.42139784863929886
+    },
+    {
+      "patchSize": 128,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6040702614166392
+    },
+    {
+      "patchSize": 118,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5434817825009816
+    },
+    {
+      "patchSize": 140,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.561862973541577
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "48f825cec4132c9d7baf1fa09bc6983c0a5d03b674bd3a5986bda6a002f0456a",
+  "sha256": "986292f760d84dc17b9c1d7c5616768cd84b9849f99e107aafb93c0c04b7a394",
+  "palette": [
+    "#c74d11",
+    "#fcee98",
+    "#5d9116",
+    "#065576"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 25,
+    "total": 25,
+    "mismatches": []
+  }
+}

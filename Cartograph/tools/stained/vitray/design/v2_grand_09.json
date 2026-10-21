@@ -1,0 +1,38 @@
+{
+  "id": "v2_grand_09",
+  "name": "Çöl Kervanı",
+  "scene": "Two laden dromedary camels cross sweeping desert dunes beneath a round moon and distant ridges.",
+  "shape": "oval",
+  "palette": [
+    [
+      "terracotta",
+      "#C65B35"
+    ],
+    [
+      "ochre gold",
+      "#E3AB35"
+    ],
+    [
+      "deep indigo",
+      "#30466D"
+    ],
+    [
+      "turquoise",
+      "#329DAB"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 110–160 panes, generation aimed at 125. Warm pair reserved for camels and packs; cool pair for dunes, ridges, sky and moon. Inspected both attempts; one corrective regeneration removed floating mouth strokes and supplied a white exterior. Remaining doubts: subtle fill shading remains, some background meetings may be four-way or narrowly spaced, and adjacent same-colour pieces occur in packs and background. Pane count and junction geometry require downstream tracing and audit; this sheet is not certified production geometry.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "assets/glass/grand_09-contacts.webp",
+      "tools/stained/vitray/design/vitray_lighthouse.png",
+      "tools/stained/vitray/design/vitray_hotairballoon.png"
+    ]
+  }
+}

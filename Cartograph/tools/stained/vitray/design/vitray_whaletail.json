@@ -1,0 +1,82 @@
+{
+  "id": "vitray_whaletail",
+  "name": "Balina Kuyruğu",
+  "scene": "A navy and violet striped whale tail rises above teal and amber ocean waves beneath matching sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Deep navy",
+      "#243B70"
+    ],
+    [
+      "Violet",
+      "#8652B8"
+    ],
+    [
+      "Teal",
+      "#25AAA5"
+    ],
+    [
+      "Amber",
+      "#E5B343"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Version 2 uses navy/violet exclusively for the tail and teal/amber exclusively for sky and sea. Approximate raster count 158 is within the requested 120–170. Crosswise stripes alternate along stem and flukes. Remaining tracing concerns: the upper fork retains an internal seam where several fluke stripes meet, so not every stripe is fully outline-to-outline; some background junctions and narrow wave tips need review. Some adjacent background panes share a colour and may merge in tracing. Subtle raster fill variation remains. Intended palette hex values listed; actual raster colours are approximate.",
+  "version": 2,
+  "tool": "image_gen",
+  "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d79-ddf0-75b0-8c24-eceb8897ba20/exec-511f1dc5-2916-4fbe-a86a-1590b573ec8a.png",
+  "references": [
+    "tools/stained/vitray/refs/vitray_whaletail.jpg"
+  ],
+  "prompt": "Create a NEW Cartograph puzzle DESIGN SHEET inspired by this whale-tail reference photograph, not a photograph or glass rendering. One tall OVAL panel centered nearly touching the edges of a portrait 3:4 canvas (1536x2048 or nearest supported portrait resolution), pure white exterior, closed pure-black oval rim. Subject: elegant single whale tail rising upright from curling ocean waves, broad left and right flukes in upper third and a graceful curving stem down to lower-middle water. Keep tail silhouette instantly readable.\n\nCRITICAL COLOUR PAIRS, EXACTLY FOUR SOLID FLAT COLOURS:\nSubject whale tail ONLY: deep navy #243B70 and vivid violet #8652B8, alternating.\nBackground sky AND sea ONLY: teal #25AAA5 and golden amber #E5B343, alternating.\nNever put navy or violet in any background pane. Never put teal or amber in any tail pane. Never add white glass, pale cream, a fifth colour, gradient, lighting or texture. Each pane is one completely uniform solid RGB fill.\n\nTail construction: about 30-36 broad curved CROSSWISE STRIPES. Each seam goes all the way from one OUTER TAIL OUTLINE to the other outline, like zebra bands around a curved tail. Strict alternating navy/violet along every tail section, so each adjacent pair of tail stripes differs. No lengthwise central seam, no branching inner line, no inner T, X or four-way intersection. For the Y-shaped fluke fork, use one generously sized navy central fork pane with separate violet neighbours to each fluke and stem, then alternate outward. Preserve smooth meaningful tail contour. Do not converge stripes at fluke tips. Broad stripe interiors, no hairline fin strips.\n\nTarget 140-155 closed panes total, permissible 120-170. Remaining roughly 105-115 background panes follow organic sky bands and curling water waves; use staggered wave segments with broad readable dimensions. Distribute many natural ocean wave bands across lower half and curved sky bands behind upper tail. Alternate teal/amber as much as practical without introducing any subject colour into background. Same-colour neighbours are preferable to breaking the semantic pairs. No arbitrary rectangular grid.\n\nAll pure-black lead lines smoothly curved and SAME thickness, about 1% canvas width (15px at1536). Every pane closed, every line connects rim/junction/subject-outline to another rim/junction/outline; no loose ends or gaps. ONLY separated T junctions, never X or more than three panes meeting. Adjacent junctions separated by about 3% panel width; pane interiors at least 3% panel width except their own pointed tips, no pane smaller than 1/1000 of panel area. No narrow parallel gaps. All lines meet at angles >=30 degrees. Remove reference room, table, wooden surround and rectangular frame. No highlights, texture, shading, bubbles, dots, hatching, text or signatures. This is crisp flat cartoon/vector-like artwork for tracing.",
+  "refinementPrompts": [
+    "Create a NEW Cartograph puzzle DESIGN SHEET inspired by this whale-tail reference photograph, not a photograph or glass rendering. One tall OVAL panel centered nearly touching the edges of a portrait 3:4 canvas (1536x2048 or nearest supported portrait resolution), pure white exterior, closed pure-black oval rim. Subject: elegant single whale tail rising upright from curling ocean waves, broad left and right flukes in upper third and a graceful curving stem down to lower-middle water. Keep tail silhouette instantly readable.\n\nCRITICAL COLOUR PAIRS, EXACTLY FOUR SOLID FLAT COLOURS:\nSubject whale tail ONLY: deep navy #243B70 and vivid violet #8652B8, alternating.\nBackground sky AND sea ONLY: teal #25AAA5 and golden amber #E5B343, alternating.\nNever put navy or violet in any background pane. Never put teal or amber in any tail pane. Never add white glass, pale cream, a fifth colour, gradient, lighting or texture. Each pane is one completely uniform solid RGB fill.\n\nTail construction: about 30-36 broad curved CROSSWISE STRIPES. Each seam goes all the way from one OUTER TAIL OUTLINE to the other outline, like zebra bands around a curved tail. Strict alternating navy/violet along every tail section, so each adjacent pair of tail stripes differs. No lengthwise central seam, no branching inner line, no inner T, X or four-way intersection. For the Y-shaped fluke fork, use one generously sized navy central fork pane with separate violet neighbours to each fluke and stem, then alternate outward. Preserve smooth meaningful tail contour. Do not converge stripes at fluke tips. Broad stripe interiors, no hairline fin strips.\n\nTarget 140-155 closed panes total, permissible 120-170. Remaining roughly 105-115 background panes follow organic sky bands and curling water waves; use staggered wave segments with broad readable dimensions. Distribute many natural ocean wave bands across lower half and curved sky bands behind upper tail. Alternate teal/amber as much as practical without introducing any subject colour into background. Same-colour neighbours are preferable to breaking the semantic pairs. No arbitrary rectangular grid.\n\nAll pure-black lead lines smoothly curved and SAME thickness, about 1% canvas width (15px at1536). Every pane closed, every line connects rim/junction/subject-outline to another rim/junction/outline; no loose ends or gaps. ONLY separated T junctions, never X or more than three panes meeting. Adjacent junctions separated by about 3% panel width; pane interiors at least 3% panel width except their own pointed tips, no pane smaller than 1/1000 of panel area. No narrow parallel gaps. All lines meet at angles >=30 degrees. Remove reference room, table, wooden surround and rectangular frame. No highlights, texture, shading, bubbles, dots, hatching, text or signatures. This is crisp flat cartoon/vector-like artwork for tracing.\nCORRECTION PASS: the supplied design draft has only 84 panes, too few. Keep its excellent dark navy/violet tail versus teal/amber background, oval silhouette and elegant composition. Produce 135-155 panes, a real substantial increase. Add about 55 broad background divisions, each sky band divided into 3-4 generously spaced panes and each broad lower wave into 2-3. Stagger these dividers on successive bands so they form separated T junctions, not X. Prefer short smooth dividers crossing the width of a band at a strong angle. Use ONLY teal/amber for the background; alternate when possible, equal-colour neighbours are allowed if necessary. Tail about 35 panes, ALL seams spanning outline-to-outline, no internal lengthwise seam down the left side of the stem. At fork use ONE broad undivided central navy pane and start separate violet bands outward along both flukes and below it, then alternate. Do not compress stripe tips into a crowded intersection. Flatten all subtle fill gradients into single solid colours. Preserve clear tail silhouette.",
+    "Edit this existing whale-tail design sheet, preserving its oval frame, exact 1086x1448 canvas and composition, tail silhouette, four colours and semantic colour pairs. It currently has 195 enclosed panes; reduce to about 145-155 by REMOVING about 45-50 of the SHORT cross-band dividers in the teal/amber BACKGROUND. Keep the long wave and sky-band contours. Do not add any new dividers; do not increase detail. Background bands should have about half their present number of short divisions; alternate removing dividers so surviving T junctions stay widely spaced. Navy/violet remains EXCLUSIVELY inside the whale tail; teal/amber remains EXCLUSIVELY in sky and sea. Keep alternating navy/violet tail stripes; around the upper fork remove the long internal diagonal seam where stripes end, replacing its crowded stripe junctions with smooth uninterrupted outline-to-outline stripes, never X or inner line endings. Preserve broad subject contour and all outside shapes. Pure black uniform width lead, flat single-colour pane fills, no shading or gradients. No new colours or white inside panel. Return only corrected flat design sheet."
+  ],
+  "attempts": 3,
+  "previousVersion": {
+    "image": "tools/stained/vitray/design/vitray_whaletail.v1.png",
+    "metadata": "tools/stained/vitray/design/vitray_whaletail.v1.json",
+    "subjectMask": "tools/stained/vitray/design/vitray_whaletail.v1.subject.png"
+  },
+  "reviewStatus": "needs-tracing-review",
+  "rasterReview": {
+    "size": [
+      1086,
+      1448
+    ],
+    "enclosedComponentsOver20px": 158,
+    "smallComponentsBelowOneThousandth": 2,
+    "method": "Approximate non-black connected components; not a vector geometry audit.",
+    "paneCountWithinRequestedRange": true
+  },
+  "subjectMask": {
+    "id": "vitray_whaletail",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d79-ddf0-75b0-8c24-eceb8897ba20/exec-1d06f3a9-3b14-4f60-b4ea-aebce7560b2d.png",
+    "prompts": [
+      "Edit this finished 1086x1448 oval whale-tail design sheet into a pure black/white subject mask. Preserve exact canvas dimensions, framing, every boundary and all original shapes. Recolour EVERY deep NAVY and VIOLET pane pure BLACK #000000: these are all the whale-tail panes including the left fluke, right fluke, fork and complete curving stem. Recolour EVERY TEAL and AMBER pane pure WHITE #FFFFFF: these are all sky and sea background, even the small panes near fluke tips and the curling wave in front of tail. Exterior stays pure white. Original black lead lines remain black; all the tail internal stripes must disappear into a solid black silhouette. No white internal tail seams, no missing tail stripes. Do not shift, redraw, simplify, add or remove geometry. No grey, gradients, texture or colour. This is an exact colour-class mask of the provided artwork."
+    ],
+    "size": [
+      1086,
+      1448
+    ],
+    "file": "tools/stained/vitray/design/vitray_whaletail.subject.png",
+    "sourceSha256": "7882350849a333b532c1a2d7b38ccbd47e7ce0ad84443775287e648c6e2e0d23",
+    "sha256": "50b363c2c2d9795309b1f0785e2de1a0f74ea12096303df1391f8bb1d5feef69",
+    "tool": "image_gen",
+    "review": "Visually inspected for subject coverage and approximate alignment; white seams may remain inside black subject.",
+    "paneMajorityCheck": {
+      "total": 158,
+      "matched": 158,
+      "valid": true,
+      "subjectPanes": 43,
+      "mismatches": [],
+      "method": "Source non-black connected components, median nearest intended palette colour, eroded interiors, mask majority below luminance 128."
+    }
+  },
+  "sha256": "7882350849a333b532c1a2d7b38ccbd47e7ce0ad84443775287e648c6e2e0d23"
+}

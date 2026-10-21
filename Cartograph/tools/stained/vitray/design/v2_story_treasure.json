@@ -1,0 +1,44 @@
+{
+  "id": "v2_story_treasure",
+  "name": "Korsan Koyu",
+  "scene": "An ornate domed pirate treasure chest rests in a sheltered cove amid sweeping waves and coastal cliffs.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Burnt orange",
+      "#C65A26"
+    ],
+    [
+      "Golden amber",
+      "#E9B934"
+    ],
+    [
+      "Deep ocean blue",
+      "#185477"
+    ],
+    [
+      "Turquoise",
+      "#269C9E"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Second generation selected after one corrective regeneration. Visually checked for open lines, X crossings, shading and colour pairs. Warm colours are confined to the chest; cool colours fill the cove. No obvious loose line ends. Remaining doubts: slight shading persists rather than perfectly flat fills; some adjacent gold chest panes and turquoise sky panes repeat colours; several chest and sky junctions remain crowded or potentially four-way, and some strap/wave regions are narrow. Raster connected-component estimate is 138 coloured regions >=100 pixels, just above target 97–137; this is not a validated geometry pane count. During tracing, merge redundant same-colour divisions and move background dividers to resolve contacts without denting subject contours. Design sheet only, not audited playable geometry or finished glass artwork.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "raw": "clai-images/v2-story-treasure-design-2.png",
+    "references": [
+      "assets/glass/story_treasure-silhouette.webp",
+      "tools/stained/vitray/design/vitray_lighthouse.png",
+      "tools/stained/vitray/design/vitray_fox.png"
+    ],
+    "visuallyInspected": true
+  },
+  "targetPanes": [
+    97,
+    137
+  ]
+}

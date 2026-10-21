@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_seahorse",
+  "name": "Denizatı",
+  "scene": "An elegant golden and coral seahorse curls its tail among flowing turquoise and deep blue underwater currents.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Golden amber",
+      "#E9AB32"
+    ],
+    [
+      "Burnt coral",
+      "#CB523C"
+    ],
+    [
+      "Turquoise",
+      "#269EAA"
+    ],
+    [
+      "Deep ocean blue",
+      "#225778"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 74–114 panes. Warm subject pair and cool background pair retained throughout; oval panel on opaque white exterior. Generated using fox and lighthouse style references and the old seahorse subject reference, then regenerated once to simplify body bands and remove transparent exterior. Visually reviewed both generations. Remaining doubts: slight tonal shading persists; a four-way contact near the forehead and closely spaced joins at the fin attachment and tail require attention during tracing. Some touching same-colour panes may merge. Pane count and production geometry have not been audited. No subject mask required."
+}

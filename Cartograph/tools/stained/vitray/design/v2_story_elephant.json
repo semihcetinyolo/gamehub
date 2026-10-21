@@ -1,0 +1,29 @@
+{
+  "id": "v2_story_elephant",
+  "name": "Savanda Gün Batımı",
+  "scene": "An elephant walks across rolling savanna beneath a large setting sun.",
+  "shape": "oval",
+  "palette": [
+    [
+      "indigo",
+      "#34466B"
+    ],
+    [
+      "periwinkle",
+      "#8B9CC7"
+    ],
+    [
+      "amber",
+      "#E6AA32"
+    ],
+    [
+      "burnt orange",
+      "#C75B35"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 31–41 panes. Regenerated once to simplify excess subdivisions. Visually inspected: recognisable elephant, closed oval rim, white exterior and distinct subject/background colour pairs; no obvious loose line ends. Remaining doubts: subtle fill shading persists, some same-colour neighbours remain, several junctions around the ear and lower ground need tracing review, and final pane count may exceed target. No geometry audit performed."
+}

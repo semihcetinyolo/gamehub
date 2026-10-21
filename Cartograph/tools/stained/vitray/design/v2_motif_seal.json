@@ -1,0 +1,41 @@
+{
+  "id": "v2_motif_seal",
+  "name": "Fok",
+  "scene": "An elegant amber and gold seal rests upright among flowing blue and teal ocean waves.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt amber",
+      "#C77732"
+    ],
+    [
+      "honey gold",
+      "#E9B949"
+    ],
+    [
+      "ocean blue",
+      "#278BB0"
+    ],
+    [
+      "deep teal",
+      "#175768"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 36–46 panes. Redrawn from motif_seal with vitray_fox as the style reference. Two generations, each visually inspected; second selected for simpler wave divisions and white exterior. Subject/background colour pairs remain separate. Remaining doubts: subtle fill shading persists; some same-colour neighbouring subject panes may merge during tracing, and crowded contacts at the neck, front flipper root and hind flippers need geometry review. Small muzzle pane may need simplification. Pane count and T-junction compliance are not yet geometrically validated.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "assets/glass/motif_seal-contacts.webp",
+      "tools/stained/vitray/design/vitray_fox.png"
+    ],
+    "size": [
+      1086,
+      1448
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "v2_grand_16",
+  "name": "Mahalle Pastanesi",
+  "scene": "A neighborhood bakery still life with a croissant, ring pastry, cupcake and elegant coffee pot against flowing cafe window and tabletop divisions.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "terracotta",
+      "#C4512D"
+    ],
+    [
+      "golden amber",
+      "#E9B632"
+    ],
+    [
+      "deep blue",
+      "#205979"
+    ],
+    [
+      "turquoise",
+      "#369D9C"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from grand_16 with lighthouse and poppies design sheets as style references. Target 110–160 panes. Subject uses terracotta/amber; background and holes use blue/turquoise. Visually inspected both generations; one corrective regeneration removed coffee-pot grid crossings and staggered upper background junctions. Remaining doubts: subtle fill shading persists, some same-colour neighbours may merge during tracing, and close contacts near the pot knob, spout and handle require downstream geometry review. Pane count and junction spacing are not quantitatively certified. Design sheet only; not traced or published."
+}

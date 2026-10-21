@@ -1,0 +1,41 @@
+{
+  "id": "v2_motif_airship",
+  "name": "Zeplin",
+  "scene": "An elegant striped zeppelin with tail fins and an attached gondola floats through sweeping blue sky bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt coral",
+      "#D65338"
+    ],
+    [
+      "golden ochre",
+      "#E9B932"
+    ],
+    [
+      "azure",
+      "#329AC2"
+    ],
+    [
+      "deep indigo",
+      "#28527D"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 25–35 panes. Inspected both generations; selected the single revision with simplified nose and three-piece gondola. Closed panel and pane boundaries, no obvious loose ends or X crossings. Subject and background colour pairs remain separate. Remaining doubts: subtle generated fill variation; adjacent gold panes at the tail, some same-blue background neighbours and same-coral gondola/envelope contacts may merge during tracing. A few shallow sky junctions need downstream geometry review. No game catalogue or geometry changes.",
+  "tool": "image_gen",
+  "prompt": "Create one clean flat stained-glass puzzle DESIGN SHEET, not finished textured glass, for Zeplin (zeppelin airship). Portrait 3:4 canvas, ideally 1536x2048. A tall oval panel nearly touching canvas edges with a closed thick black rim and pure white exterior. Image 1 is the old subject reference only: redraw elegantly, do not copy its geometry. Images 2 and 3 are stylistic references for flowing leaded-panel composition, but use MUCH fewer panes and completely flat fills. An elegant elongated zeppelin travelling right, slightly nose-up, with rounded cigar envelope, a clearly shaped tail fin at left and a substantial attached gondola underneath. Airship occupies most panel width at centre. Around it sweeping sky/cloud bands. Aim 30 total big closed panes, strictly 25–35. Envelope divided into around 9 broad curved transverse stripes from outline to outline alternating burnt coral #D65338 and golden ochre #E9B932; fins and gondola exclusively those same two subject colours, alternating where possible. Background only azure #329AC2 and deep indigo #28527D in alternating smooth broad bands, about 16–19 sky panes. Exactly four flat fill colours plus uniform pure-black lead and white exterior. No white glass. Every line continuous between rim or junctions, every pane closed. Only spaced T junctions, no X or four-way crossings, junctions separated by at least 3% panel width. All pieces broad and readable, minimum width 3% panel width, no tiny cells, no dangling lines, no thin ropes or propellers, no decorative dots. Uniform black line width about 1% canvas width. NO texture, lighting, gradients, highlights, shadows, text, labels or border-frame decoration. Maintain sophisticated real stained-glass composition with clean flowing curves; output only the picture.\nREVISION: Simplify to exactly 30 large panes: 8 broad envelope stripes, 2 single-piece tail fins, a gondola made of just 3 large alternating pieces, and 17 background panes. No segmented nose cap, no windows, no struts, no skinny neck pieces. Gondola attaches directly to underside of envelope. Background broad sweeping bands without secondary branching seams. Critical: use SOLID RGB fills with absolutely no shading or variation within any pane; the references have shading that MUST NOT be copied. Flat vector poster colour. Keep all sky/subject junctions staggered and avoid long narrow triangles.",
+  "references": [
+    "assets/glass/motif_airship-panes.webp",
+    "tools/stained/vitray/design/vitray_hotairballoon.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "generationAttempts": 2,
+  "size": [
+    1086,
+    1448
+  ]
+}

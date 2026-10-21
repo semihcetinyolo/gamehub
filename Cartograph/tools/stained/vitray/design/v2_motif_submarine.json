@@ -1,0 +1,36 @@
+{
+  "id": "v2_motif_submarine",
+  "name": "Denizaltı",
+  "scene": "A streamlined submarine with three round portholes and a bent periscope cruises through sweeping ocean currents.",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden yellow",
+      "#E8AD28"
+    ],
+    [
+      "vermilion",
+      "#CB4B35"
+    ],
+    [
+      "ocean blue",
+      "#175578"
+    ],
+    [
+      "turquoise",
+      "#209C9E"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 26–36 panes. Oval panel with warm submarine and cool alternating ocean bands. Visually checked after one regeneration: closed contours and no obvious X crossings or loose ends. Remaining doubts: slight generated shading persists; some same-colour contacts at tail and conning tower may merge during tracing; narrow water tips near the tail and nose need geometry review. Design sheet only, not traced or published game artwork.",
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_hotairballoon.png",
+    "assets/glass/motif_submarine-junctions.webp"
+  ],
+  "prompt": "Create one flat stained-glass puzzle DESIGN SHEET for Denizaltı (submarine). Portrait 3:4 canvas. Use attached lighthouse and balloon only as references for elegant flowing leaded-panel composition, NOT their shading or complexity. Old submarine image is subject reference only: redraw beautifully, not childish. Center a large vertical OVAL panel nearly touching canvas edges, closed thick pure black rim, pure white exterior. A recognizable streamlined vintage submarine travels rightward across middle: rounded long hull, three large circular portholes, substantial conning tower and bent periscope, simple tail fin. Graceful sea current bands sweep above and below. Target exactly 30 closed broad panes, acceptable 26–36 total; avoid excessive details. FOUR FLAT INK COLORS ONLY: golden yellow #E8AD28 and vermilion #CB4B35 exclusively for ALL submarine parts including portholes; deep ocean blue #175578 and turquoise #209C9E exclusively for water background. Adjacent subject panes alternate gold/red; use broad outline-to-outline curved hull divisions and opposite-color round portholes within hull pieces, no small mechanical details. Water bands alternate blue/teal, no warm colored water. Uniform pure black lead approximately 1% canvas width, smooth graceful clean curves. Every line closes a pane and runs junction-to-junction or rim, NO dangling ends, NO X crossings, at most 3 panes meet, stagger T junctions at least 3% panel width apart. No sliver panes, no thin double outlines around portholes, no tiny panes, no bubbles. NO texture, NO shading, NO gradients, NO highlights, NO lettering, NO frames, NO pale/white glass. Flat vector-like fills, polished real stained-glass composition. Image only.\nREVISION: Use previous submarine composition as primary reference. Remove ALL shading and gradients: each region must have perfectly constant solid RGB fill, like a paint-bucket vector diagram. Simplify background to 14 broad continuous curving bands, blue then teal then blue then teal, each boundary runs rim-to-rim or rim-to-submarine. No branching background seams, which create adjacent equal colors. Keep 16–20 submarine panes and 14 water panes, 30–34 total. Periscope lower stem RED against GOLD upper elbow and GOLD tower roof. Keep only wide clean closed pieces. No additional subdivisions inside water bands. All three portholes opposite hue to containing hull stripe. Crisp flat fills, absolutely no lighting."
+}

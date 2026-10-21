@@ -1,0 +1,38 @@
+{
+  "id": "v2_grand_20",
+  "name": "Korsan Hazinesi",
+  "scene": "A parrot watches a pirate sailing ship above an open treasure chest amid flowing ocean waves.",
+  "shape": "oval",
+  "palette": [
+    [
+      "vermilion",
+      "#CD4E32"
+    ],
+    [
+      "golden amber",
+      "#E9AD32"
+    ],
+    [
+      "ocean blue",
+      "#195979"
+    ],
+    [
+      "turquoise",
+      "#239B9E"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 110–160 panes. Warm pair identifies parrot, ship, chest and treasure; cool pair identifies sky and sea. Generated with the old grand_20 image as subject reference and vitray_lighthouse / vitray_hotairballoon as style references. Inspected initial image and regenerated once to remove transparent exterior, sun, gray ship pane, line overshoots and crowded sky crossings. Final image inspected: opaque white exterior, closed oval rim, clear subjects and improved T junctions. Remaining doubts for tracing: slight fill tonal variation; narrow mast, chest rim and coin-edge panes; small inter-coin gaps; some same-colour adjoining subject pieces and dense contacts around feathers/coins may merge or need geometry review. Pane count is a design target, not a verified traced count.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "assets/glass/grand_20-panes.webp",
+      "tools/stained/vitray/design/vitray_lighthouse.png",
+      "tools/stained/vitray/design/vitray_hotairballoon.png"
+    ]
+  }
+}

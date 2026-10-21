@@ -1,0 +1,53 @@
+{
+  "id": "v2_story_submarine",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:26:28.330895+00:00",
+  "raw": "tools/stained/vitray/raw/v2_story_submarine.png",
+  "rawSha256": "0af702763d0ff26edcd24352456890ab68b06fb46ba844f756475d30a26d8b76",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 99,
+      "donorPatches": 44,
+      "colour": 0,
+      "preservedFraction": 0.6172024094179686
+    },
+    {
+      "patchSize": 97,
+      "donorPatches": 61,
+      "colour": 1,
+      "preservedFraction": 0.5495160950343935
+    },
+    {
+      "patchSize": 137,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.7209103339583212
+    },
+    {
+      "patchSize": 85,
+      "donorPatches": 45,
+      "colour": 3,
+      "preservedFraction": 0.5205755532698585
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "7a9a71675c0db5051220736e3389c748d158289d341bb0f5c397bd72c0252789",
+  "sha256": "4b17e32180790a2f0d48f41064b4bd30326be85fb87e43ed4330cb8c9b44f6f6",
+  "palette": [
+    "#fbb908",
+    "#d03114",
+    "#02acb9",
+    "#013a6b"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 32,
+    "total": 32,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_story_submarine.webp"
+}

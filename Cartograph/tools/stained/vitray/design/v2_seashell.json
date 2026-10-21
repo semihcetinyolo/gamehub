@@ -1,0 +1,29 @@
+{
+  "id": "v2_seashell",
+  "name": "Deniz Kabuğu",
+  "scene": "A scallop seashell with broad alternating fan ribs, surrounded by flowing ocean bands.",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral",
+      "#E97868"
+    ],
+    [
+      "golden amber",
+      "#E8B34F"
+    ],
+    [
+      "ocean blue",
+      "#27658D"
+    ],
+    [
+      "turquoise",
+      "#39AFA4"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 25–35 panes. Shell uses coral and amber exclusively; ocean uses blue and turquoise. Generated with clai image using vitray_poppies.png as style reference and seashell-silhouette.webp as subject reference, then regenerated once after visual inspection. Final image inspected: opaque white exterior, closed oval rim, recognizable scalloped shell, no obvious loose line ends. Remaining concerns for tracing: slight tonal variation persists rather than perfectly flat fills; two central amber ribs taper narrowly at the base, and the lower-centre wave meeting and some upper wave junctions need geometry review for crowded contacts. Some blue background neighbours may merge. Design sheet only; not audited playable geometry."
+}

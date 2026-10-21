@@ -1,0 +1,41 @@
+{
+  "id": "v2_grand_25",
+  "name": "Ejderha Dağı",
+  "scene": "A winged dragon with a curling tail towers over mountain peaks, a small dwelling and a winding river.",
+  "shape": "gothic arch",
+  "palette": [
+    [
+      "burnt orange",
+      "#D65A28"
+    ],
+    [
+      "golden amber",
+      "#EAB839"
+    ],
+    [
+      "deep blue",
+      "#205B80"
+    ],
+    [
+      "turquoise",
+      "#329E9A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    110,
+    160
+  ],
+  "notes": "Design sheet only; visually checked after one corrective regeneration. Warm dragon and cool landscape colour pairs are preserved; sky ribbons remove the first attempt's obvious crossing grid. Remaining doubts: slight fill shading persists; some same-colour neighbouring panes may merge during tracing; a few tight horn/wing/foot junctions, narrow river strips and small dwelling details need geometry-stage review. Pane count is a visual target, not yet tracer-validated.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/grand_25-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15e5a-f0a5-7722-a9ad-a1717b53f8f4/exec-15feaf87-665e-4bd2-b127-39e6c702fdd2.png",
+  "prompt": "Create one flat stained-glass design sheet for Ejderha Dağı (Dragon Mountain). Portrait 3:4 canvas, ideally 1536x2048. Reference image 1 is ONLY the old subject idea: dragon above mountains and a little mountain dwelling; completely redraw its childish geometry. References 2 and 3 show elegant organic leaded-panel composition; emulate that elegance but use strictly FLAT fills with NO shading.\nA centered gothic arch silhouette nearly touching canvas edges on pure white exterior, closed thick black rim, no decorative frame. A magnificent recognizable winged dragon with curved neck, horned head in profile, broad swept wings, two grounded feet and long curling tail dominates a layered mountainous landscape. A small mountain dwelling below supplies scale. Elegant clear silhouettes, rich but readable glass cutting, approximately 130 closed panes total (required target 110–160).\nExactly FOUR interior fill colours: burnt orange #D65A28 and golden amber #EAB839 ONLY for dragon including its eye and horns, and deep blue #205B80 and turquoise #329E9A ONLY for all background, mountains, sky and dwelling. Alternate orange and amber across neighbouring dragon pieces: broad wing strips and full-width neck/body/tail bands, avoid intricate scales. Alternate blue and turquoise background ribbons and mountain facets. No white or pale cream interior panes. No extra colours.\nPure black smooth lead lines uniform about 1% canvas width. Every line closes a pane, no dangling strokes, no decorative dots, no thin facial marks. Eye is one closed visible amber pane in orange face, no pupil. Only well separated T junctions, no X crossings or four-way contacts. Junctions separated by 3% panel width; avoid tiny panes and slivers, no closely parallel seams. Wing divisions use staggered junctions, never converge all at one hub. Keep 110–160 substantial traceable panes, about 65 in the dragon and 65 in the landscape. Flat vector-like colour fields, no texture, gradients, highlights, text or signature. CORRECTIVE PASS: Previous attempt had X junctions in concentric sky rings, overly thin lead, gradients, black dot windows, and too many narrow claw/scale panes. Make a simpler design with 120–135 BIG panes. Use broad flowing parallel sky ribbons WITHOUT any cross dividers so the background pair alternates. Mountain facets should end at separated T junctions, no four-way hubs. Dragon wing membranes use broad alternating full-span strips. Do not draw scales or multiple tiny claws; use simple feet with two large toes. Only 1 visible closed eye, no pupil, no tiny windows. Lead must be uniformly thick black (~12px at 1080 wide). ABSOLUTE SOLID FLAT uniform RGB fills with no lighting or shading at all. Every pane in the dragon alternates orange/gold as far as possible, every sky ribbon alternates blue/teal. Gothic pointed arch top, not a round arch."
+}

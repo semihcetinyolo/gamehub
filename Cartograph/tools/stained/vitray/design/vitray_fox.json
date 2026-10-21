@@ -1,0 +1,57 @@
+{
+  "id": "vitray_fox",
+  "name": "Tilki",
+  "scene": "A seated red fox curls its bushy tail among leafy stems beneath a round arch.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "Burnt orange",
+      "#E86D25"
+    ],
+    [
+      "Golden yellow",
+      "#E5BC52"
+    ],
+    [
+      "Forest teal",
+      "#28685C"
+    ],
+    [
+      "Sky blue",
+      "#72B5CA"
+    ]
+  ],
+  "notes": "Inspected both generations; second selected. Remaining doubts: subtle fill variation persists, several leaf tips and chest/tail joins may be too narrow or crowded, and some junctions may still be four-way. Adjacent fur panes sometimes repeat a colour. Design reference only; tracing must validate topology and pane count, preserve the fox contour, and move background seams first. Final raster estimate: 137 coloured components, above the 130-pane maximum. Simplify nonessential background/leaf subdivisions during tracing; this sheet does not yet meet the pane-count rule.",
+  "generation": {
+    "tool": "image_gen",
+    "attempts": 2,
+    "reference": "tools/stained/vitray/refs/vitray_fox.jpg",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d7a-2540-76b1-b4e8-12bd8af65c05/exec-3d345b5c-b9f9-4e33-a09a-ab8d65d2b89f.png",
+    "prompt": "Use case: illustration-story. Produce one flat vector-like DESIGN SHEET for a Cartograph four-colour stained-glass puzzle, NOT finished glass artwork.\nPortrait 3:4 canvas, ideally 1536x2048. Panel centered and nearly touching all canvas edges, plain pure #FFFFFF exterior only. Thick closed black outer lead silhouette. No inset frame, no surrounding photo context.\nEXACTLY FOUR specified flat solid fill colours inside panel. Black #000000 is exclusively uniform lead, no black filled details; white only outside panel. No pale cream, no white glass. No texture, gradients, translucency, shading, highlights, text, signatures or dots.\nPure black smooth uniform lead lines about 1% canvas width everywhere (15 px at 1536). 80-100 CLOSED panes, 70-130 allowed. Each meaningful subject piece or background band is an individual closed fill area. Every separator reaches another separator or rim, NO free line ends. ONLY THREE-WAY/T JUNCTIONS: no X, no 4+ panes at a point; stagger neighboring junctions at least 3% of panel width apart. Background dividers must stop at subject contours at separated locations, never distort the subject. Pane widths >=3% panel width except their own pointed tips; pane areas >=1/1000 panel area. No nearly parallel narrow slivers, tiny chips, near-touches or hairline necks. Angles >=30 degrees. Eyes are sufficiently large closed round panes. Use broad organic sky/water/leaf/feather subdivisions, never an arbitrary grid. Choose different palette fills on adjacent panes when possible.\nThe supplied photograph is a SUBJECT AND MOOD REFERENCE, not an edit target; draw a fresh composition with its recognizable subject and natural types of background subdivision. Remove photographed setting, decorative frames, glass effects, fine details that cannot become closed panes.\nPANEL: ROUND ARCH, vertical straight sides and horizontal flat bottom, smooth semicircular top. SUBJECT: elegant seated red fox facing left with large upright ears, long clean snout, visible round eye, sweeping bushy curled tail at the base; green leafy stems and broad curved sky pieces around it, inspired by the supplied fox photo. Keep the fox recognizable; subdivide fur into around 25 broad flowing panes, leaves into about 20 and remaining organic background into about 35. No mouth or whisker strokes with loose ends. EXACT PALETTE: burnt orange #E86D25, rich golden yellow #E5BC52, forest teal #28685C, sky blue #72B5CA. Use gold for the fox muzzle/chest/tail accents, orange body, blue/teal background. No fifth fill colour.\nCORRECTION PASS: previous draft had subtle shading, very thin leaf stems, extra black masses in ears and nose, and crowded tail tips. Redraw more strictly flat like a vector bucket-fill diagram. All four fills must be mathematically uniform, with zero internal light variation. Remove stems as narrow outlined strips: use one lead line as the stalk and broad leaves attached at widely spaced T junctions. Black nose/ear patches are forbidden: use teal fill bounded by the SAME uniform black line. One large round teal eye pane, NO pupil or highlight. Remove small toe and tail-tip chips and widen remaining narrow panes. Preserve smooth fox silhouette and round arch. Aim 80 closed panes."
+  },
+  "rasterReview": {
+    "width": 1086,
+    "height": 1448,
+    "aspectRatio": "3:4",
+    "approximatePaneCount": 137,
+    "method": "4-connected components of saturated coloured pixels (max-min >35, max >80), components >=100 pixels; approximate raster check, not vector geometry audit",
+    "targetPaneCount": [
+      70,
+      130
+    ],
+    "paneCountWithinTarget": false,
+    "visuallyInspected": true,
+    "generationAttempts": 2,
+    "strictBriefCompliance": false,
+    "reason": "Remaining junction/width issues and slight fill variation documented in notes."
+  },
+  "subjectMask": {
+    "file": "tools/stained/vitray/design/vitray_fox.subject.png",
+    "tool": "image_gen",
+    "reference": "tools/stained/vitray/design/vitray_fox.png",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d7a-2540-76b1-b4e8-12bd8af65c05/exec-f689aa39-8ec3-497a-8df4-862ac3a7d7f3.png",
+    "prompt": "Use case: precise-object-edit. Edit the attached FINISHED design sheet into a binary subject segmentation mask. Preserve the exact portrait 3:4 canvas, same size, framing, panel silhouette and every subject contour/pane position. Do not redraw, resize, move, add or remove objects. Fill every subject pane PURE BLACK #000000, regardless of original colour. Fill every background pane PURE WHITE #FFFFFF. Exterior stays pure white. All existing black lead lines can remain black; internal subject seams disappear into black fill (do NOT turn seams white). No grey, colour, shading, gradients, textures, text or legend. This is a semantic pane-majority mask: classify actual object membership, NOT merely the original fill colour. SUBJECT BLACK: the COMPLETE seated fox silhouette, BOTH ears including their green interiors, entire orange body and legs, EVERY golden chest/muzzle piece, entire orange AND golden bushy curled tail INCLUDING ALL the golden tip pieces in lower-left, plus round teal EYE and teal NOSE. Eye and nose must be black, not white holes. Tail tip must be black, not white. BACKGROUND WHITE: every leaf, all sky, ground and spaces outside fox. Classify gold carefully: gold fur black, separate gold leaves white. Preserve exact source contours.",
+    "visuallyInspected": true,
+    "alignment": "Approximate generated edit; intended for per-pane majority vote. Fine internal seam inversions and small contour differences may remain."
+  }
+}

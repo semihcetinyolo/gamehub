@@ -1,0 +1,35 @@
+{
+  "id": "v2n_key",
+  "name": "Eski Anahtar",
+  "scene": "An ornate old key with a round bow and two teeth stands inside an oval stained-glass panel.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Golden amber",
+      "#E8AF27"
+    ],
+    [
+      "Burnt orange",
+      "#BD562C"
+    ],
+    [
+      "Deep blue",
+      "#205A7A"
+    ],
+    [
+      "Turquoise",
+      "#26989F"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small design sheet; target 12–22 panes. Regenerated once to simplify the first over-detailed result. Final inspection and connected-component count found 19 closed coloured panes: 9 key panes and 10 background panes including the bow hole and a small triangular piece above the first tooth. Opaque white exterior, no loose line ends observed. Remaining doubts: subtle tonal shading persists; two gold/gold subject boundaries may merge in tracing; background seams at the shaft align with internal seams and need separated T junctions during geometry preparation; small blue triangle above first tooth is marginal. This is a design sheet only, not audited or published game geometry.",
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Redesign this old-key stained-glass design sheet to be MUCH SIMPLER and STRICTLY FLAT COLOUR. Exactly 18 closed panes total: 9 warm key panes, 8 outer blue background panes, and 1 blue hole in key bow. Portrait 3:4 white opaque canvas, large oval black-rimmed panel. Keep recognizable elegant antique key with rounded bow, broad shaft, two right-facing teeth. Simplify bow to a ROUND ring split into FOUR equal broad alternating golden amber and burnt orange pieces, surrounding ONE round blue hole. Below bow ONLY THREE full-width shaft sections alternating colours, bottom section incorporates first tooth; second tooth and end foot form remaining TWO key pieces. No collars, no small tip bands, no additional ornaments or inner lines. Key total nine panes. Outer background EXACTLY EIGHT large curved sectors around key, alternating deep blue and turquoise, separated by just EIGHT broad curves from outer oval rim to key silhouette. NO extra background subdivisions. Every background seam ends offset well away from key seam endpoints. Every junction T only; no X crossings, tiny panes, slivers or loose ends. Exactly FOUR UNIFORM SOLID fills: gold #E8AF27, orange #BD562C exclusively in key; blue #205A7A and turquoise #26989F exclusively background and bow hole. NO SHADING, no gradients, no highlights, no texture. Pure black smooth uniform lead, about 1% canvas width. White exterior only. Elegant artisan stained-glass pattern, no cartoon, no text. Absolute maximum 22 panes. The previous image was overcomplicated: remove half its seams.",
+  "paneCount": 19
+}

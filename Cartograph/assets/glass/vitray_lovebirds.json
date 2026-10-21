@@ -1,0 +1,53 @@
+{
+  "id": "vitray_lovebirds",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T09:07:16.513392+00:00",
+  "raw": "tools/stained/vitray/raw/vitray_lovebirds.png",
+  "rawSha256": "f4d11f04247b57b36eba1a4fe1e04044520188e351f402761f1780d50c3cc037",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 135,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.5883961281632135
+    },
+    {
+      "patchSize": 120,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6098767187692258
+    },
+    {
+      "patchSize": 114,
+      "donorPatches": 79,
+      "colour": 2,
+      "preservedFraction": 0.5956287130119985
+    },
+    {
+      "patchSize": 123,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.575833250577381
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "0d3890df339eadca56fcbcf9ed0bedb2b2b736f5289f01ad9fd435b12ebdd68c",
+  "sha256": "10029fbbdd52d62304814bc806da4d1fa76d08e221ee93bf5aa52fee1299cce9",
+  "palette": [
+    "#f44b3d",
+    "#017899",
+    "#71a015",
+    "#fdd311"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 63,
+    "total": 63,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/vitray_lovebirds.webp"
+}

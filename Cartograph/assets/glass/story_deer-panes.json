@@ -1,0 +1,53 @@
+{
+  "id": "story_deer",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T14:35:54.387489+00:00",
+  "source": "assets/glass/story_deer-junctions.webp",
+  "sourceSha256": "b7e119f831967571730b79ae3e91b6e495ed6dbf6757cb980b34270923c87905",
+  "sourceGeometrySha256": "dd94724d0b6c2c5992b1a381ef91023a631d2b49fd30c794fc4393296e4c1de5",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 134,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.4724476771284482
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.47217922739473167
+    },
+    {
+      "patchSize": 118,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5178519142189604
+    },
+    {
+      "patchSize": 91,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.47157994050259644
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "ea63cccac8896808ea1c82afe5a548116006c8fecd63b585d58d14b531aee7e7",
+  "sha256": "9de23378bcb2db30f221d1f4e9e237c3d927471896b8425a0fa2eb5fe1db077f",
+  "palette": [
+    "#c45e03",
+    "#fbf274",
+    "#318dc3",
+    "#04236a"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 36,
+    "total": 36,
+    "mismatches": []
+  }
+}

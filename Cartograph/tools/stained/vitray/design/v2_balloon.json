@@ -1,0 +1,37 @@
+{
+  "id": "v2_balloon",
+  "name": "Sıcak Hava Balonu",
+  "scene": "a striped hot-air balloon floating between soft clouds",
+  "shape": "oval",
+  "palette": [
+    [
+      "vermilion",
+      "#D94B35"
+    ],
+    [
+      "golden yellow",
+      "#E9B82F"
+    ],
+    [
+      "azure",
+      "#2788BA"
+    ],
+    [
+      "teal",
+      "#329A8B"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from balloon-contacts.webp with vitray_hotairballoon.png as the style reference. Target 31–41 panes; broad alternating balloon gores and cloud bands, warm subject pair and cool background pair. Portrait 3:4 oval with white exterior. Regenerated once after initial inspection to improve crown spacing and remove transparent exterior. Final visual review: closed outlines, no obvious loose line ends or X crossings; remaining doubts include subtle fill shading, narrow tapering outer gores near their tips, close joins around the collar and some same-colour neighbours. Pane count and junction spacing require downstream tracing validation. Design sheet only.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "assets/glass/balloon-contacts.webp",
+      "tools/stained/vitray/design/vitray_hotairballoon.png"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "v2_strawberry",
+  "name": "Yaz Çileği",
+  "scene": "A ripe strawberry with a leafy crown and four broad seeds.",
+  "shape": "oval",
+  "palette": [
+    [
+      "crimson",
+      "#C93649"
+    ],
+    [
+      "coral",
+      "#F28B68"
+    ],
+    [
+      "leaf green",
+      "#589447"
+    ],
+    [
+      "teal",
+      "#268F9A"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn as an elegant oval botanical panel; target 39–49 panes. Fruit and four seeds use the crimson/coral subject pair; crown and surrounding foliage belong to the green/teal background group. Generated with clai image using vitray_poppies.png and vitray_fox.png as style references and strawberry-contacts.webp as subject reference. Visually checked and regenerated once to correct upper seed colours and white exterior. Remaining doubts: slight tonal variation persists in nominally flat fills; some same-colour neighbouring foliage panes may merge during tracing; closely spaced contacts near the crown and right berry bands need geometric review. Pane count is a design target, not a validated traced count."
+}

@@ -1,0 +1,41 @@
+{
+  "id": "v2_motif_boots",
+  "name": "Yağmur Çizmeleri",
+  "scene": "Two striped Wellington rain boots stand in rippling puddles beneath sweeping rain ribbons.",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden yellow",
+      "#EAAF27"
+    ],
+    [
+      "burnt orange",
+      "#C9532C"
+    ],
+    [
+      "deep blue",
+      "#205D86"
+    ],
+    [
+      "teal",
+      "#2AA59B"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    98,
+    138
+  ],
+  "notes": "Design sheet only. Warm pair exclusively on boots; cool pair on background. Visually reviewed both generations; revised once to remove longitudinal boot cross-seams and droplet tips. Final seams appear closed, with simpler transverse boot bands and predominantly T junctions. Remaining doubts: subtle fill shading persists; some pointed rain ribbons and close puddle junctions need attention during tracing; some same-colour neighbours may merge. Exact pane count and geometry have not been audited. Palette lists intended flat colours.",
+  "tool": "image_gen",
+  "prompt": "Create a fresh Cartograph stained-glass DESIGN SHEET for Yağmur Çizmeleri (rain boots). References: first image provides ONLY the subject, two rain boots; second and third provide elegant stained-glass composition and smooth lead drawing style. Redraw rather than copy old boot geometry. Portrait 3:4, ideally 1536x2048. One large oval panel nearly touching all canvas edges on pure white exterior, closed thick black rim, no frame band. Two elegant recognizable Wellington rain boots side by side, slightly staggered, rounded toes pointing outward, tall shafts, cuffs and thick soles. Rich rainy background of sweeping diagonal rain ribbons overhead and broad puddle ripples below. Aim 110 distinct closed panes, within 98–138: about 18–22 broad alternating outline-to-outline stripes per boot following its form, and 65–70 broad flowing rain/water pieces around them. Exactly FOUR FLAT fill colours: golden yellow #EAAF27 and burnt orange #C9532C exclusively for both boots, deep blue #205D86 and teal #2AA59B exclusively for rain/sky/puddle background. Adjacent boot stripes alternate gold/orange; adjacent background bands alternate blue/teal. Do not use warm colours anywhere in background. No white glass. Pure black uniform smooth lead lines about 1% canvas width. ALL seams close from rim or junction to another junction; only separated T junctions, no X crossings, no four-way contacts, no loose line ends. Junctions at least 3% panel width apart. No thin slivers, no tiny panes, no arbitrary grid. Avoid splitting stripes with crossbars. Preserve elegant curved boots, no laces or buckles or extra symbols. FLAT solid fills only, absolutely no shading, gradients, shine, glass texture, grain, photographic details, shadows, lettering or labels. This is a clean traceable colouring design, not final textured glass.\nREVISION: The previous result has unwanted gradients and X crossings along vertical boot side strips. REMOVE ALL longitudinal side strips from boots. Divide each boot ONLY into 20 uninterrupted broad transverse curved bands running outline-to-outline, alternating yellow/orange. No seam crosses any other seam inside a boot. Plain smooth soles without tread notches. Background should have 65-75 broad closed ribbon pieces; omit hanging teardrops (they create pointed junctions). Replace them with broad rain ribbons. Every colour area must have ONE uniform RGB value, like SVG flat vector art, with zero lighting or shading. Keep oval and staggered boot composition. Target total 110–125 panes. All joins strictly T shaped and well separated.",
+  "references": [
+    "assets/glass/motif_boots-junctions.webp",
+    "tools/stained/vitray/design/vitray_poppies.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "generationAttempts": 2
+}

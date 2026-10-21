@@ -1,0 +1,36 @@
+{
+  "id": "v2_grand_15",
+  "name": "Nostaljik Tramvay",
+  "scene": "A nostalgic red and amber tram curves through an old Istanbul streetscape beneath a round arch.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "vermilion",
+      "#C74732"
+    ],
+    [
+      "golden amber",
+      "#E8B936"
+    ],
+    [
+      "deep blue",
+      "#195779"
+    ],
+    [
+      "teal",
+      "#269B9F"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 110–160 panes. Generated with the built-in image tool and inspected, then regenerated once to simplify narrow details, remove the streetlamp and reduce shading. The final image preserves warm tram/cool background colour pairs and a closed round-arch rim. Remaining doubts for tracing: slight fill shading remains, several adjacent same-colour panes will merge, some facade and tram seams may form four-way contacts, and narrow trim/trolley-support pieces and small tower windows require geometry review. Pane count is a visual target, not an audited count. No game catalogue or geometry changes.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/grand_15-contacts.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_hotairballoon.png"
+  ],
+  "prompt": "Create a flat stained-glass DESIGN SHEET for Cartograph level v2_grand_15, Nostaljik Tramvay (Nostalgic Tram). Portrait 3:4 canvas. A sophisticated elegant historic Istanbul streetcar in three-quarter view, large central foreground subject with curved roof, broad windows, rounded front, large round headlamp, side doors, wheels; old town facades and rooftops behind, curved tracks below. Same nostalgic tram idea as reference 1, but completely redraw its crude geometry. References 2 and 3 are composition/lead-curve style examples only. Use a round-arch panel nearly filling the canvas, pure white exterior, closed thick black rim, no decorative border frame. Aim 125-140 substantial closed panes (required range 110-160); about 45 tram pieces and 80 architectural/sky/street pieces. Elegant craft stained glass shapes, not childish blocks or arbitrary grid. STRICT flat solid fills, no shading, texture, gradients, reflections or glass effects. Exactly FOUR chromatic colours: vermilion #C74732 and golden amber #E8B936 ONLY on the tram including its windows, wheels and headlamp; deep blue #195779 and teal #269B9F ONLY on background architecture, sky, pavement, tracks. Alternate the pair within each respective semantic area; keep subject visually recognizable. Uniform pure black lead about 1 percent canvas width, smooth curves, every line attached to rim or junction, every pane closed. Only separated T junctions; NO X crossings or four-way contacts. Stagger facade courses and tram panel seams widely. Junctions at least 3 percent panel width apart. Broad panes no narrow slivers, no tiny panes, no hairline strips; meet rim and lines at 30 degrees or more. Avoid thin tram cables, use broad simple trolley support if needed. No white or near-white panes. No lettering, text, digits, signatures, dots or floating line ends. Colour pair separation more important than attempting to repair every equal-colour adjacency. Output only the full panel design image.\nREVISION: Simplify heavily to 120 broad panes. Remove streetlamp completely. Remove skinny trim, wheel rings, wheel axle, tiny rooftop details, fine window mullions, narrow rail strips, thin trolley pole. A single broad roof support suffices. Tram windows are large amber panes surrounded by broad vermilion panels, side panels alternate amber and vermilion. Single large circular amber headlight, wheels simple vermilion semicircles. At most six big tram windows. Background broad blue/teal architectural shapes and sky ribbons. Flat print-ready vector appearance with perfectly SOLID identical colour in every fill; NO lighting whatsoever. Pure flat colours, no shadows of any kind, no muddy extra colours. Avoid four-way street paving intersections: stagger ALL joints. Keep sophisticated recognizable tram and round arch. Give priority to thick black leads and wide paintable pieces, no ornamental fine detail."
+}

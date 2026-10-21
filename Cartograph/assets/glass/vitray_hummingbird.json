@@ -1,0 +1,53 @@
+{
+  "id": "vitray_hummingbird",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T09:00:36.702304+00:00",
+  "raw": "tools/stained/vitray/raw/vitray_hummingbird.png",
+  "rawSha256": "55832129f9979fb654b253ea356b3ddd7ad69542a89736b5b299d670df36e6bb",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 82,
+      "donorPatches": 49,
+      "colour": 0,
+      "preservedFraction": 0.37614583247285055
+    },
+    {
+      "patchSize": 85,
+      "donorPatches": 36,
+      "colour": 1,
+      "preservedFraction": 0.4178350473563281
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.7099068283852746
+    },
+    {
+      "patchSize": 140,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.591605898931539
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "32720c8489752c4fecda85e1b352dbae5e613dd6b93522b287e612f843887fb5",
+  "sha256": "1de19b48de6d68b7ebd383ca71cb28284c22ac3319c287ddd14194e25b84c666",
+  "palette": [
+    "#fc4d03",
+    "#fcd418",
+    "#038c70",
+    "#0242d4"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 91,
+    "total": 91,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/vitray_hummingbird.webp"
+}

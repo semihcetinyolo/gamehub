@@ -1,0 +1,29 @@
+{
+  "id": "v2_bird",
+  "name": "Bahar Kuşu",
+  "scene": "A cheerful orange songbird perches on a branch with pink spring blossoms and a stylized sun behind it.",
+  "shape": "oval",
+  "palette": [
+    [
+      "orange",
+      "#F58220"
+    ],
+    [
+      "blossom pink",
+      "#D94F89"
+    ],
+    [
+      "sky blue",
+      "#429BC6"
+    ],
+    [
+      "leaf green",
+      "#287A60"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 79–119 panes. Bird and blossom heads use orange/pink; sky, stylized sun, branch and leaves use blue/green. Portrait 3:4 oval on white exterior. Generated with fox and poppies style references and the old bird image as subject reference; visually reviewed and regenerated once to simplify feathers and junctions. Remaining doubts: slight tonal variation remains in nominally flat fills; some adjacent same-colour panes may merge during tracing; crowded wing-tip and blossom joins and narrow foot areas require geometry review. No obvious loose line ends seen. Pane count and junction validity are not yet machine-audited. Design sheet only."
+}

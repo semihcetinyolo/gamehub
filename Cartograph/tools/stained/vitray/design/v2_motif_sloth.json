@@ -1,0 +1,36 @@
+{
+  "id": "v2_motif_sloth",
+  "name": "Tembel Hayvan",
+  "scene": "A sloth hangs from a sweeping branch amid broad tropical leaves.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Cinnamon",
+      "#A65A35"
+    ],
+    [
+      "Golden ochre",
+      "#E5AD45"
+    ],
+    [
+      "Deep teal",
+      "#176B62"
+    ],
+    [
+      "Turquoise",
+      "#55B8CB"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; second generation selected after one requested corrective regeneration. Subject colours are reserved for the sloth; background colours cover branch, foliage and sky. Visual review: closed outlines and recognizable silhouette; eye highlights removed. Remaining doubts: pane count appears above the 30–40 target, some adjacent panes share colours, subtle fill shading and darker facial browns remain, and a few closely spaced/multiway junctions and narrow background wedges need attention during tracing. Intended palette is specified above; this is not audited playable geometry or final glass artwork.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/motif_sloth-silhouette.webp",
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Create one flat stained-glass puzzle design sheet for Tembel Hayvan (sloth). References: first image is OLD subject idea only, do not copy crude geometry or texture. Second image is elegant stained-glass design style reference only. New composition: a recognizable natural sloth with oval face, characteristic broad eye patches and long curved arms hanging from a sweeping branch, framed by a few large tropical leaves. Elegant oval panel on pure white exterior, portrait 3:4, panel nearly touches edges. Aim 30–40 closed panes TOTAL, about 35, large bold pieces. Use exactly FOUR solid fill colours: warm cinnamon #A65A35 and golden ochre #E5AD45 ONLY for animal, deep teal #176B62 and sky turquoise #55B8CB ONLY for background including branch and foliage. Alternate the two animal colours across meaningful broad full-width fur/limb bands; alternate background pair across broad leaf and sky divisions. No white glass. Pure black uniform smooth lead lines about 1 percent canvas width, black closed rim. All strokes connect to rim or junction, no free-ended mouth or claw marks; facial features are enclosed substantial panes in animal colours only. At most three panes at any junction, spaced T joints, no X crossings. Avoid slivers and tiny panes. Maintain clean natural subject contours. Flat vector-like fills: absolutely no gradients, shadows, texture, highlights, text, frame ornament or extra colours. Warm sophisticated botanical stained-glass composition, not childish mascot. Simplify leaf divisions to stay below 40 panes.",
+  "revisionPrompt": "Revise this sloth design sheet. Keep the oval composition and recognizable hanging sloth but SIMPLIFY to 30–40 total panes: approximately 18 animal panes and 16 background panes. Remove half the background leaf veins and half the body stripes. CRITICAL: every fill must be a perfectly uniform single solid colour, NO SHADING NO GRADIENT NO TEXTURE. Exactly four flat hex fills: animal cinnamon #A65A35 and golden ochre #E5AD45; background deep teal #176B62 and turquoise #55B8CB. No other colours except pure black lead and pure white OUTSIDE oval. Remove eye highlights and pupil circles: eyes should be simple closed cinnamon oval panes within ochre eye-mask surrounds, without dots. Simplify face to broad mask shapes, no decorative mouth curves. Alternate animal pairs wherever possible; background pairs only in branch, leaves and sky. Only well separated T junctions (3 panes maximum), eliminate multiway fans especially on left rim and bottom leaves. All lines fully close panes; uniform black lead width throughout; no tiny slivers, no narrow strips, no hanging line ends. Elegant stained glass botanical design. 3:4 portrait, oval nearly fills canvas. This is a flat tracing guide not rendered glass. White exterior."
+}

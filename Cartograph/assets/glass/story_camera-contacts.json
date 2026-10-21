@@ -1,0 +1,53 @@
+{
+  "id": "story_camera",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-21T08:09:00.896093+00:00",
+  "source": "assets/glass/story_camera-silhouette.webp",
+  "sourceSha256": "201f33f8e285ea3b0ec5f95fd13d4c43d7deccc00becdafe543c460166c41693",
+  "sourceGeometrySha256": "d7c36bfa55cd9171aed4ee8d12bad5717596b01c4cffab179e09a0c3ca140166",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.7014007072045405
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.6474935695810573
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.7972855418567392
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6943005250753824
+    }
+  ],
+  "size": [
+    1459,
+    1946
+  ],
+  "guide": "f046e502587211b9c2952aa9ba82a8bec863e5b938621dbad3f8607d541567b7",
+  "sha256": "4db6fa6247cbea45427ddba343708f852afe14daee665770e52900acfb5dd591",
+  "palette": [
+    "#bd3c66",
+    "#fbcb3a",
+    "#11999b",
+    "#0e2f55"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 28,
+    "total": 28,
+    "mismatches": []
+  }
+}

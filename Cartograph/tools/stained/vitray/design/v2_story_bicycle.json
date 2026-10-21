@@ -1,0 +1,29 @@
+{
+  "id": "v2_story_bicycle",
+  "name": "Sahil Bisikleti",
+  "scene": "An elegant vintage bicycle stands beside sweeping coastal waves beneath a blue sun in a round-arched stained-glass panel.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "coral",
+      "#D9533F"
+    ],
+    [
+      "gold",
+      "#E9B83E"
+    ],
+    [
+      "ocean blue",
+      "#215A80"
+    ],
+    [
+      "turquoise",
+      "#329CA8"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only. Target 35–45 panes. Generated with lighthouse and poppies style references and the old bicycle subject reference, then regenerated once after visual review to simplify the composition. Final visual review: warm bicycle and cool background pairs are maintained, exterior is white, contours are closed with no obvious loose line ends, and wheel spokes are omitted. Remaining doubts: the visible pane count still appears above the target; subtle fill shading remains; some same-colour neighbours will merge during tracing. Narrow frame openings, saddle divisions and wheel/frame junctions need geometry review for slivers and close or multiway contacts. This is not a validated puzzle or finished glass artwork."
+}

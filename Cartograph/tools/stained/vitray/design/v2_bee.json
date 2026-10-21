@@ -1,0 +1,37 @@
+{
+  "id": "v2_bee",
+  "name": "Bal Arısı",
+  "scene": "A happy honeybee with translucent wings flying over glowing honeycomb cells.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Golden yellow",
+      "#F2C438"
+    ],
+    [
+      "Amber",
+      "#B86B20"
+    ],
+    [
+      "Sky blue",
+      "#50AED0"
+    ],
+    [
+      "Deep teal",
+      "#226D68"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 51–61 panes. Visually inspected both attempts and regenerated once to remove warm colours from honeycomb and simplify background. Final bee uses yellow/amber and background including honeycomb uses blue/teal. Remaining concerns: subtle tonal variation remains; some same-colour adjacent pieces may merge during tracing; crowded wing root and lower-left background junction need geometry review, and small leg-root panes may need merging. Pane count and production geometry are not certified. No game catalogue changes.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/bee-panes.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_hotairballoon.png"
+  ],
+  "prompt": "Create a flat design sheet for a stained-glass colouring puzzle, level v2_bee, Bal Arısı. Image 1 is the old bee subject reference only; images 2 and 3 are elegant leaded composition style references. Redraw a graceful recognisable honeybee flying over honeycomb cells, in a large centred OVAL panel nearly touching the edges of a portrait 3:4 canvas. White exterior only. Aim for 51–61 closed large panes total, about 55. Bee in side view with a rounded head, one clearly visible round eye pane, curved striped abdomen, two large sweeping wings divided by simple outline-to-outline curved bands, and simplified closed leg shapes. No loose antenna lines: represent antennae as broad closed curved shapes. Elegant real stained-glass craftsmanship in silhouette, but absolutely FLAT solid colour fills, NO glass texture, NO shading or gradients. Exactly four interior colours: golden yellow #F2C438 and rich amber #B86B20 for ALL bee parts including wings and eye (alternate the pair across neighbouring subject pieces); sky blue #50AED0 and deep teal #226D68 for ALL background panes and honeycomb. Honeycomb cells grouped across lower third, flowing sky divisions above, no arbitrary grid. No subject colours anywhere in background. Uniform pure black lead roughly 1 percent canvas width, thick closed black outer rim. Every line connects to another line or outer rim; closed panes only, no floating strokes, no dots or black filled eyes. Only T junctions with three regions meeting, no X crossings or four-way contacts. Keep junctions widely spaced, no slivers or tiny narrow regions; broad leg and antenna shapes. Honeycomb neighbour colouring may require paired cell mergers, prioritise two-colour background alternation. No text, labels, signatures, highlights, bevels, border frame, photographic context or white glass. Deliver one clean flat tracing sheet.",
+  "revisionPrompt": "Revise this bee design sheet. Preserve elegant oval silhouette and side-view bee above honeycomb, portrait 3:4 white exterior. REQUIRED CORRECTIONS: ALL honeycomb and ALL background must be ONLY sky blue #50AED0 or deep teal #226D68. No yellow or amber below or outside bee silhouette. Bee wings, head, abdomen, legs and antennae ONLY golden yellow #F2C438 and amber #B86B20. EXACTLY FOUR FLAT SOLID COLOURS, remove ALL gradients, shading, glow and texture. Simplify to 51–61 total closed panes (target 55), not the current roughly 80. Bee around 25 panes, background around 30: 5 broad abdomen bands, 3 broad bands per wing, 3 head/thorax pieces plus a round eye pane, 2 simple closed antennae and 3 broad legs with only 2 segments each. Reduce honeycomb to 12 large cells; two background colours only, same-colour adjacent cells may merge into broad honeycomb-derived shapes. Use alternate blue/teal sky bands. Uniform pure black lines about 1 percent image width, all connected and closed. Only widely separated T junctions, no X or four-way crossings especially at wing roots and legs; stagger joins. No narrow blue slit between wings: widen it substantially. No tiny panes, dangling lines, dots, text or white interior. This is a clean flat puzzle tracing diagram, not finished glass."
+}

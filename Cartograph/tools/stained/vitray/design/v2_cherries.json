@@ -1,0 +1,36 @@
+{
+  "id": "v2_cherries",
+  "name": "İkiz Kiraz",
+  "scene": "two ripe cherries hanging from stems with a broad leaf",
+  "shape": "oval",
+  "palette": [
+    [
+      "Cherry crimson",
+      "#C52946"
+    ],
+    [
+      "Coral",
+      "#F27860"
+    ],
+    [
+      "Jade green",
+      "#258575"
+    ],
+    [
+      "Sky blue",
+      "#56B5D4"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Oval botanical design with two ripe cherries, curved segmented stems and one broad leaf. Fruit uses the warm subject pair; stems, leaf and surrounding wind bands use the cool background pair. Target 94–134 panes. Inspected both generations; regenerated once for greater pane density and removal of a fifth stem tint. Remaining tracing-review concerns: subtle tonal variation persists; some adjacent same-colour panes may merge, and closely spaced junctions at the leaf tip, cherry shoulders and internal cherry stripes need geometry review. No obvious open line ends. Design sheet only; not geometry-audited or published.",
+  "tool": "image_gen",
+  "prompt": "Create a flat stained-glass DESIGN SHEET for a tracing pipeline, not finished glass. Portrait 3:4 canvas. Elegant oval panel almost touching canvas edges, pure white exterior and closed black rim. Subject: two ripe cherries hanging at slightly different heights from graceful thick stems with one broad leaf above. Mature elegant botanical leaded-glass composition inspired by the attached poppies and fox style references, not their subjects. Exactly 110 closed panes total, target 94–134: cherries each about 18 curved broad stripe panes, stems about 8 total, one broad leaf about 12, background about 54 flowing sky/wind-band panes. No decorative frame. Exactly FOUR solid flat fill colours: cherry crimson #C52946 and coral #F27860 exclusively for the two cherry fruits (subject pair); jade green #258575 and sky blue #56B5D4 exclusively for background, stems and broad leaf (background pair). Alternate crimson/coral in adjacent fruit stripes; alternate jade/blue along flowing background bands and leaf divisions. Keep cherries round and naturally lobed at stems, each with broad curved outline-to-outline stripe divisions, no tiny highlight panes. Leaf shape broad and very recognizable. Stems at least 3% panel width and may use blue/jade segments. Background divisions follow graceful botanical curves, not grids. Uniform pure black lead lines approximately 1% canvas width, smooth curves. Every line meets another line or rim, no dangling ends. Only separated T junctions with three panes maximum, no four-way junctions or X crossings. Stagger neighboring endpoints by at least 3% panel width. Every pane wide enough to see and paint, no slivers or tiny pieces. Flat fills only, absolutely NO gradients, shading, glass texture, highlights, lettering or symbols. Pure white only outside the oval. Subject legible at small scale. References supply elegant composition and smooth leadwork only; improve their colour-pair alternation and eliminate their gradients.\nCORRECTION: The previous attempt had only about 65 panes, shaded fills, and an unwanted fifth light-green stem colour. Produce 110 panes, not 65. Each cherry must contain 18–22 broad closed stripe panes (not 8), with alternating crimson/coral. Use additional broad transverse stripes in stems and broad leaf; fill stems ONLY with the SAME jade #258575 and blue #56B5D4 as background. All fills perfectly uniform solid RGB. No different lighter green. Increase background to 55–65 panes with staggered curved bands. Avoid X joins, most especially at leaf veins and stem attachment.",
+  "references": [
+    "tools/stained/vitray/design/vitray_poppies.png",
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "generationAttempts": 2
+}

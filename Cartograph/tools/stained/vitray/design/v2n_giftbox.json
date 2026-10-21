@@ -1,0 +1,37 @@
+{
+  "id": "v2n_giftbox",
+  "name": "Hediye Kutusu",
+  "scene": "a gift box with a ribbon bow",
+  "shape": "round arch",
+  "palette": [
+    [
+      "vermilion",
+      "#C74732"
+    ],
+    [
+      "golden amber",
+      "#EFBF32"
+    ],
+    [
+      "deep blue",
+      "#185C80"
+    ],
+    [
+      "turquoise",
+      "#199BA5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening-level design. Visually counted 18 closed panes: 10 gift/bow panes and 8 background panes, within target 12–22. Inspected after one regeneration: continuous closed rim, no apparent loose ends or X crossings; central ribbon is uninterrupted. Subject/background colour pairs are separated. Remaining doubts: subtle generated shading persists; adjacent gold bow/shoulder/lid/ribbon panes do not alternate and may merge during tracing; shoulder tips are narrow. Design sheet only, not geometry-audited or published.",
+  "generation": {
+    "tool": "clai image",
+    "attempts": 2,
+    "references": [
+      "tools/stained/vitray/design/vitray_lighthouse.png"
+    ],
+    "promptSummary": "Elegant round-arched gift-box panel; 12–22 large closed panes, red/gold subject, blue/teal background, opaque white exterior, black lead, separated T junctions, flat fills."
+  }
+}

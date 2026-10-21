@@ -1,0 +1,29 @@
+{
+  "id": "v2_acorn",
+  "name": "Meşe Palamudu",
+  "scene": "An acorn with a patterned cap and one oak leaf.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt sienna",
+      "#A64B2A"
+    ],
+    [
+      "amber gold",
+      "#E8AE37"
+    ],
+    [
+      "deep teal",
+      "#216A65"
+    ],
+    [
+      "cornflower blue",
+      "#559EC0"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Portrait oval botanical design; target 44–54 panes. Acorn, cap, stalk and single oak leaf use the warm pair; flowing background uses only teal and blue. Generated with ClaiFace image skill using vitray_fox.png and vitray_poppies.png as style references and acorn-contacts.webp as subject reference. Inspected and regenerated once to replace crowded cap scales with broad alternating curved stripes and restore an opaque white exterior. Remaining doubts: subtle fill tonal variation persists; some same-colour neighbours at cap/body and leaf seams may merge during tracing, and closely spaced junctions near the stalk and acorn tip need downstream geometry review. No obvious loose line ends; design sheet only, not audited or published game geometry."
+}

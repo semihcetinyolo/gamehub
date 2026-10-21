@@ -1,0 +1,36 @@
+{
+  "id": "v2_compass",
+  "name": "Pusula Gülü",
+  "scene": "An ornate antique compass rose with an eight-pointed star floats over flowing sea-chart arcs and waves.",
+  "shape": "oval",
+  "palette": [
+    [
+      "antique gold",
+      "#E8AE32"
+    ],
+    [
+      "burnt rust",
+      "#B94E32"
+    ],
+    [
+      "deep ocean blue",
+      "#205578"
+    ],
+    [
+      "turquoise",
+      "#279CA5"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 79–119 panes. Eight-pointed compass and central medallion use the warm pair; sea-chart background uses the blue pair. Visually inspected both generations; regenerated once to remove narrow rings and reduce crowded junctions. Remaining issues: several star arm cross-seams still form four-way junctions; some star tips meet background seams or approach the rim too closely; subtle fill shading remains, with an unoutlined colour variation below the central disk; some same-colour neighbours may merge during tracing. Palette values are intended tracing colours. Requires geometry cleanup and palette normalization before production; not audited or published.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/compass-junctions.webp",
+    "tools/stained/vitray/design/vitray_lighthouse.png",
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Create a flat tracing design sheet for Cartograph level v2_compass, Pusula Gülü. Portrait 3:4 canvas. An elegant antique nautical eight-point compass rose on an old sea chart, drawn as a real leaded stained-glass panel design, not a childish icon. Large oval silhouette nearly touching the canvas edges, pure white exterior, closed thick black rim. Reference 1 is the old compass SUBJECT ONLY, improve its composition. References 2 and 3 show the elegant stained glass composition style ONLY; do not copy their subjects or shading. Exactly FOUR perfectly flat solid glass colours: antique gold #E8AE32 and burnt rust #B94E32 exclusively for compass subject; deep ocean blue #205578 and turquoise #279CA5 exclusively for background. Pure black uniform lead about 1 percent canvas width. No gradients, texture, highlights, shadows, white glass, text, letters, numerals, signature, extra colours. Aim 90–105 closed large readable panes, target 79–119. Eight recognisable compass points, four long cardinal points and four shorter diagonals, a substantial round central medallion prevents any lines converging in the center. Elegant directional star with gold/rust bands across its arms alternating subject colours; stagger any seam endpoints so only separated T junctions occur. No X crossings or junction of four or more panes. Background consists of flowing chart-like ocean arcs and broad radial areas alternating blue and turquoise, not a grid; background partitions terminate on compass outline away from its own junctions. All lines end on another line or rim, no floating lines. No decorative bevelled frame. No skinny parallel slivers, minimum pane width 3 percent panel width except star tips, no tiny panes. Keep neighbouring junctions at least 3 percent panel width apart. All panes closed, subject highly recognisable, mature balanced ornamental composition. Flat fills absolutely, no glass rendering, this is the tracing sheet.\nREVISION REQUIREMENTS: The first attempt failed because of shading, X crossings where chart rays cross circular rings, same-gold adjacent ring panes, and star tips touching rim. Redraw with ABSOLUTELY SOLID UNIFORM HEX FILLS, no lighting whatsoever. Keep ALL eight star tips comfortably inside the oval with a broad blue background gap. REMOVE both narrow gold circular rings entirely; use broad blue and turquoise chart arcs instead, stagger each radial join on either side of arcs by at least 35 pixels at 1080px width so no line goes straight across an arc. Compass arms must use transverse full-width alternating gold/rust bands, not extra diagonal facets converging at the arm bases. A single broad gold central disk, with star subdivision endpoints separately spaced around it; no segmented thin ring. Increase broad background panes as needed for total 79–119, but avoid small strips. Refined compass star silhouette must remain eight-pointed. White outside oval only. Pure vector-flat appearance is mandatory, do not imitate shaded fills in references."
+}

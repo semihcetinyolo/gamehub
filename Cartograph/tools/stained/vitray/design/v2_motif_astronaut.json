@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_astronaut",
+  "name": "Astronot",
+  "scene": "An astronaut floats diagonally through sweeping orbital bands of deep blue space.",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt orange",
+      "#D66B32"
+    ],
+    [
+      "golden amber",
+      "#F2C14E"
+    ],
+    [
+      "midnight blue",
+      "#173C70"
+    ],
+    [
+      "sky blue",
+      "#499FCA"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Redrawn from motif_astronaut with fox and lighthouse design sheets as style references. Target 73–113 panes. Warm astronaut including visor; blue-only space. Portrait oval, white exterior. Generated and visually reviewed, then regenerated once for flat fills and separated junctions. Remaining concerns: subtle fill variation persists; some same-colour adjacent pieces may merge during tracing; possible four-way junctions remain at chest and middle-right background, with narrow helmet strips and incomplete/faint seams at right shoulder, left upper arm and raised knee. Pane count and geometry are not yet validated; resolve these in tracing while preserving subject contours. Design sheet only."
+}

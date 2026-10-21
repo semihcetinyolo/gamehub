@@ -1,0 +1,29 @@
+{
+  "id": "v2_jellyfish",
+  "name": "Denizanası",
+  "scene": "A jellyfish with a domed bell and four flowing ribbons drifts through curved ocean currents.",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral",
+      "#DC604D"
+    ],
+    [
+      "golden amber",
+      "#E9B63B"
+    ],
+    [
+      "ocean blue",
+      "#195C83"
+    ],
+    [
+      "turquoise",
+      "#239DAB"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only, targeting 97–137 panes. Coral and amber are reserved for the domed bell and exactly four flowing ribbons; blue and turquoise are reserved for water. Style references: vitray_fox.png and vitray_lighthouse.png; original subject reference: assets/glass/jellyfish-silhouette.webp. Generated with clai image, inspected, and regenerated once to request flatter fills, a white exterior and separated T junctions. Final visual review: recognisable subject, closed outer oval, white exterior and consistent subject/background colour pairs; no obvious loose line ends. Remaining concerns: slight tonal variation persists, some four-way contacts remain near the upper bell and lower ribbon/background junctions, several narrow pointed water gaps need review, and adjacent amber bell panes may merge during tracing. Pane count and minimum visible widths are not geometrically validated. Resolve background contacts without distorting subject contours before production tracing/build."
+}

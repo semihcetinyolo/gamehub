@@ -1,0 +1,29 @@
+{
+  "id": "v2_story_narwhal",
+  "name": "Kutup Yolculuğu",
+  "scene": "A narwhal swims upward through flowing Arctic waters beneath distant ice formations.",
+  "shape": "oval",
+  "palette": [
+    [
+      "raspberry",
+      "#C94F7C"
+    ],
+    [
+      "golden amber",
+      "#EAB83E"
+    ],
+    [
+      "ocean blue",
+      "#174F78"
+    ],
+    [
+      "turquoise",
+      "#29A9B0"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 30–40 panes. Narwhal uses raspberry and amber; Arctic background uses ocean blue and turquoise. Generated with fox and lighthouse style references and the old narwhal subject reference, then regenerated once after visual inspection. Remaining doubts: subtle tonal variation and lighter turquoise ice remain; some adjacent subject panes share a colour and may merge during tracing; eye nearly touches a body seam, and tail-root and tusk-tip contacts need geometry review for ambiguous junctions. No obvious loose line ends. Not a validated puzzle geometry or final glass artwork."
+}

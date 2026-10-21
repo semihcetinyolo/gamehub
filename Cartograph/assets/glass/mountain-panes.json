@@ -1,0 +1,53 @@
+{
+  "id": "mountain",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-20T14:34:55.178829+00:00",
+  "source": "assets/glass/mountain-silhouette.webp",
+  "sourceSha256": "ef1a72a980efa6aa53c7a39cd5486d10593450677a5bc3f6f432fdb1a54424c2",
+  "sourceGeometrySha256": "a4d19465ccadb5a0c4e5e77adcbb5438bc8986580c951a71ef4a05cddc940153",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 56,
+      "donorPatches": 29,
+      "colour": 0,
+      "preservedFraction": 0.3849187729712473
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 84,
+      "colour": 1,
+      "preservedFraction": 0.4346003944245392
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5167176174360747
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5291568579005889
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "226b3457e277ff7dffbae91a1f631349f492cc3e29d894d7166e3700e3ee488c",
+  "sha256": "2d0692e49deb4eca0e2e74af977cc1bee530f84d3dac19476d769881b06240cf",
+  "palette": [
+    "#f06d84",
+    "#fbd213",
+    "#406e9f",
+    "#085826"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 40,
+    "total": 40,
+    "mismatches": []
+  }
+}

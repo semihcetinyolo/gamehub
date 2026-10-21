@@ -1,0 +1,36 @@
+{
+  "id": "v2_fox",
+  "name": "Orman Tilkisi",
+  "scene": "a clever red fox face peeking out between dark green ferns",
+  "shape": "oval",
+  "palette": [
+    [
+      "burnt orange",
+      "#D95B18"
+    ],
+    [
+      "amber gold",
+      "#EFB936"
+    ],
+    [
+      "forest green",
+      "#164D3C"
+    ],
+    [
+      "jade green",
+      "#4BA887"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 71–111 panes. Visually reviewed initial generation and one revision. Closed oval and clear fox/fern colour separation; revision simplifies nose and eyes and improves black lead. Remaining doubts: subtle fill variation persists; crowded contacts around eyes, forehead and fern tips require tracing-stage review; some same-colour neighbours may merge. Pane count not mechanically verified. Design sheet only.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/fox-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Create one fresh stained-glass puzzle DESIGN SHEET for Orman Tilkisi. Reinterpret reference 1 (old angular fox face) using the elegant flowing leadwork of reference 2; do not copy the seated pose of reference 2. A clever red fox FACE peeking out between dark green ferns, front facing, pointed tall ears, tapered muzzle, alert almond eyes, elegant natural contours. Oval silhouette nearly filling a portrait 3:4 white canvas, 1536x2048 preferred. Exactly 71–111 closed panes, aim 85: approximately 30 broad flowing fur panes and 55 fern/background panes. Sophisticated artisanal stained-glass composition but rendered as perfectly FLAT solid colour vector-like design for tracing. Exactly FOUR flat fill colours: burnt orange #D95B18 and amber gold #EFB936 exclusively in fox, forest green #164D3C and jade green #4BA887 exclusively in ferns and background. Alternate the two colours inside each zone across neighbouring panes. Eyes and nose also use fox pair with black lead outlines, no extra black filled shapes. No white or cream glass. Pure white only outside oval. Pure black smooth uniform lead lines about 1 percent canvas width, closed thick black outer rim. Every line terminates on another border or rim. Only separated T junctions, never X crossings or four-way vertices; offset opposing junctions generously. Broad panes at least 3 percent panel width, no tiny slivers or thin stems. Use outline-to-outline sweeping fur bands to allow colour alternation, flowing fern lobes as background subdivisions. NO gradients, shading, textures, highlights, text, signature, decorative frame, loose lines, dots or hatching. Reference style only; strict four colour pairs and flat fills override reference shortcomings.",
+  "revisionPrompt": "Revise this exact fox design sheet. Keep oval silhouette, face composition, four colour pairs and approximate 85 panes. Essential correction: remove ALL shading, gradients, shadows, sheen and texture. Each pane must be one perfectly uniform solid fill, like SVG flat poster colour. Use ONLY #D95B18 burnt orange and #EFB936 gold inside the fox; ONLY #164D3C forest green and #4BA887 jade green for ferns/background. Pure #000000 lead and #FFFFFF exterior. Make all lead uniformly black, same width about 11px on this canvas. Remove the grey/brown sections of outlines. Simplify eyes to one closed gold almond pane each with a single orange central oval; no branching eye lines. Remove nose and mouth micro-panes by making one simple broad orange nose pane surrounded by gold muzzle. Separate every four-way intersection into two spaced T junctions, particularly central forehead and between ears. Keep 71–111 broad closed panes. No loose line ends, no tiny pieces. Smooth elegant fern silhouettes. No text. Output portrait 3:4."
+}

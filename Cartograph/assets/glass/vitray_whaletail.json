@@ -1,0 +1,53 @@
+{
+  "id": "vitray_whaletail",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T09:23:40.371265+00:00",
+  "raw": "tools/stained/vitray/raw/vitray_whaletail.png",
+  "rawSha256": "a1157b2ca2dcc398bfa4e891d97b1d3faf269e8d956939adc4931764249e2644",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 16,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.04520065054733496
+    },
+    {
+      "patchSize": 101,
+      "donorPatches": 60,
+      "colour": 1,
+      "preservedFraction": 0.3611477874739811
+    },
+    {
+      "patchSize": 135,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5957335865281719
+    },
+    {
+      "patchSize": 109,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.5578565773870483
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "a7ce61f952ded7f044d818c79d07a0f5e064fe92e8425ccfd718cb618407f159",
+  "sha256": "e094c575cd614df90975a31b8f6538d8de1b40b2b292f66d40e0e46474039955",
+  "palette": [
+    "#072b6c",
+    "#9543d4",
+    "#04b1ad",
+    "#fdc10b"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 105,
+    "total": 105,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/vitray_whaletail.webp"
+}

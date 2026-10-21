@@ -1,0 +1,29 @@
+{
+  "id": "v2_kaleido",
+  "name": "Kaleydoskop",
+  "scene": "A kaleidoscope mandala of six-fold petals, stars and diamonds.",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral vermilion",
+      "#DC563D"
+    ],
+    [
+      "amber gold",
+      "#E9AF32"
+    ],
+    [
+      "azure blue",
+      "#369AC0"
+    ],
+    [
+      "deep teal",
+      "#186C70"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Target 31–41 panes. Six two-colour radial petals surround a coral six-point star with a gold circular centre; six gold diamonds punctuate a blue/teal background. Subject uses coral/gold only; background uses blue/teal only. Generated with clai image using the old kaleido artwork and vitray_fox/vitray_poppies style references, then regenerated once after visual inspection to simplify divisions and crossings. Final image visually inspected: closed outer oval and recognisable sixfold motif; remaining concerns include subtle fill shading, unlined blue/teal transitions near side and bottom diamonds, lower side diamonds touching petal tips, and tight contacts around the central star. These require attention during tracing and geometry preparation; design is not geometry-certified or published."
+}

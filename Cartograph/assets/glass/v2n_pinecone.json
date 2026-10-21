@@ -1,0 +1,53 @@
+{
+  "id": "v2n_pinecone",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:53:46.109186+00:00",
+  "raw": "tools/stained/vitray/raw/v2n_pinecone.png",
+  "rawSha256": "e0947d01a9e79f1e029d8cff2b2812446c20487c5998bdf41d1ec1036941c914",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 99,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.6509162339822466
+    },
+    {
+      "patchSize": 96,
+      "donorPatches": 50,
+      "colour": 1,
+      "preservedFraction": 0.4973079331362719
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.7195468419945259
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.7852267977913329
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "667c99f78fd2db8cdf94d750698431d34a0c31b1656f24169c400e2ae570a4a3",
+  "sha256": "09808c6cf701613a4305b34661d2c7c1bbc7fb26d65e564167fcc85e2fcad9e3",
+  "palette": [
+    "#fbac06",
+    "#7c2102",
+    "#057b64",
+    "#3cbbf2"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 18,
+    "total": 18,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2n_pinecone.webp"
+}

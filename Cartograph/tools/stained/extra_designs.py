@@ -122,8 +122,10 @@ def penguin():
 
 
 def rabbit():
+    # The belly disc sat tangent to the face (both touched y=10.4): move it
+    # down whole so the green body ring visibly separates them.
     return compose([(oval(4.5, 7.2, .65, .7), 3), (oval(7.5, 7.2, .65, .7), 3),
-                    (oval(6, 8.7, .7, .6), 0), (oval(6, 11.9, 1.5, 1.5), 0),
+                    (oval(6, 8.7, .7, .6), 0), (oval(6, 12.2, 1.5, 1.5), 0),
                     (oval(6, 7.8, 2.9, 2.6), 1), (oval(4.1, 3.4, 1.2, 2.7, -14), 0),
                     (oval(7.9, 3.4, 1.2, 2.7, 14), 0), (oval(6, 11.9, 2.9, 2.7), 1)], 8)
 

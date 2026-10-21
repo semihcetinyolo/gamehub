@@ -1,0 +1,53 @@
+{
+  "id": "vitray_sunsetsail",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T08:58:06.169157+00:00",
+  "raw": "tools/stained/vitray/raw/vitray_sunsetsail.png",
+  "rawSha256": "b651eea5fff38a5361159692bee8a15f30f8ede28daf03730175c357c1a3e032",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 110,
+      "donorPatches": 55,
+      "colour": 0,
+      "preservedFraction": 0.6171666282803323
+    },
+    {
+      "patchSize": 111,
+      "donorPatches": 89,
+      "colour": 1,
+      "preservedFraction": 0.46207410199098087
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.6722986381790778
+    },
+    {
+      "patchSize": 122,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.590855251802935
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "095093c6e8217d6a6a1052be9ca3c1c34d131d6d5bcb2502240f26a19a1c25aa",
+  "sha256": "d390aaec2725a03bd4aaf554149292b1e0d941a417028d6c3d92e4a5e57c8458",
+  "palette": [
+    "#fde019",
+    "#fc5e10",
+    "#09a1ae",
+    "#0134a5"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 63,
+    "total": 63,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/vitray_sunsetsail.webp"
+}

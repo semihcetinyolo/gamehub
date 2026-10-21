@@ -1,0 +1,78 @@
+{
+  "id": "vitray_peacock",
+  "name": "Tavus Kuşu",
+  "scene": "A blue peacock perches among magnolias with its patterned tail cascading down the panel.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "Royal blue",
+      "#2856B6"
+    ],
+    [
+      "Turquoise",
+      "#25A9A3"
+    ],
+    [
+      "Warm gold",
+      "#DCA639"
+    ],
+    [
+      "Rose pink",
+      "#CD7794"
+    ]
+  ],
+  "notes": "Reviewed after one regeneration. Remaining concerns: clustered petal bases, crest base and some tail contacts may exceed three panes; narrow feather strips and some same-colour neighbours remain. A few visible blue hue shifts are not intended extra colours. Review these during tracing. Approximate raster region count 237 is outside the requested 70–130; simplify or subdivide during tracing as appropriate.",
+  "tool": "image_gen",
+  "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d79-ddf0-75b0-8c24-eceb8897ba20/exec-fb9b0053-00cf-4b93-8fc9-e1878d5af66e.png",
+  "references": [
+    "tools/stained/vitray/refs/vitray_peacock.jpg"
+  ],
+  "prompt": "Create ONE flat Cartograph stained-glass puzzle DESIGN SHEET, a fresh composition inspired by the reference photograph. Portrait 3:4 canvas, preferably 1536x2048; centered panel nearly touching canvas edges on pure white exterior, one thick closed black outer rim, no decorative border frame. EXACTLY FOUR flat solid coloured fills specified below; no white/near-white or cream inside panel. Pure black smooth UNIFORM lead width 1% of canvas width, including eye rings and details. NO texture, shading, gradients, highlights, bubbles, dots, hatching, text or signatures. Target 85-100 panes, allowable 70-130 closed mixed-size panes: meaningful subject parts and organic background waves/bands/leaves, never arbitrary grids. Every line must run from rim/junction to rim/junction; no loose line ends. ONLY separated T-junctions: at most three panes meet at a point, never X or converging fan junctions. Offset neighbouring junctions by at least 3% panel width. All panes at least 3% panel width except pointed tips, area >=1/1000 panel area. No close parallel sliver strips or nearly touching lines, meeting angles >=30 degrees. Keep subject silhouette clear, smooth and recognizable; eyes are clearly visible closed circular COLOURED panes, no black pupil dots. Adjacent panes should have different palette colours where possible. Drop hands, walls, stands, window and photographic setting. Tracing-ready flat illustration, not glass rendering.\nPanel silhouette: ROUND ARCH, semicircular top with vertical sides and flat bottom. Subject inspired by photo: graceful peacock in profile with long curved neck and cascading tail, perched on a broad diagonal branch amid a few magnolia blossoms. FOUR colours exactly: rich royal blue #2856B6, turquoise #25A9A3, warm gold #DCA639, rose pink #CD7794. Replace all clear/white reference glass with rose and gold sky bands; no pale flowers. Simplify to 8 broad tail feathers, each with one large closed gold teardrop and blue centre, no thin concentric rings, a modest crest formed from closed broad lobes (no dangling stems or dots). Magnolia flowers have 3-5 broad petals with offset junctions. Approximate budget 100 panes: 45 tail, 15 bird/branch, 20 flowers/leaves, 20 sky bands. Stagger feather junctions, preserve generous spacing, no crowded crown knots. Perfectly uniform opaque flat colours, no glass or paper effects.\nCORRECTION for regeneration: Flower petals must not radiate from a single common point. Arrange broad overlapping side-view petals whose endpoints land at widely spaced T junctions along the adjacent petal, with a broad central cup. Likewise no bunch of crest feathers at one point: use a simple broad three-lobed closed crest with staggered bases. One simple circular gold eye pane, no nested decorative eye outlines. Tail feathers broad, no narrow streamers. Keep all interior fills absolutely flat with no shading. All visible lead lines SAME thickness including outer rim.",
+  "attempts": 2,
+  "rasterReview": {
+    "size": [
+      1086,
+      1448
+    ],
+    "enclosedComponentsOver20px": 237,
+    "smallComponentsBelowOneThousandth": 19,
+    "method": "Approximate non-black connected components; not a vector geometry audit.",
+    "paneCountWithinRequestedRange": false
+  },
+  "sha256": "be75f44ab33639afcd3cbc759df42df349506198f5bc948aea77b37f85be3b84",
+  "reviewStatus": "needs-tracing-review",
+  "subjectMask": {
+    "id": "vitray_peacock",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d79-ddf0-75b0-8c24-eceb8897ba20/exec-321044b6-428f-4e4b-94ad-e85d6718b5c6.png",
+    "prompts": [
+      "Precise local edit of this existing 1086x1448 peacock subject mask. Change ONLY the white downward-pointing BEAK pane just below the head at about x=590,y=335 to solid PURE BLACK. The beak is the narrow triangle extending from roughly (575,307) to (609,302) to (594,369). It belongs to the bird. Preserve all other subject panes black, all flower/branch/sky background panes white, existing line positions and exact canvas/framing. Do not redesign anything; do not change any other pane. The existing eye is already black and must stay black. Return the same mask with the beak filled black."
+    ],
+    "size": [
+      1086,
+      1448
+    ],
+    "file": "tools/stained/vitray/design/vitray_peacock.subject.png",
+    "sourceSha256": "be75f44ab33639afcd3cbc759df42df349506198f5bc948aea77b37f85be3b84",
+    "sha256": "7ada498f80ff28b5186c53f1a31315223fe7c38b020759c408ed62a5fe40fab1",
+    "tool": "image_gen",
+    "review": "Visually inspected for subject coverage and approximate alignment; white seams may remain inside black subject.",
+    "spotChecks": [
+      {
+        "seed": [
+          590,
+          335
+        ],
+        "blackFraction": 1.0,
+        "blackMajority": true
+      },
+      {
+        "seed": [
+          585,
+          270
+        ],
+        "blackFraction": 1.0,
+        "blackMajority": true
+      }
+    ]
+  }
+}

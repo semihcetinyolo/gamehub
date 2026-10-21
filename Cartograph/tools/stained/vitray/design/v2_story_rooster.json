@@ -1,0 +1,41 @@
+{
+  "id": "v2_story_rooster",
+  "name": "Çiftlikte Şafak",
+  "scene": "A proud rooster stands before a small farmhouse and rolling fields beneath a banded dawn sky.",
+  "shape": "round arch",
+  "palette": [
+    [
+      "vermilion",
+      "#C84832"
+    ],
+    [
+      "golden ochre",
+      "#EFBF38"
+    ],
+    [
+      "deep teal",
+      "#176C70"
+    ],
+    [
+      "sky blue",
+      "#59AFCC"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    39,
+    49
+  ],
+  "notes": "Design sheet only; regenerated once after inspection to remove sky X crossings and a subject-coloured background sun. Revised image visually checked: closed outer rim, recognizable rooster, warm subject pair and cool background pair. Remaining doubts: tightly converging tail feather roots, narrow feather tips and a few close junctions near comb/wing and farmhouse need tracer review; some adjacent subject panes share a colour and may merge. Slight fill variation remains despite flat-fill request. Exact pane count and geometry are not certified.",
+  "tool": "image_gen",
+  "prompt": "Create one flat stained-glass puzzle design sheet, portrait 3:4, for Çiftlikte Şafak (Dawn on the Farm). References: first image old rooster is SUBJECT ONLY, completely redraw its childish shape into an elegant mature rooster; second fox and third lighthouse are style references for graceful leaded-panel composition, but remove their shading and use fewer panes. Round arch silhouette nearly filling the canvas, pure white exterior, thick closed black rim. Proud rooster facing right, natural upright neck, scalloped comb and wattle, single large round eye, pointed beak, elegant broad curved tail feathers sweeping left, sculpted wing, two sturdy legs and simplified feet. Small distant farmhouse and broad rolling field bands plus dawn sky arcs behind it. Exactly 39–49 large closed panes overall, aim 44; approximately 25 rooster panes and 19 background panes. Exactly FOUR flat solid fill colours: vermilion #C84832 and golden ochre #EFBF38 exclusively in rooster including its eye and legs; deep teal #176C70 and sky blue #59AFCC exclusively in ALL background including farmhouse, dawn arcs and ground. Neighbouring rooster pieces alternate red/gold and background pieces alternate teal/blue wherever possible. Feather stripes run outline to outline, avoid branching internal details. No background colours in rooster; no rooster colours in background. Pure black smooth uniformly thick lead lines about 1% canvas width. Every line closes a pane and terminates at another border; no loose marks. Only well-separated T junctions, NEVER X or four-way junctions. No tiny fragments, hairline slivers, or narrow parallel seams. Eye is one visible round golden pane inside red head, no pupil dot. Panel should read as an elegant actual stained-glass design, with clean recognizable silhouette. Absolutely NO shading, gradients, texture, white glass, cream glass, highlights, text, decorative framing, or signature. Flat vector-like solid fills only. Save image to local file and return its path.\nCORRECTIONS REQUIRED: The previous attempt had too many panes, X crossings in upper left sky and a gold sun in background. Produce a simpler design with 44 panes total. ALL sky, sun, house and land must use ONLY blue and teal. Use 7 broad horizontal curved sky bands, each unbranched from rim to rooster outline. NO crossing sky lines or radial grids. Use only 6 broad rolling ground bands, with NO internal subdivision, running rim to subject outline; no crossings. Simplify tail to 5 broad feather bands and wing to 4 broad bands. Avoid thin hooked feather fragments. Strictly flat colours without any gradient, airbrush or surface shading. Separate junctions conspicuously, all three-way or fewer.",
+  "references": [
+    "assets/glass/story_rooster-silhouette.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "generationAttempts": 2
+}

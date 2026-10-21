@@ -1,0 +1,53 @@
+{
+  "id": "v2_turtle",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T11:05:05.577281+00:00",
+  "raw": "tools/stained/vitray/raw/v2_turtle.png",
+  "rawSha256": "7ef4935289899eb76fcf07777e980ac734ab78e88ce72245f749e9666e42db40",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 91,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.3975949956956051
+    },
+    {
+      "patchSize": 80,
+      "donorPatches": 72,
+      "colour": 1,
+      "preservedFraction": 0.5267118680106594
+    },
+    {
+      "patchSize": 110,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.5074925785831833
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6442011948855089
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "77c2184fdaa252fe426d7149ec3a842920dc52e5a1e57fe5a4bc535dc92bb231",
+  "sha256": "7e237032bf8bea20fc334aa34769cdc2e330f4866716c6e6bb7fc4f894ccde53",
+  "palette": [
+    "#c35901",
+    "#fcca24",
+    "#014084",
+    "#21bbd1"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 63,
+    "total": 63,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2_turtle.webp"
+}

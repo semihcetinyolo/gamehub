@@ -1,0 +1,39 @@
+{
+  "id": "v2n_seagull",
+  "name": "Martı",
+  "scene": "a seagull gliding over waves",
+  "shape": "oval",
+  "palette": [
+    [
+      "lavender",
+      "#ADA1CF"
+    ],
+    [
+      "deep plum",
+      "#625080"
+    ],
+    [
+      "turquoise",
+      "#269FA8"
+    ],
+    [
+      "marine blue",
+      "#175777"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Medium oval design, 41 enclosed coloured panes counted by connected components and visually reviewed; target 28–45. Bird uses lavender/plum, sky and waves turquoise/blue. One regeneration simplified background. Remaining doubts: subtle shading persists despite flat-fill request; a narrow turquoise wave lens and crowded lower wave contact remain; some same-colour neighbours and near-aligned subject/background junctions need review during tracing. Eye is a closed visible pane but below the preferred 1/1000 panel area. No obvious loose line ends. Design sheet only; no geometry or game catalogue changed.",
+  "paneCount": 41,
+  "targetPanes": [
+    28,
+    45
+  ],
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create a new stained-glass design sheet for Martı: a seagull gliding over waves. Reference image is STYLE ONLY: elegant traditional leaded panel composition and smooth strong black seams, not its subject or density. Portrait 3:4 canvas, opaque pure white outside a tall oval panel nearly touching the canvas edges. Exactly 36 large closed glass panes total: aim 16 gull panes and 20 calm sky/wave panes, absolutely 28–45 total. A bold recognisable graceful seagull in flight dominates upper two thirds, long swept wings spread diagonally, head in profile looking right, long tapered beak, streamlined body and short tail. Natural elegant anatomy, never cartoon. No little feather fragments. Subdivide wings using broad transverse strips from outline to outline, alternate subject colours. A clearly visible circular eye pane in the alternate subject colour, no black dot. Below the bird, broad gently rolling ocean wave bands, with calm wide sky bands around it. Four flat glass colours ONLY: subject uses muted lavender #ADA1CF and deep plum #625080 exclusively; background uses rich turquoise #269FA8 and marine blue #175777 exclusively. No white or cream panes. Alternate colours inside each pair wherever neighbouring pieces share borders. All fills completely flat, no gradients, shading, texture or highlights. Black uniform smooth lead about 1 percent canvas width closes every pane and the outer oval. Every seam must reach a rim or another seam. T junctions only, spaced at least 3 percent panel width, no X or four-way crossings. No slivers or tiny filler regions. No decorative border ring, no text, no symbols, no photo context. Use large uncluttered pieces, with beautiful authentic stained-glass craftsmanship expressed through the composition and curves.\nREVISION: Retain this gull composition and oval framing, but fix the crowded seams. Use only 12 simple wide background bands, each flowing entirely from outer rim to rim or ending at the bird outline. No branching wave tips, no interleaving narrow lenses, no tiny triangles, no background line intersection. In the gull remove the long narrow leading-edge wing strip: each wing is just 7 broad alternating transverse feather bands all the way from one outer contour to the other. Body, tail, head, beak and eye add 7–9 subject pieces. Target 34–38 total panes. Offset every background junction well away from a gull stripe junction. Absolutely solid uniform flat colours, like cut coloured paper; zero lighting, texture, mottling or gradients. Real traditional stained glass design language, elegant natural gull silhouette. Keep exterior pure white."
+}

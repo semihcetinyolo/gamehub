@@ -1,0 +1,38 @@
+{
+  "id": "v2n_ladybug",
+  "name": "Uğur Böceği",
+  "scene": "a ladybug seen from above",
+  "shape": "oval",
+  "palette": [
+    [
+      "vermilion red",
+      "#D94335"
+    ],
+    [
+      "deep plum",
+      "#482E50"
+    ],
+    [
+      "sky blue",
+      "#55ADD0"
+    ],
+    [
+      "forest green",
+      "#287963"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small opening-level design. Visually counted 16 closed panes: 6 subject panes (one connected red wing shell, one continuous plum head/central tongue, four plum spots) and 10 alternating blue/green background sectors. Rounded central tongue leaves a broad connected red band underneath. Checked after one regeneration: closed boundaries, separated T junctions, no visible X crossings or tiny filler panes; subject/background colour pairs remain separate. Opaque white exterior. Remaining doubt: subtle tonal shading persists despite flat-fill instructions; palette values are intended tracing colours. Design sheet only; no geometry or catalogue changes.",
+  "targetPanes": [
+    12,
+    22
+  ],
+  "paneCount": 16,
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "generationAttempts": 2
+}

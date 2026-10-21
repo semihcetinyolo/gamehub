@@ -1,0 +1,39 @@
+{
+  "id": "v2n_watermelon",
+  "name": "Karpuz Dilimi",
+  "scene": "a watermelon slice with seeds",
+  "shape": "oval",
+  "palette": [
+    [
+      "watermelon coral",
+      "#E95059"
+    ],
+    [
+      "deep emerald",
+      "#18734F"
+    ],
+    [
+      "turquoise",
+      "#42B8CF"
+    ],
+    [
+      "golden amber",
+      "#E5AA32"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Small design, visually counted 19 closed panes: 7 subject (red flesh, green rind, five green seeds) and 12 background (five above, seven below). Colour pairs remain exclusive and background alternation corrected in one regeneration. Visual review: closed outlines, separated T junctions, no apparent X crossings or loose ends. Remaining doubts: subtle generated tonal shading persists despite flat-fill request; narrow tapered background tips at lateral rind/rim contacts require attention during subsequent tracing. Design sheet only, not traced/audited or published game geometry.",
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Create ONE portrait 3:4 stained-glass puzzle design sheet for Karpuz Dilimi: a single large watermelon slice with seeds, centred within an upright oval panel almost filling the canvas on opaque pure white exterior. Attached fox image is a STYLE reference only: elegant real leaded-panel craftsmanship and confident smooth contours, NOT its subject or complexity. Flat uniform colour fills, no texture or shading or highlights. Exactly FOUR glass colours: watermelon coral red #E95059 and deep emerald green #18734F for ALL subject pieces; turquoise blue #42B8CF and golden amber #E5AA32 for ALL background pieces. Black lead and exterior white are not glass colours. One broad semicircular watermelon slice, straight cut edge uppermost and curved thick green rind below. Red flesh is one broad uninterrupted pane with FIVE large separated emerald teardrop-shaped seed panes enclosed within it; green rind is one broad uninterrupted curved pane meeting red flesh. Subject total SEVEN panes, no white rind, no black-filled seed dots. Background exactly TEN wide calm flowing/radiating panes around the slice, alternating turquoise and amber, each partition from outer oval rim to subject outline, no branches, no central starburst. Total SEVENTEEN closed panes, hard limit 12–22. Make seeds generously sized and separated from other lines, no tiny details. Smooth uniform pure black lead approximately 1% canvas width. Every pane closed, only clearly separated T junctions, no X crossings, no loose lines, no narrow slivers, no decorative border ring. The watermelon silhouette is bold and unmistakable. No text, numbers, signatures or objects outside panel. Render image and provide saved output file. REVISION: preserve this watermelon composition and all its existing boundaries. Absolutely SOLID FLAT fills per pane, no gradients, no highlights, no texture. There are five background panes ABOVE the watermelon: left to right turquoise, amber, turquoise, amber, turquoise. There are SEVEN background panes BELOW/around the rind: along the outer rim from upper-left clockwise around the BOTTOM to upper-right use amber, turquoise, amber, turquoise, amber, turquoise, amber. This makes all adjoining background panes different. Keep red flesh, five green seed panes, green rind unchanged. Total 19 panes. Pure white opaque exterior. Output the corrected image.",
+  "paneCount": 19,
+  "targetPanes": [
+    12,
+    22
+  ]
+}

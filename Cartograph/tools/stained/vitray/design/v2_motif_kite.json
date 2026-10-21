@@ -1,0 +1,29 @@
+{
+  "id": "v2_motif_kite",
+  "name": "Uçurtma",
+  "scene": "A striped diamond kite soars through sweeping blue and turquoise wind bands with a long curling ribbon tail.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Burnt orange",
+      "#D95632"
+    ],
+    [
+      "Golden yellow",
+      "#EFBF32"
+    ],
+    [
+      "Deep blue",
+      "#24658A"
+    ],
+    [
+      "Turquoise",
+      "#27A9AD"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 84–124 panes. Warm alternating kite and ribbon against cool sky. Generated with hot-air-balloon and lighthouse style references, then regenerated once after visual inspection to replace the kite lattice with uninterrupted stripes and change the frame to an oval with white exterior. Final visual review: closed regions and subject/background colour pairs are readable; remaining doubts include an X crossing in the right sky, closely spaced contacts near the kite bottom, slender sky wedges, adjacent same-colour sky panes, slight fill variation, and ribbon tips protruding outside the oval. Palette hex values are intended flat colours; raster is not certified as exact four-colour geometry. These issues require tracing-stage review."
+}

@@ -1,0 +1,39 @@
+{
+  "id": "v2n_chick",
+  "name": "Civciv",
+  "scene": "a round chick",
+  "shape": "oval",
+  "palette": [
+    [
+      "golden yellow",
+      "#F4C542"
+    ],
+    [
+      "amber orange",
+      "#D98222"
+    ],
+    [
+      "sky blue",
+      "#55B7D3"
+    ],
+    [
+      "deep teal",
+      "#237D79"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design-sheet stage only. Inspected both generations and used the single revision allowed by the brief. The final sheet has 27 closed coloured regions (10 subject, 17 background), above the requested 12–22 range despite the simplification request. Subject/background colour pairs are respected, but some touching subject panes share yellow or amber; these will need merging or recolouring during tracing. A close multi-line meeting near the upper wing/head and pointed tail pieces require geometry review. Subtle shading remains rather than strictly flat fills. No apparent loose line ends. Opaque white exterior. Not geometry-audited or game-ready.",
+  "targetPanes": [
+    12,
+    22
+  ],
+  "observedPanes": 27,
+  "tool": "image_gen",
+  "references": [
+    "tools/stained/vitray/design/vitray_fox.png"
+  ],
+  "prompt": "Create one new stained-glass puzzle DESIGN SHEET for Civciv: a round chick. Use the supplied fox image only as a reference for elegant traditional leaded-panel linework and restrained colour; replace its entire composition with a very simple chick. Portrait 3:4 canvas, oval silhouette nearly filling canvas, opaque pure white outside, closed thick black rim, no decorative border ring. One bold centred round chick in profile facing right, recognizable rounded head/body, small closed round amber eye, broad short beak, one simple wing, two simple broad feet. Exactly 12–22 closed glass panes TOTAL, aim 17: about 8 large meaningful subject pieces and 9 large calm background pieces. Background only broad gently curved bands, no vegetation or small filler. Exactly four flat fill colours: golden yellow #F4C542 and amber orange #D98222 exclusively in chick; sky blue #55B7D3 and deep teal #237D79 exclusively in background. Alternate neighbours inside each colour pair. Elegant authentic stained glass composition, never cartoon character styling. Smooth uniform pure-black lead about 1 percent canvas width. All lines fully connected, only well-separated T junctions, NO X crossings, no four-way contacts, no narrow slivers, no loose line ends, no extra eye pupils or highlights. Keep eye sufficiently large as one closed amber pane. Keep major body pieces large, with outline-to-outline division curves. Flat colour only; no shading, gradients, glass textures, lighting, text or signatures. Count pieces and keep below 22.\nREVISION: The first attempt had about 27 panes, too many. Dramatically simplify to EXACTLY 18 panes: 8 subject panes INCLUDING the round eye, single undivided beak and two feet; 10 background panes. Make the chick more ROUND, no tail feather subdivisions, no chest sliver, no neck triangle. ONE large yellow head with amber eye, ONE amber beak without mouth seam, ONE golden round body, ONE large amber wing, ONE amber lower-body band, TWO feet. Separate amber body band from amber feet with yellow body. All background bands must be large calm shapes. Remove bottom background subdivisions. Each subject-colour shared edge should separate yellow from amber. Flat uniform solid colours with zero texture or shading. No four-way junctions, in particular where head meets body and wing; stagger all T joins generously."
+}

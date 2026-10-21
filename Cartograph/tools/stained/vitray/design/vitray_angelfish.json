@@ -1,0 +1,70 @@
+{
+  "id": "vitray_angelfish",
+  "name": "Melek Balığı",
+  "scene": "A golden angelfish swims between ribbon leaves and flowing water bands.",
+  "shape": "circle",
+  "palette": [
+    [
+      "Ocean blue",
+      "#168FB8"
+    ],
+    [
+      "Leaf green",
+      "#46A23A"
+    ],
+    [
+      "Orange",
+      "#E88024"
+    ],
+    [
+      "Golden yellow",
+      "#F2C640"
+    ]
+  ],
+  "notes": "Orchestrator chose the FIRST attempt (semantic colours, readable fish); the regenerated alternating-colour version is kept as vitray_angelfish.alt.png. Visually reviewed after one regeneration. Remaining concerns: crowded converging fin/body junction near the gill and tail root, several narrow fin tips, some adjacent equal colours, slight fill variation; trace must review these. Requested circular silhouette is slightly vertically elongated. Palette is intended four-colour palette; raster colours are approximate.",
+  "tool": "image_gen",
+  "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d79-ddf0-75b0-8c24-eceb8897ba20/exec-9a6f5573-9d61-4b2e-9869-dde05c96cc87.png",
+  "references": [
+    "tools/stained/vitray/refs/vitray_angelfish.jpg"
+  ],
+  "prompt": "Use case: illustration-story. Create ONE Cartograph stained-glass puzzle DESIGN SHEET inspired by the input reference photograph (reference only, redraw a fresh composition). Subject: a graceful right-facing angelfish with broad sweeping dorsal/ventral fins, a fan tail, meaningful broad fin segments and body stripes, amid ribbon-like aquatic leaves and flowing water bands. Remove all photo context and decorative border frames. Portrait 3:4 canvas, preferably 1536x2048; a true CIRCLE panel centered, nearly touching left/right canvas edges, pure white exterior. One closed pure-black outer rim. Flat vector-like solid fills ONLY, exactly FOUR colours: ocean blue #168FB8, leaf green #46A23A, orange #E88024, golden yellow #F2C640. No white or pale cream glass; white is exterior only. Smooth pure-black lead lines uniformly 1% of canvas width (15px at 1536); no texture, shading, gradients, highlights, dots, hatching, text, signature, bevels or second outline weight. Aim 85-100 closed panes total, within 70-130, of mixed sizes: 30 meaningful fish pieces plus water bands and broad plant leaves subdivided in naturally offset sections. Every line connects rim or junction to rim or junction, NO dangling fin rays. ONLY T-junctions, at most 3 panes at each junction. Stagger adjoining divisions by at least 3% panel width, never X crosses or convergent fans. Each pane >=3% panel width except its own pointed tips; area >=1/1000 panel area. Wide clear spaces, no sliver strips or nearly touching parallel lines. Connections to other lines/rim at >=30 degrees. Fish outline must stay smooth and recognizable. One clear circular coloured eye pane, not a black dot. Use different palette colours for adjacent panes wherever possible. This is a flat tracing-ready drawing, NOT rendered glass.\nREGENERATION CORRECTION: The previous draft converged many fin/body stripes at one point. Redesign the body and tail as a chain of broad alternating curved patches; stagger ALL stripe endpoints widely along the silhouette. No fan convergence anywhere. Fish fins must be broad, never long thin ribbons. Water background should alternate all four colours rather than adjacent blue-only panels. Absolutely solid uniform RGB fills, no paper texture or subtle shading. Use a geometrically circular panel with width equal height, centered in the portrait canvas.",
+  "attempts": 2,
+  "rasterReview": {
+    "size": [
+      1086,
+      1448
+    ],
+    "enclosedComponentsOver20px": 123,
+    "smallComponentsBelowOneThousandth": 3,
+    "method": "Approximate non-black connected components; not a vector geometry audit.",
+    "paneCountWithinRequestedRange": true
+  },
+  "sha256": "52e30c5b257a379545ca0fc94c6e0cbc9932bc2fd6039e00d87b5c34c21d8be8",
+  "reviewStatus": "needs-tracing-review",
+  "subjectMask": {
+    "id": "vitray_angelfish",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d79-ddf0-75b0-8c24-eceb8897ba20/exec-f4f06f8b-8337-47d5-aaee-a1623ddd6098.png",
+    "prompts": [
+      "Edit the supplied finished design sheet into a SUBJECT SEGMENTATION MASK. Preserve EXACT original canvas dimensions 1086x1448, portrait 3:4 framing, all pane boundaries, panel silhouette and placement. This is a precise recolouring operation, never redesign or shift any shape. Every pane belonging to the named animal subject must be solid PURE BLACK #000000, including its eyes, beak, feet, fins, every internal patch and all feather patterns regardless of original colour. Every background pane and exterior must be solid PURE WHITE #FFFFFF. Keep all original black lead lines black, including lines between subject panes (they disappear into the black subject). NO white eye holes, no white internal subject seams. No grey, colour, shading, texture or new lines. Return only the edited mask. SUBJECT: the entire angelfish, all orange/yellow body, head, lips, tail and long upper and lower fins PLUS the blue circular EYE must be BLACK. The blue circular eye is PART OF THE FISH, fill it BLACK, not white. BACKGROUND: every blue water pane and every green aquatic leaf/stem is WHITE. All original seams can remain black; black subject is a solid silhouette. Keep white background holes between the lower fins. Do not include any plant panes in the fish. Exact same near-circular panel, canvas, geometry and framing. This is the first-attempt fish composition; do not change it."
+    ],
+    "size": [
+      1086,
+      1448
+    ],
+    "file": "tools/stained/vitray/design/vitray_angelfish.subject.png",
+    "sourceSha256": "52e30c5b257a379545ca0fc94c6e0cbc9932bc2fd6039e00d87b5c34c21d8be8",
+    "sha256": "224043491b1c94c2cf1e4d87f10ca16c252fdd0bd6b87063b9d6adb963c68faa",
+    "tool": "image_gen",
+    "review": "Visually inspected for subject coverage and approximate alignment; white seams may remain inside black subject.",
+    "spotChecks": [
+      {
+        "seed": [
+          838,
+          665
+        ],
+        "blackFraction": 1.0,
+        "blackMajority": true
+      }
+    ]
+  }
+}

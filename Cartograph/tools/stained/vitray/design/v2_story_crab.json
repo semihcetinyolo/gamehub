@@ -1,0 +1,46 @@
+{
+  "id": "v2_story_crab",
+  "name": "Kumsalda Yürüyüş",
+  "scene": "A crab with raised pincers walks along a shore framed by sweeping tidal bands and a sun.",
+  "shape": "oval",
+  "palette": [
+    [
+      "coral",
+      "#D95138"
+    ],
+    [
+      "golden amber",
+      "#F2B632"
+    ],
+    [
+      "turquoise",
+      "#24A9B0"
+    ],
+    [
+      "deep sea blue",
+      "#175776"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "targetPanes": [
+    97,
+    137
+  ],
+  "notes": "Design sheet only. Inspected initial image and regenerated once to correct the yellow background sun, four-way seams and shading. Revised image keeps the crab in coral/amber and the background in turquoise/blue. Remaining doubts: subtle fill variation persists; left pincer centre and some leg-root contacts need T-junction review; same-colour neighbours remain, especially around the sun, and some background wedges are narrow. Raster connected-component estimate is 180 coloured regions above 200 pixels, exceeding the 97–137 target before tracing/merging; merge background subdivisions during geometry preparation. No geometry audit or game publication performed.",
+  "tool": "image_gen",
+  "references": [
+    "assets/glass/story_crab-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_lighthouse.png"
+  ],
+  "prompt": "Create one flat stained-glass DESIGN SHEET for Cartograph level v2_story_crab, Kumsalda Yürüyüş (a crab walking on the shore). Portrait 3:4 canvas. Reference 1 is the old crab SUBJECT ONLY: redraw its idea elegantly, do not copy childish anatomy or glass texture. References 2 and 3 show the desired refined leaded-panel composition and graceful curves; do not copy their subjects. One large oval panel nearly touching the canvas edges on pure white exterior, closed thick pure-black rim. A beautifully recognizable crab fills the central lower two-thirds: broad domed carapace, two raised graceful open pincers, small round closed eye panes, four distinct jointed walking legs on each side. Natural elegant silhouette, ample clear background gaps between legs. Seashore backdrop of rolling tide and curved shore bands with a circular sun above. Aim 110-120 closed panes total, mandatory range 97-137: meaningful curved shell bands, segmented claws and legs, and generous sweeping background bands. EXACTLY FOUR FLAT FILLS: coral #D95138 and golden amber #F2B632 exclusively on every crab part including eyes; turquoise #24A9B0 and deep sea blue #175776 exclusively in ALL background including sun, shore and water. Adjacent subject pieces alternate coral/gold, adjacent background pieces alternate turquoise/blue; prioritize this paired colouring. Use outline-to-outline parallel sweeping subdivisions within subject parts to enable alternation, no triangulated shell. Pure black uniform lead approximately 1 percent canvas width. Only spaced T junctions, no four-way crossings. Each line must end at another line or rim, no loose ends. Junctions at least 3 percent panel width apart; avoid tiny panes, hairline slivers and narrow bridges. All panes broad and individually readable. FLAT solid colours only, no gradients, highlights, shading, glass texture, dots, black-filled decorative details, text, labels, signatures, inset decorative border frames. This is a tracing guide with the elegance of real stained-glass design, not a finished glass rendering. Output only the picture.",
+  "revisionPrompt": "Edit this crab stained glass tracing DESIGN SHEET, preserving its portrait oval composition, elegant crab anatomy and approximately 110-120 panes. Correct these specific defects: 1) Sun MUST be turquoise #24A9B0, never yellow: background including sun exclusively turquoise #24A9B0 and deep blue #175776. Crab exclusively coral #D95138 and amber #F2B632. 2) Remove ALL shading, gradients and texture: every pane is a single completely uniform flat colour, only those four hex colours. Exterior pure white, outlines pure black uniform width. 3) Separate ALL four-way/X crossings into staggered T junctions spaced at least 3 percent panel width, particularly left pincer centre, shell centre and background upper left. Never bend subject outline to fix a background contact: move background lines. 4) Remove narrow background slivers between leg roots, keep broad visible gaps. Within each side alternate its two palette colours whenever possible, use shell stripes running fully outline-to-outline instead of triple interior branching. Every pane is closed, all lines end on another line or rim, no floating details. Keep 97-137 total panes. No text, glass texture, highlights, drop shadow, white interior panes, framing bands. Generate a clean flat vector-like guide.",
+  "generationAttempts": 2,
+  "size": [
+    1086,
+    1448
+  ]
+}

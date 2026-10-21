@@ -1,0 +1,53 @@
+{
+  "id": "story_narwhal",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-21T08:09:05.060153+00:00",
+  "source": "assets/glass/story_narwhal-silhouette.webp",
+  "sourceSha256": "9aba8933b15f75f1fa077c17005a526b1ef81a3627223d3e36247addca87cc4f",
+  "sourceGeometrySha256": "c4d43981c14ff92cfb4969f66b116f08b3a78d8e7dbcc7bbcced4b92991a52d9",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 142,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.651483047437119
+    },
+    {
+      "patchSize": 113,
+      "donorPatches": 90,
+      "colour": 1,
+      "preservedFraction": 0.4554593612455483
+    },
+    {
+      "patchSize": 49,
+      "donorPatches": 21,
+      "colour": 2,
+      "preservedFraction": 0.3168103282725649
+    },
+    {
+      "patchSize": 142,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.6286505061024151
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "c04757a87750fe8fb5fbda409fd358f1f5d8492f4917fddbe3f68240eeadfcf6",
+  "sha256": "08fbc95149dca39717ac06d9726b16426950cbf5a993dd73f53707bdac619437",
+  "palette": [
+    "#bb4360",
+    "#fcea66",
+    "#22a2a7",
+    "#0a204e"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 23,
+    "total": 23,
+    "mismatches": []
+  }
+}

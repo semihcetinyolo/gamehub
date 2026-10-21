@@ -1,0 +1,80 @@
+{
+  "id": "vitray_koi",
+  "name": "Koi Balıkları",
+  "scene": "Two golden and orange koi circle through blue pond ripples beside green lily pads.",
+  "shape": "octagon",
+  "palette": [
+    [
+      "Pond blue",
+      "#257FAE"
+    ],
+    [
+      "Orange vermilion",
+      "#E5682F"
+    ],
+    [
+      "Golden yellow",
+      "#E4BA46"
+    ],
+    [
+      "Leaf green",
+      "#739D3C"
+    ]
+  ],
+  "notes": "Reviewed after one regeneration. Remaining concerns: some ripple crossings and crowded fish patch junctions; thin central gold strip on upper fish and side eye contacts need tracing review. Black interior patch seams are thinner than outer outlines. Some neighbouring wave panes share colour and slight fill variation remains. Palette is intended four colours. Approximate raster region count 149 is outside the requested 70–130; simplify or subdivide during tracing as appropriate.",
+  "tool": "image_gen",
+  "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d79-ddf0-75b0-8c24-eceb8897ba20/exec-6f2a0734-c21c-4f22-8d1f-59763610f094.png",
+  "references": [
+    "tools/stained/vitray/refs/vitray_koi.jpg"
+  ],
+  "prompt": "Create ONE flat Cartograph stained-glass puzzle DESIGN SHEET, a fresh composition inspired by the reference photograph. Portrait 3:4 canvas, preferably 1536x2048; centered panel nearly touching canvas edges on pure white exterior, one thick closed black outer rim, no decorative border frame. EXACTLY FOUR flat solid coloured fills specified below; no white/near-white or cream inside panel. Pure black smooth UNIFORM lead width 1% of canvas width, including eye rings and details. NO texture, shading, gradients, highlights, bubbles, dots, hatching, text or signatures. Target 85-100 panes, allowable 70-130 closed mixed-size panes: meaningful subject parts and organic background waves/bands/leaves, never arbitrary grids. Every line must run from rim/junction to rim/junction; no loose line ends. ONLY separated T-junctions: at most three panes meet at a point, never X or converging fan junctions. Offset neighbouring junctions by at least 3% panel width. All panes at least 3% panel width except pointed tips, area >=1/1000 panel area. No close parallel sliver strips or nearly touching lines, meeting angles >=30 degrees. Keep subject silhouette clear, smooth and recognizable; eyes are clearly visible closed circular COLOURED panes, no black pupil dots. Adjacent panes should have different palette colours where possible. Drop hands, walls, stands, window and photographic setting. Tracing-ready flat illustration, not glass rendering.\nPanel: tall OCTAGON, exactly eight straight sides with broad clipped corners. Subject from reference: two curved koi fish swimming around one another, upper-left fish faces downward and lower-right fish faces upward, blue pond with broad flowing ripple bands and three partial green lily pads near rim. FOUR colours only: pond blue #257FAE, orange vermilion #E5682F, warm golden yellow #E4BA46, leaf green #739D3C. Replace white koi areas with clearly coloured golden yellow, no cream. Simplified fish mottling made of broad smooth closed patches meeting body outline, about 16 panes per fish; 10 lily-pad panes; 40 generous irregular wave panes = about 82 total. NO bubbles, NO fine fin rays, NO whisker strokes or floating dots. Each eye one round blue pane. Lily pads have at most 3 broad staggered sections, never radial spokes converging at one point. No double concentric ripple outlines. Keep fish separate with at least 6% width of open water between silhouettes. All junctions staggered T, no fine tangencies. Exactly four solid fills without glass, paper, shading, lighting or gradients.\nREGENERATION CORRECTION: use 3 lily pads total, each with just one curved divider reaching opposite edges; no spoke clusters at rim. Give each koi tail two broad lobes only, no thin internal rays. Maintain 80-100 panes by broad wave subdivisions. Alternate some wave panes blue/green/gold to reduce same-colour neighbours. Keep round eyes entirely within fish heads with ample surround, no protruding eye junctions on outline. Strict uniform flat solid fills without gradients or shading. Keep staggered wave T junctions, never four-way contacts.",
+  "attempts": 2,
+  "rasterReview": {
+    "size": [
+      1086,
+      1448
+    ],
+    "enclosedComponentsOver20px": 149,
+    "smallComponentsBelowOneThousandth": 5,
+    "method": "Approximate non-black connected components; not a vector geometry audit.",
+    "paneCountWithinRequestedRange": false
+  },
+  "sha256": "e9e8dff4bbc1f65b6bedff9d3de4932a48151cd46ea44ee28c879a09f45488ee",
+  "reviewStatus": "needs-tracing-review",
+  "subjectMask": {
+    "id": "vitray_koi",
+    "raw": "/Users/semihcetin/.config/claiface/codex/generated_images/01a15d79-ddf0-75b0-8c24-eceb8897ba20/exec-fde6bd97-9508-4000-a1da-06da7c99dea5.png",
+    "prompts": [
+      "Edit the supplied finished design sheet into a SUBJECT SEGMENTATION MASK. Preserve EXACT original canvas dimensions 1086x1448, portrait 3:4 framing, all pane boundaries, panel silhouette and placement. This is a precise recolouring operation, never redesign or shift any shape. Every pane belonging to the named animal subject must be solid PURE BLACK #000000, including its eyes, beak, feet, fins, every internal patch and all feather patterns regardless of original colour. Every background pane and exterior must be solid PURE WHITE #FFFFFF. Keep all original black lead lines black, including lines between subject panes (they disappear into the black subject). NO white eye holes, no white internal subject seams. No grey, colour, shading, texture or new lines. Return only the edited mask. SUBJECT: BOTH entire koi fish, including all orange and yellow patches, every fin and both forked tails, every blue circular eye. The complete two fish silhouettes must be BLACK, no holes. BACKGROUND: all blue pond water, all green lily pads, all green/yellow ripple bands are WHITE. Classify by fish silhouette, NOT by colour, because some yellow panes are background waves. Keep exact shapes and location; do not merge fish with nearby water bands.",
+      "Make one exact local correction to this black/white subject mask. The lower fish tail at lower left is missing its UPPER lobe: the white leaf-shaped closed pane spanning approximately x=290 to560, y=1110 to1240, with centre near (430,1180), immediately ABOVE the already-black lower left tail lobe. Fill this ONE white pane pure BLACK to restore the forked tail. It runs from a leftward point around (292,1132) to the narrow tail base near (556,1230). Everything else stays EXACTLY identical: all other black silhouettes, all white water and lily-pad backgrounds, 1086x1448 canvas, original lines and framing. No redesign."
+    ],
+    "notes": "Lower fish upper tail-lobe boundary is approximate; majority of the pane is black.",
+    "size": [
+      1086,
+      1448
+    ],
+    "file": "tools/stained/vitray/design/vitray_koi.subject.png",
+    "sourceSha256": "e9e8dff4bbc1f65b6bedff9d3de4932a48151cd46ea44ee28c879a09f45488ee",
+    "sha256": "193b1eabe1cb558467783a3a2f58ef306b13c8604bfbea424d5ae0d0a8069b7a",
+    "tool": "image_gen",
+    "review": "Visually inspected for subject coverage and approximate alignment; white seams may remain inside black subject.",
+    "spotChecks": [
+      {
+        "seed": [
+          430,
+          1180
+        ],
+        "blackFraction": 0.515,
+        "blackMajority": true
+      },
+      {
+        "seed": [
+          360,
+          727
+        ],
+        "blackFraction": 1.0,
+        "blackMajority": true
+      }
+    ]
+  }
+}

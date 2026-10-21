@@ -1,0 +1,53 @@
+{
+  "id": "v2n_grapes",
+  "tool": "Astra (gpt-6-astra built-in image_gen) glass from the final guide, registered locally",
+  "generatedAt": "2026-10-21T12:42:20.789202+00:00",
+  "raw": "tools/stained/vitray/raw/v2n_grapes.png",
+  "rawSha256": "8e3b867bbef0852c8948153237b353b49ffd24a7b27dd2700a38d5ee51dcdd08",
+  "method": "keep generated glass of the right colour away from seams; quilt seam-free generated patches elsewhere; exact metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 118,
+      "donorPatches": 91,
+      "colour": 0,
+      "preservedFraction": 0.7111027842181092
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 1,
+      "preservedFraction": 0.7415762522880347
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 2,
+      "preservedFraction": 0.7999786227840596
+    },
+    {
+      "patchSize": 144,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.7343106742744715
+    }
+  ],
+  "size": [
+    1296,
+    1728
+  ],
+  "guide": "2c4da466023d08aeb3d829c40438a648b4b5ee31eafa8393fe313c2c60174b42",
+  "sha256": "cbc2b4fe3213e6902ce998fc3daf0194290ac8602623f76cd6c391b864916091",
+  "palette": [
+    "#5c1999",
+    "#ed5891",
+    "#03adae",
+    "#fbc106"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 20,
+    "total": 20,
+    "mismatches": []
+  },
+  "fullSize": "output/glass-full/v2n_grapes.webp"
+}

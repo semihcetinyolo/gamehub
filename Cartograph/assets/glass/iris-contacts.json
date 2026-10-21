@@ -1,0 +1,53 @@
+{
+  "id": "iris",
+  "tool": "local reuse of existing stained-glass interiors",
+  "generatedAt": "2026-10-21T08:08:34.436477+00:00",
+  "source": "assets/glass/iris-silhouette.webp",
+  "sourceSha256": "cee59c1a1ef19071dd22e0e56fa029f94f4e847328ad643088c0ed5018c46e6c",
+  "sourceGeometrySha256": "74e98311a9093f68d6e7d5798a572ee23556f4e01a4400b31190ddf7c88d729a",
+  "method": "seam-excluded source texture quilting; preserve matching glass; exact new metallic lead",
+  "textureSamples": [
+    {
+      "patchSize": 74,
+      "donorPatches": 96,
+      "colour": 0,
+      "preservedFraction": 0.46034075274164893
+    },
+    {
+      "patchSize": 86,
+      "donorPatches": 43,
+      "colour": 1,
+      "preservedFraction": 0.44338046335267617
+    },
+    {
+      "patchSize": 88,
+      "donorPatches": 64,
+      "colour": 2,
+      "preservedFraction": 0.4533917125623884
+    },
+    {
+      "patchSize": 105,
+      "donorPatches": 96,
+      "colour": 3,
+      "preservedFraction": 0.524714711287892
+    }
+  ],
+  "size": [
+    768,
+    1024
+  ],
+  "guide": "99137c3c484ed5a0faf5461f2bd0e78ff70be7118605460ebc29fd8ea3103164",
+  "sha256": "93c1c02b700ce7d6f70bab590c4519b1e4a71095afbdaf73bc660e05abbc5a60",
+  "palette": [
+    "#7036a5",
+    "#f8d42f",
+    "#36a061",
+    "#074a77"
+  ],
+  "paneColorCheck": {
+    "valid": true,
+    "matched": 35,
+    "total": 35,
+    "mismatches": []
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "v2_story_koala",
+  "name": "Okaliptüs Molası",
+  "scene": "A koala rests while embracing a eucalyptus trunk amid sweeping eucalyptus leaves.",
+  "shape": "oval",
+  "palette": [
+    [
+      "Slate purple",
+      "#645478"
+    ],
+    [
+      "Warm lavender",
+      "#B798BE"
+    ],
+    [
+      "Eucalyptus teal",
+      "#216A59"
+    ],
+    [
+      "Golden ochre",
+      "#D7A63D"
+    ]
+  ],
+  "subjectColours": [
+    0,
+    1
+  ],
+  "notes": "Design sheet only; target 73–113 panes. Generated with image_gen, inspected and regenerated once to remove an unwanted fifth cyan colour and eye highlights. Final uses purple/lavender koala and teal/ochre background. Remaining doubts for tracing: subtle fill shading persists, some same-colour neighbouring panes may merge, crowded leaf tips near lower-left and right paw need junction review, and a few narrow background wedges may need merging. No obvious open-ended lines on visual inspection; exact pane count and geometry are not audited.",
+  "tool": "image_gen",
+  "prompt": "Create one flat stained-glass DESIGN SHEET for a colouring puzzle, portrait 3:4. Subject: an elegant recognisable koala resting and embracing a eucalyptus trunk with curved long eucalyptus leaves around it. Old image reference shows subject only: do not copy childish geometry. Fox and poppies references show graceful leaded-panel composition only; use fully flat colours without their shading. Tall oval silhouette almost touching all canvas edges, closed thick black rim, pure white exterior. Aim 90 closed meaningful panes, within 73–113: about 35 koala panes and 55 eucalyptus/sky panes. Koala large central figure, round furry ears, broad oval nose, two visible round eyes, curved forearms hugging trunk and seated hindquarters. Elegant natural contours, no cartoon smile. EXACTLY FOUR flat colours: subject only slate purple #645478 and warm lavender #B798BE alternating broad fur bands, ears, face and limbs; background/trunk/leaves/sky only deep eucalyptus teal #216A59 and golden ochre #D7A63D alternating broad curved bands and leaf shapes. No other colours inside rim; eyes and nose must use subject pair, not black filled dots. Pure black uniform lead about 1% canvas width, smooth curves. Every line joins rim or another line, every pane closed. Only well-spaced T junctions, never X/four-way contacts. Neighbouring junctions at least 3% panel width apart. No narrow slivers, tiny panes, near-parallel tight gaps or loose ends. Use outline-to-outline bands across subject to allow strict alternation of two colours; no branching three-way interior subject divisions. Background divisions follow sweeping leaves and sky arcs, not grid. Exactly flat fills, no gradients, texture, lighting, bevels, frame, text or signature. Output only the single panel drawing.\nREVISION: Previous attempt incorrectly added cyan as fifth colour, eye highlights and gradients. Strictly use ONLY the four specified solid colours inside panel. NO BLUE/CYAN ANYWHERE. Background is ONLY teal and ochre including all sky openings. No black pupil dots or eye glints: each eye one simple slate-purple round pane in lavender face. Entire fills perfectly uniform. Simplify eucalyptus clusters: no radiating stars or four-plus-way branch nodes; use separate leaves staggered along trunk with generous gaps between junctions. Smooth ears without jagged fur tips. About 85 panes total. Preserve dignified koala hugging trunk composition. Avoid all shading. Four exact colours.",
+  "references": [
+    "assets/glass/story_koala-contacts.webp",
+    "tools/stained/vitray/design/vitray_fox.png",
+    "tools/stained/vitray/design/vitray_poppies.png"
+  ]
+}
