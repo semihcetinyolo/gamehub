@@ -1,1 +1,1 @@
-{ "name": "Word Branch", "entry": "index.html" }
+{ "name": "Word Branch", "entry": "index.html", "fugo": { "mode": "zip", "exclude": ["tests/*"] } }
