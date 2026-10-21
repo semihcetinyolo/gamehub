@@ -15,8 +15,8 @@ export const CONFIG = {
   maxWheel: 380,         // px, wheel diameter cap
   minWheel: 220,
   maxTile: 40,           // px, row tile size cap
-  fillStagger: 45,       // ms between letters filling a found row
-  successHold: 480,      // ms the found row stays green before leaving
+  fillStagger: 110,      // ms between letters filling a found row
+  successHold: 900,      // ms the found row stays green before leaving
   hintStepMs: 480,       // ghost finger: time per hop on the hint trace
   revealChance: 0.4,     // share of rows that start with one blank already showing its letter
   revealMinBlanks: 3,    // only rows with at least this many blanks get a revealed letter
@@ -470,14 +470,14 @@ async function animateFoundRow(rowId, word, addedRow) {
     t.textContent = word[i];
     await wait(CONFIG.fillStagger);
   }
-  await wait(100);
+  await wait(380);   // let the last letter finish its pop
   // 2. success: row glows, confetti and sparkles burst out of it
   r.el.classList.add('success');
   burst(r.el);
   await wait(CONFIG.successHold);
   // 3. fade out, then collapse so the rows below slide up
   r.el.classList.add('leaving');
-  await wait(260);
+  await wait(420);
   r.el.style.height = `${r.el.offsetHeight}px`;
   r.el.getBoundingClientRect();
   r.el.style.height = '';

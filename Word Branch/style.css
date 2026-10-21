@@ -260,7 +260,7 @@ button { font: inherit; color: inherit; }
   align-items: center;
   justify-content: flex-start;
   overflow: visible;
-  transition: height 0.38s cubic-bezier(.4, 0, .2, 1), opacity 0.3s ease, transform 0.3s ease;
+  transition: height 0.38s cubic-bezier(.4, 0, .2, 1), opacity 0.42s ease, transform 0.42s ease;
 }
 .tiles {
   display: flex;
@@ -296,7 +296,7 @@ button { font: inherit; color: inherit; }
   border-color: transparent;
   color: var(--tile-filled-text);
   box-shadow: 0 2px 0 var(--tile-shadow);
-  animation: tile-pop 0.36s ease-out;
+  animation: tile-pop 0.48s ease-out;
 }
 @keyframes tile-pop {
   0% { transform: translateY(-26px) scale(0.6); opacity: 0; }
