@@ -18,6 +18,8 @@ export const CONFIG = {
   fillStagger: 45,       // ms between letters filling a found row
   successHold: 480,      // ms the found row stays green before leaving
   hintStepMs: 480,       // ghost finger: time per hop on the hint trace
+  revealChance: 0.4,     // share of rows that start with one blank already showing its letter
+  revealMinBlanks: 3,    // only rows with at least this many blanks get a revealed letter
   rootPassMs: 350,       // crossing the root faster than this, roughly straight, is not an undo
   rootPassAngle: Math.PI / 4,
   praiseTiers: [         // by number of letters the player added; words come from TEXT[lang].praise
@@ -409,6 +411,16 @@ function liveGap(word) {
 }
 
 // ---------- rows ----------
+// Which blank (if any) starts revealed: stable for a given seed and row, so Restart replays it.
+function revealedIndex(row, rootLen) {
+  if (row.suffixLength < CONFIG.revealMinBlanks) return -1;
+  let h = 2166136261 ^ (currentSeed ?? 0);
+  for (const c of `${row.id}:${row.word}`) h = Math.imul(h ^ c.codePointAt(0), 16777619);
+  h >>>= 0;
+  if ((h % 1000) / 1000 >= CONFIG.revealChance) return -1;
+  return rootLen + (Math.floor(h / 1000) % row.suffixLength);
+}
+
 function makeRow(row) {
   const el = document.createElement('div');
   el.className = 'row hidden';
@@ -417,10 +429,14 @@ function makeRow(row) {
   tilesWrap.className = 'tiles';
   const tiles = [];
   const rootLen = row.word.length - row.suffixLength;
+  const reveal = revealedIndex(row, rootLen);
   for (let i = 0; i < row.word.length; i++) {
     const t = document.createElement('div');
     if (i < rootLen) {
       t.className = 'tile root';
+      t.textContent = row.word[i];
+    } else if (i === reveal) {
+      t.className = 'tile blank revealed';
       t.textContent = row.word[i];
     } else {
       t.className = 'tile blank';

@@ -239,3 +239,6 @@ Concept: the centre root is a real word and every target genuinely branches from
 - English (astra-en, Word Branch:4, owns levels.js + a new tests/levels-en.test.mjs): append BLACK, BLUE, GREEN, WHITE,
   WIND, NIGHT, DAY, PLAY, FRUIT, COFFEE, TEA, FLOWER, BIRTH, HEAT after the current 12 (open compounds use `open: true`).
 - Existing levels keep their order and content. CURRENT content rules apply; slots 5..8 must validate; all tests pass.
+
+## Revealed letter (UI only)
+About 40% of rows with 3+ blanks start with one blank already showing its letter (`CONFIG.revealChance`, `CONFIG.revealMinBlanks` in game.js). The choice is stable for a given seed and row, so Restart replays it. Logic is unchanged.

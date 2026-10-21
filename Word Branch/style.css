@@ -288,6 +288,9 @@ button { font: inherit; color: inherit; }
   background: var(--tile-blank);
   border: 1.5px solid var(--tile-blank-border);
 }
+.tile.blank.revealed {
+  color: var(--counter-label);
+}
 .tile.filled {
   background: var(--tile-filled);
   border-color: transparent;
