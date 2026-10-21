@@ -8,7 +8,9 @@ import { sfx } from '../core/sfx.js';
 import { haptics } from '../core/haptics.js';
 import { openAdmin } from '../core/admin.js';
 import { openLevelEnd } from '../core/levelend.js';
-import { buildBoard, refill, adjacent, rowOf, colOf, centerOf, CELLS, COLS, ROWS, GEOMETRY } from './board.js';
+import {
+  buildBoard, refill, entryOffset, adjacent, rowOf, colOf, centerOf, CELLS, COLS, ROWS, GEOMETRY, DEFAULT_POLICY,
+} from './board.js';
 
 const CONFIG = {
   storagePrefix: 'wordtrain.v4.',
@@ -20,11 +22,13 @@ const CONFIG = {
   sampleStep: 8,         // px between interpolated samples on a fast swipe
   wrongClearMs: 250,     // the coral rail stays this long, then the selection clears
   wrongShakeMs: 180,
-  // refill motion (astra-art): used stones leave, survivors slide down their column, new stones drop in
+  // refill motion (astra-art): used stones leave, survivors slide along the flow, new stones come in from the
+  // near edge (or grow in where the used ones were, in place)
   leaveMs: 110,
   slideMs: [180, 280],   // by distance
-  dropMs: [220, 320],    // by row
-  columnDelay: 12,       // ms per column
+  dropMs: [220, 320],    // by distance travelled
+  columnDelay: 12,       // ms per line across the flow
+  appearMs: 220,         // in place: a new stone grows in where a used one left
   swapMs: 160,           // a stone whose letter had to change: its letter cross-fades while the column moves
   phraseHoldMs: 900,     // a status message about the found phrase stays at least this long
   pathPreviewMs: 1800,   // admin "Yolu göster"
@@ -75,6 +79,9 @@ const storage = {
 };
 let completed = new Set(storage.get('completed', []));
 let tipSeen = !!storage.get('tipSeen', false);
+// refill policy (board.js); the admin sheet can switch to the other modes to compare them on the phone
+const REFILL_LABELS = { mixflow: 'karışık akış', gravity: 'yerçekimi', stay: 'yerinde', mix: 'yerçekimi + yerinde', flow: '6 yönlü akış' };
+let refillPolicy = REFILL_LABELS[storage.get('refill')] ? storage.get('refill') : DEFAULT_POLICY;
 
 // ---------- run state ----------
 const params = new URLSearchParams(location.search);
@@ -88,6 +95,7 @@ let target = null;        // current link
 let wordLen = 0;
 let cells = [];           // [{ id, letter, key }] by cell id; key follows a stone through refills
 let nextKey = 0;
+let nextMode = null;      // how the next refill moves the stones (board.js modes), chosen with the board
 let solutionPath = [];
 let pendingLetters = [];  // [{ el, letter }] letter swaps still waiting to show their new letter
 let regen = 0;            // admin "Tahtayı yeniden üret" count for this turn
@@ -177,13 +185,13 @@ function makeBoard() {
   const rand = regen ? rng(`${run.seed}:${run.levelId}:${run.index}:r${regen}`) : linkRand(run);
   let built;
   try {
-    built = buildBoard(target.word, { levelNo: levelIndex + 1, rand, firstKey: nextKey, ahead: aheadWord() });
+    built = buildBoard(target.word, { levelNo: levelIndex + 1, rand, firstKey: nextKey, ahead: aheadWord(), policy: refillPolicy });
   } catch (err) {
     console.error(err);
     showError(TEXT.startError(err.message));
     return false;
   }
-  mountBoard(built.cells, built.nextKey, built.solutionPath);
+  mountBoard(built.cells, built.nextKey, built.solutionPath, built.nextMode);
   return true;
 }
 
@@ -204,10 +212,11 @@ function resetBoardState() {
 }
 
 // Replaces every stone (level start, restart, admin, the rare full reset) with a short pop-in.
-function mountBoard(nextCells, keyAfter, path) {
+function mountBoard(nextCells, keyAfter, path, modeAfter) {
   finishFx();
   cells = nextCells;
   nextKey = keyAfter;
+  nextMode = modeAfter;
   solutionPath = path;
   resetBoardState();
   cellEls = cells.map(makeStone);
@@ -221,18 +230,20 @@ function mountBoard(nextCells, keyAfter, path) {
   render();
 }
 
-// Gravity refill after a found word. The model (cells, path, hit test) is final at once; the motion only
-// catches up, and the next pointerdown finishes it first (finishFx), so input never waits for it.
+// Refill after a found word (board.js picks the mode: stones flow along a hex direction, or new ones appear in
+// place). The model (cells, path, hit test) is final at once; the motion only catches up, and the next
+// pointerdown finishes it first (finishFx), so input never waits for it.
 function refillBoard(used) {
   let r;
   try {
-    r = refill({ cells, nextKey }, used, target.word, linkRand(run), levelIndex + 1, { ahead: aheadWord() });
+    r = refill({ cells, nextKey, nextMode }, used, target.word, linkRand(run), levelIndex + 1,
+      { ahead: aheadWord(), policy: refillPolicy });
   } catch (err) {
     console.error(err);
     showError(TEXT.startError(err.message));
     return false;
   }
-  if (r.fullReset) { mountBoard(r.board.cells, r.board.nextKey, r.solutionPath); return true; }
+  if (r.fullReset) { mountBoard(r.board.cells, r.board.nextKey, r.solutionPath, r.board.nextMode); return true; }
   finishFx();
   const oldEl = new Map(cells.map((c, id) => [c.key, cellEls[id]]));
   const oldPos = new Map(cells.map((c, id) => [c.key, id]));
@@ -251,6 +262,7 @@ function refillBoard(used) {
 
   cells = r.board.cells;
   nextKey = r.board.nextKey;
+  nextMode = r.board.nextMode;
   solutionPath = r.solutionPath;
   resetBoardState();
   const fresh = new Set(r.newCells);
@@ -262,26 +274,45 @@ function refillBoard(used) {
   const yStep = GEOMETRY.yStep * scale;
   const [slideMin, slideMax] = CONFIG.slideMs;
   const [dropMin, dropMax] = CONFIG.dropMs;
+  // unit vector of the flow (gravity: straight down); lines across it start one after another
+  const probe = cells.map((c, id) => entryOffset(id, r.mode)).find(Boolean);
+  const flow = probe ? { x: -probe.x / Math.hypot(probe.x, probe.y), y: -probe.y / Math.hypot(probe.x, probe.y) } : null;
+  const across = (id) => {
+    if (!flow) return 0;
+    const p = centerOf(id);
+    return Math.round(Math.abs(p.x * -flow.y + p.y * flow.x) / GEOMETRY.xStep);
+  };
   cells.forEach((c, id) => {
     const el = cellEls[id];
-    const delay = colOf(id) * CONFIG.columnDelay;
+    const delay = across(id) * CONFIG.columnDelay;
     if (fresh.has(id)) {
       if (!motion) { el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 100 }); return; }
-      const from = -(rowOf(id) + 1) * yStep - 24;
-      const ms = dropMin + (dropMax - dropMin) * (rowOf(id) / (ROWS - 1));
+      const enter = entryOffset(id, r.mode);
+      if (!enter) {
+        // in place: grows in where the used stone just left, like every other new stone of this turn
+        el.animate([
+          { transform: 'scale(.55)', opacity: 0 },
+          { transform: 'scale(1.04)', opacity: 1, offset: 0.7 },
+          { transform: 'scale(1)' },
+        ], { duration: CONFIG.appearMs, delay: CONFIG.leaveMs * 0.6, easing: 'ease-out', fill: 'backwards' });
+        return;
+      }
+      const cellsAway = Math.hypot(enter.x, enter.y) / GEOMETRY.yStep;
+      const fx = enter.x * scale - flow.x * 24, fy = enter.y * scale - flow.y * 24;
+      const ms = dropMin + (dropMax - dropMin) * Math.min(1, (cellsAway - 1) / (ROWS - 1));
       el.animate([
-        { transform: `translateY(${from}px)`, opacity: 0 },
-        { transform: `translateY(${from * 0.6}px)`, opacity: 1, offset: 0.25 },
-        { transform: 'translateY(2px)', offset: 0.88 },
-        { transform: 'translateY(0)' },
+        { transform: `translate(${fx}px, ${fy}px)`, opacity: 0 },
+        { transform: `translate(${fx * 0.6}px, ${fy * 0.6}px)`, opacity: 1, offset: 0.25 },
+        { transform: `translate(${flow.x * 2}px, ${flow.y * 2}px)`, offset: 0.88 },
+        { transform: 'translate(0, 0)' },
       ], { duration: ms, delay, easing: 'ease-in', fill: 'backwards' });
       return;
     }
     const was = oldPos.get(c.key);
     if (motion && was !== id) {
-      const dy = centerOf(was).y * scale - centerOf(id).y * scale;
-      const ms = Math.min(slideMax, slideMin + Math.abs(dy) / yStep * 40);
-      el.animate([{ transform: `translateY(${dy}px)` }, { transform: 'translateY(0)' }],
+      const dx = (centerOf(was).x - centerOf(id).x) * scale, dy = (centerOf(was).y - centerOf(id).y) * scale;
+      const ms = Math.min(slideMax, slideMin + Math.hypot(dx, dy) / yStep * 40);
+      el.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: 'translate(0, 0)' }],
         { duration: ms, delay, easing: 'cubic-bezier(.2,.8,.3,1)' });
     }
     if (changed.has(id)) {
@@ -778,6 +809,16 @@ function adminActions() {
       hintPrefix = hintedCells();
       makeBoard();
     } },
+    ...Object.entries(REFILL_LABELS).map(([policy, name]) => ({
+      label: `Dolum: ${name}${policy === DEFAULT_POLICY ? ' (varsayılan)' : ''}${policy === refillPolicy ? ' ✓' : ''}`,
+      run: () => {
+        refillPolicy = policy;
+        storage.set('refill', policy);
+        // the current board already planned its next refill; a new board plans it with the new mode
+        if (playable()) { regen++; hintPrefix = hintedCells(); makeBoard(); }
+        setStatus(`Dolum: ${name}`, 'warn');
+      },
+    })),
     { label: 'İlerlemeyi sıfırla', tone: 'danger', run: () => {
       completed = new Set();
       tipSeen = false;
@@ -844,6 +885,6 @@ else {
 // read-only hook for automated playtests
 window.__wordTrainV4 = {
   get state() { return run; },
-  get board() { return { cells: cells.map((c) => c.letter), keys: cells.map((c) => c.key), solutionPath: [...solutionPath], hintPrefix, selected: [...selected] }; },
+  get board() { return { cells: cells.map((c) => c.letter), keys: cells.map((c) => c.key), solutionPath: [...solutionPath], hintPrefix, selected: [...selected], nextMode, refillPolicy }; },
   get geo() { return { scale, centers: [...Array(CELLS).keys()].map(center) }; },
 };

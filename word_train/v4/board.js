@@ -171,12 +171,12 @@ function fillCells(grid, ids, letters, plan, rand, ahead = []) {
 }
 
 /**
- * buildBoard(word, { levelNo, rand, ahead }) -> { cells: [{ id, letter, key }], solutionPath: [cellId…], nextKey }
+ * buildBoard(word, { levelNo, rand, ahead, policy }) -> { cells: [{ id, letter, key }], solutionPath: [cellId…], nextKey, nextMode }
  * A whole new board (level start, restart, admin). `key` identifies a stone across refills.
  * Difficulty per level comes from fillerPlan(). Other paths that spell the word may exist (decoys can even
  * create them); the game accepts any of them.
  */
-export function buildBoard(word, { levelNo = 1, rand = Math.random, firstKey = 0, ahead = '' } = {}) {
+export function buildBoard(word, { levelNo = 1, rand = Math.random, firstKey = 0, ahead = '', policy = DEFAULT_POLICY } = {}) {
   const letters = Array.from(word);
   const n = letters.length;
   if (n < 2 || n > CELLS) throw new Error(`"${word}" ${n} harf; petek tahta 2–${CELLS} harf alır`);
@@ -184,56 +184,129 @@ export function buildBoard(word, { levelNo = 1, rand = Math.random, firstKey = 0
   const solutionPath = (!plan.snake && searchPath(n, rand, { turnBias: plan.turnBias })) || snakePath(n, rand);
   const grid = Array(CELLS).fill(null);
   solutionPath.forEach((id, i) => { grid[id] = letters[i]; });
-  plantAhead(grid, solutionPath, ahead, plan, rand, letterCap(letters), levelNo);
+  const nextMode = pickMode(policy, rand);
+  plantAhead(grid, solutionPath, ahead, plan, rand, letterCap(letters), levelNo, nextMode);
   fillCells(grid, [...Array(CELLS).keys()], letters, plan, rand, Array.from(ahead ?? ''));
   return {
     cells: grid.map((letter, id) => ({ id, letter, key: firstKey + id })),
     solutionPath,
     nextKey: firstKey + CELLS,
+    nextMode,
   };
 }
 
-// Where every cell of the board comes from once `usedCells` leave: from[id] = the cell whose stone slides
-// (or stays) there, or -1 for a new stone dropped in at the top of its column.
-export function settle(usedCells) {
+// ---------- refill modes ----------
+// After a found word its stones leave and the board refills in one of these modes:
+//   { kind: 'flow', dir }  the other stones slide along hex direction `dir` towards the far edge and new stones
+//                          come in at the near edge (dir 0 = down: gravity)
+//   { kind: 'stay' }       nothing moves; new stones appear where the used ones were
+//   { kind: 'cols', cols } per column: true = that column falls (gravity), false = it stays
+// A policy picks the mode of every refill (seeded). Each board already knows the mode of its next refill
+// (board.nextMode), because the next word is planted over the cells that will survive it.
+// Directions as screen angles: down, down-left, up-left, up, up-right, down-right.
+const DIR_ANGLES = [90, 150, -150, -90, -30, 30].map((deg) => (deg * Math.PI) / 180);
+const DIR_STEP = DIR_ANGLES.map((want) => Array.from({ length: CELLS }, (_, id) => {
+  const a = centerOf(id);
+  return neighbours(id).find((x) => {
+    const b = centerOf(x);
+    const diff = Math.atan2(b.y - a.y, b.x - a.x) - want;
+    return Math.abs(Math.atan2(Math.sin(diff), Math.cos(diff))) < 0.2;
+  }) ?? -1;
+}));
+const opposite = (dir) => (dir + 3) % 6;
+// LINES[dir] = every line of cells along dir, listed from the near edge (where new stones come in) to the far one
+const LINES = DIR_STEP.map((step, dir) => [...Array(CELLS).keys()]
+  .filter((id) => DIR_STEP[opposite(dir)][id] < 0)
+  .map((start) => { const line = []; for (let id = start; id >= 0; id = step[id]) line.push(id); return line; }));
+export const GRAVITY = { kind: 'flow', dir: 0 };
+
+// Seeded mode choice per refill. 'gravity' / 'stay' always the same; 'mix' gravity or stay per turn; 'cols'
+// every column falls or stays; 'slide' gravity or one of the two lower diagonals; 'flow' any of the 6 directions;
+// 'mixslide' stay or one of the three downward directions.
+export const REFILL_POLICIES = ['gravity', 'stay', 'mix', 'cols', 'slide', 'flow', 'mixslide', 'tilt', 'mixflow'];
+export const DEFAULT_POLICY = 'mixflow';
+export function pickMode(policy, rand) {
+  const flow = (dirs) => ({ kind: 'flow', dir: dirs[Math.floor(rand() * dirs.length)] });
+  switch (policy) {
+    case 'stay': return { kind: 'stay' };
+    case 'mix': return rand() < 0.5 ? GRAVITY : { kind: 'stay' };
+    case 'cols': return { kind: 'cols', cols: Array.from({ length: COLS }, () => rand() < 0.5) };
+    case 'slide': return flow([0, 1, 5]);
+    case 'flow': return flow([0, 1, 2, 3, 4, 5]);
+    case 'mixslide': return rand() < 0.4 ? { kind: 'stay' } : flow([0, 1, 5]);
+    case 'tilt': return flow([0, 1, 2, 4, 5]);
+    case 'mixflow': return rand() < 0.25 ? { kind: 'stay' } : flow([0, 1, 2, 3, 4, 5]);
+    default: return GRAVITY;
+  }
+}
+
+function linesOf(mode) {
+  if (mode.kind === 'flow') return LINES[mode.dir];
+  if (mode.kind === 'cols') return LINES[0].filter((line) => mode.cols[colOf(line[0])]);
+  return [];
+}
+
+// Where every cell of the board comes from once `usedCells` leave in `mode`: from[id] = the cell whose stone
+// slides (or stays) there, or -1 for a new stone.
+export function settle(usedCells, mode = GRAVITY) {
   const used = new Set(usedCells);
-  const from = Array(CELLS).fill(-1);
-  for (let c = 0; c < COLS; c++) {
-    const keep = [];
-    for (let r = 0; r < ROWS; r++) if (!used.has(idOf(r, c))) keep.push(idOf(r, c));
-    keep.forEach((src, i) => { from[idOf(ROWS - keep.length + i, c)] = src; });
+  const from = [...Array(CELLS).keys()].map((id) => (used.has(id) ? -1 : id));
+  for (const line of linesOf(mode)) {
+    const keep = line.filter((id) => !used.has(id));
+    line.forEach((id, i) => { from[id] = i < line.length - keep.length ? -1 : keep[i - line.length + keep.length]; });
   }
   return from;
+}
+
+// How deep a cell lies behind the edge where new stones come in, scaled 0 (that edge) .. ROWS-1 (far edge);
+// null where nothing flows (stay). The answer-spreading costs (ROW_COST) work on this depth.
+function depthOf(mode) {
+  const depth = Array(CELLS).fill(null);
+  for (const line of linesOf(mode)) {
+    line.forEach((id, i) => { depth[id] = line.length > 1 ? Math.round((i * (ROWS - 1)) / (line.length - 1)) : ROWS - 1; });
+  }
+  return depth;
+}
+
+// Start offset (model px) of a new stone that flows in: from outside the near edge, one step further out per
+// cell it has to travel. null when the mode lets it appear in place.
+export function entryOffset(id, mode) {
+  const line = linesOf(mode).find((l) => l.includes(id));
+  if (!line) return null;
+  const a = centerOf(LINES[0][0][0]), b = centerOf(LINES[0][0][1]);
+  const len = Math.hypot(b.x - a.x, b.y - a.y);
+  const ang = DIR_ANGLES[mode.kind === 'flow' ? mode.dir : 0];
+  const k = line.indexOf(id) + 1;
+  return { x: -Math.cos(ang) * len * k, y: -Math.sin(ang) * len * k };
 }
 
 // Fresh stones may carry only a few letters of the guaranteed path, so the new stones never point at the
 // answer: at most this many, never two in a row, never the first letter if avoidable.
 const freshCap = (levelNo) => (levelNo <= 2 ? 1 : 2);
-// Path step costs: a fresh stone, a surviving stone whose letter changes while it slides down / stands still,
+// Path step costs: a fresh stone, a surviving stone whose letter changes while it slides / stands still,
 // and (when planting) a still-empty cell that takes a letter. Cheaper steps are preferred.
 const COST = { fresh: 1, moving: 1.1, still: 3, free: 0.25 };
-// Extra cost per step by row (top -> bottom). New stones land on top, so without it planted answers sit in
-// rows 1–2 and the bottom rows go stale; this keeps answers using and clearing every row about evenly
-// (measured: each row 14–21 % of the answer letters).
+// Extra cost per step by depth behind the edge where new stones come in (depthOf). Without it planted answers
+// sit just behind that edge and the far side goes stale; this keeps answers using and clearing the whole board.
 const ROW_COST = { path: [0.05, 0.12, 0.15, 0.1, 0, 0], plant: [0.15, 0.35, 0.45, 0.3, 0.1, 0] };
 const ROW_PULL = 0.03;
 // Cost of a step that runs straight on, times the level's turnBias: the row costs alone favour long straight
 // runs (more words down one column), this keeps the harder levels winding.
-const STRAIGHT = 0.02;
+const STRAIGHT = 0.05;
 
 // Cheapest path for `letters` over a settled layout; layout[id] = { t: 'fix', letter, moving } (a surviving
 // stone), { t: 'fresh' } (a new stone) or { t: 'free' } (an empty cell we may still write, room(ch) letters
-// left under the cap). rows / firstRows add a cost per row for every letter / the first one. Seeded
+// left under the cap). rows[depth[id]] / firstRows[row] add a cost for every letter / the first one. Seeded
 // branch-and-bound DFS; null when nothing fits the limits within budget.
 function cheapestPath(layout, letters, rand, {
   turnBias = 0, maxFresh = 2, maxChanges = 3, firstFresh = false, free = COST.free, room = () => Infinity,
-  budget = 30000, rows = null, firstRows = null, straight = 0,
+  budget = 30000, rows = null, depth = null, firstRows = null, straight = 0,
 } = {}) {
   const n = letters.length;
   let left = budget, best = null, bestScore = Infinity;
   const path = [], used = new Set(), spent = new Map();
   const lift = (id) => (straight && path.length >= 2 && id === straightAfter(path[path.length - 2], path[path.length - 1]) ? straight : 0) +
-     (rows ? rows[rowOf(id)] : 0) + (firstRows && !path.length ? firstRows[rowOf(id)] : 0);
+     (rows && depth?.[id] != null ? rows[depth[id]] : 0) + (firstRows && !path.length ? firstRows[rowOf(id)] : 0);
   const step = (id, i) => {
     const cell = layout[id];
     if (cell.t === 'fresh') return { s: COST.fresh + lift(id), f: 1, k: 0 };
@@ -287,21 +360,21 @@ function aimRows(rand) {
 }
 
 // Plans one word ahead: assuming the player takes `usedPath`, lays a path for `ahead` over the cells that will
-// survive the gravity refill, writing its letters into still-empty cells (`grid` null) and reusing stones that
+// survive the next refill (in `mode`), writing its letters into still-empty cells (`grid` null) and reusing stones that
 // already fit, plus the ahead word's false starts. Next turn, its answer then sits mostly in old stones.
 // Mutates `grid`; returns the cells it wrote.
-function plantAhead(grid, usedPath, ahead, plan, rand, cap, levelNo) {
+function plantAhead(grid, usedPath, ahead, plan, rand, cap, levelNo, mode) {
   const word = Array.from(ahead ?? '');
   if (word.length < 2) return [];
   const tally = new Map();
   for (const ch of grid) if (ch) tally.set(ch, (tally.get(ch) ?? 0) + 1);
   const room = (ch) => cap(ch) - (tally.get(ch) ?? 0);
-  const from = settle(usedPath);
+  const from = settle(usedPath, mode);
   const layout = from.map((src, id) => (src < 0 ? { t: 'fresh' }
     : grid[src] === null ? { t: 'free' } : { t: 'fix', letter: grid[src], moving: src !== id }));
   const path = cheapestPath(layout, word, rand, {
     turnBias: Math.max(plan.turnBias, 0.5), maxFresh: freshCap(levelNo), maxChanges: 2, room, budget: 12000,
-    rows: ROW_COST.plant, firstRows: aimRows(rand), straight: STRAIGHT * plan.turnBias,
+    rows: ROW_COST.plant, depth: depthOf(mode), firstRows: aimRows(rand), straight: STRAIGHT * plan.turnBias,
   });
   if (!path) return [];
   const planted = [];
@@ -346,23 +419,28 @@ export function runIn(cells, ids, word, len = 3) {
 }
 
 /**
- * refill(board, usedCells, nextWord, rand, levelNo, { ahead })
- *   -> { board, moves: [{ key, from, to }], newCells: [id], changedCells: [id], fullReset, solutionPath }
- * Gravity refill after a found word: the used stones leave, the stones above them slide straight down their
- * column, and new stones come in at the top of each column. The new stones must not give the answer away:
+ * refill(board, usedCells, nextWord, rand, levelNo, { ahead, policy })
+ *   -> { board: { cells, nextKey, nextMode }, mode, moves: [{ key, from, to }], newCells: [id], changedCells: [id],
+ *        fullReset, solutionPath }
+ * Refill after a found word: the used stones leave and the board refills in board.nextMode (planned with the
+ * board; see the refill modes above): the other stones slide along the flow and new stones come in at the near
+ * edge, or new stones appear in place. The default policy mixes both for variety (measured against gravity
+ * only, in place only and the other mixes: flattest rows and columns, least reuse of the last answer's cells,
+ * fewest stale stones). The new stones must not give the answer away:
  * - the guaranteed path for `nextWord` runs through surviving stones (the previous turn planted it, see
  *   plantAhead); at most freshCap(levelNo) of its letters sit on new stones, never two in a row, never the
- *   first letter if avoidable; else a few surviving stones change letter while they slide (changedCells, ≤ 3);
+ *   first letter; else a few surviving stones quietly change letter (changedCells, ≤ 3, a fallback ≤ 5);
  *   else the whole board is rebuilt (fullReset);
  * - the other new stones carry the word after (`ahead`, planted for the next turn) and ordinary filler, with
  *   nextWord's letters no more often than on the old stones, and never 3 answer letters in a row.
  * Same input + same rand -> same result.
  */
-export function refill(board, usedCells, nextWord, rand, levelNo = 1, { ahead = '' } = {}) {
+export function refill(board, usedCells, nextWord, rand, levelNo = 1, { ahead = '', policy = DEFAULT_POLICY } = {}) {
   const letters = Array.from(nextWord);
   const plan = fillerPlan(levelNo);
   let nextKey = board.nextKey ?? CELLS;
-  const from = settle(usedCells);
+  const mode = board.nextMode ?? pickMode(policy, rand);
+  const from = settle(usedCells, mode);
   const slots = from.map((src) => (src < 0 ? null : board.cells[src]));
   const moves = [];
   slots.forEach((cell, to) => { if (cell && cell.id !== to) moves.push({ key: cell.key, from: cell.id, to }); });
@@ -371,13 +449,14 @@ export function refill(board, usedCells, nextWord, rand, levelNo = 1, { ahead = 
   const layout = slots.map((cell, id) => (cell ? { t: 'fix', letter: cell.letter, moving: cell.id !== id } : { t: 'fresh' }));
 
   const turnBias = Math.max(plan.turnBias, 0.5);
-  const limits = { turnBias, maxFresh: freshCap(levelNo), maxChanges: 3, rows: ROW_COST.path, straight: STRAIGHT * plan.turnBias };
-  const path = cheapestPath(layout, letters, rand, limits)
-    ?? cheapestPath(layout, letters, rand, { ...limits, firstFresh: true });
+  const limits = { turnBias, maxFresh: freshCap(levelNo), maxChanges: 3, rows: ROW_COST.path, depth: depthOf(mode),
+    straight: STRAIGHT * plan.turnBias };
+  // a few more quiet letter changes are better than a whole new board; the first letter never goes on a new stone
+  const path = cheapestPath(layout, letters, rand, limits) ?? cheapestPath(layout, letters, rand, { ...limits, maxChanges: 5 });
   if (!path) {
-    const fresh = buildBoard(nextWord, { levelNo, rand, firstKey: nextKey, ahead });
-    return { board: { cells: fresh.cells, nextKey: fresh.nextKey }, moves: [], newCells: [...Array(CELLS).keys()],
-      changedCells: [], fullReset: true, solutionPath: fresh.solutionPath };
+    const fresh = buildBoard(nextWord, { levelNo, rand, firstKey: nextKey, ahead, policy });
+    return { board: { cells: fresh.cells, nextKey: fresh.nextKey, nextMode: fresh.nextMode }, mode, moves: [],
+      newCells: [...Array(CELLS).keys()], changedCells: [], fullReset: true, solutionPath: fresh.solutionPath };
   }
   const changedCells = [];
   path.forEach((id, i) => {
@@ -385,19 +464,20 @@ export function refill(board, usedCells, nextWord, rand, levelNo = 1, { ahead = 
     if (grid[id] !== null) changedCells.push(id);
     grid[id] = letters[i];
   });
-  fillFresh(grid, newCells, path, letters, plan, rand, ahead, levelNo);
+  const nextMode = pickMode(policy, rand);
+  fillFresh(grid, newCells, path, letters, plan, rand, ahead, levelNo, nextMode);
   const cells = grid.map((letter, id) => ({ id, letter, key: slots[id] ? slots[id].key : nextKey++ }));
-  return { board: { cells, nextKey }, moves, newCells, changedCells, fullReset: false, solutionPath: path };
+  return { board: { cells, nextKey, nextMode }, mode, moves, newCells, changedCells, fullReset: false, solutionPath: path };
 }
 
 // Letters for the new stones that are not on the guaranteed path: first the next word is planted ahead, then
 // filler with the answer's letters at the rate the surviving stones show them, the rest from the next words or
 // ordinary Turkish frequencies. Finally no 3 answer letters may line up on new stones. Mutates `grid`.
-function fillFresh(grid, newCells, path, letters, plan, rand, ahead, levelNo) {
+function fillFresh(grid, newCells, path, letters, plan, rand, ahead, levelNo, nextMode) {
   const cap = letterCap(letters);
   const tally = new Map();
   for (const ch of grid) if (ch) tally.set(ch, (tally.get(ch) ?? 0) + 1);
-  const planted = new Set(plantAhead(grid, path, ahead, plan, rand, cap, levelNo));
+  const planted = new Set(plantAhead(grid, path, ahead, plan, rand, cap, levelNo, nextMode));
   for (const id of planted) tally.set(grid[id], (tally.get(grid[id]) ?? 0) + 1);
   const fits = (ch) => (tally.get(ch) ?? 0) < cap(ch);
   const put = (id, ch) => {

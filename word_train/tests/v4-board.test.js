@@ -7,6 +7,9 @@ import {
   CELLS, GEOMETRY, ROWS, adjacent, buildBoard, centerOf, findPaths, neighbours, refill, rowOf, runIn,
 } from '../v4/board.js';
 
+// screen angles of the board.js flow directions: down, down-left, up-left, up, up-right, down-right
+const FLOW_ANGLES = [90, 150, -150, -90, -30, 30].map((deg) => (deg * Math.PI) / 180);
+
 const spells = (board, word) => {
   const p = board.solutionPath;
   return p.length === Array.from(word).length && new Set(p).size === p.length
@@ -49,34 +52,46 @@ test('every level word gets a valid board, same seed same board, letter caps hol
   assert.deepEqual(a, b);
 });
 
-test('gravity refill never leaves a level unsolvable and rarely rebuilds the board', () => {
-  let refills = 0, full = 0;
-  LEVELS.forEach((level, li) => {
-    for (let seed = 0; seed < 10; seed++) {
-      const words = level.chain.slice(1).map((l) => l.word);
-      let board = buildBoard(words[0], { levelNo: li + 1, rand: rng(`${seed}:${level.id}:1`), ahead: words[1] });
-      for (let k = 1; k < words.length; k++) {
-        const paths = findPaths(board.cells, words[k - 1], 5);
-        const used = paths[(seed + k) % paths.length];
-        const r = refill(board, used, words[k], rng(`${seed}:${level.id}:${k + 1}`), li + 1, { ahead: words[k + 1] });
-        refills++;
-        if (r.fullReset) full++;
-        board = { ...r.board, solutionPath: r.solutionPath };
-        assert.ok(spells(board, words[k]), `${level.id} ${words[k]}`);
-        assert.equal(new Set(board.cells.map((c) => c.key)).size, CELLS, 'stone keys stay unique');
-        assert.ok(r.changedCells.length <= 3);
-        if (!r.fullReset) {
-          assert.ok(withinCap(r.newCells.map((id) => board.cells[id]), words[k]));
-          // survivors only move down their own column
-          for (const m of r.moves) assert.ok(m.to % 5 === m.from % 5 && m.to > m.from);
+// Every refill policy the admin sheet offers: always solvable, stones move only as the mode says.
+test('every refill mode keeps the level solvable and moves stones only along its flow', () => {
+  for (const policy of ['mixflow', 'gravity', 'stay', 'mix', 'flow']) {
+    let refills = 0, full = 0;
+    LEVELS.forEach((level, li) => {
+      for (let seed = 0; seed < 6; seed++) {
+        const words = level.chain.slice(1).map((l) => l.word);
+        let board = buildBoard(words[0], { levelNo: li + 1, rand: rng(`${seed}:${level.id}:1`), ahead: words[1], policy });
+        for (let k = 1; k < words.length; k++) {
+          const paths = findPaths(board.cells, words[k - 1], 5);
+          const used = paths[(seed + k) % paths.length];
+          const planned = board.nextMode;
+          const r = refill(board, used, words[k], rng(`${seed}:${level.id}:${k + 1}`), li + 1, { ahead: words[k + 1], policy });
+          refills++;
+          if (r.fullReset) full++;
+          board = { ...r.board, solutionPath: r.solutionPath };
+          const label = `${policy} ${level.id} ${words[k]}`;
+          assert.ok(spells(board, words[k]), label);
+          assert.equal(new Set(board.cells.map((c) => c.key)).size, CELLS, 'stone keys stay unique');
+          assert.ok(r.changedCells.length <= 5, label);
+          assert.deepEqual(r.mode, planned, 'the refill runs in the mode the board planned for');
+          if (r.fullReset) continue;
+          assert.ok(withinCap(r.newCells.map((id) => board.cells[id]), words[k]), label);
+          assert.equal(r.newCells.length, used.length, label);
+          for (const m of r.moves) {
+            assert.notEqual(r.mode.kind, 'stay', label);
+            const a = centerOf(m.from), b = centerOf(m.to);
+            const angle = Math.atan2(b.y - a.y, b.x - a.x);
+            const want = r.mode.kind === 'flow' ? FLOW_ANGLES[r.mode.dir] : Math.PI / 2;
+            assert.ok(Math.abs(Math.atan2(Math.sin(angle - want), Math.cos(angle - want))) < 0.05, `${label}: stone moved off its flow`);
+            if (r.mode.kind === 'cols') assert.ok(r.mode.cols[m.to % 5], `${label}: a still column moved`);
+          }
         }
       }
-    }
-  });
-  assert.ok(full / refills < 0.02, `full resets ${full}/${refills}`);
+    });
+    assert.ok(full / refills < 0.01, `${policy}: full resets ${full}/${refills}`);
+  }
 });
 
-// Plays every level's chain through gravity refills: mostly along the planned path, sometimes another valid
+// Plays every level's chain through refills (default policy): mostly along the planned path, sometimes another valid
 // one (the plan for the next word breaks then). visit(round) for every refill that is not a full reset.
 function playRefills(seeds, visit) {
   let full = 0, rounds = 0;
@@ -117,10 +132,10 @@ test('new stones never give the next answer away', () => {
   assert.ok(changed / rounds <= 0.5, `changed old stones ${(changed / rounds).toFixed(2)} per round`);
 });
 
-test('answers spread over every row of the board, not just under the new stones', () => {
-  const cells = Array(ROWS).fill(0), firsts = Array(ROWS).fill(0);
+test('answers spread over every row and column of the board, not just under the new stones', () => {
+  const cells = Array(ROWS).fill(0), firsts = Array(ROWS).fill(0), cols = Array(5).fill(0);
   const rounds = playRefills(20, ({ r }) => {
-    for (const id of r.solutionPath) cells[rowOf(id)]++;
+    for (const id of r.solutionPath) { cells[rowOf(id)]++; cols[id % 5]++; }
     firsts[rowOf(r.solutionPath[0])]++;
   });
   const total = cells.reduce((a, b) => a + b, 0);
@@ -129,6 +144,8 @@ test('answers spread over every row of the board, not just under the new stones'
   cells.forEach((n) => assert.ok(n / total >= 0.11 && n / total <= 0.23, msg));
   assert.ok(cells[ROWS - 1] / total >= 0.1, msg);
   firsts.forEach((n) => assert.ok(n / rounds >= 0.08 && n / rounds <= 0.26, msg));
+  const colTotal = cols.reduce((x, y) => x + y, 0);
+  cols.forEach((n) => assert.ok(n / colTotal >= 0.14 && n / colTotal <= 0.26, `columns ${cols.map((c) => share(c, colTotal)).join(' ')}`));
 });
 
 test('refill is deterministic', () => {
