@@ -1,0 +1,49 @@
+{
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "scenario": "Bölüm 1; admin last-answer setup, real pointer path; t0 final pointerup",
+  "frames": [
+    {
+      "requestedMs": 0,
+      "file": "design/level-end-before-0000.png",
+      "elapsedMs": 17,
+      "done": true,
+      "panelVisible": false,
+      "trainClass": "wt-train wt-train--arriving"
+    },
+    {
+      "requestedMs": 500,
+      "file": "design/level-end-before-0500.png",
+      "elapsedMs": 502,
+      "done": true,
+      "panelVisible": false,
+      "trainClass": "wt-train wt-train--arriving"
+    },
+    {
+      "requestedMs": 1000,
+      "file": "design/level-end-before-1000.png",
+      "elapsedMs": 1002,
+      "done": true,
+      "panelVisible": false,
+      "trainClass": "wt-train wt-train--arriving"
+    },
+    {
+      "requestedMs": 2000,
+      "file": "design/level-end-before-2000.png",
+      "elapsedMs": 2002,
+      "done": true,
+      "panelVisible": true,
+      "trainClass": "wt-train wt-train--moving"
+    },
+    {
+      "requestedMs": 3000,
+      "file": "design/level-end-before-3000.png",
+      "elapsedMs": 3002,
+      "done": true,
+      "panelVisible": true,
+      "trainClass": "wt-train"
+    }
+  ]
+}

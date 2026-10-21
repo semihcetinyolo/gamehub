@@ -1,0 +1,1 @@
+{ "name": "Word Train", "entry": "index.html", "fugo": { "mode": "zip", "exclude": ["tests/*", "design/*"] } }

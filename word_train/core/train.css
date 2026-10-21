@@ -1,0 +1,296 @@
+/* Word Train — train layout, motion and state classes (opus-core).
+   Load after core/theme.css. Every size is calc(N * var(--wt-k)); train.js sets --wt-k from the train area.
+   theme.css paints (backgrounds, borders, colours); sizes here win. train.js places each vehicle on the
+   winding track with an inline transform (bottom-centre on the rails, turned and scaled for depth).
+   Flatcar, top to bottom (72k): blocks 0–36k, deck 36–56k, wheels 46–72k tucked under the deck.
+   The fallback paint in the wt-placeholder layer only shows when theme.css does not draw a piece. */
+
+.wt-train {
+  --wt-k: 1;
+  --wt-deck-h: calc(20px * var(--wt-k));
+  --wt-wheel: calc(26px * var(--wt-k));
+  position: relative;
+  overflow: hidden;
+  height: var(--wt-train-height, 370px);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.wt-train__scene,
+.wt-train__rails,
+.wt-train__cars { position: absolute; inset: 0; pointer-events: none; }
+.wt-train__scene { z-index: 0; }
+.wt-train__rails { z-index: 1; width: 100%; height: 100%; overflow: visible; background: none; }
+.wt-train__cars { z-index: 2; }
+
+/* ---- wooden toy track: a wide bed with two grooves; dashed ahead of the locomotive.
+   Each piece carries --s (depth scale), so the track narrows with distance. ---- */
+.wt-train__rails path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.wt-rail__bed path { stroke-width: calc(20px * var(--wt-k) * var(--s, 1)); }
+.wt-rail__groove path { stroke-width: calc(12px * var(--wt-k) * var(--s, 1)); }
+.wt-rail__inner path { stroke-width: calc(7px * var(--wt-k) * var(--s, 1)); }
+.wt-train__links path { fill: none; stroke-width: calc(4px * var(--wt-k)); stroke-linecap: round; }
+.wt-train__links .wt-link--pair { stroke-width: calc(6px * var(--wt-k)); }
+
+/* The phrase pair on the bottom row: a soft underlay behind the previous word and the empty car. */
+.wt-train__pair-field {
+  position: absolute; left: 0; top: 0; z-index: 0;
+  border-radius: calc(14px * var(--wt-k));
+  pointer-events: none;
+}
+.wt-train__pair-field[hidden] { display: none; }
+.wt-rail__ahead path {
+  stroke-width: calc(3px * var(--wt-k) * var(--s, 1));
+  stroke-dasharray: calc(9px * var(--wt-k)) calc(8px * var(--wt-k));
+  stroke-linecap: butt;
+}
+
+/* ---- vehicles: placed by train.js ---- */
+.wt-locomotive,
+.wt-wagon {
+  position: absolute; left: 0; top: 0;
+  transform-origin: 50% 100%;
+  will-change: transform;
+  pointer-events: auto;
+}
+.wt-locomotive { pointer-events: none; }
+.wt-locomotive {
+  flex: none;
+  width: calc(108px * var(--wt-k)); height: calc(96px * var(--wt-k));
+  background-position: center bottom; background-size: contain; background-repeat: no-repeat;
+}
+.wt-locomotive__steam {
+  position: absolute; left: 18%; top: calc(-22px * var(--wt-k));
+  width: calc(30px * var(--wt-k)); height: calc(26px * var(--wt-k));
+  transform-origin: 50% 100%;
+}
+
+/* The phrase the newest wagon closes ("kitap kapağı"), under it, never turned. */
+.wt-train__phrase {
+  position: absolute; left: 0; top: 0; z-index: 6000;
+  padding: calc(3px * var(--wt-k)) calc(10px * var(--wt-k));
+  border-radius: 999px;
+  font-size: max(12px, calc(13px * var(--wt-k))); font-weight: 750; line-height: 1.15; white-space: nowrap;
+  background: var(--wt-paper, #fffaf0); color: var(--wt-muted, #786653);
+  border: 1px solid var(--wt-border, #d8c5a5);
+  box-shadow: 0 2px 0 #b88c5833;
+  transition: opacity .3s ease;
+}
+.wt-train__phrase[hidden] { display: none; }
+
+/* ---- flatcar: 80k tall; blocks (32×36k, --wt-block-w is the unitless width) sit on a deck 22k off the rails ---- */
+.wt-wagon {
+  --wt-bw: calc(var(--wt-block-w, 32) * 1px * var(--wt-k));
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  width: max-content; min-width: calc(64px * var(--wt-k));
+  height: calc(72px * var(--wt-k)); margin: 0;
+  padding: 0;
+  border: 0; background: none; box-shadow: none; border-radius: 0;
+  font: inherit; color: inherit; text-align: center;
+  cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: pan-y;
+}
+.wt-wagon[hidden] { display: none; }
+.wt-wagon--ghost { cursor: default; }
+.wt-wagon__cargo {
+  position: relative; z-index: 2;
+  display: flex; justify-content: center; align-items: flex-end; gap: calc(2px * var(--wt-k));
+  height: calc(36px * var(--wt-k));
+  margin: 0; padding: 0 calc(6px * var(--wt-k));
+}
+.wt-wagon__deck {
+  position: absolute; z-index: 1; left: 0; right: 0;
+  bottom: calc(16px * var(--wt-k)); height: var(--wt-deck-h);
+  background-size: 100% 100%;
+}
+.wt-wagon__wheel {
+  position: absolute; bottom: 0; z-index: 3;
+  width: var(--wt-wheel); height: var(--wt-wheel);
+  background-size: contain; background-repeat: no-repeat; background-position: center;
+}
+/* Four wheels, a pair under each end; short cars (≤ 3 blocks) keep only the outer two. */
+.wt-wagon__wheel--front { left: calc(6px * var(--wt-k)); }
+.wt-wagon__wheel--front2 { left: calc(35px * var(--wt-k)); }
+.wt-wagon__wheel--back2 { right: calc(35px * var(--wt-k)); }
+.wt-wagon__wheel--back { right: calc(6px * var(--wt-k)); }
+.wt-wagon--short .wt-wagon__wheel--front2,
+.wt-wagon--short .wt-wagon__wheel--back2 { display: none; }
+/* The empty car's letter count: a plain number just right of its blocks (over the deck's end), centred on them. */
+.wt-wagon__count {
+  position: absolute; z-index: 2; top: 0; left: calc(100% - 3px * var(--wt-k));
+  height: calc(36px * var(--wt-k));
+  display: grid; place-items: center;
+  font-size: max(13px, calc(17px * var(--wt-k))); font-weight: 800; line-height: 1;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+  pointer-events: none;
+}
+.wt-wagon__count[hidden] { display: none; }
+.wt-wagon__coupler {
+  position: absolute; z-index: 0; top: auto;
+  left: calc(-14px * var(--wt-k));
+  bottom: calc(22px * var(--wt-k));
+  width: calc(18px * var(--wt-k)); height: calc(8px * var(--wt-k));
+  background-size: 100% 100%;
+}
+
+/* ---- letter blocks ---- */
+.wt-block {
+  position: relative; flex: none;
+  display: grid; place-items: center;
+  width: var(--wt-bw); height: calc(36px * var(--wt-k));
+  box-sizing: border-box;
+}
+.wt-block__face {
+  font-size: min(calc(22px * var(--wt-k)), calc(var(--wt-bw) * .72)); font-weight: 850; line-height: 1;
+  letter-spacing: 0;
+}
+
+/* ---- fallback paint (theme.css overrides any of it) ---- */
+@layer wt-placeholder {
+  .wt-train { font-family: var(--wt-font, ui-rounded, system-ui, sans-serif); color: var(--wt-ink, #493b30); }
+  .wt-train__scene { background: linear-gradient(#fdf6e6, #f3e6cc); }
+  .wt-rail__bed path { stroke: #e2c697; }
+  .wt-rail__groove path { stroke: #b48a5a; }
+  .wt-rail__inner path { stroke: #e9d0a4; }
+  .wt-rail__ahead path { stroke: #b9a07d; }
+  .wt-train__links path { stroke: #6b4f3a; }
+  .wt-train__links .wt-link--pair { stroke: #d9a93f; }
+  .wt-train__pair-field { background: #f3dfa64d; box-shadow: inset 0 0 0 1px #e2c27a66; }
+  .wt-locomotive {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 96'%3E%3Crect x='14' y='8' width='12' height='26' rx='3' fill='%23493b30'/%3E%3Crect x='6' y='40' width='66' height='36' rx='16' fill='%23cd806a'/%3E%3Crect x='62' y='18' width='40' height='58' rx='9' fill='%23edc06c'/%3E%3Crect x='70' y='27' width='24' height='18' rx='5' fill='%23fffaf0'/%3E%3Crect x='56' y='12' width='50' height='10' rx='5' fill='%2340674d'/%3E%3Ccircle cx='24' cy='80' r='13' fill='%23493b30'/%3E%3Ccircle cx='24' cy='80' r='6' fill='%23edc06c'/%3E%3Ccircle cx='78' cy='80' r='13' fill='%23493b30'/%3E%3Ccircle cx='78' cy='80' r='6' fill='%23edc06c'/%3E%3Ccircle cx='22' cy='55' r='3' fill='%23493b30'/%3E%3C/svg%3E");
+  }
+  .wt-locomotive__steam {
+    background:
+      radial-gradient(circle at 30% 70%, #fff 0 28%, transparent 30%),
+      radial-gradient(circle at 65% 35%, #fff 0 34%, transparent 36%);
+  }
+  .wt-wagon__deck {
+    border-radius: calc(5px * var(--wt-k));
+    background: linear-gradient(#e9c48c, #bd8d56);
+    box-shadow: inset 0 calc(2px * var(--wt-k)) 0 #fae6ba, 0 calc(2px * var(--wt-k)) 0 #97683a55;
+  }
+  .wt-wagon__wheel {
+    border-radius: 50%;
+    background:
+      radial-gradient(circle, #493b30 0 16%, #edc06c 18% 52%, #6b4f3a 54%);
+  }
+  .wt-wagon__coupler { border-radius: 99px; background: #6b4f3a; }
+  .wt-wagon__count { color: var(--wt-muted, #786653); opacity: .85; }
+  .wt-block {
+    border-radius: calc(var(--wt-bw) * .22);
+    background: linear-gradient(160deg, #fffaf0 0 8%, var(--wt-block-paint, #fae6ba) 9% 100%);
+    box-shadow: inset 0 calc(-3px * var(--wt-k)) 0 #0000001a, 0 calc(2px * var(--wt-k)) 0 #8a6a4d40;
+    color: var(--wt-ink, #493b30);
+  }
+  .wt-block[data-tone="0"] { --wt-block-paint: #f8dfa6; }
+  .wt-block[data-tone="1"] { --wt-block-paint: #cfe3c8; }
+  .wt-block[data-tone="2"] { --wt-block-paint: #cfe0ea; }
+  .wt-block[data-tone="3"] { --wt-block-paint: #f3cfc3; }
+  .wt-block[data-tone="4"] { --wt-block-paint: #e3d6ef; }
+  .wt-block--slot, .wt-block--ask {
+    background: #fffaf080;
+    border: calc(2px * var(--wt-k)) dashed #b6a280;
+    box-shadow: none;
+    color: #877354;
+  }
+  .wt-block--hint { outline: calc(2px * var(--wt-k)) dashed #b6a280; outline-offset: 1px; }
+  .wt-wagon--ghost .wt-wagon__deck, .wt-wagon--ghost .wt-wagon__wheel { opacity: .5; }
+  .wt-train--shake .wt-wagon--ghost .wt-block { border-color: var(--wt-danger, #a74438); color: var(--wt-danger, #a74438); }
+}
+
+/* ---- motion & states (never animate .wt-wagon/.wt-locomotive transform: train.js owns it) ---- */
+.wt-locomotive__steam { animation: wt-steam 2.6s ease-out infinite; }
+.wt-train--moving .wt-locomotive__steam,
+.wt-train--celebrate .wt-locomotive__steam { animation-duration: .7s; }
+@keyframes wt-steam {
+  0% { transform: translate(0, 30%) scale(.4); opacity: 0; }
+  25% { opacity: .95; }
+  100% { transform: translate(-40%, -90%) scale(1.25); opacity: 0; }
+}
+
+.wt-train--moving .wt-wagon__wheel,
+.wt-train--celebrate .wt-wagon__wheel { animation: wt-roll .45s linear infinite; }
+@keyframes wt-roll { to { transform: rotate(-360deg); } }
+
+.wt-wagon--ghost { transition: opacity .25s ease; }
+.wt-wagon--waiting { opacity: 0; transition: none; }
+.wt-wagon--ghost .wt-block--slot,
+.wt-wagon--ghost .wt-block--ask { animation: wt-ghost-breathe 2.4s ease-in-out infinite; }
+@keyframes wt-ghost-breathe { 50% { transform: translateY(calc(-2px * var(--wt-k))); } }
+
+.wt-block--pending { opacity: 0; }
+/* A suffix block that fell off a car: a free copy in the cars layer, gone after its fall. */
+.wt-block--shed { position: absolute; z-index: 6000; margin: 0; pointer-events: none; }
+.wt-wagon--coupled .wt-wagon__coupler { animation: wt-clunk .32s ease-out; }
+.wt-wagon--coupled .wt-wagon__cargo { animation: wt-settle .3s ease-out; }
+@keyframes wt-clunk { 40% { transform: scaleX(1.35); filter: brightness(1.3); } }
+@keyframes wt-settle { 40% { transform: translateX(calc(-3px * var(--wt-k))); } }
+
+button.wt-wagon:active .wt-wagon__cargo { transform: translateY(calc(1px * var(--wt-k))); }
+
+/* Wrong answer: the empty car's blocks shake (or the newest wagon's when there is no empty car). */
+.wt-train--shake .wt-wagon--ghost .wt-wagon__cargo,
+.wt-train--shake.wt-train--no-ghost .wt-wagon:nth-last-child(3) .wt-wagon__cargo { animation: wt-shake .45s ease-in-out; }
+.wt-train--shake .wt-wagon--ghost .wt-block:nth-child(odd) { animation: wt-wobble .45s ease-in-out; }
+@keyframes wt-shake {
+  15% { transform: translateX(-5px) rotate(-1deg); }
+  35% { transform: translateX(4px) rotate(.8deg); }
+  55% { transform: translateX(-3px); }
+  75% { transform: translateX(2px); }
+}
+@keyframes wt-wobble { 30% { transform: rotate(-6deg); } 65% { transform: rotate(5deg); } }
+
+.wt-train--celebrate .wt-block {
+  animation: wt-hop .5s cubic-bezier(.3, 0, .4, 1) 2 both;
+  animation-delay: calc(var(--wt-i, 0) * 30ms);
+}
+@keyframes wt-hop {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(calc(-12px * var(--wt-k))) rotate(-3deg); }
+  70% { transform: translateY(calc(1px * var(--wt-k))); }
+}
+
+/* ---- level end: the result station (train.enterEnd; core/levelend.js builds the rest) ----
+   The bottom track grows a wooden platform lip (34k art, contact line 11k down, on the rail); older cars
+   fade out and the locomotive pulls in on the row above; posts and a roof frame the station. */
+.wt-train__platform {
+  position: absolute; left: 0; right: 0; top: 0; z-index: 1;
+  transform-origin: 50% calc(11px * var(--wt-k));
+  pointer-events: none;
+}
+.wt-train__platform[hidden] { display: none; }
+.wt-train--end .wt-wagon,
+.wt-train--end .wt-locomotive { transition: opacity .18s ease; }
+.wt-train--end .wt-train__away { opacity: 0; }
+.wt-train--end .wt-train__scene::before,
+.wt-train--end .wt-train__scene::after {
+  content: ''; position: absolute; pointer-events: none;
+  animation: wt-end-in .4s ease-out .45s backwards;
+}
+.wt-train--end .wt-train__scene::before { top: calc(14px * var(--wt-k)); bottom: 0; left: calc(14px * var(--wt-k)); right: calc(14px * var(--wt-k)); }
+.wt-train--end .wt-train__scene::after { top: calc(5px * var(--wt-k)); left: calc(8px * var(--wt-k)); right: calc(8px * var(--wt-k)); height: calc(11px * var(--wt-k)); border-radius: calc(8px * var(--wt-k)); }
+@keyframes wt-end-in { from { opacity: 0; transform: translateY(calc(-6px * var(--wt-k))); } }
+.wt-train--end-settle .wt-train__cars { animation: wt-end-settle .4s ease-out; }
+@keyframes wt-end-settle { 35% { transform: translateY(calc(2px * var(--wt-k))); } }
+.wt-train--end-rest .wt-locomotive__steam { animation: wt-steam-out .45s ease-out forwards; }
+@keyframes wt-steam-out { from { opacity: .9; } to { opacity: 0; transform: translate(-30%, -70%) scale(1.2); } }
+@layer wt-placeholder {
+  .wt-train__platform {
+    background: url('../assets/station-platform.svg') center top / 100% calc(34px * var(--wt-k)) no-repeat;
+    filter: drop-shadow(0 3px 2px #9a754e20);
+  }
+  .wt-train--end .wt-train__scene::before {
+    opacity: .65;
+    background:
+      linear-gradient(90deg, #c39c68, #e9c58e 15%, #fae6ba 50%, #d7af74 85%, #c39c68) left top / calc(9px * var(--wt-k)) 100% no-repeat,
+      linear-gradient(90deg, #c39c68, #e9c58e 15%, #fae6ba 50%, #d7af74 85%, #c39c68) right top / calc(9px * var(--wt-k)) 100% no-repeat;
+  }
+  .wt-train--end .wt-train__scene::after {
+    border: 1px solid #b68c58;
+    background: linear-gradient(#f6dfb4, #dfb577);
+    box-shadow: 0 3px 0 #b78c5830;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wt-train * { animation: none !important; transition: none !important; }
+}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+  <symbol fill="none" id="admin" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 3-.7 2.2-2 .9L4 5.8 2 9.2l1.5 1.8v2L2 14.8l2 3.4 2.3-.3 2 .9L9 21h6l.7-2.2 2-.9 2.3.3 2-3.4-1.5-1.8v-2L22 9.2l-2-3.4-2.3.3-2-.9L15 3z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+  <symbol fill="none" id="arrow-right" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></g></symbol>
+  <symbol fill="none" id="back" viewBox="0 0 24 24"><path d="m14 6-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol fill="none" id="restart" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a8 8 0 1 1 .6 6M4 4v6h6"/></g></symbol>
+  <symbol fill="none" id="hint" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16c0-2-3-3-3-7a7 7 0 0 1 14 0c0 4-3 5-3 7zM9 20h6m-5 2h4m-2-6v-5m-3-2 3 2 3-2"/></g></symbol>
+  <symbol fill="none" id="sound" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9zm12-1a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></g></symbol>
+  <symbol fill="none" id="mute" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9zm13 0 5 6m0-6-5 6"/></g></symbol>
+  <symbol fill="none" id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol fill="none" id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol fill="none" id="star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3-5.7-3-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+  <symbol fill="none" id="levels" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></g></symbol>
+</svg>

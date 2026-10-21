@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="tr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Word Train · Bölüm sonu tasarım maketi</title>
+<link rel="stylesheet" href="../core/theme.css">
+<style>
+/* Review-only static keyframes. Not the shared runtime component. */
+:root{--dock:clamp(212px,30.34dvh,256px);--pair-h:72px;--rail:calc(var(--dock) - 6px)}
+body{height:100dvh;overflow:hidden;background:#faf5e9}
+button{touch-action:manipulation}
+.mock{position:relative;height:100dvh;overflow:hidden;background:#faf5e9}
+.before{position:absolute;width:100%;height:100%;object-fit:fill;pointer-events:none}
+.hud{position:absolute;left:16px;right:16px;top:max(12px,env(safe-area-inset-top));height:48px;display:flex;gap:8px;align-items:center;background:#fffaf0}
+.hud .wt-hud__progress{padding:8px 12px}.hud .wt-hud__level{font-size:16px}.hud .wt-hud__level small{font-size:12px}
+.end{position:absolute;inset:66px 0 0;isolation:isolate}
+.station-sky{position:absolute;inset:0 0 auto;height:calc(var(--dock) - 66px);background:radial-gradient(ellipse at 55% 100%,#e8edda 0%,#f7f1df 60%,#faf5e9 100%)}
+.post{position:absolute;top:16px;bottom:0;width:9px;border:1px solid #c39c68;border-radius:5px;background:linear-gradient(90deg,#e9c58e,#fae6ba 45%,#d7af74);opacity:.65}.post.l{left:18px}.post.r{right:18px}
+.roof{position:absolute;left:10px;right:10px;top:9px;height:11px;border:1px solid #b68c58;border-radius:8px;background:linear-gradient(#f6dfb4,#dfb577);box-shadow:0 3px 0 #b78c5830}
+.station-sign{position:absolute;right:24px;top:25px;width:204px;height:69px;background:url('../assets/station-sign.svg') center/100% 100%;text-align:center;padding:12px 19px}
+.station-sign small{display:block;font-size:10px;line-height:15px;font-weight:850;letter-spacing:1.7px;color:#5c7854}.station-sign strong{display:block;font-size:19px;line-height:26px;color:#3e5c42}
+.upper-rail{position:absolute;top:105px;left:-4px;right:0;height:13px;border-radius:8px;background:#dccaab;border:1px solid #bba783;box-shadow:inset 0 3px #f7ecd2,inset 0 -3px #f7ecd2}
+.upper-rail:after{content:'';position:absolute;inset:5px 0 auto;height:2px;background:#9d8a69}
+.loco{position:absolute;left:32px;top:20px;width:118px;height:96px;background:url('../assets/locomotive-toy.webp') center/contain no-repeat;filter:drop-shadow(0 3px 2px #80623c20);transform:scaleX(-1)}
+.steam{position:absolute;top:8px;left:124px;display:flex;gap:4px;transform:rotate(-14deg);opacity:.7}.steam i{width:13px;height:13px;border-radius:50%;background:#fffdf6;box-shadow:0 1px 3px #b8b3a922}.steam i:nth-child(2){width:18px;height:18px;margin-top:-8px}.steam i:nth-child(3){width:11px;height:11px;margin-top:-11px}
+.pair{position:absolute;left:0;right:0;top:calc(var(--dock) - 66px - var(--pair-h));height:var(--pair-h);display:flex;justify-content:center;gap:12px;align-items:end;z-index:3}
+.pair:after{content:'';position:absolute;left:calc(50% - 27px);top:40px;width:14px;height:6px;background:#c59c48;border-radius:4px;box-shadow:inset 0 2px #f6d987;z-index:-1}
+.car{position:relative;height:100%;width:max-content;--wt-k:1;--wt-block-w:24}
+.cargo{display:flex;gap:2px;padding:0 6px;position:relative;z-index:2;height:34px}
+.cargo .wt-block{position:relative;flex:none;width:24px;height:34px;min-width:0;font-size:22px;display:flex;align-items:center;justify-content:center}
+.cargo .wt-block__face{font-size:22px;line-height:1.1}
+.deck{position:absolute;left:0;right:0;bottom:17px;height:22px;background:url('../assets/flatcar.svg') center/100% 100% no-repeat;z-index:1}
+.wheel{position:absolute;bottom:0;width:26px;height:26px;background:url('../assets/wheel.svg') center/contain no-repeat;z-index:2}.wheel:nth-of-type(1){left:6px}.wheel:nth-of-type(2){left:34px}.wheel:nth-of-type(3){right:34px}.wheel:nth-of-type(4){right:6px}
+.platform{position:absolute;top:calc(var(--dock) - 66px - 17px);left:0;right:0;bottom:0;z-index:2;pointer-events:none}
+.platform-lip{position:absolute;top:0;left:0;right:0;height:34px;background:url('../assets/station-platform.svg') center/100% 100% no-repeat;z-index:2;filter:drop-shadow(0 4px 2px #9a754e20)}
+.station-body{position:absolute;top:24px;bottom:0;left:8px;right:8px;background:linear-gradient(90deg,#efd6ac 0 4px,#fff7e7 4px calc(100% - 4px),#efd6ac calc(100% - 4px));border:1px solid #c8a36d;border-bottom:none;box-shadow:inset 0 3px 10px #a2784220}
+.grain{position:absolute;inset:6px 5px;background:repeating-linear-gradient(0deg,transparent 0 110px,#c09d5e14 111px 112px);pointer-events:none}
+.content{position:absolute;inset:39px 18px 0;display:flex;flex-direction:column;align-items:stretch;text-align:center;pointer-events:auto;padding-bottom:max(16px,env(safe-area-inset-bottom))}
+.arrival-tag{align-self:center;display:flex;align-items:center;gap:7px;padding:6px 14px;min-height:32px;border-radius:9px;background:#f7e2aa;border:1px solid #d7b265;box-shadow:0 2px 0 #c6a26930;color:#785725;font-size:14px;font-weight:750;transform:rotate(-1deg)}
+.arrival-tag .wt-icon{width:16px;height:16px}
+h1{font-size:25px;line-height:1.12;margin:19px 0 13px;font-weight:850;letter-spacing:-.6px}
+.stats{display:flex;justify-content:center;align-items:center;gap:0;margin:0 0 19px}
+.stat{display:flex;flex-direction:column;min-width:90px;padding:0 15px;border-right:1px solid #dcc6a0}.stat:last-child{border:none}.stat strong{font-size:23px;line-height:1.1;color:#496a4b}.stat span{font-size:12px;font-weight:700;color:#786653;margin-top:4px}
+.ticket{position:relative;text-align:left;background:#fffdf5;border:1px solid #d6c6a8;border-radius:16px;padding:15px 17px;box-shadow:0 3px 0 #bea58125;width:100%;max-width:330px;align-self:center}
+.ticket:before,.ticket:after{content:'';position:absolute;top:37px;width:13px;height:16px;background:#fff7e7;border:1px solid #d6c6a8;border-radius:50%}.ticket:before{left:-8px;border-left:0}.ticket:after{right:-8px;border-right:0}
+.ticket-title{font-size:11px;letter-spacing:1.1px;font-weight:800;text-transform:uppercase;color:#877150;margin:0 0 13px;padding-bottom:9px;border-bottom:1px dashed #d8c6a5}
+.phrase{position:relative;display:flex;align-items:center;gap:12px;font-size:16px;font-weight:650;height:35px;color:#796b55}.phrase .dot{width:13px;height:13px;border:2px solid #aeb798;background:#f4f5e6;border-radius:50%;flex:none;position:relative}.phrase:not(:last-child) .dot:after{content:'';position:absolute;top:11px;left:4px;width:1px;height:21px;background:#c8cdb9}.phrase:last-child{color:#40674d;font-weight:800}.phrase:last-child .dot{background:#789b80;border-color:#597c59}.phrase:last-child .wt-icon{margin-left:auto;width:19px;height:19px}
+.all-note{font-size:14px;line-height:1.35;font-weight:700;color:#496a4b;margin:10px 8px 0}
+.actions{margin-top:auto;padding-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:none}
+.actions .next{grid-column:1/-1;min-height:56px;font-size:17px;box-shadow:0 4px 0 #2e513a}.actions .secondary{min-height:52px;font-size:14px;padding:8px 6px;gap:7px}.actions .wt-icon{width:20px;height:20px}.actions .last-primary{grid-column:1/-1}
+.seal{position:absolute;right:11px;top:12px;display:none}
+.spark{position:absolute;width:6px;height:6px;border-radius:2px;background:#e7bc67;top:107px;left:172px;transform:rotate(25deg)}.spark.s2{left:289px;top:100px;background:#9eb794;width:4px;height:8px}.spark.s3{left:318px;top:132px;width:5px;height:5px}.spark.s4{left:151px;top:124px;background:#cd9886;width:4px;height:7px}
+/* Static story beats selected by ?t=350,850,2400. */
+.phase-early .station-sky{opacity:0}.phase-early .pair{opacity:0}.phase-early .station-body{bottom:auto;height:42%;border-bottom:1px solid #c8a36d;border-radius:0 0 14px 14px;box-shadow:0 8px 15px #a2784220;opacity:.9}.phase-early .content{opacity:0}.phase-early .spark{display:none}.phase-early .platform-lip{opacity:.85}
+.phase-ready .loco{left:14px;opacity:.95}.phase-ready .station-sign{opacity:.8;transform:translateY(4px)}.phase-ready .spark,.phase-ready .steam{display:none}.phase-ready .car:last-child .wt-block:nth-child(6){transform:translateY(-8px) rotate(-3deg)}.phase-ready .car:last-child .wt-block:nth-child(7){transform:translateY(-19px) rotate(4deg)}
+.phase-ready .ticket{opacity:.82}.phase-ready .arrival-tag{transform:rotate(-1deg)}
+.phase-done .before{visibility:hidden}
+@media(max-height:700px){:root{--pair-h:62px}.station-sky .upper-rail{top:79px}.loco{width:92px;height:76px;top:7px;left:32px}.station-sign{right:23px;top:15px;width:194px;height:62px;padding-top:8px}.station-sign strong{font-size:17px}.station-sign small{font-size:9px}.roof{top:0}.post{top:6px}.steam{display:none}.cargo{height:30px}.cargo .wt-block{height:30px}.deck{height:18px;bottom:14px}.wheel{height:23px;width:23px}.pair:after{top:34px}.content{inset:37px 14px 0}.arrival-tag{padding:4px 12px;min-height:28px;font-size:12px}h1{font-size:22px;margin:11px 0 10px}.stats{margin-bottom:12px}.stat strong{font-size:20px}.stat span{font-size:11px}.stat{min-width:83px}.ticket{padding:8px 15px}.ticket-title{margin-bottom:5px;padding-bottom:5px;font-size:10px}.phrase{height:26px;font-size:14px}.is-last .phrase:nth-of-type(1){display:none}.actions .last-primary{min-height:52px}.phrase:not(:last-child) .dot:after{height:15px}.actions{padding-top:12px;gap:8px}.actions .next{min-height:52px}.actions .secondary{min-height:48px;font-size:13px}.all-note{font-size:12px;margin:7px 3px 0}.spark{display:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+<main class="mock" id="mock">
+  <img class="before" src="level-end-before-0500.png" alt="">
+  <header class="hud" aria-hidden="true"><span class="wt-icon-button" id="hudLevels"></span><div class="wt-hud__level">Bölüm 1<small>Kitap Treni</small></div><span class="wt-hud__progress">9 / 9</span><span class="wt-icon-button" id="hudSound"></span><span class="wt-icon-button" id="hudAdmin"></span></header>
+  <section class="end" role="dialog" aria-modal="true" aria-labelledby="end-title">
+    <div class="station-sky" aria-hidden="true"><div class="post l"></div><div class="post r"></div><div class="roof"></div><div class="upper-rail"></div><div class="station-sign"><small>BÖLÜM 1</small><strong>Kitap Treni</strong></div><div class="loco"></div><div class="steam"><i></i><i></i><i></i></div></div>
+    <div class="pair" aria-label="Son bağlantı: kenar çizgisi" id="pair"></div>
+    <div class="platform"><div class="station-body"><div class="grain"></div></div><div class="platform-lip"></div>
+      <div class="content"><div class="arrival-tag" id="tag"></div><h1 id="end-title">Bölüm tamamlandı!</h1><div class="stats" aria-label="9 bağlantı, 0 hata, 0 yardım"><div class="stat"><strong>9</strong><span>bağlantı</span></div><div class="stat"><strong>0</strong><span>hata</span></div><div class="stat"><strong>0</strong><span>yardım</span></div></div>
+        <div class="ticket"><p class="ticket-title">Son bağlantılar</p><div class="phrase"><i class="dot"></i>defter sayfası</div><div class="phrase"><i class="dot"></i>sayfa kenarı</div><div class="phrase"><i class="dot"></i>kenar çizgisi<span id="check"></span></div></div>
+        <p class="all-note" hidden>Tüm bölümler tamamlandı. Yeni bir yolculuk için bir bölüm seç.</p>
+        <div class="actions"><button class="wt-button wt-button--primary next" data-action="next">Sonraki bölüm <span id="arrow"></span></button><button class="wt-button secondary" data-action="replay"><span id="restart"></span>Tekrar oyna</button><button class="wt-button secondary" data-action="levels"><span id="levels"></span>Bölümler</button></div>
+      </div>
+    </div>
+    <i class="spark"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i>
+  </section>
+</main>
+<script>
+const params=new URLSearchParams(location.search),t=Number(params.get('t')||2400),last=params.has('last');
+const icon=n=>`<svg class="wt-icon" aria-hidden="true"><use href="../assets/icons.svg#${n}"/></svg>`;
+for(const[id,name]of Object.entries({hudLevels:'levels',hudSound:'sound',hudAdmin:'admin',arrow:'arrow-right',restart:'restart',levels:'levels',check:'check'}))document.getElementById(id).innerHTML=icon(name);
+document.getElementById('tag').innerHTML=icon('check')+'kenar çizgisi';
+const car=(word)=>`<div class="car"><div class="cargo">${[...word].map((l,i)=>`<span class="wt-block" data-tone="${i%5}"><span class="wt-block__face">${l}</span></span>`).join('')}</div><div class="deck"></div><span class="wheel"></span><span class="wheel"></span><span class="wheel"></span><span class="wheel"></span></div>`;
+document.getElementById('pair').innerHTML=car('KENAR')+car('ÇİZGİSİ');
+document.getElementById('mock').classList.add(t<600?'phase-early':t<1800?'phase-ready':'phase-done');
+if(t<600)document.querySelector('.actions').inert=true;
+if(last){document.getElementById('mock').classList.add('is-last');document.getElementById('end-title').textContent='Bütün duraklar tamam!';document.querySelector('.all-note').hidden=false;document.querySelector('.next').remove();const levels=document.querySelector('[data-action="levels"]');levels.classList.add('wt-button--primary','last-primary');levels.innerHTML=icon('levels')+'Bölüm seç';levels.parentElement.prepend(levels);document.querySelector('[data-action="replay"]').style.gridColumn='1/-1';document.querySelector('.station-sign small').textContent='SON DURAK';}
+if(matchMedia('(prefers-reduced-motion:reduce)').matches){document.getElementById('mock').classList.remove('phase-early','phase-ready');document.getElementById('mock').classList.add('phase-done');document.querySelector('.actions').inert=false;}
+window.mockResult={phase:t,action:null,finished:false};
+document.querySelectorAll('[data-action]').forEach(b=>b.addEventListener('click',()=>{window.mockResult={phase:t,action:b.dataset.action,finished:true};document.querySelector('.mock').classList.remove('phase-early','phase-ready');document.querySelector('.mock').classList.add('phase-done');}));
+</script>
+</html>

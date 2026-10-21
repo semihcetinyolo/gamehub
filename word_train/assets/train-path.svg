@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="400" viewBox="0 0 390 400" fill="none">
+  <!-- Tail to locomotive: getPointAtLength(s), increasing s is forward. Geometry only. -->
+  <path id="train-route" d="M 55 380 H 275 C 315 380 340 355 340 315 V 215 C 340 175 315 150 275 150 H 120 C 70 150 46 125 46 94 C 46 64 72 34 118 34 H 430" stroke="#C3AF8A" stroke-width="2.5" stroke-dasharray="6 7" stroke-linecap="round"/>
+</svg>

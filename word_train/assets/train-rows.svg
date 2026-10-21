@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="220" viewBox="0 0 390 220" fill="none">
+  <title>Bağlı tamlama çifti için sıkı yatay raylar</title>
+  <defs><path id="route" d="M402 202H24Q10 202 10 188V134Q10 120 24 120H402"/></defs>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <use href="#route" stroke="#DCC9A3" stroke-width="20"/>
+    <use href="#route" stroke="#9D8B6E" stroke-width="12"/>
+    <use href="#route" stroke="#F5EAD0" stroke-width="7"/>
+  </g>
+</svg>

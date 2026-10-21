@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Word Train — çekirdek demo</title>
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="train.css">
+<style>
+  /* A low, edge-to-edge track (two rows); the 8 choices take the rest of the screen. */
+  .demo-play { gap: 6px; }
+  #train { flex: none; margin-inline: -16px; --wt-train-height: clamp(200px, 26dvh, 230px); }
+  #train .wt-train { border-radius: 0; border-inline: 0; }
+  .demo-ask { margin: 0; font-size: 24px; font-weight: 850; letter-spacing: .03em; text-align: center; color: var(--wt-sage-dark, #40674d); }
+  .demo-ask span { color: var(--wt-muted, #786653); }
+  .demo-clue { margin: 0; min-height: 2.6em; display: grid; place-items: center; color: var(--wt-muted, #786653); font-size: 15px; font-weight: 650; line-height: 1.3; text-align: center; }
+  .demo-status { margin: 0; min-height: 1.3em; font-weight: 800; text-align: center; }
+  .demo-status.ok { color: var(--wt-sage-dark, #40674d); }
+  .demo-status.bad { color: var(--wt-danger, #a74438); }
+  .demo-choices { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: minmax(48px, 1fr); gap: 8px; }
+  .demo-choices .wt-button { min-height: 48px; padding: 4px 6px; font-size: clamp(14px, 4.2vw, 17px); letter-spacing: .02em; }
+  .demo-choices .wt-button:disabled { opacity: .3; }
+  /* Short screens: a slightly lower track, and the status line gives way (the train shows the phrase). */
+  @media (max-height: 700px) {
+    #train { --wt-train-height: 190px; }
+    .demo-status { display: none; }
+    .demo-ask { font-size: 21px; }
+    .demo-clue { font-size: 14px; min-height: 2.4em; }
+  }
+</style>
+</head>
+<body>
+<main class="wt-app wt-game">
+  <header class="wt-hud">
+    <div class="wt-hud__level" id="level"></div>
+    <div class="wt-hud__progress" id="progress"></div>
+    <button class="wt-icon-button" id="sound" type="button" aria-label="Ses"><svg class="wt-icon" aria-hidden="true"><use id="sound-icon" href="../assets/icons.svg#sound"></use></svg></button>
+    <button class="wt-icon-button" id="admin" type="button" aria-label="Yönetim"><svg class="wt-icon" aria-hidden="true"><use href="../assets/icons.svg#admin"></use></svg></button>
+  </header>
+  <section class="wt-playfield demo-play">
+    <div id="train"></div>
+    <p class="demo-ask" id="ask"></p>
+    <p class="demo-clue" id="clue"></p>
+    <p class="demo-status" id="status" aria-live="polite"></p>
+    <div class="demo-choices" id="choices"></div>
+  </section>
+  <footer class="wt-bottom-bar">
+    <button class="wt-button" id="restart" type="button" aria-label="Baştan"><svg class="wt-icon" aria-hidden="true"><use href="../assets/icons.svg#restart"></use></svg></button>
+    <button class="wt-button wt-button--primary" id="hint" type="button"><svg class="wt-icon" aria-hidden="true"><use href="../assets/icons.svg#hint"></use></svg>Harf aç</button>
+  </footer>
+</main>
+<script type="module">
+import { createRun, current, answer, useHint, mask, choices, linkRand } from './logic.js';
+import { mountTrain } from './train.js';
+import { sfx } from './sfx.js';
+import { haptics } from './haptics.js';
+import { openAdmin } from './admin.js';
+import { openLevelEnd } from './levelend.js';
+
+let LEVELS;
+try { ({ LEVELS } = await import('../levels.js')); }
+catch { LEVELS = [(await import('../tests/fixtures/sample-level.js')).SAMPLE_LEVEL]; }
+
+const $ = id => document.getElementById(id);
+const status = (text, kind = '') => { $('status').textContent = text; $('status').className = `demo-status ${kind}`; };
+let level = LEVELS[0];
+let seed = 1;
+let state;
+
+const train = mountTrain($('train'), {
+  sfx,
+  onWagonTap: ({ word, phrase }) => { sfx.tap(); haptics.tap(); status(phrase ?? word); },
+});
+
+function render() {
+  const cur = current(state);
+  $('level').innerHTML = '';
+  $('level').append(`Bölüm ${level.id}`, Object.assign(document.createElement('small'), { textContent: level.title }));
+  $('progress').textContent = `${state.found.length - 1}/${state.chain.length - 1}`;
+  train.setGhost(cur ? cur.pattern : null);
+  $('ask').replaceChildren(...(cur ? [`${cur.prev.base} + `, Object.assign(document.createElement('span'), { textContent: `${cur.pattern.replace(/_+$/, '')}…` })] : []));
+  $('clue').textContent = cur ? (cur.target.hint ?? '') : 'Bölüm bitti!';
+  $('hint').disabled = !cur;
+  // Up to 8 choices; those that no longer match the letters shown so far are crossed out.
+  const shown = cur ? Array.from(cur.target.word).slice(0, state.revealed).join('') : '';
+  $('choices').replaceChildren(...(cur ? choices(cur.target, linkRand(state), 8) : []).map(word => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'wt-button';
+    button.textContent = word;
+    button.disabled = !word.startsWith(shown);
+    button.addEventListener('click', () => submit(word));
+    return button;
+  }));
+}
+
+function start(next = level) {
+  level = next;
+  state = createRun(level, { seed });
+  train.reset(state.found, state.chain.map(link => link.phrase), state.chain.map(link => link.base));
+  status('');
+  render();
+}
+
+// The game never waits for the train: state and choices move on at once, the train catches up behind.
+async function submit(guess, { animate = true } = {}) {
+  const { state: next, result } = answer(state, guess);
+  state = next;
+  if (!result.ok) {
+    sfx.wrong(); haptics.wrong();
+    status(result.done ? 'Bölüm bitti.' : 'Olmadı, tekrar dene.', 'bad');
+    render();
+    if (!result.done) await train.shake();
+    return;
+  }
+  sfx.correct(); haptics.correct();
+  status(result.phrase, 'ok');
+  const arrived = train.addWagon(result.word, { phrase: result.phrase, base: result.base, animate });
+  render();
+  $('choices').animate?.([{ opacity: 0.4, transform: 'translateY(4px)' }, { opacity: 1, transform: 'none' }], { duration: 150 });
+  if (!result.done) return;
+  // Level end: the train turns into the result station at once (the queue hands over to the final state).
+  sfx.win(); haptics.win();
+  showEnd();
+}
+
+function showEnd() {
+  const i = LEVELS.indexOf(level);
+  const last = i === LEVELS.length - 1;
+  openLevelEnd({
+    train, level, number: i + 1, last, sfx, inert: document.querySelector('main'),
+    found: state.found, mistakes: state.mistakes, hints: state.hints,
+    onNext: () => start(LEVELS[i + 1]),
+    onReplay: () => start(),
+    onLevels: openLevels,
+  });
+}
+
+function solveCurrent(animate = true) { const cur = current(state); if (cur) return submit(cur.target.word, { animate }); }
+
+$('hint').addEventListener('click', () => {
+  const { state: next, reveal } = useHint(state, 'letter');
+  state = next;
+  if (reveal?.fresh) { sfx.hint(); haptics.hint(); status(`Açılan harf: ${reveal.letter}`); }
+  render();
+});
+$('restart').addEventListener('click', () => { sfx.tap(); start(); });
+
+function renderSound() {
+  $('sound-icon').setAttribute('href', `../assets/icons.svg#${sfx.muted ? 'mute' : 'sound'}`);
+  $('sound').setAttribute('aria-pressed', String(!sfx.muted));
+}
+$('sound').addEventListener('click', () => { sfx.toggle(); renderSound(); sfx.tap(); });
+renderSound();
+
+const sound = name => ({ label: `Ses: ${name}`, keepOpen: true, run: () => sfx[name]() });
+// The demo has no level list of its own: "Bölümler" opens the admin sheet, whose cards jump to a level.
+function openLevels(actions = []) {
+  return openAdmin({ levels: LEVELS, currentId: level.id, onJump: id => start(LEVELS.find(l => l.id === id)), actions });
+}
+$('admin').addEventListener('click', () => openLevels([
+    { label: 'Cevabı çöz', run: () => solveCurrent() },
+    { label: 'Animasyonsuz çöz', run: () => solveCurrent(false) },
+    { label: '3 vagon art arda', run: () => { for (let i = 0; i < 3; i++) { const cur = current(state); if (cur) submit(cur.target.word, { animate: true }); } } },
+    { label: 'Bölüm sonuna geç', run: async () => { while (current(state)) await solveCurrent(false); } },
+    { label: 'Son soruya geç', run: () => { while (current(state) && state.index < state.chain.length - 1) submit(current(state).target.word, { animate: false }); } },
+    { label: 'Son bölüm', run: () => start(LEVELS.at(-1)) },
+    { label: 'Yanlış (sallan)', run: () => submit('YANLIŞ') },
+    { label: 'Kutla', run: () => { sfx.win(); haptics.win(); return train.celebrate(); } },
+    { label: 'Hayalet: ?', run: () => train.setGhost('?') },
+    { label: 'Hayalet: maske', run: () => train.setGhost(mask(current(state)?.target.word ?? 'KAPAĞI', 2)) },
+    { label: 'Hayalet: sadece ilk harf', run: () => train.setGhost(mask(current(state)?.target.word ?? 'KAPAĞI', 1)) },
+    { label: 'Hayaleti gizle', run: () => train.setGhost(null) },
+    { label: 'Kutla (tren kalsın)', run: () => train.celebrate({ depart: false }) },
+    { label: 'Uzun kelimeler', run: () => {
+      state = { ...createRun(level), done: true };
+      train.reset(['KİTAP', 'TOPLANTISI', 'KÜTÜPHANESİ', 'MÜHENDİSLİĞİ', 'AY'],
+        [null, 'kitap toplantısı', 'toplantı kütüphanesi', 'kütüphane mühendisliği', 'mühendislik ay']);
+      train.setGhost('KA__________');
+    } },
+    { label: 'Yeniden karıştır', run: () => { seed = (seed * 7919 + 13) % 100000; start(); } },
+    { label: 'Baştan başlat', tone: 'danger', run: () => start() },
+    { label: `Titreşim: ${haptics.supported ? (haptics.enabled ? 'açık' : 'kapalı') : 'yok'}`, run: () => haptics.toggle() },
+    ...['tap', 'place', 'swap', 'letter', 'correct', 'wrong', 'hint', 'chug', 'couple', 'whistle', 'win'].map(sound),
+  ]));
+
+start();
+window.demo = { train, get state() { return state; }, sfx, haptics };
+</script>
+</body>
+</html>

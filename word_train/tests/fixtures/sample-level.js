@@ -1,0 +1,22 @@
+// Stand-alone copy of the contract's example level, so core tests do not depend on levels.js.
+export const SAMPLE_LEVEL = { id: 1, title: 'Ofis', chain: [
+  { word: 'KİTAP', base: 'KİTAP' },
+  { word: 'KAPAĞI', base: 'KAPAK', phrase: 'kitap kapağı', hint: 'Kitabın en dış yüzü',
+    distractors: ['SAYFASI', 'RAFI', 'CİLDİ'] },
+  { word: 'TASARIMI', base: 'TASARIM', phrase: 'kapak tasarımı', hint: 'Kapağın nasıl görüneceği',
+    distractors: ['RESMİ', 'KAĞIDI', 'YAZISI'] },
+  { word: 'EKİBİ', base: 'EKİP', phrase: 'tasarım ekibi', hint: 'Bu işi birlikte yapanlar',
+    distractors: ['OKULU', 'HATASI', 'ODASI'] },
+  { word: 'TOPLANTISI', base: 'TOPLANTI', phrase: 'ekip toplantısı', hint: 'Ekibin bir araya gelmesi',
+    distractors: ['RUHU', 'LİDERİ', 'ARABASI'] },
+  { word: 'SALONU', base: 'SALON', phrase: 'toplantı salonu', hint: 'Buluşmanın yapıldığı büyük oda',
+    distractors: ['SAATİ', 'MASASI', 'TUTANAĞI'] },
+  { word: 'KAPISI', base: 'KAPI', phrase: 'salon kapısı', hint: 'Odaya buradan girilir',
+    distractors: ['HALISI', 'LAMBASI', 'PERDESİ'] },
+  { word: 'KOLU', base: 'KOL', phrase: 'kapı kolu', hint: 'Açmak için tutulur',
+    distractors: ['ZİLİ', 'ANAHTARI', 'MENTEŞESİ'] },
+  { word: 'SAATİ', base: 'SAAT', phrase: 'kol saati', hint: 'Bilekte zamanı gösterir',
+    distractors: ['GÜCÜ', 'KASI', 'DÜĞMESİ'] },
+  { word: 'KAYIŞI', base: 'KAYIŞ', phrase: 'saat kayışı', hint: 'Bileğe bağlayan şerit',
+    distractors: ['CAMI', 'PİLİ', 'KADRANI'] },
+] };

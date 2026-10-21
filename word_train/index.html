@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#faf5e9">
+  <title>Word Train</title>
+  <link rel="stylesheet" href="core/theme.css">
+  <link rel="stylesheet" href="core/train.css">
+  <style>
+    .picker { display:flex; flex-direction:column; gap:12px; height:100dvh; overflow:hidden;
+      padding:calc(env(safe-area-inset-top) + 12px) 16px calc(env(safe-area-inset-bottom) + 12px); }
+    .picker__train { flex:none; }
+    .picker__title { margin:4px 0 0; text-align:center; font-size:15px; font-weight:800; color:var(--wt-muted); letter-spacing:.06em; }
+    .picker__list { flex:1; min-height:0; display:grid; align-content:center; gap:10px; }
+    .picker__item { display:flex; align-items:center; gap:14px; min-height:64px; padding:12px 16px; text-decoration:none;
+      color:var(--wt-ink); touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+    .picker__item:active { transform:translateY(2px); }
+    .picker__num { display:grid; place-items:center; flex:none; width:48px; height:48px; border-radius:var(--wt-radius-sm);
+      background:var(--wt-wood); box-shadow:var(--wt-shadow-sm); font-size:20px; font-weight:900; }
+    .picker__copy { display:grid; gap:3px; min-width:0; }
+    .picker__copy strong { font-size:18px; }
+    .picker__copy small { color:var(--wt-muted); font-size:13px; font-weight:650; line-height:1.35; }
+  </style>
+</head>
+<body>
+  <main class="wt-app picker">
+    <div class="picker__train" id="train"></div>
+    <p class="picker__title">BİR VARYANT SEÇ</p>
+    <nav class="picker__list">
+      <a class="wt-card picker__item" href="core/demo.html"><span class="picker__num">1</span>
+        <span class="picker__copy"><strong>Sekiz Seçenek</strong><small>İpucuna uyan kelimeyi sekiz seçenekten bul.</small></span></a>
+      <a class="wt-card picker__item" href="v4/index.html"><span class="picker__num">2</span>
+        <span class="picker__copy"><strong>Ray Çiz</strong><small>Harf ızgarasında parmağınla kelimenin rayını çiz.</small></span></a>
+    </nav>
+  </main>
+  <script type="module">
+    import { mountTrain } from './core/train.js';
+    try { mountTrain(document.getElementById('train'), { words: ['KELİME', 'TRENİ'] }); } catch (e) { console.warn(e); }
+  </script>
+</body>
+</html>

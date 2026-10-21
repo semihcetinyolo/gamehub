@@ -1,0 +1,607 @@
+{
+  "kind": "Static design mock only; does not test runtime integration",
+  "cases": 16,
+  "errors": [],
+  "results": [
+    {
+      "width": 390,
+      "height": 844,
+      "last": false,
+      "reduced": false,
+      "safeAreaBottom": 0,
+      "buttons": [
+        {
+          "action": "next",
+          "x": 18,
+          "y": 710,
+          "width": 354,
+          "height": 56,
+          "bottom": 766,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 18,
+          "y": 776,
+          "width": 172,
+          "height": 52,
+          "bottom": 828,
+          "hittable": true
+        },
+        {
+          "action": "levels",
+          "x": 200,
+          "y": 776,
+          "width": 172,
+          "height": 52,
+          "bottom": 828,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 606.296875,
+      "actionTop": 692,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "last": false,
+      "reduced": false,
+      "safeAreaBottom": 34,
+      "buttons": [
+        {
+          "action": "next",
+          "x": 18,
+          "y": 692,
+          "width": 354,
+          "height": 56,
+          "bottom": 748,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 18,
+          "y": 758,
+          "width": 172,
+          "height": 52,
+          "bottom": 810,
+          "hittable": true
+        },
+        {
+          "action": "levels",
+          "x": 200,
+          "y": 758,
+          "width": 172,
+          "height": 52,
+          "bottom": 810,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 606.296875,
+      "actionTop": 674,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "last": false,
+      "reduced": true,
+      "safeAreaBottom": 0,
+      "buttons": [
+        {
+          "action": "next",
+          "x": 18,
+          "y": 710,
+          "width": 354,
+          "height": 56,
+          "bottom": 766,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 18,
+          "y": 776,
+          "width": 172,
+          "height": 52,
+          "bottom": 828,
+          "hittable": true
+        },
+        {
+          "action": "levels",
+          "x": 200,
+          "y": 776,
+          "width": 172,
+          "height": 52,
+          "bottom": 828,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 606.296875,
+      "actionTop": 692,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "last": false,
+      "reduced": true,
+      "safeAreaBottom": 34,
+      "buttons": [
+        {
+          "action": "next",
+          "x": 18,
+          "y": 692,
+          "width": 354,
+          "height": 56,
+          "bottom": 748,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 18,
+          "y": 758,
+          "width": 172,
+          "height": 52,
+          "bottom": 810,
+          "hittable": true
+        },
+        {
+          "action": "levels",
+          "x": 200,
+          "y": 758,
+          "width": 172,
+          "height": 52,
+          "bottom": 810,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 606.296875,
+      "actionTop": 674,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "last": true,
+      "reduced": false,
+      "safeAreaBottom": 0,
+      "buttons": [
+        {
+          "action": "levels",
+          "x": 18,
+          "y": 714,
+          "width": 354,
+          "height": 52,
+          "bottom": 766,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 18,
+          "y": 776,
+          "width": 354,
+          "height": 52,
+          "bottom": 828,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 654.078125,
+      "actionTop": 696,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "last": true,
+      "reduced": false,
+      "safeAreaBottom": 34,
+      "buttons": [
+        {
+          "action": "levels",
+          "x": 18,
+          "y": 696,
+          "width": 354,
+          "height": 52,
+          "bottom": 748,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 18,
+          "y": 758,
+          "width": 354,
+          "height": 52,
+          "bottom": 810,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 654.078125,
+      "actionTop": 678,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "last": true,
+      "reduced": true,
+      "safeAreaBottom": 0,
+      "buttons": [
+        {
+          "action": "levels",
+          "x": 18,
+          "y": 714,
+          "width": 354,
+          "height": 52,
+          "bottom": 766,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 18,
+          "y": 776,
+          "width": 354,
+          "height": 52,
+          "bottom": 828,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 654.078125,
+      "actionTop": 696,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "last": true,
+      "reduced": true,
+      "safeAreaBottom": 34,
+      "buttons": [
+        {
+          "action": "levels",
+          "x": 18,
+          "y": 696,
+          "width": 354,
+          "height": 52,
+          "bottom": 748,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 18,
+          "y": 758,
+          "width": 354,
+          "height": 52,
+          "bottom": 810,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 654.078125,
+      "actionTop": 678,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "last": false,
+      "reduced": false,
+      "safeAreaBottom": 0,
+      "buttons": [
+        {
+          "action": "next",
+          "x": 14,
+          "y": 516,
+          "width": 332,
+          "height": 52,
+          "bottom": 568,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 14,
+          "y": 576,
+          "width": 162,
+          "height": 48,
+          "bottom": 624,
+          "hittable": true
+        },
+        {
+          "action": "levels",
+          "x": 184,
+          "y": 576,
+          "width": 162,
+          "height": 48,
+          "bottom": 624,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 475.625,
+      "actionTop": 504,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "last": false,
+      "reduced": false,
+      "safeAreaBottom": 34,
+      "buttons": [
+        {
+          "action": "next",
+          "x": 14,
+          "y": 498,
+          "width": 332,
+          "height": 52,
+          "bottom": 550,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 14,
+          "y": 558,
+          "width": 162,
+          "height": 48,
+          "bottom": 606,
+          "hittable": true
+        },
+        {
+          "action": "levels",
+          "x": 184,
+          "y": 558,
+          "width": 162,
+          "height": 48,
+          "bottom": 606,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 475.625,
+      "actionTop": 486,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "last": false,
+      "reduced": true,
+      "safeAreaBottom": 0,
+      "buttons": [
+        {
+          "action": "next",
+          "x": 14,
+          "y": 516,
+          "width": 332,
+          "height": 52,
+          "bottom": 568,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 14,
+          "y": 576,
+          "width": 162,
+          "height": 48,
+          "bottom": 624,
+          "hittable": true
+        },
+        {
+          "action": "levels",
+          "x": 184,
+          "y": 576,
+          "width": 162,
+          "height": 48,
+          "bottom": 624,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 475.625,
+      "actionTop": 504,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "last": false,
+      "reduced": true,
+      "safeAreaBottom": 34,
+      "buttons": [
+        {
+          "action": "next",
+          "x": 14,
+          "y": 498,
+          "width": 332,
+          "height": 52,
+          "bottom": 550,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 14,
+          "y": 558,
+          "width": 162,
+          "height": 48,
+          "bottom": 606,
+          "hittable": true
+        },
+        {
+          "action": "levels",
+          "x": 184,
+          "y": 558,
+          "width": 162,
+          "height": 48,
+          "bottom": 606,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 475.625,
+      "actionTop": 486,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "last": true,
+      "reduced": false,
+      "safeAreaBottom": 0,
+      "buttons": [
+        {
+          "action": "levels",
+          "x": 14,
+          "y": 520,
+          "width": 332,
+          "height": 48,
+          "bottom": 568,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 14,
+          "y": 576,
+          "width": 332,
+          "height": 48,
+          "bottom": 624,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 489,
+      "actionTop": 508,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "last": true,
+      "reduced": false,
+      "safeAreaBottom": 34,
+      "buttons": [
+        {
+          "action": "levels",
+          "x": 14,
+          "y": 502,
+          "width": 332,
+          "height": 48,
+          "bottom": 550,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 14,
+          "y": 558,
+          "width": 332,
+          "height": 48,
+          "bottom": 606,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 489,
+      "actionTop": 490,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "last": true,
+      "reduced": true,
+      "safeAreaBottom": 0,
+      "buttons": [
+        {
+          "action": "levels",
+          "x": 14,
+          "y": 520,
+          "width": 332,
+          "height": 48,
+          "bottom": 568,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 14,
+          "y": 576,
+          "width": 332,
+          "height": 48,
+          "bottom": 624,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 489,
+      "actionTop": 508,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "last": true,
+      "reduced": true,
+      "safeAreaBottom": 34,
+      "buttons": [
+        {
+          "action": "levels",
+          "x": 14,
+          "y": 502,
+          "width": 332,
+          "height": 48,
+          "bottom": 550,
+          "hittable": true
+        },
+        {
+          "action": "replay",
+          "x": 14,
+          "y": 558,
+          "width": 332,
+          "height": 48,
+          "bottom": 606,
+          "hittable": true
+        }
+      ],
+      "bodyScroll": false,
+      "contentBottom": 489,
+      "actionTop": 490,
+      "tagBelowLip": true,
+      "activeAnimations": 0,
+      "failures": []
+    }
+  ]
+}
