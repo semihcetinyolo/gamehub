@@ -5,12 +5,14 @@ import { LEVELS } from '../levels.js';
 const upper = text => text.toLocaleUpperCase('tr-TR');
 const lower = text => text.toLocaleLowerCase('tr-TR');
 const letters = /^[A-ZÇĞİÖŞÜÂÎÛ]+$/u;
+const answerCounts = [5, 6, 7, 8, 9, 9, 9, 9, 9, 9, 9, 9];
 
 // Independent Turkish possessive-form check, including the irregular forms used here.
 // Semantic naturalness is editorially reviewed; a format test cannot prove it.
 function possessed(base) {
   const exceptions = {
     SU: 'SUYU', RENK: 'RENGİ', KAYIT: 'KAYDI', HACİM: 'HACMİ', SAAT: 'SAATİ',
+    ÖMÜR: 'ÖMRÜ', RESİM: 'RESMİ', ZAM: 'ZAMMI',
   };
   if (exceptions[base]) return exceptions[base];
   const vowels = [...base].filter(c => 'AEIİOÖUÜ'.includes(c));
@@ -18,14 +20,15 @@ function possessed(base) {
   assert.ok(vowel, `Kökte ünlü yok: ${base}`);
   const ending = 'AI'.includes(vowel) ? 'I' : 'Eİ'.includes(vowel) ? 'İ' : 'OU'.includes(vowel) ? 'U' : 'Ü';
   if ('AEIİOÖUÜ'.includes(base.at(-1))) return base + 'S' + ending;
-  const unchanged = new Set(['ÇAP', 'FARK', 'PAKET', 'PARK', 'İŞARET', 'FİYAT', 'ETİKET', 'TİP']);
+  const unchanged = new Set(['ÇAP', 'FARK', 'PAKET', 'PARK', 'İŞARET', 'FİYAT', 'ETİKET', 'TİP', 'BİLET', 'MAÇ', 'TÜP', 'SAP']);
   if (unchanged.has(base)) return base + ending;
   const softened = { P: 'B', Ç: 'C', T: 'D', K: 'Ğ' };
   return base.slice(0, -1) + (softened[base.at(-1)] || base.at(-1)) + ending;
 }
 
-test('en az 12 bölüm; benzersiz, sıralı kimlikler ve kısa Türkçe başlıklar', () => {
-  assert.ok(LEVELS.length >= 12);
+test('12 bölüm; 5,6,7,8,9 cevaplık ilerleme, sıralı kimlikler ve kısa Türkçe başlıklar', () => {
+  assert.equal(LEVELS.length, 12);
+  assert.deepEqual(LEVELS.map(level => level.chain.length - 1), answerCounts);
   assert.equal(new Set(LEVELS.map(level => level.title)).size, LEVELS.length);
   LEVELS.forEach((level, index) => {
     assert.equal(level.id, index + 1);
@@ -35,18 +38,17 @@ test('en az 12 bölüm; benzersiz, sıralı kimlikler ve kısa Türkçe başlık
   });
 });
 
-test('ilk bölüm kullanıcının örneğini sözcük ve kökleriyle aynen korur', () => {
+test('ilk bölüm kullanıcının örneğinin ilk beş cevabını sözcük ve kökleriyle korur', () => {
   assert.deepEqual(LEVELS[0].chain.map(link => link.word),
-    ['KİTAP', 'KAPAĞI', 'TASARIMI', 'EKİBİ', 'TOPLANTISI', 'NOTLARI', 'DEFTERİ', 'SAYFASI', 'KENARI', 'ÇİZGİSİ']);
+    ['KİTAP', 'KAPAĞI', 'TASARIMI', 'EKİBİ', 'TOPLANTISI', 'NOTLARI']);
   assert.deepEqual(LEVELS[0].chain.map(link => link.base),
-    ['KİTAP', 'KAPAK', 'TASARIM', 'EKİP', 'TOPLANTI', 'NOT', 'DEFTER', 'SAYFA', 'KENAR', 'ÇİZGİ']);
+    ['KİTAP', 'KAPAK', 'TASARIM', 'EKİP', 'TOPLANTI', 'NOT']);
 });
 
 for (const level of LEVELS) {
   test(`${level.id}. ${level.title}: zincir, kökler, ipuçları ve seçenekler`, () => {
-    assert.ok(level.chain.length >= 8 && level.chain.length <= 12);
-    // Every delivered level also has 8–12 *answer* links, even if the starter is excluded.
-    assert.ok(level.chain.length - 1 >= 8 && level.chain.length - 1 <= 12);
+    assert.equal(level.chain.length, answerCounts[level.id - 1] + 1);
+    assert.ok(level.chain.length - 1 <= 9);
     assert.equal(new Set(level.chain.map(link => link.word)).size, level.chain.length);
     assert.equal(new Set(level.chain.map(link => link.base)).size, level.chain.length);
     assert.equal(level.chain[0].word, level.chain[0].base);
@@ -87,7 +89,7 @@ for (const level of LEVELS) {
   });
 }
 
-test('ilk harf ipucu: 108 halkada sekiz seçenek aynı Türkçe harfle başlar, benzersizdir ve uzunlukları yakındır', () => {
+test('ilk harf ipucu: 98 halkada sekiz seçenek aynı Türkçe harfle başlar, benzersizdir ve uzunlukları yakındır', () => {
   let count = 0;
   for (const { id, chain } of LEVELS) {
     for (const [index, link] of chain.entries()) {
@@ -107,7 +109,61 @@ test('ilk harf ipucu: 108 halkada sekiz seçenek aynı Türkçe harfle başlar, 
       }
     }
   }
-  assert.equal(count, 108);
+  assert.equal(count, 98);
+});
+
+test('98 tamlamanın her biri bütün oyunda yalnız bir kez kullanılır', () => {
+  const seen = new Map();
+  for (const { id, chain } of LEVELS) {
+    for (const [index, link] of chain.entries()) {
+      if (index === 0) continue;
+      assert.ok(!seen.has(link.phrase),
+        `${link.phrase}: ${seen.get(link.phrase)} ve ${id}.${index} tekrar ediyor`);
+      seen.set(link.phrase, `${id}.${index}`);
+    }
+  }
+  assert.equal(seen.size, 98);
+});
+
+test('cevap kökü en fazla iki bölümde görünür; iki yöndeki komşuları tekrar etmez', () => {
+  const answerLevels = new Map();
+  const neighbours = new Map();
+  for (const { id, chain } of LEVELS) {
+    chain.forEach((link, index) => {
+      if (index > 0) {
+        const appearances = answerLevels.get(link.base) ?? new Set();
+        appearances.add(id);
+        answerLevels.set(link.base, appearances);
+        assert.ok(appearances.size <= 2,
+          `${link.base}: ${[...appearances].join(', ')} bölümlerinde cevap olarak tekrar ediyor`);
+      }
+      // Also include starters here: reversing a phrase or moving it to the start
+      // must not bypass the no-shared-neighbour rule.
+      const used = neighbours.get(link.base) ?? new Map();
+      for (const neighbour of [chain[index - 1], chain[index + 1]].filter(Boolean)) {
+        assert.ok(!used.has(neighbour.base),
+          `${link.base} / ${neighbour.base}: ${used.get(neighbour.base)} ve ${id} komşuluğu tekrar ediyor`);
+        used.set(neighbour.base, id);
+      }
+      neighbours.set(link.base, used);
+    });
+  }
+});
+
+test('editoryal olarak elenen seyrek bağlantılar ve çeldiriciler geri gelmez', () => {
+  // A small regression list, not a claim that tests can measure Turkish usage frequency.
+  const weakPhrases = new Set(['damla sesi', 'halka çapı', 'çap ölçüsü', 'alan derinliği',
+    'derinlik algısı', 'hacim hesabı', 'sunucu ekibi', 'tip seçimi']);
+  const rareOptions = new Set(['UZAMI', 'LÜGATİ', 'NOKSANLIĞI', 'RÖLYEFİ', 'KİPİ',
+    'ŞAİBESİ', 'LEVYESİ', 'LOKASYONU', 'NÜKTELERİ', 'NUTUKLARI']);
+  for (const { chain } of LEVELS) {
+    for (const link of chain.slice(1)) {
+      assert.ok(!weakPhrases.has(link.phrase), link.phrase);
+      for (const option of [link.word, ...link.distractors]) {
+        assert.ok(!rareOptions.has(option), `${link.phrase}: ${option}`);
+      }
+    }
+  }
 });
 
 test('bilinen bitişik birleşikler zincire iki kelime gibi sokulmaz', () => {

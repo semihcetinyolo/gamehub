@@ -139,14 +139,12 @@ export function openLevelEnd(options) {
   });
   actions.append(...buttons);
   body.append(scroll, actions);
-  const sparks = Array.from({ length: 4 }, (_, i) => {
-    const spark = h('i', 'wt-levelend__spark');
-    spark.dataset.tone = String(i);
-    return spark;
-  });
-  root.append(sign, body, ...sparks);
+  root.append(sign, body);
   document.body.append(root);
 
+  // A train without the station hook (e.g. a stale cached train.js next to a fresh levelend.js) still gets the
+  // result surface, but say so: the train part of the level end would silently be missing.
+  if (train && typeof train.enterEnd !== 'function') console.warn('Word Train: train.enterEnd yok (eski train.js önbellekte mi?)');
   const geometry = train?.enterEnd?.({ words: found, phrases: (level?.chain ?? []).map(link => link.phrase),
     bases: (level?.chain ?? []).map(link => link.base) });
   const previousInert = inert ? inert.inert : false;
@@ -174,10 +172,6 @@ export function openLevelEnd(options) {
           left: `${Math.round(g.rect.left + g.width - g.xa - w)}px`,
           top: `${Math.round(g.rect.top + Math.max(4, g.upper - 10 * k - hgt))}px` });
       }
-      sparks.forEach((spark, i) => {
-        spark.style.left = `${Math.round(g.rect.left + g.width * (0.3 + i * 0.14))}px`;
-        spark.style.top = `${Math.round(g.rect.top + g.rail - 70 * k + (i % 2) * 14)}px`;
-      });
     } else {
       body.style.top = '35%';
       sign.hidden = true;
@@ -200,18 +194,12 @@ export function openLevelEnd(options) {
   if (motion) {
     play(body, [{ clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0 0)' }], { delay: 180, duration: 420 });
     play(actions, [{ opacity: 0 }, { opacity: 1 }], { delay: 300, duration: 300 });
-    play(tag, [{ opacity: 0, transform: 'translateY(-6px) rotate(-1deg)' }, { opacity: 1, transform: 'rotate(-1deg)' }], { delay: 500, duration: 350 });
-    play(tick, [{ opacity: 0, transform: 'scale(.3)' }, { opacity: 1, transform: 'scale(1.25)', offset: 0.7 }, { opacity: 1, transform: 'none' }], { delay: 1700, duration: 300 });
+    play(tag, [{ opacity: 0, transform: 'translateY(-4px)' }, { opacity: 1, transform: 'none' }], { delay: 500, duration: 350 });
+    play(tick, [{ opacity: 0, transform: 'scale(.6)' }, { opacity: 1, transform: 'none' }], { delay: 1700, duration: 250 });
     [...rows.children].forEach((row, i) => play(row, [{ opacity: 0 }, { opacity: 1 }], { delay: 700 + i * 70, duration: 160 }));
-    play(sign, [{ opacity: 0, transform: 'translateY(-10px)' }, { opacity: 1, transform: 'none' }], { delay: 450, duration: 500 });
-    sparks.forEach((spark, i) => play(spark, [
-      { opacity: 0, transform: `translate(0, -12px) rotate(${i * 40}deg)` },
-      { opacity: 1, offset: 0.2 },
-      { opacity: 0, transform: `translate(${(i % 2 ? 1 : -1) * 10}px, 36px) rotate(${i * 40 + 160}deg)` },
-    ], { delay: 1650 + i * 60, duration: 750, fill: 'both' }));
+    play(sign, [{ opacity: 0, transform: 'translateY(-6px)' }, { opacity: 1, transform: 'none' }], { delay: 450, duration: 500 });
   } else {
     root.animate?.([{ opacity: 0 }, { opacity: 1 }], { duration: 140 });
-    sparks.forEach(spark => { spark.hidden = true; });
   }
   actions.inert = true;
   after(motion ? READY_MS : 160, () => {
@@ -225,7 +213,6 @@ export function openLevelEnd(options) {
     timers.forEach(clearTimeout);
     timers.clear();
     for (const a of root.getAnimations?.({ subtree: true }) ?? []) { try { a.finish(); } catch { a.cancel(); } }
-    sparks.forEach(spark => { spark.hidden = true; });
     train?.finishEnd?.();
     ready = true;
     actions.inert = false;

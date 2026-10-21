@@ -1,12 +1,259 @@
 # Word Train — görsel sözleşme
 
-## Son karar ve DOM: yatay satırlarda ahşap harf yükü
+## Güncel palet — Orman & Pirinç
+
+**Son kullanıcı düzeltmesi:** yetişkin model lokomotifin rengi beğenildi;
+oyunun geri kalanı fazla açık bulundu. Lokomotif aynen korunur. **Ceviz &
+Fildişi'nin malzeme/oran/tipografi kararı geçerli, açık ekran paleti geçersizdir.**
+Yeni varsayılan bütün uygulamada sıcak koyu **Orman & Pirinç** paletidir.
+
+İki390×844 karşılaştırma: `design/palette-forest-game.png` ve
+`palette-forest-end.png`; alternatif `palette-walnut-game.png` ve
+`palette-walnut-end.png`. **Orman & Pirinç seçildi:** yeşil emaye lokomotifin
+kimliğini ekrana taşır, koyu ceviz seçeneğinden daha canlıdır. Gece Ekspresi'nin
+laciverti kullanılmaz. Harfler ve küçük metinler sıcak fildişi; ekran, tahta,
+paneller ve sonuçlar doygun koyu yüzeylerdir. Bu bir dark-mode düğmesi değil,
+oyunun yeni varsayılan kimliğidir.
+
+| Semantik token | Değer | Rol |
+| --- | --- | --- |
+| `--wt-cream` | `#263D33` | Eski adı korunmuş **koyu ekran** zemini |
+| `--wt-paper` | `#334D3F` | HUD dışındaki yükseltilmiş yüzeyler, sheet ve sonuç |
+| `--wt-sand` | `#1F332A` | Petek yatağı / koyu girintili yüzey |
+| `--wt-ink` | `#F5EDD8` | Koyu ekran üstünde açık metin |
+| `--wt-muted` | `#C6CFBC` | Yardımcı açık metin; düşük opaklık kullanılmaz |
+| `--wt-primary`, `--wt-gold` | `#D4BC86` | Pirinç ana düğme, istatistik/vurgu |
+| `--wt-on-accent` | `#23392E` | **Pirinç düğme/rozet üstünde koyu yazı** |
+| `--wt-tile-top` / bottom | `#F1EAD7` / `#DED2B4` | Fildişi harf yüzü |
+| `--wt-tile-ink` | `#263B30` | **Fildişi taş üstünde koyu harf** |
+| `--wt-tile-edge` | `#AD9B73` | Koyu petek yatağından ayrılan taş sınırı |
+| `--wt-stage` | `#8C957E` | Lokomotifi ayıran orta ton zeytin-gri sahne |
+| `--wt-stage-ink` | `#1B2E21` | Sahnedeki sayı/gereken koyu yazı |
+| `--wt-border` | `#72806B` | Yüzey sınırı / ayırıcı |
+| `--wt-danger` / light | `#F0B5A0` / `#65473B` | Hata metni / koyu hata yüzeyi |
+
+Geriye uyum için `--wt-sage-dark` artık pirinç vurguya eşlenir. **Koyu yeşil
+gibi varsayılıp fildişi taş harfine veya seçili yüzeye uygulanmamalıdır.**
+Ekran yazısı, taş harfi ve vurgu üstü yazı ayrı semantik değişkenlerdir.
+Normal UI/başlıklar `--wt-ink`; bütün harf taşları `--wt-tile-ink`; pirinç
+eylem veya aktif bölüm numarası `--wt-on-accent` kullanır.
+
+Trenin üstünde orta ton bir sahne gerekir: aynı koyu yeşil modelin koyu
+yeşil ekrana gömülmesine izin verilmez. Siluet, pencere, pirinç bant ve ceviz
+şasi burada okunur. Bu sahne kendi mevcut yüksekliğini kullanır, daha büyük
+bir hero alanı olmaz. Ray yatak/oluk/iç çizgi renkleri sırasıyla`#6B715F`,
+`#344A3B`,`#B8B89A`; kesikli ileri yol`#4A5E49`.
+
+Petek yüzleri fildişi kalır; seçili yüz soluk yeşil`#AECAAD→#91B291` ve
+harf`#1F3A2A`. Doğru yüz koyu yeşil`#406557→#315448`, harf`#FAF4DF` ve
+pirinç kenar. Yanlış yüz`#E8B49B→#D3A188`, harf`#562D25`; ipucu yüzü
+`#F3DE9D→#DDC585`, harf`#3E3522`, kesikli pirinç sınır. Seçim rayının
+8px yatağı`#263C2D`,4px iç çizgisi`#F5E5B2`; harflerin altında kalır.
+İpucu rayı noktalı, yanlış ray kesikli; durum yalnız renkle anlatılmaz.
+
+Koyu tema kapsamı: **v4, demo, picker, HUD, alt kontroller, ipucu bandı,
+admin/bölüm listeleri ve ortak sonuç istasyonu**. Sonuç tabelası koyu yeşil
+emaye ve pirinç çerçeve (`assets/station-sign.svg`); beyaz tabela üstüne açık
+yazı yazılmaz. Son tamlama etiketi pirinç + koyu yazı. Sonuç bilet panosu koyu
+ekran yüzeyi, başlıklar fildişi; son satır açık ve onaylı, son bağlantı noktası
+pirinçtir. Daha önceki `adult-atelier-*` açık palet referansları bu değişiklik
+öncesindeki çalışmadır; yeni referans `palette-forest-*` ve gerçek son
+ekranlar `design/palette-final-*`.
+
+Core'a: `levelend.css` metin/yüzey tokenları; `admin.js` aktif numara
+`--primary/--on-accent`, fixed krem/dark-ink kaldırma; `demo.html` meta theme
+color`#263D33` ve bütün seçenek/durum renklerinin tokenla uyumu bildirildi.
+V4'e: panel`--sand`, bölüm numarası`--primary/--on-accent`, done/current
+numara`--sage-light/--ink`, meta theme color bildirildi. Orkestratörün
+`index.html` picker'ında numara`--primary/--on-accent`, ağırlık600; alt
+açıklama`--muted`400, kart`--paper/--ink`, meta theme color`#263D33`.
+
+Boyut, safe-area,48px kontroller, yatay vagonlar ve600ms sonuç eylemleri
+değişmez. Renk doğrulaması yeni paletin en zayıf gradient ucuna göre yapılır;
+eski açık palet AA sayıları bu yeni paletin kanıtı değildir. Son sonuçlar
+`design/palette-checks.json`;390×844/360×640 v4, demo ve bölüm sonu kareleri
+ayrı kaydedilir. Reduced-motion davranışı aynen korunur.
+
+### Son gerçek ekran kontrolü — Orman & Pirinç
+
+Ek stil enjeksiyonu olmadan üretim dosyalarıyla çekildi:
+
+- V4: `design/palette-final-v4-390.png`, `palette-final-v4-360.png`.
+- Seçili yol: `palette-final-drag-390.png`, `palette-final-drag-360.png`.
+- İpucu bandı: `palette-final-clue-390.png`, `palette-final-clue-360.png`.
+- Ortak sonuç: `palette-final-end-390.png`, `palette-final-end-360.png`;
+  son bölüm: `palette-final-last-390.png`, `palette-final-last-360.png`.
+- Demo: `palette-final-demo-390.png`, `palette-final-demo-360.png`;
+  demo sonucu: `palette-final-demo-end-390.png`, `palette-final-demo-end-360.png`.
+- Admin ve picker: `palette-final-admin-{390,360}.png`,
+  `palette-final-picker-{390,360}.png`.
+
+390×844 ve360×640'ta sayfa taşması/konsol hatası yok; görünen UI eylemleri
+en az48px, sonuç düğmelerinden yeni bölüme geçiş başarılı. Tren taşı yazısı
+Arial600, aktif varlık `locomotive-model.svg`. Demo başlangıç görüntüsü giriş
+animasyonu bittikten sonra alınmıştır; animasyonun ara karesi kadraj hatası
+gibi değerlendirilmez. Küçük ekranda ipucu açıkken önceki tek-satır tren kuralı
+geçerlidir: aranan çift görünür, daha eski araçlar solda kadraj dışında kalabilir.
+
+Ölçülen kontrastlar: gövde metni**7.91:1**, yardımcı metin**5.74:1**, ana
+düğme**6.68:1**, normal taş**7.99:1**, seçili**5.29:1**, doğru**5.93:1**,
+yanlış**5.13:1**, ipucu**7.14:1**. Küçük sahne sayısı**4.60:1** (opacity1);
+taş sınırının koyu yataktan ayrımı**4.93:1**. Rapor
+`design/palette-checks.json`:11 kontrast kontrolü geçti, ekran/dokunma
+kontrolünde hata yok. Eski `adult-checks.json` açık paletin ara kontrolüdür;
+bu rapor onun yerine geçer. Tüm SVG'ler XML olarak geçerli; mevcut eski
+referanslar dahil varlık toplamı yaklaşık43KB,300KB sınırının altındadır.
+
+Core'un son geometrisinde model lokomotifin teker merkezi kaynaktaki
+oranı nedeniyle **lokomotif** `p.y+7k`, **vagon** `p.y+4k` kullanır; ikisinin
+teker merkezi aynı ray üst çizgisinde kalır. Üst satırda gidiş yönü sağdır,
+lokomotif sağa bakar. Tabela üretimde CSS tokenlarıyla çizilir;
+`station-sign.svg` eşdeğer küçük alternatif varlık olarak tutulur.
+
+## Güncel sanat yönü — yetişkinler için Ceviz & Fildişi
+
+**21 Ekim 2026 son kullanıcı kararı:** oyun yetişkinlere yöneliktir. Aşağıdaki
+eski bölümlerde geçen “tatlı oyuncak”, “gülen yüz”, “tombul küp”, pastel renk
+çeşitliliği ve eski bölüm sonu çizimleri artık görsel hedef değildir. DOM,
+satır akışı, yatay okunurluk, tamlama çifti, ek düşmesi, petek ve ortak sonuç
+istasyonu korunur. Bu bölüm malzeme, oran, renk, tipografi ve hareket
+genliğinde daha eski tariflerin önüne geçer.
+
+### Üç yön ve seçim
+
+Her yön aynı gerçek v4 ekranında ve ortak bölüm sonu bileşeninde390×844 olarak
+maketlendi. Kaynak renk/stil karşılaştırması `design/adult-directions.css`;
+altı görseli birlikte açmak için `design/adult-directions.html`.
+
+| Yön | Oyun maketi | Bölüm sonu maketi | Karar |
+| --- | --- | --- | --- |
+| **A · Ceviz & Fildişi** | `design/adult-atelier-game.png` | `design/adult-atelier-end.png` | **Seçildi.** Ceviz platform, koyu yeşil emaye, pirinç ve fildişi harfler. Sıcaklık ve model demiryolu kimliği korunur; güçlü gündüz kontrastı, sakin görsel hiyerarşi. |
+| B · Gece Ekspresi | `design/adult-night-game.png` | `design/adult-night-end.png` | Lacivert zemin, bakır/pirinç vurgusu. Karakterli ama bütün oyunu daha ağır ve koyu gösteriyor. Varsayılan olmadı; ayrı bir gece teması bu işin kapsamı değil. |
+| C · Emaye Hat | `design/adult-enamel-game.png` | `design/adult-enamel-end.png` | Kırık beyaz, arduvaz mavisi ve çok sade yüzeyler. Okunur fakat ceviz/model demiryolu kimliği daha zayıf. Seçilmedi. |
+
+Yetişkin hissini küçük harfler veya düşük kontrast üretmez. Harfler büyük
+kalır; değişen şey renk sayısı, yüzey kalınlığı, çizgi hassasiyeti ve oranlardır.
+Tren minyatür bir demiryolu modeli, harfler kaliteli oyun taşları gibi görünür.
+Yüz, göz, şeker renkli küpler, şişen harf, sürekli baloncuk duman ve kalın
+oyuncak düğme gölgeleri kullanılmaz.
+
+### Palet, tipografi ve yüzey
+
+| Rol / token | Değer | Kullanım |
+| --- | --- | --- |
+| `--wt-cream` | `#F1EEE5` | Sıcak kâğıt zemin, ekranın tamamı |
+| `--wt-paper` | `#FAF8F1` | Fildişi yüzey, buton/sonuç istasyonu |
+| `--wt-ink` | `#293830` | Bütün normal yazı ve harfler |
+| `--wt-muted` | `#66685B` | Yardımcı metin, HUD bölüm adı |
+| `--wt-sage-dark` | `#315448` | Ana eylem, emaye yeşili |
+| `--wt-wood` / edge | `#9A7E58` / `#796247` | Ceviz platform; harflerin yüzü ceviz kadar koyu değildir |
+| `--wt-gold` | `#A18A5A` | Pirinç detay, çok küçük vurgu; normal gövde yazısı değil |
+| `--wt-pair-gold` | `#8F7747` | Tamlama kancası |
+| `--wt-metal` | `#414B42` | Teker, şasi, ince metal aksam |
+| `--wt-border` | `#C6C0AE` | Dekoratif ayırıcı; okunması gereken tek bilgi bu çizgiye bağlı değildir |
+
+Arayüz ve harf taşları: **Arial, Helvetica, system-ui, sans-serif**;600 ağırlık,
+gerektiğinde yardımcı metin400/500. Sistem fontlarıyla offline çalışır, ek font
+indirilmez. Türkçe `İ I Ğ Ş Ç Ö Ü` ve alt/üst aksanlar korunur; büyük harfe
+çevirme `toLocaleUpperCase('tr-TR')`. Harf taşında minimum okuma ölçüleri
+değişmez; serif harf veya dekoratif stencil kullanılmaz.
+
+İstasyon adı ve bölüm sonu başlığı için **Georgia, Times New Roman, serif**,
+400 ağırlık; oyun ekranına büyük bir tanıtım başlığı eklenmez. Sonuç başlığı
+390'ta27px,360'ta23px. UI kontrolleri15px600; alt düğmeler48–56px. Köşeler
+harf taşında3px, butonda6px, panelde8px, sheet'te12px; gölgeler1–3px ve
+düşük opaklıktadır. Ahşap damarı ince ve düşük kontrastlı; harflerin arkasında
+gözü oyalayan çizgiler yoktur.
+
+### Yeni tren varlıkları ve geometri
+
+- **`assets/locomotive-model.svg`**:128×80, burnu sola; uzun kazan, düz kabin,
+  küçük baca, gerçek bir pencere, koyu yeşil emaye, pirinç bantlar ve ince
+  bağlantı kolu. Yüz/karakter yok. Gidiş yönüne göre yalnız lokomotif aynalanır.
+  Eski `locomotive-toy.webp/.svg` tarihsel dosyalardır; aktif tema kullanmaz.
+- **`assets/flatcar.svg`**:120×20 esneyen ceviz kalas + koyu metal alt şasi,
+  ince2px uç yarıçapı ve iki bağlantı bandı. Harfler platformun üstündedir.
+- **`assets/wheel.svg`**:26×26 kaynak, üretimde22k; ince metal çember, tel/spok
+  detayı ve küçük pirinç göbek. Eski büyük ahşap düğme görünümü kalkar.
+- **`assets/coupler.svg`**: ince metal bağlantı. Tamlamanın kancası var olan
+  SVG çizgisinde pirinç vurgu taşır; yeni uzun çubuk eklenmez.
+- **`assets/block-grain.svg` / `letter-block.svg`**: ince damar ve düz fildişi
+  yüzey. Bütün `data-tone` değerleri aynı malzemeyi kullanır; rastgele pastel
+  renkler kalkar. Yüz3px köşe,1px kenar ve yalnız1–2px kalınlık hissi.
+- **`assets/station-platform.svg` / `station-sign.svg`**: aynı ceviz/demir
+  peron, köşeleri3px emaye tabela, ince pirinç çerçeve. SVG içinde yazı yoktur.
+
+Opus-core'a verilen ölçüler (`k` mevcut tren yüksekliği ölçeği): lokomotif
+128k×80k; vagon68k; harf alanı36k; güverte18k, bottom14k; teker22k, bottom0;
+dış teker6k, iç teker31k. Böylece güverte üstü36k'de, harflerin tam altındadır.
+Satır pitch78k (68+10). Ray yatak/oluk/iç çizgi14/8/4k; ileri yol2k,7/8k
+kesik. Teker merkezinin ray üst çizgisine değmesi için araç altı `p.y+4k`;
+kanca orta çizgisi `p.y−19k`. Fiziksel harf eni min20px/18px ve çiftin
+yan yana kalma kuralları değişmez. Bu ölçüler theme'in sahip olmadığı
+`train.css/train.js` dosyalarında opus-core tarafından uygulanır.
+
+Baca buharı idle döngü yapmaz; yalnız hareket sırasında ufak ve soluktur.
+Yeni lokomotif kutusunda baca konumu yaklaşık x25k/y14k; buhar başlangıcı
+x25k/y7k,8×6k. HUD'un altında yüzüyormuş gibi duran büyük beyaz balon yoktur.
+Doğru cevap/ek düşme görünür kalır; oturuş veya kenetlenme genliği1–2px.
+Oyuncuyu bekletmeme kuralı aynı; sakin yetişkin yönü için süreler zorla
+hızlandırılmaz. Yeni taşın yerinde yenilenmesi için aşağıdaki **çeşitli
+yenileme** tarifi kullanılır (.86→1.015→1), patlayan pop efekti yoktur.
+
+### Petek ve mobil arayüz
+
+5×6 petek ve hücre ölçüleri değişmez. Normal taş üstü`#FAF8F1`, altı`#EAE4D5`,
+kenarı`#8F866F`; harf`#293830`. Seçili taş soluk yeşil (`#DFE8DD→#C8D5C6`),
+koyu harf`#293F31`. Doğru taş koyu yeşil`#406557→#315448`, açık harf`#FAF8F1`.
+Yanlış taş`#F3E4DC→#E4C5B8`, koyu kırmızı harf`#713A30`. İpucu taşının yüzü
+aynı fildişi ailesinde, kesikli pirinç sınır; glow yok. Seçim rayı8px açık
+yatak +4px koyu yeşil çizgi; doğru durumda pirinç, yanlış durumda kırmızı
+kesik. İşaret/sıra/hata metni korunur; sadece renkle açıklama yapılmaz.
+
+Taş yüzüyle harf arasındaki ray katmanı korunur: köke kalıcı transform,
+filter veya z-index eklenmez. En son seçilen harf1.1 ölçekle büyümez.
+Yeni gelen taş diğerlerinden renk veya parıltıyla ayrılmaz; sonraki cevabı
+ele veren görsel işaret yoktur. İpucu bandı yine tren/petek arasındadır.
+
+HUD ikonlarının48px hedefi korunur; dış kutu/gölge kaldırılır. İlerleme
+küçük düz köşeli bir göstergedir. Alt kontroller6px köşeli, birincil koyu
+yeşil düz yüzey. “Komşu harflerden ray çiz” yönergesinin parmak emojisi
+kaldırılır. Yönetici ve bölüm listesi işlevleri korunur; beyaz sayfa/hero,
+tanıtım metni veya web gezinmesi eklenmez.
+
+### Yetişkin sonuç istasyonu
+
+**Level end** bölümünün tek-an koreografisi ve600ms düğme erişimi geçerlidir.
+Yeni tasarımda peron kenarı ceviz ve metal, sonuç gövdesi düz fildişidir.
+Kalın altın çerçeve/oyuncak çatı yerine ince ahşap çizgi ve dar direkler
+kullanılır. Son tamlama etiketi düz4px köşeli; yana yatmaz. Bilet panosunun
+5px köşesi ve ince ayırıcıları vardır; perfore daire oyuklar ve kalın gölge
+yoktur. Tablodaki son üç tamlama korunur. Renkli konfeti kaldırılır; küçük
+onay, hafif oturuş ve kısa düdük yeterlidir. Son bölüm, safe-area ve reduced
+motion sözleşmesi aynıdır. `design/level-end-station-*.png` önceki oyuncak
+yönün tarihsel maketleridir; yetişkin referansı `adult-atelier-end.png`.
+
+### Sahiplik ve doğrulama
+
+Art teslimi: `core/theme.css`, yukarıdaki küçük SVG varlıkları, bu sözleşme
+ve `design/adult-*` görselleri. `train.css/train.js/levelend.css` değişim
+listesi Word Train:4'e; `v4/style.css` listesi Word Train:8'e gönderildi.
+Bu sahiplik ayrımı yüzünden art tema motor dosyalarına ölçü override'ı
+ekleyerek gizli ikinci geometri oluşturmaz.
+
+Üç yön görsel karşılaştırmasıdır; uygulanan varsayılan yalnız Ceviz &
+Fildişi'dir. Son gerçek ekranlar `design/adult-final-*`; metin/harf kontrastı,
+390×844/360×640 taşma/dokunma ve Türkçe glif kontrolleri
+`design/adult-checks.json` içinde kaydedilir. Eski oyuncak PNG/SVG referansları
+korunsa da oyunun aktif görsel bağımlılıkları yetişkin varlıklarına gider.
+
+## DOM: yatay satırlarda harf yükü
 
 Son kullanıcı kararı: **tren yazı gibi satır satır akar; vagonlar ve küpler
 her an yataydır**. Kullanıcının `design/user-sketch-train-path.jpeg` taslağındaki
-alttan sağa, sonra sola ve üstte sağa ilerleme korunur. Vagonlar düz satırlara
+alt satırda sola, orta satırda sağa ve üstte sola ilerleyen son çift akışı kullanılır. Vagonlar düz satırlara
 sözcük gibi yerleşir; U-dönüşte beklemez, hareket ederken de dönmez.
-Her sözcük alçak platformun **üstünde**, boyalı ahşap harf küpleriyle taşınır.
+Her sözcük alçak platformun **üstünde**, fildişi yüzlü harf taşlarıyla taşınır.
 Lokomotif öndedir, yalnız yatay olarak çevrilir; kelime yükü asla aynalanmaz.
 
 `core/theme.css` malzeme/grafik; `core/train.css` geometri ve hareket;
@@ -288,6 +535,20 @@ sürükleme hit testi altıgen geometrisine göre yapılır (v4 sorumluluğu).
 `touch-action:none` yalnız sürükleme tahtasında; diğer kontroller manipulation.
 
 ### Yerçekimli harf yenileme — gidiş, düşme, çevirme
+
+**Son kullanıcı kararı: çeşitli yenileme.** Yerçekimi zorunluluğu kalktı.
+Turların yaklaşık %25'inde kullanılan taşlar yerinde yenilenir; %75'inde altı
+petek yönünden birinde akış olur. Aşağıdaki yalnız-aşağı açıklama tarihsel
+tariftir; yeni akışta vektör değişir, harfler dönmez. Yerinde görünme: eski
+taş110ms, opacity1→0, scale1→.92,6px aşağı; yeni taş70ms'den itibaren220ms,
+opacity0→1 ve **scale.86→1.015→1** (0/75/100% keyframe),
+`cubic-bezier(.22,.68,.3,1)`. Yeni yetişkin yönünde .55 başlangıç ve1.04
+sıçrama fazla oyuncaksı; daha küçük ölçek değişimi seçildi. Yeni yüz normal
+fildişi/ahşap taşla aynı, parıltı/renk kodu yok. Akışta180–280ms kayma,
+220–320ms yeni giriş ve en fazla2px oturuş seçilen2Dvektöre uygulanır;
+yerinde modda kalan taşlar hareket etmez. Reduced motion80–120ms yalnız
+solma. Model anında final; ilk pointerdown FX'i bitirip aynı dokunuşu işler.
+Bu sürelerin hiçbiri girişi kilitlemez; yeni harf görünümü çözüm ipucu değildir.
 
 Her doğru cevapta **yalnız kullanılan taşlar** gider. Sağ kalan taşlar kendi
 sütununda, birbirlerinin sırasını koruyarak boşluklara iner. Yeni harfler aynı

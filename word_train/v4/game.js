@@ -28,7 +28,8 @@ const CONFIG = {
   slideMs: [180, 280],   // by distance
   dropMs: [220, 320],    // by distance travelled
   columnDelay: 12,       // ms per line across the flow
-  appearMs: 220,         // in place: a new stone grows in where a used one left
+  appearMs: 220,         // in place: a new stone grows in where a used one left (astra-art: .86 → 1.015 → 1)
+  appearDelay: 70,       // … starting while the used stone is still fading
   swapMs: 160,           // a stone whose letter had to change: its letter cross-fades while the column moves
   phraseHoldMs: 900,     // a status message about the found phrase stays at least this long
   pathPreviewMs: 1800,   // admin "Yolu göster"
@@ -291,10 +292,10 @@ function refillBoard(used) {
       if (!enter) {
         // in place: grows in where the used stone just left, like every other new stone of this turn
         el.animate([
-          { transform: 'scale(.55)', opacity: 0 },
-          { transform: 'scale(1.04)', opacity: 1, offset: 0.7 },
-          { transform: 'scale(1)' },
-        ], { duration: CONFIG.appearMs, delay: CONFIG.leaveMs * 0.6, easing: 'ease-out', fill: 'backwards' });
+          { transform: 'scale(.86)', opacity: 0 },
+          { transform: 'scale(1.015)', opacity: 1, offset: 0.75 },
+          { transform: 'scale(1)', opacity: 1 },
+        ], { duration: CONFIG.appearMs, delay: CONFIG.appearDelay, easing: 'cubic-bezier(.22,.68,.3,1)', fill: 'backwards' });
         return;
       }
       const cellsAway = Math.hypot(enter.x, enter.y) / GEOMETRY.yStep;

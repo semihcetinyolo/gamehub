@@ -1,0 +1,73 @@
+/* Exploration styles; chosen production styling lives in core/theme.css. */
+:root{
+--wt-cream:#f1eee5;--wt-paper:#faf8f1;--wt-sand:#e5e0d3;
+--wt-wood-light:#e7ddc7;--wt-wood:#9a7e58;--wt-wood-edge:#796247;
+--wt-ink:#293830;--wt-muted:#66685b;--wt-sage:#6a8072;--wt-sage-dark:#315448;--wt-sage-light:#dce5dc;
+--wt-coral:#ad7c66;--wt-coral-dark:#8f4439;--wt-blue:#768a8f;--wt-gold:#a18a5a;
+--wt-danger:#973f34;--wt-danger-light:#f0ded6;--wt-border:#c6c0ae;--wt-focus:#315448;
+--wt-shadow-sm:0 1px 2px #26372c14;--wt-shadow:0 3px 10px #26372c12;--wt-shadow-float:0 12px 30px #24382c1a;
+--wt-radius-sm:4px;--wt-radius:8px;--wt-radius-lg:12px;--wt-radius-pill:5px;
+--wt-font:Arial,Helvetica,system-ui,sans-serif;--wt-font-display:Georgia,'Times New Roman',serif;
+--wt-pair-fill:#ded8bd30;--wt-pair-rim:#9b896440;--wt-pair-gold:#8f7747;
+--wt-block-top:#faf7ee;--wt-block-bottom:#e8dfcd;
+}
+body{background:var(--wt-cream)!important}
+.wt-button,.wt-icon-button{border-radius:6px;box-shadow:0 1px 1px #303a2d18;font-weight:600;border-color:var(--wt-border);font-size:15px}
+.wt-button--primary{background:var(--wt-sage-dark);border-color:var(--wt-sage-dark);color:var(--wt-paper);box-shadow:none}
+.wt-hud .wt-icon-button{background:transparent;border-color:transparent;box-shadow:none;border-radius:4px}
+.wt-hud__level{font-weight:600;font-size:15px;letter-spacing:.01em}.wt-hud__level small{font-weight:400;color:var(--wt-muted)}
+.wt-hud__progress{font-weight:600;border-radius:4px;background:transparent;font-size:14px}
+.wt-locomotive{background-image:url('../assets/locomotive-model.svg')!important}
+.wt-train__scene{background:none}.wt-train{background:var(--wt-cream)}
+.wt-train__pair-field{border-radius:7px}
+.wt-block,.wt-block[data-tone]{--wt-block-top:#faf7ee;--wt-block-bottom:#e8dfcd;--wt-block-edge:#afa58e;--wt-block-side:#bcb097;--wt-block-cap:#fffdf7;filter:drop-shadow(0 1px 1px #26372c16);border-radius:3px}
+.wt-block::after{border-radius:3px;box-shadow:none}
+.wt-block__face{border-radius:3px;background:linear-gradient(160deg,var(--wt-block-top),var(--wt-block-bottom));box-shadow:inset 0 1px #fffdf8;color:var(--wt-ink);font-family:Arial,Helvetica,sans-serif;font-weight:600;text-shadow:none;letter-spacing:0}
+.wt-block--slot .wt-block__face,.wt-block--ask .wt-block__face{background:#f6f3e980;color:#6f705f;border-color:#8f866f;border-width:1px;box-shadow:none}
+.wt-block--given .wt-block__face,.wt-block--hint .wt-block__face{border-color:var(--wt-sage-dark);box-shadow:inset 0 -2px var(--wt-sage-dark)}
+.wt-rail__bed path{stroke:#d5cfbd}.wt-rail__groove path{stroke:#848877}.wt-rail__inner path{stroke:#f1ecdf}.wt-rail__ahead path{stroke:#9b9c89}
+.wt-train__links path{stroke:#76785e}.wt-train__links path.wt-link--pair{stroke:var(--wt-pair-gold);filter:none}
+.wt-train__phrase--pair{background:var(--wt-paper);color:var(--wt-ink);border-color:var(--wt-border);font-weight:600;border-radius:4px}
+.wt-hex{--wt-hex-top:#faf8f1;--wt-hex-bottom:#eae4d5;--wt-hex-edge:#8f866f;--wt-hex-ink:var(--wt-ink)}
+.wt-hex:before{filter:none}.wt-hex:after{inset:1px 1px 3px;background:linear-gradient(160deg,var(--wt-hex-top),var(--wt-hex-bottom));box-shadow:inset 0 1px #ffffff90}
+.wt-hex__letter{font-family:Arial,Helvetica,sans-serif;font-weight:600;text-shadow:none;margin-top:-1px}
+.wt-hex--selected,.wt-hex[aria-pressed=true]{--wt-hex-top:#dfe8dd;--wt-hex-bottom:#c8d5c6;--wt-hex-edge:#5b7663;--wt-hex-ink:#293f31}
+.wt-hex.wt-hex--correct{--wt-hex-top:#406557;--wt-hex-bottom:#315448;--wt-hex-edge:#263f35;--wt-hex-ink:#faf8f1}
+.wt-hex.wt-hex--wrong{--wt-hex-top:#f3e4dc;--wt-hex-bottom:#e4c5b8;--wt-hex-edge:#a36654;--wt-hex-ink:#713a30}
+.wt-hex.wt-hex--hint{--wt-hex-top:#faf7e9;--wt-hex-bottom:#e9dfbf;--wt-hex-edge:#937c49;--wt-hex-ink:#293830}
+.wt-hex--hint:before{background:repeating-linear-gradient(60deg,#937c49 0 5px,#ded3b4 5px 9px)}
+.wt-hex-path__bed{stroke:#faf8f1;stroke-width:8px}.wt-hex-path__line{stroke:#536b57;stroke-width:4px}.wt-hex-path--correct .wt-hex-path__line{stroke:#b7a16c}.wt-hex-path--wrong .wt-hex-path__line{stroke:#973f34}.wt-hex-path--hint .wt-hex-path__line{stroke:#927a47}
+.v4-panel{border-radius:8px;border-color:var(--wt-border);background:transparent}
+.v4-hex--last .wt-hex__letter{transform:none}.v4-level{border-radius:6px;font-weight:600;box-shadow:none}.v4-level__num{border-radius:4px}
+.wt-clue-popover{background:var(--wt-paper);border-color:var(--wt-border);border-radius:6px;box-shadow:none}
+.wt-sheet{border-radius:12px 12px 0 0}.wt-sheet--center{border-radius:12px}
+.wt-levelend__body{background:var(--wt-paper);border-color:var(--wt-border);box-shadow:none}
+.wt-levelend__body:before{background:#7d6b4f;border-radius:0;height:3px;box-shadow:none}
+.wt-levelend__phrase{transform:none;background:#e9e2ce;color:#5e5035;border-color:#bca984;border-radius:4px;box-shadow:none;font-weight:500}
+.wt-levelend__title{font-family:var(--wt-font-display);font-size:27px;font-weight:400;letter-spacing:-.5px}
+.wt-levelend__stat strong{color:var(--wt-sage-dark);font-weight:500}.wt-levelend__stat span{font-weight:400}.wt-levelend__stat{border-color:var(--wt-border)}
+.wt-levelend__receipt{background:transparent;border-radius:5px;border-color:var(--wt-border);box-shadow:none}
+.wt-levelend__receipt:before,.wt-levelend__receipt:after{display:none}
+.wt-levelend__receipt-title{font-weight:600;color:var(--wt-muted);border-color:var(--wt-border);letter-spacing:1.3px}
+.wt-levelend__link{font-weight:400;color:var(--wt-muted)}.wt-levelend__link--last{font-weight:600;color:var(--wt-sage-dark)}
+.wt-levelend__station-sign small{color:var(--wt-muted);font-weight:500;letter-spacing:2px}.wt-levelend__station-sign strong{font-family:var(--wt-font-display);font-weight:400;color:var(--wt-ink)}
+.wt-levelend__spark{display:none}.wt-levelend__all-complete{color:var(--wt-sage-dark);font-weight:400}
+.wt-train--end .wt-train__scene:before{border-color:#a59372;background:transparent;opacity:.6}.wt-train--end .wt-train__scene:after{background:#7d6b4f;border:0;height:3px;border-radius:0;box-shadow:none}
+@media(max-height:700px){.wt-levelend__title{font-size:23px}}
+/* B: night train, copper and navy. */
+html[data-direction=night]{color-scheme:dark;--wt-cream:#202e35;--wt-paper:#293a41;--wt-sand:#334850;--wt-ink:#f1ebd9;--wt-muted:#c0c4b9;--wt-border:#637170;--wt-sage-dark:#c4aa79;--wt-sage-light:#4a605d;--wt-pair-fill:#c4aa7912;--wt-pair-rim:#c4aa7955;--wt-pair-gold:#c4aa79;--wt-gold:#c4aa79}
+html[data-direction=night] .wt-button--primary{color:#202e35}
+html[data-direction=night] .wt-block__face{color:#283b36}
+html[data-direction=night] .wt-hex{--wt-hex-top:#3f5357;--wt-hex-bottom:#32464c;--wt-hex-edge:#6f7e79;--wt-hex-ink:#f1ebd9}
+html[data-direction=night] .wt-hex--selected{--wt-hex-top:#687e78;--wt-hex-bottom:#536b64;--wt-hex-edge:#c4aa79}
+html[data-direction=night] .wt-rail__bed path{stroke:#3c4e51}html[data-direction=night] .wt-rail__groove path{stroke:#87928a}html[data-direction=night] .wt-rail__inner path{stroke:#273a40}
+html[data-direction=night] .wt-levelend__station-sign{filter:brightness(.85)}html[data-direction=night] .wt-levelend__station-sign strong,html[data-direction=night] .wt-levelend__station-sign small{color:#293830}
+html[data-direction=night] .wt-hex-path__line{stroke:#ccb887}html[data-direction=night] .wt-hex-path__bed{stroke:#263b3d}
+/* C: modern enamel, warm white and slate blue. */
+html[data-direction=enamel]{--wt-cream:#f4f4ef;--wt-paper:#ffffff;--wt-sand:#e4e9e8;--wt-ink:#26373d;--wt-muted:#627278;--wt-border:#bac5c7;--wt-sage-dark:#3d606c;--wt-sage-light:#dce9ec;--wt-pair-fill:#d4e0e933;--wt-pair-rim:#94acb666;--wt-pair-gold:#657b84;--wt-font-display:Arial,Helvetica,sans-serif}
+html[data-direction=enamel] .wt-locomotive{filter:grayscale(.8) sepia(.1) hue-rotate(135deg)}
+html[data-direction=enamel] .wt-hex{--wt-hex-top:#ffffff;--wt-hex-bottom:#edf1f1;--wt-hex-edge:#bcc7c9;--wt-hex-ink:#26373d}
+html[data-direction=enamel] .wt-block[data-tone]{--wt-block-top:#ffffff;--wt-block-bottom:#e9eeef;--wt-block-edge:#b5c1c4;--wt-block-side:#c0c9cb}
+html[data-direction=enamel] .wt-rail__bed path{stroke:#d8e0e0}html[data-direction=enamel] .wt-rail__groove path{stroke:#809197}html[data-direction=enamel] .wt-rail__inner path{stroke:#f0f3f3}
+html[data-direction=enamel] .wt-levelend__phrase{background:#e4ecee;color:#3d606c;border-color:#a4b8bd}
+html[data-direction=enamel] .wt-levelend__title{font-weight:500;font-size:25px;letter-spacing:-.8px}

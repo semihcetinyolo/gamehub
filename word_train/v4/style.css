@@ -1,11 +1,7 @@
 /* Word Train v4 — Ray Çiz. Shell, HUD, sheets and buttons come from core/theme.css (.wt-*); this file lays
    out the portrait screen and draws the 4×4 letter stations and their rails. Colours are --wt-* tokens. */
 html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
-body {
-  background:
-    radial-gradient(120% 55% at 50% 0%, var(--wt-paper) 0%, transparent 70%),
-    var(--wt-cream);
-}
+body { background: var(--wt-cream); }
 
 .v4 { gap: 6px; }
 .v4-hud { gap: 8px; }
@@ -24,7 +20,7 @@ body {
   min-width: 0;
   margin: 0;
   font-size: 14.5px;
-  font-weight: 750;
+  font-weight: 500;
   line-height: 20px;
   text-align: center;
   color: var(--wt-muted);
@@ -34,12 +30,11 @@ body {
 }
 .v4-status:empty,
 .v4-clue:not([hidden]) + .v4-status { display: none; }   /* the open clue band has the floor */
-.v4-status[data-kind='bad'] { color: var(--wt-coral-dark); }
+.v4-status[data-kind='bad'] { color: var(--wt-coral-dark); font-weight: 600; }
 .v4-status[data-kind='bad']::before { content: '✕ '; }
-.v4-status[data-kind='warn'] { color: var(--wt-ink); }
-.v4-status[data-kind='phrase'] { color: var(--wt-sage-dark); font-size: 16px; }
+.v4-status[data-kind='warn'] { color: var(--wt-ink); font-weight: 600; }
+.v4-status[data-kind='phrase'] { color: var(--wt-sage-dark); font-size: 16px; font-weight: 600; }
 .v4-status[data-kind='phrase']::before { content: '✓ '; }
-.v4-status[data-kind='tip']::before { content: '☝ '; }
 
 /* ---------- board panel ---------- */
 .v4-panel {
@@ -50,8 +45,8 @@ body {
   margin-inline: -8px;
   padding: 6px;
   border: 1px solid var(--wt-border);
-  border-radius: var(--wt-radius);
-  background: color-mix(in srgb, var(--wt-sand) 55%, var(--wt-paper));
+  border-radius: 8px;
+  background: var(--wt-sand);
 }
 .v4-board {
   position: relative;
@@ -64,7 +59,6 @@ body {
 /* stones come from core/theme.css (.wt-hex); v4 only positions them. No z-index/transform on the stone
    itself: the rail SVG (z 1) must stay above the stone faces (z 0) and under the letters (z 2). */
 .v4-board .wt-hex { position: absolute; }
-.v4-hex--last .wt-hex__letter { transform: scale(1.1); }
 .v4-board.is-preview .wt-hex-path--hint .wt-hex-path__line { stroke-width: 6px; }
 
 .v4-fx { position: absolute; inset: 0; z-index: 1; overflow: visible; pointer-events: none; }
@@ -83,11 +77,11 @@ body {
   min-height: 56px;
   padding: 8px 14px 8px 8px;
   border: 1px solid var(--wt-border);
-  border-radius: 16px;
+  border-radius: 6px;
   background: var(--wt-paper);
-  box-shadow: var(--wt-shadow-sm);
+  box-shadow: none;
   font-size: 16px;
-  font-weight: 750;
+  font-weight: 600;
   text-align: left;
   cursor: pointer;
 }
@@ -97,14 +91,17 @@ body {
   flex: none;
   width: 40px;
   height: 40px;
-  border-radius: 12px;
-  background: var(--wt-wood-light);
-  font-weight: 800;
+  border-radius: 4px;
+  background: var(--wt-primary, var(--wt-wood-light));
+  color: var(--wt-on-accent, var(--wt-ink));
+  font-weight: 600;
 }
 .v4-level__name { flex: 1 1 auto; min-width: 0; }
 .v4-level__done { flex: none; color: var(--wt-sage-dark); }
 .v4-level__done .wt-icon { width: 18px; height: 18px; }
-.v4-level--done .v4-level__num { background: var(--wt-sage-light); color: var(--wt-sage-dark); }
+.v4-level--done .v4-level__num { background: var(--wt-sage-light); color: var(--wt-ink); }
+/* the current row is sage-light itself: its number keeps a brass outline so it does not vanish */
+.v4-level--current .v4-level__num { background: var(--wt-sage-light); color: var(--wt-ink); box-shadow: inset 0 0 0 1.5px var(--wt-primary); }
 .v4-level--current { border-color: var(--wt-sage-dark); background: var(--wt-sage-light); }
 .v4-toggle { justify-content: flex-start; min-height: 52px; }
 .v4-toggle__label { flex: 1; text-align: left; }
@@ -144,8 +141,9 @@ body {
   width: auto;
   margin: 0;
   padding: 7px 50px 7px 12px;
-  border-radius: 14px;
-  box-shadow: 0 2px 0 #bba17d35;
+  border-color: var(--wt-border);
+  border-radius: 6px;
+  box-shadow: none;
 }
 .v4 .v4-clue::after { display: none; }
 .v4 .v4-clue .wt-clue-popover__title { display: inline; margin: 0 6px 0 0; }

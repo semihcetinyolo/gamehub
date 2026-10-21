@@ -1,0 +1,483 @@
+{
+  "contrast": [
+    {
+      "name": "body",
+      "foreground": "293830",
+      "background": "f1eee5",
+      "ratio": 10.63,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "muted",
+      "foreground": "66685b",
+      "background": "f1eee5",
+      "ratio": 4.9,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "primary",
+      "foreground": "faf8f1",
+      "background": "315448",
+      "ratio": 7.93,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "tile",
+      "foreground": "293830",
+      "background": "eae4d5",
+      "ratio": 9.72,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "selected",
+      "foreground": "293f31",
+      "background": "c8d5c6",
+      "ratio": 7.45,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "correct",
+      "foreground": "faf8f1",
+      "background": "406557",
+      "ratio": 6.14,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "wrong",
+      "foreground": "713a30",
+      "background": "e4c5b8",
+      "ratio": 5.52,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "hint",
+      "foreground": "293830",
+      "background": "e9dfbf",
+      "ratio": 9.26,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "hex boundary",
+      "foreground": "8f866f",
+      "background": "f1eee5",
+      "ratio": 3.12,
+      "minimum": 3,
+      "pass": true
+    }
+  ],
+  "screens": [
+    {
+      "width": 390,
+      "height": 844,
+      "name": "v4",
+      "bodyScroll": false,
+      "controls": [
+        {
+          "label": "Bölümler",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Sesi kapat",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Yönetim",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Yeniden",
+          "width": 131,
+          "height": 52,
+          "bottom": 828
+        },
+        {
+          "label": "İpucu",
+          "width": 217,
+          "height": 52,
+          "bottom": 828
+        }
+      ],
+      "tiles": 30,
+      "font": "850",
+      "loco": "url(\"http://127.0.0.1:8141/assets/locomotive-model.svg\")",
+      "theme": "crafted-rail"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "drag",
+      "bodyScroll": false,
+      "controls": [
+        {
+          "label": "Bölümler",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Sesi kapat",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Yönetim",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Yeniden",
+          "width": 131,
+          "height": 52,
+          "bottom": 828
+        },
+        {
+          "label": "İpucu",
+          "width": 217,
+          "height": 52,
+          "bottom": 828
+        }
+      ],
+      "tiles": 30,
+      "font": "850",
+      "loco": "url(\"http://127.0.0.1:8141/assets/locomotive-model.svg\")",
+      "theme": "crafted-rail"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "clue",
+      "bodyScroll": false,
+      "controls": [
+        {
+          "label": "Bölümler",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Sesi kapat",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Yönetim",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "İpucunu kapat",
+          "width": 48,
+          "height": 48,
+          "bottom": 261.40435791015625
+        },
+        {
+          "label": "Yeniden",
+          "width": 131,
+          "height": 52,
+          "bottom": 828
+        },
+        {
+          "label": "İpucu",
+          "width": 217,
+          "height": 52,
+          "bottom": 828
+        }
+      ],
+      "tiles": 30,
+      "font": "850",
+      "loco": "url(\"http://127.0.0.1:8141/assets/locomotive-model.svg\")",
+      "theme": "crafted-rail"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "end",
+      "bodyScroll": false,
+      "controls": [
+        {
+          "label": "Sonraki bölüm",
+          "width": 336,
+          "height": 56,
+          "bottom": 765
+        },
+        {
+          "label": "Tekrar oyna",
+          "width": 163,
+          "height": 52,
+          "bottom": 827
+        },
+        {
+          "label": "Bölümler",
+          "width": 163,
+          "height": 52,
+          "bottom": 827
+        }
+      ],
+      "tiles": 30,
+      "font": "850",
+      "loco": "url(\"http://127.0.0.1:8141/assets/locomotive-model.svg\")",
+      "theme": "crafted-rail"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "next-action",
+      "result": {
+        "level": 2,
+        "dialog": false
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "last",
+      "bodyScroll": false,
+      "controls": [
+        {
+          "label": "Bölüm seç",
+          "width": 336,
+          "height": 56,
+          "bottom": 765
+        },
+        {
+          "label": "Tekrar oyna",
+          "width": 336,
+          "height": 52,
+          "bottom": 827
+        }
+      ],
+      "tiles": 30,
+      "font": "850",
+      "loco": "url(\"http://127.0.0.1:8141/assets/locomotive-model.svg\")",
+      "theme": "crafted-rail"
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "name": "v4",
+      "bodyScroll": false,
+      "controls": [
+        {
+          "label": "Bölümler",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Sesi kapat",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Yönetim",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Yeniden",
+          "width": 131,
+          "height": 52,
+          "bottom": 624
+        },
+        {
+          "label": "İpucu",
+          "width": 187,
+          "height": 52,
+          "bottom": 624
+        }
+      ],
+      "tiles": 30,
+      "font": "850",
+      "loco": "url(\"http://127.0.0.1:8141/assets/locomotive-model.svg\")",
+      "theme": "crafted-rail"
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "name": "drag",
+      "bodyScroll": false,
+      "controls": [
+        {
+          "label": "Bölümler",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Sesi kapat",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Yönetim",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Yeniden",
+          "width": 131,
+          "height": 52,
+          "bottom": 624
+        },
+        {
+          "label": "İpucu",
+          "width": 187,
+          "height": 52,
+          "bottom": 624
+        }
+      ],
+      "tiles": 30,
+      "font": "850",
+      "loco": "url(\"http://127.0.0.1:8141/assets/locomotive-model.svg\")",
+      "theme": "crafted-rail"
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "name": "clue",
+      "bodyScroll": false,
+      "controls": [
+        {
+          "label": "Bölümler",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Sesi kapat",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "Yönetim",
+          "width": 48,
+          "height": 48,
+          "bottom": 60
+        },
+        {
+          "label": "İpucunu kapat",
+          "width": 48,
+          "height": 48,
+          "bottom": 204.5
+        },
+        {
+          "label": "Yeniden",
+          "width": 131,
+          "height": 52,
+          "bottom": 624
+        },
+        {
+          "label": "İpucu",
+          "width": 187,
+          "height": 52,
+          "bottom": 624
+        }
+      ],
+      "tiles": 30,
+      "font": "850",
+      "loco": "url(\"http://127.0.0.1:8141/assets/locomotive-model.svg\")",
+      "theme": "crafted-rail"
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "name": "end",
+      "bodyScroll": false,
+      "controls": [
+        {
+          "label": "Sonraki bölüm",
+          "width": 306,
+          "height": 52,
+          "bottom": 567
+        },
+        {
+          "label": "Tekrar oyna",
+          "width": 149,
+          "height": 48,
+          "bottom": 623
+        },
+        {
+          "label": "Bölümler",
+          "width": 149,
+          "height": 48,
+          "bottom": 623
+        }
+      ],
+      "tiles": 30,
+      "font": "850",
+      "loco": "url(\"http://127.0.0.1:8141/assets/locomotive-model.svg\")",
+      "theme": "crafted-rail"
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "name": "next-action",
+      "result": {
+        "level": 2,
+        "dialog": false
+      }
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "name": "last",
+      "bodyScroll": false,
+      "controls": [
+        {
+          "label": "Bölüm seç",
+          "width": 306,
+          "height": 52,
+          "bottom": 567
+        },
+        {
+          "label": "Tekrar oyna",
+          "width": 306,
+          "height": 48,
+          "bottom": 623
+        }
+      ],
+      "tiles": 30,
+      "font": "850",
+      "loco": "url(\"http://127.0.0.1:8141/assets/locomotive-model.svg\")",
+      "theme": "crafted-rail"
+    }
+  ],
+  "errors": [],
+  "failures": [
+    "v4 pending core font 850",
+    "drag pending core font 850",
+    "clue pending core font 850",
+    "end pending core font 850",
+    "last pending core font 850",
+    "v4 pending core font 850",
+    "drag pending core font 850",
+    "clue pending core font 850",
+    "end pending core font 850",
+    "last pending core font 850"
+  ],
+  "supersededBy": "palette-checks.json",
+  "note": "Historical intermediate light-palette capture while core integration was pending. The current warm dark production verification is palette-checks.json."
+}

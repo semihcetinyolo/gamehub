@@ -15,7 +15,7 @@ const TONES = 5;
 const BLOCK = 24;       // px: letter block width on the cars above the bottom row
 const PAIR = 26;        // px: blocks of the phrase pair on the bottom row (both cars always the same size)
 const GAP = 16;         // px between neighbouring vehicles on a row (drawbar length)
-const PITCH = 82;       // px between rows: a 72 px car + 10
+const PITCH = 78;       // px between rows: a 68 px car + 10
 const reducedMotion = () => globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 const ease = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
@@ -149,6 +149,7 @@ export function mountTrain(el, { words = [], phrases = [], bases = [], onWagonTa
   let alive = true;
   let epoch = 0;                 // bumped to drop every queued/running arrival (reset, level end)
   let endMode = false;           // the level-end station layout (enterEnd)
+  let endTarget = new Map();     // where the station's vehicles stop (re-measured when the track resizes)
   let k = 1;
   let W = 0, H = 0;
   let geo = null;                // { total, step, lut, rows, xa, xb }
@@ -173,7 +174,7 @@ export function mountTrain(el, { words = [], phrases = [], bases = [], onWagonTa
     W = root.clientWidth;
     H = root.clientHeight;
     if (!W || !H) return false;
-    // Two rows need about 200 px (18 + 82 + 100) and shrink with a lower area down to 60 %; below that
+    // Two rows need about 200 px (18 + 78 + 100) and shrink with a lower area down to 60 %; below that
     // (e.g. a hint card squeezing the scene) the train runs on a single row, the locomotive in front of
     // the pair, so nothing is cut off at the top. Block widths stay physical either way.
     const two = Math.min(W / 390, H / 200);
@@ -361,13 +362,14 @@ export function mountTrain(el, { words = [], phrases = [], bases = [], onWagonTa
   }
 
   // Bottom centre on the track, never turned. Inside a U-turn the body stays upright and inside the
-  // screen. The wheel centres (13k up) sit on the rail bed's top line (10k above the track line).
+  // screen. The wheel centres sit on the rail bed's top line (7k above the track line): a car's wheels are
+  // 11k up from its bottom, the locomotive model's 14k.
   function spot(node, s) {
     const p = point(s);
     const w = width(node);
     const row = rowAt(s);
     const x = row ? p.x : clamp(p.x, Math.min(w / 2 + 8, W / 2), Math.max(W - w / 2 - 8, W / 2));
-    return { x, y: p.y + 3 * k, w, h: node.offsetHeight, row };
+    return { x, y: p.y + (node === loco ? 7 : 4) * k, w, h: node.offsetHeight, row };
   }
 
   function place(node, s) {
@@ -408,7 +410,7 @@ export function mountTrain(el, { words = [], phrases = [], bases = [], onWagonTa
     pill.style.transform = `translate(${clamp((left + right) / 2, half, W - half).toFixed(1)}px, ${top.toFixed(1)}px) translate(-50%, 0)`;
   }
 
-  // Drawbars between neighbours that stand on the same row, at deck height (26k up); the one inside the
+  // Drawbars between neighbours that stand on the same row, at the deck's middle (23k up); the one inside the
   // phrase pair is the highlighted (gold) one.
   function drawLinks() {
     const order = (endMode ? endPair() : trainOrder()).filter(node => poses.has(node) && !node.hidden);
@@ -416,7 +418,7 @@ export function mountTrain(el, { words = [], phrases = [], bases = [], onWagonTa
     for (let i = 0; i + 1 < order.length; i++) {
       const a = spot(order[i], poses.get(order[i])), b = spot(order[i + 1], poses.get(order[i + 1]));
       if (!a.row || a.row !== b.row) continue;
-      const dir = a.row.dir, y = a.y - 26 * k;
+      const dir = a.row.dir, y = a.y - 23 * k;
       bars.push({ pair: i === 0,
         d: `M${(a.x + dir * a.w / 2).toFixed(1)} ${y.toFixed(1)}L${(b.x - dir * b.w / 2).toFixed(1)} ${y.toFixed(1)}` });
     }
@@ -437,9 +439,9 @@ export function mountTrain(el, { words = [], phrases = [], bases = [], onWagonTa
     if (endMode) placePlatform();
   }
 
-  // The platform lip: its contact line (11k down in its 34k art) on the bottom track, down to the bottom edge.
+  // The platform lip: its contact line (8k down in its 34k art) on the bottom track, down to the bottom edge.
   function placePlatform() {
-    const top = geo.rows[0].y - 11 * k;
+    const top = geo.rows[0].y - 8 * k;
     platform.style.top = `${top.toFixed(1)}px`;
     platform.style.height = `${Math.max(0, H - top).toFixed(1)}px`;
   }
@@ -452,21 +454,25 @@ export function mountTrain(el, { words = [], phrases = [], bases = [], onWagonTa
     tween = null;
   }
 
+  // target: Map node -> s, or a function giving it each frame (a goal that follows a resized track; the
+  // vehicles keep their offset from it, so a resize mid-move does not cut the move short).
   function animateTo(target, ms, shape = ease) {
     stop();
+    const goal = typeof target === 'function' ? target : () => target;
     if (ms <= 0 || reducedMotion()) {
-      for (const [node, s] of target) poses.set(node, s);
+      for (const [node, s] of goal()) poses.set(node, s);
       render();
       return Promise.resolve();
     }
-    const start = new Map([...target.keys()].map(node => [node, poses.get(node) ?? target.get(node)]));
+    const lead = new Map([...goal()].map(([node, to]) => [node, (poses.get(node) ?? to) - to]));
     return new Promise(resolve => {
       const t0 = performance.now();
       const mine = { raf: 0, resolve };
       const frame = now => {
         if (!alive) return resolve();
         const p = shape(clamp((now - t0) / ms, 0, 1));
-        for (const [node, to] of target) poses.set(node, start.get(node) + (to - start.get(node)) * p);
+        const to = goal();
+        for (const [node, d] of lead) if (to.has(node)) poses.set(node, to.get(node) + d * (1 - p));
         render();
         if (p < 1) mine.raf = requestAnimationFrame(frame);
         else { if (tween === mine) tween = null; resolve(); }
@@ -597,7 +603,7 @@ export function mountTrain(el, { words = [], phrases = [], bases = [], onWagonTa
     return b.animate([
       { transform: `translateY(${-58 * k}px) rotate(${i % 2 ? 8 : -8}deg)`, opacity: 0 },
       { transform: 'translateY(0) rotate(0)', opacity: 1, offset: 0.55 },
-      { transform: `translateY(${-6 * k}px)`, offset: 0.75 },
+      { transform: `translateY(${-1.5 * k}px)`, offset: 0.75 },
       { transform: 'translateY(0)' },
     ], { duration: 420 * Math.max(t, 0.4), easing: 'ease-in' }).finished.catch(() => {})
       .then(() => b.classList.remove('wt-block--drop'));
@@ -744,7 +750,7 @@ export function mountTrain(el, { words = [], phrases = [], bases = [], onWagonTa
     endMode = true;
     root.classList.add('wt-train--end');
     platform.hidden = false;
-    const target = layout();
+    const target = endTarget = layout();
     const [lastCar, prevCar] = endPair();
     if (lastCar && !poses.has(lastCar)) poses.set(lastCar, ghostAt ?? target.get(lastCar));
     if (prevCar && !poses.has(prevCar)) poses.set(prevCar, target.get(prevCar));
@@ -759,9 +765,10 @@ export function mountTrain(el, { words = [], phrases = [], bases = [], onWagonTa
     }
     older.forEach(car => car.classList.add('wt-train__away'));
     loco.classList.add('wt-train__away');
-    const locoTo = target.get(loco);
-    const pairTo = new Map([...target].filter(([node]) => node !== loco));
-    if (!poses.has(loco)) poses.set(loco, locoTo);
+    // The goals are read from endTarget on every frame: a resize (a clue closing, the browser bar) re-aims them.
+    const pairTo = () => new Map([...endTarget].filter(([node]) => node !== loco));
+    const locoTo = () => new Map([[loco, endTarget.get(loco)]]);
+    if (!poses.has(loco)) poses.set(loco, target.get(loco));
     render();
     platform.animate([{ transform: `scaleY(${16 / 34})`, opacity: 0.6 }, { transform: 'none', opacity: 1 }],
       { duration: 330, delay: 120, easing: 'ease-out', fill: 'backwards' });
@@ -778,10 +785,10 @@ export function mountTrain(el, { words = [], phrases = [], bases = [], onWagonTa
       if (mine !== epoch) return;
       older.forEach(car => { car.hidden = true; });
       // The locomotive comes in from just behind its stop, on the row above.
-      poses.set(loco, locoTo - 30 * k);
+      poses.set(loco, endTarget.get(loco) - 30 * k);
       render();
       loco.classList.remove('wt-train__away');
-      await animateTo(new Map([[loco, locoTo]]), 1100, p => 1 - Math.pow(1 - p, 3));
+      await animateTo(locoTo, 1100, p => 1 - Math.pow(1 - p, 3));
       if (mine !== epoch) return;
       sfx?.whistle?.();
       root.classList.add('wt-train--end-settle', 'wt-train--end-rest');
@@ -800,7 +807,7 @@ export function mountTrain(el, { words = [], phrases = [], bases = [], onWagonTa
     loco.classList.remove('wt-train__away');
     root.classList.remove('wt-train--end-settle');
     root.classList.add('wt-train--end-rest');
-    animateTo(layout(), 0);
+    animateTo(endTarget = layout(), 0);
   }
 
   // Back to the normal train (the level-end view closed without a new level).
@@ -858,8 +865,9 @@ export function mountTrain(el, { words = [], phrases = [], bases = [], onWagonTa
     if (root.clientWidth === W && root.clientHeight === H) return;
     // Re-frame at once (even mid-animation, which then carries on from the new spots).
     if (!buildTrack()) return;
+    // The station re-aims its running moves (animateTo goals read endTarget) instead of jumping to the end.
+    if (endMode) { endTarget = layout(); if (tween) render(); else animateTo(endTarget, 0); return; }
     if (!root.classList.contains('wt-train--departed')) move(0);
-    if (endMode) render();
   });
   resizer.observe(root);
   buildTrack();
