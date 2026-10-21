@@ -1,0 +1,158 @@
+[
+  {
+    "mode": "v4",
+    "reduced": false,
+    "before": {
+      "start": 615.3999999761581,
+      "ready": 617.1999999880791,
+      "elapsed": 695.1999999880791,
+      "live": true,
+      "train": true
+    },
+    "after": {
+      "level": 2,
+      "dialog": false,
+      "trains": 1,
+      "trainInMain": true,
+      "inert": false
+    },
+    "expanded": "true",
+    "focuses": [
+      "Sonraki bölüm",
+      "Tekrar oyna",
+      "Bölümler",
+      "6bağlantı",
+      "Sonraki bölüm"
+    ],
+    "resize": {
+      "x": 16,
+      "y": 161,
+      "width": 328,
+      "height": 463,
+      "bottom": 624
+    },
+    "replay": {
+      "done": false,
+      "trainInMain": true,
+      "dialog": false
+    },
+    "errors": []
+  },
+  {
+    "mode": "v4",
+    "reduced": true,
+    "before": {
+      "start": 521.0999999642372,
+      "ready": 167.9000000357628,
+      "elapsed": 203,
+      "live": true,
+      "train": true
+    },
+    "after": {
+      "level": 2,
+      "dialog": false,
+      "trains": 1,
+      "trainInMain": true,
+      "inert": false
+    },
+    "expanded": "true",
+    "focuses": [
+      "Sonraki bölüm",
+      "Tekrar oyna",
+      "Bölümler",
+      "6bağlantı",
+      "Sonraki bölüm"
+    ],
+    "resize": {
+      "x": 16,
+      "y": 161,
+      "width": 328,
+      "height": 463,
+      "bottom": 624
+    },
+    "replay": {
+      "done": false,
+      "trainInMain": true,
+      "dialog": false
+    },
+    "errors": []
+  },
+  {
+    "mode": "demo",
+    "reduced": false,
+    "before": {
+      "start": 335.69999998807907,
+      "ready": 607.7000000476837,
+      "elapsed": 694.1000000238419,
+      "live": true,
+      "train": true
+    },
+    "after": {
+      "level": 2,
+      "dialog": false,
+      "trains": 1,
+      "trainInMain": true,
+      "inert": false
+    },
+    "expanded": "true",
+    "focuses": [
+      "Sonraki bölüm",
+      "Tekrar oyna",
+      "Bölümler",
+      "6bağlantı",
+      "Sonraki bölüm"
+    ],
+    "resize": {
+      "x": 16,
+      "y": 161,
+      "width": 328,
+      "height": 463,
+      "bottom": 624
+    },
+    "replay": {
+      "done": false,
+      "trainInMain": true,
+      "dialog": false
+    },
+    "errors": []
+  },
+  {
+    "mode": "demo",
+    "reduced": true,
+    "before": {
+      "start": 305.39999997615814,
+      "ready": 174,
+      "elapsed": 242.4000000357628,
+      "live": true,
+      "train": true
+    },
+    "after": {
+      "level": 2,
+      "dialog": false,
+      "trains": 1,
+      "trainInMain": true,
+      "inert": false
+    },
+    "expanded": "true",
+    "focuses": [
+      "Sonraki bölüm",
+      "Tekrar oyna",
+      "Bölümler",
+      "6bağlantı",
+      "Sonraki bölüm"
+    ],
+    "resize": {
+      "x": 16,
+      "y": 161,
+      "width": 328,
+      "height": 463,
+      "bottom": 624
+    },
+    "replay": {
+      "done": false,
+      "trainInMain": true,
+      "dialog": false
+    },
+    "errors": []
+  }
+]

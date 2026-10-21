@@ -31,7 +31,7 @@ test('level-end summary: the final level has no "next", picks a level instead', 
   assert.equal(out.title, 'Bütün duraklar tamam!');
   assert.equal(out.sign.small, 'SON DURAK');
   assert.deepEqual(out.actions.map(a => [a.id, a.label]), [['levels', 'Bölüm seç'], ['replay', 'Tekrar oyna']]);
-  assert.ok(out.note.startsWith('Tüm bölümler tamamlandı.'));
+  assert.equal(out.note, 'Tüm bölümleri tamamladın.');
 });
 
 test('level-end summary: short runs, missing phrases and Turkish casing', () => {

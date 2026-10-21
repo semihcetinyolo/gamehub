@@ -1,5 +1,114 @@
 # Word Train — görsel sözleşme
 
+## Level end — kompakt peron kartı (güncel)
+
+Kullanıcının son kararı: sonuç telefon üzerinde **içeriği kadar büyüyen bir
+popup** olmalı. Aşağıdaki düzen eski tam ekran alt yüzeyini, sürekli açık
+“Son bağlantılar” panosunu ve düğmelerin üzerindeki esnek boşluğu geçersiz kılar.
+Orman & Pirinç renkleri, gerçek trenle ortak istasyon fikri ve giriş bekletmeme
+kuralı korunur.
+
+**Seçilen tek yön: kompakt peron.** Canlı tren, sonuç kartının 144px yüksekliğindeki
+üst peronuna yanaşır. Aynı kartın hemen altında başlık, tek satır istatistik ve
+kontroller bulunur; tren üstte ayrı, sonuç altta ayrı iki olay olmaz. Ek bir
+lokomotif kopyası çizilmez. Telefonun arkasındaki oyun karartılır.
+
+Referans maketler: `design/compact-end-mock-390.png`,
+`compact-end-mock-1280.png`; bağlantılar açılmış durum:
+`compact-end-mock-open-390.png`, `compact-end-mock-open-1280.png`.
+Review uygulaması `compact-end-mock.css` ve `compact-end-mock.js`; bunlar oyun
+runtime'ına yüklenmez. Üretim karşılığı core/levelend.js ve core/levelend.css'tir.
+
+### Yerleşim ve ölçüler
+
+- Overlay tüm ekran, zemin `#08170db3`; telefonda yatay ortalı, alt kenarda
+  `max(16px, env(safe-area-inset-bottom))` boşluk. Üst safe-area da korunur.
+- Kart `width:min(100%,376px)`, içerik yüksekliği, `max-height:100%`;
+  kenar payı16px, köşe12px, ince `--wt-border`, yüzey `--wt-paper`.
+  390×844'te kapalı örnek **358×364px**, x16/y464. Büyük ekranda (>=600px)
+  iki eksende ortalanır,24px dış pay; **376px genişliği aşmaz**.
+  1280×800 örneği376×364px, x452/y218. Esnek dikey dolgu yok.
+- Üst peron144px. Canlı train.el bu bölüme taşınır; eski yerinde ölçü koruyan
+  geçici placeholder kalır. Kapatılınca özgün parent/sibling/style'a dönülür.
+  Train'in eski sayfa inert durumunu miras almaması sağlanır.
+- Üstte kalın çatı/direkler yok, peronun alt temas çizgisi kalır. Sağ üstte
+  174×42px sessiz tabela:9px durak etiketi,16px Georgia durak adı;
+  `--wt-stage-ink`, zemin/çerçevesiz. Lokomotif üst rayda **sağa bakar**.
+- Gövde14px iç pay. Kısa başlık23/28px Georgia400. Son tamlama ayrıca büyük
+  hap olarak tekrarlanmaz; trendeki iki vagonda okunur.
+- İstatistik48px tek satır: **“5 bağlantı ⌄ · 0 hata · 0 yardım”**;13px.
+  Bağlantı sayısı48px dokunma hedefli disclosure button'dır. Başlangıçta son
+  bağlantılar kapalıdır; açınca son3 tamlama25px satırlarla görünür ve kart
+  yalnız gereken kadar büyür. Gereksiz ikinci başlık yok. `aria-expanded`,
+  `aria-controls`, klavye odağı ve focus trap kapsamı sağlanır.
+- Ana eylem52px, alttaki iki ikincil eylem48px yanyana, aralık8px.
+  Normal: “Sonraki bölüm” / “Tekrar oyna” + “Bölümler”. Son bölüm: next yok,
+  “Tüm bölümleri tamamladın.” kısa not ve mevcut bölüm listesi/tekrar eylemleri.
+- İçerik gerçekten taşarsa yalnız orta metin alanı kayar, kontroller görünür
+  kalır. Açık receipt otomatik gizlenmez veya kapalı receipt açılmaz.
+  Dar yatay ekran gibi istisnada peron118px olabilir. Metin %200 büyütmede
+  gövde scroll'u tercih edilir; düğme boyu48px altına inmez.
+
+### Zaman çizelgesi / ortak bileşen
+
+| Son yanıttan süre | Görünen olay / etkileşim |
+| --- | --- |
+| 0ms | Son bulunan çift korunur; ortak sonuç yaşam döngüsü başlar, tahta pasifleşir. |
+| 0–260ms | Karartma ve kart12px yukarı kayarak yumuşak görünür; ayrı sayfa hissi yok. |
+| 0–360ms | Tren aynı DOM ile perona alınır; mümkünse eski/son geometri arasında FLIP. Placeholder tahta zıplamasını önler. |
+| 180–600ms | Sonuç metni ve eylemler yerleşir; tüm düğmeler en geç600ms'de aktif. |
+| 600–1100ms | Lokomotif peronda sakin yanaşmasını tamamlar; eylemler beklemez. |
+| Her aktif dokunuş | Devam eden görsel hareket son kareye gider ve **aynı dokunuş** seçilen eylemi çalıştırır. |
+
+Reduced-motion'da FLIP/kayma yok; kısa solma ve160ms aktif eylemler.
+Boyut değişince dock sınırları anında yeniden ölçülür. Kapanışta observer,
+RAF, timer ve animasyonlar iptal edilir; tren yerine alınır ve inert/focus
+önceki oyuna uygun geri yüklenir. Eski `place()` fonksiyonu kaynak sahnenin
+viewport altını gövdenin `top` değeri yapamaz; kart yerel düzendir.
+
+Doğrulama matrisi: **v4 + demo** için390×844@3x mobil emülasyon,
+375×667,430×932,360×640,1280×800 masaüstü,820×1180 tablet.
+Kontrol: kart<=376px, dolgu boşluğu yok, actions>=48px,600ms erişim,
+tek dokunuş/yeniden açma/son bölüm/reduced motion, sayfa taşması ve konsol.
+
+### Kompakt kart — üretim doğrulaması
+
+Core sahibi ortak `core/levelend.js` / `.css` uygulamasını yaptı. Aşağıdaki
+kareler **maket CSS/JS enjeksiyonu olmadan**, gerçek v4/demo üzerinden alındı.
+Dosya kalıbı: `design/compact-end-final-{v4,demo}-{GENİŞLİK}x{YÜKSEKLİK}-closed.png`.
+
+| Ekran | Emülasyon | Sonuç kartı (CSS px) |
+| --- | --- | --- |
+| 390×844 | mobil, touch, DPR3 (PNG1170×2532) | 358×364 |
+| 375×667 | mobil, touch | 343×364 |
+| 430×932 | mobil, touch | 376×364 |
+| 360×640 | mobil, touch | 328×364 |
+| 1280×800 | masaüstü | 376×364 |
+| 820×1180 | tablet, touch | 376×364 |
+
+Her iki modda aynı ölçüler.360×640 ve1280×800 için ayrıca `-open.png`
+(bağlantılar açık,463px yükseklik) ve `-last.png` (son bölüm,392px) var.
+Kontrollerin merkezine hit-test geçti; ana52px, ikincil48px ve bağlantı
+kontrolü48px. Sayfa taşması yok. Kapatıp sonraki bölüme geçince yalnız bir
+tren kalıyor, asıl main'e dönmüş ve inert kaldırılmış oluyor.
+
+`design/compact-end-checks.json`:12 ekran +8 açık/son bölüm karesi,
+ölçü/hit-test/restore hatası0. Konsolda görülen kaynak404'leri ayrı tekrar
+kontrolünde tarayıcının `/favicon.ico` isteğine ait; JavaScript çalışma hatası
+yok. Bu ağ kaydı gizlenmemiştir.
+`design/compact-end-interactions.json`: gerçek tek touch ile sonraki bölüm,
+tekrar, disclosure ve focus trap; açıkken390→360 resize, normal/reduced
+motion iki modda geçti. Aktif eylem ilk RAF ölçümü normal608–617ms,
+reduced168–174ms (timer hedefleri600/160ms). Dokunuş animasyonu bitirip aynı
+olayda eylemi çalıştırıyor. Son bölümde next yok.
+
+`design/compact-end-frame-{0,180,360,600,1100}.png`390@3x hareket kontrolü:
+aynı canlı tren eski sahneden kart peronuna iner, son küpler yerleşir ve
+lokomotif yanaşır. Dosya adları hedef örnekleme zamanlarıdır; gerçek örnekleme
+zamanları `compact-end-sequence.json` içinde. Sonucu okumak/eyleme geçmek
+lokomotifin son hareketini beklemez. Orman & Pirinç AA metin renkleri aynen
+korundu; önceki palet kontrast raporu geçerlidir.
+
 ## Güncel palet — Orman & Pirinç
 
 **Son kullanıcı düzeltmesi:** yetişkin model lokomotifin rengi beğenildi;

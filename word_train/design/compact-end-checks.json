@@ -1,0 +1,2288 @@
+{
+  "screens": [
+    {
+      "mode": "v4",
+      "width": 390,
+      "height": 844,
+      "dpr": 3,
+      "state": "closed",
+      "file": "design/compact-end-final-v4-390x844-closed.png",
+      "card": {
+        "x": 16,
+        "y": 464,
+        "width": 358,
+        "height": 364,
+        "top": 464,
+        "right": 374,
+        "bottom": 828,
+        "left": 16
+      },
+      "dock": {
+        "x": 17,
+        "y": 465,
+        "width": 356,
+        "height": 144,
+        "top": 465,
+        "right": 373,
+        "bottom": 609,
+        "left": 17
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 25.28125,
+          "y": 549.9468994140625,
+          "width": 175.4375,
+          "height": 48.953125,
+          "top": 549.9468994140625,
+          "right": 200.71875,
+          "bottom": 598.9000244140625,
+          "left": 25.28125,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 210.296875,
+          "y": 549.9468994140625,
+          "width": 154.40625,
+          "height": 48.953125,
+          "top": 549.9468994140625,
+          "right": 364.703125,
+          "bottom": 598.9000244140625,
+          "left": 210.296875,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 89.859375,
+          "y": 651,
+          "width": 82.078125,
+          "height": 48,
+          "top": 651,
+          "right": 171.9375,
+          "bottom": 699,
+          "left": 89.859375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 31,
+          "y": 705,
+          "width": 328,
+          "height": 52,
+          "top": 705,
+          "right": 359,
+          "bottom": 757,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 31,
+          "y": 765,
+          "width": 160,
+          "height": 48,
+          "top": 765,
+          "right": 191,
+          "bottom": 813,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 199,
+          "y": 765,
+          "width": 160,
+          "height": 48,
+          "top": 765,
+          "right": 359,
+          "bottom": 813,
+          "left": 199,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Sonraki bölüm"
+    },
+    {
+      "mode": "v4",
+      "width": 390,
+      "height": 844,
+      "state": "next",
+      "restoration": {
+        "dialog": false,
+        "train": true,
+        "inert": false,
+        "level": 2
+      }
+    },
+    {
+      "mode": "v4",
+      "width": 375,
+      "height": 667,
+      "dpr": 1,
+      "state": "closed",
+      "file": "design/compact-end-final-v4-375x667-closed.png",
+      "card": {
+        "x": 16,
+        "y": 287,
+        "width": 343,
+        "height": 364,
+        "top": 287,
+        "right": 359,
+        "bottom": 651,
+        "left": 16
+      },
+      "dock": {
+        "x": 17,
+        "y": 288,
+        "width": 341,
+        "height": 144,
+        "top": 288,
+        "right": 358,
+        "bottom": 432,
+        "left": 17
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 25.28125,
+          "y": 372.9468688964844,
+          "width": 167.4375,
+          "height": 48.953125,
+          "top": 372.9468688964844,
+          "right": 192.71875,
+          "bottom": 421.8999938964844,
+          "left": 25.28125,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 202.296875,
+          "y": 372.9468688964844,
+          "width": 147.40625,
+          "height": 48.953125,
+          "top": 372.9468688964844,
+          "right": 349.703125,
+          "bottom": 421.8999938964844,
+          "left": 202.296875,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 82.359375,
+          "y": 474,
+          "width": 82.078125,
+          "height": 48,
+          "top": 474,
+          "right": 164.4375,
+          "bottom": 522,
+          "left": 82.359375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 31,
+          "y": 528,
+          "width": 313,
+          "height": 52,
+          "top": 528,
+          "right": 344,
+          "bottom": 580,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 31,
+          "y": 588,
+          "width": 152.5,
+          "height": 48,
+          "top": 588,
+          "right": 183.5,
+          "bottom": 636,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 191.5,
+          "y": 588,
+          "width": 152.5,
+          "height": 48,
+          "top": 588,
+          "right": 344,
+          "bottom": 636,
+          "left": 191.5,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Sonraki bölüm"
+    },
+    {
+      "mode": "v4",
+      "width": 375,
+      "height": 667,
+      "state": "next",
+      "restoration": {
+        "dialog": false,
+        "train": true,
+        "inert": false,
+        "level": 2
+      }
+    },
+    {
+      "mode": "v4",
+      "width": 430,
+      "height": 932,
+      "dpr": 1,
+      "state": "closed",
+      "file": "design/compact-end-final-v4-430x932-closed.png",
+      "card": {
+        "x": 27,
+        "y": 552,
+        "width": 376,
+        "height": 364,
+        "top": 552,
+        "right": 403,
+        "bottom": 916,
+        "left": 27
+      },
+      "dock": {
+        "x": 28,
+        "y": 553,
+        "width": 374,
+        "height": 144,
+        "top": 553,
+        "right": 402,
+        "bottom": 697,
+        "left": 28
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 35.96875,
+          "y": 637.9468994140625,
+          "width": 185.0625,
+          "height": 48.953125,
+          "top": 637.9468994140625,
+          "right": 221.03125,
+          "bottom": 686.9000244140625,
+          "left": 35.96875,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 231.0859375,
+          "y": 637.9468994140625,
+          "width": 162.828125,
+          "height": 48.953125,
+          "top": 637.9468994140625,
+          "right": 393.9140625,
+          "bottom": 686.9000244140625,
+          "left": 231.0859375,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 109.859375,
+          "y": 739,
+          "width": 82.078125,
+          "height": 48,
+          "top": 739,
+          "right": 191.9375,
+          "bottom": 787,
+          "left": 109.859375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 42,
+          "y": 793,
+          "width": 346,
+          "height": 52,
+          "top": 793,
+          "right": 388,
+          "bottom": 845,
+          "left": 42,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 42,
+          "y": 853,
+          "width": 169,
+          "height": 48,
+          "top": 853,
+          "right": 211,
+          "bottom": 901,
+          "left": 42,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 219,
+          "y": 853,
+          "width": 169,
+          "height": 48,
+          "top": 853,
+          "right": 388,
+          "bottom": 901,
+          "left": 219,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Sonraki bölüm"
+    },
+    {
+      "mode": "v4",
+      "width": 430,
+      "height": 932,
+      "state": "next",
+      "restoration": {
+        "dialog": false,
+        "train": true,
+        "inert": false,
+        "level": 2
+      }
+    },
+    {
+      "mode": "v4",
+      "width": 360,
+      "height": 640,
+      "dpr": 1,
+      "state": "closed",
+      "file": "design/compact-end-final-v4-360x640-closed.png",
+      "card": {
+        "x": 16,
+        "y": 260,
+        "width": 328,
+        "height": 364,
+        "top": 260,
+        "right": 344,
+        "bottom": 624,
+        "left": 16
+      },
+      "dock": {
+        "x": 17,
+        "y": 261,
+        "width": 326,
+        "height": 144,
+        "top": 261,
+        "right": 343,
+        "bottom": 405,
+        "left": 17
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 19.15625,
+          "y": 345.9468688964844,
+          "width": 162.6875,
+          "height": 48.953125,
+          "top": 345.9468688964844,
+          "right": 181.84375,
+          "bottom": 394.8999938964844,
+          "left": 19.15625,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 191.875,
+          "y": 345.9468688964844,
+          "width": 143.25,
+          "height": 48.953125,
+          "top": 345.9468688964844,
+          "right": 335.125,
+          "bottom": 394.8999938964844,
+          "left": 191.875,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 74.859375,
+          "y": 447,
+          "width": 82.078125,
+          "height": 48,
+          "top": 447,
+          "right": 156.9375,
+          "bottom": 495,
+          "left": 74.859375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 31,
+          "y": 501,
+          "width": 298,
+          "height": 52,
+          "top": 501,
+          "right": 329,
+          "bottom": 553,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 31,
+          "y": 561,
+          "width": 145,
+          "height": 48,
+          "top": 561,
+          "right": 176,
+          "bottom": 609,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 184,
+          "y": 561,
+          "width": 145,
+          "height": 48,
+          "top": 561,
+          "right": 329,
+          "bottom": 609,
+          "left": 184,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Sonraki bölüm"
+    },
+    {
+      "mode": "v4",
+      "width": 360,
+      "height": 640,
+      "dpr": 1,
+      "state": "open",
+      "file": "design/compact-end-final-v4-360x640-open.png",
+      "card": {
+        "x": 16,
+        "y": 161,
+        "width": 328,
+        "height": 463,
+        "top": 161,
+        "right": 344,
+        "bottom": 624,
+        "left": 16
+      },
+      "dock": {
+        "x": 17,
+        "y": 162,
+        "width": 326,
+        "height": 144,
+        "top": 162,
+        "right": 343,
+        "bottom": 306,
+        "left": 17
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 19.15625,
+          "y": 246.94686889648438,
+          "width": 162.6875,
+          "height": 48.953125,
+          "top": 246.94686889648438,
+          "right": 181.84375,
+          "bottom": 295.8999938964844,
+          "left": 19.15625,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 191.875,
+          "y": 246.94686889648438,
+          "width": 143.25,
+          "height": 48.953125,
+          "top": 246.94686889648438,
+          "right": 335.125,
+          "bottom": 295.8999938964844,
+          "left": 191.875,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 74.859375,
+          "y": 348,
+          "width": 82.078125,
+          "height": 48,
+          "top": 348,
+          "right": 156.9375,
+          "bottom": 396,
+          "left": 74.859375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 31,
+          "y": 501,
+          "width": 298,
+          "height": 52,
+          "top": 501,
+          "right": 329,
+          "bottom": 553,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 31,
+          "y": 561,
+          "width": 145,
+          "height": 48,
+          "top": 561,
+          "right": 176,
+          "bottom": 609,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 184,
+          "y": 561,
+          "width": 145,
+          "height": 48,
+          "top": 561,
+          "right": 329,
+          "bottom": 609,
+          "left": 184,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": false,
+      "active": "5bağlantı"
+    },
+    {
+      "mode": "v4",
+      "width": 360,
+      "height": 640,
+      "state": "next",
+      "restoration": {
+        "dialog": false,
+        "train": true,
+        "inert": false,
+        "level": 2
+      }
+    },
+    {
+      "mode": "v4",
+      "width": 360,
+      "height": 640,
+      "dpr": 1,
+      "state": "last",
+      "file": "design/compact-end-final-v4-360x640-last.png",
+      "card": {
+        "x": 16,
+        "y": 232,
+        "width": 328,
+        "height": 392,
+        "top": 232,
+        "right": 344,
+        "bottom": 624,
+        "left": 16
+      },
+      "dock": {
+        "x": 17,
+        "y": 233,
+        "width": 326,
+        "height": 144,
+        "top": 233,
+        "right": 343,
+        "bottom": 377,
+        "left": 17
+      },
+      "controls": [
+        {
+          "label": "GÜN",
+          "x": 41.2734375,
+          "y": 317.9468688964844,
+          "width": 89.453125,
+          "height": 48.953125,
+          "top": 317.9468688964844,
+          "right": 130.7265625,
+          "bottom": 366.8999938964844,
+          "left": 41.2734375,
+          "hit": true
+        },
+        {
+          "label": "SAYISI",
+          "x": 146.640625,
+          "y": 317.9468688964844,
+          "width": 171.71875,
+          "height": 48.953125,
+          "top": 317.9468688964844,
+          "right": 318.359375,
+          "bottom": 366.8999938964844,
+          "left": 146.640625,
+          "hit": true
+        },
+        {
+          "label": "9bağlantı",
+          "x": 74.859375,
+          "y": 419,
+          "width": 82.078125,
+          "height": 48,
+          "top": 419,
+          "right": 156.9375,
+          "bottom": 467,
+          "left": 74.859375,
+          "hit": true
+        },
+        {
+          "label": "Bölüm seç",
+          "x": 31,
+          "y": 501,
+          "width": 298,
+          "height": 52,
+          "top": 501,
+          "right": 329,
+          "bottom": 553,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 31,
+          "y": 561,
+          "width": 298,
+          "height": 48,
+          "top": 561,
+          "right": 329,
+          "bottom": 609,
+          "left": 31,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Bölüm seç"
+    },
+    {
+      "mode": "v4",
+      "width": 1280,
+      "height": 800,
+      "dpr": 1,
+      "state": "closed",
+      "file": "design/compact-end-final-v4-1280x800-closed.png",
+      "card": {
+        "x": 452,
+        "y": 218,
+        "width": 376,
+        "height": 364,
+        "top": 218,
+        "right": 828,
+        "bottom": 582,
+        "left": 452
+      },
+      "dock": {
+        "x": 453,
+        "y": 219,
+        "width": 374,
+        "height": 144,
+        "top": 219,
+        "right": 827,
+        "bottom": 363,
+        "left": 453
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 460.96875,
+          "y": 303.9468688964844,
+          "width": 185.0625,
+          "height": 48.953125,
+          "top": 303.9468688964844,
+          "right": 646.03125,
+          "bottom": 352.8999938964844,
+          "left": 460.96875,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 656.0859375,
+          "y": 303.9468688964844,
+          "width": 162.828125,
+          "height": 48.953125,
+          "top": 303.9468688964844,
+          "right": 818.9140625,
+          "bottom": 352.8999938964844,
+          "left": 656.0859375,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 534.859375,
+          "y": 405,
+          "width": 82.078125,
+          "height": 48,
+          "top": 405,
+          "right": 616.9375,
+          "bottom": 453,
+          "left": 534.859375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 467,
+          "y": 459,
+          "width": 346,
+          "height": 52,
+          "top": 459,
+          "right": 813,
+          "bottom": 511,
+          "left": 467,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 467,
+          "y": 519,
+          "width": 169,
+          "height": 48,
+          "top": 519,
+          "right": 636,
+          "bottom": 567,
+          "left": 467,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 644,
+          "y": 519,
+          "width": 169,
+          "height": 48,
+          "top": 519,
+          "right": 813,
+          "bottom": 567,
+          "left": 644,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Sonraki bölüm"
+    },
+    {
+      "mode": "v4",
+      "width": 1280,
+      "height": 800,
+      "dpr": 1,
+      "state": "open",
+      "file": "design/compact-end-final-v4-1280x800-open.png",
+      "card": {
+        "x": 452,
+        "y": 168.5,
+        "width": 376,
+        "height": 463,
+        "top": 168.5,
+        "right": 828,
+        "bottom": 631.5,
+        "left": 452
+      },
+      "dock": {
+        "x": 453,
+        "y": 169.5,
+        "width": 374,
+        "height": 144,
+        "top": 169.5,
+        "right": 827,
+        "bottom": 313.5,
+        "left": 453
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 460.96875,
+          "y": 254.44686889648438,
+          "width": 185.0625,
+          "height": 48.953125,
+          "top": 254.44686889648438,
+          "right": 646.03125,
+          "bottom": 303.3999938964844,
+          "left": 460.96875,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 656.0859375,
+          "y": 254.44686889648438,
+          "width": 162.828125,
+          "height": 48.953125,
+          "top": 254.44686889648438,
+          "right": 818.9140625,
+          "bottom": 303.3999938964844,
+          "left": 656.0859375,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 534.859375,
+          "y": 355.5,
+          "width": 82.078125,
+          "height": 48,
+          "top": 355.5,
+          "right": 616.9375,
+          "bottom": 403.5,
+          "left": 534.859375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 467,
+          "y": 508.5,
+          "width": 346,
+          "height": 52,
+          "top": 508.5,
+          "right": 813,
+          "bottom": 560.5,
+          "left": 467,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 467,
+          "y": 568.5,
+          "width": 169,
+          "height": 48,
+          "top": 568.5,
+          "right": 636,
+          "bottom": 616.5,
+          "left": 467,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 644,
+          "y": 568.5,
+          "width": 169,
+          "height": 48,
+          "top": 568.5,
+          "right": 813,
+          "bottom": 616.5,
+          "left": 644,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": false,
+      "active": "5bağlantı"
+    },
+    {
+      "mode": "v4",
+      "width": 1280,
+      "height": 800,
+      "state": "next",
+      "restoration": {
+        "dialog": false,
+        "train": true,
+        "inert": false,
+        "level": 2
+      }
+    },
+    {
+      "mode": "v4",
+      "width": 1280,
+      "height": 800,
+      "dpr": 1,
+      "state": "last",
+      "file": "design/compact-end-final-v4-1280x800-last.png",
+      "card": {
+        "x": 452,
+        "y": 204,
+        "width": 376,
+        "height": 392,
+        "top": 204,
+        "right": 828,
+        "bottom": 596,
+        "left": 452
+      },
+      "dock": {
+        "x": 453,
+        "y": 205,
+        "width": 374,
+        "height": 144,
+        "top": 205,
+        "right": 827,
+        "bottom": 349,
+        "left": 453
+      },
+      "controls": [
+        {
+          "label": "GÜN",
+          "x": 501.2734375,
+          "y": 289.9468688964844,
+          "width": 89.453125,
+          "height": 48.953125,
+          "top": 289.9468688964844,
+          "right": 590.7265625,
+          "bottom": 338.8999938964844,
+          "left": 501.2734375,
+          "hit": true
+        },
+        {
+          "label": "SAYISI",
+          "x": 606.640625,
+          "y": 289.9468688964844,
+          "width": 171.71875,
+          "height": 48.953125,
+          "top": 289.9468688964844,
+          "right": 778.359375,
+          "bottom": 338.8999938964844,
+          "left": 606.640625,
+          "hit": true
+        },
+        {
+          "label": "9bağlantı",
+          "x": 534.859375,
+          "y": 391,
+          "width": 82.078125,
+          "height": 48,
+          "top": 391,
+          "right": 616.9375,
+          "bottom": 439,
+          "left": 534.859375,
+          "hit": true
+        },
+        {
+          "label": "Bölüm seç",
+          "x": 467,
+          "y": 473,
+          "width": 346,
+          "height": 52,
+          "top": 473,
+          "right": 813,
+          "bottom": 525,
+          "left": 467,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 467,
+          "y": 533,
+          "width": 346,
+          "height": 48,
+          "top": 533,
+          "right": 813,
+          "bottom": 581,
+          "left": 467,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Bölüm seç"
+    },
+    {
+      "mode": "v4",
+      "width": 820,
+      "height": 1180,
+      "dpr": 1,
+      "state": "closed",
+      "file": "design/compact-end-final-v4-820x1180-closed.png",
+      "card": {
+        "x": 222,
+        "y": 408,
+        "width": 376,
+        "height": 364,
+        "top": 408,
+        "right": 598,
+        "bottom": 772,
+        "left": 222
+      },
+      "dock": {
+        "x": 223,
+        "y": 409,
+        "width": 374,
+        "height": 144,
+        "top": 409,
+        "right": 597,
+        "bottom": 553,
+        "left": 223
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 230.96875,
+          "y": 493.9468688964844,
+          "width": 185.0625,
+          "height": 48.953155517578125,
+          "top": 493.9468688964844,
+          "right": 416.03125,
+          "bottom": 542.9000244140625,
+          "left": 230.96875,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 426.0859375,
+          "y": 493.9468688964844,
+          "width": 162.828125,
+          "height": 48.953155517578125,
+          "top": 493.9468688964844,
+          "right": 588.9140625,
+          "bottom": 542.9000244140625,
+          "left": 426.0859375,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 304.859375,
+          "y": 595,
+          "width": 82.078125,
+          "height": 48,
+          "top": 595,
+          "right": 386.9375,
+          "bottom": 643,
+          "left": 304.859375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 237,
+          "y": 649,
+          "width": 346,
+          "height": 52,
+          "top": 649,
+          "right": 583,
+          "bottom": 701,
+          "left": 237,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 237,
+          "y": 709,
+          "width": 169,
+          "height": 48,
+          "top": 709,
+          "right": 406,
+          "bottom": 757,
+          "left": 237,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 414,
+          "y": 709,
+          "width": 169,
+          "height": 48,
+          "top": 709,
+          "right": 583,
+          "bottom": 757,
+          "left": 414,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Sonraki bölüm"
+    },
+    {
+      "mode": "v4",
+      "width": 820,
+      "height": 1180,
+      "state": "next",
+      "restoration": {
+        "dialog": false,
+        "train": true,
+        "inert": false,
+        "level": 2
+      }
+    },
+    {
+      "mode": "demo",
+      "width": 390,
+      "height": 844,
+      "dpr": 3,
+      "state": "closed",
+      "file": "design/compact-end-final-demo-390x844-closed.png",
+      "card": {
+        "x": 16,
+        "y": 464,
+        "width": 358,
+        "height": 364,
+        "top": 464,
+        "right": 374,
+        "bottom": 828,
+        "left": 16
+      },
+      "dock": {
+        "x": 17,
+        "y": 465,
+        "width": 356,
+        "height": 144,
+        "top": 465,
+        "right": 373,
+        "bottom": 609,
+        "left": 17
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 25.28125,
+          "y": 549.9468994140625,
+          "width": 175.4375,
+          "height": 48.953125,
+          "top": 549.9468994140625,
+          "right": 200.71875,
+          "bottom": 598.9000244140625,
+          "left": 25.28125,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 210.296875,
+          "y": 549.9468994140625,
+          "width": 154.40625,
+          "height": 48.953125,
+          "top": 549.9468994140625,
+          "right": 364.703125,
+          "bottom": 598.9000244140625,
+          "left": 210.296875,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 89.859375,
+          "y": 651,
+          "width": 82.078125,
+          "height": 48,
+          "top": 651,
+          "right": 171.9375,
+          "bottom": 699,
+          "left": 89.859375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 31,
+          "y": 705,
+          "width": 328,
+          "height": 52,
+          "top": 705,
+          "right": 359,
+          "bottom": 757,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 31,
+          "y": 765,
+          "width": 160,
+          "height": 48,
+          "top": 765,
+          "right": 191,
+          "bottom": 813,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 199,
+          "y": 765,
+          "width": 160,
+          "height": 48,
+          "top": 765,
+          "right": 359,
+          "bottom": 813,
+          "left": 199,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Sonraki bölüm"
+    },
+    {
+      "mode": "demo",
+      "width": 390,
+      "height": 844,
+      "state": "next",
+      "restoration": {
+        "dialog": false,
+        "train": true,
+        "inert": false,
+        "level": 2
+      }
+    },
+    {
+      "mode": "demo",
+      "width": 375,
+      "height": 667,
+      "dpr": 1,
+      "state": "closed",
+      "file": "design/compact-end-final-demo-375x667-closed.png",
+      "card": {
+        "x": 16,
+        "y": 287,
+        "width": 343,
+        "height": 364,
+        "top": 287,
+        "right": 359,
+        "bottom": 651,
+        "left": 16
+      },
+      "dock": {
+        "x": 17,
+        "y": 288,
+        "width": 341,
+        "height": 144,
+        "top": 288,
+        "right": 358,
+        "bottom": 432,
+        "left": 17
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 25.28125,
+          "y": 372.9468688964844,
+          "width": 167.4375,
+          "height": 48.953125,
+          "top": 372.9468688964844,
+          "right": 192.71875,
+          "bottom": 421.8999938964844,
+          "left": 25.28125,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 202.296875,
+          "y": 372.9468688964844,
+          "width": 147.40625,
+          "height": 48.953125,
+          "top": 372.9468688964844,
+          "right": 349.703125,
+          "bottom": 421.8999938964844,
+          "left": 202.296875,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 82.359375,
+          "y": 474,
+          "width": 82.078125,
+          "height": 48,
+          "top": 474,
+          "right": 164.4375,
+          "bottom": 522,
+          "left": 82.359375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 31,
+          "y": 528,
+          "width": 313,
+          "height": 52,
+          "top": 528,
+          "right": 344,
+          "bottom": 580,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 31,
+          "y": 588,
+          "width": 152.5,
+          "height": 48,
+          "top": 588,
+          "right": 183.5,
+          "bottom": 636,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 191.5,
+          "y": 588,
+          "width": 152.5,
+          "height": 48,
+          "top": 588,
+          "right": 344,
+          "bottom": 636,
+          "left": 191.5,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Sonraki bölüm"
+    },
+    {
+      "mode": "demo",
+      "width": 375,
+      "height": 667,
+      "state": "next",
+      "restoration": {
+        "dialog": false,
+        "train": true,
+        "inert": false,
+        "level": 2
+      }
+    },
+    {
+      "mode": "demo",
+      "width": 430,
+      "height": 932,
+      "dpr": 1,
+      "state": "closed",
+      "file": "design/compact-end-final-demo-430x932-closed.png",
+      "card": {
+        "x": 27,
+        "y": 552,
+        "width": 376,
+        "height": 364,
+        "top": 552,
+        "right": 403,
+        "bottom": 916,
+        "left": 27
+      },
+      "dock": {
+        "x": 28,
+        "y": 553,
+        "width": 374,
+        "height": 144,
+        "top": 553,
+        "right": 402,
+        "bottom": 697,
+        "left": 28
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 35.96875,
+          "y": 637.9468994140625,
+          "width": 185.0625,
+          "height": 48.953125,
+          "top": 637.9468994140625,
+          "right": 221.03125,
+          "bottom": 686.9000244140625,
+          "left": 35.96875,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 231.0859375,
+          "y": 637.9468994140625,
+          "width": 162.828125,
+          "height": 48.953125,
+          "top": 637.9468994140625,
+          "right": 393.9140625,
+          "bottom": 686.9000244140625,
+          "left": 231.0859375,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 109.859375,
+          "y": 739,
+          "width": 82.078125,
+          "height": 48,
+          "top": 739,
+          "right": 191.9375,
+          "bottom": 787,
+          "left": 109.859375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 42,
+          "y": 793,
+          "width": 346,
+          "height": 52,
+          "top": 793,
+          "right": 388,
+          "bottom": 845,
+          "left": 42,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 42,
+          "y": 853,
+          "width": 169,
+          "height": 48,
+          "top": 853,
+          "right": 211,
+          "bottom": 901,
+          "left": 42,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 219,
+          "y": 853,
+          "width": 169,
+          "height": 48,
+          "top": 853,
+          "right": 388,
+          "bottom": 901,
+          "left": 219,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Sonraki bölüm"
+    },
+    {
+      "mode": "demo",
+      "width": 430,
+      "height": 932,
+      "state": "next",
+      "restoration": {
+        "dialog": false,
+        "train": true,
+        "inert": false,
+        "level": 2
+      }
+    },
+    {
+      "mode": "demo",
+      "width": 360,
+      "height": 640,
+      "dpr": 1,
+      "state": "closed",
+      "file": "design/compact-end-final-demo-360x640-closed.png",
+      "card": {
+        "x": 16,
+        "y": 260,
+        "width": 328,
+        "height": 364,
+        "top": 260,
+        "right": 344,
+        "bottom": 624,
+        "left": 16
+      },
+      "dock": {
+        "x": 17,
+        "y": 261,
+        "width": 326,
+        "height": 144,
+        "top": 261,
+        "right": 343,
+        "bottom": 405,
+        "left": 17
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 19.15625,
+          "y": 345.9468688964844,
+          "width": 162.6875,
+          "height": 48.953125,
+          "top": 345.9468688964844,
+          "right": 181.84375,
+          "bottom": 394.8999938964844,
+          "left": 19.15625,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 191.875,
+          "y": 345.9468688964844,
+          "width": 143.25,
+          "height": 48.953125,
+          "top": 345.9468688964844,
+          "right": 335.125,
+          "bottom": 394.8999938964844,
+          "left": 191.875,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 74.859375,
+          "y": 447,
+          "width": 82.078125,
+          "height": 48,
+          "top": 447,
+          "right": 156.9375,
+          "bottom": 495,
+          "left": 74.859375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 31,
+          "y": 501,
+          "width": 298,
+          "height": 52,
+          "top": 501,
+          "right": 329,
+          "bottom": 553,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 31,
+          "y": 561,
+          "width": 145,
+          "height": 48,
+          "top": 561,
+          "right": 176,
+          "bottom": 609,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 184,
+          "y": 561,
+          "width": 145,
+          "height": 48,
+          "top": 561,
+          "right": 329,
+          "bottom": 609,
+          "left": 184,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Sonraki bölüm"
+    },
+    {
+      "mode": "demo",
+      "width": 360,
+      "height": 640,
+      "dpr": 1,
+      "state": "open",
+      "file": "design/compact-end-final-demo-360x640-open.png",
+      "card": {
+        "x": 16,
+        "y": 161,
+        "width": 328,
+        "height": 463,
+        "top": 161,
+        "right": 344,
+        "bottom": 624,
+        "left": 16
+      },
+      "dock": {
+        "x": 17,
+        "y": 162,
+        "width": 326,
+        "height": 144,
+        "top": 162,
+        "right": 343,
+        "bottom": 306,
+        "left": 17
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 19.15625,
+          "y": 246.94686889648438,
+          "width": 162.6875,
+          "height": 48.953125,
+          "top": 246.94686889648438,
+          "right": 181.84375,
+          "bottom": 295.8999938964844,
+          "left": 19.15625,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 191.875,
+          "y": 246.94686889648438,
+          "width": 143.25,
+          "height": 48.953125,
+          "top": 246.94686889648438,
+          "right": 335.125,
+          "bottom": 295.8999938964844,
+          "left": 191.875,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 74.859375,
+          "y": 348,
+          "width": 82.078125,
+          "height": 48,
+          "top": 348,
+          "right": 156.9375,
+          "bottom": 396,
+          "left": 74.859375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 31,
+          "y": 501,
+          "width": 298,
+          "height": 52,
+          "top": 501,
+          "right": 329,
+          "bottom": 553,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 31,
+          "y": 561,
+          "width": 145,
+          "height": 48,
+          "top": 561,
+          "right": 176,
+          "bottom": 609,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 184,
+          "y": 561,
+          "width": 145,
+          "height": 48,
+          "top": 561,
+          "right": 329,
+          "bottom": 609,
+          "left": 184,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": false,
+      "active": "5bağlantı"
+    },
+    {
+      "mode": "demo",
+      "width": 360,
+      "height": 640,
+      "state": "next",
+      "restoration": {
+        "dialog": false,
+        "train": true,
+        "inert": false,
+        "level": 2
+      }
+    },
+    {
+      "mode": "demo",
+      "width": 360,
+      "height": 640,
+      "dpr": 1,
+      "state": "last",
+      "file": "design/compact-end-final-demo-360x640-last.png",
+      "card": {
+        "x": 16,
+        "y": 232,
+        "width": 328,
+        "height": 392,
+        "top": 232,
+        "right": 344,
+        "bottom": 624,
+        "left": 16
+      },
+      "dock": {
+        "x": 17,
+        "y": 233,
+        "width": 326,
+        "height": 144,
+        "top": 233,
+        "right": 343,
+        "bottom": 377,
+        "left": 17
+      },
+      "controls": [
+        {
+          "label": "GÜN",
+          "x": 41.2734375,
+          "y": 317.9468688964844,
+          "width": 89.453125,
+          "height": 48.953125,
+          "top": 317.9468688964844,
+          "right": 130.7265625,
+          "bottom": 366.8999938964844,
+          "left": 41.2734375,
+          "hit": true
+        },
+        {
+          "label": "SAYISI",
+          "x": 146.640625,
+          "y": 317.9468688964844,
+          "width": 171.71875,
+          "height": 48.953125,
+          "top": 317.9468688964844,
+          "right": 318.359375,
+          "bottom": 366.8999938964844,
+          "left": 146.640625,
+          "hit": true
+        },
+        {
+          "label": "9bağlantı",
+          "x": 74.859375,
+          "y": 419,
+          "width": 82.078125,
+          "height": 48,
+          "top": 419,
+          "right": 156.9375,
+          "bottom": 467,
+          "left": 74.859375,
+          "hit": true
+        },
+        {
+          "label": "Bölüm seç",
+          "x": 31,
+          "y": 501,
+          "width": 298,
+          "height": 52,
+          "top": 501,
+          "right": 329,
+          "bottom": 553,
+          "left": 31,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 31,
+          "y": 561,
+          "width": 298,
+          "height": 48,
+          "top": 561,
+          "right": 329,
+          "bottom": 609,
+          "left": 31,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Bölüm seç"
+    },
+    {
+      "mode": "demo",
+      "width": 1280,
+      "height": 800,
+      "dpr": 1,
+      "state": "closed",
+      "file": "design/compact-end-final-demo-1280x800-closed.png",
+      "card": {
+        "x": 452,
+        "y": 218,
+        "width": 376,
+        "height": 364,
+        "top": 218,
+        "right": 828,
+        "bottom": 582,
+        "left": 452
+      },
+      "dock": {
+        "x": 453,
+        "y": 219,
+        "width": 374,
+        "height": 144,
+        "top": 219,
+        "right": 827,
+        "bottom": 363,
+        "left": 453
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 460.96875,
+          "y": 303.9468688964844,
+          "width": 185.0625,
+          "height": 48.953125,
+          "top": 303.9468688964844,
+          "right": 646.03125,
+          "bottom": 352.8999938964844,
+          "left": 460.96875,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 656.0859375,
+          "y": 303.9468688964844,
+          "width": 162.828125,
+          "height": 48.953125,
+          "top": 303.9468688964844,
+          "right": 818.9140625,
+          "bottom": 352.8999938964844,
+          "left": 656.0859375,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 534.859375,
+          "y": 405,
+          "width": 82.078125,
+          "height": 48,
+          "top": 405,
+          "right": 616.9375,
+          "bottom": 453,
+          "left": 534.859375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 467,
+          "y": 459,
+          "width": 346,
+          "height": 52,
+          "top": 459,
+          "right": 813,
+          "bottom": 511,
+          "left": 467,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 467,
+          "y": 519,
+          "width": 169,
+          "height": 48,
+          "top": 519,
+          "right": 636,
+          "bottom": 567,
+          "left": 467,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 644,
+          "y": 519,
+          "width": 169,
+          "height": 48,
+          "top": 519,
+          "right": 813,
+          "bottom": 567,
+          "left": 644,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Sonraki bölüm"
+    },
+    {
+      "mode": "demo",
+      "width": 1280,
+      "height": 800,
+      "dpr": 1,
+      "state": "open",
+      "file": "design/compact-end-final-demo-1280x800-open.png",
+      "card": {
+        "x": 452,
+        "y": 168.5,
+        "width": 376,
+        "height": 463,
+        "top": 168.5,
+        "right": 828,
+        "bottom": 631.5,
+        "left": 452
+      },
+      "dock": {
+        "x": 453,
+        "y": 169.5,
+        "width": 374,
+        "height": 144,
+        "top": 169.5,
+        "right": 827,
+        "bottom": 313.5,
+        "left": 453
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 460.96875,
+          "y": 254.44686889648438,
+          "width": 185.0625,
+          "height": 48.953125,
+          "top": 254.44686889648438,
+          "right": 646.03125,
+          "bottom": 303.3999938964844,
+          "left": 460.96875,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 656.0859375,
+          "y": 254.44686889648438,
+          "width": 162.828125,
+          "height": 48.953125,
+          "top": 254.44686889648438,
+          "right": 818.9140625,
+          "bottom": 303.3999938964844,
+          "left": 656.0859375,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 534.859375,
+          "y": 355.5,
+          "width": 82.078125,
+          "height": 48,
+          "top": 355.5,
+          "right": 616.9375,
+          "bottom": 403.5,
+          "left": 534.859375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 467,
+          "y": 508.5,
+          "width": 346,
+          "height": 52,
+          "top": 508.5,
+          "right": 813,
+          "bottom": 560.5,
+          "left": 467,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 467,
+          "y": 568.5,
+          "width": 169,
+          "height": 48,
+          "top": 568.5,
+          "right": 636,
+          "bottom": 616.5,
+          "left": 467,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 644,
+          "y": 568.5,
+          "width": 169,
+          "height": 48,
+          "top": 568.5,
+          "right": 813,
+          "bottom": 616.5,
+          "left": 644,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": false,
+      "active": "5bağlantı"
+    },
+    {
+      "mode": "demo",
+      "width": 1280,
+      "height": 800,
+      "state": "next",
+      "restoration": {
+        "dialog": false,
+        "train": true,
+        "inert": false,
+        "level": 2
+      }
+    },
+    {
+      "mode": "demo",
+      "width": 1280,
+      "height": 800,
+      "dpr": 1,
+      "state": "last",
+      "file": "design/compact-end-final-demo-1280x800-last.png",
+      "card": {
+        "x": 452,
+        "y": 204,
+        "width": 376,
+        "height": 392,
+        "top": 204,
+        "right": 828,
+        "bottom": 596,
+        "left": 452
+      },
+      "dock": {
+        "x": 453,
+        "y": 205,
+        "width": 374,
+        "height": 144,
+        "top": 205,
+        "right": 827,
+        "bottom": 349,
+        "left": 453
+      },
+      "controls": [
+        {
+          "label": "GÜN",
+          "x": 501.2734375,
+          "y": 289.9468688964844,
+          "width": 89.453125,
+          "height": 48.953125,
+          "top": 289.9468688964844,
+          "right": 590.7265625,
+          "bottom": 338.8999938964844,
+          "left": 501.2734375,
+          "hit": true
+        },
+        {
+          "label": "SAYISI",
+          "x": 606.640625,
+          "y": 289.9468688964844,
+          "width": 171.71875,
+          "height": 48.953125,
+          "top": 289.9468688964844,
+          "right": 778.359375,
+          "bottom": 338.8999938964844,
+          "left": 606.640625,
+          "hit": true
+        },
+        {
+          "label": "9bağlantı",
+          "x": 534.859375,
+          "y": 391,
+          "width": 82.078125,
+          "height": 48,
+          "top": 391,
+          "right": 616.9375,
+          "bottom": 439,
+          "left": 534.859375,
+          "hit": true
+        },
+        {
+          "label": "Bölüm seç",
+          "x": 467,
+          "y": 473,
+          "width": 346,
+          "height": 52,
+          "top": 473,
+          "right": 813,
+          "bottom": 525,
+          "left": 467,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 467,
+          "y": 533,
+          "width": 346,
+          "height": 48,
+          "top": 533,
+          "right": 813,
+          "bottom": 581,
+          "left": 467,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Bölüm seç"
+    },
+    {
+      "mode": "demo",
+      "width": 820,
+      "height": 1180,
+      "dpr": 1,
+      "state": "closed",
+      "file": "design/compact-end-final-demo-820x1180-closed.png",
+      "card": {
+        "x": 222,
+        "y": 408,
+        "width": 376,
+        "height": 364,
+        "top": 408,
+        "right": 598,
+        "bottom": 772,
+        "left": 222
+      },
+      "dock": {
+        "x": 223,
+        "y": 409,
+        "width": 374,
+        "height": 144,
+        "top": 409,
+        "right": 597,
+        "bottom": 553,
+        "left": 223
+      },
+      "controls": [
+        {
+          "label": "TOPLANTI",
+          "x": 230.96875,
+          "y": 493.9468688964844,
+          "width": 185.0625,
+          "height": 48.953155517578125,
+          "top": 493.9468688964844,
+          "right": 416.03125,
+          "bottom": 542.9000244140625,
+          "left": 230.96875,
+          "hit": true
+        },
+        {
+          "label": "NOTLARI",
+          "x": 426.0859375,
+          "y": 493.9468688964844,
+          "width": 162.828125,
+          "height": 48.953155517578125,
+          "top": 493.9468688964844,
+          "right": 588.9140625,
+          "bottom": 542.9000244140625,
+          "left": 426.0859375,
+          "hit": true
+        },
+        {
+          "label": "5bağlantı",
+          "x": 304.859375,
+          "y": 595,
+          "width": 82.078125,
+          "height": 48,
+          "top": 595,
+          "right": 386.9375,
+          "bottom": 643,
+          "left": 304.859375,
+          "hit": true
+        },
+        {
+          "label": "Sonraki bölüm",
+          "x": 237,
+          "y": 649,
+          "width": 346,
+          "height": 52,
+          "top": 649,
+          "right": 583,
+          "bottom": 701,
+          "left": 237,
+          "hit": true
+        },
+        {
+          "label": "Tekrar oyna",
+          "x": 237,
+          "y": 709,
+          "width": 169,
+          "height": 48,
+          "top": 709,
+          "right": 406,
+          "bottom": 757,
+          "left": 237,
+          "hit": true
+        },
+        {
+          "label": "Bölümler",
+          "x": 414,
+          "y": 709,
+          "width": 169,
+          "height": 48,
+          "top": 709,
+          "right": 583,
+          "bottom": 757,
+          "left": 414,
+          "hit": true
+        }
+      ],
+      "bodyScroll": false,
+      "trainInDock": true,
+      "receiptHidden": true,
+      "active": "Sonraki bölüm"
+    },
+    {
+      "mode": "demo",
+      "width": 820,
+      "height": 1180,
+      "state": "next",
+      "restoration": {
+        "dialog": false,
+        "train": true,
+        "inert": false,
+        "level": 2
+      }
+    }
+  ],
+  "errors": [
+    {
+      "mode": "v4",
+      "width": 390,
+      "error": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "mode": "v4",
+      "width": 390,
+      "error": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "mode": "v4",
+      "width": 375,
+      "error": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "mode": "v4",
+      "width": 430,
+      "error": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "mode": "v4",
+      "width": 360,
+      "error": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "mode": "v4",
+      "width": 1280,
+      "error": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "mode": "v4",
+      "width": 820,
+      "error": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "mode": "demo",
+      "width": 390,
+      "error": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "mode": "demo",
+      "width": 375,
+      "error": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "mode": "demo",
+      "width": 430,
+      "error": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "mode": "demo",
+      "width": 360,
+      "error": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "mode": "demo",
+      "width": 1280,
+      "error": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "mode": "demo",
+      "width": 820,
+      "error": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    }
+  ],
+  "failures": []
+}

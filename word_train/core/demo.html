@@ -36,7 +36,7 @@
     <div class="wt-hud__level" id="level"></div>
     <div class="wt-hud__progress" id="progress"></div>
     <button class="wt-icon-button" id="sound" type="button" aria-label="Ses"><svg class="wt-icon" aria-hidden="true"><use id="sound-icon" href="../assets/icons.svg#sound"></use></svg></button>
-    <button class="wt-icon-button" id="admin" type="button" aria-label="Yönetim"><svg class="wt-icon" aria-hidden="true"><use href="../assets/icons.svg#admin"></use></svg></button>
+    <button class="wt-icon-button" id="settings" type="button" aria-label="Ayarlar"><svg class="wt-icon" aria-hidden="true"><use href="../assets/icons.svg#admin"></use></svg></button>
   </header>
   <section class="wt-playfield demo-play">
     <div id="train"></div>
@@ -57,6 +57,7 @@ import { sfx } from './sfx.js';
 import { haptics } from './haptics.js';
 import { openAdmin } from './admin.js';
 import { openLevelEnd } from './levelend.js';
+import { openSettings, rememberMode } from './settings.js';
 
 let LEVELS;
 try { ({ LEVELS } = await import('../levels.js')); }
@@ -159,7 +160,7 @@ const sound = name => ({ label: `Ses: ${name}`, keepOpen: true, run: () => sfx[n
 function openLevels(actions = []) {
   return openAdmin({ levels: LEVELS, currentId: level.id, onJump: id => start(LEVELS.find(l => l.id === id)), actions });
 }
-$('admin').addEventListener('click', () => openLevels([
+const openAdminSheet = () => openLevels([
     { label: 'Cevabı çöz', run: () => solveCurrent() },
     { label: 'Animasyonsuz çöz', run: () => solveCurrent(false) },
     { label: '3 vagon art arda', run: () => { for (let i = 0; i < 3; i++) { const cur = current(state); if (cur) submit(cur.target.word, { animate: true }); } } },
@@ -183,10 +184,13 @@ $('admin').addEventListener('click', () => openLevels([
     { label: 'Baştan başlat', tone: 'danger', run: () => start() },
     { label: `Titreşim: ${haptics.supported ? (haptics.enabled ? 'açık' : 'kapalı') : 'yok'}`, run: () => haptics.toggle() },
     ...['tap', 'place', 'swap', 'letter', 'correct', 'wrong', 'hint', 'chug', 'couple', 'whistle', 'win'].map(sound),
-  ]));
+  ]);
+// the gear opens Ayarlar (mode, sound, vibration); its "Yönetim" row leads on to the admin sheet above
+$('settings').addEventListener('click', () => openSettings({ mode: 'secenek', onAdmin: openAdminSheet, onChange: renderSound }));
+rememberMode('secenek');
 
 start();
-window.demo = { train, get state() { return state; }, sfx, haptics };
+window.demo = { train, get state() { return state; }, sfx, haptics, openAdmin: openAdminSheet };
 </script>
 </body>
 </html>

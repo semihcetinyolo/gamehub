@@ -20,6 +20,7 @@ KAPAĞI → KAPAK: dropped blocks fall, changed letters pop in) so the bottom pa
 start of the next phrase. The meaning hint is no longer on screen; the first hint press shows it. Train
 animations keep their original pace but never block input: the next round starts instantly and the train
 catches up in its own queue.
+**Default mode (user):** Ray Çiz opens by default; Sekiz Seçenek is chosen in Ayarlar (`wordtrain.mode`).
 **Gravity refill (v4):** after a word only the used tiles leave; tiles above slide down their column and new
 tiles drop in from the top. New letters are chosen so the next word always has a path (extra cell swaps or a
 full reshuffle only as a fallback) — the board can never lock.
@@ -49,7 +50,8 @@ change in someone else's file, `clai ctl send` the owner (or the orchestrator, `
 | astra-levels | GPT 6 Astra, high | `levels.js`, `design/levels.md`, `tests/levels.test.js` |
 | opus-core | Opus 5.5, high | `core/logic.js`, `core/train.js`, `core/train.css`, `core/sfx.js`, `core/admin.js`, `core/haptics.js`, `core/demo.html`, `tests/*` (except `levels.test.js`) |
 | opus-v4 | Opus 5.5, high | `v4/*`, `tests/v4-board.test.js` |
-| orchestrator | Opus 5.5 | `CONTRACT.md`, `game.json`, `index.html` (variant picker), integration, review |
+| opus-v4 (also) | Opus 5.5, high | `core/settings.js`, `core/settings.css` (Ayarlar sheet, mode switch) |
+| orchestrator | Opus 5.5 | `CONTRACT.md`, `game.json`, `index.html` (redirect to the last mode, Ray Çiz by default), integration, review |
 
 ## Mobile game, not a web page (user requirement)
 This is a mobile game. Full-screen `100dvh` portrait screen with no page scroll and no web-page hero, headline

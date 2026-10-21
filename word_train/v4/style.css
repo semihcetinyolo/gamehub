@@ -103,10 +103,6 @@ body { background: var(--wt-cream); }
 /* the current row is sage-light itself: its number keeps a brass outline so it does not vanish */
 .v4-level--current .v4-level__num { background: var(--wt-sage-light); color: var(--wt-ink); box-shadow: inset 0 0 0 1.5px var(--wt-primary); }
 .v4-level--current { border-color: var(--wt-sage-dark); background: var(--wt-sage-light); }
-.v4-toggle { justify-content: flex-start; min-height: 52px; }
-.v4-toggle__label { flex: 1; text-align: left; }
-.v4-toggle__state { color: var(--wt-muted); font-size: 14px; }
-.v4-toggle[aria-checked='true'] .v4-toggle__state { color: var(--wt-sage-dark); }
 
 .v4-error {
   position: fixed;

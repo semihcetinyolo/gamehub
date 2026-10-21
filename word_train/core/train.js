@@ -723,8 +723,11 @@ export function mountTrain(el, { words = [], phrases = [], bases = [], onWagonTa
     if (!alive || !geo) return null;
     next ??= list.map(item => item.word);
     const departed = root.classList.contains('wt-train--departed');
-    const ghostAt = ghostOn ? poses.get(ghost.car) : undefined;
+    // Moved to another box (the result card's dock): the track is rebuilt now and old spots no longer apply.
+    const moved = root.clientWidth !== W || root.clientHeight !== H;
+    const ghostAt = ghostOn && !moved ? poses.get(ghost.car) : undefined;
     settleNow();
+    if (moved && buildTrack()) for (const item of list) poses.delete(item.el);
     const mine = epoch;
     const n = next.length;
     const baseOf = i => nextBases[i] ?? list[i]?.base ?? next[i];
@@ -814,6 +817,7 @@ export function mountTrain(el, { words = [], phrases = [], bases = [], onWagonTa
   function exitEnd() {
     if (!endMode) return;
     settleNow();
+    if (root.clientWidth !== W || root.clientHeight !== H) buildTrack();
     leaveEnd();
     renderGhost();
     ghostOn = ghostText !== null;

@@ -7,6 +7,7 @@ import { mountTrain } from '../core/train.js';
 import { sfx } from '../core/sfx.js';
 import { haptics } from '../core/haptics.js';
 import { openAdmin } from '../core/admin.js';
+import { openSettings, rememberMode } from '../core/settings.js';
 import { openLevelEnd } from '../core/levelend.js';
 import {
   buildBoard, refill, entryOffset, adjacent, rowOf, colOf, centerOf, CELLS, COLS, ROWS, GEOMETRY, DEFAULT_POLICY,
@@ -40,7 +41,6 @@ const TEXT = {
   tip: 'Komşu harflerden ray çiz',
   short: (n) => `${n} harfi birbirine bağla`,
   wrong: 'Bu ipucuna uymadı. Bir daha dene.',
-  on: 'Açık', off: 'Kapalı', unsupported: 'Bu cihazda yok',
   mute: 'Sesi kapat', unmute: 'Sesi aç',
   levelLabel: (n, title, done) => `Bölüm ${n}: ${title}${done ? ', tamamlandı' : ''}`,
   answerIs: (w) => `Cevap: ${w}`,
@@ -55,10 +55,9 @@ const els = {
   clueCard: $('clueCard'), clue: $('clue'), clueClose: $('clueClose'), status: $('status'),
   boardWrap: $('boardWrap'), board: $('board'),
   hintRail: $('hintRail'), playerRail: $('playerRail'), fxSvg: $('fxSvg'), previewLine: $('previewLine'),
-  hintBtn: $('hintBtn'), restartBtn: $('restartBtn'), adminBtn: $('adminBtn'),
+  hintBtn: $('hintBtn'), restartBtn: $('restartBtn'), settingsBtn: $('settingsBtn'),
   levelsBtn: $('levelsBtn'), levelsSheet: $('levelsSheet'), levelsClose: $('levelsClose'), levelList: $('levelList'),
   soundBtn: $('soundBtn'), soundIcon: $('soundIcon'),
-  hapticsToggle: $('hapticsToggle'), hapticsState: $('hapticsState'),
   app: $('app'), error: $('error'),
 };
 const reducedMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
@@ -736,13 +735,6 @@ function renderSound() {
   els.soundIcon.setAttribute('href', `../assets/icons.svg#${muted ? 'mute' : 'sound'}`);
 }
 
-function renderHaptics() {
-  const on = haptics.supported && haptics.enabled;
-  els.hapticsToggle.disabled = !haptics.supported;
-  els.hapticsToggle.setAttribute('aria-checked', String(on));
-  els.hapticsState.textContent = haptics.supported ? (on ? TEXT.on : TEXT.off) : TEXT.unsupported;
-}
-
 function openLevels() {
   cancelDrag();
   els.levelList.replaceChildren(...LEVELS.map((level, i) => {
@@ -766,7 +758,6 @@ function openLevels() {
     b.addEventListener('click', () => { haptics.tap(); startLevel(i); });
     return b;
   }));
-  renderHaptics();
   els.levelsSheet.hidden = false;
   const cur = els.levelList.querySelector('.v4-level--current');
   cur?.scrollIntoView({ block: 'nearest' });
@@ -845,17 +836,22 @@ els.levelsBtn.addEventListener('click', () => { haptics.tap(); openLevels(); });
 els.levelsClose.addEventListener('click', dismissLevels);
 els.levelsSheet.addEventListener('click', (e) => { if (e.target === els.levelsSheet) dismissLevels(); });
 els.soundBtn.addEventListener('click', () => { sfx.setMuted(!sfx.muted); renderSound(); sfx.tap?.(); });
-els.hapticsToggle.addEventListener('click', () => { haptics.toggle(); renderHaptics(); haptics.tap(); });
 els.restartBtn.addEventListener('click', () => { haptics.tap(); startLevel(levelIndex); });
-els.adminBtn.addEventListener('click', () => {
+function openAdminSheet() {
   cancelDrag();
-  openAdmin({
+  return openAdmin({
     levels: LEVELS,
     currentId: LEVELS[levelIndex]?.id,
     onJump: (_id, index) => startLevel(index),
     actions: adminActions(),
     title: 'Yönetim · Ray Çiz',
   });
+}
+// the gear opens Ayarlar (mode, sound, vibration); its quiet "Yönetim" row leads on to the admin sheet
+els.settingsBtn.addEventListener('click', () => {
+  cancelDrag();
+  haptics.tap();
+  openSettings({ mode: 'ray', onAdmin: openAdminSheet, onChange: renderSound });
 });
 // defaultPrevented: the result station's own Escape (it has just opened the level list) bubbles up here too
 document.addEventListener('keydown', (e) => {
@@ -875,8 +871,8 @@ new ResizeObserver(() => {
   }, 30);
 }).observe(els.app);
 
+rememberMode('ray');
 renderSound();
-renderHaptics();
 if (!LEVELS?.length) showError(TEXT.startError('levels.js boş'));
 else {
   startLevel(levelIndexFromStart());
@@ -887,5 +883,6 @@ else {
 window.__wordTrainV4 = {
   get state() { return run; },
   get board() { return { cells: cells.map((c) => c.letter), keys: cells.map((c) => c.key), solutionPath: [...solutionPath], hintPrefix, selected: [...selected], nextMode, refillPolicy }; },
+  openAdmin: () => openAdminSheet(),
   get geo() { return { scale, centers: [...Array(CELLS).keys()].map(center) }; },
 };

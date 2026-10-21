@@ -1,12 +1,15 @@
-/* Word Train — level-end result station (core/levelend.js; design/visual.md "Level end").
-   Loaded by levelend.js itself. The station body hangs from the train's bottom track down to the screen
-   bottom; levelend.js sets its top (and the sign's box) from train.endGeometry(). Sizes are px; the train
-   part (platform lip, posts, roof) lives in train.css. Colours are theme.css's semantic tokens only (body on
-   --wt-paper/--wt-ink, brass --wt-primary with --wt-on-accent); headings use --wt-font-display. */
+/* Word Train — level-end result card (core/levelend.js; design/visual.md "Level end",
+   design/compact-end-mock-*.png). Loaded by levelend.js itself. A compact card at the bottom of the screen
+   (both axes centred from 600 px up): the game's train in a 144 px dock on top, then the title, one stats line
+   and the actions. The card grows with its content up to the screen; only the middle part scrolls.
+   Colours are theme.css's semantic tokens only; headings use --wt-font-display. */
 
 .wt-levelend {
-  --wt-k: 1;
   position: fixed; inset: 0; z-index: 90;
+  display: flex; align-items: flex-end; justify-content: center;
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
+    max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  background: #08170db3;
   font-family: var(--wt-font, Arial, Helvetica, system-ui, sans-serif);
   color: var(--wt-ink, #f5edd8);
   outline: none;
@@ -14,128 +17,145 @@
 }
 .wt-levelend [hidden] { display: none !important; }
 
-/* Station sign: in the station above the row the locomotive stands on, right of it. */
-.wt-levelend__station-sign {
-  position: absolute; z-index: 2;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 2px 16px 4px;
+.wt-levelend__card {
+  position: relative; flex: none;
+  display: flex; flex-direction: column;
+  width: min(100%, 376px); height: auto; max-height: 100%; min-height: 0;
+  border: 1px solid var(--wt-border, #72806b); border-radius: 12px;
   background: var(--wt-paper, #334d3f);
-  border: 1px solid var(--wt-gold, #d4bc86); border-radius: 3px;
-  box-shadow: inset 0 0 0 4px var(--wt-paper, #334d3f), inset 0 0 0 5px color-mix(in srgb, var(--wt-gold, #d4bc86) 35%, transparent);
+  box-shadow: 0 16px 56px #06160e66;
+  overflow: hidden;
+}
+
+/* The dock: the train itself (moved here from the game), its platform line, and the station sign. */
+.wt-levelend__dock {
+  position: relative; flex: none; height: 144px;
+  background: var(--wt-stage, #8c957e);
+}
+.wt-levelend__dock .wt-train {
+  --wt-train-height: 144px;
+  width: 100%; height: 100%; margin: 0;
+  border: 0; border-radius: 11px 11px 0 0;
+}
+.wt-levelend__dock .wt-train__scene::before,
+.wt-levelend__dock .wt-train__scene::after { display: none; }
+/* While the train flies in from the game, nothing clips it and the empty dock shows no ground yet. */
+.wt-levelend--flight .wt-levelend__card { overflow: visible; background: none; }
+.wt-levelend--flight .wt-levelend__dock { background: none; }
+
+.wt-levelend__station-sign {
+  position: absolute; z-index: 3; top: 8px; right: 12px;
+  width: 174px; height: 42px; box-sizing: border-box;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 2px 8px;
   text-align: center; pointer-events: none;
+  color: var(--wt-stage-ink, #24372c);
 }
 .wt-levelend__station-sign small {
-  font-size: 10px; line-height: 14px; font-weight: 500; letter-spacing: 2px;
-  color: var(--wt-muted, #c6cfbc);
+  font-size: 9px; line-height: 13px; font-weight: 500; letter-spacing: 1.5px;
+  color: var(--wt-stage-ink, #24372c);
 }
 .wt-levelend__station-sign strong {
   max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   font-family: var(--wt-font-display, Georgia, 'Times New Roman', serif);
-  font-size: clamp(15px, calc(20px * var(--wt-k)), 20px); line-height: 1.3; font-weight: 400;
-  color: var(--wt-ink, #f5edd8);
+  font-size: 16px; line-height: 20px; font-weight: 400;
+  color: var(--wt-stage-ink, #24372c);
 }
 
-/* The result surface: from under the platform lip to the screen bottom, a plain panel. */
 .wt-levelend__body {
-  position: absolute; left: 8px; right: 8px; top: 40%; bottom: 0; z-index: 1;
+  position: relative; flex: 0 1 auto; min-height: 0;
   display: flex; flex-direction: column;
-  padding: 10px 10px max(16px, env(safe-area-inset-bottom));
+  padding: 14px;
   background: var(--wt-paper, #334d3f); color: var(--wt-ink, #f5edd8);
-  border: 1px solid var(--wt-border, #72806b); border-top: 0;
-}
-/* A thin walnut line: the bottom edge of the lip, continued from the train. */
-.wt-levelend__body::before {
-  content: ''; position: absolute; left: -9px; right: -9px; top: 0; height: 3px;
-  background: var(--wt-wood-edge, #7d6b4f);
 }
 .wt-levelend__scroll {
-  flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+  flex: 0 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
   display: flex; flex-direction: column; align-items: center;
-  padding: 8px 8px 0; text-align: center;
+  text-align: center;
 }
 
-.wt-levelend__phrase {
-  display: inline-flex; align-items: center; gap: 7px; flex: none;
-  max-width: 100%; min-height: 32px; padding: 5px 14px;
-  border-radius: 4px; border: 1px solid var(--wt-primary, var(--wt-gold, #d4bc86));
-  background: var(--wt-primary, var(--wt-gold, #d4bc86));
-  color: var(--wt-on-accent, #23392e); font-size: 14px; font-weight: 500; line-height: 1.2;
-}
-.wt-levelend__phrase .wt-icon { width: 16px; height: 16px; stroke: currentColor; }
 .wt-levelend__title {
-  margin: 16px 0 12px;
+  margin: 0;
   font-family: var(--wt-font-display, Georgia, 'Times New Roman', serif);
-  font-size: 27px; line-height: 1.12; font-weight: 400; letter-spacing: -.5px; color: var(--wt-ink, #f5edd8);
+  font-size: 23px; line-height: 28px; font-weight: 400; letter-spacing: -.3px;
+  color: var(--wt-ink, #f5edd8);
 }
 .wt-levelend__sr {
   position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
   clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
-.wt-levelend__stats { display: flex; justify-content: center; margin: 0 0 16px; flex: none; }
-.wt-levelend__stat {
-  display: flex; flex-direction: column; min-width: 86px; padding: 0 14px;
-  border-right: 1px solid var(--wt-border, #72806b);
-}
-.wt-levelend__stat:last-child { border-right: 0; }
-.wt-levelend__stat strong { font-size: 23px; line-height: 1.1; font-weight: 500; color: var(--wt-sage-dark, #d4bc86); }
-.wt-levelend__stat span { margin-top: 4px; font-size: 12px; font-weight: 400; color: var(--wt-muted, #c6cfbc); }
 
-/* Ticket: the last (up to three) phrases of the level, the newest checked. */
-.wt-levelend__receipt {
-  position: relative; flex: none; width: 100%; max-width: 330px;
-  padding: 13px 17px; text-align: left;
-  background: var(--wt-cream, #263d33); border: 1px solid var(--wt-border, #72806b); border-radius: 5px;
+/* Stats: one 48 px line, "[5 bağlantı ⌄] · 0 hata · 0 yardım". */
+.wt-levelend__stats {
+  flex: none; display: flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; margin: 0;
 }
-.wt-levelend__receipt-title {
-  margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px dashed var(--wt-muted, #c6cfbc);
-  font-size: 11px; letter-spacing: 1.3px; font-weight: 600; color: var(--wt-ink, #f5edd8);
+.wt-levelend__stat {
+  flex: none; display: flex; align-items: center; gap: 4px;
+  min-height: 48px;
+  font-size: 13px; line-height: 18px; font-weight: 400; color: var(--wt-muted, #c6cfbc);
+}
+.wt-levelend__stat:not(:first-child)::before { content: '·'; margin-right: 4px; color: var(--wt-muted, #c6cfbc); }
+.wt-levelend__stat strong { font-weight: 400; }
+.wt-levelend__toggle {
+  display: flex; align-items: center; gap: 4px;
+  min-width: 48px; min-height: 48px; margin: 0; padding: 0 2px;
+  border: 0; background: none; cursor: pointer; touch-action: manipulation;
+  font: inherit; font-weight: 600; color: var(--wt-ink, #f5edd8);
+}
+.wt-levelend__toggle strong { font-weight: 600; }
+.wt-levelend__chevron { width: 12px; height: 12px; margin-left: 1px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+.wt-levelend__toggle[aria-expanded="true"] .wt-levelend__chevron { transform: rotate(180deg); }
+.wt-levelend__toggle:focus-visible { outline: 2px solid var(--wt-gold, #d4bc86); outline-offset: -4px; border-radius: 6px; }
+
+/* The last links, behind the count: short rows, the newest checked. */
+.wt-levelend__receipt {
+  flex: none; box-sizing: border-box; width: 100%;
+  margin: 0 0 8px; padding: 7px 10px; text-align: left;
+  background: var(--wt-cream, #263d33); border: 1px solid var(--wt-border, #72806b); border-radius: 5px;
 }
 .wt-levelend__links { margin: 0; padding: 0; list-style: none; }
 .wt-levelend__link {
-  position: relative; display: flex; align-items: center; gap: 12px;
-  min-height: 34px; padding: 3px 0;
-  font-size: 16px; font-weight: 400; line-height: 1.2; color: var(--wt-muted, #c6cfbc);
+  position: relative; display: flex; align-items: center; gap: 9px;
+  min-height: 25px; padding: 2px 0;
+  font-size: 13px; font-weight: 400; line-height: 1.2; color: var(--wt-muted, #c6cfbc);
 }
 .wt-levelend__dot {
-  position: relative; flex: none; width: 11px; height: 11px; box-sizing: border-box;
-  border: 1.5px solid var(--wt-muted, #c6cfbc); border-radius: 50%; background: var(--wt-paper, #334d3f);
+  position: relative; flex: none; width: 8px; height: 8px; box-sizing: border-box;
+  border: 1px solid var(--wt-muted, #c6cfbc); border-radius: 50%; background: var(--wt-paper, #334d3f);
 }
 .wt-levelend__link:not(:last-child) .wt-levelend__dot::after {
-  content: ''; position: absolute; top: 9.5px; left: 3.5px; width: 1px; height: 25px; background: var(--wt-muted, #c6cfbc);
+  content: ''; position: absolute; top: 7px; left: 2.5px; width: 1px; height: 17px; background: var(--wt-muted, #c6cfbc);
 }
 .wt-levelend__link--last { color: var(--wt-ink, #f5edd8); font-weight: 600; }
 .wt-levelend__link--last .wt-levelend__dot { background: var(--wt-gold, #d4bc86); border-color: var(--wt-gold, #d4bc86); }
-.wt-levelend__link .wt-icon { margin-left: auto; width: 19px; height: 19px; flex: none; stroke: currentColor; }
-.wt-levelend__all-complete { margin: 10px 8px 0; font-size: 14px; line-height: 1.35; font-weight: 400; color: var(--wt-sage-dark, #d4bc86); }
-
-/* Actions: always at the bottom, never moving under a finger. */
-.wt-levelend__actions {
-  flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-  padding: 14px 8px 0;
+.wt-levelend__link .wt-icon { margin-left: auto; width: 16px; height: 16px; flex: none; stroke: currentColor; }
+.wt-levelend__all-complete {
+  max-width: 290px; margin: 0 0 10px;
+  font-size: 13px; line-height: 18px; font-weight: 400; color: var(--wt-muted, #c6cfbc);
 }
-.wt-levelend__action { min-height: 52px; padding: 8px 6px; gap: 7px; font-size: 15px; font-weight: 600; }
-.wt-levelend__action .wt-icon { width: 20px; height: 20px; }
+
+/* Actions: the main one 52 px full width, the other two 48 px side by side; never moving under a finger. */
+.wt-levelend__actions {
+  flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  margin: 0; padding: 6px 0 0;
+}
+.wt-levelend__action { min-height: 48px; padding: 8px 6px; gap: 6px; font-size: 14px; font-weight: 600; }
+.wt-levelend__action .wt-icon { width: 18px; height: 18px; }
 .wt-levelend__action--primary,
 .wt-levelend__action--wide { grid-column: 1 / -1; }
-.wt-levelend__action--primary { min-height: 56px; font-size: 17px; }
+.wt-levelend__action--primary { min-height: 52px; font-size: 15px; }
 
-@media (max-height: 700px) {
-  .wt-levelend__phrase { min-height: 28px; padding: 3px 12px; font-size: 12px; }
-  .wt-levelend__title { margin: 10px 0 8px; font-size: 23px; }
-  .wt-levelend__stats { margin-bottom: 10px; }
-  .wt-levelend__stat { min-width: 80px; }
-  .wt-levelend__stat strong { font-size: 20px; }
-  .wt-levelend__stat span { font-size: 11px; margin-top: 2px; }
-  .wt-levelend__receipt { padding: 8px 15px; }
-  .wt-levelend__receipt-title { margin-bottom: 4px; padding-bottom: 5px; font-size: 10px; }
-  .wt-levelend__link { min-height: 28px; padding: 1px 0; font-size: 14px; }
-  .wt-levelend__link:not(:last-child) .wt-levelend__dot::after { height: 19px; }
-  .wt-levelend__all-complete { margin-top: 7px; font-size: 12px; }
-  .wt-levelend__actions { padding-top: 10px; gap: 8px; }
-  .wt-levelend__action { min-height: 48px; font-size: 13px; }
-  .wt-levelend__action--primary { min-height: 52px; font-size: 16px; }
+@media (min-width: 600px) {
+  .wt-levelend { align-items: center; padding: 24px; }
+  .wt-levelend__card { max-height: min(680px, calc(100dvh - 48px)); }
+}
+/* Landscape phones: a lower dock (the train runs on one row). */
+@media (max-height: 560px) {
+  .wt-levelend__dock { height: 118px; }
+  .wt-levelend__dock .wt-train { --wt-train-height: 118px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wt-levelend, .wt-levelend * { animation: none !important; transition: none !important; }
+  .wt-levelend, .wt-levelend *:not(.wt-train):not(.wt-train *) { animation: none !important; transition: none !important; }
 }
