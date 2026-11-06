@@ -20,7 +20,7 @@ window.HW_LEVELS = [
   'quiet_photoreal_porch',  // A QUIET MORNING
   'door_stained_glass',     // YOUR DOOR IS ALWAYS OPEN
   'gamenight_watercolor_r2', // LET THE GAMES BEGIN (r2 of gamenight_watercolor, native 1086x1448)
-  'phonecall_watercolor',   // A CALL FROM THE PAST
+  'phonecall_watercolor_r2', // A CALL FROM THE PAST (r2 of phonecall_watercolor, native 1086x1448)
   'camper_cartoon_r2',      // RISE AND SHINE (r2 of camper_cartoon_astra, native 1086x1448)
   'red_gown_diner_popart_r2', // THE LADY IN RED (native 1086x1448)
   'halloween_watercolor_marla', // TRICK OR TREAT
@@ -32,6 +32,16 @@ window.HW_LEVELS = [
   'ferry_watercolor_r2',      // SMOOTH SAILING (native 1086x1448)
   'harvest_gouache_gen',      // GROW YOUR OWN (Astra-generated BG, native 1086x1448)
   'icecream_cartoon_gen',     // LIFE IS SWEET (Astra-generated BG, native 1086x1448)
+  'cafe_gouache_gen',         // TABLE FOR TWO (Astra-generated BG, native 1086x1448)
+  'bakery_watercolor_gen',    // BAKED WITH LOVE (Astra-generated BG, native 1086x1448)
+  'cabin_folkvector_gen',     // WARM AND COZY (Astra-generated BG, native 1086x1448)
+  'treehouse_cartoon_gen',    // FRIENDS FOREVER (Astra-generated BG, native 1086x1448)
+  'greenhouse_watercolor_gen', // APRIL SHOWERS (Astra-generated BG, native 1086x1448)
+  'beehive_folkvector_gen',   // SWEET AS HONEY (Astra-generated BG, native 1086x1448)
+  'blanketfort_pencil_gen',   // SWEET DREAMS (Astra-generated BG, native 1086x1448)
+  'picnic_pencil_gen',        // HELLO SUNSHINE (Astra-generated BG, native 1086x1448)
+  'reef_papercut_gen',        // UNDER THE SEA (Astra-generated BG, native 1086x1448)
+  'campsite_papercut_gen',    // HAPPY CAMPER (Astra-generated BG, native 1086x1448)
 ];
 /* Levels tab grouping: production route + provider + art style (one section per combination, play order inside).
    bg: "BG üretim" (BG generated from a prompt) | "Hidden BG" (redrawn from a Hidden PSB's BG layer only)
@@ -43,9 +53,9 @@ window.HW_LEVEL_INFO = {
   home_cartoon_garden:     { bg: 'BG üretim',   provider: 'Nano Banana', style: 'Cartoon' },
   quiet_photoreal_porch:   { bg: 'BG üretim',   provider: 'Nano Banana', style: 'Photoreal' },
   door_stained_glass:      { bg: 'BG üretim',   provider: 'Nano Banana', style: 'Stained glass' },
-  phonecall_watercolor:    { bg: 'Hidden full', provider: 'Nano Banana', style: 'Watercolor' },
   galley_watercolor_r2:    { bg: 'Hidden BG',   provider: 'Astra',       style: 'Watercolor' },
   gamenight_watercolor_r2: { bg: 'Hidden BG',   provider: 'Astra',       style: 'Watercolor' },
+  phonecall_watercolor_r2: { bg: 'Hidden BG',   provider: 'Astra',       style: 'Watercolor' },
   camper_cartoon_r2:       { bg: 'Hidden BG',   provider: 'Astra',       style: 'Cartoon' },
   roadtrip_cartoon_marla_r2: { bg: 'Hidden BG', provider: 'Sunburst',    style: 'Cartoon' },
   catgaming_cartoon_marla_r2: { bg: 'Hidden BG', provider: 'Sunburst',   style: 'Cartoon' },
@@ -69,6 +79,16 @@ window.HW_LEVEL_INFO = {
   costume_watercolor_marla_r2: { bg: 'Hidden BG', provider: 'Sunburst', style: 'Watercolor' },
   harvest_gouache_gen: { bg: 'BG üretim', provider: 'Astra', style: 'Gouache' },
   icecream_cartoon_gen: { bg: 'BG üretim', provider: 'Astra', style: 'Cartoon' },
+  cafe_gouache_gen: { bg: 'BG üretim', provider: 'Astra', style: 'Gouache' },
+  bakery_watercolor_gen: { bg: 'BG üretim', provider: 'Astra', style: 'Watercolor' },
+  cabin_folkvector_gen: { bg: 'BG üretim', provider: 'Astra', style: 'Folk vector' },
+  treehouse_cartoon_gen: { bg: 'BG üretim', provider: 'Astra', style: 'Cartoon' },
+  greenhouse_watercolor_gen: { bg: 'BG üretim', provider: 'Astra', style: 'Watercolor' },
+  beehive_folkvector_gen: { bg: 'BG üretim', provider: 'Astra', style: 'Folk vector' },
+  blanketfort_pencil_gen: { bg: 'BG üretim', provider: 'Astra', style: 'Colored pencil' },
+  picnic_pencil_gen: { bg: 'BG üretim', provider: 'Astra', style: 'Colored pencil' },
+  reef_papercut_gen: { bg: 'BG üretim', provider: 'Astra', style: 'Papercut' },
+  campsite_papercut_gen: { bg: 'BG üretim', provider: 'Astra', style: 'Papercut' },
 };
 
 /* shown as "(test)" in the admin level picker */
