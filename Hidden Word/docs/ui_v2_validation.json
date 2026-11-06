@@ -1,0 +1,201 @@
+{
+  "passed": true,
+  "asset_count": 19,
+  "assets": [
+    {
+      "asset": "logo",
+      "dimensions": [
+        840,
+        450
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "btn_play",
+      "dimensions": [
+        840,
+        210
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "btn_secondary",
+      "dimensions": [
+        840,
+        180
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "level_badge",
+      "dimensions": [
+        360,
+        138
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "counter_pill",
+      "dimensions": [
+        288,
+        132
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "panel",
+      "dimensions": [
+        384,
+        512
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "slot_empty",
+      "dimensions": [
+        96,
+        102
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "slot_filled",
+      "dimensions": [
+        96,
+        102
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "btn_settings",
+      "dimensions": [
+        144,
+        144
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "btn_home",
+      "dimensions": [
+        144,
+        144
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "btn_close",
+      "dimensions": [
+        144,
+        144
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "btn_back",
+      "dimensions": [
+        144,
+        144
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "btn_hint",
+      "dimensions": [
+        192,
+        192
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "ribbon_perfect",
+      "dimensions": [
+        900,
+        252
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "heart",
+      "dimensions": [
+        90,
+        84
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "heart_empty",
+      "dimensions": [
+        90,
+        84
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "btn_primary",
+      "dimensions": [
+        840,
+        210
+      ],
+      "mode": "RGBA",
+      "passed": true
+    },
+    {
+      "asset": "bg_menu",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "mode": "RGB",
+      "passed": true
+    },
+    {
+      "asset": "bg_menu_garden",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "mode": "RGB",
+      "passed": true
+    }
+  ],
+  "mockups": [
+    "01_menu_storybook.png",
+    "02_menu_garden.png",
+    "03_gameplay.png",
+    "04_levels.png",
+    "05_perfect.png",
+    "06_settings.png"
+  ],
+  "mockup_dimensions": [
+    1170,
+    2532
+  ],
+  "banner_css_height": 50,
+  "bottom_safe_area_example": 34,
+  "nominal_palette_contrast": {
+    "ink_on_paper": 9.04,
+    "white_on_green": 4.76,
+    "secondary_on_paper": 4.68
+  },
+  "notes": [
+    "All six layouts visually reviewed; image compositions are not runtime screenshots.",
+    "Generated plate texture varies; text uses large heavy labels and high contrast nominal colours.",
+    "No game code modified by design task."
+  ]
+}

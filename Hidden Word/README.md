@@ -1,4 +1,7 @@
-# Hidden Word
+# Hidden Letters
+
+(Renamed from "Hidden Word" on 2026-11-06: only player-visible names changed; the folder, slugs and storage keys
+`hw_*` keep the old name so progress survives.)
 
 Mobile hidden-object word game: every letter of a phrase is hidden in a portrait scene. Tap a letter and it flies
 into the first empty slot of the same character; fill the phrase to finish. Design: `docs/spec.md`.
@@ -57,5 +60,9 @@ it is not in the game's level list.
 
 ## UI art
 
-Astra's PNGs in `game/assets/ui/` (names + 9-slice insets in `docs/ASTRA_PROMPTS.md`); each one replaces its
-placeholder CSS automatically when the file exists (`body.ui-<name>` rules at the end of `styles.css`).
+UI v2 "storybook paper" (2026-11-06): Astra's PNGs in `game/assets/ui_v2/` (`UI_DIR` / `UI_ART` in game.js; sizes,
+9-slice insets and colours in `docs/ui_v2_handoff.md`, mockups in `docs/ui_v2_mockups/`). Each file replaces its
+placeholder CSS automatically when it exists (`body.ui-<name>` rules at the end of `styles.css`). The v1 art stays in
+`game/assets/ui/` (only `icon.png` is still used, as favicon). Runtime text on art: Level N, PLAY, counter, "Perfect"
+(the ribbon PNG is blank). Main-menu background: storybook (default) or garden; switch in Admin ("Menu art") or open
+the game with `?menu=garden` / `?menu=storybook` (remembered per device in `hw_menu_art`).

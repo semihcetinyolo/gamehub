@@ -58,19 +58,31 @@ const pct = (v)=> (v*100)+'%';
 
 /* ================= init (called at the end of the file) ================= */
 
-/* Astra's UI art: each file switches its CSS skin on as soon as it exists (placeholder CSS otherwise) */
-const UI_ART = ['logo','icon','slot_empty','slot_filled','counter_pill','btn_hint','btn_settings','btn_home',
-                'heart','heart_empty','ribbon_perfect','btn_primary','panel','card_frame','bg_menu'];
-function loadUiArt(){
-  for (const n of UI_ART){
-    const im = new Image();
+/* Astra's UI art (v2 "storybook paper", docs/ui_v2_handoff.md): each file switches its CSS skin on as soon as it
+   exists (placeholder CSS otherwise). The v1 art stays in assets/ui/. */
+const UI_DIR = 'assets/ui_v2';
+const UI_ART = ['logo','slot_empty','slot_filled','counter_pill','level_badge','btn_hint','btn_settings','btn_back',
+                'btn_close','heart','heart_empty','ribbon_perfect','btn_play','btn_secondary','panel','bg_menu'];
+/* main-menu background: 'storybook' (recommended) or 'garden' (direction B); admin toggle or ?menu=garden */
+const MENU_ART = { storybook:'bg_menu', garden:'bg_menu_garden' };
+function menuArt(){
+  const q = new URLSearchParams(location.search).get('menu');
+  if (q && MENU_ART[q]) save('hw_menu_art', q);
+  const v = load('hw_menu_art');
+  return MENU_ART[v] ? v : 'storybook';
+}
+function uiFile(n){ return n === 'bg_menu' ? MENU_ART[menuArt()] : n; }
+function loadUiArt(only){
+  for (const n of (only || UI_ART)){
+    const im = new Image(), url = `${UI_DIR}/${uiFile(n)}.png`;
     im.onload = ()=>{
-      document.documentElement.style.setProperty('--ui-' + n.replace(/_/g, '-'), `url("assets/ui/${n}.png")`);
+      document.documentElement.style.setProperty('--ui-' + n.replace(/_/g, '-'), `url("${url}")`);
       document.body.classList.add('ui-' + n);
     };
-    im.src = `assets/ui/${n}.png`;
+    im.src = url;
   }
 }
+function syncMenuArt(){ $('#admMenuArt').textContent = '🖼 Menu art: ' + (menuArt() === 'garden' ? 'Garden' : 'Storybook'); }
 
 function init(){
   loadUiArt();
@@ -103,10 +115,9 @@ function showMenu(){
   fxLayer.innerHTML = ''; comboLayer.innerHTML = '';
   showScreen('menuScreen');
   const i = nextPlayable();
-  $('#playLabel').textContent = LEVELS.length ? `PLAY · LEVEL ${i+1}` : 'No levels';
-  $('#menuReady').textContent = LEVELS.length ? `LEVEL ${i+1} READY` : '';
-  $('#menuSlots').innerHTML = LEVELS.map((slug, k)=>
-    `<span class="motif-slot${Progress.done.includes(slug) ? ' done' : ''}${k === i ? ' next' : ''}"></span>`).join('');
+  $('#playLabel').textContent = LEVELS.length ? 'PLAY' : 'No levels';
+  $('#menuLevel').textContent = `Level ${i+1}`;
+  $('#menuLevel').hidden = !LEVELS.length;
 }
 
 async function showLevels(){
@@ -315,7 +326,7 @@ function layoutSlots(){
 }
 
 /* ---------------- HUD ---------------- */
-function renderCounter(){ cntNum.textContent = State.found; cntDen.textContent = '/' + State.total; }
+function renderCounter(){ cntNum.textContent = State.found; cntDen.textContent = '/ ' + State.total; }
 function renderHearts(){
   heartsEl.hidden = !Settings.hearts;
   [...heartsEl.children].forEach((h,k)=> h.classList.toggle('lost', k >= State.hearts));
@@ -401,6 +412,7 @@ function bindEvents(){
   $('#playBtn').addEventListener('click', ()=> LEVELS.length && startGame(nextPlayable()));
   $('#levelsBtn').addEventListener('click', showLevels);
   $('#levelsBack').addEventListener('click', showMenu);
+  $('#levelsHome').addEventListener('click', showMenu);
   $('#menuSettingsBtn').addEventListener('click', ()=> openSettings(false));
   $('#gameSettingsBtn').addEventListener('click', ()=> openSettings(true));
   $('#setHome').addEventListener('click', showMenu);
@@ -422,6 +434,10 @@ function bindEvents(){
   $('#admPick').addEventListener('change', (e)=> startLevel(+e.target.value));
   $('#admBanner').addEventListener('click', ()=>{ save('hw_admin_banner', load('hw_admin_banner') === '1' ? '0' : '1'); syncBanner(); });
   syncBanner();
+  $('#admMenuArt').addEventListener('click', ()=>{
+    save('hw_menu_art', menuArt() === 'garden' ? 'storybook' : 'garden'); loadUiArt(['bg_menu']); syncMenuArt();
+  });
+  syncMenuArt();
 
   // settings
   $('#setHearts').addEventListener('click', ()=>{

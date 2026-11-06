@@ -1,0 +1,541 @@
+{
+  "logo": {
+    "production": "game/assets/ui_v2/logo.png",
+    "size": [
+      840,
+      450
+    ],
+    "source": "clai-images/ui-v2-logo-hidden-letters.png",
+    "source_size": [
+      1714,
+      918
+    ],
+    "alpha_crop": [
+      6,
+      20,
+      1709,
+      884
+    ],
+    "master_size": [
+      1703,
+      864
+    ],
+    "nine_slice_trbl": null,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": false,
+    "text": "Hidden Letters",
+    "reference": "docs/ui_src/v2/logo_hidden_word_reference.png"
+  },
+  "btn_play": {
+    "production": "game/assets/ui_v2/btn_play.png",
+    "size": [
+      840,
+      210
+    ],
+    "source": "clai-images/ui-v2-btn_play.png",
+    "source_size": [
+      1672,
+      941
+    ],
+    "alpha_crop": [
+      9,
+      278,
+      1663,
+      663
+    ],
+    "master_size": [
+      1654,
+      385
+    ],
+    "nine_slice_trbl": [
+      60,
+      90,
+      66,
+      90
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": true
+  },
+  "btn_secondary": {
+    "production": "game/assets/ui_v2/btn_secondary.png",
+    "size": [
+      840,
+      180
+    ],
+    "source": "clai-images/ui-v2-btn_secondary.png",
+    "source_size": [
+      1672,
+      941
+    ],
+    "alpha_crop": [
+      15,
+      290,
+      1657,
+      652
+    ],
+    "master_size": [
+      1642,
+      362
+    ],
+    "nine_slice_trbl": [
+      54,
+      81,
+      60,
+      81
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": true
+  },
+  "level_badge": {
+    "production": "game/assets/ui_v2/level_badge.png",
+    "size": [
+      360,
+      138
+    ],
+    "source": "clai-images/ui-v2-level_badge.png",
+    "source_size": [
+      1672,
+      941
+    ],
+    "alpha_crop": [
+      26,
+      207,
+      1645,
+      732
+    ],
+    "master_size": [
+      1619,
+      525
+    ],
+    "nine_slice_trbl": [
+      42,
+      60,
+      48,
+      60
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": true
+  },
+  "counter_pill": {
+    "production": "game/assets/ui_v2/counter_pill.png",
+    "size": [
+      288,
+      132
+    ],
+    "source": "clai-images/ui-v2-counter_pill.png",
+    "source_size": [
+      1672,
+      941
+    ],
+    "alpha_crop": [
+      54,
+      242,
+      1618,
+      697
+    ],
+    "master_size": [
+      1564,
+      455
+    ],
+    "nine_slice_trbl": [
+      42,
+      60,
+      48,
+      60
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": true
+  },
+  "panel": {
+    "production": "game/assets/ui_v2/panel.png",
+    "size": [
+      384,
+      512
+    ],
+    "source": "clai-images/ui-v2-panel.png",
+    "source_size": [
+      1086,
+      1448
+    ],
+    "alpha_crop": [
+      23,
+      28,
+      1064,
+      1427
+    ],
+    "master_size": [
+      1041,
+      1399
+    ],
+    "nine_slice_trbl": [
+      42,
+      42,
+      48,
+      42
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": true
+  },
+  "slot_empty": {
+    "production": "game/assets/ui_v2/slot_empty.png",
+    "size": [
+      96,
+      102
+    ],
+    "source": "clai-images/ui-v2-slot_empty.png",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "alpha_crop": [
+      51,
+      66,
+      1197,
+      1206
+    ],
+    "master_size": [
+      1146,
+      1140
+    ],
+    "nine_slice_trbl": [
+      27,
+      27,
+      30,
+      27
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": true
+  },
+  "slot_filled": {
+    "production": "game/assets/ui_v2/slot_filled.png",
+    "size": [
+      96,
+      102
+    ],
+    "source": "clai-images/ui-v2-slot_filled.png",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "alpha_crop": [
+      30,
+      45,
+      1214,
+      1228
+    ],
+    "master_size": [
+      1184,
+      1183
+    ],
+    "nine_slice_trbl": [
+      27,
+      27,
+      30,
+      27
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": true
+  },
+  "btn_settings": {
+    "production": "game/assets/ui_v2/btn_settings.png",
+    "size": [
+      144,
+      144
+    ],
+    "source": "clai-images/ui-v2-btn_settings.png",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "alpha_crop": [
+      21,
+      43,
+      1213,
+      1235
+    ],
+    "master_size": [
+      1192,
+      1192
+    ],
+    "nine_slice_trbl": null,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": false
+  },
+  "btn_home": {
+    "production": "game/assets/ui_v2/btn_home.png",
+    "size": [
+      144,
+      144
+    ],
+    "source": "clai-images/ui-v2-btn_home.png",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "alpha_crop": [
+      9,
+      18,
+      1231,
+      1239
+    ],
+    "master_size": [
+      1222,
+      1221
+    ],
+    "nine_slice_trbl": null,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": false
+  },
+  "btn_close": {
+    "production": "game/assets/ui_v2/btn_close.png",
+    "size": [
+      144,
+      144
+    ],
+    "source": "clai-images/ui-v2-btn_close.png",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "alpha_crop": [
+      47,
+      66,
+      1188,
+      1205
+    ],
+    "master_size": [
+      1141,
+      1139
+    ],
+    "nine_slice_trbl": null,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": false
+  },
+  "btn_back": {
+    "production": "game/assets/ui_v2/btn_back.png",
+    "size": [
+      144,
+      144
+    ],
+    "source": "clai-images/ui-v2-btn_back.png",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "alpha_crop": [
+      44,
+      67,
+      1174,
+      1216
+    ],
+    "master_size": [
+      1130,
+      1149
+    ],
+    "nine_slice_trbl": null,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": false
+  },
+  "btn_hint": {
+    "production": "game/assets/ui_v2/btn_hint.png",
+    "size": [
+      192,
+      192
+    ],
+    "source": "clai-images/ui-v2-btn_hint.png",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "alpha_crop": [
+      15,
+      37,
+      1217,
+      1231
+    ],
+    "master_size": [
+      1202,
+      1194
+    ],
+    "nine_slice_trbl": null,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": false
+  },
+  "ribbon_perfect": {
+    "production": "game/assets/ui_v2/ribbon_perfect.png",
+    "size": [
+      900,
+      252
+    ],
+    "source": "clai-images/ui-v2-ribbon_perfect.png",
+    "source_size": [
+      1672,
+      941
+    ],
+    "alpha_crop": [
+      11,
+      268,
+      1659,
+      686
+    ],
+    "master_size": [
+      1648,
+      418
+    ],
+    "nine_slice_trbl": null,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": true
+  },
+  "heart": {
+    "production": "game/assets/ui_v2/heart.png",
+    "size": [
+      90,
+      84
+    ],
+    "source": "clai-images/ui-v2-heart.png",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "alpha_crop": [
+      167,
+      277,
+      1082,
+      1056
+    ],
+    "master_size": [
+      915,
+      779
+    ],
+    "nine_slice_trbl": null,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": false
+  },
+  "heart_empty": {
+    "production": "game/assets/ui_v2/heart_empty.png",
+    "size": [
+      90,
+      84
+    ],
+    "source": "clai-images/ui-v2-heart_empty.png",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "alpha_crop": [
+      85,
+      191,
+      1143,
+      1119
+    ],
+    "master_size": [
+      1058,
+      928
+    ],
+    "nine_slice_trbl": null,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": false
+  },
+  "btn_primary": {
+    "production": "game/assets/ui_v2/btn_primary.png",
+    "size": [
+      840,
+      210
+    ],
+    "source": "clai-images/ui-v2-btn_play.png",
+    "source_size": [
+      1672,
+      941
+    ],
+    "alpha_crop": [
+      9,
+      278,
+      1663,
+      663
+    ],
+    "master_size": [
+      1654,
+      385
+    ],
+    "nine_slice_trbl": [
+      60,
+      90,
+      66,
+      90
+    ],
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "runtime_text": true,
+    "alias_of": "btn_play"
+  },
+  "bg_menu": {
+    "production": "game/assets/ui_v2/bg_menu.png",
+    "size": [
+      1170,
+      2532
+    ],
+    "source": "clai-images/ui-v2-concept_storybook.png",
+    "nine_slice_trbl": null,
+    "opaque": true
+  },
+  "bg_menu_garden": {
+    "production": "game/assets/ui_v2/bg_menu_garden.png",
+    "size": [
+      1170,
+      2532
+    ],
+    "source": "clai-images/ui-v2-concept_garden.png",
+    "nine_slice_trbl": null,
+    "opaque": true
+  }
+}

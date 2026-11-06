@@ -40,6 +40,10 @@
     "path": "Hidden By Word/game/index.html"
   },
   {
+    "name": "Hidden Letters",
+    "path": "Hidden Word/game/index.html"
+  },
+  {
     "name": "Hidden Match3",
     "path": "Hidden Match3/Demo.html"
   },
@@ -50,10 +54,6 @@
   {
     "name": "Hidden Triple Match",
     "path": "Hidden Triple Match by topic/game/index.html"
-  },
-  {
-    "name": "Hidden Word",
-    "path": "Hidden Word/game/index.html"
   },
   {
     "name": "Jelly Escape",

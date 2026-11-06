@@ -205,3 +205,159 @@ Edit this game UI frame only: retain the thin ivory rounded rectangular rim and 
 ## Screen composition briefs
 
 The wireframes and colour proofs are deterministic layout drawings, not AI-generated screenshots. Their complete source is `render_wireframes.py`. The colour proofs use a neutral abstract scene placeholder when a test level is not present; they do not preview a level on the main menu. The eight composition briefs are the eight rows in the Screen proofs table above; no additional image-generation prompts were used for those screens.
+
+## V2 — warm storybook UI (2026-11-06)
+
+Generated with `clai image --model gpt`. Full sources in `clai-images/ui-v2-*.png`; exact commands reproducible with `docs/ui_v2_generate.py`. Mockups are deterministic compositions at 1170×2532. Concept illustrations use the named level thumbnails only as style references. Production labels are runtime text except the logo.
+
+### `concept_storybook` — 9:16, transparent: False
+
+Reference: game/assets/upon_storybook_attic/thumb.jpg
+
+```text
+Create a portrait mobile game main-menu background illustration, NO text, NO buttons, NO logo, NO UI. Warm gentle watercolor and colored pencil on cream cotton paper #FFF8E8, a cozy storybook atmosphere matching the supplied attic reference in palette and paper texture. This is a decorative quiet background, not a level screenshot. Center 75 percent of image is almost blank ivory paper with subtle warm washes, generous empty space. Small handpainted illustrated clusters ONLY along the far corners: upper left a delicate sage leafy branch, bottom left two closed storybooks and a tiny ochre flower, bottom right a small terracotta pot with sage leaves. Keep decorations within outer 15 percent and lowest 17 percent. Faint warm ochre paper shading, restrained charming craft. No framed inset, no large scene, no characters. Almost blank upper right for a settings control. Match reference material and palette only; do not reproduce room or furniture.
+```
+
+### `concept_garden` — 9:16, transparent: False
+
+Reference: game/assets/home_cartoon_garden/thumb.jpg
+
+```text
+Create a portrait mobile casual game menu BACKGROUND only, NO text, NO buttons, NO logo, NO UI. Use supplied cozy cartoon garden as style and color reference only. Friendly flat hand-inked gouache cartoon, sage green leaves, warm peach accents, cream center. Large empty light buttercream central 75 percent, a few illustrated tree leaves hanging in top corners and small flowers, terracotta pots and a tiny coral picket fence hugging only the bottom 16 percent. Fine warm dark green outlines, cheerful but restrained, a softly painted pale sage edge vignette. No full garden scene, no door, no characters, no level thumbnail. Upper right nearly blank for settings. All central controls will be added separately.
+```
+
+### `logo` — 16:9, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. Exact text on two centered lines: Hidden Word. Bold rounded custom hand-lettered forest-green wordmark, subtle ivory paper outline, small ochre baseline shadow. Letter shapes friendly and slightly organic, consistent weight; only lettering. No letter tiles, no leaf decorations, no frame, no symbols, no tagline. Tight composition, exact spelling.
+```
+
+### `btn_play` — 16:9, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. One single wide horizontal green rounded rectangle button plate, width to height 4.1 to 1. Solid rich leaf green #39814B with restrained top wash #4A9258 and dark forest lower edge #286138, cream hairline around edge. Clearly GREEN. Flat broad quiet center, completely blank for runtime white PLAY label. NO text, NO triangle, NO decorations. Straight long edges and rounded corners, 9-slice friendly. Narrow transparent margins.
+```
+
+### `btn_secondary` — 16:9, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. One single horizontal warm cream rounded rectangle button plate, width to height 4.1 to 1, fine warm brown drawn outline, thin sage lower edge. Flat opaque cream center completely blank. NO text, NO icons, NO decorations. Straight long edges and rounded corners, 9-slice friendly, narrow transparent margins.
+```
+
+### `level_badge` — 16:9, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. One single small horizontal cream label plaque with soft rounded corners, width to height 2.8 to 1. Fine double contour in sage and warm brown, shallow ochre lower edge. Blank solid cream interior for runtime Level 9 text. NO text, NO icons, NO holes, NO hanging strings. Calm paper label, not a button, straight long edges, 9-slice friendly.
+```
+
+### `counter_pill` — 16:9, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. One single horizontal forest-green #304B3B counter capsule, width to height 2.7 to 1. Fine sage outside edge and almost invisible paper grain, completely blank solid dark center for white digits. No text, no icons, no decorations. Symmetric straight long edges, soft rounded corners. Narrow transparent margins.
+```
+
+### `panel` — 3:4, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. One upright warm cream #FFF8E8 paper popup panel, width to height 3 to 4, softly rounded corners, fine warm brown contour and thin muted sage outer rim. Very subtle ochre lower shadow. Entire interior UNIFORM flat cream with barely perceptible grain. NO text, NO illustrations, NO buttons, NO ornaments. Straight sides; 9-slice friendly. Transparent exterior, narrow margins.
+```
+
+### `slot_empty` — 1:1, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. One blank rounded square warm cream letter tile, quiet thin warm brown outline, shallow ochre lower edge, center flat opaque cream for a dark letter. No text, no marks, no dots. Almost square with consistent rounded corners and narrow transparent margins.
+```
+
+### `slot_filled` — 1:1, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. One blank rounded square pale sage #D6E4C6 found-letter tile, quiet thin forest-green outline, shallow sage lower edge, center flat pale sage for a dark letter. No text, no checkmark, no marks, no dots. Almost square with consistent rounded corners and narrow transparent margins.
+```
+
+### `btn_settings` — 1:1, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. One circular cream utility button with thin warm brown edge and subtle sage lower rim. Centered simple forest-green cogwheel with six softly rounded teeth and a clear circular hole. Large clear flat symbol occupying half the circle. No text, no other objects, no ornament, narrow transparent margins.
+```
+
+### `btn_home` — 1:1, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. One circular cream utility button with thin warm brown edge and subtle sage lower rim. Centered simple forest-green house silhouette with clear cream door. Large clear flat symbol occupying half the circle. No text, no other objects, no ornament, narrow transparent margins.
+```
+
+### `btn_close` — 1:1, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. One circular cream utility button with thin warm brown edge and subtle sage lower rim. Centered simple thick forest-green X made of two rounded crossing strokes. Large clear flat symbol occupying half the circle. No text, no other objects, no ornament, narrow transparent margins.
+```
+
+### `btn_back` — 1:1, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. One circular cream utility button with thin warm brown edge and subtle sage lower rim. Centered simple thick forest-green left-facing chevron. Large clear flat symbol occupying half the circle. No text, no other objects, no ornament, narrow transparent margins.
+```
+
+### `btn_hint` — 1:1, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. One circular cream hint button with thin ochre edge and sage lower rim. Centered large ochre lightbulb silhouette, forest-green base, exactly three short simple ochre rays. Friendly illustrated clean shape, recognisable at 48 pixels. No text, no counters, no ad tag, no ornament. Narrow transparent margins.
+```
+
+### `ribbon_perfect` — 16:9, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. One wide soft ochre paper ribbon with small folded ends, width to height 3.6 to 1. Fine warm brown contour, shallow fold shading. Entire center COMPLETELY BLANK for runtime title Perfect. No text, no stars, no confetti, no ornament. Narrow transparent margins.
+```
+
+### `heart` — 1:1, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. One small simple plump terracotta coral #CB7560 heart, gentle watercolor wash and fine warm brown outline. No enclosing circle, no extra objects, no text. Symmetric clearly readable shape, narrow transparent margins.
+```
+
+### `heart_empty` — 1:1, transparent: True
+
+Reference: none
+
+```text
+One production mobile game UI asset. Warm illustrated storybook gouache and watercolor on subtly grained paper, hand-painted but clean smooth contours, front-facing flat 2D, exceptionally readable at phone size. Forest ink #304B3B, cream #FFF8E8, sage #A9BC93, ochre #E9B85F, fine warm brown outlines #957D5B. Very shallow lower edge, NO glossy plastic, NO metallic gold, NO strong 3D bevel. Isolated on genuinely transparent background. No watermark. One small simple empty heart outline in muted warm brown, pale cream interior, thin sage lower edge, gentle watercolor paper. No enclosing circle, no extra objects, no text. Symmetric clearly readable shape, narrow transparent margins.
+```
+
+### V2 logo rename — Hidden Letters (2026-11-06)
+
+Reference: `docs/ui_src/v2/logo_hidden_word_reference.png` (previous production logo). GPT reference edit: `clai image --model gpt --ratio 16:9 --transparent --input-path <reference> --output-path clai-images/ui-v2-logo-hidden-letters.png`. Original source preserved; replacement production `game/assets/ui_v2/logo.png` remains 840×450 RGBA. Full cropped master: `docs/ui_masters/v2/logo.png`. Reproduce with `python3 docs/ui_v2_rename_logo.py generate` then `... install`.
+
+```text
+Edit the supplied exact game logo. Change the two-line title from Hidden Word to Hidden Letters. Exact first line: Hidden. Exact second line: Letters. Preserve the original Hidden lettering unchanged in character shapes, proportions and style. Render Letters in precisely the same bold rounded organic hand-lettered storybook style as the old Word: forest-green watercolor/gouache paper texture, warm ivory paper outline and subtle ochre lower offset edge. Match the reference colors exactly, including its dark forest green. Keep the same two-line compact centered silhouette and the same overall width-to-height ratio, approximately 1.9 to 1. Fit the longer word Letters within the original lower-line width by using slightly narrower matching letters, without making the logo wider or adding a third line. Maintain similar visual weight and line spacing. Only the wording changes. No icons, no tiles, no leaves, no border, no extra words, no new decorations, no glossy effects. True transparent background everywhere outside the original-style paper outline, including natural gaps. The final asset will occupy the same 840 by 450 transparent box. Exact spelling: H i d d e n / L e t t e r s.
+```

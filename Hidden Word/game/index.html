@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-<meta name="theme-color" content="#3E4870" />
+<meta name="theme-color" content="#F7F0DF" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>Hidden Word</title>
+<title>Hidden Letters</title>
+<meta name="apple-mobile-web-app-title" content="Hidden Letters" />
 <link rel="icon" href="assets/ui/icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@600;700&display=swap" />
-<link rel="stylesheet" href="styles.css?v=14" />
+<link rel="stylesheet" href="styles.css?v=18" />
 </head>
 <body>
   <div class="frame" id="frame">
@@ -20,16 +21,13 @@
       <header class="menu-top">
         <button class="round-btn settings-btn" id="menuSettingsBtn" aria-label="Settings"><span class="ico">⚙</span></button>
       </header>
-      <div class="logo" id="logo"><span class="logo-text">Hidden<br>Word</span></div>
+      <div class="menu-spacer top"></div>
+      <div class="logo" id="logo" role="img" aria-label="Hidden Letters"><span class="logo-text">Hidden<br>Letters</span></div>
       <div class="menu-spacer"></div>
       <div class="menu-actions">
-        <button class="primary-btn" id="playBtn"><span id="playLabel">PLAY</span></button>
+        <div class="level-badge" id="menuLevel">LEVEL 1</div>
+        <button class="primary-btn play-btn" id="playBtn"><span id="playLabel">PLAY</span></button>
         <button class="secondary-btn" id="levelsBtn">Levels</button>
-      </div>
-      <!-- neutral slot motif: one slot per level, mint = finished -->
-      <div class="menu-motif">
-        <div class="motif-title" id="menuReady">LEVEL 1 READY</div>
-        <div class="motif-slots" id="menuSlots"></div>
       </div>
       <div class="menu-spacer small"></div>
     </section>
@@ -42,6 +40,7 @@
         <div class="sheet-count" id="levelsCount"></div>
       </header>
       <div class="level-grid" id="levelGrid"></div>
+      <nav class="levels-nav"><button id="levelsHome">Home</button><button class="on" id="levelsTab">Levels</button></nav>
     </section>
 
     <!-- ===== GAME ===== -->
@@ -49,12 +48,12 @@
       <header class="topbar">
         <div class="topbar-left">
           <div class="level-label" id="levelLabel">Level 1</div>
-          <div class="hearts" id="hearts" hidden>
-            <span class="heart"></span><span class="heart"></span><span class="heart"></span>
-          </div>
         </div>
         <div class="counter" id="counter"><b id="cntNum">0</b><span id="cntDen">/0</span></div>
         <div class="topbar-right">
+          <div class="hearts" id="hearts" hidden>
+            <span class="heart"></span><span class="heart"></span><span class="heart"></span>
+          </div>
           <button class="round-btn settings-btn" id="gameSettingsBtn" aria-label="Settings"><span class="ico">⚙</span></button>
         </div>
       </header>
@@ -92,6 +91,7 @@
           <button class="admin-item" id="admPrev">⏮ Prev level</button>
           <button class="admin-item" id="admNext">⏭ Next level</button>
           <button class="admin-item admin-wide" id="admBanner">▭ Banner placeholder: off</button>
+          <button class="admin-item admin-wide" id="admMenuArt">🖼 Menu art: Storybook</button>
         </div>
         <label class="admin-pick">Level
           <select id="admPick"></select>
@@ -104,12 +104,12 @@
       <div class="panel settings-panel">
         <button class="panel-close" data-close aria-label="Close">×</button>
         <div class="panel-title">Settings</div>
+        <div class="setting-row"><span>Sound</span><button class="toggle" id="setSound" role="switch"></button></div>
         <div class="setting-row"><span>Hearts</span><button class="toggle" id="setHearts" role="switch"></button></div>
         <div class="setting-note">3 hearts per level, a wrong tap costs one.</div>
-        <div class="setting-row"><span>Sound</span><button class="toggle" id="setSound" role="switch"></button></div>
         <div class="settings-game">
-          <button class="settings-item" id="setHome">⌂ Main menu</button>
-          <button class="settings-item" id="setAdmin">🛠 Admin</button>
+          <button class="secondary-btn" id="setHome">Main menu</button>
+          <button class="settings-item" id="setAdmin">Admin</button>
         </div>
         <button class="danger-btn" id="resetBtn">Reset progress</button>
       </div>
@@ -138,7 +138,7 @@
     <div class="fx-layer" id="fxLayer"></div>
   </div>
 
-  <script src="levels.js?v=37"></script>
-  <script src="game.js?v=21"></script>
+  <script src="levels.js?v=41"></script>
+  <script src="game.js?v=24"></script>
 </body>
 </html>

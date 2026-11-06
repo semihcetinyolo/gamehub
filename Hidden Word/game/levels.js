@@ -30,6 +30,8 @@ window.HW_LEVELS = [
   'leafpile_cartoon_r2',      // JUMP IN THE LEAVES (native 1086x1448)
   'study_cartoon_r2',         // DREAM BIG STUDY HARD (native 1086x1448)
   'ferry_watercolor_r2',      // SMOOTH SAILING (native 1086x1448)
+  'harvest_gouache_gen',      // GROW YOUR OWN (Astra-generated BG, native 1086x1448)
+  'icecream_cartoon_gen',     // LIFE IS SWEET (Astra-generated BG, native 1086x1448)
 ];
 /* Levels tab grouping: production route + provider + art style (one section per combination, play order inside).
    bg: "BG üretim" (BG generated from a prompt) | "Hidden BG" (redrawn from a Hidden PSB's BG layer only)
@@ -65,6 +67,8 @@ window.HW_LEVEL_INFO = {
   puppet_watercolor_r2:      { bg: 'Hidden BG',   provider: 'Astra',    style: 'Watercolor' },
   show_watercolor_r2:        { bg: 'Hidden BG',   provider: 'Astra',    style: 'Watercolor' },
   costume_watercolor_marla_r2: { bg: 'Hidden BG', provider: 'Sunburst', style: 'Watercolor' },
+  harvest_gouache_gen: { bg: 'BG üretim', provider: 'Astra', style: 'Gouache' },
+  icecream_cartoon_gen: { bg: 'BG üretim', provider: 'Astra', style: 'Cartoon' },
 };
 
 /* shown as "(test)" in the admin level picker */

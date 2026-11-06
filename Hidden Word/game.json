@@ -1,5 +1,5 @@
 {
-  "name": "Hidden Word",
+  "name": "Hidden Letters",
   "entry": "game/index.html",
   "fugo": {
     "mode": "zip",
