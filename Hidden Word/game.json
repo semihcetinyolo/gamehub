@@ -5,12 +5,7 @@
     "mode": "zip",
     "root": "game",
     "exclude": [
-      "assets/wireframes/*",
-      "assets/camper_cartoon_astra/*",
-      "assets/catgaming_cartoon_marla/*",
-      "assets/galley_watercolor/*",
-      "assets/gamenight_watercolor/*",
-      "assets/roadtrip_cartoon_marla/*"
+      "assets/wireframes/*"
     ],
     "keep": [
       "assets/*/manifest.json"
