@@ -1,0 +1,11 @@
+New reference from the user (read-only, do not copy it into our repo, do not run its .sh wrappers — they are tied to another user's machine/paths): /Users/semihcetin/Downloads/HiddenLevelProjects
+It is a sister team's hidden-object level pipeline that learned a lot about two things we need: **Astra edits** and **extraction of what an edit changed**. Read first: /Users/semihcetin/Downloads/HiddenLevelProjects/HiddenLevelRecreate/CLAUDE.md, COMMON.md (esp. "Services", "Paid calls", "Open problems", "Rejected (don't retry)"), RESTYLE.md, REMAKE.md, and /Users/semihcetin/Downloads/HiddenLevelProjects/HiddenLevelBot/FLOW.md.
+Key facts already seen:
+- "Astra edit" = `clai image --model gpt --ratio 1:1 --input-path <square.png> [--input-path <ref.png>] "<prompt>"` (GPT image through Clai, runs on the subscription, so cost does not matter there). Squares are 1024 sent as they are (no resize). They run 3 at a time and stop all asks for 20 min when the answer log contains usage_limit (scripts/rs_astra.sh). `--transparent` gives real alpha (used for H in scripts/rs_hdraw.sh).
+- GPT answers are not pixel-registered like Nano's: they register / fit the answer back onto the square (scripts/rs_astra.py: answer(), register(), fit(), look, build/cut) and paste only what changed so the cut runs where nothing changed (scripts/bg_fix.py paste).
+
+YOUR TASK (opus-detect), after or together with the try_check tuning: learn their extraction and bring what fits into ours:
+1. Registration of an answer that may be shifted/scaled (rs_astra.py answer/register/fit) so astra answers detect as cleanly as nano ones; drift-proof change masks.
+2. "Paste only what changed" with the cut where nothing changed (bg_fix.py paste) for our layer cutting in build.py.
+3. Optional completion: HiddenLevelBot's SAM -> Nano -> polish route and RESTYLE's rs_hdraw (H drawn by Astra with --transparent, then setback) — only note what would help letters; letters are mostly fully visible, so do not build this unless it clearly helps.
+Write what you adopted and what you rejected (with why) in docs/learned-hiddenlevel.md. opus-api is adding the astra provider; agree the registration hand-off with it. Reply to me: clai ctl send "Hidden Words:1" "...".

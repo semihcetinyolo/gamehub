@@ -1,0 +1,44 @@
+{
+  "note": "Control tiles mixed into every blind-read sheet (user-approved letters). A run whose controls are not all read right is marked invalid. Edit freely; ids are candidate ids in that project. \"modes\": [\"scene\"] or [\"layer\"] limits a control to one blind-read mode (default both).",
+  "controls": [
+    {
+      "project": "door_stained_glass",
+      "id": 16,
+      "expected": "L",
+      "note": "door handle L"
+    },
+    {
+      "project": "door_stained_glass",
+      "id": 19,
+      "expected": "S",
+      "note": "lantern S"
+    },
+    {
+      "project": "door_stained_glass",
+      "id": 20,
+      "expected": "O",
+      "note": "door mat O (scene only: its layer carries the mat weave inside the ring, layer-alone read is \"?\")",
+      "modes": [
+        "scene"
+      ]
+    },
+    {
+      "project": "door_stained_glass",
+      "id": 21,
+      "expected": "N",
+      "note": "door-bottom N"
+    },
+    {
+      "project": "door_stained_glass",
+      "id": 18,
+      "expected": "Y",
+      "note": "twig Y in the bench-side panel"
+    },
+    {
+      "project": "quiet_photoreal_porch",
+      "id": 23,
+      "expected": "A",
+      "note": "stems A in the jar"
+    }
+  ]
+}

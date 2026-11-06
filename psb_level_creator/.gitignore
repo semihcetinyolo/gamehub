@@ -1,0 +1,7 @@
+ref/odin/
+projects/
+__pycache__/
+*.pyc
+lab/bg_src/psb/
+lab/
+try/out/

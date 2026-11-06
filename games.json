@@ -52,6 +52,10 @@
     "path": "Hidden Triple Match by topic/game/index.html"
   },
   {
+    "name": "Hidden Word",
+    "path": "Hidden Word/game/index.html"
+  },
+  {
     "name": "Jelly Escape",
     "path": "dungeon_slime/index.html"
   },

@@ -1,0 +1,382 @@
+{
+  "logo": {
+    "file": "logo.png",
+    "size": [
+      864,
+      459
+    ],
+    "source_size": [
+      1672,
+      941
+    ],
+    "source_crop_bbox": [
+      20,
+      26,
+      1654,
+      860
+    ],
+    "slice_insets_trbl": null,
+    "alpha_range": [
+      0,
+      255
+    ],
+    "fully_transparent_pixels": 120116,
+    "fully_opaque_pixels": 254781,
+    "center_alpha": 208
+  },
+  "icon": {
+    "file": "icon.png",
+    "size": [
+      192,
+      192
+    ],
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_crop_bbox": [
+      120,
+      140,
+      1122,
+      1142
+    ],
+    "slice_insets_trbl": null,
+    "alpha_range": [
+      0,
+      255
+    ],
+    "fully_transparent_pixels": 6047,
+    "fully_opaque_pixels": 30123,
+    "center_alpha": 255
+  },
+  "slot_empty": {
+    "file": "slot_empty.png",
+    "size": [
+      192,
+      224
+    ],
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_crop_bbox": [
+      80,
+      97,
+      1170,
+      1169
+    ],
+    "slice_insets_trbl": [
+      48,
+      48,
+      48,
+      48
+    ],
+    "alpha_range": [
+      0,
+      255
+    ],
+    "fully_transparent_pixels": 6544,
+    "fully_opaque_pixels": 35844,
+    "center_alpha": 255
+  },
+  "slot_filled": {
+    "file": "slot_filled.png",
+    "size": [
+      192,
+      224
+    ],
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_crop_bbox": [
+      65,
+      88,
+      1176,
+      1207
+    ],
+    "slice_insets_trbl": [
+      48,
+      48,
+      48,
+      48
+    ],
+    "alpha_range": [
+      0,
+      255
+    ],
+    "fully_transparent_pixels": 6278,
+    "fully_opaque_pixels": 35417,
+    "center_alpha": 255
+  },
+  "counter_pill": {
+    "file": "counter_pill.png",
+    "size": [
+      384,
+      132
+    ],
+    "source_size": [
+      1672,
+      941
+    ],
+    "source_crop_bbox": [
+      33,
+      262,
+      1636,
+      715
+    ],
+    "slice_insets_trbl": [
+      51,
+      75,
+      51,
+      75
+    ],
+    "alpha_range": [
+      0,
+      255
+    ],
+    "fully_transparent_pixels": 7519,
+    "fully_opaque_pixels": 39771,
+    "center_alpha": 255
+  },
+  "btn_hint": {
+    "file": "btn_hint.png",
+    "size": [
+      192,
+      192
+    ],
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_crop_bbox": [
+      43,
+      67,
+      1190,
+      1234
+    ],
+    "slice_insets_trbl": null,
+    "alpha_range": [
+      0,
+      255
+    ],
+    "fully_transparent_pixels": 11053,
+    "fully_opaque_pixels": 24404,
+    "center_alpha": 255
+  },
+  "btn_settings": {
+    "file": "btn_settings.png",
+    "size": [
+      192,
+      192
+    ],
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_crop_bbox": [
+      55,
+      90,
+      1185,
+      1222
+    ],
+    "slice_insets_trbl": null,
+    "alpha_range": [
+      0,
+      255
+    ],
+    "fully_transparent_pixels": 10840,
+    "fully_opaque_pixels": 24369,
+    "center_alpha": 255
+  },
+  "btn_home": {
+    "file": "btn_home.png",
+    "size": [
+      192,
+      192
+    ],
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_crop_bbox": [
+      64,
+      90,
+      1182,
+      1215
+    ],
+    "slice_insets_trbl": null,
+    "alpha_range": [
+      0,
+      255
+    ],
+    "fully_transparent_pixels": 10957,
+    "fully_opaque_pixels": 24185,
+    "center_alpha": 255
+  },
+  "heart": {
+    "file": "heart.png",
+    "size": [
+      96,
+      96
+    ],
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_crop_bbox": [
+      94,
+      210,
+      1149,
+      1107
+    ],
+    "slice_insets_trbl": null,
+    "alpha_range": [
+      0,
+      255
+    ],
+    "fully_transparent_pixels": 4265,
+    "fully_opaque_pixels": 4624,
+    "center_alpha": 255
+  },
+  "heart_empty": {
+    "file": "heart_empty.png",
+    "size": [
+      96,
+      96
+    ],
+    "source_size": [
+      1254,
+      1254
+    ],
+    "source_crop_bbox": [
+      81,
+      166,
+      1159,
+      1144
+    ],
+    "slice_insets_trbl": null,
+    "alpha_range": [
+      0,
+      255
+    ],
+    "fully_transparent_pixels": 3938,
+    "fully_opaque_pixels": 1096,
+    "center_alpha": 111
+  },
+  "ribbon_perfect": {
+    "file": "ribbon_perfect.png",
+    "size": [
+      864,
+      243
+    ],
+    "source_size": [
+      1672,
+      941
+    ],
+    "source_crop_bbox": [
+      19,
+      291,
+      1653,
+      701
+    ],
+    "slice_insets_trbl": null,
+    "alpha_range": [
+      0,
+      255
+    ],
+    "fully_transparent_pixels": 48633,
+    "fully_opaque_pixels": 145230,
+    "center_alpha": 255
+  },
+  "btn_primary": {
+    "file": "btn_primary.png",
+    "size": [
+      768,
+      180
+    ],
+    "source_size": [
+      1672,
+      941
+    ],
+    "source_crop_bbox": [
+      31,
+      312,
+      1641,
+      652
+    ],
+    "slice_insets_trbl": [
+      45,
+      66,
+      51,
+      66
+    ],
+    "alpha_range": [
+      0,
+      255
+    ],
+    "fully_transparent_pixels": 19996,
+    "fully_opaque_pixels": 108322,
+    "center_alpha": 255
+  },
+  "panel": {
+    "file": "panel.png",
+    "size": [
+      384,
+      512
+    ],
+    "source_size": [
+      1086,
+      1448
+    ],
+    "source_crop_bbox": [
+      38,
+      77,
+      1052,
+      1378
+    ],
+    "slice_insets_trbl": [
+      40,
+      40,
+      44,
+      40
+    ],
+    "alpha_range": [
+      0,
+      255
+    ],
+    "fully_transparent_pixels": 9541,
+    "fully_opaque_pixels": 182438,
+    "center_alpha": 255
+  },
+  "card_frame": {
+    "file": "card_frame.png",
+    "size": [
+      384,
+      512
+    ],
+    "source_size": [
+      1086,
+      1448
+    ],
+    "source_crop_bbox": [
+      57,
+      93,
+      1028,
+      1428
+    ],
+    "slice_insets_trbl": [
+      40,
+      40,
+      44,
+      40
+    ],
+    "alpha_range": [
+      0,
+      255
+    ],
+    "fully_transparent_pixels": 170611,
+    "fully_opaque_pixels": 21296,
+    "center_alpha": 0
+  }
+}

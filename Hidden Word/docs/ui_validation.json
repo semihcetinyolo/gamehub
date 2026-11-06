@@ -1,0 +1,202 @@
+{
+  "result": "PASS",
+  "rgba_assets": 14,
+  "phone_pngs": 16,
+  "phone_size": [
+    1080,
+    1920
+  ],
+  "card_window_alpha_range": [
+    0,
+    0
+  ],
+  "text_contrast_ratios": {
+    "ink_on_ivory": 8.22,
+    "helper_on_background": 4.73,
+    "danger_on_ivory": 5.28
+  },
+  "assets": [
+    {
+      "file": "logo.png",
+      "size": [
+        864,
+        459
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bytes": 142269
+    },
+    {
+      "file": "icon.png",
+      "size": [
+        192,
+        192
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bytes": 13614
+    },
+    {
+      "file": "slot_empty.png",
+      "size": [
+        192,
+        224
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bytes": 6816
+    },
+    {
+      "file": "slot_filled.png",
+      "size": [
+        192,
+        224
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bytes": 8312
+    },
+    {
+      "file": "counter_pill.png",
+      "size": [
+        384,
+        132
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bytes": 8513
+    },
+    {
+      "file": "btn_hint.png",
+      "size": [
+        192,
+        192
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bytes": 13441
+    },
+    {
+      "file": "btn_settings.png",
+      "size": [
+        192,
+        192
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bytes": 15235
+    },
+    {
+      "file": "btn_home.png",
+      "size": [
+        192,
+        192
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bytes": 12328
+    },
+    {
+      "file": "heart.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bytes": 3360
+    },
+    {
+      "file": "heart_empty.png",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bytes": 6115
+    },
+    {
+      "file": "ribbon_perfect.png",
+      "size": [
+        864,
+        243
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bytes": 45644
+    },
+    {
+      "file": "btn_primary.png",
+      "size": [
+        768,
+        180
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bytes": 13813
+    },
+    {
+      "file": "panel.png",
+      "size": [
+        384,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bytes": 17186
+    },
+    {
+      "file": "card_frame.png",
+      "size": [
+        384,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bytes": 11532
+    }
+  ]
+}

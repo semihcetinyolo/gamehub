@@ -1,0 +1,19 @@
+{
+  "name": "Hidden Word",
+  "entry": "game/index.html",
+  "fugo": {
+    "mode": "zip",
+    "root": "game",
+    "exclude": [
+      "assets/wireframes/*",
+      "assets/camper_cartoon_astra/*",
+      "assets/catgaming_cartoon_marla/*",
+      "assets/galley_watercolor/*",
+      "assets/gamenight_watercolor/*",
+      "assets/roadtrip_cartoon_marla/*"
+    ],
+    "keep": [
+      "assets/*/manifest.json"
+    ]
+  }
+}

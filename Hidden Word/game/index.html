@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#3E4870" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>Hidden Word</title>
+<link rel="icon" href="assets/ui/icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@600;700&display=swap" />
+<link rel="stylesheet" href="styles.css?v=14" />
+</head>
+<body>
+  <div class="frame" id="frame">
+
+    <!-- ===== MAIN MENU ===== -->
+    <section class="screen menu-screen" id="menuScreen">
+      <header class="menu-top">
+        <button class="round-btn settings-btn" id="menuSettingsBtn" aria-label="Settings"><span class="ico">⚙</span></button>
+      </header>
+      <div class="logo" id="logo"><span class="logo-text">Hidden<br>Word</span></div>
+      <div class="menu-spacer"></div>
+      <div class="menu-actions">
+        <button class="primary-btn" id="playBtn"><span id="playLabel">PLAY</span></button>
+        <button class="secondary-btn" id="levelsBtn">Levels</button>
+      </div>
+      <!-- neutral slot motif: one slot per level, mint = finished -->
+      <div class="menu-motif">
+        <div class="motif-title" id="menuReady">LEVEL 1 READY</div>
+        <div class="motif-slots" id="menuSlots"></div>
+      </div>
+      <div class="menu-spacer small"></div>
+    </section>
+
+    <!-- ===== LEVEL LIST ===== -->
+    <section class="screen levels-screen" id="levelsScreen" hidden>
+      <header class="sheet-top">
+        <button class="round-btn home-btn" id="levelsBack" aria-label="Back"><span class="ico">‹</span></button>
+        <div class="sheet-title">Levels</div>
+        <div class="sheet-count" id="levelsCount"></div>
+      </header>
+      <div class="level-grid" id="levelGrid"></div>
+    </section>
+
+    <!-- ===== GAME ===== -->
+    <section class="screen game-screen" id="gameScreen" hidden>
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="level-label" id="levelLabel">Level 1</div>
+          <div class="hearts" id="hearts" hidden>
+            <span class="heart"></span><span class="heart"></span><span class="heart"></span>
+          </div>
+        </div>
+        <div class="counter" id="counter"><b id="cntNum">0</b><span id="cntDen">/0</span></div>
+        <div class="topbar-right">
+          <button class="round-btn settings-btn" id="gameSettingsBtn" aria-label="Settings"><span class="ico">⚙</span></button>
+        </div>
+      </header>
+
+      <div class="phrase-panel" id="phrasePanel">
+        <div class="phrase" id="phrase"></div>
+      </div>
+
+      <div class="board-area" id="boardArea">
+      <div class="diff-legend" id="diffLegend" hidden></div>
+      <div class="board-wrap" id="boardWrap">
+        <div class="board" id="board">
+          <img class="bg" id="bg" alt="" draggable="false" />
+        </div>
+      </div>
+      </div>
+
+      <footer class="dock">
+        <button class="hint-btn" id="hintBtn" aria-label="Hint"><span class="ico">💡</span></button>
+      </footer>
+      <!-- reserved banner ad strip: full width x 50 px + bottom safe area; nothing is ever drawn under it -->
+      <div class="ad-banner" id="adBanner"><div class="ad-box">Banner 320×50</div></div>
+    </section>
+
+    <!-- ===== ADMIN POPUP (all test / debug controls live here) ===== -->
+    <div class="modal" id="adminModal">
+      <div class="panel admin-panel">
+        <button class="panel-close" data-close aria-label="Close">×</button>
+        <div class="panel-title">Admin</div>
+        <div class="admin-grid">
+          <button class="admin-item" id="admRestart">⟳ Restart</button>
+          <button class="admin-item" id="admReveal">👁 Reveal letters</button>
+          <button class="admin-item" id="admSolve">✓ Solve level</button>
+          <button class="admin-item" id="admSettings">‹ Settings</button>
+          <button class="admin-item" id="admPrev">⏮ Prev level</button>
+          <button class="admin-item" id="admNext">⏭ Next level</button>
+          <button class="admin-item admin-wide" id="admBanner">▭ Banner placeholder: off</button>
+        </div>
+        <label class="admin-pick">Level
+          <select id="admPick"></select>
+        </label>
+      </div>
+    </div>
+
+    <!-- ===== SETTINGS ===== -->
+    <div class="modal" id="settingsModal">
+      <div class="panel settings-panel">
+        <button class="panel-close" data-close aria-label="Close">×</button>
+        <div class="panel-title">Settings</div>
+        <div class="setting-row"><span>Hearts</span><button class="toggle" id="setHearts" role="switch"></button></div>
+        <div class="setting-note">3 hearts per level, a wrong tap costs one.</div>
+        <div class="setting-row"><span>Sound</span><button class="toggle" id="setSound" role="switch"></button></div>
+        <div class="settings-game">
+          <button class="settings-item" id="setHome">⌂ Main menu</button>
+          <button class="settings-item" id="setAdmin">🛠 Admin</button>
+        </div>
+        <button class="danger-btn" id="resetBtn">Reset progress</button>
+      </div>
+    </div>
+
+    <!-- ===== END SCREENS ===== -->
+    <div class="modal end-modal" id="winModal">
+      <div class="end-card">
+        <div class="ribbon"><span>Perfect</span></div>
+        <div class="end-scene"><img id="winThumb" alt="" draggable="false" /></div>
+        <div class="end-phrase" id="winPhrase"></div>
+        <button class="primary-btn" id="winNext">Next Level</button>
+        <button class="link-btn" id="winHome">Main menu</button>
+      </div>
+    </div>
+    <div class="modal end-modal" id="loseModal">
+      <div class="panel lose-panel">
+        <div class="lose-hearts"><span class="heart lost"></span><span class="heart lost"></span><span class="heart lost"></span></div>
+        <div class="panel-title">Out of Hearts</div>
+        <div class="lose-sub" id="loseSub"></div>
+        <button class="primary-btn" id="loseRetry">Try Again</button>
+        <button class="link-btn" id="loseHome">Main menu</button>
+      </div>
+    </div>
+
+    <div class="fx-layer" id="fxLayer"></div>
+  </div>
+
+  <script src="levels.js?v=37"></script>
+  <script src="game.js?v=21"></script>
+</body>
+</html>
